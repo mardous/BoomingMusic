@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Чтение изображений (необязательно)</string>
     <string name="permission_read_images_summary">Это разрешение необходимо Booming Music для поиска обложек альбомов в ваших музыкальных папках. Если вы не планируете использовать эту функцию, вы можете не предоставлять его.</string>
     <string name="permission_read_images_denied">Вы должны предоставить разрешение на чтение изображений с устройства.</string>
-    <string name="permission_exact_alarms_title">Планировать точные сигналы тревоги (необязательно)</string>
-    <string name="permission_exact_alarms_description">Разрешение на планирование точных сигналов тревоги необходимо для корректной работы таймера сна</string>
+
+
     <string name="permissions_denied">Разрешения отклонены</string>
     <string name="permissions_needed">Требуются разрешения</string>
     <string name="grant_access_action">Предоставить доступ</string>

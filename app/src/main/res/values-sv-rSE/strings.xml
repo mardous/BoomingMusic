@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Läs bilder (valfritt)</string>
     <string name="permission_read_images_summary">Denna behörighet krävs för att Booming Music ska kunna hitta skivomslagsfiler i dina musikmappar. Om du inte planerar att använda den här funktionen kan du välja att inte bevilja den.</string>
     <string name="permission_read_images_denied">Du måste ge behörighet att läsa bilder från enheten.</string>
-    <string name="permission_exact_alarms_title">Schemalägg exakta alarm (valfritt)</string>
-    <string name="permission_exact_alarms_description">Tillstånd att schemalägga exakta larm krävs för att sömntimern ska fungera korrekt</string>
+
+
     <string name="permissions_denied">Åtkomst nekad</string>
     <string name="permissions_needed">Behörigheter behövs</string>
     <string name="grant_access_action">Bevilja åtkomst</string>

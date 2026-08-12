@@ -2,14 +2,11 @@ package com.mardous.booming.ui.screen.permissions
 
 import android.Manifest.permission.BLUETOOTH_CONNECT
 import android.Manifest.permission.READ_MEDIA_IMAGES
-import android.app.AlarmManager
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.text.SpannableStringBuilder
 import android.text.SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE
 import android.text.SpannableStringBuilder.SPAN_INCLUSIVE_INCLUSIVE
@@ -18,7 +15,6 @@ import android.text.style.StyleSpan
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
 import com.mardous.booming.R
 import com.mardous.booming.databinding.ActivityPermissionBinding
@@ -65,13 +61,6 @@ class PermissionsActivity : AbsBaseActivity() {
                 }
             }
         }
-        if (binding.scheduleExactAlarms.isVisible) {
-            binding.scheduleExactAlarms.setButtonOnClickListener {
-                if (!binding.scheduleExactAlarms.isGranted() && hasS()) {
-                    startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
-                }
-            }
-        }
         binding.finish.setOnClickListener {
             if (hasPermissions()) {
                 startActivity(
@@ -111,7 +100,6 @@ class PermissionsActivity : AbsBaseActivity() {
     private fun setupPermissionsVisibility() {
         binding.readImages.isVisible = hasT()
         binding.nearbyDevices.isVisible = hasS()
-        binding.scheduleExactAlarms.isVisible = hasS()
     }
 
     private fun setupPermissionsOrder() {
@@ -124,18 +112,10 @@ class PermissionsActivity : AbsBaseActivity() {
         }
     }
 
-    private fun startSettingsActivity(intent: Intent) {
-        try {
-            startActivity(intent)
-        } catch (_: ActivityNotFoundException) {
-        }
-    }
-
     private fun checkPermissions() {
         binding.storageAccess.setGranted(hasPermissions())
         if (hasS()) {
             binding.nearbyDevices.setGranted(hasNearbyDevicesPermission())
-            binding.scheduleExactAlarms.setGranted(canScheduleExactAlarms())
         }
         if (hasT()) {
             binding.readImages.setGranted(hasReadImagesPermission())
@@ -150,8 +130,4 @@ class PermissionsActivity : AbsBaseActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun hasReadImagesPermission(): Boolean =
         checkSelfPermission(READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
-
-    @RequiresApi(Build.VERSION_CODES.S)
-    private fun canScheduleExactAlarms(): Boolean =
-        getSystemService<AlarmManager>()?.canScheduleExactAlarms() == true
 }

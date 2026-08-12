@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Dostęp do zdjęć (opcjonalny)</string>
     <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką. Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
     <string name="permission_read_images_denied">Wymagane jest uprawnienie do odczytu obrazów z urządzenia.</string>
-    <string name="permission_exact_alarms_title">Alarmy i przypomnienia (opcjonalnie)</string>
-    <string name="permission_exact_alarms_description">Aby zegar uśpienia działał poprawnie, potrzebna jest zgoda na ustawianie alarmów</string>
+
+
     <string name="permissions_denied">Nie przyznano uprawnień</string>
     <string name="permissions_needed">Wymagane uprawnienia</string>
     <string name="grant_access_action">Zezwól</string>

@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Lue kuvia (valinnainen)</string>
     <string name="permission_read_images_summary">Tämä lupa tarvitaan Booming Musiikkia varten löytääksesi albumin taidetiedostoja musiikkikansiostasi. Jos et aio käyttää tätä ominaisuutta, voit päättää olla myöntämättä sitä.</string>
     <string name="permission_read_images_denied">Sinun on myönnettävä lupa lukea kuvia laitteesta.</string>
-    <string name="permission_exact_alarms_title">Ajoita tarkat hälytykset (valinnainen)</string>
-    <string name="permission_exact_alarms_description">Tarkkojen hälytysten ajoittaminen on tarpeen, jotta unen ajastin toimisi kunnolla</string>
+
+
     <string name="permissions_denied">Oikeudet evätty</string>
     <string name="permissions_needed">Käyttöoikeudet tarvitaan</string>
     <string name="grant_access_action">Anna käyttöoikeus</string>

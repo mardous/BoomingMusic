@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">查看圖片（可選）</string>
     <string name="permission_read_images_summary">為了自動尋找並顯示歌曲的專輯封面，Booming Music 需要取得存取音樂資料夾的權限。你可以依需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">需要授予所有檔案存取權才能讓應用程式讀取封面圖片。</string>
-    <string name="permission_exact_alarms_title">設定精確鬧鐘（可選）</string>
-    <string name="permission_exact_alarms_description">睡眠計時器需要設定精確鬧鐘的權限才能正常運作</string>
+
+
     <string name="permissions_denied">權限被拒絕</string>
     <string name="permissions_needed">需要權限</string>
     <string name="grant_access_action">授予存取權</string>

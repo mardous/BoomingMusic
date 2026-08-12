@@ -102,7 +102,7 @@ private val mainModule = module {
         PreferenceManager.getDefaultSharedPreferences(androidContext())
     }
     single {
-        SleepTimer(context = androidContext())
+        SleepTimer()
     }
     single {
         BalanceAudioProcessor()

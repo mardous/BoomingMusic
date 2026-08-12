@@ -136,8 +136,8 @@
     <string name="permission_read_images_title">படங்களைப் படிக்கவும் (விரும்பினால்)</string>
     <string name="permission_read_images_summary">உங்கள் இசை கோப்புறைகளில் ஆல்பம் ஆர்ட் கோப்புகளைக் கண்டறிய பூமிங் மியூசிக்கிற்கு இந்த இசைவு தேவை. இந்த அம்சத்தைப் பயன்படுத்த நீங்கள் திட்டமிடவில்லை என்றால், அதை வழங்க வேண்டாம் என நீங்கள் தேர்வு செய்யலாம்.</string>
     <string name="permission_read_images_denied">சாதனத்திலிருந்து படங்களைப் படிக்க நீங்கள் இசைவு வழங்க வேண்டும்.</string>
-    <string name="permission_exact_alarms_title">சரியான அலாரங்களைத் திட்டமிடு (விரும்பினால்)</string>
-    <string name="permission_exact_alarms_description">ச்லீப் நேரங்குறிகருவி சரியாக வேலை செய்ய, சரியான அலாரங்களை திட்டமிட இசைவு தேவை</string>
+
+
     <string name="permissions_denied">இசைவு மறுக்கப்பட்டது</string>
     <string name="permissions_needed">அனுமதிகள் தேவை</string>
     <string name="grant_access_action">அணுகலை வழங்கவும்</string>

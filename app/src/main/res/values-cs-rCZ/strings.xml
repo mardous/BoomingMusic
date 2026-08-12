@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Číst obrázky (volitelné)</string>
     <string name="permission_read_images_summary">Toto oprávnění je vyžadováno pro Booming Music pro nalezení souborů s obaly alba ve vašich hudebních složkách. Pokud neplánujete používat tuto funkci, můžete se rozhodnout, že ji neudělíte.</string>
     <string name="permission_read_images_denied">Musíte udělit oprávnění ke čtení obrázků ze zařízení.</string>
-    <string name="permission_exact_alarms_title">Naplánovat přesné budíky (volitelné)</string>
-    <string name="permission_exact_alarms_description">Pro správné fungování časovače spánku je vyžadováno oprávnění naplánovat přesné výstrahy</string>
+
+
     <string name="permissions_denied">Oprávnění odepřena</string>
     <string name="permissions_needed">Potřebná oprávnění</string>
     <string name="grant_access_action">Povolit přístup</string>

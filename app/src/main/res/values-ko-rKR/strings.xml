@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">이미지 읽기 (선택 사항)</string>
     <string name="permission_read_images_summary">음악 폴더에서 앨범 아트 파일을 찾기 위해 이 권한이 필요합니다. 이 기능을 사용하지 않으려면 허용하지 않아도 됩니다.</string>
     <string name="permission_read_images_denied">기기에서 이미지를 읽기 위한 권한을 허용해야 합니다.</string>
-    <string name="permission_exact_alarms_title">정확한 알람 예약 (선택 사항)</string>
-    <string name="permission_exact_alarms_description">취침 예약 기능이 올바르게 작동하려면 정확한 알람 예약 권한이 필요합니다</string>
+
+
     <string name="permissions_denied">권한 거부됨</string>
     <string name="permissions_needed">권한 필요</string>
     <string name="grant_access_action">액세스 허용</string>

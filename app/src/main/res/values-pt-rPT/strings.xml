@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Ler imagens (opcional)</string>
     <string name="permission_read_images_summary">Esta permissão é necessária para que o Booming Music encontre ficheiros de capas de álbuns nas suas pastas de música. Se não pretende usar este recurso, pode optar por não conceder a permissão.</string>
     <string name="permission_read_images_denied">Precisa conceder permissão para ler imagens do dispositivo.</string>
-    <string name="permission_exact_alarms_title">Programar alarmes exatos (opcional)</string>
-    <string name="permission_exact_alarms_description">Permissão para agendar alarmes exatos é necessária para que o temporizador da suspensão funcione corretamente</string>
+
+
     <string name="permissions_denied">Permissão negada</string>
     <string name="permissions_needed">Permissões necessárias</string>
     <string name="grant_access_action">Conceder acesso</string>

@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Truy cập hình ảnh (tùy chọn)</string>
     <string name="permission_read_images_summary">Quyền này là bắt buộc để Booming Music tìm các tệp ảnh bìa album trong thư mục nhạc của mày. Nếu bạn không định dùng tính năng này, bạn có thể chọn không cấp quyền.</string>
     <string name="permission_read_images_denied">Bạn phải cấp quyền truy cập hình ảnh từ thiết bị.</string>
-    <string name="permission_exact_alarms_title">Đặt lịch báo thức chính xác (tùy chọn)</string>
-    <string name="permission_exact_alarms_description">Để tính năng hẹn giờ ngủ hoạt động chính xác, vui lòng cấp quyền đặt lịch báo thức</string>
+
+
     <string name="permissions_denied">Quyền truy cập bị từ chối</string>
     <string name="permissions_needed">Cần có quyền tuy cập</string>
     <string name="grant_access_action">Cấp quyền truy cập</string>

@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Læs billeder (valgfrit)</string>
     <string name="permission_read_images_summary">Denne tilladelse kræves for Booming Music til at finde album cover filer i dine musikmapper. Hvis du ikke planlægger at bruge denne funktion, kan du vælge ikke at give den.</string>
     <string name="permission_read_images_denied">Du skal give tilladelse til at læse billeder fra enheden.</string>
-    <string name="permission_exact_alarms_title">Planlæg nøjagtige alarmer (valgfrit)</string>
-    <string name="permission_exact_alarms_description">Tilladelse til at planlægge nøjagtige alarmer er nødvendig for at sovemusikeren kan fungere korrekt</string>
+
+
     <string name="permissions_denied">Tilladelser nægtet</string>
     <string name="permissions_needed">Tilladelser nødvendig</string>
     <string name="grant_access_action">Giv adgang</string>

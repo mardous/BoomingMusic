@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Lettura immagini (opzionale)</string>
     <string name="permission_read_images_summary">Questa autorizzazione è richiesta da Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali. Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
     <string name="permission_read_images_denied">Devi concedere i permessi di lettura delle immagini dal tuo dispositivo.</string>
-    <string name="permission_exact_alarms_title">Pianifica avvisi esatti (facoltativo)</string>
-    <string name="permission_exact_alarms_description">Per il corretto funzionamento del timer di sonno è necessario il permesso per pianificare sveglie esatte</string>
+
+
     <string name="permissions_denied">Permessi negati</string>
     <string name="permissions_needed">Permessi necessari</string>
     <string name="grant_access_action">Autorizza accesso</string>

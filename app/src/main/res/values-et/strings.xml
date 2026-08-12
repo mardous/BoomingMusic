@@ -654,8 +654,8 @@
     <string name="image_size_medium">Keskmine (vaikimisi, soovitatav)</string>
     <string name="image_size_small">Väike (kiire, aga kehvema kvaliteediga)</string>
     <string name="system_default">Süsteemi vaikeseadistus</string>
-    <string name="permission_exact_alarms_title">Täpse äratuse ajastamise õigus (pole kohustuslik)</string>
-    <string name="permission_exact_alarms_description">Täpse äratuse ajastamise luba on vajalik unetaimeri korrektseks toimimiseks</string>
+
+
     <string name="list_start">Loendi algus</string>
     <string name="list_end">Loendi lõpp</string>
     <string name="sound_settings">Heliseadistused</string>

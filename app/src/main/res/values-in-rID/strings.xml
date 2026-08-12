@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Baca gambar (opsional)</string>
     <string name="permission_read_images_summary">Izin ini diperlukan agar Booming Music dapat menemukan file sampul album di folder musik Anda. Jika Anda tidak berencana menggunakan fitur ini, Anda dapat memilih untuk tidak memberikan izin.</string>
     <string name="permission_read_images_denied">Anda harus memberikan izin untuk membaca gambar dari perangkat.</string>
-    <string name="permission_exact_alarms_title">Jadwalkan alarm tepat waktu (opsional)</string>
-    <string name="permission_exact_alarms_description">Izin untuk menjadwalkan alarm tepat waktu diperlukan agar pengatur waktu tidur berfungsi dengan baik</string>
+
+
     <string name="permissions_denied">Izin ditolak</string>
     <string name="permissions_needed">Izin diperlukan</string>
     <string name="grant_access_action">Berikan akses</string>

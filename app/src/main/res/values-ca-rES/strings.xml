@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Cerca imatges (opcional)</string>
     <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les vostres carpetes de música. Si no penseu fer servir aquesta funció, no cal donar-lo.</string>
     <string name="permission_read_images_denied">Cal donar permís per llegir imatges del dispositiu.</string>
-    <string name="permission_exact_alarms_title">Programa alarmes exactes (opcional)</string>
-    <string name="permission_exact_alarms_description">Cal permís per programar alarmes exactes perquè funcioni correctament el temporitzador d\'apagada</string>
+
+
     <string name="permissions_denied">Permís denegat</string>
     <string name="permissions_needed">Cal permís</string>
     <string name="grant_access_action">Atorga\'n l\'accés</string>

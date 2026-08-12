@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Lees afbeeldingen (optioneel)</string>
     <string name="permission_read_images_summary">Deze toestemming is vereist voor het vinden van albumhoezen in je muziekmappen. Als u niet van plan bent om deze functie te gebruiken, kunt u ervoor kiezen deze niet toe te staan.</string>
     <string name="permission_read_images_denied">Je moet toestemming geven om afbeeldingen van het apparaat te lezen.</string>
-    <string name="permission_exact_alarms_title">Plan exacte alarmen (optioneel)</string>
-    <string name="permission_exact_alarms_description">Toestemming om exacte alarmen in te stellen is vereist om de slaaptimer goed te laten werken</string>
+
+
     <string name="permissions_denied">Permissies geweigerd</string>
     <string name="permissions_needed">Machtigingen vereist</string>
     <string name="grant_access_action">Toegang verlenen</string>

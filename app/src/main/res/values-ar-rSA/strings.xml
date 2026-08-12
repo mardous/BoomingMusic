@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">قراءة الصور (اختياري)</string>
     <string name="permission_read_images_summary">هذا الإذن مطلوب كي يتمكن Booming Music من العثور على ملفات صور أغلفة الألبومات في مجلدات موسيقاك. إذا كنت لا تنوي استخدام هذه الميزة، يمكنك اختيار عدم منحه.</string>
     <string name="permission_read_images_denied">يجب منح إذن قراءة الصور من الجهاز.</string>
-    <string name="permission_exact_alarms_title">جدولة تنبيهات دقيقة (اختياري)</string>
-    <string name="permission_exact_alarms_description">إذن جدولة التنبيهات الدقيقة مطلوب كي يعمل مؤقت النوم بشكل صحيح</string>
+
+
     <string name="permissions_denied">تم رفض الأذونات</string>
     <string name="permissions_needed">الأذونات المطلوبة</string>
     <string name="grant_access_action">منح الوصول</string>

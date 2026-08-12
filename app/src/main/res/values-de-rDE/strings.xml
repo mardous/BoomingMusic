@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
     <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
-    <string name="permission_exact_alarms_title">Genaue Erinnerungen planen (optional)</string>
-    <string name="permission_exact_alarms_description">Die Erlaubnis, genaue Erinnerungen zu planen, ist erforderlich, damit der Sleeptimer richtig funktioniert</string>
+
+
     <string name="permissions_denied">Berechtigungen verweigert</string>
     <string name="permissions_needed">Benötigte Berechtigungen</string>
     <string name="grant_access_action">Zugriff gewähren</string>

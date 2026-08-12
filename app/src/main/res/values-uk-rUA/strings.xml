@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Читання зображень (необов\'язково)</string>
     <string name="permission_read_images_summary">Цей дозвіл потрібен для Booming музики, щоб знайти файли обкладинок альбому у ваших теках. Якщо ви не плануєте використовувати цю функцію, ви можете не надавати дозволу.</string>
     <string name="permission_read_images_denied">Ви повинні надати дозвіл на читання зображень з пристрою.</string>
-    <string name="permission_exact_alarms_title">Планувати точні будильники (необов\'язково)</string>
-    <string name="permission_exact_alarms_description">Дозвіл на планування точних будильників потрібен для коректної роботи таймера сну</string>
+
+
     <string name="permissions_denied">Дозволи відхилено</string>
     <string name="permissions_needed">Потрібні дозволи</string>
     <string name="grant_access_action">Надати доступ</string>

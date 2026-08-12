@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">画像の読み取り (オプション)</string>
     <string name="permission_read_images_summary">この権限は、音楽フォルダ内のアルバムアートファイルを検索するために必要です。 この機能を使用する予定がない場合は、許可しないことを選択できます.</string>
     <string name="permission_read_images_denied">デバイスから画像を読み取る権限を許可する必要があります。</string>
-    <string name="permission_exact_alarms_title">正確なアラームをスケジュールする（オプション）</string>
-    <string name="permission_exact_alarms_description">スリープタイマーが正常に動作するには、正確なアラームをスケジュールする権限が必要です</string>
+
+
     <string name="permissions_denied">権限が拒否されました</string>
     <string name="permissions_needed">権限が必要です</string>
     <string name="grant_access_action">アクセスを許可</string>

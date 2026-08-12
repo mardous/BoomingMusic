@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">Programează alarmele exacte (opțional)</string>
-    <string name="permission_exact_alarms_description">Permisiunea de a programa alarmele este necesară pentru ca temporizatorul de somn să funcționeze corespunzător</string>
+
+
     <string name="permissions_denied">Permisiuni refuzate</string>
     <string name="permissions_needed">Permisiuni necesare</string>
     <string name="grant_access_action">Acordă acces</string>

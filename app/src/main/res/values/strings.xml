@@ -154,8 +154,7 @@
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
         If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">Schedule exact alarms (optional)</string>
-    <string name="permission_exact_alarms_description">Permission to schedule exact alarms is required for the sleep timer to work properly</string>
+
     <string name="permissions_denied">Permissions denied</string>
     <string name="permissions_needed">Permissions needed</string>
     <string name="grant_access_action">Grant access</string>

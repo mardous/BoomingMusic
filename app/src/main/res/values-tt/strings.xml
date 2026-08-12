@@ -136,8 +136,8 @@
     <string name="permission_read_images_title">Сурәтләр уку (мөмкинлекле)</string>
     <string name="permission_read_images_summary">Бу рөхсәт сезнең музыкаль папкаларыгызда альбомнар тышлыгын эзләү өчен Booming Music кирәк. Әгәр дә сез бу функцияне кулланырга җыенмыйсыз икән, сез аны тәкъдим итә аласыз.</string>
     <string name="permission_read_images_denied">Сез җайланмадан сурәтләр укырга рөхсәт бирергә тиешсез.</string>
-    <string name="permission_exact_alarms_title">Тревоганың төгәл сигналларын планлаштыру (мөмкинлекле)</string>
-    <string name="permission_exact_alarms_description">Тревоганың төгәл сигналларын планлаштыруга рөхсәт йокы таймерының дөрес эшләве өчен кирәк</string>
+
+
     <string name="permissions_denied">Рөхсәтләр кире кагылды</string>
     <string name="permissions_needed">Рөхсәт таләп ителә</string>
     <string name="grant_access_action">Керү мөмкинлеге бирү</string>

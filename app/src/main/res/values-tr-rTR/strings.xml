@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">Görselleri okuma (isteğe bağlı)</string>
     <string name="permission_read_images_summary">Booming Music\'in müzik klasörlerinizdeki albüm kapağı dosyalarını bulabilmesi için bu izin gereklidir. Bu özelliği kullanmayı planlamıyorsanız, izin vermemeyi seçebilirsiniz.</string>
     <string name="permission_read_images_denied">Cihazdan görselleri okuma izni vermelisiniz.</string>
-    <string name="permission_exact_alarms_title">Tam zamanlı alarmları planla (isteğe bağlı)</string>
-    <string name="permission_exact_alarms_description">Uyku zamanlayıcısının düzgün çalışması için tam zamanlı alarmları planlama izni gereklidir</string>
+
+
     <string name="permissions_denied">İzinler reddedildi</string>
     <string name="permissions_needed">İzinler gerekli</string>
     <string name="grant_access_action">Erişim izni ver</string>

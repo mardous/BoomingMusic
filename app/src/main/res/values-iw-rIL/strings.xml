@@ -128,8 +128,8 @@
     <string name="permission_read_images_title">קריאת תמונות (אופציונלי)</string>
     <string name="permission_read_images_summary">הרשאה זו נדרשת כדי ש־Booming Music תוכל למצוא קובצי עטיפות אלבומים בתיקיות המוזיקה שלך. אם אינך מתכנן להשתמש בפונקציה זו, אפשר לבחור לא לאשר אותה.</string>
     <string name="permission_read_images_denied">עליך להעניק הרשאה לקריאת תמונות מהמכשיר.</string>
-    <string name="permission_exact_alarms_title">תזמון התראות מדויקות (אופציונלי)</string>
-    <string name="permission_exact_alarms_description">נדרשת הרשאה לתזמן התראות מדויקות כדי שטיימר השינה יפעל כראוי</string>
+
+
     <string name="permissions_denied">הרשאות נדחו</string>
     <string name="permissions_needed">הרשאות נדרשות</string>
     <string name="grant_access_action">הענק גישה</string>

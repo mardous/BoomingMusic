@@ -127,8 +127,8 @@
     <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
-    <string name="permission_exact_alarms_title">Programar alarmas exactas (opcional)</string>
-    <string name="permission_exact_alarms_description">Para que el temporizador de apagado automático funcione correctamente, es necesario el permiso para programar alarmas con hora exacta</string>
+
+
     <string name="permissions_denied">Permisos denegados</string>
     <string name="permissions_needed">Permisos necesarios</string>
     <string name="grant_access_action">Permitir acceso</string>
