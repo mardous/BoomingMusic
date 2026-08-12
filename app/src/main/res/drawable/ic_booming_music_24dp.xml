@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2026 Christians Martínez Alvarado
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@android:color/white">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="m3.804,18.338c0,0.452 0.085,0.888 0.246,1.289C3.313,19.192 2.788,18.395 2.788,17.418L2.788,6.582c0,-0.977 0.525,-1.774 1.262,-2.209 -0.161,0.401 -0.246,0.837 -0.246,1.289z"/>
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M19.712,9.399 L8.74,3.061C6.741,1.902 4.231,3.345 4.231,5.662l0,12.676c0,2.317 2.51,3.76 4.509,2.601l10.972,-6.338c1.999,-1.146 1.999,-4.043 0,-5.201zM9.819,13.846c0,0.376 -0.305,0.681 -0.681,0.681 -0.376,0 -0.682,-0.305 -0.682,-0.681l0,-3.839c0,-0.376 0.306,-0.682 0.682,-0.682 0.376,0 0.681,0.306 0.681,0.682zM11.841,15.459c0,0.376 -0.305,0.681 -0.681,0.681 -0.376,0 -0.681,-0.305 -0.681,-0.681L10.478,8.541c0,-0.376 0.305,-0.681 0.681,-0.681 0.376,0 0.681,0.305 0.681,0.681zM13.863,13.539c0,0.376 -0.305,0.682 -0.681,0.682 -0.376,0 -0.681,-0.306 -0.681,-0.682L12.5,10.007c0,-0.376 0.305,-0.682 0.681,-0.682 0.376,0 0.681,0.306 0.681,0.682zM15.884,12.551c0,0.376 -0.305,0.681 -0.681,0.681 -0.376,0 -0.681,-0.305 -0.681,-0.681L14.522,11.04c0,-0.376 0.305,-0.681 0.681,-0.681 0.376,0 0.681,0.305 0.681,0.681z"/>
+</vector>
