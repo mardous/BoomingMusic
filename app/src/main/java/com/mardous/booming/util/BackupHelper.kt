@@ -28,7 +28,6 @@ import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.zipOutputStream
-import com.mardous.booming.extensions.showToast
 import com.mardous.booming.util.m3u.M3UWriter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -46,7 +45,7 @@ object BackupHelper : KoinComponent {
     private val repository by inject<Repository>()
     private val lyricsDao by inject<LyricsDao>()
 
-    suspend fun createBackup(context: Context, uri: Uri?) {
+    suspend fun createBackup(context: Context, uri: Uri?, onCompletion: (Boolean) -> Unit) {
         if (uri == null) return
         val outputStream = context.contentResolver.openOutputStream(uri) ?: return
         val zipItems = mutableListOf<ZipItem>()
@@ -54,13 +53,17 @@ object BackupHelper : KoinComponent {
         zipItems.addAll(getSettingsZipItems(context))
         zipItems.addAll(getLyricsZipItems())
         zipItems.addAll(getCustomArtistZipItems(context))
-        zipAll(context, zipItems, outputStream)
+        zipAll(context, zipItems, outputStream, onCompletion)
         // Clean Cache Playlist Directory
         File(context.filesDir, PLAYLISTS_PATH).deleteRecursively()
     }
 
-    private suspend fun zipAll(context: Context, zipItems: List<ZipItem>, output: OutputStream) =
-        withContext(Dispatchers.IO) {
+    private suspend fun zipAll(
+        context: Context,
+        zipItems: List<ZipItem>,
+        output: OutputStream,
+        onCompletion: (Boolean) -> Unit
+    ) = withContext(Dispatchers.IO) {
             runCatching {
                 output.zipOutputStream().use { out ->
                     out.setComment(context.getString(R.string.app_name))
@@ -80,11 +83,11 @@ object BackupHelper : KoinComponent {
                 }
             }.onFailure {
                 withContext(Dispatchers.Main) {
-                    context.showToast(R.string.backup_failed)
+                    onCompletion(false)
                 }
             }.onSuccess {
                 withContext(Dispatchers.Main) {
-                    context.showToast(R.string.backup_successful)
+                    onCompletion(true)
                 }
             }
         }
@@ -158,7 +161,12 @@ object BackupHelper : KoinComponent {
         return zipItemList
     }
 
-    suspend fun restoreBackup(context: Context, uri: Uri?, contents: List<BackupContent>) {
+    suspend fun restoreBackup(
+        context: Context,
+        uri: Uri?,
+        contents: List<BackupContent>,
+        onCompletion: (Boolean) -> Unit
+    ) {
         if (uri == null) return
         withContext(Dispatchers.IO) {
             runCatching {
@@ -188,11 +196,11 @@ object BackupHelper : KoinComponent {
                 }
             }.onFailure {
                 withContext(Dispatchers.Main) {
-                    context.showToast(R.string.could_not_restore_data)
+                    onCompletion(false)
                 }
             }.onSuccess {
                 withContext(Dispatchers.Main) {
-                    context.showToast(R.string.data_restored_successfully)
+                    onCompletion(true)
                 }
             }
         }

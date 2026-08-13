@@ -38,6 +38,8 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import coil3.SingletonImageLoader
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.mardous.booming.App
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
@@ -188,7 +190,13 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         registerForActivityResult(ActivityResultContracts.CreateDocument("application/*")) { uri ->
             if (uri != null) {
                 GlobalScope.launch {
-                    BackupHelper.createBackup(requireContext(), uri)
+                    BackupHelper.createBackup(requireContext(), uri) { isSuccess ->
+                        if (isSuccess) {
+                            showToast(R.string.backup_successful)
+                        } else {
+                            showToast(R.string.backup_failed)
+                        }
+                    }
                 }
             }
         }
@@ -208,7 +216,19 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                             whichPos.contains(i)
                         }
                         GlobalScope.launch {
-                            BackupHelper.restoreBackup(requireContext(), selection, content)
+                            BackupHelper.restoreBackup(requireContext(), selection, content) { isSuccess ->
+                                if (isSuccess) {
+                                    MaterialAlertDialogBuilder(requireContext())
+                                        .setTitle(R.string.data_restored_successfully)
+                                        .setMessage(R.string.restart_app_message)
+                                        .setPositiveButton(android.R.string.ok, null)
+                                        .setOnDismissListener { App.restart(requireActivity()) }
+                                        .setCancelable(false)
+                                        .show()
+                                } else {
+                                    showToast(R.string.could_not_restore_data)
+                                }
+                            }
                         }
                         true
                     }

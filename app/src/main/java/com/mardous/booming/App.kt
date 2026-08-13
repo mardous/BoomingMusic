@@ -17,9 +17,12 @@
 
 package com.mardous.booming
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Process
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
@@ -61,6 +64,7 @@ import com.mardous.booming.util.Preferences.getDayNightMode
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import kotlin.system.exitProcess
 
 // Migration map of language Tags
 private val legacyLanguageTags = mapOf(
@@ -211,5 +215,15 @@ class App : Application(), SingletonImageLoader.Factory {
 
         fun isExperimentalBuild(): Boolean =
             BuildConfig.VERSION_NAME.contains("(alpha|beta|rc)".toRegex(RegexOption.IGNORE_CASE))
+
+        fun restart(activity: Activity) {
+            val intent = Intent(activity, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            activity.finish()
+            activity.startActivity(intent)
+
+            Process.killProcess(Process.myPid())
+            exitProcess(0)
+        }
     }
 }
