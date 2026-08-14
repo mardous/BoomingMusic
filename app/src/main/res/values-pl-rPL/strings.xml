@@ -128,8 +128,6 @@
     <string name="permission_read_images_title">Dostęp do zdjęć (opcjonalny)</string>
     <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką. Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
     <string name="permission_read_images_denied">Wymagane jest uprawnienie do odczytu obrazów z urządzenia.</string>
-
-
     <string name="permissions_denied">Nie przyznano uprawnień</string>
 
     <string name="grant_access_action">Zezwól</string>
@@ -211,7 +209,7 @@
     <string name="view_type_circle">Okrąg</string>
     <string name="view_type_image">Kafelki</string>
     <string name="action_grid_size">Rozmiar siatki</string>
-    <string name="action_grid_size_land">Grid size (land)</string>
+    <string name="action_grid_size_land">Rozmiar siatki (poziomo)</string>
     <string name="action_sort_order">Sortuj według</string>
     <string name="sort_order_artist">Wykonawca</string>
     <string name="sort_order_album">Album</string>
@@ -429,7 +427,7 @@
     <string name="delete_profile_label">Usuwanie profilu</string>
     <string name="delete_profile_x">Usunąć profil \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Wprowadź nazwę dla tego profilu.</string>
-    <string name="replace_profile_with_same_name">Replace profile with same name</string>
+    <string name="replace_profile_with_same_name">Zastąp profil o tej samej nazwie</string>
     <string name="use_with_devices_title">Użyj z urządzeniami:</string>
     <string name="profile_name">Nazwa profilu</string>
     <string name="that_name_is_already_in_use">Ta nazwa jest już w użyciu.</string>
@@ -448,7 +446,7 @@
     <string name="reset_balance">Zresetuj balans</string>
     <string name="speed_and_pitch_label">Prędkość i wysokość dźwięku</string>
     <string name="reset_tempo">Zresetuj tempo</string>
-    <string name="unlock_pitch_adjustment">Unlock pitch adjustment</string>
+    <string name="unlock_pitch_adjustment">Odblokuj regulację wysokości dźwięku</string>
     <string name="balance_left">Lewo</string>
     <string name="balance_right">Prawo</string>
     <string name="action_external_eq">Zewnętrzny EQ</string>
@@ -930,4 +928,39 @@
     <string name="listenbrainz_login_title">Zaloguj się do ListenBrainz</string>
     <string name="listenbrainz_scrobbling_title">Włącz scrobblowanie ListenBrainz</string>
     <string name="arranger">Aranżer</string>
+    <string name="app_widget_circle">Talerz</string>
+    <string name="app_widget_circle_desc">Okrągły odtwarzacz z krążącymi wokół przyciskami</string>
+    <string name="app_widget_cookie">Ciastko</string>
+    <string name="app_widget_cookie_desc">Okładka w kształcie wielkiego ciastka, z przyciskami wokół</string>
+    <string name="app_widget_grid">Siatka</string>
+    <string name="app_widget_grid_desc">Okładka oraz przyciski odtwarzania i pomijania w czterech kafelkach</string>
+    <string name="app_widget_library">Biblioteka</string>
+    <string name="app_widget_library_desc">Siatka okładek z wybranej listy</string>
+    <string name="app_widget_nothing_playing">Brak odtwarzania</string>
+    <string name="app_widget_tap_to_play">Naciśnij, aby otworzyć Booming</string>
+    <string name="action_auto_fill_from_musicbrainz">Automatyczne uzupełnianie z MusicBrainz</string>
+    <string name="searching">Wyszukiwanie…</string>
+    <string name="musicbrainz_search_message">Wyszukuj metadane utworów w MusicBrainz na podstawie tytułu i wykonawcy.</string>
+    <string name="musicbrainz_no_results">Brak wyników w MusicBrainz</string>
+    <string name="musicbrainz_select_recording">Wybierz nagranie</string>
+    <string name="up_next">Nadchodzące</string>
+    <string name="go_to_current_track">Bieżący utwór</string>
+    <string name="sort_order_name">Nazwa</string>
+    <string name="eq_knee_width">Szerokość kolanka</string>
+    <string name="error_lastfm_rate_limit">Zbyt wiele żądań. Odczekaj chwilę przed ponownym scrobblingiem.</string>
+    <string name="website">Strona internetowa</string>
+    <string name="legal">Informacje prawne</string>
+    <string name="terms_of_service">Warunki świadczenia usług</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <string name="widget_settings_title">Ustawienia widżetu</string>
+    <string name="widget_show_progress_title">Pokaż pasek postępu</string>
+    <string name="widget_show_progress_summary">Pokazuje postęp odtwarzanego utworu.</string>
+    <string name="widget_show_controls_title">Pokaż przyciski sterowania</string>
+    <string name="widget_show_controls_summary">Pokazuje przyciski sterowania odtwarzaniem.</string>
+    <string name="widget_show_artist_title">Pokaż wykonawcę</string>
+    <string name="widget_show_artist_summary">Pokazuje wykonawcę pod tytułem utworu.</string>
+    <string name="widget_show_navigation_title">Pokaż pasek nawigacji</string>
+    <string name="widget_show_navigation_summary">Wyświetla pasek ze strzałkami do przełączania stron.</string>
+    <string name="widget_leading_action_title">Lewy przycisk</string>
+    <string name="widget_trailing_action_title">Prawy przycisk</string>
 </resources>
