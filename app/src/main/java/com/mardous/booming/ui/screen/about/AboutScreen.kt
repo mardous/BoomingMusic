@@ -335,8 +335,7 @@ private fun AuthorSection(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainer
         ),
-        shape = MaterialTheme.shapes.large,
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        shape = MaterialTheme.shapes.large
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),
