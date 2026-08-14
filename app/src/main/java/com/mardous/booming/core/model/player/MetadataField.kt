@@ -24,7 +24,6 @@ import com.mardous.booming.core.model.player.MetadataField.Content.Format
 import com.mardous.booming.core.model.player.MetadataField.Content.SampleRate
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.files.formatFixed
 import com.mardous.booming.extensions.files.toAudioFile
 import com.mardous.booming.extensions.utilities.DEFAULT_INFO_DELIMITER
 import kotlinx.parcelize.Parcelize
@@ -71,7 +70,7 @@ class MetadataField(
                                 SampleRate -> metadataReader.sampleRate()
                                 Format -> File(song.data).toAudioFile()
                                     ?.audioHeader
-                                    ?.formatFixed
+                                    ?.format
 
                                 else -> null
                             }

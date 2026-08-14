@@ -12,7 +12,6 @@ import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.files.asReadableFileSize
-import com.mardous.booming.extensions.files.formatFixed
 import com.mardous.booming.extensions.files.getHumanReadableSize
 import com.mardous.booming.extensions.files.getPrettyAbsolutePath
 import com.mardous.booming.extensions.files.toAudioFile
@@ -173,7 +172,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
 
     private fun getAudioHeader(header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
         return AudioHeaderInfo(
-            format = header?.formatFixed,
+            format = header?.format,
             bitrate = metadataReader.bitrate(),
             sampleRate = metadataReader.sampleRate(),
             channels = metadataReader.channelName(),
