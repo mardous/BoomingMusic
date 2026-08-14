@@ -94,10 +94,9 @@ class LyricsViewModel(
     }
 
     fun getSearchUrl(song: Song): String {
-        val url = "https://lrclib.net/search/"
         val query = if (song.isArtistNameUnknown()) song.title
         else "${song.artistName} ${song.title}"
-        return url + Uri.encode(query)
+        return "https://lrclib.net/search/${Uri.encode(query)}"
     }
 
     fun loadEditorContent(song: Song) = viewModelScope.launch(IO) {
