@@ -281,6 +281,8 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.viewpager)
+    implementation(libs.androidx.shapes)
+    implementation(libs.accompanist.permissions)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.runtime.livedata)

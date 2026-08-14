@@ -82,8 +82,8 @@ import com.mardous.booming.ui.IBackConsumer
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.onboard.OnboardActivity
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
-import com.mardous.booming.ui.screen.permissions.PermissionsActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.expressivestyle.ExpressivePlayerFragment
@@ -176,7 +176,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!hasPermissions()) {
-            startActivity(Intent(this, PermissionsActivity::class.java))
+            startActivity(
+                Intent(this, OnboardActivity::class.java)
+                    .putExtra("is_permission_request", Preferences.onboardShown)
+            )
             finish()
         }
 

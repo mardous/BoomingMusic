@@ -139,12 +139,12 @@
 
 
     <string name="permissions_denied">Рөхсәтләр кире кагылды</string>
-    <string name="permissions_needed">Рөхсәт таләп ителә</string>
+
     <string name="grant_access_action">Керү мөмкинлеге бирү</string>
     <string name="action_grant">Бирү</string>
     <string name="granted">Биргән</string>
-    <string name="hello_there">Сәлам!</string>
-    <string name="welcome_to_x">Рәхим итегез %sга</string>
+
+
     <string name="get_started">Башланырга</string>
     <string name="select_storage_title">Саклауханәне сайлагыз</string>
     <string name="now_playing">Хәзер уйный</string>

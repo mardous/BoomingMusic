@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">權限被拒絕</string>
-    <string name="permissions_needed">需要權限</string>
+
     <string name="grant_access_action">授予存取權</string>
     <string name="action_grant">授權</string>
     <string name="granted">已授權</string>
-    <string name="hello_there">你好！</string>
-    <string name="welcome_to_x">歡迎使用 %s</string>
+
+
     <string name="get_started">開始</string>
     <string name="select_storage_title">選擇儲存空間</string>
     <string name="now_playing">正在播放</string>

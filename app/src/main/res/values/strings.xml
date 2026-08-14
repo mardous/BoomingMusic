@@ -154,14 +154,17 @@
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
         If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-
     <string name="permissions_denied">Permissions denied</string>
-    <string name="permissions_needed">Permissions needed</string>
     <string name="grant_access_action">Grant access</string>
     <string name="action_grant">Grant</string>
     <string name="granted">Granted</string>
-    <string name="hello_there">Hello there!</string>
-    <string name="welcome_to_x">Welcome to %s</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="permissions_title">Permissions needed</string>
+    <string name="permissions_subtitle">Grant access to your music files and nearby devices to get the best playback experience.</string>
+    <string name="initial_configuration_title">Initial Configuration</string>
+    <string name="initial_configuration_subtitle">Customize Booming Music to your liking before you start.</string>
+    <string name="initial_configuration_note">You can always change these settings later.</string>
+    <string name="restore_from_backup">Restore from backup</string>
     <string name="get_started">Get Started</string>
     <string name="select_storage_title">Select storage</string>
     <string name="now_playing">Now playing</string>
@@ -902,6 +905,7 @@
 
     <!-- Network preferences -->
     <string name="network_features_title">Enable network features</string>
+    <string name="network_features_summary">Enables scrobbling and the downloading of album art and lyrics.</string>
     <string name="wifi_only_network_features_title">Use network features on Wi-Fi only</string>
     <string name="wifi_only_network_features_summary">Allow internet features only when connected to Wi-Fi.</string>
     <string name="online_artist_images_title">Download artist images</string>

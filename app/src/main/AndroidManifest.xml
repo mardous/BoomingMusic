@@ -128,7 +128,7 @@
             android:label="@string/action_tag_editor"
             android:name=".ui.screen.tageditor.ArtistTagEditorActivity"/>
 
-        <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
+        <activity android:name=".ui.screen.onboard.OnboardActivity"/>
         <activity android:name=".ui.screen.error.ErrorActivity"/>
 
         <service

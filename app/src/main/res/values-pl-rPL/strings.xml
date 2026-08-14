@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Nie przyznano uprawnień</string>
-    <string name="permissions_needed">Wymagane uprawnienia</string>
+
     <string name="grant_access_action">Zezwól</string>
     <string name="action_grant">Przyznaj</string>
     <string name="granted">Przyznane</string>
-    <string name="hello_there">Cześć!</string>
-    <string name="welcome_to_x">Witamy w %s</string>
+
+
     <string name="get_started">Rozpocznij</string>
     <string name="select_storage_title">Wybierz pamięć</string>
     <string name="now_playing">Teraz odtwarzane</string>

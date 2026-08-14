@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Permís denegat</string>
-    <string name="permissions_needed">Cal permís</string>
+
     <string name="grant_access_action">Atorga\'n l\'accés</string>
     <string name="action_grant">Atorga</string>
     <string name="granted">Atorgat</string>
-    <string name="hello_there">Hola!</string>
-    <string name="welcome_to_x">Us donem la benvinguda a %s</string>
+
+
     <string name="get_started">Comença</string>
     <string name="select_storage_title">Selecciona l\'emmagatzematge</string>
     <string name="now_playing">Ara sona</string>

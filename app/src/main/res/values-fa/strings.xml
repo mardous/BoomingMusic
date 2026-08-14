@@ -139,12 +139,12 @@
 
 
     <string name="permissions_denied">مجوزها رد شد</string>
-    <string name="permissions_needed">مجوزهای مورد نیاز</string>
+
     <string name="grant_access_action">اجازه دسترسی</string>
     <string name="action_grant">گرانت</string>
     <string name="granted">داده شده است</string>
-    <string name="hello_there">سلام!</string>
-    <string name="welcome_to_x">به %s خوش آمدید</string>
+
+
     <string name="get_started">شروع کنید</string>
     <string name="select_storage_title">فضای ذخیره سازی را انتخاب کنید</string>
     <string name="now_playing">در حال حاضر پخش</string>

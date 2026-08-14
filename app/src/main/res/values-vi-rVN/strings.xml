@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Quyền truy cập bị từ chối</string>
-    <string name="permissions_needed">Cần có quyền tuy cập</string>
+
     <string name="grant_access_action">Cấp quyền truy cập</string>
     <string name="action_grant">Cấp quyền</string>
     <string name="granted">Đã cấp quyền</string>
-    <string name="hello_there">Xin chào!</string>
-    <string name="welcome_to_x">Chào mừng tới %s</string>
+
+
     <string name="get_started">Bắt đầu</string>
     <string name="select_storage_title">Chọn nơi lưu trữ</string>
     <string name="now_playing">Đang phát</string>

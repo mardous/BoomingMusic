@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">تم رفض الأذونات</string>
-    <string name="permissions_needed">الأذونات المطلوبة</string>
+
     <string name="grant_access_action">منح الوصول</string>
     <string name="action_grant">منح</string>
     <string name="granted">تم المنح</string>
-    <string name="hello_there">أهلًا بك!</string>
-    <string name="welcome_to_x">مرحبًا بك في %s</string>
+
+
     <string name="get_started">ابدأ الآن</string>
     <string name="select_storage_title">اختيار مساحة التخزين</string>
     <string name="now_playing">قيد التشغيل الآن</string>

@@ -139,12 +139,12 @@
 
 
     <string name="permissions_denied">Tinanggihan ang pahintulot</string>
-    <string name="permissions_needed">Kailangan ng mga pahintulot</string>
+
     <string name="grant_access_action">Magbigay ng access</string>
     <string name="action_grant">Magbigay</string>
     <string name="granted">Pinagkaloob</string>
-    <string name="hello_there">Kumusta!</string>
-    <string name="welcome_to_x">Maligayang pagdating sa %s</string>
+
+
     <string name="get_started">Magsimula</string>
     <string name="select_storage_title">Pumili ng imbakan</string>
     <string name="now_playing">Kasalukuyang tumutugtog</string>

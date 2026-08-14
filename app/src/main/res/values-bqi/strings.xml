@@ -143,10 +143,10 @@
     <string name="permission_bluetooth_denied">موجوز دسگایل نهنگ رڌ وابی.</string>
     <string name="permission_read_images_title">خوندن شؽواتا (اختیاری)</string>
     <string name="permissions_denied">موجوزا رڌ وابین</string>
-    <string name="permissions_needed">موجوزایی ک اخو</string>
+
     <string name="grant_access_action">هشتن دسرسی</string>
-    <string name="hello_there">برۊهی</string>
-    <string name="welcome_to_x">و %s خش ٱوۊڌین</string>
+
+
     <string name="get_started">بنین پا کار</string>
     <string name="action_remove_from_playlist">پاک کردن ز نومگه پشک</string>
     <string name="action_add_to_playing_queue">ٱووردن و سف</string>

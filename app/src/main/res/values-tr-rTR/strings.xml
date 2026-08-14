@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">İzinler reddedildi</string>
-    <string name="permissions_needed">İzinler gerekli</string>
+
     <string name="grant_access_action">Erişim izni ver</string>
     <string name="action_grant">İzin ver</string>
     <string name="granted">İzin verildi</string>
-    <string name="hello_there">Merhaba!</string>
-    <string name="welcome_to_x">%s\'a hoş geldiniz</string>
+
+
     <string name="get_started">Başlayın</string>
     <string name="select_storage_title">Depolama birimi seç</string>
     <string name="now_playing">Şimdi Çalıyor</string>

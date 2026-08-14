@@ -291,8 +291,8 @@
     <string name="app_widget_card">Vahekaart</string>
     <string name="app_widget_card_desc">Napp ja lihtsustatud lahendus</string>
     <string name="select_storage_title">Vali andmeruum</string>
-    <string name="hello_there">No tere kah!</string>
-    <string name="welcome_to_x">Tere tulemast, see on %s</string>
+
+
     <string name="get_started">Alustame siis</string>
     <string name="clear_queue">Tühjenda esitusjärjekord</string>
     <string name="action_add_to_playing_queue">Lisa esitusjärjekorda</string>
@@ -461,7 +461,7 @@
     <string name="monthly">Iga kuu</string>
     <string name="never">Ei iialgi</string>
     <string name="permissions_denied">Õigused puuduvad</string>
-    <string name="permissions_needed">Õigused on vajalikud</string>
+
     <string name="grant_access_action">Anna õigused</string>
     <string name="history_interval_title">Ajaloo välp</string>
     <string name="last_added_interval_title">Viimati lisatud välp</string>
