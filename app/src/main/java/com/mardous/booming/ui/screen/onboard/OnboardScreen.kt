@@ -15,32 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Copyright (c) 2026 Christians Martínez Alvarado
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 @file:OptIn(ExperimentalPermissionsApi::class)
 
 package com.mardous.booming.ui.screen.onboard
 
-import android.Manifest
-import android.Manifest.permission.POST_NOTIFICATIONS
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.READ_MEDIA_AUDIO
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.res.Configuration
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -150,7 +128,9 @@ import com.google.accompanist.permissions.rememberPermissionState
 import com.mardous.booming.R
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
-import com.mardous.booming.extensions.hasR
+import com.mardous.booming.extensions.getImagesPermission
+import com.mardous.booming.extensions.getNearbyDevicesPermissions
+import com.mardous.booming.extensions.getStoragePermissions
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.hasT
 import com.mardous.booming.extensions.languageEndonym
@@ -195,33 +175,17 @@ fun OnboardScreen(
         }
     }
 
-    val storagePermission = remember {
-        buildList {
-            if (hasT()) {
-                add(READ_MEDIA_AUDIO)
-                add(POST_NOTIFICATIONS)
-            } else {
-                add(READ_EXTERNAL_STORAGE)
-            }
-            if (!hasR()) {
-                add(WRITE_EXTERNAL_STORAGE)
-            }
-        }
-    }
+    val storagePermission = remember { getStoragePermissions().toList() }
     val storagePermissionState = rememberMultiplePermissionsState(storagePermission)
-
-    val nearbyPermissionState = if (hasS()) {
-        rememberPermissionState(Manifest.permission.BLUETOOTH_CONNECT)
-    } else null
-
-    val readImagesPermissionState = if (hasT()) {
-        rememberPermissionState(Manifest.permission.READ_MEDIA_IMAGES)
-    } else null
+    val nearbyPermissionState =
+        if (hasS()) rememberPermissionState(getNearbyDevicesPermissions().single()) else null
+    val readImagesPermissionState =
+        if (hasT()) rememberPermissionState(getImagesPermission().single()) else null
 
     BackHandler {
         when (currentStep) {
-            OnboardStep.CONFIGURATION -> currentStep = OnboardStep.PERMISSIONS
-            OnboardStep.PERMISSIONS -> currentStep = OnboardStep.WELCOME
+            OnboardStep.CONFIGURATION -> goToStep(OnboardStep.PERMISSIONS) { onBackToExit() }
+            OnboardStep.PERMISSIONS -> goToStep(OnboardStep.WELCOME) { onBackToExit() }
             OnboardStep.WELCOME -> onBackToExit()
         }
     }
