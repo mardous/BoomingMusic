@@ -65,6 +65,7 @@ import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
+import com.mardous.booming.extensions.EXTRA_IS_PERMISSION_REQUEST
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.dip
@@ -178,7 +179,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         if (!hasPermissions()) {
             startActivity(
                 Intent(this, OnboardActivity::class.java)
-                    .putExtra("is_permission_request", Preferences.onboardShown)
+                    .putExtra(EXTRA_IS_PERMISSION_REQUEST, Preferences.onboardShown)
             )
             finish()
         }
