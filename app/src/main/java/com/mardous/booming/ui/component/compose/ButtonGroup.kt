@@ -1,6 +1,7 @@
 package com.mardous.booming.ui.component.compose
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
@@ -27,6 +28,7 @@ fun <T> ButtonGroup(
     buttonIconResolver: @Composable (T, Boolean) -> Painter? = { _, _ -> null },
     buttonTextResolver: @Composable (T) -> String = { it.toString() },
     modifier: Modifier = Modifier,
+    buttonContentPadding: PaddingValues = ButtonDefaults.contentPaddingFor(ButtonDefaults.MinHeight),
     enabled: Boolean = true
 ) {
     Row(
@@ -40,6 +42,7 @@ fun <T> ButtonGroup(
                 enabled = enabled,
                 checked = isChecked,
                 onCheckedChange = { onSelected(item) },
+                contentPadding = buttonContentPadding,
                 modifier = Modifier
                     .weight(buttonWeight)
                     .semantics { role = Role.RadioButton },

@@ -139,12 +139,12 @@
 
 
     <string name="permissions_denied">இசைவு மறுக்கப்பட்டது</string>
-    <string name="permissions_needed">அனுமதிகள் தேவை</string>
+
     <string name="grant_access_action">அணுகலை வழங்கவும்</string>
     <string name="action_grant">மானியம்</string>
     <string name="granted">வழங்கப்பட்டது</string>
-    <string name="hello_there">வணக்கம்!</string>
-    <string name="welcome_to_x">%sக்கு வரவேற்கிறோம்</string>
+
+
     <string name="get_started">தொடங்குங்கள்</string>
     <string name="select_storage_title">சேமிப்பிடத்தைத் தேர்ந்தெடுக்கவும்</string>
     <string name="now_playing">இப்போது விளையாடுகிறது</string>

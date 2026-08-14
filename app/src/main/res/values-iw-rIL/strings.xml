@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">הרשאות נדחו</string>
-    <string name="permissions_needed">הרשאות נדרשות</string>
+
     <string name="grant_access_action">הענק גישה</string>
     <string name="action_grant">הענק</string>
     <string name="granted">הוענק</string>
-    <string name="hello_there">שלום לך!</string>
-    <string name="welcome_to_x">ברוך הבא ל-%s</string>
+
+
     <string name="get_started">בא נתחיל</string>
     <string name="select_storage_title">בחר אחסון</string>
     <string name="now_playing">מנגן כעת</string>

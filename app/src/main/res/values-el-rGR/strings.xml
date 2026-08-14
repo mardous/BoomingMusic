@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Άρνηση δικαιωμάτων</string>
-    <string name="permissions_needed">Απαιτούνται δικαιώματα</string>
+
     <string name="grant_access_action">Παραχώρηση πρόσβασης</string>
     <string name="action_grant">Παραχώρηση</string>
     <string name="granted">Χορηγήθηκε</string>
-    <string name="hello_there">Γεια σας!</string>
-    <string name="welcome_to_x">Καλώς ήλθατε στο %s</string>
+
+
     <string name="get_started">Ας Αρχίσουμε</string>
     <string name="select_storage_title">Επιλογή αποθ. χώρου</string>
     <string name="now_playing">Παίζεται τώρα</string>
