@@ -74,6 +74,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import kotlin.time.Duration.Companion.milliseconds
 
 val Context.eqDataStore by preferencesDataStore("equalizer")
 
@@ -307,7 +308,7 @@ class EqualizerManager(
 
     init {
         eqState.filterNot { it == EqState.Unspecified }
-            .debounce(100)
+            .debounce(100.milliseconds)
             .onEach { newState ->
                 val isDisabled = newState.isDisabledByReason
                 if (eqEngine == null && eqSession.id != NO_SESSION_ID && !isDisabled) {
@@ -329,7 +330,7 @@ class EqualizerManager(
             }
             .launchIn(eqScope)
 
-        balanceState.debounce(50)
+        balanceState.debounce(50.milliseconds)
             .onEach { balanceState ->
                 balanceProcessor.setBalance(balanceState.left, balanceState.right)
             }
@@ -337,7 +338,7 @@ class EqualizerManager(
             .launchIn(eqScope)
 
         replayGainState.filterNot { it == ReplayGainState.Unspecified }
-            .debounce(50)
+            .debounce(50.milliseconds)
             .onEach { state ->
                 if (state.mode.isOn) {
                     replayGainProcessor.mode = state.mode
@@ -352,7 +353,7 @@ class EqualizerManager(
             .flowOn(Dispatchers.Main)
             .launchIn(eqScope)
 
-        bitPerfectAudio.debounce(100)
+        bitPerfectAudio.debounce(100.milliseconds)
             .onEach { bitPerfectEnabled ->
                 audioOutputObserver.setBitPerfectEnabled(bitPerfectEnabled)
             }
@@ -360,9 +361,7 @@ class EqualizerManager(
             .launchIn(eqScope)
 
         audioOutputObserver.audioDevice
-            .onEach {
-                setCurrentDevice(it)
-            }
+            .onEach { setCurrentDevice(it) }
             .flowOn(IO)
             .launchIn(eqScope)
     }
@@ -467,7 +466,7 @@ class EqualizerManager(
 
         setEqualizerProfiles(newProfiles)
         if (profile == eqCurrentProfile.value) {
-            setCurrentProfile(currentProfiles[targetIndex])
+            setCurrentProfile(newProfiles[targetIndex])
         }
         return true
     }
