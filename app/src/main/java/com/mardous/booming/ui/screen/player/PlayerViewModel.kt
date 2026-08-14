@@ -29,10 +29,10 @@ import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.ProgressObserver
 import com.mardous.booming.playback.QueueStateHolder

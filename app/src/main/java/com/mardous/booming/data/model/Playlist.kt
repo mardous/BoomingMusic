@@ -21,7 +21,7 @@ import android.content.Context
 import android.database.Cursor
 import android.os.Parcelable
 import android.provider.MediaStore
-import com.mardous.booming.data.local.repository.PlaylistRepository
+import com.mardous.booming.data.repository.PlaylistRepository
 import com.mardous.booming.extensions.media.asNumberOfSongs
 import kotlinx.parcelize.Parcelize
 import org.koin.core.component.KoinComponent

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.mardous.booming.data.local.repository
+package com.mardous.booming.data.repository
 
 import android.content.Context
 import android.net.Uri

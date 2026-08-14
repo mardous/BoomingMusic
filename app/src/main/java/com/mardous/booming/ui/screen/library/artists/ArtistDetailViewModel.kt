@@ -7,10 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.sort.sortedByMediaName
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lastfm.model.LastFmArtist
+import com.mardous.booming.data.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

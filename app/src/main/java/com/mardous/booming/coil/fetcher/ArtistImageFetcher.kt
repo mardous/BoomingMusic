@@ -12,9 +12,9 @@ import coil3.fetch.SourceFetchResult
 import coil3.request.Options
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.model.ArtistImage
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.util.ImageSize
 import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.Preferences.requireString

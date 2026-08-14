@@ -19,9 +19,9 @@ package com.mardous.booming.data.local.search
 
 import android.os.Parcelable
 import com.mardous.booming.data.SearchFilter
-import com.mardous.booming.data.local.repository.RealAlbumRepository
-import com.mardous.booming.data.local.repository.SearchRepository
 import com.mardous.booming.data.model.search.SearchQuery.FilterMode
+import com.mardous.booming.data.repository.RealAlbumRepository
+import com.mardous.booming.data.repository.SearchRepository
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import org.koin.core.component.KoinComponent

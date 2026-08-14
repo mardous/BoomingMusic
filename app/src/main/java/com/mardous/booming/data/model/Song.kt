@@ -23,7 +23,7 @@ import android.os.Parcelable
 import android.provider.MediaStore
 import androidx.media3.common.MediaItem
 import com.mardous.booming.core.model.filesystem.FileSystemItem
-import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
+import com.mardous.booming.data.repository.RealSongRepository.Companion.getAudioContentUri
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.playback.buildPlayableMediaItem
 import kotlinx.parcelize.IgnoredOnParcel

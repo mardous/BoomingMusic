@@ -18,11 +18,11 @@
 package com.mardous.booming.data.local.search
 
 import com.mardous.booming.data.SearchFilter
-import com.mardous.booming.data.local.repository.RealAlbumRepository
-import com.mardous.booming.data.local.repository.RealArtistRepository
-import com.mardous.booming.data.local.repository.SmartRepository
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.search.SearchQuery.FilterMode
+import com.mardous.booming.data.repository.RealAlbumRepository
+import com.mardous.booming.data.repository.RealArtistRepository
+import com.mardous.booming.data.repository.SmartRepository
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import org.koin.core.component.KoinComponent

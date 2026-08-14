@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.data.local.MetadataReader
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.mapper.toPlayCount
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.files.asReadableFileSize
 import com.mardous.booming.extensions.files.formatFixed
 import com.mardous.booming.extensions.files.getHumanReadableSize

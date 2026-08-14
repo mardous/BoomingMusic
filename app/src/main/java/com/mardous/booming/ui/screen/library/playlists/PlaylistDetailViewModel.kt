@@ -2,8 +2,8 @@ package com.mardous.booming.ui.screen.library.playlists
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.mardous.booming.data.local.repository.PlaylistRepository
 import com.mardous.booming.data.local.room.SongEntity
+import com.mardous.booming.data.repository.PlaylistRepository
 
 class PlaylistDetailViewModel(
     private val playlistRepository: PlaylistRepository,

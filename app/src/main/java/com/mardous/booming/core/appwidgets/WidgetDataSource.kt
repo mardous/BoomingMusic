@@ -10,7 +10,7 @@ import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.widget.LibraryWidget
 import com.mardous.booming.core.palette.PaletteProcessor
-import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.playback.library.LibraryProvider
 import org.koin.core.component.KoinComponent

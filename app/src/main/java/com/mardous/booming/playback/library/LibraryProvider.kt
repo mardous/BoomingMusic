@@ -13,9 +13,9 @@ import com.mardous.booming.coil.CoverProvider.Companion.GENRE_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.PLAYLIST_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.getImageUri
 import com.mardous.booming.core.model.CategoryInfo
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.media.albumInfo
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.asNumberOfSongs

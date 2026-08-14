@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.core.model.action.SongClickBehavior
 import com.mardous.booming.data.SearchFilter
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.search.SearchQuery
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
