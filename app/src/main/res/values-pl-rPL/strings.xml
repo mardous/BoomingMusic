@@ -606,7 +606,7 @@
     <string name="instrumental_tracks_mark_by_title_title">Oznaczaj na podstawie tytułu</string>
     <string name="instrumental_tracks_mark_by_title_summary">Tytuł utworu również zostanie wzięty pod uwagę podczas wyszukiwania oznaczeń.</string>
     <string name="ignore_blank_lines_title">Pomiń puste linie</string>
-    <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
+    <string name="ignore_blank_lines_summary">Pomija puste linie w plikach LRC zamiast wyświetlać trzy animowane bąbelki.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traktuj wszystkie pliki z tekstem jako UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Zakłada, że wszystkie pliki używają kodowania UTF-8. Optymalizuje to proces przetwarzania plików, ale może prowadzić do wyświetlania błędnych znaków w tekście utworu. Może wymagać restartu aplikacji</string>
     <!-- Now playing preferences -->
@@ -687,13 +687,13 @@
     <string name="play_option_whole_list_summary">Po włączeniu wybranie opcji \"Odtwórz\" z menu utworu rozpocznie odtwarzanie całej listy. Po wyłączeniu odtworzony zostanie tylko wybrany utwór.</string>
     <string name="on_song_click_title">Po wybraniu utworu</string>
     <string name="on_song_click_play_only_this_song_title">Odtwórz tylko ten utwór</string>
-    <string name="on_song_click_play_only_this_song_summary">Aktualna kolejka zostanie wyczyszczona i zastąpiona wybranym utworem.</string>
+    <string name="on_song_click_play_only_this_song_summary">Kolejka zostanie wyczyszczona i zastąpiona wybranym utworem.</string>
     <string name="on_song_click_play_whole_list_title">Odtwórz całą listę</string>
     <string name="on_song_click_play_whole_list_summary">Kolejka zostanie zastąpiona wszystkimi utworami z listy/albumu/folderu.</string>
     <string name="on_song_click_queue_next_title">Odtwórz jako następny</string>
     <string name="on_song_click_queue_next_summary">Wybrany utwór zostanie dodany na następnej pozycji w kolejce.</string>
     <string name="on_song_click_enqueue_at_end_title">Dodaj na koniec kolejki</string>
-    <string name="on_song_click_enqueue_at_end_summary">Wybrany utwór zostanie dodany na koniec aktualnej kolejki.</string>
+    <string name="on_song_click_enqueue_at_end_summary">Wybrany utwór zostanie dodany na koniec kolejki.</string>
     <string name="on_clear_queue_title">Po wyczyszczeniu kolejki</string>
     <string name="on_clear_queue_remove_all_songs_title">Usuń wszystkie utwory</string>
     <string name="on_clear_queue_remove_all_songs_summary">Cała kolejka zostanie wyczyszczona.</string>
@@ -948,7 +948,7 @@
     <string name="sort_order_name">Nazwa</string>
     <string name="eq_knee_width">Szerokość kolanka</string>
     <string name="error_lastfm_rate_limit">Zbyt wiele żądań. Odczekaj chwilę przed ponownym scrobblingiem.</string>
-    <string name="website">Strona internetowa</string>
+    <string name="website">Strona WWW</string>
     <string name="legal">Informacje prawne</string>
     <string name="terms_of_service">Warunki świadczenia usług</string>
     <string name="privacy_policy">Polityka prywatności</string>
@@ -974,7 +974,7 @@
     <string name="lyrics_center_horizontally_summary">Wyśrodkowuje każdą linijkę tekstu w poziomie.</string>
     <string name="lyrics_bold_synced_summary">Wyświetla zsynchronizowany tekst pogrubioną czcionką.</string>
     <string name="lyrics_resume_on_seek_title">Wznów po przejściu</string>
-    <string name="lyrics_resume_on_seek_summary">Automatycznie wznawia odtwarzanie zatrzymanych utworów po kliknięciu w linijkę tekstu.</string>
+    <string name="lyrics_resume_on_seek_summary">Automatycznie wznawia odtwarzanie zatrzymanych utworów po naciśnięciu linijki tekstu.</string>
     <string name="preferred_lyrics_file_format_title">Preferowany format plików</string>
     <string name="preferred_lyrics_file_format_summary">Jeśli utwór posiada pliki z tekstem w różnych formatach, ta opcja pozwala wybrać, który z nich ma priorytet.</string>
     <string name="musicbrainz_search_title">Wyszukiwanie MusicBrainz</string>
@@ -1004,5 +1004,5 @@
     <string name="use_betterlyrics_provider_summary">Teksty zsynchronizowane słowo po słowie.</string>
     <string name="use_lyrically_provider_title">Używaj Lyrically</string>
     <string name="use_lyrically_provider_summary">Rozbudowane API tekstów z obsługą karaoke i podziałem na wielu wykonawców.</string>
-    <string name="auto_theme_name">Automatyczny</string>
+    <string name="auto_theme_name">Auto</string>
 </resources>
