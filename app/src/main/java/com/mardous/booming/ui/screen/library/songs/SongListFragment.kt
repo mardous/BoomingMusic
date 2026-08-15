@@ -28,12 +28,12 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.screen.library.ReloadType
 
 /**
  * @author Christians M. A. (mardous)

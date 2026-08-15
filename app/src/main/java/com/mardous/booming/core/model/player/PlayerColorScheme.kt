@@ -38,7 +38,7 @@ import com.mardous.booming.extensions.resources.primaryColor
 import com.mardous.booming.extensions.resources.surfaceColor
 import com.mardous.booming.extensions.resources.withAlpha
 import com.mardous.booming.extensions.systemContrast
-import com.mardous.booming.ui.component.compose.color.onThis
+import com.mardous.booming.presentation.components.color.onThis
 import com.mardous.booming.util.PLAYER_BLUR_RADIUS
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers

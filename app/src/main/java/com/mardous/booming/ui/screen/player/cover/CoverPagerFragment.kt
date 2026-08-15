@@ -46,12 +46,12 @@ import com.mardous.booming.extensions.keepScreenOn
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.resources.BOOMING_ANIM_TIME
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.adapters.pager.CustomFragmentStatePagerAdapter
 import com.mardous.booming.ui.component.base.AbsPlayerFragment
 import com.mardous.booming.ui.component.transform.CarouselPagerTransformer
 import com.mardous.booming.ui.screen.player.PlayerGesturesController
 import com.mardous.booming.ui.screen.player.PlayerGesturesController.GestureType
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment
 import com.mardous.booming.ui.screen.player.cover.page.ImageFragment.ColorReceiver
 import com.mardous.booming.util.Preferences

@@ -34,8 +34,8 @@ import com.mardous.booming.data.local.room.PlaylistEntity
 import com.mardous.booming.data.mapper.toSongsEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.resources.hitTest
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
 import com.mardous.booming.ui.ISongCallback
-import com.mardous.booming.ui.screen.library.LibraryViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

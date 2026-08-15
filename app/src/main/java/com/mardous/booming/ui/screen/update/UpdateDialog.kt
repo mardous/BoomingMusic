@@ -15,6 +15,7 @@ import com.mardous.booming.databinding.DialogUpdateInfoBinding
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.resources.setMarkdownText
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.presentation.viewmodel.UpdateViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {

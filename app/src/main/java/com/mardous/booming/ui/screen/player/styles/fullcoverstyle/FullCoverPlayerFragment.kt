@@ -22,7 +22,6 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -33,7 +32,11 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.DEFAULT_SONG_IMAGE
 import com.mardous.booming.coil.songImage
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.iconButtonTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentFullCoverPlayerBinding

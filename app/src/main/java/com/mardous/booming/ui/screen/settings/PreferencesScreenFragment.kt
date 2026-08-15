@@ -56,6 +56,10 @@ import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.extensions.utilities.toEnum
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
+import com.mardous.booming.presentation.viewmodel.LyricsViewModel
+import com.mardous.booming.presentation.viewmodel.ReloadType
+import com.mardous.booming.presentation.viewmodel.UpdateViewModel
 import com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
 import com.mardous.booming.ui.component.preferences.ThemePreference
@@ -69,12 +73,8 @@ import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
 import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.library.ReloadType
-import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
-import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
 import com.mardous.booming.util.AUTO_LANGUAGE
 import com.mardous.booming.util.BACKUP_DATA

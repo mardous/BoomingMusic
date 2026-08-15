@@ -29,7 +29,7 @@ import com.mardous.booming.extensions.EXTRA_PLAYLISTS
 import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.extensions.toHtml
 import com.mardous.booming.extensions.withArgs
-import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class DeletePlaylistDialog : DialogFragment() {

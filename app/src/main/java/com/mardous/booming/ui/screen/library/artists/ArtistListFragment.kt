@@ -34,12 +34,12 @@ import com.mardous.booming.data.model.Artist
 import com.mardous.booming.extensions.navigation.artistDetailArgs
 import com.mardous.booming.extensions.navigation.asFragmentExtras
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.adapters.artist.ArtistAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onArtistMenu
 import com.mardous.booming.ui.component.menu.onArtistsMenu
-import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
 
 class ArtistListFragment : AbsRecyclerViewCustomGridSizeFragment<ArtistAdapter, GridLayoutManager>(),

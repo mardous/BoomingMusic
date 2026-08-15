@@ -26,9 +26,11 @@ import androidx.preference.PreferenceManager
 import com.mardous.booming.extensions.EXTRA_IS_PERMISSION_REQUEST
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.observeKeyAsState
+import com.mardous.booming.presentation.MainActivity
+import com.mardous.booming.presentation.screen.onboard.OnboardScreen
+import com.mardous.booming.presentation.screen.onboard.OnboardStep
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 import com.mardous.booming.ui.component.base.AbsBaseActivity
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
 import com.mardous.booming.util.MATERIAL_YOU

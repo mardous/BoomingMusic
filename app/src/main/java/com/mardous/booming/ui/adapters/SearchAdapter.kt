@@ -17,7 +17,11 @@
 
 package com.mardous.booming.ui.adapters
 
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isGone
@@ -34,7 +38,12 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.media.*
+import com.mardous.booming.extensions.media.albumInfo
+import com.mardous.booming.extensions.media.artistInfo
+import com.mardous.booming.extensions.media.asNumberOfSongs
+import com.mardous.booming.extensions.media.displayArtistName
+import com.mardous.booming.extensions.media.displayName
+import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.ui.ISearchCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.menu.OnClickMenu

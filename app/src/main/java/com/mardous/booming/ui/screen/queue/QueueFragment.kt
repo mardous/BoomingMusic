@@ -32,11 +32,12 @@ import com.mardous.booming.extensions.getShareSongIntent
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.navigation.songDetailArgs
 import com.mardous.booming.extensions.toChooser
-import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
+import com.mardous.booming.presentation.components.BottomSheetDialogSurface
+import com.mardous.booming.presentation.screen.queue.QueueScreen
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class QueueFragment : BottomSheetDialogFragment() {

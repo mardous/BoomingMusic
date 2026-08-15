@@ -14,10 +14,10 @@ import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MetadataReader
 import com.mardous.booming.data.local.MetadataWriter
-import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.remote.musicbrainz.artworkUrl
 import com.mardous.booming.data.remote.musicbrainz.model.MusicBrainzRecording
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.utilities.capitalize
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers

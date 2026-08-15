@@ -33,17 +33,17 @@ import com.mardous.booming.extensions.loadPaletteImage
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayName
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
-class ArtistAdapter constructor(
+class ArtistAdapter(
     activity: FragmentActivity,
     dataSet: List<Artist>,
     private val itemLayoutRes: Int,

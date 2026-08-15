@@ -2,7 +2,7 @@ package com.mardous.booming.playback
 
 import android.os.SystemClock
 import com.mardous.booming.extensions.media.asReadableDuration
-import com.mardous.booming.ui.screen.sleeptimer.SleepTimerWaitingFor
+import com.mardous.booming.presentation.screen.sleeptimer.SleepTimerWaitingFor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

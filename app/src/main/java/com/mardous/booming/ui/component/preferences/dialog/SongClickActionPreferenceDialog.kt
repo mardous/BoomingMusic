@@ -24,8 +24,8 @@ import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.SongClickBehavior
-import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
-import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.components.DialogListItemWithRadio
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 import com.mardous.booming.util.Preferences
 
 class SongClickActionPreferenceDialog : DialogFragment() {

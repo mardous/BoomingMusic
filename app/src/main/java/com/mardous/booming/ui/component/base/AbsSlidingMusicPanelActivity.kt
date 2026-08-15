@@ -79,13 +79,13 @@ import com.mardous.booming.extensions.resources.isColorLight
 import com.mardous.booming.extensions.resources.peekHeightAnimate
 import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.whichFragment
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
+import com.mardous.booming.presentation.viewmodel.LyricsViewModel
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.IBackConsumer
-import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
-import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.onboard.OnboardActivity
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.expressivestyle.ExpressivePlayerFragment
 import com.mardous.booming.ui.screen.player.styles.fullcoverstyle.FullCoverPlayerFragment

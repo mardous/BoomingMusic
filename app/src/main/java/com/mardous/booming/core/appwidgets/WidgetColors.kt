@@ -1,18 +1,18 @@
 package com.mardous.booming.core.appwidgets
 
+import android.util.LruCache
+import androidx.annotation.ColorInt
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.glance.GlanceTheme
-import androidx.glance.color.ColorProvider as dayNightColorProvider
 import androidx.glance.unit.ColorProvider
-import android.util.LruCache
-import androidx.annotation.ColorInt
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.model.theme.ColorSchemes
-import com.mardous.booming.ui.theme.PaletteStyle
-import com.mardous.booming.ui.theme.dynamicColorSchemes
+import com.mardous.booming.presentation.theme.PaletteStyle
+import com.mardous.booming.presentation.theme.dynamicColorSchemes
+import androidx.glance.color.ColorProvider as dayNightColorProvider
 
 @Immutable
 data class WidgetColors(

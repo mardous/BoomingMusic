@@ -25,7 +25,8 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import com.mardous.booming.extensions.getOnBackPressedDispatcher
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.screens.AboutScreen
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 
 /**
  * @author Christians M. A. (mardous)

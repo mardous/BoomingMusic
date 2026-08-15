@@ -30,11 +30,11 @@ import com.mardous.booming.R
 import com.mardous.booming.core.model.GridViewType
 import com.mardous.booming.core.sort.YearSortMode
 import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.IYearCallback
 import com.mardous.booming.ui.adapters.YearAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.screen.library.ReloadType
 
 class YearsListFragment : AbsRecyclerViewCustomGridSizeFragment<YearAdapter, GridLayoutManager>(),
     IYearCallback {

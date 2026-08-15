@@ -38,8 +38,8 @@ import androidx.core.content.edit
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.core.model.action.NowPlayingAction
-import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
-import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.components.DialogListItemWithRadio
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LONG_PRESS_ACTION

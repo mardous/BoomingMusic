@@ -48,6 +48,7 @@ import com.mardous.booming.extensions.resources.setupStatusBarForeground
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.toHtml
 import com.mardous.booming.extensions.topLevelTransition
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.IHomeCallback
@@ -64,7 +65,6 @@ import com.mardous.booming.ui.component.menu.onArtistMenu
 import com.mardous.booming.ui.component.menu.onArtistsMenu
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.screen.library.ReloadType
 
 /**
  * @author Christians M. A. (mardous)

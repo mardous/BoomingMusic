@@ -37,13 +37,13 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.navigation.folderDetailArgs
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.IBackConsumer
 import com.mardous.booming.ui.IFileCallback
 import com.mardous.booming.ui.adapters.FileAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.component.menu.onSongsMenu
-import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
 import java.io.File
 

@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceDialogFragmentCompat
 import com.mardous.booming.extensions.withArgs
-import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
-import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.components.DialogListItemWithRadio
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 
 open class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
 

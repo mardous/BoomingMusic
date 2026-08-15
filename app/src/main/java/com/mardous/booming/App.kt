@@ -55,7 +55,7 @@ import com.mardous.booming.coil.store.PlaylistMapper
 import com.mardous.booming.coil.store.SongMapper
 import com.mardous.booming.coil.store.YearMapper
 import com.mardous.booming.data.local.ReplayGainTagExtractor
-import com.mardous.booming.ui.screen.MainActivity
+import com.mardous.booming.presentation.MainActivity
 import com.mardous.booming.ui.screen.error.ErrorActivity
 import com.mardous.booming.ui.screen.settings.SettingsScreen
 import com.mardous.booming.util.EXPERIMENTAL_UPDATES

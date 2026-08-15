@@ -37,8 +37,8 @@ import com.mardous.booming.extensions.extraNotNull
 import com.mardous.booming.extensions.media.isFavorites
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.withArgs
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.library.ReloadType
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**

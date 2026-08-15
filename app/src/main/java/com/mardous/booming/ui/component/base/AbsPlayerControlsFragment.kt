@@ -46,11 +46,11 @@ import com.mardous.booming.extensions.getShapeAppearanceModel
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
 import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
+import com.mardous.booming.presentation.MainActivity
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.ANIMATE_PLAYER_CONTROL
 import com.mardous.booming.util.DISPLAY_ALBUM_TITLE
 import com.mardous.booming.util.DISPLAY_EXTRA_INFO

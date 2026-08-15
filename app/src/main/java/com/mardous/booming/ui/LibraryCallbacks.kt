@@ -22,7 +22,12 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.room.PlaylistWithSongs
-import com.mardous.booming.data.model.*
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.Suggestion
 
 interface ISongCallback {
     fun songMenuItemClick(song: Song, menuItem: MenuItem, sharedElements: Array<Pair<View, String>>?): Boolean

@@ -19,7 +19,12 @@ package com.mardous.booming.ui.screen.info
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
 import androidx.core.view.updateMargins
@@ -33,11 +38,17 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.databinding.FragmentPlayInfoBinding
-import com.mardous.booming.extensions.*
+import com.mardous.booming.extensions.applyScrollableContentInsets
+import com.mardous.booming.extensions.dip
+import com.mardous.booming.extensions.dp
+import com.mardous.booming.extensions.getOnBackPressedDispatcher
+import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.media.asNumberOfTimes
 import com.mardous.booming.extensions.media.displayName
 import com.mardous.booming.extensions.resources.show
+import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.utilities.dateStr
+import com.mardous.booming.presentation.viewmodel.InfoViewModel
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

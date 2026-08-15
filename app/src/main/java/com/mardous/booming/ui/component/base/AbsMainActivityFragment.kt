@@ -35,9 +35,9 @@ import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.isLandscape
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.player.PlayerViewModel
+import com.mardous.booming.presentation.MainActivity
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.util.OPEN_ON_PLAY
 import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
 import com.mardous.booming.util.PlayOnStartupMode

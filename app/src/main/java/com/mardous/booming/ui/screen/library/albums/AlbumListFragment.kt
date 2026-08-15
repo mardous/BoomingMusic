@@ -34,12 +34,12 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.asFragmentExtras
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.adapters.album.AlbumAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
 import com.mardous.booming.ui.component.menu.onAlbumMenu
 import com.mardous.booming.ui.component.menu.onAlbumsMenu
-import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.util.Preferences
 
 class AlbumListFragment : AbsRecyclerViewCustomGridSizeFragment<AlbumAdapter, GridLayoutManager>(),

@@ -26,7 +26,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.screen.lyrics.LyricsEditorScreen
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 
 class LyricsEditorFragment : Fragment() {
 

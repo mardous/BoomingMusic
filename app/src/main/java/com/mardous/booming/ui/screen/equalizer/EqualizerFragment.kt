@@ -26,19 +26,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.MainActivity
+import com.mardous.booming.presentation.screen.equalizer.EqualizerScreen
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EqualizerFragment : Fragment() {
 
     private val arguments: EqualizerFragmentArgs by navArgs()
-
-    private val libraryViewModel: LibraryViewModel by activityViewModel()
-    private val equalizerViewModel: EqualizerViewModel by viewModel()
     private val playerViewModel: PlayerViewModel by activityViewModel()
 
     override fun onCreateView(
@@ -50,8 +46,6 @@ class EqualizerFragment : Fragment() {
             setContent {
                 BoomingMusicTheme {
                     EqualizerScreen(
-                        libraryViewModel = libraryViewModel,
-                        eqViewModel = equalizerViewModel,
                         onBackClick = { findNavController().navigateUp() }
                     )
                 }

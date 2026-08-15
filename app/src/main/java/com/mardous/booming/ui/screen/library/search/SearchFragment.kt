@@ -72,6 +72,7 @@ import com.mardous.booming.extensions.resources.reactionToKey
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.presentation.viewmodel.SearchViewModel
 import com.mardous.booming.ui.ISearchCallback
 import com.mardous.booming.ui.adapters.SearchAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment

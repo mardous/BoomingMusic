@@ -28,7 +28,11 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import com.google.android.material.color.MaterialColors
 import com.mardous.booming.R
-import com.mardous.booming.core.model.player.*
+import com.mardous.booming.core.model.player.PlayerColorScheme
+import com.mardous.booming.core.model.player.PlayerColorSchemeMode
+import com.mardous.booming.core.model.player.PlayerTintTarget
+import com.mardous.booming.core.model.player.surfaceTintTarget
+import com.mardous.booming.core.model.player.tintTarget
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.databinding.FragmentPeekPlayerBinding
 import com.mardous.booming.extensions.getOnBackPressedDispatcher

@@ -37,6 +37,7 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropM
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import com.mardous.booming.R
 import com.mardous.booming.coil.playlistImage
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.searchFilter
 import com.mardous.booming.data.mapper.toSongEntity
@@ -56,7 +57,7 @@ import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.surfaceColor
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.core.model.shuffle.OpenShuffleMode
+import com.mardous.booming.presentation.viewmodel.PlaylistDetailViewModel
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.PlaylistSongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment

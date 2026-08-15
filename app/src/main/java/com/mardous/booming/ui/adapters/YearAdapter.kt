@@ -18,7 +18,11 @@
 package com.mardous.booming.ui.adapters
 
 import android.annotation.SuppressLint
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone

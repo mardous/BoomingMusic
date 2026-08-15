@@ -9,12 +9,10 @@ import androidx.compose.ui.platform.ComposeView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.mardous.booming.ui.theme.BoomingMusicTheme
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.mardous.booming.presentation.screen.sleeptimer.SleepTimerBottomSheet
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 
 class SleepTimerFragment: BottomSheetDialogFragment() {
-
-    private val viewModel: SleepTimerViewModel by viewModel()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -32,9 +30,7 @@ class SleepTimerFragment: BottomSheetDialogFragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 BoomingMusicTheme {
-                    SleepTimerBottomSheet(
-                        viewModel = viewModel
-                    )
+                    SleepTimerBottomSheet()
                 }
             }
         }

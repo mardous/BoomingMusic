@@ -43,11 +43,11 @@ import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.buildInfoString
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.Preferences
 import me.zhanghai.android.fastscroll.PopupTextProvider
 import org.koin.androidx.viewmodel.ext.android.getViewModel

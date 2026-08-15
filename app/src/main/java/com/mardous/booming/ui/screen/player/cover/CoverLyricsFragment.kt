@@ -9,19 +9,13 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import com.mardous.booming.R
 import com.mardous.booming.extensions.currentFragment
+import com.mardous.booming.presentation.MainActivity
+import com.mardous.booming.presentation.screens.CoverLyricsScreen
+import com.mardous.booming.presentation.theme.BoomingMusicTheme
 import com.mardous.booming.ui.component.base.goToDestination
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.screen.lyrics.CoverLyricsScreen
 import com.mardous.booming.ui.screen.lyrics.LyricsFragment
-import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
-import com.mardous.booming.ui.screen.player.PlayerViewModel
-import com.mardous.booming.ui.theme.BoomingMusicTheme
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CoverLyricsFragment : Fragment() {
-
-    private val lyricsViewModel: LyricsViewModel by activityViewModel()
-    private val playerViewModel: PlayerViewModel by activityViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +29,6 @@ class CoverLyricsFragment : Fragment() {
             setContent {
                 BoomingMusicTheme {
                     CoverLyricsScreen(
-                        lyricsViewModel,
-                        playerViewModel,
                         onExpandClick = {
                             if (currentFragment(R.id.fragment_container) is LyricsFragment) {
                                 (activity as? MainActivity)?.collapsePanel()

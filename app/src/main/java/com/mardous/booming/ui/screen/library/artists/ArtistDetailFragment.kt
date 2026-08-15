@@ -36,6 +36,7 @@ import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.mardous.booming.R
 import com.mardous.booming.coil.artistImage
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.core.sort.AlbumSortMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.core.sort.SortMode
@@ -62,7 +63,7 @@ import com.mardous.booming.extensions.resources.removeHorizontalMarginIfRequired
 import com.mardous.booming.extensions.resources.setupStatusBarForeground
 import com.mardous.booming.extensions.resources.surfaceColor
 import com.mardous.booming.extensions.setSupportActionBar
-import com.mardous.booming.core.model.shuffle.OpenShuffleMode
+import com.mardous.booming.presentation.viewmodel.ArtistDetailViewModel
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.ISongCallback

@@ -31,6 +31,7 @@ import com.mardous.booming.core.model.GridViewType
 import com.mardous.booming.core.sort.PlaylistSortMode
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.extensions.navigation.playlistDetailArgs
+import com.mardous.booming.presentation.viewmodel.ReloadType
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.adapters.PlaylistAdapter
 import com.mardous.booming.ui.component.base.AbsRecyclerViewCustomGridSizeFragment
@@ -38,7 +39,6 @@ import com.mardous.booming.ui.component.menu.onPlaylistMenu
 import com.mardous.booming.ui.component.menu.onPlaylistsMenu
 import com.mardous.booming.ui.dialogs.playlists.CreatePlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.ImportPlaylistDialog
-import com.mardous.booming.ui.screen.library.ReloadType
 
 /**
  * @author Christians M. A. (mardous)

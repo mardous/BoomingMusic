@@ -22,6 +22,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mardous.booming.R
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.toSongs
@@ -37,14 +38,13 @@ import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.navigation.songDetailArgs
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.toChooser
-import com.mardous.booming.core.model.shuffle.OpenShuffleMode
+import com.mardous.booming.presentation.viewmodel.LibraryViewModel
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.EditPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.tageditor.AlbumTagEditorActivity
 import com.mardous.booming.ui.screen.tageditor.ArtistTagEditorActivity
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity

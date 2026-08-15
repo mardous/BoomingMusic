@@ -28,11 +28,11 @@ import com.mardous.booming.R
 import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.extensions.media.asNumberOfSongs
+import com.mardous.booming.presentation.viewmodel.PlayerViewModel
 import com.mardous.booming.ui.IPlaylistCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
 import com.mardous.booming.ui.component.menu.OnClickMenu
-import com.mardous.booming.ui.screen.player.PlayerViewModel
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
