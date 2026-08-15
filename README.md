@@ -173,13 +173,14 @@ Your support is greatly appreciated and keeps me motivated to continue improving
       <b><a href="https://github.com/FabiRich">FabiRich</a></b><br/>
       <b><a href="https://github.com/Bloodaxe95">Bloodaxe</a></b><br/>
       <b>Bernhard</b>
+      <b>Andreas Hirth</b><br/>
     </td>
     <td>
-      <b>Andreas Hirth</b><br/>
       <b>Revolver327</b><br/>
       <b>Peter Smith</b><br/>
       <b>Michele Simoncelli</b><br/>
       <b>Kristof Lengyel</b>
+      <b>Tarvos</b>
     </td>
   </tr>
 </table>
