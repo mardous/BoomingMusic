@@ -43,10 +43,11 @@ import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.util.oem.SystemMediaControlResolver
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
-    private val _audioDevice = MutableStateFlow(AudioDevice.UnknownDevice)
+    private val _audioDevice = MutableStateFlow(AudioDevice.Unknown)
     val audioDevice = _audioDevice.asStateFlow()
 
     private val _systemVolumeState = MutableStateFlow(VolumeState.Unspecified)
@@ -342,7 +343,7 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
                     type = chosen.getDeviceType(),
                     productName = chosen.productName.toString()
                 )
-            } ?: AudioDevice.UnknownDevice
+            } ?: AudioDevice.Unknown
     }
 
     private fun requestVolume() {
@@ -359,9 +360,9 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
 
     private fun requestAudioDevice() {
         _audioDevice.value = getCurrentAudioDevice()
-        _systemVolumeState.value = systemVolumeState.value.copy(
-            isFixed = audioManager?.isVolumeFixed == true
-        )
+        _systemVolumeState.update {
+            it.copy(isFixed = audioManager?.isVolumeFixed == true)
+        }
     }
 
     private val audioDeviceCallback: AudioDeviceCallback = object : AudioDeviceCallback() {
