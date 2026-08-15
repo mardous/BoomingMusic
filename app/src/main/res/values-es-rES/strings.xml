@@ -127,8 +127,6 @@
     <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
-
-
     <string name="permissions_denied">Permisos denegados</string>
 
     <string name="grant_access_action">Permitir acceso</string>
@@ -967,4 +965,33 @@
     <string name="app_widget_library_desc">Una cuadrícula de carátulas de una lista que tú elijas</string>
     <string name="app_widget_nothing_playing">Nada en reproducción</string>
     <string name="app_widget_tap_to_play">Toca para abrir Booming</string>
+    <string name="action_auto_fill_from_musicbrainz">Autocompletar desde MusicBrainz</string>
+    <string name="searching">Buscando…</string>
+    <string name="musicbrainz_search_title">Búsqueda de MusicBrainz</string>
+    <string name="musicbrainz_search_message">Busca metadatos de canciones en MusicBrainz usando el título y el artista.</string>
+    <string name="musicbrainz_no_results">Ningún resultado encontrado en MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Seleccione una grabación</string>
+    <string name="sort_order_name">Nombre</string>
+    <string name="restart_app_message">La aplicación se reiniciará para completar el proceso.</string>
+    <string name="website">Sito web</string>
+    <string name="legal">Legal</string>
+    <string name="terms_of_service">Términos de servicio</string>
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="widget_settings_title">Ajustes de Widget</string>
+    <string name="widget_show_progress_title">Mostrar tiempo</string>
+    <string name="widget_show_progress_summary">Mostrar el progreso de la pista actual.</string>
+    <string name="widget_show_controls_title">Mostrar controles</string>
+    <string name="widget_show_controls_summary">Mostrar los botones de reproducción.</string>
+    <string name="widget_show_artist_title">Mostrar artista</string>
+    <string name="widget_show_artist_summary">Mostrar el artista debajo del título de la pista.</string>
+    <string name="widget_show_navigation_summary">Mostrar barra de desplazamiento.</string>
+    <string name="widget_leading_action_title">Botón izquierdo</string>
+    <string name="widget_trailing_action_title">Botón derecho</string>
+    <string name="widget_side_buttons_title">Botones laterales</string>
+    <string name="widget_side_buttons_skip">Anterior y siguiente</string>
+    <string name="widget_action_repeat">Repetir</string>
+    <string name="widget_source_title">Mostrar</string>
+    <string name="widget_source_recent">Reciente</string>
+    <string name="widget_page_previous">Canciones anteriores</string>
+    <string name="widget_page_next">Siguientes canciones</string>
 </resources>
