@@ -128,8 +128,6 @@
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
     <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
-
-
     <string name="permissions_denied">Berechtigungen verweigert</string>
 
     <string name="grant_access_action">Zugriff gewähren</string>
@@ -988,4 +986,5 @@
     <string name="widget_source_recent">Zuletzt</string>
     <string name="widget_page_previous">Vorherige Lieder</string>
     <string name="widget_page_next">Nächste Lieder</string>
+    <string name="restart_app_message">Die App startet neu, um den Prozess abzuschließen.</string>
 </resources>
