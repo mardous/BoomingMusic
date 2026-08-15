@@ -128,8 +128,6 @@
     <string name="permission_read_images_title">Lire les images (optionnel)</string>
     <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux. Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
     <string name="permission_read_images_denied">Vous devez accorder la permission de lire les images depuis l\'appareil.</string>
-
-
     <string name="permissions_denied">Autorisations refusées</string>
 
     <string name="grant_access_action">Accorder l\'accès</string>
@@ -997,4 +995,5 @@
     <string name="widget_source_recent">Récents</string>
     <string name="widget_page_previous">Titres précédents</string>
     <string name="widget_page_next">Titres suivants</string>
+    <string name="restart_app_message">L\'application va redémarrer pour terminer le processus.</string>
 </resources>
