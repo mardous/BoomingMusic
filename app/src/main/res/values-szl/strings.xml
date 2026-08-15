@@ -1,3 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="action_play">Puść</string>
+    <string name="action_play_all">Puść wszyjsko</string>
+    <string name="action_next">Dalij</string>
+    <string name="action_cancel">Pociep</string>
+    <string name="search_label">Sznupej</string>
+    <string name="action_grant">Przizwōl</string>
+    <string name="history_label">Historyjŏ</string>
+    <string name="sort_order_artist">Wykōnawca</string>
+    <string name="lyrics">Tekst śpiywki</string>
+    <string name="backup_settings">Sztalowania</string>
+    <string name="sleep_timer_cancel_current_timer">Pociep</string>
+    <string name="action_about">Ô aplikacyji</string>
+    <string name="website">Strōna WWW</string>
+    <string name="licenses">Licencyje</string>
+    <string name="legal">Informacyje prawne</string>
+    <string name="terms_of_service">Prawidła i warōnki</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <string name="author">Autōr</string>
+    <string name="mardous_summary">Głōwny programista</string>
+    <string name="contributors">Wespōłtwōrcy</string>
+    <string name="translators_title">Tumacze</string>
+    <string name="support_my_work">Wesprzij mojŏ robota</string>
+    <string name="support_development">Wesprzij rozwōj</string>
+    <string name="help_with_translations">Pōmōż z tumaczyniym</string>
+    <string name="help_with_translations_summary">Możesz przidać sie do rozwoju projektu, pōmŏgajōnc w tumaczyniu Booming Music na inksze godki.</string>
+    <string name="report_bugs">Zgłoś felery</string>
+    <string name="report_bugs_summary">Zgłoś felery abo poproś ô nowe fōnkcyje.</string>
+    <string name="appearance_title">Wyglōnd</string>
+    <string name="about_title">Ô aplikacyji</string>
+    <string name="about_summary">Booming Music %s, tyknij, coby mieć wiyncyj info.</string>
+    <string name="library_categories_title">Reskyruj kartami</string>
+    <string name="lyrics_background_blur">Rozmycie</string>
+    <string name="lyrics_blur_effect_title">Efekt rozmyciŏ</string>
+    <string name="light_theme_name">Jasny</string>
+    <string name="dark_theme_name">Ciymny</string>
+    <string name="player_color_mode_blur_title">Rozmycie</string>
+    <string name="download_action">Zebier</string>
 </resources>
