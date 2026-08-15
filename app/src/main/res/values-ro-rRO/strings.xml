@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Permisiuni refuzate</string>
-    <string name="permissions_needed">Permisiuni necesare</string>
+
     <string name="grant_access_action">Acordă acces</string>
     <string name="action_grant">Acordă</string>
     <string name="granted">Oferit</string>
-    <string name="hello_there">Bună ziua!</string>
-    <string name="welcome_to_x">Bun venit la %s</string>
+
+
     <string name="get_started">Începeți</string>
     <string name="select_storage_title">Selectați stocarea</string>
     <string name="now_playing">Acum se redă</string>

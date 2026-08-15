@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Autorisations refusées</string>
-    <string name="permissions_needed">Autorisations requises</string>
+
     <string name="grant_access_action">Accorder l\'accès</string>
     <string name="action_grant">Accorder</string>
     <string name="granted">Accordé</string>
-    <string name="hello_there">Bonjour !</string>
-    <string name="welcome_to_x">Bienvenue sur %s</string>
+
+
     <string name="get_started">Commencer</string>
     <string name="select_storage_title">Sélectionner un espace de stockage</string>
     <string name="now_playing">En cours de lecture</string>

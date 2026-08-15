@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">अनुमतियाँ अस्वीकृत</string>
-    <string name="permissions_needed">अनुमतियाँ आवश्यक हैं</string>
+
     <string name="grant_access_action">अनुज्ञा प्रदान करें</string>
     <string name="action_grant">अनुदान</string>
     <string name="granted">स्वीकृत</string>
-    <string name="hello_there">नमस्ते!</string>
-    <string name="welcome_to_x">आपका स्वागत है %s</string>
+
+
     <string name="get_started">शुरू करें</string>
     <string name="select_storage_title">स्टोरेज चुनें</string>
     <string name="now_playing">अब बज रहा है</string>

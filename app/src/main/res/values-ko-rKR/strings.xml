@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">권한 거부됨</string>
-    <string name="permissions_needed">권한 필요</string>
+
     <string name="grant_access_action">액세스 허용</string>
     <string name="action_grant">허용</string>
     <string name="granted">허용됨</string>
-    <string name="hello_there">안녕하세요!</string>
-    <string name="welcome_to_x">%s에 오신 것을 환영합니다</string>
+
+
     <string name="get_started">시작하기</string>
     <string name="select_storage_title">저장공간 선택</string>
     <string name="now_playing">현재 재생 중</string>

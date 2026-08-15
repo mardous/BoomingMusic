@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Permissies geweigerd</string>
-    <string name="permissions_needed">Machtigingen vereist</string>
+
     <string name="grant_access_action">Toegang verlenen</string>
     <string name="action_grant">Toestaan</string>
     <string name="granted">Toegekend</string>
-    <string name="hello_there">Hallo daar!</string>
-    <string name="welcome_to_x">Welkom bij %s</string>
+
+
     <string name="get_started">Nu inschrijven</string>
     <string name="select_storage_title">Opslag selecteren</string>
     <string name="now_playing">Afspelende media</string>

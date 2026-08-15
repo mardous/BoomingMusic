@@ -65,6 +65,7 @@ import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
+import com.mardous.booming.extensions.EXTRA_IS_PERMISSION_REQUEST
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.dip
@@ -82,8 +83,8 @@ import com.mardous.booming.ui.IBackConsumer
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.onboard.OnboardActivity
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
-import com.mardous.booming.ui.screen.permissions.PermissionsActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.expressivestyle.ExpressivePlayerFragment
@@ -176,7 +177,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!hasPermissions()) {
-            startActivity(Intent(this, PermissionsActivity::class.java))
+            startActivity(
+                Intent(this, OnboardActivity::class.java)
+                    .putExtra(EXTRA_IS_PERMISSION_REQUEST, Preferences.onboardShown)
+            )
             finish()
         }
 

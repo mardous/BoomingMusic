@@ -66,6 +66,10 @@ object Preferences : KoinComponent {
         preferences.unregisterOnSharedPreferenceChangeListener(listener)
     }
 
+    var onboardShown: Boolean
+        get() = preferences.getBoolean("onboard_shown", false)
+        set(value) = preferences.edit { putBoolean("onboard_shown", value) }
+
     fun getGeneralTheme(isBlackMode: Boolean): String {
         return if (isBlackMode) {
             GeneralTheme.BLACK

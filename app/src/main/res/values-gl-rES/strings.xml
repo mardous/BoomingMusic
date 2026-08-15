@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">Permissions denied</string>
-    <string name="permissions_needed">Permissions needed</string>
+
     <string name="grant_access_action">Grant access</string>
     <string name="action_grant">Grant</string>
     <string name="granted">Granted</string>
-    <string name="hello_there">Hello there!</string>
-    <string name="welcome_to_x">Welcome to %s</string>
+
+
     <string name="get_started">Get Started</string>
     <string name="select_storage_title">Select storage</string>
     <string name="now_playing">Now playing</string>

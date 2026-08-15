@@ -131,12 +131,12 @@
 
 
     <string name="permissions_denied">権限が拒否されました</string>
-    <string name="permissions_needed">権限が必要です</string>
+
     <string name="grant_access_action">アクセスを許可</string>
     <string name="action_grant">許可</string>
     <string name="granted">付与済み</string>
-    <string name="hello_there">こんにちは！</string>
-    <string name="welcome_to_x">%s へようこそ</string>
+
+
     <string name="get_started">はじめよう</string>
     <string name="select_storage_title">ストレージを選択</string>
     <string name="now_playing">再生中</string>
