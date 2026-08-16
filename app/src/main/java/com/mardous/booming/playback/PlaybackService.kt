@@ -43,6 +43,7 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.source.ShuffleOrder
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.mp3.Mp3Extractor
@@ -304,7 +305,7 @@ class PlaybackService :
                 .build()
         )
 
-        player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(0, 0, Random.nextLong())
+        player.exoPlayer.applyShuffleOrder(ImprovedShuffleOrder(0, 0, Random.nextLong()))
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(this)
 
@@ -333,7 +334,7 @@ class PlaybackService :
             player.setMediaItems(items.mediaItems, items.startIndex, items.startPositionMs)
             player.prepare()
             if (player.shuffleModeEnabled && shuffleOrder != null) {
-                player.exoPlayer.shuffleOrder = shuffleOrder
+                player.exoPlayer.applyShuffleOrder(shuffleOrder)
             }
         }
 
@@ -607,11 +608,7 @@ class PlaybackService :
     ): ListenableFuture<MediaItemsWithStartPosition> {
         player.exoPlayer.let { exoPlayer ->
             if (exoPlayer.shuffleOrder !is ImprovedShuffleOrder && !hasSetUnshuffledOrder) {
-                exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                    firstIndex = player.currentMediaItemIndex,
-                    length = player.mediaItemCount,
-                    randomSeed = Random.nextLong()
-                )
+                exoPlayer.applyRandomShuffleOrder()
             }
 
             (exoPlayer.shuffleOrder as? ImprovedShuffleOrder)
@@ -714,7 +711,7 @@ class PlaybackService :
 
             Playback.SET_UNSHUFFLED_ORDER -> {
                 hasSetUnshuffledOrder = true
-                player.exoPlayer.shuffleOrder = UnshuffledShuffleOrder(player.mediaItemCount)
+                with(player.exoPlayer) { applyShuffleOrder(UnshuffledShuffleOrder(mediaItemCount)) }
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
@@ -754,7 +751,7 @@ class PlaybackService :
             persistentStorage.waitForMediaItems { items, shuffleOrder ->
                 if (items.mediaItems.isNotEmpty()) {
                     if (player.shuffleModeEnabled && shuffleOrder != null) {
-                        player.exoPlayer.shuffleOrder = shuffleOrder
+                        player.exoPlayer.applyShuffleOrder(shuffleOrder)
                     }
                     settableFuture.set(items)
                 } else {
@@ -910,11 +907,11 @@ class PlaybackService :
             if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
                 dispatchPlayQueue(player)
                 if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
-                    this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                        firstIndex = player.currentMediaItemIndex,
-                        length = player.mediaItemCount,
-                        randomSeed = Random.nextLong()
-                    )
+                    val exoPlayer = this.player.exoPlayer
+                    // Keep the staged start index while the queue is empty.
+                    if (exoPlayer.mediaItemCount > 0) {
+                        exoPlayer.applyRandomShuffleOrder()
+                    }
                 }
             }
         }
@@ -976,6 +973,26 @@ class PlaybackService :
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
             }
         }
+    }
+
+    /** The player validates against an internal count we cannot read: a dropped order is harmless, a crash is not. */
+    private fun ExoPlayer.applyShuffleOrder(order: ShuffleOrder) {
+        try {
+            shuffleOrder = order
+        } catch (e: IllegalArgumentException) {
+            Log.w(TAG, "Rejected shuffle order: length=${order.length}, items=$mediaItemCount", e)
+        }
+    }
+
+    private fun ExoPlayer.applyRandomShuffleOrder() {
+        val itemCount = mediaItemCount
+        applyShuffleOrder(
+            ImprovedShuffleOrder(
+                firstIndex = currentMediaItemIndex.coerceIn(0, maxOf(itemCount - 1, 0)),
+                length = itemCount,
+                randomSeed = Random.nextLong()
+            )
+        )
     }
 
     private fun toggleShuffle() {
