@@ -188,13 +188,14 @@ class ImprovedShuffleOrder private constructor(
             return shuffled
         }
 
+        /** An unusable [firstIndex] leaves the order unrotated rather than throwing. */
         private fun calculateListWithFirstIndex(shuffled: IntArray, firstIndex: Int): IntArray {
-            if (shuffled.isEmpty() && firstIndex == 0) return shuffled
-            if (shuffled.size <= firstIndex) throw IllegalArgumentException("${shuffled.size} <= $firstIndex")
             val fi = shuffled.indexOf(firstIndex)
-            val before = shuffled.slice(0..<fi)
-            val inclAndAfter = shuffled.slice(fi..<shuffled.size)
-            return (inclAndAfter + before).toIntArray()
+            if (fi <= 0) return shuffled
+            val rotated = IntArray(shuffled.size)
+            shuffled.copyInto(rotated, 0, fi)
+            shuffled.copyInto(rotated, shuffled.size - fi, 0, fi)
+            return rotated
         }
     }
 }
