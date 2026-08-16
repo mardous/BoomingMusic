@@ -66,8 +66,8 @@
     <string name="action_edit_playlist">編輯播放清單</string>
     <string name="action_delete">刪除播放清單</string>
     <string name="action_export_playlist">將播放清單匯出至檔案</string>
-    <string name="action_clear_history">清除歷史紀錄</string>
-    <string name="history_cleared">歷史紀錄已清除</string>
+    <string name="action_clear_history">清除播放紀錄</string>
+    <string name="history_cleared">播放紀錄已清除</string>
     <string name="create_a_playlist">建立一個空播放清單。稍後可新增歌曲。</string>
     <string name="create_a_playlist_with_one_song">建立一個播放清單並新增一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">建立一個播放清單並自動向其中新增 %d 首歌曲。</string>
@@ -129,12 +129,9 @@
     <string name="permission_read_images_summary">為了自動尋找並顯示歌曲的專輯封面，Booming Music 需要取得存取音樂資料夾的權限。你可以依需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">需要授予所有檔案存取權才能讓應用程式讀取封面圖片。</string>
     <string name="permissions_denied">權限被拒絕</string>
-
-    <string name="grant_access_action">授予存取權</string>
+    <string name="grant_access_action">授予權限</string>
     <string name="action_grant">授權</string>
     <string name="granted">已授權</string>
-
-
     <string name="get_started">開始</string>
     <string name="select_storage_title">選擇儲存空間</string>
     <string name="now_playing">正在播放</string>
@@ -191,7 +188,7 @@
     <string name="favorites_label">我的最愛</string>
     <string name="last_added_label">最近新增</string>
     <string name="top_tracks_label">熱門曲目</string>
-    <string name="history_label">歷史紀錄</string>
+    <string name="history_label">播放紀錄</string>
     <string name="not_recently_played">無最近播放</string>
     <string name="play_info">播放資訊</string>
     <string name="track_play_counts">曲目播放次數</string>
@@ -239,7 +236,7 @@
     <string name="update_image">更新圖片</string>
     <string name="restore_default">還原預設</string>
     <string name="remove_cover">移除封面</string>
-    <string name="could_not_download_album_cover">無法下載匹配的相簿封面。</string>
+    <string name="could_not_download_album_cover">無法下載匹配的專輯封面。</string>
     <string name="download_image">下載圖片</string>
     <string name="pick_from_local_storage">從本機儲存空間選擇</string>
     <string name="about_x_title">關於 %s</string>
@@ -482,7 +479,7 @@
     <string name="contributors">貢獻者</string>
     <string name="translators_title">譯者</string>
     <string name="translators_summary">感謝協助讓 Booming Music 支援多種語言的所有人。</string>
-    <string name="view_profile_on_github">在 GitHub 上查看個人資料</string>
+    <string name="view_profile_on_github">在 GitHub 上查看個人檔案</string>
     <string name="write_an_email">撰寫電子郵件</string>
     <string name="support_development">支持開發</string>
     <string name="help_with_translations">幫助翻譯</string>
@@ -504,8 +501,8 @@
     <string name="settings_title">設定</string>
     <string name="appearance_title">外觀</string>
     <string name="appearance_summary">變更應用程式的主題和其他視覺設定。</string>
-    <string name="now_playing_title">正在播放</string>
-    <string name="now_playing_summary">自訂正在播放畫面。</string>
+    <string name="now_playing_title">播放畫面</string>
+    <string name="now_playing_summary">自訂播放畫面。</string>
     <string name="lyrics_preferences_title">歌詞</string>
     <string name="lyrics_preferences_summary">調整字型、間距和其他選項，以自訂歌詞檢視。</string>
     <string name="playback_title">播放</string>
@@ -616,9 +613,9 @@
     <string name="animate_controls_title">控制項動畫</string>
     <string name="animate_controls_summary">開啟播放器面板時播放動畫。</string>
     <string name="swipe_anywhere_title">在任意處滑動以切換歌曲</string>
-    <string name="swipe_anywhere_summary">在「正在播放」畫面的空白處向左或向右滑動以切換歌曲。</string>
+    <string name="swipe_anywhere_summary">在播放畫面的空白處向左或向右滑動以切換歌曲。</string>
     <string name="swipe_up_queue_title">向上滑動以開啟播放佇列</string>
-    <string name="swipe_up_queue_summary">在「正在播放」畫面的空白處向上滑動以開啟目前播放佇列。</string>
+    <string name="swipe_up_queue_summary">在播放畫面的空白處向上滑動以開啟目前播放佇列。</string>
     <string name="display_album_name_title">顯示專輯名稱</string>
     <string name="display_extra_info_title">顯示額外資訊</string>
     <string name="display_extra_info_summary">顯示歌曲的額外資訊，例如位元率、格式、取樣率等。</string>
@@ -696,9 +693,9 @@
     <string name="trash_music_summary">將已刪除的檔案移到垃圾桶。</string>
     <string name="recursive_folder_actions_title">影響子資料夾的操作</string>
     <string name="recursive_folder_actions_summary">當對資料夾執行操作時，選擇哪些操作也應作用於子資料夾。</string>
-    <string name="enable_history_title">啟用歷史紀錄</string>
-    <string name="enable_history_summary">允許應用程式記錄已播放的歌曲。停用後會清除所有歷史紀錄。</string>
-    <string name="history_interval_title">歷史間隔</string>
+    <string name="enable_history_title">啟用播放紀錄</string>
+    <string name="enable_history_summary">儲存你的播放紀錄、常聽歌曲，並更新至播放紀錄同步服務。關閉此功能將停止所有的紀錄同步與追蹤。</string>
+    <string name="history_interval_title">紀錄時間範圍</string>
     <string name="last_added_interval_title">最新新增時間間隔</string>
     <string name="whitelist_title">白名單</string>
     <string name="whitelist_summary">只有白名單資料夾的內容會顯示在曲庫中。</string>
@@ -877,7 +874,7 @@
     <string name="error_lastfm_credentials">登入資訊無效。請確認後再試一次。</string>
     <string name="error_lastfm_params">參數無效。這可能是本應用程式端發生錯誤。</string>
     <string name="error_lastfm_service">Last.fm 目前暫停服務或正在維護。請稍後再試。</string>
-    <string name="error_lastfm_rate_limit">請求次數過多。請稍候再上傳播放紀錄。</string>
+    <string name="error_lastfm_rate_limit">請求次數過多。請稍候再同步播放紀錄。</string>
     <string name="error_lastfm_generic">Last.fm 發生未預期的錯誤。請再試一次。</string>
     <string name="error_network_timeout">連線逾時。請檢查網路連線後再試一次。</string>
     <string name="error_listenbrainz_generic">ListenBrainz 發生錯誤。</string>
@@ -915,19 +912,19 @@
     <string name="wifi_only_network_features_title">僅在 Wi-Fi 下使用網路功能</string>
     <string name="wifi_only_network_features_summary">只有連上 Wi-Fi 時才允許使用網路功能。</string>
     <string name="lastfm_login_title">登入 Last.fm</string>
-    <string name="lastfm_login_summary">使用 Last.fm 帳號授權，以啟用播放紀錄上傳和正在播放資訊更新。</string>
-    <string name="lastfm_scrobbling_title">啟用 Last.fm 播放紀錄上傳</string>
+    <string name="lastfm_login_summary">使用 Last.fm 帳號授權，以啟用播放紀錄同步與「正在播放」狀態更新。</string>
+    <string name="lastfm_scrobbling_title">啟用 Last.fm 播放紀錄同步</string>
     <string name="lastfm_scrobbling_summary">自動將已播放曲目提交到你的 Last.fm 聆聽紀錄。</string>
-    <string name="lastfm_now_playing_title">在 Last.fm 更新正在播放</string>
-    <string name="lastfm_now_playing_summary">在你的 Last.fm 個人資料即時顯示目前播放的曲目。</string>
+    <string name="lastfm_now_playing_title">更新 Last.fm 「正在播放」狀態</string>
+    <string name="lastfm_now_playing_summary">在你的 Last.fm 個人檔案中即時顯示目前播放的曲目。</string>
     <string name="lastfm_biography_title">下載藝人與專輯介紹</string>
     <string name="lastfm_biography_summary">從 Last.fm 擷取藝人與專輯介紹。</string>
     <string name="listenbrainz_login_title">登入 ListenBrainz</string>
-    <string name="listenbrainz_login_summary">使用你的使用者 Token 授權，以啟用播放紀錄上傳和正在播放資訊更新。你可以在 ListenBrainz 個人資料設定中找到 Token。</string>
-    <string name="listenbrainz_scrobbling_title">啟用 ListenBrainz 播放紀錄上傳</string>
+    <string name="listenbrainz_login_summary">透過使用者 Token 進行驗證，以啟用播放紀錄同步與「正在播放」狀態更新。你可以在 ListenBrainz 的個人檔案設定中找到你的 Token。</string>
+    <string name="listenbrainz_scrobbling_title">啟用 ListenBrainz 播放紀錄同步</string>
     <string name="listenbrainz_scrobbling_summary">自動將已播放曲目提交到你的 ListenBrainz 聆聽紀錄。</string>
-    <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放</string>
-    <string name="listenbrainz_now_playing_summary">在 ListenBrainz 個人資料即時顯示目前播放的曲目。</string>
+    <string name="listenbrainz_now_playing_title">更新 ListenBrainz 「正在播放」狀態</string>
+    <string name="listenbrainz_now_playing_summary">在你的 ListenBrainz 個人檔案中即時顯示目前播放的曲目。</string>
     <string name="use_lrclib_provider_title">使用 LRCLib 歌詞來源</string>
     <string name="use_lrclib_provider_summary">社群維護的歌詞資料庫。</string>
     <string name="use_betterlyrics_provider_title">使用 BetterLyrics 歌詞來源</string>
@@ -978,4 +975,12 @@
     <string name="widget_page_previous">上一頁</string>
     <string name="widget_page_next">下一頁</string>
     <string name="restart_app_message">應用程式將重新啟動以完成此作業。</string>
+    <string name="permissions_title">需要權限</string>
+    <string name="permissions_subtitle">請授予音樂檔案和附近設備的存取權限，以獲得最佳播放體驗。</string>
+    <string name="initial_configuration_title">初始設定</string>
+    <string name="initial_configuration_subtitle">在開始之前，請根據你的喜好自訂 Booming Music。</string>
+    <string name="initial_configuration_note">你隨時可以變更這些設定。</string>
+    <string name="restore_from_backup">從備份還原</string>
+    <string name="network_features_summary">啟用播放紀錄同步與專輯封面和歌詞下載。</string>
+    <string name="welcome_to">歡迎使用</string>
 </resources>
