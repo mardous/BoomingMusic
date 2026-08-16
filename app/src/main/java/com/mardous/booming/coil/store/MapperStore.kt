@@ -10,7 +10,11 @@ import com.mardous.booming.coil.model.PlaylistImage
 import com.mardous.booming.core.model.filesystem.FileSystemItem
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.toSongs
-import com.mardous.booming.data.model.*
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Genre
+import com.mardous.booming.data.model.ReleaseYear
+import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.USE_FOLDER_ART
@@ -58,8 +62,9 @@ class ArtistMapper : Mapper<Artist, ArtistImage> {
     override fun map(data: Artist, options: Options): ArtistImage? {
         return ArtistImage(
             id = data.id,
+            name = data.name,
             coverUri = data.safeGetFirstAlbum().albumCover,
-            name = data.name
+            isAlbumArtist = data.isAlbumArtist
         )
     }
 }
