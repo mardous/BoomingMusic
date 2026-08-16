@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Baca gambar (opsional)</string>
     <string name="permission_read_images_summary">Izin ini diperlukan agar Booming Music dapat menemukan file sampul album di folder musik Anda. Jika Anda tidak berencana menggunakan fitur ini, Anda dapat memilih untuk tidak memberikan izin.</string>
     <string name="permission_read_images_denied">Anda harus memberikan izin untuk membaca gambar dari perangkat.</string>
-
-
     <string name="permissions_denied">Izin ditolak</string>
-
     <string name="grant_access_action">Berikan akses</string>
     <string name="action_grant">Berikan</string>
     <string name="granted">Diberikan</string>
-
-
     <string name="get_started">Mulai</string>
     <string name="select_storage_title">Pilih penyimpanan</string>
     <string name="now_playing">Sedang diputar</string>
@@ -698,8 +693,8 @@
     <string name="trash_music_summary">Kirim file yang dihapus ke tempat sampah.</string>
     <string name="recursive_folder_actions_title">Tindakan yang memengaruhi subfolder</string>
     <string name="recursive_folder_actions_summary">Pilih tindakan mana yang juga harus diterapkan pada subfolder saat dilakukan pada sebuah folder.</string>
-    <string name="enable_history_title">Aktifkan Riwayat</string>
-    <string name="enable_history_summary">Mengizinkan aplikasi merekam lagu yang telah Anda dengarkan. Jika Anda menonaktifkannya, seluruh riwayat akan dihapus.</string>
+    <string name="enable_history_title">Catat riwayat mendengarkan</string>
+    <string name="enable_history_summary">Melacak riwayat mendengarkan, lagu teratas, dan pembaruan ke layanan scrobbling. Menonaktifkan fitur ini akan menghentikan semua scrobbling dan pelacakan riwayat.</string>
     <string name="history_interval_title">Interval riwayat</string>
     <string name="last_added_interval_title">Interval terakhir ditambahkan</string>
     <string name="whitelist_title">Daftar putih</string>
@@ -939,4 +934,52 @@
     <string name="contributor_alex_description">Sahabat lama proyek ini yang memberikan akses ke API penting.</string>
     <string name="play_all_songs_when_searching_title">Putar semua lagu saat mencari</string>
     <string name="play_all_songs_when_searching_summary">Saat diaktifkan, memilih lagu hasil pencarian akan memasukkan seluruh pustaka ke dalam antrean. Hal ini bergantung pada pengaturan pemilihan lagu.</string>
+    <string name="app_widget_circle_desc">Pemutar berbentuk lingkaran dengan kontrol yang mengelilinginya</string>
+    <string name="app_widget_cookie">Kuki</string>
+    <string name="app_widget_cookie_desc">Sampul sebagai satu kuki besar dengan kontrol di sekelilingnya</string>
+    <string name="app_widget_grid">Kisi</string>
+    <string name="app_widget_grid_desc">Sampul, tombol putar, dan kontrol lewati dalam empat sel</string>
+    <string name="app_widget_library">Pustaka</string>
+    <string name="app_widget_library_desc">Kisi sampul dari daftar yang Anda pilih</string>
+    <string name="app_widget_nothing_playing">Tidak ada yang sedang diputar</string>
+    <string name="app_widget_tap_to_play">Ketuk untuk membuka Booming</string>
+    <string name="action_auto_fill_from_musicbrainz">Isi otomatis dari MusicBrainz</string>
+    <string name="searching">Mencari…</string>
+    <string name="musicbrainz_search_title">Pencarian MusicBrainz</string>
+    <string name="musicbrainz_search_message">Cari metadata lagu di MusicBrainz menggunakan judul dan artis.</string>
+    <string name="musicbrainz_no_results">Tidak ada hasil yang ditemukan di MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Pilih rekaman</string>
+    <string name="welcome_to">Selamat datang di</string>
+    <string name="permissions_title">Izin diperlukan</string>
+    <string name="permissions_subtitle">Berikan akses ke file musik dan perangkat di sekitar Anda untuk mendapatkan pengalaman pemutaran terbaik.</string>
+    <string name="initial_configuration_title">Konfigurasi Awal</string>
+    <string name="initial_configuration_subtitle">Sesuaikan Booming Music sesuai keinginan Anda sebelum memulai.</string>
+    <string name="initial_configuration_note">Anda selalu dapat mengubah pengaturan ini nanti.</string>
+    <string name="restore_from_backup">Pulihkan dari cadangan</string>
+    <string name="sort_order_name">Nama</string>
+    <string name="restart_app_message">Aplikasi akan dimulai ulang untuk menyelesaikan proses.</string>
+    <string name="website">Situs web</string>
+    <string name="legal">Hukum</string>
+    <string name="terms_of_service">Ketentuan Layanan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="widget_settings_title">Pengaturan widget</string>
+    <string name="widget_show_progress_title">Tampilkan linimasa</string>
+    <string name="widget_show_progress_summary">Tampilkan progres trek yang sedang diputar.</string>
+    <string name="widget_show_controls_title">Tampilkan kontrol</string>
+    <string name="widget_show_controls_summary">Tampilkan tombol pemutaran.</string>
+    <string name="widget_show_artist_title">Tampilkan artis</string>
+    <string name="widget_show_artist_summary">Tampilkan artis di bawah judul trek.</string>
+    <string name="widget_show_navigation_title">Tampilkan navigasi</string>
+    <string name="widget_show_navigation_summary">Tampilkan bilah untuk berpindah dalam daftar.</string>
+    <string name="widget_leading_action_title">Tombol kiri</string>
+    <string name="widget_trailing_action_title">Tombol kanan</string>
+    <string name="widget_side_buttons_title">Tombol samping</string>
+    <string name="widget_side_buttons_skip">Sebelumnya dan berikutnya</string>
+    <string name="widget_action_favourite">Favorit</string>
+    <string name="widget_action_repeat">Ulangi</string>
+    <string name="widget_source_title">Tampilkan</string>
+    <string name="widget_source_recent">Terbaru</string>
+    <string name="widget_page_previous">Lagu sebelumnya</string>
+    <string name="widget_page_next">Lagu berikutnya</string>
+    <string name="network_features_summary">Mengaktifkan scrobbling serta pengunduhan sampul album dan lirik.</string>
 </resources>
