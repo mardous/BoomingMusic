@@ -489,6 +489,10 @@
     <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
     <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
     <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
+    <string name="autoeq_sync_success">Synced %d AutoEq profiles successfully.</string>
+    <string name="autoeq_sync_failed">Failed to sync AutoEq profiles.</string>
+    <string name="sync_autoeq_database">Sync AutoEq Database</string>
+    <string name="search_autoeq_placeholder">Search headphone model</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplifier</string>

@@ -4,7 +4,21 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.mardous.booming.data.local.room.*
+import com.mardous.booming.data.local.room.AutoEqDao
+import com.mardous.booming.data.local.room.AutoEqEntity
+import com.mardous.booming.data.local.room.HistoryDao
+import com.mardous.booming.data.local.room.HistoryEntity
+import com.mardous.booming.data.local.room.InclExclDao
+import com.mardous.booming.data.local.room.InclExclEntity
+import com.mardous.booming.data.local.room.LyricsDao
+import com.mardous.booming.data.local.room.LyricsEntity
+import com.mardous.booming.data.local.room.PlayCountDao
+import com.mardous.booming.data.local.room.PlayCountEntity
+import com.mardous.booming.data.local.room.PlaylistDao
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.local.room.QueueDao
+import com.mardous.booming.data.local.room.QueueEntity
+import com.mardous.booming.data.local.room.SongEntity
 
 @Database(
     entities = [
@@ -14,9 +28,10 @@ import com.mardous.booming.data.local.room.*
         PlayCountEntity::class,
         QueueEntity::class,
         InclExclEntity::class,
-        LyricsEntity::class
+        LyricsEntity::class,
+        AutoEqEntity::class
     ],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class BoomingDatabase : RoomDatabase() {
@@ -26,6 +41,7 @@ abstract class BoomingDatabase : RoomDatabase() {
     abstract fun queueDao(): QueueDao
     abstract fun inclExclDao(): InclExclDao
     abstract fun lyricsDao(): LyricsDao
+    abstract fun autoEqDao(): AutoEqDao
 
     companion object {
         val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -64,6 +80,27 @@ abstract class BoomingDatabase : RoomDatabase() {
                         is_instrumental INTEGER NOT NULL DEFAULT 0
                     )
                 """.trimIndent())
+            }
+        }
+
+        val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `AutoEqEntity` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                        `label` TEXT NOT NULL, 
+                        `source` TEXT NOT NULL, 
+                        `rig` TEXT NOT NULL, 
+                        `form` TEXT NOT NULL, 
+                        `model_name` TEXT NOT NULL, 
+                        `path` TEXT NOT NULL
+                    )
+                    """.trimIndent()
+                )
+                db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_label` ON `AutoEqEntity` (`label`)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_source` ON `AutoEqEntity` (`source`)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_model_name` ON `AutoEqEntity` (`model_name`)")
             }
         }
     }

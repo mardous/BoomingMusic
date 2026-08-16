@@ -48,7 +48,9 @@ import com.mardous.booming.core.model.equalizer.TempoState
 import com.mardous.booming.core.model.equalizer.VirtualizerState
 import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
+import com.mardous.booming.data.local.room.AutoEqEntity
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
+import com.mardous.booming.data.repository.RealAutoEqRepository
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.playback.equalizer.engine.BasicEQEngine
@@ -84,6 +86,7 @@ class EqualizerManager(
     private val context: Context,
     private val balanceProcessor: BalanceAudioProcessor,
     private val replayGainProcessor: ReplayGainAudioProcessor,
+    private val eqRepository: RealAutoEqRepository,
     audioOutputObserver: AudioOutputObserver,
 ) {
 
@@ -922,6 +925,21 @@ class EqualizerManager(
             setCustomProfile(profile, fromUser = true)
         }
     }
+
+    fun syncAutoEqDatabase() = eqRepository.syncAutoEqDatabase()
+
+    suspend fun setRemoteAutoEqProfile(entity: AutoEqEntity) {
+        eqRepository.loadAutoEqProfile(entity)?.let { profile ->
+            setAutoEqProfile(profile)
+            importAutoEqProfile(
+                profile = profile,
+                suggestedName = profile.name,
+                allowReplace = true
+            )
+        }
+    }
+
+    suspend fun searchAutoEqHeadphones(query: String) = eqRepository.searchHeadphones(query)
 
     private fun getProfilesByBandCount(bandCount: Int) = when (bandCount) {
         5 -> listOf(

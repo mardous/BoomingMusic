@@ -38,6 +38,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
@@ -48,6 +49,7 @@ import androidx.compose.material3.ListItemShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SnackbarDuration
@@ -56,6 +58,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -90,6 +93,8 @@ import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
+import com.mardous.booming.core.model.equalizer.autoeq.AutoEqSyncState
+import com.mardous.booming.data.local.room.AutoEqEntity
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
@@ -190,6 +195,19 @@ fun EqualizerScreen(
     val limiter by eqViewModel.limiterState.collectAsState()
     val replayGain by eqViewModel.replayGainState.collectAsState()
 
+    val autoEqSyncState by eqViewModel.autoEqSyncState.collectAsState()
+    LaunchedEffect(autoEqSyncState) {
+        when (val state = autoEqSyncState) {
+            is AutoEqSyncState.Success -> {
+                context.showToast(context.getString(R.string.autoeq_sync_success, state.count))
+            }
+            is AutoEqSyncState.Error -> {
+                context.showToast(state.message ?: context.getString(R.string.autoeq_sync_failed))
+            }
+            else -> {}
+        }
+    }
+
     val availableBandCounts = remember(eqBandCapabilities, eqState.proMode) {
         eqBandCapabilities.getAvailableBandCounts(eqState.proMode)
     }
@@ -231,6 +249,11 @@ fun EqualizerScreen(
     var showProfileSelectorDialog by remember { mutableStateOf(false) }
     var showSetEngineDialog by remember { mutableStateOf(false) }
     var showResetEqDialog by remember { mutableStateOf(false) }
+
+    LaunchedEffect(showProfileSelectorDialog) {
+        if (!showProfileSelectorDialog)
+            eqViewModel.searchAutoEq("")
+    }
 
     var showImportDialog by remember { mutableStateOf(false) }
     var profilesToImport by remember { mutableStateOf<List<EqProfile>>(emptyList()) }
@@ -482,9 +505,12 @@ fun EqualizerScreen(
     }
 
     if (showProfileSelectorDialog) {
+        val autoEqSearchResults by eqViewModel.autoEqSearchState.collectAsState(emptyList())
         ProfileSelectorDialog(
             profiles = eqProfiles,
             autoEqProfiles = autoEqProfiles,
+            autoEqSearchResults = autoEqSearchResults,
+            autoEqSyncState = autoEqSyncState,
             selectedProfile = eqCurrentProfile,
             onSelectEqProfile = { profile ->
                 eqViewModel.setEqualizerProfile(profile)
@@ -494,10 +520,16 @@ fun EqualizerScreen(
                 eqViewModel.setAutoEqProfile(profile)
                 showProfileSelectorDialog = false
             },
+            onSelectRemoteAutoEqProfile = { entity ->
+                eqViewModel.setRemoteAutoEqProfile(entity)
+                showProfileSelectorDialog = false
+            },
+            onSearchAutoEq = { eqViewModel.searchAutoEq(it) },
             onEditEqProfile = { profile -> editProfileState = Pair(profile, true) },
             onDeleteEqProfile = { profile -> deleteProfileState = Pair(profile, true) },
             onDeleteAutoEqProfile = { eqViewModel.deleteAutoEqProfile(it) },
             onImportAutoEqProfile = { importProfiles(autoEq = true) },
+            onSyncAutoEq = { eqViewModel.syncAutoEqDatabase() },
             onDismiss = { showProfileSelectorDialog = false }
         )
     }
@@ -565,6 +597,12 @@ fun EqualizerScreen(
                         enabled = eqState.isUsable
                     ),
                     MenuItem.Button.DropDown(
+                        text = stringResource(R.string.sync_autoeq_database),
+                        icon = painterResource(R.drawable.ic_restart_alt_24dp),
+                        onClick = { eqViewModel.syncAutoEqDatabase() },
+                        enabled = eqState.isUsable && autoEqSyncState !is AutoEqSyncState.Syncing
+                    ),
+                    MenuItem.Button.DropDown(
                         text = stringResource(R.string.set_eq_engine_title),
                         icon = painterResource(R.drawable.ic_equalizer_24dp),
                         onClick = { showSetEngineDialog = true },
@@ -630,6 +668,7 @@ fun EqualizerScreen(
                     item {
                         TitledCard(
                             title = stringResource(R.string.eq_profile_title),
+                            titleEndContent = { SyncProgressIndicator(autoEqSyncState) },
                             icon = painterResource(R.drawable.ic_equalizer_24dp),
                             color = MaterialTheme.colorScheme.surfaceContainerLow
                         ) { cardContentPadding ->
@@ -1188,13 +1227,18 @@ private fun EQBandSlider(
 private fun ProfileSelectorDialog(
     profiles: List<EqProfile>,
     autoEqProfiles: List<AutoEqProfile>,
+    autoEqSearchResults: List<AutoEqEntity>,
+    autoEqSyncState: AutoEqSyncState,
     selectedProfile: EqProfile,
     onSelectEqProfile: (EqProfile) -> Unit,
     onSelectAutoEqProfile: (AutoEqProfile) -> Unit,
+    onSelectRemoteAutoEqProfile: (AutoEqEntity) -> Unit,
+    onSearchAutoEq: (String) -> Unit,
     onEditEqProfile: (EqProfile) -> Unit,
     onDeleteEqProfile: (EqProfile) -> Unit,
     onDeleteAutoEqProfile: (AutoEqProfile) -> Unit,
     onImportAutoEqProfile: () -> Unit,
+    onSyncAutoEq: () -> Unit,
     onDismiss: () -> Unit
 ) {
     var profilesMode by remember { mutableStateOf(ProfilesMode.EQ) }
@@ -1241,34 +1285,82 @@ private fun ProfileSelectorDialog(
                 }
 
                 ProfilesMode.AutoEq -> {
-                    if (autoEqProfiles.isEmpty()) {
-                        EmptyView(
-                            icon = painterResource(R.drawable.ic_equalizer_24dp),
-                            title = stringResource(R.string.no_autoeq_profiles),
-                            button = {
-                                Button(onClick = onImportAutoEqProfile) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_file_open_24dp),
-                                        contentDescription = null
-                                    )
-                                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                                    Text(stringResource(R.string.import_autoeq_profile))
+                    Column {
+                        var searchQuery by remember { mutableStateOf("") }
+                        OutlinedTextField(
+                            value = searchQuery,
+                            onValueChange = {
+                                searchQuery = it
+                                onSearchAutoEq(it)
+                            },
+                            placeholder = { Text(stringResource(R.string.search_autoeq_placeholder)) },
+                            trailingIcon = {
+                                if (autoEqSyncState is AutoEqSyncState.Syncing) {
+                                    SyncProgressIndicator(autoEqSyncState)
+                                } else {
+                                    Icon(painterResource(R.drawable.ic_search_24dp), null)
                                 }
                             },
-                            modifier = Modifier.fillMaxSize()
+                            colors = TextFieldDefaults.colors(
+                                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                                unfocusedIndicatorColor = MaterialTheme.colorScheme.outline
+                            ),
+                            modifier = Modifier.fillMaxWidth()
                         )
-                    } else {
-                        LazyColumn(
-                            contentPadding = PaddingValues(bottom = 24.dp),
-                            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
-                        ) {
-                            itemsIndexed(autoEqProfiles) { index, profile ->
-                                AutoEqProfileItem(
-                                    shapes = ListItemDefaults.segmentedShapes(index, autoEqProfiles.size),
-                                    profile = profile,
-                                    onClick = { onSelectAutoEqProfile(profile) },
-                                    onDeleteClick = { onDeleteAutoEqProfile(profile) }
-                                )
+
+                        if (autoEqProfiles.isEmpty() && autoEqSearchResults.isEmpty() && searchQuery.isEmpty()) {
+                            EmptyView(
+                                icon = painterResource(R.drawable.ic_equalizer_24dp),
+                                title = stringResource(R.string.no_autoeq_profiles),
+                                button = {
+                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                        Button(onClick = onImportAutoEqProfile) {
+                                            Icon(
+                                                painter = painterResource(R.drawable.ic_file_open_24dp),
+                                                contentDescription = null
+                                            )
+                                            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                                            Text(stringResource(R.string.import_autoeq_profile))
+                                        }
+                                        Spacer(Modifier.height(8.dp))
+                                        TextButton(onClick = onSyncAutoEq) {
+                                            Icon(
+                                                painter = painterResource(R.drawable.ic_restart_alt_24dp),
+                                                contentDescription = null
+                                            )
+                                            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                                            Text(stringResource(R.string.sync_autoeq_database))
+                                        }
+                                    }
+                                },
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        } else {
+                            LazyColumn(
+                                contentPadding = PaddingValues(bottom = 24.dp),
+                                verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
+                                modifier = Modifier.padding(top = 12.dp)
+                            ) {
+                                if (autoEqSearchResults.isNotEmpty()) {
+                                    itemsIndexed(autoEqSearchResults) { index, entity ->
+                                        RemoteAutoEqProfileItem(
+                                            shapes = ListItemDefaults.segmentedShapes(index, autoEqSearchResults.size),
+                                            entity = entity,
+                                            onClick = { onSelectRemoteAutoEqProfile(entity) }
+                                        )
+                                    }
+                                } else {
+                                    itemsIndexed(autoEqProfiles) { index, profile ->
+                                        AutoEqProfileItem(
+                                            shapes = ListItemDefaults.segmentedShapes(index, autoEqProfiles.size),
+                                            profile = profile,
+                                            onClick = { onSelectAutoEqProfile(profile) },
+                                            onDeleteClick = { onDeleteAutoEqProfile(profile) }
+                                        )
+                                    }
+                                }
                             }
                         }
                     }
@@ -1592,6 +1684,46 @@ private fun AutoEqProfileItem(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun RemoteAutoEqProfileItem(
+    entity: AutoEqEntity,
+    shapes: ListItemShapes,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    SegmentedListItem(
+        onClick = onClick,
+        shapes = shapes,
+        colors = ListItemDefaults.segmentedColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+        ),
+        leadingContent = {
+            Icon(
+                painter = painterResource(R.drawable.ic_equalizer_24dp),
+                contentDescription = null
+            )
+        },
+        supportingContent = {
+            Text(
+                text = "${entity.source} • ${entity.rig} • ${entity.form}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        },
+        modifier = modifier
+    ) {
+        Text(
+            text = entity.label,
+            style = MaterialTheme.typography.bodyLarge,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+    }
+}
+
 @Composable
 private fun EngineSelectorDialog(
     currentEngine: EqEngineMode,
@@ -1745,5 +1877,26 @@ private fun ResetButton(onClick: () -> Unit) {
         )
         Spacer(Modifier.width(ButtonDefaults.IconSpacing))
         Text(stringResource(R.string.reset_action))
+    }
+}
+
+@Composable
+private fun SyncProgressIndicator(
+    autoEqSyncState: AutoEqSyncState,
+    modifier: Modifier = Modifier
+) {
+    if (autoEqSyncState is AutoEqSyncState.Syncing) {
+        if (autoEqSyncState.isIndeterminate) {
+            CircularProgressIndicator(
+                strokeWidth = 3.dp,
+                modifier = modifier.size(24.dp)
+            )
+        } else {
+            CircularProgressIndicator(
+                progress = { autoEqSyncState.fraction },
+                strokeWidth = 3.dp,
+                modifier = modifier.size(24.dp)
+            )
+        }
     }
 }

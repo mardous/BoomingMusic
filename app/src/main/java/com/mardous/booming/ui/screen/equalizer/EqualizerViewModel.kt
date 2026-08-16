@@ -14,14 +14,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.R
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.core.audio.AutoEqTxtParser
+import com.mardous.booming.core.audio.AutoEqParser
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.CompressorState
 import com.mardous.booming.core.model.equalizer.EqEngineMode
 import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.LimiterState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
+import com.mardous.booming.core.model.equalizer.autoeq.AutoEqSyncState
 import com.mardous.booming.data.local.MediaStoreWriter
+import com.mardous.booming.data.local.room.AutoEqEntity
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
@@ -31,13 +33,22 @@ import com.mardous.booming.extensions.resolveActivity
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import java.io.File
+import kotlin.time.Duration.Companion.milliseconds
 
 class EqualizerViewModel(
     private val contentResolver: ContentResolver,
@@ -75,6 +86,23 @@ class EqualizerViewModel(
     val eqBands = combine(eqState, eqBandCapabilities, currentProfile) { state, bandCapabilities, profile ->
         bandCapabilities.getBands(profile, state.preferredBandCount)
     }
+
+    private val _autoEqSyncState = MutableStateFlow<AutoEqSyncState>(AutoEqSyncState.Idle)
+    val autoEqSyncState: StateFlow<AutoEqSyncState> = _autoEqSyncState.asStateFlow()
+
+    private val _autoEqSearchQuery = MutableStateFlow("")
+
+    @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+    val autoEqSearchState = _autoEqSearchQuery
+        .debounce(300.milliseconds)
+        .mapLatest { query ->
+            if (query.isBlank()) {
+                emptyList()
+            } else {
+                equalizerManager.searchAutoEqHeadphones(query)
+            }
+        }
+        .flowOn(Dispatchers.IO)
 
     private val _exportRequestEvent = Channel<ProfileExportRequest>(Channel.BUFFERED)
     val exportRequestEvent: Flow<ProfileExportRequest> = _exportRequestEvent.receiveAsFlow()
@@ -286,6 +314,24 @@ class EqualizerViewModel(
         equalizerManager.setProMode(enabled)
     }
 
+    fun setRemoteAutoEqProfile(entity: AutoEqEntity) = viewModelScope.launch(Dispatchers.IO) {
+        val isInSyncState = _autoEqSyncState.compareAndSet(AutoEqSyncState.Idle, AutoEqSyncState.Syncing())
+        if (isInSyncState) {
+            equalizerManager.setRemoteAutoEqProfile(entity)
+        }
+        _autoEqSyncState.value = AutoEqSyncState.Idle
+    }
+
+    fun searchAutoEq(query: String) = viewModelScope.launch {
+        _autoEqSearchQuery.value = query
+    }
+
+    fun syncAutoEqDatabase() = viewModelScope.launch {
+        equalizerManager.syncAutoEqDatabase().collect {
+            _autoEqSyncState.value = it
+        }
+    }
+
     fun showOutputDeviceSelector(context: Context) {
         audioOutputObserver.showOutputDeviceSelector(context)
     }
@@ -438,7 +484,7 @@ class EqualizerViewModel(
                 AutoEqImportRequest(false, R.string.there_is_nothing_to_import)
             } else {
                 val parseResult = runCatching {
-                    AutoEqTxtParser.parse(context, uri)
+                    AutoEqParser.parse(context, uri)
                 }
                 val profile = parseResult.getOrNull()
                 if (parseResult.isFailure || profile == null) {
