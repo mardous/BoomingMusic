@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Lettura immagini (opzionale)</string>
     <string name="permission_read_images_summary">Questa autorizzazione è richiesta da Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali. Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
     <string name="permission_read_images_denied">Devi concedere i permessi di lettura delle immagini dal tuo dispositivo.</string>
-
-
     <string name="permissions_denied">Permessi negati</string>
-
     <string name="grant_access_action">Autorizza accesso</string>
     <string name="action_grant">Autorizza</string>
     <string name="granted">Autorizzato</string>
-
-
     <string name="get_started">Per Iniziare</string>
     <string name="select_storage_title">Seleziona memoria</string>
     <string name="now_playing">In riproduzione</string>
@@ -152,7 +147,7 @@
     <string name="toggle_favorite">Aggiungi/Rimuovi dai preferiti</string>
     <string name="action_add_to_playlist">Aggiungi alla playlist</string>
     <string name="action_remove_from_playlist">Rimuovi dalla playlist</string>
-    <string name="action_add_to_playing_queue">Aggiumgi alla coda di riproduzione</string>
+    <string name="action_add_to_playing_queue">Aggiungi alla coda di riproduzione</string>
     <string name="action_remove_from_playing_queue">Rimuovi dalla coda di riproduzione</string>
     <string name="put_after_current_track">Aggiungi dopo la traccia corrente</string>
     <string name="set_artist_image">Imposta immagine artista</string>
