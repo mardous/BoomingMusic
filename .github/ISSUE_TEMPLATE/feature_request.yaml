@@ -14,10 +14,10 @@ body:
       label: Download source
       description: From which source did you download Booming Music?
       options:
-        - label: GitHub
-        - label: F-Droid/IzzyOnDroid
-        - label: Play Store
-        - label: Other
+        - GitHub
+        - F-Droid/IzzyOnDroid
+        - Play Store
+        - Other
       default: 0
     validations:
       required: true
