@@ -1,5 +1,6 @@
 package com.mardous.booming.playback
 
+import android.util.Log
 import androidx.media3.common.C
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.source.ShuffleOrder
@@ -177,6 +178,8 @@ class ImprovedShuffleOrder private constructor(
     }
 
     companion object {
+        private const val TAG = "ImprovedShuffleOrder"
+
         private fun calculateShuffledList(offset: Int, length: Int, random: Random): IntArray {
             val shuffled = IntArray(length)
             var swapIndex: Int
@@ -191,6 +194,9 @@ class ImprovedShuffleOrder private constructor(
         /** An unusable [firstIndex] leaves the order unrotated rather than throwing. */
         private fun calculateListWithFirstIndex(shuffled: IntArray, firstIndex: Int): IntArray {
             val fi = shuffled.indexOf(firstIndex)
+            if (fi < 0 && shuffled.isNotEmpty()) {
+                Log.w(TAG, "Ignored out-of-range firstIndex=$firstIndex (length=${shuffled.size})")
+            }
             if (fi <= 0) return shuffled
             val rotated = IntArray(shuffled.size)
             shuffled.copyInto(rotated, 0, fi)

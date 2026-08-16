@@ -2,6 +2,7 @@ package com.mardous.booming.playback
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.OptIn
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -9,6 +10,8 @@ import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.common.Timeline
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.source.ShuffleOrder
 import androidx.media3.session.MediaConstants
 import androidx.media3.session.MediaSession
 import com.mardous.booming.coil.CoverProvider
@@ -18,6 +21,9 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.media.songInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.random.Random
+
+private const val TAG = "PlaybackExtension"
 
 /**
  * Extra parameter indicating when a MediaItem was generated from a Song
@@ -84,6 +90,29 @@ fun Player.removeMediaItemsById(ids: Set<String>) {
     for (index in mediaItemCount - 1 downTo 0) {
         if (getMediaItemAt(index).mediaId in ids) removeMediaItem(index)
     }
+}
+
+/** The player validates against an internal count we cannot read: a dropped order is harmless, a crash is not. */
+@OptIn(UnstableApi::class)
+internal fun ExoPlayer.applyShuffleOrder(order: ShuffleOrder) {
+    try {
+        shuffleOrder = order
+    } catch (e: IllegalArgumentException) {
+        Log.w(TAG, "Rejected shuffle order: length=${order.length}, items=$mediaItemCount", e)
+    }
+}
+
+/** Reshuffles the current queue, keeping the current item first. */
+@OptIn(UnstableApi::class)
+internal fun ExoPlayer.applyRandomShuffleOrder() {
+    val itemCount = mediaItemCount
+    applyShuffleOrder(
+        ImprovedShuffleOrder(
+            firstIndex = currentMediaItemIndex.coerceIn(0, maxOf(itemCount - 1, 0)),
+            length = itemCount,
+            randomSeed = Random.nextLong()
+        )
+    )
 }
 
 val MediaItem.resolvedFromFile: Boolean

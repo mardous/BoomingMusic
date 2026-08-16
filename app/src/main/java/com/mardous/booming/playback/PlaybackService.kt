@@ -43,7 +43,6 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
-import androidx.media3.exoplayer.source.ShuffleOrder
 import androidx.media3.exoplayer.source.ShuffleOrder.UnshuffledShuffleOrder
 import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.mp3.Mp3Extractor
@@ -973,26 +972,6 @@ class PlaybackService :
                 player.exoPlayer.setSeekForwardIncrementMs(seekInterval)
             }
         }
-    }
-
-    /** The player validates against an internal count we cannot read: a dropped order is harmless, a crash is not. */
-    private fun ExoPlayer.applyShuffleOrder(order: ShuffleOrder) {
-        try {
-            shuffleOrder = order
-        } catch (e: IllegalArgumentException) {
-            Log.w(TAG, "Rejected shuffle order: length=${order.length}, items=$mediaItemCount", e)
-        }
-    }
-
-    private fun ExoPlayer.applyRandomShuffleOrder() {
-        val itemCount = mediaItemCount
-        applyShuffleOrder(
-            ImprovedShuffleOrder(
-                firstIndex = currentMediaItemIndex.coerceIn(0, maxOf(itemCount - 1, 0)),
-                length = itemCount,
-                randomSeed = Random.nextLong()
-            )
-        )
     }
 
     private fun toggleShuffle() {
