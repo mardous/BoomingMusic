@@ -145,6 +145,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
     steps:
+    - name: Set Short SHA
+      id: vars
+      run: echo "short_sha=$(echo $LONG_SHA | cut -c 1-7)" >> $GITHUB_OUTPUT
+      env:
+        LONG_SHA: ${{ github.sha }}
+
     - name: Download apk
       uses: actions/download-artifact@v8
       with:
@@ -156,6 +162,10 @@ jobs:
       with:
         to-who: ${{ secrets.TG_CHAT_ID }}
         message: |
+          🌿 **Branch:** `${{ github.ref_name }}`
+          📌 **Commit:** `${{ steps.vars.outputs.short_sha }}`
+          🚀 **Run:** [Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
           📋 **Changelog:**
           ${{ needs.build.outputs.changelog }}
         files: |

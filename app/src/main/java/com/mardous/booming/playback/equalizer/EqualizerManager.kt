@@ -89,6 +89,7 @@ class EqualizerManager(
 
     private val eqScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private var eqEngine: EQEngine? = null
+    private var pendingDevice: AudioDevice? = null
 
     val eqState =
         combine(
@@ -317,6 +318,9 @@ class EqualizerManager(
                         sessionId = eqSession.id,
                         bandCount = newState.preferredBandCount
                     )
+                    if (pendingDevice != null) {
+                        setCurrentDevice(pendingDevice!!)
+                    }
                 }
                 if (!isDisabled) {
                     if (newState.isUsable) {
@@ -353,12 +357,14 @@ class EqualizerManager(
             .flowOn(Dispatchers.Main)
             .launchIn(eqScope)
 
+        /*
         bitPerfectAudio.debounce(100.milliseconds)
             .onEach { bitPerfectEnabled ->
                 audioOutputObserver.setBitPerfectEnabled(bitPerfectEnabled)
             }
             .flowOn(Dispatchers.Main)
             .launchIn(eqScope)
+         */
 
         audioOutputObserver.audioDevice
             .onEach { setCurrentDevice(it) }
@@ -885,14 +891,17 @@ class EqualizerManager(
         _bandCapabilities.value = bandCapabilities
     }
 
-    private suspend fun setCurrentDevice(currentDevice: AudioDevice) {
+    private suspend fun setCurrentDevice(device: AudioDevice) {
         val eqState = eqState.value
-        if (eqState == EqState.Unspecified || !eqState.supported ||
-            currentDevice == AudioDevice.UnknownDevice)
+        if (eqState == EqState.Unspecified || !eqState.supported || device == AudioDevice.Unknown) {
+            if (device != AudioDevice.Unknown && !device.isPending) {
+                pendingDevice = device.copy(isPending = true)
+            }
             return
-
+        }
+        this.pendingDevice = null
         val profileByDevice = eqProfiles.value.firstOrNull { profile ->
-            profile.associations.contains(currentDevice.type)
+            profile.associations.contains(device.type)
         }
         if (profileByDevice != null) {
             setCurrentProfile(profileByDevice)

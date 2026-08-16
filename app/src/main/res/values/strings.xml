@@ -9,8 +9,7 @@
     <string name="app_widget_library">Library</string>
     <string name="app_widget_library_desc">A grid of covers from a list you choose</string>
     <string name="app_widget_nothing_playing">Nothing playing</string>
-    <string name="app_widget_tap_to_play">Tap to open Booming</string>
-
+    <string name="app_widget_tap_to_play">Tap to open Booming Music</string>
     <string name="app_widget_card">Card</string>
     <string name="app_widget_card_desc">Minimalist and simplified style</string>
     <string name="action_play">Play</string>
@@ -117,7 +116,7 @@
     <string name="musicbrainz_search_title">MusicBrainz search</string>
     <string name="musicbrainz_search_message">Search for song metadata on MusicBrainz using the title and artist.</string>
     <string name="musicbrainz_no_results">No results found on MusicBrainz.</string>
-    <string name="musicbrainz_select_recording">Select a recording</string>
+    <string name="musicbrainz_select_recording">Select a result</string>
     <string name="saving_changes">Saving changes</string>
     <string name="changes_saved_successfully">Changes saved successfully.</string>
     <string name="could_not_save_some_changes">Couldn\'t save some changes.</string>
@@ -701,7 +700,7 @@
     <string name="widget_dynamic_colors_title">Dynamic colors</string>
     <string name="widget_dynamic_colors_summary">Adapt widget colors to the current track artwork.</string>
     <string name="widget_settings_title">Widget settings</string>
-    <string name="widget_show_progress_title">Show timeline</string>
+    <string name="widget_show_progress_title">Show progress</string>
     <string name="widget_show_progress_summary">Display the progress of the current track.</string>
     <string name="widget_show_controls_title">Show controls</string>
     <string name="widget_show_controls_summary">Display the playback buttons.</string>
