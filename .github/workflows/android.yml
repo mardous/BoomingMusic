@@ -156,6 +156,10 @@ jobs:
       with:
         to-who: ${{ secrets.TG_CHAT_ID }}
         message: |
+          🌿 **Branch:** `${{ github.ref_name }}`
+          📌 **Commit:** `${{ github.sha }}`
+          🚀 **Run:** [Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
           📋 **Changelog:**
           ${{ needs.build.outputs.changelog }}
         files: |
