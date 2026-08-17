@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Acceso a imágenes (opcional)</string>
     <string name="permission_read_images_summary">Este permiso se requiere para que Booming Music pueda encontrar carátulas de álbumes en las carpetas de música. Si no planeas usar esta característica, puedes optar por no concederlo.</string>
     <string name="permission_read_images_denied">Debes conceder el permiso para acceder a las imágenes en el dispositivo.</string>
-
-
     <string name="permissions_denied">Permisos denegados</string>
-
     <string name="grant_access_action">Permitir acceso</string>
     <string name="action_grant">Permitir</string>
     <string name="granted">Permitido</string>
-
-
     <string name="get_started">Empezar</string>
     <string name="select_storage_title">Elija el almacenamiento</string>
     <string name="now_playing">Reproduciendo ahora</string>
@@ -977,9 +972,9 @@
     <string name="app_widget_library">Biblioteca</string>
     <string name="app_widget_library_desc">Una cuadrícula de carátulas de una lista que tu elijas</string>
     <string name="app_widget_nothing_playing">Nada en reproducción</string>
-    <string name="app_widget_tap_to_play">Toca para abrir Booming</string>
+    <string name="app_widget_tap_to_play">Toca para abrir Booming Music</string>
     <string name="widget_settings_title">Ajustes de widgets</string>
-    <string name="widget_show_progress_title">Mostrar línea de tiempo</string>
+    <string name="widget_show_progress_title">Mostrar progreso</string>
     <string name="widget_show_progress_summary">Muestra el progreso de la pista actual.</string>
     <string name="widget_show_controls_title">Mostrar controles</string>
     <string name="widget_show_controls_summary">Muestra los botones de reproducción.</string>
@@ -997,4 +992,13 @@
     <string name="widget_source_recent">Reciente</string>
     <string name="widget_page_previous">Canciones anteriores</string>
     <string name="widget_page_next">Canciones siguientes</string>
+    <string name="welcome_to">Bienvenido a</string>
+    <string name="permissions_title">Permisos necesarios</string>
+    <string name="permissions_subtitle">Permite el acceso a tus archivos de audio y dispositivos cercanos para una mejor experiencia musical.</string>
+    <string name="initial_configuration_title">Configuración inicial</string>
+    <string name="initial_configuration_subtitle">Personaliza Booming Music a tu gusto antes de empezar.</string>
+    <string name="initial_configuration_note">Siempre puedes cambiar esos ajustes posteriormente.</string>
+    <string name="restore_from_backup">Restaurar desde copia de seguridad</string>
+    <string name="restart_app_message">La app se reiniciará para completar el proceso.</string>
+    <string name="network_features_summary">Habilita el scrobbling y la descarga de carátulas y letras.</string>
 </resources>
