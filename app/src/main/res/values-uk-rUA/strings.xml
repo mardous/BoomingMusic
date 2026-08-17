@@ -966,7 +966,7 @@
     <string name="musicbrainz_search_title">Пошук у MusicBrainz</string>
     <string name="musicbrainz_search_message">Шукайте метадані пісні на MusicBrainz за назвою та виконавцем.</string>
     <string name="musicbrainz_no_results">Пошук на MusicBrainz не дав результатів.</string>
-    <string name="musicbrainz_select_recording">Виберіть запис</string>
+    <string name="musicbrainz_select_recording">Виберіть результат</string>
     <string name="sort_order_name">Назва</string>
     <string name="website">Вебсайт</string>
     <string name="legal">Легально</string>
@@ -981,9 +981,9 @@
     <string name="app_widget_library">Бібліотека</string>
     <string name="app_widget_library_desc">Сітка обкладинок зі списку, який ви оберете</string>
     <string name="app_widget_nothing_playing">Нічого не відтворюється</string>
-    <string name="app_widget_tap_to_play">Торкніться, щоб відкрити Booming</string>
+    <string name="app_widget_tap_to_play">Торкніться, щоб відкрити Booming Music</string>
     <string name="widget_settings_title">Налаштування віджета</string>
-    <string name="widget_show_progress_title">Показувати часову шкалу</string>
+    <string name="widget_show_progress_title">Показувати прогрес</string>
     <string name="widget_show_progress_summary">Показує поступ поточного треку.</string>
     <string name="widget_show_controls_title">Показувати керування</string>
     <string name="widget_show_controls_summary">Показує кнопки відтворення.</string>
