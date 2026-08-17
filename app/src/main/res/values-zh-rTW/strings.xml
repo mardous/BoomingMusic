@@ -939,7 +939,7 @@
     <string name="musicbrainz_search_title">MusicBrainz 搜尋</string>
     <string name="musicbrainz_search_message">使用標題和藝人在 MusicBrainz 上搜尋歌曲中繼資料。</string>
     <string name="musicbrainz_no_results">在 MusicBrainz 上找不到結果。</string>
-    <string name="musicbrainz_select_recording">選擇紀錄</string>
+    <string name="musicbrainz_select_recording">選擇結果</string>
     <string name="sort_order_name">標題</string>
     <string name="website">網站</string>
     <string name="legal">法律資訊</string>
@@ -954,7 +954,7 @@
     <string name="app_widget_library">曲庫</string>
     <string name="app_widget_library_desc">排列著指定清單中的封面</string>
     <string name="app_widget_nothing_playing">未在播放</string>
-    <string name="app_widget_tap_to_play">點按開啟 Booming</string>
+    <string name="app_widget_tap_to_play">點按開啟 Booming Music</string>
     <string name="widget_settings_title">小工具設定</string>
     <string name="widget_show_progress_title">顯示進度條</string>
     <string name="widget_show_progress_summary">顯示目前曲目的播放進度。</string>
