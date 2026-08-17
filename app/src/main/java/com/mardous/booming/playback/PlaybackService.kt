@@ -111,7 +111,9 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.guava.future
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -826,17 +828,9 @@ class PlaybackService :
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         val isPlaying = player.isPlaying
-        // From the callback: queueStateHolder is still one item behind here.
-        val startedUri = mediaItem?.contentUri
+        if (replayGainProcessor.mode.isOn) submitReplayGain()
 
         serviceScope.launch(IO) {
-            if (startedUri != null) {
-                replayGainProcessor.submitGain(
-                    startedUri,
-                    ReplayGainTagExtractor.getReplayGain(startedUri)
-                )
-            }
-
             val newSong = queueStateHolder.currentSong.first()
 
             val previousSong = songPlayCountHelper.song
@@ -881,6 +875,13 @@ class PlaybackService :
 
         persistentStorage.saveState()
         widgets.refresh()
+    }
+
+    private fun submitReplayGain() {
+        val uri = player.currentMediaItem?.contentUri ?: return
+        serviceScope.launch(IO) {
+            replayGainProcessor.submitGain(uri, ReplayGainTagExtractor.getReplayGain(uri))
+        }
     }
 
     /** Warms the next item's tags so the audio processor can peek instead of reading files. */
@@ -1221,6 +1222,11 @@ class PlaybackService :
                 cancelSleepTimerFadeOut()
                 player.volume = volume.currentVolume
             }
+        }
+        serviceScope.launch {
+            // Turning ReplayGain on must also affect the track already playing.
+            equalizerManager.replayGainState.map { it.mode }.distinctUntilChanged()
+                .collect { mode -> if (mode.isOn) submitReplayGain() }
         }
         serviceScope.launch {
             equalizerManager.audioOffload.collect { audioOffloadingEnabled ->
