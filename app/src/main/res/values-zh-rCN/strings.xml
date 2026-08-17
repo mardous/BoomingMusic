@@ -939,7 +939,7 @@
     <string name="musicbrainz_search_title">MusicBrainz 搜索</string>
     <string name="musicbrainz_search_message">使用标题和艺人在 MusicBrainz 上搜索歌曲元数据。</string>
     <string name="musicbrainz_no_results">在 MusicBrainz 上找不到结果。</string>
-    <string name="musicbrainz_select_recording">选择记录</string>
+    <string name="musicbrainz_select_recording">选择结果</string>
     <string name="sort_order_name">标题</string>
     <string name="website">网站</string>
     <string name="legal">法律信息</string>
@@ -959,7 +959,7 @@
     <string name="widget_source_title">展示</string>
     <string name="widget_source_recent">最近播放</string>
     <string name="app_widget_nothing_playing">未在播放</string>
-    <string name="app_widget_tap_to_play">点按打开 Booming</string>
+    <string name="app_widget_tap_to_play">点按打开 Booming Music</string>
     <string name="widget_settings_title">小组件设置</string>
     <string name="widget_show_progress_title">显示进度条</string>
     <string name="widget_show_progress_summary">显示当前曲目的播放进度。</string>
