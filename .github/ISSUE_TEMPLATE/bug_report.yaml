@@ -8,6 +8,20 @@ body:
       value: |
         Thanks for taking the time to report an issue. Please fill out the form below to help us understand the problem.
 
+  - type: dropdown
+    id: source
+    attributes:
+      label: Download source
+      description: From which source did you download Booming Music?
+      options:
+        - GitHub
+        - F-Droid/IzzyOnDroid
+        - Play Store
+        - Other
+      default: 0
+    validations:
+      required: true
+
   - type: input
     id: version
     attributes:

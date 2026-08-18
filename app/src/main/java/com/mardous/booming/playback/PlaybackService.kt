@@ -21,7 +21,6 @@ import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
 import android.service.media.MediaBrowserService
-import android.util.Log
 import android.view.KeyEvent
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -55,6 +54,7 @@ import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSession.ConnectionResult.AcceptedResultBuilder
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
+import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
@@ -67,7 +67,6 @@ import com.mardous.booming.coil.CoilBitmapLoader
 import com.mardous.booming.core.appwidgets.WidgetData
 import com.mardous.booming.core.appwidgets.WidgetDataSource
 import com.mardous.booming.core.appwidgets.WidgetPresenter
-import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.model.queue.QueuePosition
@@ -81,7 +80,6 @@ import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.isBluetoothA2dpConnected
 import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
-import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.library.LibraryProvider
 import com.mardous.booming.playback.library.MediaIDs
@@ -304,7 +302,7 @@ class PlaybackService :
                 .build()
         )
 
-        player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(0, 0, Random.nextLong())
+        player.exoPlayer.applyShuffleOrder(ImprovedShuffleOrder(0, 0, Random.nextLong()))
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(this)
 
@@ -333,7 +331,7 @@ class PlaybackService :
             player.setMediaItems(items.mediaItems, items.startIndex, items.startPositionMs)
             player.prepare()
             if (player.shuffleModeEnabled && shuffleOrder != null) {
-                player.exoPlayer.shuffleOrder = shuffleOrder
+                player.exoPlayer.applyShuffleOrder(shuffleOrder)
             }
         }
 
@@ -391,34 +389,22 @@ class PlaybackService :
         sleepTimer.release()
     }
 
-    // Stays on the service: only a foreground start begins playback from cold, which a broadcast cannot.
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent?.action == ACTION_PLAY_SONG) {
-            val songId = intent.getLongExtra(EXTRA_SONG_ID, -1L)
-            if (songId != -1L) {
-                val source = intent.getStringExtra(EXTRA_SONG_SOURCE)?.toEnum<SongSource>()
-                    ?: SongSource.Recent
-                playSong(songId, source)
-            }
-            return START_NOT_STICKY
-        }
-        return super.onStartCommand(intent, flags, startId)
-    }
-
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
         val myPackageName = this.packageName
-        if (myPackageName == controllerInfo.packageName ||
-            controllerInfo.packageName == MediaBrowserService.SERVICE_INTERFACE ||
-            controllerInfo.packageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
+        val controllerPackageName = controllerInfo.packageName
+        if (controllerPackageName == myPackageName ||
+            controllerPackageName == MediaBrowserService.SERVICE_INTERFACE ||
+            controllerPackageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
             return mediaSession
         }
         val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
-        if (controllerType == Intent.ACTION_MEDIA_BUTTON) {
+        if (controllerType == Intent.ACTION_MEDIA_BUTTON &&
+            controllerPackageName == MediaSessionService.SERVICE_INTERFACE) {
             val sessionId = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_SESSION_ID)
-            if (sessionId == this.packageName) {
+            if (sessionId == myPackageName) {
                 return mediaSession
             }
-        } else if (packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
+        } else if (packageValidator.isKnownCaller(controllerPackageName, controllerInfo.uid)) {
             return mediaSession
         }
         return null
@@ -593,8 +579,7 @@ class PlaybackService :
         mediaItems: List<MediaItem>
     ): ListenableFuture<List<MediaItem>> {
         return serviceScope.future(IO) {
-            runCatching { libraryProvider.getMediaItemsForPlayback(controller.uid, mediaItems) }
-                .getOrDefault(emptyList())
+            libraryProvider.resolveMediaItems(mediaItems)
         }
     }
 
@@ -607,11 +592,7 @@ class PlaybackService :
     ): ListenableFuture<MediaItemsWithStartPosition> {
         player.exoPlayer.let { exoPlayer ->
             if (exoPlayer.shuffleOrder !is ImprovedShuffleOrder && !hasSetUnshuffledOrder) {
-                exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                    firstIndex = player.currentMediaItemIndex,
-                    length = player.mediaItemCount,
-                    randomSeed = Random.nextLong()
-                )
+                exoPlayer.applyRandomShuffleOrder()
             }
 
             (exoPlayer.shuffleOrder as? ImprovedShuffleOrder)
@@ -620,28 +601,18 @@ class PlaybackService :
             hasSetUnshuffledOrder = false
         }
         return serviceScope.future(IO) {
-            if (mediaSession.isAutomotiveController(controller) ||
-                mediaSession.isAutoCompanionController(controller)) {
-                runCatching { libraryProvider.getMediaItemsForAAOSPlayback(controller.uid, mediaItems) }
-                    .getOrNull()
-                    .let {
-                        MediaItemsWithStartPosition(
-                            it?.first ?: emptyList(),
-                            it?.second ?: C.INDEX_UNSET,
-                            startPositionMs
-                        )
-                    }
-            } else {
-                runCatching {
-                    libraryProvider.getMediaItemsForPlayback(
-                        controller.uid,
-                        mediaItems = mediaItems,
-                        tryToResolveComplexPaths = true
-                    )
-                }.getOrDefault(emptyList()).let {
-                    MediaItemsWithStartPosition(it, startIndex, startPositionMs)
-                }
+            var resolvedMediaItems: MediaItemsWithStartPosition? = null
+            if (mediaItems.size == 1) {
+                resolvedMediaItems = libraryProvider.tryToResolveComplexMediaItems(
+                    callerUid = controller.uid,
+                    mediaItems = mediaItems
+                )
             }
+            resolvedMediaItems ?: MediaItemsWithStartPosition(
+                libraryProvider.resolveMediaItems(mediaItems),
+                startIndex,
+                startPositionMs
+            )
         }.also { future ->
             future.addListener({
                 val result = runCatching { future.get() }.getOrNull()
@@ -714,7 +685,7 @@ class PlaybackService :
 
             Playback.SET_UNSHUFFLED_ORDER -> {
                 hasSetUnshuffledOrder = true
-                player.exoPlayer.shuffleOrder = UnshuffledShuffleOrder(player.mediaItemCount)
+                with(player.exoPlayer) { applyShuffleOrder(UnshuffledShuffleOrder(mediaItemCount)) }
                 Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
             }
 
@@ -754,7 +725,7 @@ class PlaybackService :
             persistentStorage.waitForMediaItems { items, shuffleOrder ->
                 if (items.mediaItems.isNotEmpty()) {
                     if (player.shuffleModeEnabled && shuffleOrder != null) {
-                        player.exoPlayer.shuffleOrder = shuffleOrder
+                        player.exoPlayer.applyShuffleOrder(shuffleOrder)
                     }
                     settableFuture.set(items)
                 } else {
@@ -910,11 +881,11 @@ class PlaybackService :
             if (!events.contains(Player.EVENT_TIMELINE_CHANGED)) {
                 dispatchPlayQueue(player)
                 if (player.shuffleModeEnabled && persistentStorage.restorationState.isRestored) {
-                    this.player.exoPlayer.shuffleOrder = ImprovedShuffleOrder(
-                        firstIndex = player.currentMediaItemIndex,
-                        length = player.mediaItemCount,
-                        randomSeed = Random.nextLong()
-                    )
+                    val exoPlayer = this.player.exoPlayer
+                    // Keep the staged start index while the queue is empty.
+                    if (exoPlayer.mediaItemCount > 0) {
+                        exoPlayer.applyRandomShuffleOrder()
+                    }
                 }
             }
         }
@@ -1092,31 +1063,6 @@ class PlaybackService :
                 )
             }
         }
-    }
-
-    private fun playSong(songId: Long, source: SongSource) = serviceScope.launch {
-        // arrives as a foreground start, anything short of playing needs stopSelf() before timeout
-        val resolved = runCatching {
-            withContext(IO) {
-                val songs = libraryProvider.getPlayableSongs(source.mediaId)
-                val position = songs.indexOfFirst { it.id == songId }
-                if (position != -1) songs to position
-                else listOfNotNull(repository.songById(songId).takeIf { it != Song.emptySong }) to 0
-            }
-        }.onFailure {
-            Log.e(TAG, "Couldn't resolve song $songId from ${source.mediaId}", it)
-        }.getOrNull()
-
-        val (queue, index) = resolved ?: run { stopSelf(); return@launch }
-        if (queue.isEmpty()) {
-            stopSelf()
-            return@launch
-        }
-        // On a cold start the restore is still in flight and ends in its own setMediaItems
-        awaitRestoration()
-        player.setMediaItems(queue.map { song -> buildPlayableMediaItem(song) }, index, C.TIME_UNSET)
-        player.playWhenReady = true
-        player.prepare()
     }
 
     private fun createSessionActivityIntent(): PendingIntent {

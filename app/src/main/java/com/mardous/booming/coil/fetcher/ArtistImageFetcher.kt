@@ -71,7 +71,11 @@ class ArtistImageFetcher(
                 }
                 revisedResults += deezerArtist.result.size
                 if (revisedResults < total) {
-                    deezerArtist = repository.deezerArtist(image.name, min((total - revisedResults), MAX_RESULT_PER_PAGE), pageIndex++)
+                    deezerArtist = repository.deezerArtist(
+                        name = image.name,
+                        limit = min((total - revisedResults), MAX_RESULT_PER_PAGE),
+                        index = pageIndex++
+                    )
                 }
             }
         }
