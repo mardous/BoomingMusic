@@ -55,6 +55,7 @@ import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSession.ConnectionResult.AcceptedResultBuilder
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
+import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
@@ -407,18 +408,20 @@ class PlaybackService :
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
         val myPackageName = this.packageName
-        if (myPackageName == controllerInfo.packageName ||
-            controllerInfo.packageName == MediaBrowserService.SERVICE_INTERFACE ||
-            controllerInfo.packageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
+        val controllerPackageName = controllerInfo.packageName
+        if (controllerPackageName == myPackageName ||
+            controllerPackageName == MediaBrowserService.SERVICE_INTERFACE ||
+            controllerPackageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
             return mediaSession
         }
         val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
-        if (controllerType == Intent.ACTION_MEDIA_BUTTON) {
+        if (controllerType == Intent.ACTION_MEDIA_BUTTON &&
+            controllerPackageName == MediaSessionService.SERVICE_INTERFACE) {
             val sessionId = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_SESSION_ID)
-            if (sessionId == this.packageName) {
+            if (sessionId == myPackageName) {
                 return mediaSession
             }
-        } else if (packageValidator.isKnownCaller(controllerInfo.packageName, controllerInfo.uid)) {
+        } else if (packageValidator.isKnownCaller(controllerPackageName, controllerInfo.uid)) {
             return mediaSession
         }
         return null
