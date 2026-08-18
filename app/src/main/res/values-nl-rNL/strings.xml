@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Lees afbeeldingen (optioneel)</string>
     <string name="permission_read_images_summary">Deze toestemming is vereist voor het vinden van albumhoezen in je muziekmappen. Als u niet van plan bent om deze functie te gebruiken, kunt u ervoor kiezen deze niet toe te staan.</string>
     <string name="permission_read_images_denied">Je moet toestemming geven om afbeeldingen van het apparaat te lezen.</string>
-
-
     <string name="permissions_denied">Permissies geweigerd</string>
-
     <string name="grant_access_action">Toegang verlenen</string>
     <string name="action_grant">Toestaan</string>
     <string name="granted">Toegekend</string>
-
-
     <string name="get_started">Nu inschrijven</string>
     <string name="select_storage_title">Opslag selecteren</string>
     <string name="now_playing">Afspelende media</string>
@@ -916,7 +911,7 @@
     <string name="musicbrainz_search_title">MusicBrainz zoeken</string>
     <string name="musicbrainz_search_message">Zoek voor metadata van liedjes op MusicBrainz met de titel en artiest.</string>
     <string name="musicbrainz_no_results">Geen resultaten gevonden op MusicBrainz.</string>
-    <string name="musicbrainz_select_recording">Selecteer een opname</string>
+    <string name="musicbrainz_select_recording">Selecteer een resultaat</string>
     <string name="reorder_action">Reorganizeer</string>
     <string name="go_to_current_track">Naar de huidige track</string>
     <string name="sort_order_name">Naam</string>
@@ -968,9 +963,9 @@
     <string name="app_widget_library">Bibliotheek</string>
     <string name="app_widget_library_desc">Een raster van hoezen vanuit een lijst waaruit u kan kiezen</string>
     <string name="app_widget_nothing_playing">Niets speelt</string>
-    <string name="app_widget_tap_to_play">Tik om Booming te openen</string>
+    <string name="app_widget_tap_to_play">Tik om Booming Music te openen</string>
     <string name="widget_settings_title">Widgetinstellingen</string>
-    <string name="widget_show_progress_title">Toon tijdlijn</string>
+    <string name="widget_show_progress_title">Toon vooruitgang</string>
     <string name="widget_show_progress_summary">Toon de vooruitgang van het huidige nummer.</string>
     <string name="widget_show_controls_title">Toon knoppen</string>
     <string name="widget_show_controls_summary">Toon de terugspeelknoppen.</string>
@@ -988,4 +983,13 @@
     <string name="widget_source_recent">Recent</string>
     <string name="widget_page_previous">Vorige liedjes</string>
     <string name="widget_page_next">Volgende liedjes</string>
+    <string name="welcome_to">Welkom bij</string>
+    <string name="permissions_title">Toestemmingen vereist</string>
+    <string name="permissions_subtitle">Geeft toegang tot uw muziekbestanden en nabije apparaten om de beste terugspeelervaring te beleven.</string>
+    <string name="initial_configuration_title">Eerste Installatie</string>
+    <string name="initial_configuration_subtitle">Pas Booming Music naar uw smaak aan voor u begint.</string>
+    <string name="initial_configuration_note">U kunt deze instellingen altijd later aanpassen.</string>
+    <string name="restore_from_backup">Herstel vanuit back-up</string>
+    <string name="restart_app_message">De app zal herstarten om het proces te voltooien.</string>
+    <string name="network_features_summary">Schakel scrobblen en het downloaden van albumcovers en songteksten in.</string>
 </resources>
