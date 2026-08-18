@@ -17,7 +17,7 @@
 package com.mardous.booming.data.remote.github
 
 import android.content.Context
-import com.mardous.booming.BuildConfig
+import com.mardous.booming.R
 import com.mardous.booming.data.remote.github.model.GitHubRelease
 import com.mardous.booming.data.remote.github.model.GitHubTreeResponse
 import io.ktor.client.HttpClient
@@ -46,6 +46,9 @@ class GitHubService(private val context: Context, private val client: HttpClient
 
     @OptIn(ExperimentalTime::class)
     suspend fun latestRelease(user: String = DEFAULT_USER, repo: String = DEFAULT_REPO, allowExperimental: Boolean = true): GitHubRelease {
+        val updaterEnabled = context.resources.getBoolean(R.bool.enable_builtin_updater)
+        if (!updaterEnabled) return GitHubRelease("", "", "", "", "", false, emptyList())
+
         val stableRelease = fetchStableRelease(user, repo)
         if (stableRelease.hasApk && stableRelease.isNewer(context)) {
             return stableRelease
@@ -80,7 +83,7 @@ class GitHubService(private val context: Context, private val client: HttpClient
     }
 
     companion object {
-        private const val GITHUB_API_URL = BuildConfig.GITHUB_API_URL
+        private const val GITHUB_API_URL = "https://api.github.com/"
         private const val GITHUB_CONTENT_URL = "https://raw.githubusercontent.com/"
 
         private const val DEFAULT_USER = "mardous"
