@@ -12,11 +12,11 @@ import androidx.glance.action.Action
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.action.actionSendBroadcast
-import androidx.glance.appwidget.action.actionStartActivity as actionStartActivityIntent
 import androidx.glance.appwidget.action.actionStartService
 import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.playback.PlaybackService
 import com.mardous.booming.ui.screen.MainActivity
+import androidx.glance.appwidget.action.actionStartActivity as actionStartActivityIntent
 
 fun playbackAction(context: Context, mediaKeyCode: Int): Action {
     val intent = Intent(Intent.ACTION_MEDIA_BUTTON)
@@ -55,18 +55,16 @@ private fun openListAction(context: Context, source: SongSource): Action {
     return actionStartActivityIntent(intent)
 }
 
-
 @Composable
 fun GlanceModifier.playSong(songId: Long, source: SongSource): GlanceModifier =
     clickable(playSongAction(LocalContext.current, songId, source))
 
 private fun playSongAction(context: Context, songId: Long, source: SongSource): Action {
-    val intent = Intent(PlaybackService.ACTION_PLAY_SONG)
-    intent.component = ComponentName(context, PlaybackService::class.java)
-    intent.putExtra(PlaybackService.EXTRA_SONG_ID, songId)
-    intent.putExtra(PlaybackService.EXTRA_SONG_SOURCE, source.name)
+    val intent = Intent(WidgetActionReceiver.ACTION_PLAY_SONG)
+    intent.component = ComponentName(context, WidgetActionReceiver::class.java)
+    intent.putExtra(WidgetActionReceiver.EXTRA_SONG_ID, songId)
+    intent.putExtra(WidgetActionReceiver.EXTRA_SONG_SOURCE, source.name)
     // Distinct data prevents PendingIntent reuse across covers
     intent.data = "booming://widget/play/${source.name}/$songId".toUri()
-    // Starts the service directly
-    return actionStartService(intent, true)
+    return actionSendBroadcast(intent)
 }
