@@ -118,6 +118,9 @@ internal fun ExoPlayer.applyRandomShuffleOrder() {
 val MediaItem.resolvedFromFile: Boolean
     get() = mediaMetadata.extras?.getBoolean(RESOLVED_FROM_FILE) == true
 
+val MediaItem.contentUri: Uri?
+    get() = localConfiguration?.uri
+
 fun MediaItem.withExtras(consumer: Bundle.() -> Unit) = buildUpon()
     .setMediaMetadata(mediaMetadata.withExtras(consumer))
     .build()
