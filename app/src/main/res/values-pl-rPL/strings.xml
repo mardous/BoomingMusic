@@ -944,7 +944,7 @@
     <string name="go_to_current_track">Bieżący utwór</string>
     <string name="sort_order_name">Nazwa</string>
     <string name="eq_knee_width">Szerokość kolanka</string>
-    <string name="error_lastfm_rate_limit">Zbyt wiele żądań. Odczekaj chwilę przed ponownym scrobblingiem.</string>
+    <string name="error_lastfm_rate_limit">Zbyt wiele zapytań. Poczekaj chwilę przed kolejnym scrobblowaniem.</string>
     <string name="website">Strona WWW</string>
     <string name="legal">Informacje prawne</string>
     <string name="terms_of_service">Warunki świadczenia usług</string>
