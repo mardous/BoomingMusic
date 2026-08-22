@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Afegeix a la llista</string>
     <string name="rename_playlist_title">Canvia el nom a la llista de reproducció</string>
     <string name="action_edit_playlist">Edita la llista</string>
-    <string name="action_delete">Esborra la llista</string>
+    <string name="action_delete_playlist">Esborra la llista</string>
     <string name="action_export_playlist">Exporta la llista</string>
     <string name="action_clear_history">Esborra l\'historial</string>
     <string name="history_cleared">S\'ha esborrat l\'historial</string>

@@ -64,7 +64,7 @@
     <string name="add_playlist_title">재생목록에 추가</string>
     <string name="rename_playlist_title">재생목록 이름 변경</string>
     <string name="action_edit_playlist">재생목록 편집</string>
-    <string name="action_delete">재생목록 삭제</string>
+    <string name="action_delete_playlist">재생목록 삭제</string>
     <string name="action_export_playlist">파일로 내보내기</string>
     <string name="action_clear_history">기록 지우기</string>
     <string name="history_cleared">기록이 지워졌습니다</string>

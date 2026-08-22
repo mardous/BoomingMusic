@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Tambah ke daftar putar</string>
     <string name="rename_playlist_title">Ganti nama daftar putar</string>
     <string name="action_edit_playlist">Edit daftar putar</string>
-    <string name="action_delete">Hapus daftar putar</string>
+    <string name="action_delete_playlist">Hapus daftar putar</string>
     <string name="action_export_playlist">Ekspor ke file</string>
     <string name="action_clear_history">Bersihkan riwayat</string>
     <string name="history_cleared">Riwayat dibersihkan</string>

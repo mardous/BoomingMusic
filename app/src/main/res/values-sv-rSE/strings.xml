@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Lägg till i spellistan</string>
     <string name="rename_playlist_title">Döp om spellista</string>
     <string name="action_edit_playlist">Redigera spellista</string>
-    <string name="action_delete">Ta bort spellista</string>
+    <string name="action_delete_playlist">Ta bort spellista</string>
     <string name="action_export_playlist">Exportera till fil</string>
     <string name="action_clear_history">Rensa historik</string>
     <string name="history_cleared">Historik rensad</string>

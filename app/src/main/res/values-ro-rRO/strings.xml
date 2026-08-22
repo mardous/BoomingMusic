@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Adaugă la playlist</string>
     <string name="rename_playlist_title">Redenumește playlist</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Șterge playlist</string>
+    <string name="action_delete_playlist">Șterge playlist</string>
     <string name="action_export_playlist">Exportă în fișier</string>
     <string name="action_clear_history">Ștergeți istoricul</string>
     <string name="history_cleared">Istoric golit</string>

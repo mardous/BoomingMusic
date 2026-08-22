@@ -63,7 +63,7 @@
     <string name="add_playlist_title">Lisa esitusloendisse</string>
     <string name="rename_playlist_title">Muuda esitusloendi nime</string>
     <string name="action_edit_playlist">Muuda esitusloendit</string>
-    <string name="action_delete">Kustuta esitusloend</string>
+    <string name="action_delete_playlist">Kustuta esitusloend</string>
     <string name="action_export_playlist">Ekspordi faili</string>
     <string name="action_clear_history">Tühjenda ajalugu</string>
     <string name="history_cleared">Ajalugu on kustutatud</string>

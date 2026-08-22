@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Añadir a la lista de reproducción</string>
     <string name="rename_playlist_title">Cambiar el nombre de la lista</string>
     <string name="action_edit_playlist">Editar lista de reproducción</string>
-    <string name="action_delete">Eliminar lista de reproducción</string>
+    <string name="action_delete_playlist">Eliminar lista de reproducción</string>
     <string name="action_export_playlist">Exportar a archivo</string>
     <string name="action_clear_history">Vaciar historial</string>
     <string name="history_cleared">Se vació el historial</string>

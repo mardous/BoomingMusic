@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Προσθήκη στη λίστα αναπαραγωγής</string>
     <string name="rename_playlist_title">Μετονομασία λίστας αναπαραγωγής</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Διαγραφή λίστας αναπαραγωγής</string>
+    <string name="action_delete_playlist">Διαγραφή λίστας αναπαραγωγής</string>
     <string name="action_export_playlist">Εξαγωγή σε αρχείο</string>
     <string name="action_clear_history">Εκκαθάριση ιστορικού</string>
     <string name="history_cleared">Το ιστορικό διαγράφηκε</string>

@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Toevoegen aan afspeellijst</string>
     <string name="rename_playlist_title">Hernoem afspeellijst</string>
     <string name="action_edit_playlist">Afspeellijst bewerken</string>
-    <string name="action_delete">Afspeellijst verwijderen</string>
+    <string name="action_delete_playlist">Afspeellijst verwijderen</string>
     <string name="action_export_playlist">Exporteren naar bestand</string>
     <string name="action_clear_history">Geschiedenis verwijderen</string>
     <string name="history_cleared">Geschiedenis gewist</string>

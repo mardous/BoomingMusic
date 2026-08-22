@@ -69,7 +69,7 @@
     <string name="add_playlist_title">Плейлистка өстәлгә</string>
     <string name="rename_playlist_title">Плейлистка исем үзгәртергә</string>
     <string name="action_edit_playlist">Плейлистны редакцияләү</string>
-    <string name="action_delete">Плейлистны бетерү</string>
+    <string name="action_delete_playlist">Плейлистны бетерү</string>
     <string name="action_export_playlist">Файлга экспортлау</string>
     <string name="action_clear_history">Тарих чистарту</string>
     <string name="history_cleared">Тарых чистартырган</string>

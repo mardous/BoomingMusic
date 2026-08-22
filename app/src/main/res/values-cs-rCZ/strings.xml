@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Přidat do playlistu</string>
     <string name="rename_playlist_title">Přejmenovat seznam skladeb</string>
     <string name="action_edit_playlist">Upravit seznam skladeb</string>
-    <string name="action_delete">Odstranit seznam skladeb</string>
+    <string name="action_delete_playlist">Odstranit seznam skladeb</string>
     <string name="action_export_playlist">Exportovat do souboru</string>
     <string name="action_clear_history">Vymazat historii</string>
     <string name="history_cleared">Historie vymazána</string>

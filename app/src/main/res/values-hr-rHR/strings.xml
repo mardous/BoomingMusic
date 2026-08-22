@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Dodaj playlistu</string>
     <string name="rename_playlist_title">Preimenuj playlistu</string>
     <string name="action_edit_playlist">Uredi playlistu</string>
-    <string name="action_delete">Izbriši playlist</string>
+    <string name="action_delete_playlist">Izbriši playlist</string>
     <string name="action_export_playlist">Izvezi u datoteku</string>
     <string name="action_clear_history">Izbriši povijest</string>
     <string name="history_cleared">Povijest izbrisana</string>

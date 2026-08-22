@@ -64,7 +64,7 @@
     <string name="add_playlist_title">添加到播放列表</string>
     <string name="rename_playlist_title">重命名播放列表</string>
     <string name="action_edit_playlist">编辑播放列表</string>
-    <string name="action_delete">删除播放列表</string>
+    <string name="action_delete_playlist">删除播放列表</string>
     <string name="action_export_playlist">将播放列表导出为文件</string>
     <string name="action_clear_history">清除播放记录</string>
     <string name="history_cleared">播放记录已清除</string>

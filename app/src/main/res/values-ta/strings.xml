@@ -69,7 +69,7 @@
     <string name="add_playlist_title">பிளேலிச்ட்டில் சேர்க்கவும்</string>
     <string name="rename_playlist_title">பிளேலிச்ட்டை மறுபெயரிடவும்</string>
     <string name="action_edit_playlist">பிளேலிச்ட்டைத் திருத்து</string>
-    <string name="action_delete">பிளேலிச்ட்டை நீக்கு</string>
+    <string name="action_delete_playlist">பிளேலிச்ட்டை நீக்கு</string>
     <string name="action_export_playlist">கோப்பிற்கு ஏற்றுமதி செய்யவும்</string>
     <string name="action_clear_history">தெளிவான வரலாறு</string>
     <string name="history_cleared">வரலாறு அழிக்கப்பட்டது</string>

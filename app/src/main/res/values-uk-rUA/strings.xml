@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Додати до списку відтворення</string>
     <string name="rename_playlist_title">Перейменувати список відтворення</string>
     <string name="action_edit_playlist">Редагувати список відтворення</string>
-    <string name="action_delete">Видалити список відтворення</string>
+    <string name="action_delete_playlist">Видалити список відтворення</string>
     <string name="action_export_playlist">Експортувати до файлу</string>
     <string name="action_clear_history">Очистити історію</string>
     <string name="history_cleared">Історію очищено</string>
