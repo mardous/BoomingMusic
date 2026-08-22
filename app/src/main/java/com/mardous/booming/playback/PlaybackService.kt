@@ -802,7 +802,7 @@ class PlaybackService :
         val isPlaying = player.isPlaying
 
         serviceScope.launch(IO) {
-            val newSong = queueStateHolder.currentSong.first()
+            val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
             if (newSong != Song.emptySong) {
                 replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
             }
