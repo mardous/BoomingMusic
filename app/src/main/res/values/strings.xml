@@ -564,6 +564,7 @@
     <string name="lastfm_login_password">Password</string>
     <string name="lastfm_login_toggle_password_visibility">Toggle password visibility</string>
     <string name="listenbrainz_token_label">User Token</string>
+    <string name="listenbrainz_toggle_token_visibility">Toggle token visibility</string>
     <string name="error_lastfm_auth">Session expired or invalid credentials. Please log in again.</string>
     <string name="error_lastfm_credentials">Your credentials are not valid. Please verify and try again.</string>
     <string name="error_lastfm_params">Invalid params. This could be due to an error on our part.</string>

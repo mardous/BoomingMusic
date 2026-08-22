@@ -65,7 +65,6 @@ import com.mardous.booming.data.model.network.canLogIn
 import com.mardous.booming.data.model.network.isFailure
 import com.mardous.booming.data.model.network.isLoading
 import com.mardous.booming.extensions.extraNotNull
-import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.component.compose.BottomSheetDialogSurface
@@ -313,6 +312,7 @@ class ScrobblingServiceLoginFragment : BottomSheetDialogFragment() {
         modifier: Modifier = Modifier
     ) {
         var token by remember { mutableStateOf("") }
+        var tokenVisible by remember { mutableStateOf(false) }
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -340,10 +340,25 @@ class ScrobblingServiceLoginFragment : BottomSheetDialogFragment() {
                         contentDescription = null
                     )
                 },
-                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = {
+                    val icon = if (tokenVisible) {
+                        painterResource(R.drawable.ic_visibility_off_24dp)
+                    } else {
+                        painterResource(R.drawable.ic_visibility_24dp)
+                    }
+                    IconButton(onClick = { tokenVisible = !tokenVisible }) {
+                        Icon(
+                            painter = icon,
+                            contentDescription = stringResource(R.string.listenbrainz_toggle_token_visibility)
+                        )
+                    }
+                },
+                visualTransformation = if (tokenVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
                 enabled = loginState.canLogIn,
-                shape = MaterialTheme.shapes.medium
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(16.dp))
