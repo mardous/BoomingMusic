@@ -816,7 +816,7 @@ class PlaybackService :
                 if (preferences.getBoolean(ENABLE_HISTORY, true)) {
                     repository.upsertSongInHistory(newSong)
                 }
-                if (!NetworkFeature.Lastfm.NowPlaying.isAvailable) {
+                if (NetworkFeature.Lastfm.NowPlaying.isAvailable) {
                     launch { repository.updateNowPlaying(ScrobblingService.Lastfm, newSong) }
                 }
                 if (NetworkFeature.ListenBrainz.NowPlaying.isAvailable) {
