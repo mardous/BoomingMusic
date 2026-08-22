@@ -129,12 +129,9 @@
     <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
     <string name="permissions_denied">Berechtigungen verweigert</string>
-
     <string name="grant_access_action">Zugriff gewähren</string>
     <string name="action_grant">Gewähren</string>
     <string name="granted">Gewährt</string>
-
-
     <string name="get_started">Los geht\'s</string>
     <string name="select_storage_title">Verzeichnis auswählen</string>
     <string name="now_playing">Aktuelle Wiedergabe</string>
@@ -951,7 +948,7 @@
     <string name="musicbrainz_search_title">MusicBrainz Suche</string>
     <string name="musicbrainz_search_message">Lied-Metadaten auf MusicBrainz mit Titel und Künstler suchen.</string>
     <string name="musicbrainz_no_results">Keine Ergebnisse auf MusicBrainz gefunden.</string>
-    <string name="musicbrainz_select_recording">Wähle eine Aufnahme</string>
+    <string name="musicbrainz_select_recording">Wähle ein Ergebnis</string>
     <string name="sort_order_name">Name</string>
     <string name="website">Webseite</string>
     <string name="legal">Legal</string>
@@ -965,9 +962,9 @@
     <string name="app_widget_library">Bibliothek</string>
     <string name="app_widget_library_desc">Ein Gitter von Covers von einer selbst gewählten Liste</string>
     <string name="app_widget_nothing_playing">Nichts spielt</string>
-    <string name="app_widget_tap_to_play">Tippen, um Booming zu öffnen</string>
+    <string name="app_widget_tap_to_play">Tippen, um Booming Music zu öffnen</string>
     <string name="widget_settings_title">Widget-Einstellungen</string>
-    <string name="widget_show_progress_title">Zeitleiste anzeigen</string>
+    <string name="widget_show_progress_title">Fortschritt anzeigen</string>
     <string name="widget_show_progress_summary">Fortschritt des aktuellen Lieds anzeigen.</string>
     <string name="widget_show_controls_title">Steuerelemente anzeigen</string>
     <string name="widget_show_controls_summary">Wiedergabetasten anzeigen.</string>
@@ -987,4 +984,12 @@
     <string name="widget_page_previous">Vorherige Lieder</string>
     <string name="widget_page_next">Nächste Lieder</string>
     <string name="restart_app_message">Die App startet neu, um den Prozess abzuschließen.</string>
+    <string name="welcome_to">Willkommen bei</string>
+    <string name="permissions_title">Benötigte Berechtigungen</string>
+    <string name="permissions_subtitle">Gewähre Zugriff auf deine Musikdateien und Geräte in der Nähe, um das beste Wiedergabeerlebnis zu genießen.</string>
+    <string name="initial_configuration_title">Erstkonfiguration</string>
+    <string name="initial_configuration_subtitle">Passe Booming Music nach deinem Geschmack an, bevor du beginnst.</string>
+    <string name="initial_configuration_note">Du kannst diese Einstellungen später jederzeit ändern.</string>
+    <string name="restore_from_backup">Von Backup wiederherstellen</string>
+    <string name="network_features_summary">Aktiviert Scrobbeln sowie das Herunterladen von Albumcovern und Songtexten.</string>
 </resources>
