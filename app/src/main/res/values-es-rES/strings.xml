@@ -128,12 +128,9 @@
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
     <string name="permissions_denied">Permisos denegados</string>
-
     <string name="grant_access_action">Permitir acceso</string>
     <string name="action_grant">Conceder</string>
     <string name="granted">Concedido</string>
-
-
     <string name="get_started">Comenzar</string>
     <string name="select_storage_title">Seleccionar almacenamiento</string>
     <string name="now_playing">Ahora suena</string>
@@ -707,8 +704,8 @@
     <string name="trash_music_summary">Enviar archivos eliminados a la papelera.</string>
     <string name="recursive_folder_actions_title">Acciones que afectan a las subcarpetas</string>
     <string name="recursive_folder_actions_summary">Seleccione qué acciones deben aplicarse también a las subcarpetas cuando se realizan en una carpeta.</string>
-    <string name="enable_history_title">Activar historial</string>
-    <string name="enable_history_summary">Permite a la aplicación grabar las canciones que ha estado escuchando. Si lo desactiva se borrará todo el historial.</string>
+    <string name="enable_history_title">Registrar el historial de reproducción</string>
+    <string name="enable_history_summary">Rastrea tu historial de escuchas, las canciones más populares y las actualizaciones de los servicios de scrobbling. Desactivar esto evita que se haga scrobbling y rastreo de historial.</string>
     <string name="history_interval_title">Intervalo del historial</string>
     <string name="last_added_interval_title">Último intervalo agregado</string>
     <string name="whitelist_title">Lista blanca</string>
@@ -964,13 +961,13 @@
     <string name="app_widget_library">Biblioteca</string>
     <string name="app_widget_library_desc">Una cuadrícula de carátulas de una lista que tú elijas</string>
     <string name="app_widget_nothing_playing">Nada en reproducción</string>
-    <string name="app_widget_tap_to_play">Toca para abrir Booming</string>
+    <string name="app_widget_tap_to_play">Toca para abrir Booming Music</string>
     <string name="action_auto_fill_from_musicbrainz">Autocompletar desde MusicBrainz</string>
     <string name="searching">Buscando…</string>
     <string name="musicbrainz_search_title">Búsqueda de MusicBrainz</string>
     <string name="musicbrainz_search_message">Busca metadatos de canciones en MusicBrainz usando el título y el artista.</string>
     <string name="musicbrainz_no_results">Ningún resultado encontrado en MusicBrainz.</string>
-    <string name="musicbrainz_select_recording">Seleccione una grabación</string>
+    <string name="musicbrainz_select_recording">Seleccione un resultado</string>
     <string name="sort_order_name">Nombre</string>
     <string name="restart_app_message">La aplicación se reiniciará para completar el proceso.</string>
     <string name="website">Sito web</string>
@@ -978,7 +975,7 @@
     <string name="terms_of_service">Términos de servicio</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="widget_settings_title">Ajustes de Widget</string>
-    <string name="widget_show_progress_title">Mostrar tiempo</string>
+    <string name="widget_show_progress_title">Mostrar progreso</string>
     <string name="widget_show_progress_summary">Mostrar el progreso de la pista actual.</string>
     <string name="widget_show_controls_title">Mostrar controles</string>
     <string name="widget_show_controls_summary">Mostrar los botones de reproducción.</string>
@@ -994,4 +991,14 @@
     <string name="widget_source_recent">Reciente</string>
     <string name="widget_page_previous">Canciones anteriores</string>
     <string name="widget_page_next">Siguientes canciones</string>
+    <string name="welcome_to">Bienvenidos a</string>
+    <string name="permissions_title">Se necesitan permisos</string>
+    <string name="permissions_subtitle">Concede acceso a tus archivos de música y a dispositivos cercanos para obtener la mejor experiencia de reproducción.</string>
+    <string name="initial_configuration_title">Configuración inicial</string>
+    <string name="initial_configuration_subtitle">Personaliza Booming Music a tu gusto antes de empezar.</string>
+    <string name="initial_configuration_note">Siempre puedes cambiar estos ajustes más adelante.</string>
+    <string name="restore_from_backup">Restaurar desde copia de seguridad</string>
+    <string name="widget_show_navigation_title">Visualización</string>
+    <string name="widget_action_favourite">Favorito</string>
+    <string name="network_features_summary">Permite el scrobbling y la descarga de portadas y letras del álbum.</string>
 </resources>

@@ -24,7 +24,7 @@
     <string name="search_label">Szukaj</string>
     <string name="search_hint">Szukaj w bibliotece…</string>
     <string name="action_voice_search">Wyszukiwanie głosowe</string>
-    <string name="speech_not_supported">Twoje urządzenie nie obsługuje wprowadzania głosowego</string>
+    <string name="speech_not_supported">Wprowadzanie głosowe jest niedostępne na tym urządzeniu.</string>
     <string name="search_artist_x_label">Szukaj utworów wykonawcy: %s</string>
     <string name="search_album_x_label">Szukaj w albumie: %s</string>
     <string name="search_list_x_label">Szukaj w playliście: %s</string>
@@ -94,7 +94,7 @@
     <string name="action_lyrics_editor">Edytor tekstu</string>
     <string name="action_tag_editor">Edytor tagów</string>
     <string name="saving_changes">Zapisywanie zmian</string>
-    <string name="changes_saved_successfully">Zmiany zostały pomyślnie zapisane.</string>
+    <string name="changes_saved_successfully">Zapisano zmiany</string>
     <string name="could_not_save_some_changes">Nie można zapisać pewnych zmian.</string>
     <string name="web_search">Szukaj w Internecie</string>
     <string name="where_do_you_want_to_search">Gdzie wyszukać?</string>
@@ -205,7 +205,7 @@
     <string name="view_type_colored_card">Kolorowa karta</string>
     <string name="view_type_circle">Okrąg</string>
     <string name="view_type_image">Kafelki</string>
-    <string name="action_grid_size">Rozmiar siatki</string>
+    <string name="action_grid_size">Szerokość siatki</string>
     <string name="action_grid_size_land">Rozmiar siatki (poziomo)</string>
     <string name="action_sort_order">Sortuj według</string>
     <string name="sort_order_artist">Wykonawca</string>
@@ -262,7 +262,7 @@
     <string name="length">Długość utworu</string>
     <string name="label_last_modified">Ostatnia modyfikacja</string>
     <string name="label_channels">Kanały</string>
-    <string name="label_variable_bitrate">VBR</string>
+    <string name="label_variable_bitrate">Zmienna przepływność (VBR)</string>
     <string name="label_loss_less">Bezstratna</string>
     <string name="label_bit_rate">Bitrate</string>
     <string name="label_sampling_rate">Próbkowanie</string>
@@ -271,7 +271,7 @@
     <string name="last_played">Ostatnio odtwarzane</string>
     <string name="played">Odtworzono</string>
     <string name="skipped">Pominięto</string>
-    <string name="track">Numer utworu</string>
+    <string name="track">Nr utworu</string>
     <string name="track_total">Wszystkie utwory</string>
     <string name="disc">Numer płyty</string>
     <string name="disc_total">Liczba płyt</string>
@@ -290,7 +290,7 @@
     <string name="backup_failed">Nie udało się stworzyć kopii zapasowej.</string>
     <string name="select_content_to_restore">Wybierz zawartość do przywrócenia:</string>
     <string name="could_not_restore_data">Nie można przywrócić danych. Zweryfikuj plik kopii zapasowej i spróbuj ponownie.</string>
-    <string name="data_restored_successfully">Dane przywrócone pomyślnie.</string>
+    <string name="data_restored_successfully">Przywrócono dane.</string>
     <string name="action_toggle_playlist_lock">Zablokuj/odblokuj playlistę</string>
     <string name="playlist_locked">Zablokowano playlistę</string>
     <string name="playlist_unlocked">Odblokowano playlistę</string>
@@ -361,22 +361,22 @@
     <string name="recent_albums">Ostatnio dodane albumy</string>
     <string name="no_suggestions">Brak sugestii dla Ciebie</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">W pełni losowo</string>
+    <string name="shuffle_mode_pure_random">Całkowita losowość</string>
     <string name="shuffle_mode_most_played">Najczęściej odtwarzane</string>
     <string name="shuffle_mode_most_played_artists">Najczęściej odtwarzani artyści</string>
     <string name="shuffle_mode_most_played_albums">Najczęściej odtwarzane albumy</string>
-    <string name="shuffle_mode_favorite_songs">Wpierw ulubione</string>
+    <string name="shuffle_mode_favorite_songs">Najpierw ulubione</string>
     <string name="shuffle_mode_forgotten_songs">Zapomniane utwory</string>
     <string name="shuffle_mode_recently_added">Ostatnio dodane</string>
     <string name="shuffle_mode_combined">Inteligentny miks</string>
-    <string name="shuffle_mode_pure_random_description">Całkowicie losowe tasowanie.</string>
+    <string name="shuffle_mode_pure_random_description">Całkowicie losowe odtwarzanie.</string>
     <string name="shuffle_mode_most_played_description">Faworyzuje najczęściej odtwarzane utwory.</string>
     <string name="shuffle_mode_most_played_artists_description">Faworyzuje utwory ulubionych artystów.</string>
     <string name="shuffle_mode_most_played_albums_description">Faworyzuje utwory z najczęściej odtwarzanych albumów.</string>
     <string name="shuffle_mode_favorite_songs_description">Nadaje priorytet Twoim ulubionym utworom.</string>
     <string name="shuffle_mode_forgotten_songs_description">Faworyzuje utwory, których ostatnio nie odtwarzałeś.</string>
     <string name="shuffle_mode_recently_added_description">Faworyzuje utwory ostatnio dodane do biblioteki.</string>
-    <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych.</string>
+    <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych utworach.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Korektor dźwięku</string>
     <string name="autoeq_label">AutoEq</string>
@@ -398,7 +398,7 @@
     <string name="export_profiles">Eksportuj profile</string>
     <string name="select_profiles_to_export">Wybierz profile do eksportu:</string>
     <string name="select_a_file_to_save_the_exported_profiles">Wybierz plik, aby zapisać wyeksportowane profile.</string>
-    <string name="profiles_exported_successfully">Profile wyeksportowane pomyślnie.</string>
+    <string name="profiles_exported_successfully">Wyeksportowano profile</string>
     <string name="import_profiles">Importuj profile</string>
     <string name="select_profiles_to_import">Wybierz profile do importu:</string>
     <string name="select_a_file_containing_booming_eq_profiles">Wybierz plik zawierający profile EQ Booming Music.</string>
@@ -424,13 +424,13 @@
     <string name="delete_profile_label">Usuwanie profilu</string>
     <string name="delete_profile_x">Usunąć profil \"%s\"?</string>
     <string name="please_enter_a_name_for_this_profile">Wprowadź nazwę dla tego profilu.</string>
-    <string name="replace_profile_with_same_name">Zastąp profil o tej samej nazwie</string>
+    <string name="replace_profile_with_same_name">Zastąp istniejący profil</string>
     <string name="use_with_devices_title">Użyj z urządzeniami:</string>
     <string name="profile_name">Nazwa profilu</string>
     <string name="that_name_is_already_in_use">Ta nazwa jest już w użyciu.</string>
-    <string name="profile_saved_successfully">Pomyślnie zapisano profil.</string>
+    <string name="profile_saved_successfully">Zapisano profil</string>
     <string name="the_profile_could_not_be_saved">Nie udało się zapisać profilu.</string>
-    <string name="autoeq_profile_imported_successfully">Pomyślnie zaimportowano profil AutoEq.</string>
+    <string name="autoeq_profile_imported_successfully">Zaimportowano profil AutoEq</string>
     <string name="profile_x_deleted">Usunięto profil \"%s\".</string>
     <string name="autoeq_profile_x_deleted">Profil AutoEq \"%s\" został usunięty.</string>
     <string name="bassboost_label">Wzmocnienie basu</string>
@@ -468,10 +468,10 @@
     <string name="download_lyrics">Pobierz tekst</string>
     <string name="write_lyrics_here">Napisz tutaj tekst</string>
     <string name="no_lyrics_found">Nie znaleziono tekstu utworu</string>
-    <string name="lyrics_were_updated_successfully">Tekst został pomyślnie zaktualizowany.</string>
+    <string name="lyrics_were_updated_successfully">Zaktualizowano tekst utworu</string>
     <string name="failed_to_update_lyrics">Nie udało się zaktualizować tekstu.</string>
     <string name="there_are_no_changes_to_save">Nie ma zmian do zapisania.</string>
-    <string name="font_imported_successfully">Czcionki zaimportowane pomyślnie.</string>
+    <string name="font_imported_successfully">Zaimportowano czcionkę</string>
     <string name="could_not_import_font">Nie można zaimportować czcionki.</string>
     <!-- Sleep timer -->
     <string name="action_sleep_timer">Zegar uśpienia</string>
@@ -572,7 +572,7 @@
     <string name="lyrics_center_current_line_title">Wyśrodkuj bieżący wers</string>
     <string name="lyrics_center_current_line_summary">Utrzymuj bieżący wers tekstu na środku ekranu zamiast wyrównania do góry.</string>
     <string name="lyrics_custom_font_title">Własna czcionka</string>
-    <string name="lyrics_custom_font_summary">Importuj i użyj własnej czcionki dla tekstów piosenek.</string>
+    <string name="lyrics_custom_font_summary">Importuj i użyj własnej czcionki dla tekstów utworów.</string>
     <string name="lyrics_import_custom_font_title">Wybierz własną czcionkę</string>
     <string name="lyrics_syllable_mode_title">Zsynchronizowany tekst</string>
     <string name="lyrics_syllable_mode_summary">Umożliwia wyświetlanie tekstu utworu zsynchronizowanego słowo po słowie. Działa tylko wtedy, gdy dostępny jest odpowiedni tekst i zgodny format (np. LRC lub TTML).</string>
@@ -934,17 +934,17 @@
     <string name="app_widget_library">Biblioteka</string>
     <string name="app_widget_library_desc">Siatka okładek z wybranej listy</string>
     <string name="app_widget_nothing_playing">Brak odtwarzania</string>
-    <string name="app_widget_tap_to_play">Naciśnij, aby otworzyć Booming</string>
+    <string name="app_widget_tap_to_play">Naciśnij, aby otworzyć Booming Music</string>
     <string name="action_auto_fill_from_musicbrainz">Automatyczne uzupełnianie z MusicBrainz</string>
     <string name="searching">Wyszukiwanie…</string>
     <string name="musicbrainz_search_message">Wyszukuj metadane utworów w MusicBrainz na podstawie tytułu i wykonawcy.</string>
     <string name="musicbrainz_no_results">Brak wyników w MusicBrainz.</string>
-    <string name="musicbrainz_select_recording">Wybierz nagranie</string>
+    <string name="musicbrainz_select_recording">Wybierz wynik</string>
     <string name="up_next">Nadchodzące</string>
     <string name="go_to_current_track">Bieżący utwór</string>
     <string name="sort_order_name">Nazwa</string>
     <string name="eq_knee_width">Szerokość kolanka</string>
-    <string name="error_lastfm_rate_limit">Zbyt wiele żądań. Odczekaj chwilę przed ponownym scrobblingiem.</string>
+    <string name="error_lastfm_rate_limit">Zbyt wiele zapytań. Poczekaj chwilę przed kolejnym scrobblowaniem.</string>
     <string name="website">Strona WWW</string>
     <string name="legal">Informacje prawne</string>
     <string name="terms_of_service">Warunki świadczenia usług</string>
@@ -1002,4 +1002,12 @@
     <string name="use_lyrically_provider_title">Używaj Lyrically</string>
     <string name="use_lyrically_provider_summary">Rozbudowane API tekstów z obsługą karaoke i podziałem na wielu wykonawców.</string>
     <string name="auto_theme_name">Auto</string>
+    <string name="welcome_to">Witaj w</string>
+    <string name="permissions_title">Wymagane uprawnienia</string>
+    <string name="permissions_subtitle">Przyznaj dostęp do Muzyki i dźwięku oraz Urządzeń w pobliżu, aby poprawić komfort odtwarzania.</string>
+    <string name="initial_configuration_title">Konfiguracja początkowa</string>
+    <string name="initial_configuration_subtitle">Zanim zaczniemy, dostosuj Booming Music do swoich preferencji.</string>
+    <string name="initial_configuration_note">Wszystkie te ustawienia możesz zmienić później.</string>
+    <string name="restore_from_backup">Przywróć z kopii zapasowej</string>
+    <string name="network_features_summary">Włącza scrobblowanie oraz pobieranie okładek albumów i tekstów utworów.</string>
 </resources>
