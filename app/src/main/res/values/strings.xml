@@ -79,7 +79,7 @@
     <string name="add_playlist_title">Add to playlist</string>
     <string name="rename_playlist_title">Rename playlist</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Delete playlist</string>
+    <string name="action_delete_playlist">Delete playlist</string>
     <string name="action_export_playlist">Export to file</string>
     <string name="action_clear_history">Clear history</string>
     <string name="history_cleared">History cleared</string>
@@ -564,6 +564,7 @@
     <string name="lastfm_login_password">Password</string>
     <string name="lastfm_login_toggle_password_visibility">Toggle password visibility</string>
     <string name="listenbrainz_token_label">User Token</string>
+    <string name="listenbrainz_toggle_token_visibility">Toggle token visibility</string>
     <string name="error_lastfm_auth">Session expired or invalid credentials. Please log in again.</string>
     <string name="error_lastfm_credentials">Your credentials are not valid. Please verify and try again.</string>
     <string name="error_lastfm_params">Invalid params. This could be due to an error on our part.</string>

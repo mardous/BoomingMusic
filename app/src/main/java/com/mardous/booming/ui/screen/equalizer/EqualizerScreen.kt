@@ -443,7 +443,7 @@ fun EqualizerScreen(
                 icon = painterResource(R.drawable.ic_delete_24dp),
                 title = stringResource(R.string.delete_profile_label),
                 message = stringResource(R.string.delete_profile_x, targetProfile.name),
-                confirmButton = stringResource(R.string.action_delete),
+                confirmButton = stringResource(R.string.delete_action),
                 dismissButton = stringResource(R.string.no),
                 onConfirm = { eqViewModel.deleteProfile(context, targetProfile) },
                 onDismiss = { deleteProfileState = null }

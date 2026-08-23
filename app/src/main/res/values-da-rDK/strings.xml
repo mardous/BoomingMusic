@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Føj til afspilningsliste</string>
     <string name="rename_playlist_title">Omdøb afspilningsliste</string>
     <string name="action_edit_playlist">Rediger afspilningsliste</string>
-    <string name="action_delete">Slet afspilningsliste</string>
+    <string name="action_delete_playlist">Slet afspilningsliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Ryd historik</string>
     <string name="history_cleared">Historik ryddet</string>

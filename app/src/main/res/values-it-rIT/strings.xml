@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Play</string>
+    <string name="action_play">Riproduci</string>
     <string name="action_play_all">Riproduci tutti</string>
     <string name="action_shuffle_play">Riproduzione casuale</string>
     <string name="action_queue_next">Prossimo</string>
     <string name="shuffle_all_label">Riproduci tutti i brani in modo casuale</string>
     <string name="shuffle_mode">Modalità Casuale</string>
-    <string name="repeat_mode">Modalità a Ripetizione</string>
+    <string name="repeat_mode">Modalità Ripetizione</string>
     <string name="shuffle_button_tip">Premi per riproduzione casuale. Tieni premuto per opzioni avanzate.</string>
     <string name="action_play_pause">Riproduci/Pausa</string>
     <string name="action_pause">Pausa</string>
@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Aggiungi alla playlist</string>
     <string name="rename_playlist_title">Rinomina playlist</string>
     <string name="action_edit_playlist">Modifica playlist</string>
-    <string name="action_delete">Elimina playlist</string>
+    <string name="action_delete_playlist">Elimina playlist</string>
     <string name="action_export_playlist">Esporta in file</string>
     <string name="action_clear_history">Cancella cronologia</string>
     <string name="history_cleared">Cronologia cancellata</string>
@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Lettura immagini (opzionale)</string>
     <string name="permission_read_images_summary">Questa autorizzazione è richiesta da Booming Music per trovare i file di copertina degli album nelle tue cartelle musicali. Se non hai intenzione di utilizzare questa funzione, puoi scegliere di non concederla.</string>
     <string name="permission_read_images_denied">Devi concedere i permessi di lettura delle immagini dal tuo dispositivo.</string>
-
-
     <string name="permissions_denied">Permessi negati</string>
-
     <string name="grant_access_action">Autorizza accesso</string>
     <string name="action_grant">Autorizza</string>
     <string name="granted">Autorizzato</string>
-
-
     <string name="get_started">Per Iniziare</string>
     <string name="select_storage_title">Seleziona memoria</string>
     <string name="now_playing">In riproduzione</string>
@@ -152,7 +147,7 @@
     <string name="toggle_favorite">Aggiungi/Rimuovi dai preferiti</string>
     <string name="action_add_to_playlist">Aggiungi alla playlist</string>
     <string name="action_remove_from_playlist">Rimuovi dalla playlist</string>
-    <string name="action_add_to_playing_queue">Aggiumgi alla coda di riproduzione</string>
+    <string name="action_add_to_playing_queue">Aggiungi alla coda di riproduzione</string>
     <string name="action_remove_from_playing_queue">Rimuovi dalla coda di riproduzione</string>
     <string name="put_after_current_track">Aggiungi dopo la traccia corrente</string>
     <string name="set_artist_image">Imposta immagine artista</string>
@@ -706,8 +701,8 @@
     <string name="trash_music_summary">Invia i file eliminati al cestino.</string>
     <string name="recursive_folder_actions_title">Azioni sulle sottocartelle</string>
     <string name="recursive_folder_actions_summary">Seleziona quali azioni dovrebbero essere effettuate anche sulle sottocartelle quando effettuate su una cartella.</string>
-    <string name="enable_history_title">Abilita Cronologia</string>
-    <string name="enable_history_summary">Consente all\'applicazione di registrare i brani che hai ascoltato. Se disabilitato, l\'intera cronologia verrà cancellata.</string>
+    <string name="enable_history_title">Registra cronologia di ascolto</string>
+    <string name="enable_history_summary">Traccia la tua cronologia di ascolto, i brani più ascoltati e gli aggiornamenti ai servizi di scrobbling. Disabilitando questa opzione si interromperanno tutti i servizi di scrobbling e il tracciamento della cronologia.</string>
     <string name="history_interval_title">Intervallo cronologia</string>
     <string name="last_added_interval_title">Ultimo intervallo aggiunto</string>
     <string name="whitelist_title">Whitelist</string>
@@ -949,4 +944,53 @@
     <string name="lyrics_resume_on_seek_summary">Riprendi automaticamente la riproduzione quando si fa clic su una riga.</string>
     <string name="play_all_songs_when_searching_title">Riproduci tutti i brani durante la ricerca</string>
     <string name="play_all_songs_when_searching_summary">Se l\'opzione è attiva, selezionando un brano cercato viene messa in coda l\'intera libreria. Soggetto all\'impostazione relativa alla selezione dei brani.</string>
+    <string name="app_widget_circle">Cerchio</string>
+    <string name="app_widget_circle_desc">Un lettore circolare con i controlli che gli orbitano attorno</string>
+    <string name="app_widget_cookie">Biscotto</string>
+    <string name="app_widget_cookie_desc">La copertina come un grande biscotto, i controlli attorno</string>
+    <string name="app_widget_grid">Griglia</string>
+    <string name="app_widget_grid_desc">Copertina, lettore e controlli di salto su quattro celle</string>
+    <string name="app_widget_library">Libreria</string>
+    <string name="app_widget_library_desc">Una griglia di copertine da un elenco selezionato da te</string>
+    <string name="app_widget_nothing_playing">Nulla in riproduzione</string>
+    <string name="app_widget_tap_to_play">Tocca per aprire Booming Music</string>
+    <string name="action_auto_fill_from_musicbrainz">Riempi automaticamente da MusicBrainz</string>
+    <string name="searching">Ricerca…</string>
+    <string name="musicbrainz_search_title">Ricerca MusicBrainz</string>
+    <string name="musicbrainz_search_message">Cerca metadati del brano su MusicBrainz utilizzando il titolo e l\'artista.</string>
+    <string name="musicbrainz_no_results">Nessun risultato trovato su MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Seleziona un risultato</string>
+    <string name="welcome_to">Benvenuto su</string>
+    <string name="permissions_title">Autorizzazione necessaria</string>
+    <string name="permissions_subtitle">Concedi l\'accesso ai tuoi file musiciali e ai dispositivi vicini per ottenere la migliore esperienza di riproduzione.</string>
+    <string name="initial_configuration_title">Configurazione iniziale</string>
+    <string name="initial_configuration_subtitle">Personalizza Booming Music a tuo piacimento prima di iniziare.</string>
+    <string name="initial_configuration_note">Puoi sempre cambiare queste impostazioni successivamente.</string>
+    <string name="restore_from_backup">Ripristina da un backup</string>
+    <string name="sort_order_name">Nome</string>
+    <string name="restart_app_message">L\'app si riavvierà per completare il processo.</string>
+    <string name="website">Sito web</string>
+    <string name="legal">Informazioni legali</string>
+    <string name="terms_of_service">Termini di servizio</string>
+    <string name="privacy_policy">Informativa privacy</string>
+    <string name="widget_settings_title">Impostazioni widget</string>
+    <string name="widget_show_progress_title">Mostra avanzamento</string>
+    <string name="widget_show_progress_summary">Visualizza l\'avanzamento della traccia attuale.</string>
+    <string name="widget_show_controls_title">Mostra controlli</string>
+    <string name="widget_show_controls_summary">Visualizza i pulsanti di riproduzione.</string>
+    <string name="widget_show_artist_title">Mostra artista</string>
+    <string name="widget_show_artist_summary">Visualizza l\'artista sotto al titolo della traccia.</string>
+    <string name="widget_show_navigation_title">Mostra navigazione</string>
+    <string name="widget_show_navigation_summary">Visualizza una barra per spostarti nell\'elenco.</string>
+    <string name="widget_leading_action_title">Pulsante di sinistra</string>
+    <string name="widget_trailing_action_title">Pulsante di destra</string>
+    <string name="widget_side_buttons_title">Pulsanti laterali</string>
+    <string name="widget_side_buttons_skip">Precedente e successivo</string>
+    <string name="widget_action_favourite">Preferito</string>
+    <string name="widget_action_repeat">Ripeti</string>
+    <string name="widget_source_title">Mostra</string>
+    <string name="widget_source_recent">Recente</string>
+    <string name="widget_page_previous">Brani precedenti</string>
+    <string name="widget_page_next">Brani successivi</string>
+    <string name="network_features_summary">Abilita lo scrobbling e il download di copertine degli album e testi.</string>
 </resources>

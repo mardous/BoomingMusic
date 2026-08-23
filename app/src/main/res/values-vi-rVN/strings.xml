@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Thêm vào danh sách phát</string>
     <string name="rename_playlist_title">Đổi tên danh sách phát</string>
     <string name="action_edit_playlist">Chỉnh sửa danh sách phát</string>
-    <string name="action_delete">Xoá danh sách phát</string>
+    <string name="action_delete_playlist">Xoá danh sách phát</string>
     <string name="action_export_playlist">Lưu danh sách phát thành tệp</string>
     <string name="action_clear_history">Xoá lịch sử</string>
     <string name="history_cleared">Lịch sử đã được xoá</string>

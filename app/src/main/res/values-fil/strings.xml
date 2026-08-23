@@ -69,7 +69,7 @@
     <string name="add_playlist_title">Idagdag sa playlist</string>
     <string name="rename_playlist_title">Palitan ang pangalan ng playlist</string>
     <string name="action_edit_playlist">I-edit ang playlist</string>
-    <string name="action_delete">Tanggalin ang playlist</string>
+    <string name="action_delete_playlist">Tanggalin ang playlist</string>
     <string name="action_export_playlist">I-export sa file</string>
     <string name="action_clear_history">Alisin ang kasaysayan</string>
     <string name="history_cleared">Inalis ang kasaysayan</string>

@@ -68,7 +68,7 @@
     <string name="add_playlist_title">و نومگه پشک بیارین</string>
     <string name="rename_playlist_title">آلشت نوم نومگه پشک</string>
     <string name="action_edit_playlist">آلشت نومگه پشک</string>
-    <string name="action_delete">پاک کردن نومگه پشک</string>
+    <string name="action_delete_playlist">پاک کردن نومگه پشک</string>
     <string name="action_clear_history">روفتن ویرگار</string>
     <string name="history_cleared">ویرگار روفته وابی</string>
     <string name="playlist_name_empty">نوم نومگه پشک</string>

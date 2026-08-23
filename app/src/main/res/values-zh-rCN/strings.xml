@@ -64,10 +64,10 @@
     <string name="add_playlist_title">添加到播放列表</string>
     <string name="rename_playlist_title">重命名播放列表</string>
     <string name="action_edit_playlist">编辑播放列表</string>
-    <string name="action_delete">删除播放列表</string>
+    <string name="action_delete_playlist">删除播放列表</string>
     <string name="action_export_playlist">将播放列表导出为文件</string>
-    <string name="action_clear_history">清除历史记录</string>
-    <string name="history_cleared">历史记录已清除</string>
+    <string name="action_clear_history">清除播放记录</string>
+    <string name="history_cleared">播放记录已清除</string>
     <string name="create_a_playlist">创建一个空播放列表。稍后可添加歌曲。</string>
     <string name="create_a_playlist_with_one_song">创建一个播放列表并添加一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">创建一个播放列表并自动向其中添加 %d 首歌曲。</string>
@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">查看图像（可选）</string>
     <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。你可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">需要授予访问所有文件的权限以允许应用读取封面图像。</string>
-
-
     <string name="permissions_denied">权限被拒绝</string>
-
-    <string name="grant_access_action">授予访问</string>
+    <string name="grant_access_action">授予权限</string>
     <string name="action_grant">授权</string>
     <string name="granted">已授权</string>
-
-
     <string name="get_started">开始</string>
     <string name="select_storage_title">选择存储</string>
     <string name="now_playing">正在播放</string>
@@ -193,7 +188,7 @@
     <string name="favorites_label">收藏夹</string>
     <string name="last_added_label">最近添加</string>
     <string name="top_tracks_label">热门曲目</string>
-    <string name="history_label">历史记录</string>
+    <string name="history_label">播放记录</string>
     <string name="not_recently_played">近期未播放</string>
     <string name="play_info">播放信息</string>
     <string name="track_play_counts">曲目播放次数</string>
@@ -241,7 +236,7 @@
     <string name="update_image">更新图像</string>
     <string name="restore_default">还原默认</string>
     <string name="remove_cover">移除封面</string>
-    <string name="could_not_download_album_cover">无法下载匹配的相册封面。</string>
+    <string name="could_not_download_album_cover">无法下载匹配的专辑封面。</string>
     <string name="download_image">下载图像</string>
     <string name="pick_from_local_storage">从本地存储中选择</string>
     <string name="about_x_title">关于 %s</string>
@@ -506,8 +501,8 @@
     <string name="settings_title">设置</string>
     <string name="appearance_title">外观</string>
     <string name="appearance_summary">更改应用的主题和其他视觉设置。</string>
-    <string name="now_playing_title">正在播放</string>
-    <string name="now_playing_summary">自定义正在播放界面。</string>
+    <string name="now_playing_title">播放界面</string>
+    <string name="now_playing_summary">自定义播放界面。</string>
     <string name="lyrics_preferences_title">歌词</string>
     <string name="lyrics_preferences_summary">调整字体、间距和其他选项以自定义歌词视图。</string>
     <string name="playback_title">播放</string>
@@ -618,9 +613,9 @@
     <string name="animate_controls_title">控件动画</string>
     <string name="animate_controls_summary">打开播放器面板时播放动画。</string>
     <string name="swipe_anywhere_title">在任意处滑动来切换歌曲</string>
-    <string name="swipe_anywhere_summary">在“正在播放”界面的空白处向左或向右滑动来切换歌曲。</string>
+    <string name="swipe_anywhere_summary">在播放界面的空白处向左或向右滑动来切换歌曲。</string>
     <string name="swipe_up_queue_title">向上滑动来打开播放队列</string>
-    <string name="swipe_up_queue_summary">在“正在播放”界面的空白处向上滑动来打开当前的播放队列。</string>
+    <string name="swipe_up_queue_summary">在播放界面的空白处向上滑动来打开当前的播放队列。</string>
     <string name="display_album_name_title">显示专辑名称</string>
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的码率、格式、采样率等额外信息。</string>
@@ -698,9 +693,9 @@
     <string name="trash_music_summary">将被删除的文件送往回收站。</string>
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
     <string name="recursive_folder_actions_summary">当对文件夹执行操作时，选择哪些操作也应作用于子文件夹。</string>
-    <string name="enable_history_title">启用播放历史</string>
-    <string name="enable_history_summary">允许应用记录听过的歌曲。若禁用该选项，所有历史记录将被清除。</string>
-    <string name="history_interval_title">历史间隔</string>
+    <string name="enable_history_title">启用播放记录</string>
+    <string name="enable_history_summary">保存你的播放记录、常听歌曲，并更新至播放记录同步服务。关闭此功能将停止所有的记录同步与追踪。</string>
+    <string name="history_interval_title">记录时间范围</string>
     <string name="last_added_interval_title">最新添加时间间隔</string>
     <string name="whitelist_title">白名单</string>
     <string name="whitelist_summary">只有白名单文件夹的内容会显示在曲库中。</string>
@@ -815,7 +810,7 @@
     <string name="error_lastfm_credentials">登录信息无效。请核对后再试一次。</string>
     <string name="error_lastfm_params">参数无效。可能是本应用端发生错误。</string>
     <string name="error_lastfm_service">Last.fm 现在处于故障或维护状态。请稍后再试。</string>
-    <string name="error_lastfm_rate_limit">请求数量过多。请稍等一段时间再重新上传记录。</string>
+    <string name="error_lastfm_rate_limit">请求次数过多。请稍候再同步播放记录。</string>
     <string name="error_lastfm_generic">Last.fm 发生意外错误。请重试。</string>
     <string name="error_network_timeout">连接超时。请检查互联网连接后重试。</string>
     <string name="github">GitHub</string>
@@ -829,11 +824,11 @@
     <string name="wifi_only_network_features_title">只在 Wi-Fi 下使用联网功能</string>
     <string name="wifi_only_network_features_summary">只在连接到 Wi-Fi 时允许联网功能。</string>
     <string name="lastfm_login_title">登录 Last.fm</string>
-    <string name="lastfm_login_summary">使用 Last.fm 账户授权，启用播放记录上传和正在播放信息更新。</string>
-    <string name="lastfm_scrobbling_title">启用 Last.fm 播放记录上传</string>
+    <string name="lastfm_login_summary">使用 Last.fm 账户授权，以启用播放记录同步与“正在播放”状态更新。</string>
+    <string name="lastfm_scrobbling_title">启用 Last.fm 播放记录同步</string>
     <string name="lastfm_scrobbling_summary">自动将已播放曲目提交至 Last.fm 听歌记录。</string>
-    <string name="lastfm_now_playing_title">更新 Last.fm 上的正在播放信息</string>
-    <string name="lastfm_now_playing_summary">在 Last.fm 个人资料上实时显示正在播放的曲目。</string>
+    <string name="lastfm_now_playing_title">更新 Last.fm “正在播放”状态</string>
+    <string name="lastfm_now_playing_summary">在你的 Last.fm 个人资料中实时显示正在播放的曲目。</string>
     <string name="lastfm_biography_title">下载艺人和专辑介绍</string>
     <string name="lastfm_biography_summary">从 Last.fm 获取艺人和专辑的介绍。</string>
     <string name="use_lrclib_provider_title">使用 LRCLib 服务</string>
@@ -883,11 +878,11 @@
     <string name="listenbrainz_token_label">用户令牌</string>
     <string name="listenbrainz_title">ListenBrainz</string>
     <string name="listenbrainz_login_title">登录 ListenBrainz</string>
-    <string name="listenbrainz_login_summary">使用用户令牌授权，以启用播放历史记录和正在播放曲目更新。你可以在 ListenBrainz 个人资料设置中找到令牌。</string>
-    <string name="listenbrainz_scrobbling_title">启用 ListenBrainz 播放历史记录</string>
+    <string name="listenbrainz_login_summary">使用用户 Token 进行验证，以启用播放记录同步与“正在播放”状态更新。你可以在 ListenBrainz 的个人资料设置中找到你的 Token。</string>
+    <string name="listenbrainz_scrobbling_title">启用 ListenBrainz 播放记录同步</string>
     <string name="listenbrainz_scrobbling_summary">自动将已播放曲目提交至 ListenBrainz 听歌记录。</string>
-    <string name="listenbrainz_now_playing_title">在 ListenBrainz 更新正在播放曲目</string>
-    <string name="listenbrainz_now_playing_summary">在 ListenBrainz 个人资料上实时显示正在播放的曲目。</string>
+    <string name="listenbrainz_now_playing_title">更新 ListenBrainz “正在播放”状态</string>
+    <string name="listenbrainz_now_playing_summary">在你的 ListenBrainz 个人资料中实时显示正在播放的曲目。</string>
     <string name="use_lyrically_provider_title">使用 Lyrically 服务</string>
     <string name="use_lyrically_provider_summary">功能丰富的歌词 API，支持卡拉 OK 和多人声部。</string>
     <string name="file_lyrics">文件</string>
@@ -944,7 +939,7 @@
     <string name="musicbrainz_search_title">MusicBrainz 搜索</string>
     <string name="musicbrainz_search_message">使用标题和艺人在 MusicBrainz 上搜索歌曲元数据。</string>
     <string name="musicbrainz_no_results">在 MusicBrainz 上找不到结果。</string>
-    <string name="musicbrainz_select_recording">选择记录</string>
+    <string name="musicbrainz_select_recording">选择结果</string>
     <string name="sort_order_name">标题</string>
     <string name="website">网站</string>
     <string name="legal">法律信息</string>
@@ -964,7 +959,7 @@
     <string name="widget_source_title">展示</string>
     <string name="widget_source_recent">最近播放</string>
     <string name="app_widget_nothing_playing">未在播放</string>
-    <string name="app_widget_tap_to_play">点按打开 Booming</string>
+    <string name="app_widget_tap_to_play">点按打开 Booming Music</string>
     <string name="widget_settings_title">小组件设置</string>
     <string name="widget_show_progress_title">显示进度条</string>
     <string name="widget_show_progress_summary">显示当前曲目的播放进度。</string>
@@ -979,4 +974,13 @@
     <string name="widget_side_buttons_title">侧边按钮</string>
     <string name="widget_page_previous">上一页</string>
     <string name="widget_page_next">下一页</string>
+    <string name="restart_app_message">应用将重启以完成操作。</string>
+    <string name="welcome_to">欢迎使用</string>
+    <string name="permissions_title">需要权限</string>
+    <string name="permissions_subtitle">请授予音乐文件和附近设备的访问权限，以获得最佳播放体验。</string>
+    <string name="initial_configuration_title">初始设置</string>
+    <string name="initial_configuration_subtitle">在开始之前，请根据你的喜好自定义 Booming Music。</string>
+    <string name="initial_configuration_note">你随时可以更改这些设置。</string>
+    <string name="restore_from_backup">从备份还原</string>
+    <string name="network_features_summary">启用播放记录同步与专辑封面和歌词下载。</string>
 </resources>

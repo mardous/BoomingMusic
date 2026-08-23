@@ -63,7 +63,7 @@
     <string name="add_playlist_title">Lisa esitusloendisse</string>
     <string name="rename_playlist_title">Muuda esitusloendi nime</string>
     <string name="action_edit_playlist">Muuda esitusloendit</string>
-    <string name="action_delete">Kustuta esitusloend</string>
+    <string name="action_delete_playlist">Kustuta esitusloend</string>
     <string name="action_export_playlist">Ekspordi faili</string>
     <string name="action_clear_history">Tühjenda ajalugu</string>
     <string name="history_cleared">Ajalugu on kustutatud</string>
@@ -291,8 +291,6 @@
     <string name="app_widget_card">Vahekaart</string>
     <string name="app_widget_card_desc">Napp ja lihtsustatud lahendus</string>
     <string name="select_storage_title">Vali andmeruum</string>
-
-
     <string name="get_started">Alustame siis</string>
     <string name="clear_queue">Tühjenda esitusjärjekord</string>
     <string name="action_add_to_playing_queue">Lisa esitusjärjekorda</string>
@@ -461,7 +459,6 @@
     <string name="monthly">Iga kuu</string>
     <string name="never">Ei iialgi</string>
     <string name="permissions_denied">Õigused puuduvad</string>
-
     <string name="grant_access_action">Anna õigused</string>
     <string name="history_interval_title">Ajaloo välp</string>
     <string name="last_added_interval_title">Viimati lisatud välp</string>
@@ -654,8 +651,6 @@
     <string name="image_size_medium">Keskmine (vaikimisi, soovitatav)</string>
     <string name="image_size_small">Väike (kiire, aga kehvema kvaliteediga)</string>
     <string name="system_default">Süsteemi vaikeseadistus</string>
-
-
     <string name="list_start">Loendi algus</string>
     <string name="list_end">Loendi lõpp</string>
     <string name="sound_settings">Heliseadistused</string>
@@ -755,8 +750,8 @@
     <string name="bit_perfect_info">Bititäpsusega esitus: %1$s | %2$s</string>
     <string name="bit_perfect_title">Bititäpsusega heli</string>
     <string name="bit_perfect_description">Otsene heliväljund USB DAC suunas ilma süsteemipoolse diskreetimise muutmiseta.</string>
-    <string name="enable_history_title">Salvesta esituste ajalugu</string>
-    <string name="enable_history_summary">Järgnevaga lubad rakendusel salvestada esituste ajalugu. Väljalülitamisel kustutatakse kogu senine ajalugu.</string>
+    <string name="enable_history_title">Salvesta kuulamiste ajalugu</string>
+    <string name="enable_history_summary">Järgnevaga lubad rakendusel salvestada kuulamiste ajalugu, populaarsemad lood ja kraasimisteenustega seotud uuendused. Väljalülitamisel kogu kraasimise ja ajaloo salvestamine lõppeb.</string>
     <string name="ignore_articles_when_sorting_title">Järjestamisel ära arvesta artikleid</string>
     <string name="ignore_articles_when_sorting_summary">Järjestamisel ära arvesta levinumaid grammatilisi artikleid („the“, „a“, „an“).</string>
     <string name="recursive_folder_actions_title">Tegevused alamkaustadega</string>
@@ -933,10 +928,48 @@
     <string name="musicbrainz_search_title">Otsing MusicBrainzist</string>
     <string name="musicbrainz_search_message">Otsi MusicBrainzist loo metaandmeid pealkirja ja esitaja alusel.</string>
     <string name="musicbrainz_no_results">MusicBrainzis ei leidunud tulemusi.</string>
-    <string name="musicbrainz_select_recording">Vali salvestis</string>
+    <string name="musicbrainz_select_recording">Vali tulemus</string>
     <string name="sort_order_name">Nimi</string>
     <string name="website">Veebisait</string>
     <string name="legal">Juriidiline teave</string>
     <string name="terms_of_service">Kasutustingimused</string>
     <string name="privacy_policy">Andmekaitsepõhimõtted</string>
+    <string name="app_widget_tap_to_play">Klõpsa Booming Musicu avamiseks</string>
+    <string name="app_widget_nothing_playing">Mitte midagi pole esitamisel</string>
+    <string name="widget_settings_title">Vidina seadistused</string>
+    <string name="restore_from_backup">Taasta varukoopiast</string>
+    <string name="restart_app_message">Toimingu lõpetamiseks käivitub rakendus uuesti.</string>
+    <string name="widget_show_progress_title">Näita edenemist</string>
+    <string name="widget_show_progress_summary">Näita hetkel esitamisel loo esitusjärge.</string>
+    <string name="widget_show_controls_title">Näita juhtnuppe</string>
+    <string name="widget_show_controls_summary">Näita taasesituse juhtimiseks vajalikke nuppe.</string>
+    <string name="widget_show_artist_title">Näita esitajat</string>
+    <string name="widget_show_artist_summary">Näita loo nime all esitaja nime.</string>
+    <string name="widget_leading_action_title">Vasak nupp</string>
+    <string name="widget_trailing_action_title">Parem nupp</string>
+    <string name="widget_side_buttons_title">Külgnupud</string>
+    <string name="widget_side_buttons_skip">Eelmine ja järgmine</string>
+    <string name="widget_action_favourite">Lemmik</string>
+    <string name="widget_action_repeat">Korda</string>
+    <string name="widget_source_title">Näita</string>
+    <string name="widget_source_recent">Hiljutine</string>
+    <string name="widget_page_previous">Eelmised lood</string>
+    <string name="widget_page_next">Järgmised lood</string>
+    <string name="network_features_summary">Sellega lubad kraasimise ning kaanepiltide ja laulusõnade allalaadimise.</string>
+    <string name="app_widget_circle">Ring</string>
+    <string name="app_widget_circle_desc">Ümmargune pleier, mille ümber ringlevad juhtnupud</string>
+    <string name="app_widget_cookie">Küpsis</string>
+    <string name="app_widget_cookie_desc">Kaanepilt suure küpsisena, mille ümber on juhtnupud</string>
+    <string name="app_widget_grid">Võrgustik</string>
+    <string name="app_widget_grid_desc">Kaanepilt, esitus, juhtnupud neljas plokis</string>
+    <string name="app_widget_library">Muusikakogu</string>
+    <string name="app_widget_library_desc">Kaanepiltide ruudustik, kus saad valida</string>
+    <string name="welcome_to">Tere tulemast, see on</string>
+    <string name="permissions_title">Õigused on vajalikud</string>
+    <string name="permissions_subtitle">Parima kasutuskogemuse nimel luba rakendusele ligipääs sinu muusikafailidele ja ümbruskonnas olevatele seadmetele.</string>
+    <string name="initial_configuration_title">Algne seadistus</string>
+    <string name="initial_configuration_subtitle">Enne alustamist kohenda Booming Music vastavalt sinu eelistustele.</string>
+    <string name="initial_configuration_note">Sa võid neid seadistusei alati muuta.</string>
+    <string name="widget_show_navigation_title">Näita menüüriba</string>
+    <string name="widget_show_navigation_summary">Näita menüüriba, mille abil saad loendi läbi lapata.</string>
 </resources>

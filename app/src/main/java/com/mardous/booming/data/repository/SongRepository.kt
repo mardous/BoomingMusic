@@ -236,6 +236,7 @@ class RealSongRepository(
                 val nonIndexedFile = nonIndexedFiles[mediaItem.mediaId]
                 if (nonIndexedFile != null) return nonIndexedFile
             }
+            return song
         }
         return Song.emptySong
     }

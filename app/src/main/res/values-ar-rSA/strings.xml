@@ -64,7 +64,7 @@
     <string name="add_playlist_title">إضافة إلى قائمة تشغيل</string>
     <string name="rename_playlist_title">إعادة تسمية قائمة التشغيل</string>
     <string name="action_edit_playlist">تعديل قائمة التشغيل</string>
-    <string name="action_delete">حذف قائمة التشغيل</string>
+    <string name="action_delete_playlist">حذف قائمة التشغيل</string>
     <string name="action_export_playlist">تصدير إلى ملف</string>
     <string name="action_clear_history">مسح السجل</string>
     <string name="history_cleared">تم مسح السجل</string>

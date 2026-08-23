@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Legg til i spilleliste</string>
     <string name="rename_playlist_title">Endre spilleliste</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Slett spilleliste</string>
+    <string name="action_delete_playlist">Slett spilleliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Tøm logg</string>
     <string name="history_cleared">Historikk tømt</string>

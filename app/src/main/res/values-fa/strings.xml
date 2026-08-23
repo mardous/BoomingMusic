@@ -69,7 +69,7 @@
     <string name="add_playlist_title">به لیست پخش اضافه کنید</string>
     <string name="rename_playlist_title">تغییر نام لیست پخش</string>
     <string name="action_edit_playlist">ویرایش لیست پخش</string>
-    <string name="action_delete">حذف لیست پخش</string>
+    <string name="action_delete_playlist">حذف لیست پخش</string>
     <string name="action_export_playlist">صادرات به فایل</string>
     <string name="action_clear_history">پاک کردن تاریخچه</string>
     <string name="history_cleared">تاریخچه پاک شد</string>

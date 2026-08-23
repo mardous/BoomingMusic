@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Ajouter à la liste de lecture</string>
     <string name="rename_playlist_title">Renommer la liste de lecture</string>
     <string name="action_edit_playlist">Modifier la liste de lecture</string>
-    <string name="action_delete">Supprimer la liste de lecture</string>
+    <string name="action_delete_playlist">Supprimer la liste de lecture</string>
     <string name="action_export_playlist">Exporter vers le fichier</string>
     <string name="action_clear_history">Effacer l\'historique</string>
     <string name="history_cleared">Historique effacé</string>
@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Lire les images (optionnel)</string>
     <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux. Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
     <string name="permission_read_images_denied">Vous devez accorder la permission de lire les images depuis l\'appareil.</string>
-
-
     <string name="permissions_denied">Autorisations refusées</string>
-
     <string name="grant_access_action">Accorder l\'accès</string>
     <string name="action_grant">Accorder</string>
     <string name="granted">Accordé</string>
-
-
     <string name="get_started">Commencer</string>
     <string name="select_storage_title">Sélectionner un espace de stockage</string>
     <string name="now_playing">En cours de lecture</string>
@@ -962,7 +957,7 @@
     <string name="musicbrainz_search_title">Recherche sur MusicBrainz</string>
     <string name="musicbrainz_search_message">Recherchez les métadonnées d\'un morceau sur MusicBrainz à l\'aide du titre et du nom de l\'artiste.</string>
     <string name="musicbrainz_no_results">Aucun résultat trouvé sur MusicBrainz.</string>
-    <string name="musicbrainz_select_recording">Sélectionnez un enregistrement</string>
+    <string name="musicbrainz_select_recording">Sélectionnez un résultat</string>
     <string name="sort_order_name">Nom</string>
     <string name="website">Site web</string>
     <string name="legal">Mentions légales</string>
@@ -977,9 +972,9 @@
     <string name="app_widget_library">Bibliothèque</string>
     <string name="app_widget_library_desc">Une grille de pochettes issues d\'une liste de votre choix</string>
     <string name="app_widget_nothing_playing">Aucun contenu en cours de lecture</string>
-    <string name="app_widget_tap_to_play">Appuyez pour ouvrir Booming</string>
+    <string name="app_widget_tap_to_play">Appuyez pour ouvrir Booming Music</string>
     <string name="widget_settings_title">Paramètres du widget</string>
-    <string name="widget_show_progress_title">Afficher la chronologie</string>
+    <string name="widget_show_progress_title">Afficher la progression</string>
     <string name="widget_show_progress_summary">Afficher la progression du morceau en cours.</string>
     <string name="widget_show_controls_title">Afficher les commandes</string>
     <string name="widget_show_controls_summary">Afficher les boutons de lecture.</string>
@@ -997,4 +992,13 @@
     <string name="widget_source_recent">Récents</string>
     <string name="widget_page_previous">Titres précédents</string>
     <string name="widget_page_next">Titres suivants</string>
+    <string name="restart_app_message">L\'application va redémarrer pour terminer le processus.</string>
+    <string name="welcome_to">Bienvenue sur</string>
+    <string name="permissions_title">Autorisations requises</string>
+    <string name="permissions_subtitle">Autorisez l\'accès à vos fichiers musicaux et aux appareils à proximité pour profiter d\'une expérience d\'écoute optimale.</string>
+    <string name="initial_configuration_title">Configuration initiale</string>
+    <string name="initial_configuration_subtitle">Personnalisez « Booming Music » à votre goût avant de commencer.</string>
+    <string name="initial_configuration_note">Vous pourrez toujours modifier ces paramètres ultérieurement.</string>
+    <string name="restore_from_backup">Restaurer à partir d\'une sauvegarde</string>
+    <string name="network_features_summary">Permet le scrobbling ainsi que le téléchargement des pochettes d\'album et des paroles.</string>
 </resources>

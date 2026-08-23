@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Lägg till i spellistan</string>
     <string name="rename_playlist_title">Döp om spellista</string>
     <string name="action_edit_playlist">Redigera spellista</string>
-    <string name="action_delete">Ta bort spellista</string>
+    <string name="action_delete_playlist">Ta bort spellista</string>
     <string name="action_export_playlist">Exportera till fil</string>
     <string name="action_clear_history">Rensa historik</string>
     <string name="history_cleared">Historik rensad</string>
@@ -128,20 +128,15 @@
     <string name="permission_read_images_title">Läs bilder (valfritt)</string>
     <string name="permission_read_images_summary">Denna behörighet krävs för att Booming Music ska kunna hitta skivomslagsfiler i dina musikmappar. Om du inte planerar att använda den här funktionen kan du välja att inte bevilja den.</string>
     <string name="permission_read_images_denied">Du måste ge behörighet att läsa bilder från enheten.</string>
-
-
     <string name="permissions_denied">Åtkomst nekad</string>
-
     <string name="grant_access_action">Bevilja åtkomst</string>
     <string name="action_grant">Bevilja</string>
     <string name="granted">Beviljad</string>
-
-
     <string name="get_started">Kom igång</string>
     <string name="select_storage_title">Välj lagringsutrymme</string>
     <string name="now_playing">Nu spelas</string>
-    <string name="playing_queue_label">Spelar kö</string>
-    <string name="list_start">Listan börjar</string>
+    <string name="playing_queue_label">Spelkö</string>
+    <string name="list_start">Listans början</string>
     <string name="list_end">Listans slut</string>
     <string name="clear_queue">Rensa kö</string>
     <string name="action_move_to_current_track">Visa nuvarande spår</string>
@@ -539,7 +534,7 @@
     <string name="bluetooth_header">Bluetooth</string>
     <string name="audio_focus_header">Fokus på ljud</string>
     <string name="shuffle_mode_header">Blanda läge</string>
-    <string name="display_header">Visa</string>
+    <string name="display_header">Visning</string>
     <string name="backup_restore_header">Säkerhetskopiera/återställ</string>
     <string name="visuals_header">Visualer</string>
     <!-- Interface preferences -->
@@ -706,8 +701,8 @@
     <string name="trash_music_summary">Skicka raderade filer till papperskorgen.</string>
     <string name="recursive_folder_actions_title">Åtgärder som påverkar undermappar</string>
     <string name="recursive_folder_actions_summary">Välj vilka åtgärder som också ska gälla för undermappar när de utförs på en mapp.</string>
-    <string name="enable_history_title">Aktivera historik</string>
-    <string name="enable_history_summary">Tillåter programmet att spela in de låtar du har lyssnat på. Om du inaktiverar den kommer hela historiken att rensas.</string>
+    <string name="enable_history_title">Spara lyssningshistorik</string>
+    <string name="enable_history_summary">Spårar din lyssningshistorik, dina favoritlåtar och uppdateringar till scrobbling-tjänster. Om du inaktiverar denna funktion stoppas all scrobbling och historikspårning.</string>
     <string name="history_interval_title">Intervall för historia</string>
     <string name="last_added_interval_title">Senast tillagda intervall</string>
     <string name="whitelist_title">Vitlista</string>
@@ -939,7 +934,7 @@
     <string name="more_contributors_title">Fler bidragsgivare</string>
     <string name="more_contributors_summary">Du kan se den fullständiga listan över bidragsgivare på GitHub.</string>
     <string name="up_next">Härnäst</string>
-    <string name="reorder_action">Beställ igen</string>
+    <string name="reorder_action">Ordna om</string>
     <string name="go_to_current_track">Gå till aktuellt spår</string>
     <string name="contributor_dawid_description">Nyckelbidragsgivare och designer av flera centrala appfunktioner.</string>
     <string name="contributor_ray_description">Bidrog med flera spännande och viktiga funktioner.</string>
@@ -948,4 +943,53 @@
     <string name="contributor_alex_description">Långvarig vän till projektet som gav tillgång till viktiga API:er.</string>
     <string name="play_all_songs_when_searching_title">Spela upp alla låtar vid sökning</string>
     <string name="play_all_songs_when_searching_summary">När funktionen är aktiverad läggs hela biblioteket i kön när du väljer en låt du sökt fram. Detta styrs av inställningen för val av låt.</string>
+    <string name="app_widget_circle">Cirkel</string>
+    <string name="app_widget_circle_desc">En rund spelare med kontrollerna som kretsar runt den</string>
+    <string name="app_widget_cookie">Kaka</string>
+    <string name="app_widget_cookie_desc">Omslaget som en enda stor kaka, med kontroller runt den</string>
+    <string name="app_widget_grid">Rutnät</string>
+    <string name="app_widget_grid_desc">Konstverk, lek och överhoppningskontrollerna i fyra celler</string>
+    <string name="app_widget_library">Bibliotek</string>
+    <string name="app_widget_library_desc">Ett rutnät av omslag från en lista du väljer</string>
+    <string name="app_widget_nothing_playing">Inget spelar</string>
+    <string name="app_widget_tap_to_play">Tryck för att öppna Booming Music</string>
+    <string name="action_auto_fill_from_musicbrainz">Autofyll från MusicBrainz</string>
+    <string name="searching">Söker…</string>
+    <string name="musicbrainz_search_title">MusicBrainz-sökning</string>
+    <string name="musicbrainz_search_message">Sök efter låtmetadata på MusicBrainz med titeln och artisten.</string>
+    <string name="musicbrainz_no_results">Inga resultat hittades på MusicBrainz.</string>
+    <string name="musicbrainz_select_recording">Välj ett resultat</string>
+    <string name="welcome_to">Välkommen till</string>
+    <string name="permissions_title">Behörigheter behövs</string>
+    <string name="permissions_subtitle">Ge åtkomst till dina musikfiler och närliggande enheter för att få den bästa uppspelningsupplevelsen.</string>
+    <string name="initial_configuration_title">Initial konfiguration</string>
+    <string name="initial_configuration_subtitle">Anpassa Booming Music efter dina önskemål innan du börjar.</string>
+    <string name="initial_configuration_note">Du kan alltid ändra dessa inställningar senare.</string>
+    <string name="restore_from_backup">Återställ från säkerhetskopia</string>
+    <string name="sort_order_name">Namn</string>
+    <string name="restart_app_message">Appen startas om för att slutföra processen.</string>
+    <string name="website">Webbplats</string>
+    <string name="legal">Juridisk information</string>
+    <string name="terms_of_service">Användarvillkor</string>
+    <string name="privacy_policy">Integritetspolicy</string>
+    <string name="widget_settings_title">Widgetinställningar</string>
+    <string name="widget_show_progress_title">Visa förlopp</string>
+    <string name="widget_show_progress_summary">Visa hur långt man har kommit i det aktuella spåret.</string>
+    <string name="widget_show_controls_title">Visa kontrollerna</string>
+    <string name="widget_show_controls_summary">Visa uppspelningsknapparna.</string>
+    <string name="widget_show_artist_title">Visa artist</string>
+    <string name="widget_show_artist_summary">Visa artistnamnet under låttiteln.</string>
+    <string name="widget_show_navigation_title">Visa navigering</string>
+    <string name="widget_show_navigation_summary">Visa ett skjutreglage för att bläddra igenom listan.</string>
+    <string name="widget_leading_action_title">Vänster knapp</string>
+    <string name="widget_trailing_action_title">Höger knapp</string>
+    <string name="widget_side_buttons_title">Sidoknappar</string>
+    <string name="widget_side_buttons_skip">Föregående och nästa</string>
+    <string name="widget_action_favourite">Favorit</string>
+    <string name="widget_action_repeat">Upprepa</string>
+    <string name="widget_source_title">Visa</string>
+    <string name="widget_source_recent">Senaste</string>
+    <string name="widget_page_previous">Föregående låtar</string>
+    <string name="widget_page_next">Nästkommande låtar</string>
+    <string name="network_features_summary">Aktiverar scrobbling samt nedladdning av skivomslag och låttexter.</string>
 </resources>

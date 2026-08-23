@@ -64,7 +64,7 @@
     <string name="add_playlist_title">प्लेलिस्ट में जोड़ें</string>
     <string name="rename_playlist_title">प्लेलिस्ट का नाम बदलें</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">प्लेलिस्ट हटाएं</string>
+    <string name="action_delete_playlist">प्लेलिस्ट हटाएं</string>
     <string name="action_export_playlist">फ़ाइल में निर्यात करें</string>
     <string name="action_clear_history">इतिहास मिटा दें</string>
     <string name="history_cleared">इतिहास साफ हो गया</string>

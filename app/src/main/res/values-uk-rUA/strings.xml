@@ -64,7 +64,7 @@
     <string name="add_playlist_title">Додати до списку відтворення</string>
     <string name="rename_playlist_title">Перейменувати список відтворення</string>
     <string name="action_edit_playlist">Редагувати список відтворення</string>
-    <string name="action_delete">Видалити список відтворення</string>
+    <string name="action_delete_playlist">Видалити список відтворення</string>
     <string name="action_export_playlist">Експортувати до файлу</string>
     <string name="action_clear_history">Очистити історію</string>
     <string name="history_cleared">Історію очищено</string>
@@ -128,15 +128,10 @@
     <string name="permission_read_images_title">Читання зображень (необов\'язково)</string>
     <string name="permission_read_images_summary">Цей дозвіл потрібен для Booming музики, щоб знайти файли обкладинок альбому у ваших теках. Якщо ви не плануєте використовувати цю функцію, ви можете не надавати дозволу.</string>
     <string name="permission_read_images_denied">Ви повинні надати дозвіл на читання зображень з пристрою.</string>
-
-
     <string name="permissions_denied">Дозволи відхилено</string>
-
     <string name="grant_access_action">Надати доступ</string>
     <string name="action_grant">Надати</string>
     <string name="granted">Надано</string>
-
-
     <string name="get_started">Почати</string>
     <string name="select_storage_title">Виберіть сховище</string>
     <string name="now_playing">Зараз грає</string>
@@ -971,7 +966,7 @@
     <string name="musicbrainz_search_title">Пошук у MusicBrainz</string>
     <string name="musicbrainz_search_message">Шукайте метадані пісні на MusicBrainz за назвою та виконавцем.</string>
     <string name="musicbrainz_no_results">Пошук на MusicBrainz не дав результатів.</string>
-    <string name="musicbrainz_select_recording">Виберіть запис</string>
+    <string name="musicbrainz_select_recording">Виберіть результат</string>
     <string name="sort_order_name">Назва</string>
     <string name="website">Вебсайт</string>
     <string name="legal">Легально</string>
@@ -986,9 +981,9 @@
     <string name="app_widget_library">Бібліотека</string>
     <string name="app_widget_library_desc">Сітка обкладинок зі списку, який ви оберете</string>
     <string name="app_widget_nothing_playing">Нічого не відтворюється</string>
-    <string name="app_widget_tap_to_play">Торкніться, щоб відкрити Booming</string>
+    <string name="app_widget_tap_to_play">Торкніться, щоб відкрити Booming Music</string>
     <string name="widget_settings_title">Налаштування віджета</string>
-    <string name="widget_show_progress_title">Показувати часову шкалу</string>
+    <string name="widget_show_progress_title">Показувати прогрес</string>
     <string name="widget_show_progress_summary">Показує поступ поточного треку.</string>
     <string name="widget_show_controls_title">Показувати керування</string>
     <string name="widget_show_controls_summary">Показує кнопки відтворення.</string>
@@ -1006,4 +1001,13 @@
     <string name="widget_source_recent">Останні</string>
     <string name="widget_page_previous">Попередні пісні</string>
     <string name="widget_page_next">Наступні пісні</string>
+    <string name="welcome_to">Вітаємо в</string>
+    <string name="permissions_title">Потрібні довзоли</string>
+    <string name="permissions_subtitle">Надайте доступ до своїх музичних файлів і пристроїв поблизу, щоб отримати найкращу якість відтворення.</string>
+    <string name="initial_configuration_title">Початкова конфігурація</string>
+    <string name="initial_configuration_subtitle">Налаштуйте Booming Music на свій смак перед початком.</string>
+    <string name="initial_configuration_note">Ви завжди зможете змінити ці налаштування пізніше.</string>
+    <string name="restore_from_backup">Відновити з резервної копії</string>
+    <string name="restart_app_message">Застосунок перезапуститься для завершення процесу.</string>
+    <string name="network_features_summary">Дозволяє скроблінг, а також завантаження обкладинок альбомів і текстів пісень.</string>
 </resources>
