@@ -21,6 +21,7 @@ import android.content.Context
 import android.provider.BaseColumns
 import android.provider.MediaStore
 import androidx.core.net.toUri
+import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.files.deleteUsingSAF
@@ -85,6 +86,7 @@ object MusicUtil : KoinComponent {
 
                             val id = cursor.getLong(0)
                             val deletedSong = repository.deleteSong(id)
+                            ReplayGainTagExtractor.removeFromCache(deletedSong.uri)
 
                             context.onUI {
                                 onProgress(deletedSong, position.coerceAtMost(count), count)

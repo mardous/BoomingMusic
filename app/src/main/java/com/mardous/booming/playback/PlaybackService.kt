@@ -109,7 +109,9 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.guava.future
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -181,6 +183,7 @@ class PlaybackService :
     private var pausedByZeroVolume = false
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
+    private var prefetchGainJob: Job? = null
 
     private var headsetClickCount = 0
     private val headsetClickRunnable = Runnable {
@@ -800,12 +803,10 @@ class PlaybackService :
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         val isPlaying = player.isPlaying
+        if (replayGainProcessor.mode.isOn) submitReplayGain(mediaItem)
 
         serviceScope.launch(IO) {
             val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
-            if (newSong != Song.emptySong) {
-                replayGainProcessor.currentGain = ReplayGainTagExtractor.getReplayGain(newSong)
-            }
 
             val previousSong = songPlayCountHelper.song
             val shouldBumpPlayCount = songPlayCountHelper.shouldBumpPlayCount()
@@ -849,6 +850,25 @@ class PlaybackService :
 
         persistentStorage.saveState()
         widgets.refresh()
+    }
+
+    private fun submitReplayGain(currentItem: MediaItem? = player.currentMediaItem) {
+        val uri = currentItem?.contentUri ?: return
+        serviceScope.launch(IO) {
+            replayGainProcessor.submitGain(uri, ReplayGainTagExtractor.getReplayGain(uri))
+        }
+    }
+
+    /** Warms the next item's tags so the audio processor can peek instead of reading files. */
+    private fun prefetchNextReplayGain() {
+        if (!replayGainProcessor.mode.isOn) return
+        val nextIndex = player.nextMediaItemIndex
+        if (nextIndex == C.INDEX_UNSET) return
+        val uri = player.getMediaItemAt(nextIndex).contentUri ?: return
+        if (ReplayGainTagExtractor.peek(uri) != null) return
+
+        prefetchGainJob?.cancel()
+        prefetchGainJob = serviceScope.launch(IO) { ReplayGainTagExtractor.getReplayGain(uri) }
     }
 
     override fun onPlayerError(error: PlaybackException) {
@@ -896,6 +916,14 @@ class PlaybackService :
             if (!isStructuralChange) {
                 queueStateHolder.setPlayerIndex(player.currentMediaItemIndex)
             }
+        }
+        if (events.containsAny(
+                Player.EVENT_MEDIA_ITEM_TRANSITION,
+                Player.EVENT_TIMELINE_CHANGED,
+                Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED,
+                Player.EVENT_REPEAT_MODE_CHANGED
+            )) {
+            prefetchNextReplayGain()
         }
     }
 
@@ -1144,6 +1172,11 @@ class PlaybackService :
                 cancelSleepTimerFadeOut()
                 player.volume = volume.currentVolume
             }
+        }
+        serviceScope.launch {
+            // Turning ReplayGain on must also affect the track already playing.
+            equalizerManager.replayGainState.map { it.mode }.distinctUntilChanged()
+                .collect { mode -> if (mode.isOn) submitReplayGain() }
         }
         serviceScope.launch {
             equalizerManager.audioOffload.collect { audioOffloadingEnabled ->
