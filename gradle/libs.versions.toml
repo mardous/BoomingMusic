@@ -21,6 +21,8 @@ swiperefreshlayout = "1.2.0"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
 viewpager = "1.1.0"
+shapes = "1.1.0"
+accompanist = "0.37.3"
 lifecycle = "2.11.0"
 room = "2.8.4"
 navigation = "2.9.8"
@@ -66,8 +68,8 @@ androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefre
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
 androidx-viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
-androidx-shapes = { module = "androidx.graphics:graphics-shapes", version = "1.1.0" }
-accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version = "0.37.3" }
+androidx-shapes = { module = "androidx.graphics:graphics-shapes", version.ref = "shapes" }
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinDatetime" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }

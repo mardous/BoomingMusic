@@ -26,12 +26,9 @@ import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 
 const val EXTRA_IS_PERMISSION_REQUEST = "is_permission_request"
 
-fun getNecessaryPermissions() = getStoragePermissions() + getNearbyDevicesPermissions()
-
 fun getStoragePermissions() = buildSet {
     if (hasT()) {
         add(READ_MEDIA_AUDIO)
-        add(POST_NOTIFICATIONS)
     } else {
         add(READ_EXTERNAL_STORAGE)
     }
@@ -39,6 +36,8 @@ fun getStoragePermissions() = buildSet {
         add(WRITE_EXTERNAL_STORAGE)
     }
 }
+
+fun getNotificationsPermission() = if (hasT()) setOf(POST_NOTIFICATIONS) else emptySet()
 
 fun getImagesPermission() = if (hasT()) setOf(READ_MEDIA_IMAGES) else emptySet()
 

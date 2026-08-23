@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Cal concedir permís per accedir a l\'emmagatzematge extern.</string>
     <string name="permission_bluetooth_title">Dispositius propers</string>
     <string name="permission_bluetooth_description">Cal permís de dispositius propers per cercar dispositius bluetooth</string>
-    <string name="permission_bluetooth_denied">S\'ha denegat el permís dels dispositius propers.</string>
     <string name="permission_read_images_title">Cerca imatges (opcional)</string>
     <string name="permission_read_images_summary">Cal donar permís perquè Booming Music trobi portades d\'àlbum a les vostres carpetes de música. Si no penseu fer servir aquesta funció, no cal donar-lo.</string>
     <string name="permission_read_images_denied">Cal donar permís per llegir imatges del dispositiu.</string>
 
 
     <string name="permissions_denied">Permís denegat</string>
-
+    <string name="permissions_needed">Cal permís</string>
     <string name="grant_access_action">Atorga\'n l\'accés</string>
     <string name="action_grant">Atorga</string>
     <string name="granted">Atorgat</string>
-
-
+    <string name="welcome_to_x">Us donem la benvinguda a %s</string>
     <string name="get_started">Comença</string>
     <string name="select_storage_title">Selecciona l\'emmagatzematge</string>
     <string name="now_playing">Ara sona</string>

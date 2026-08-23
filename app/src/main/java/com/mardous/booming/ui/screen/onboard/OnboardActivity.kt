@@ -22,7 +22,9 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.preference.PreferenceManager
+import com.mardous.booming.App
 import com.mardous.booming.extensions.EXTRA_IS_PERMISSION_REQUEST
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.observeKeyAsState
@@ -45,7 +47,7 @@ class OnboardActivity : AbsBaseActivity() {
         val isPermissionRequest = intent.getBooleanExtra(EXTRA_IS_PERMISSION_REQUEST, false)
 
         setContent {
-            val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+            val prefs = remember { PreferenceManager.getDefaultSharedPreferences(this) }
 
             val generalTheme by prefs.observeKeyAsState(GENERAL_THEME, GeneralTheme.AUTO)
             val materialYou by prefs.observeKeyAsState(MATERIAL_YOU, hasS())
@@ -70,6 +72,9 @@ class OnboardActivity : AbsBaseActivity() {
                     onBackToExit = {
                         finishAffinity()
                     },
+                    // A restored backup replaces the preference file on disk, so the stale
+                    // in-memory values must never be flushed over it.
+                    onRestartRequired = { App.restart(this) },
                     availableSteps = if (isPermissionRequest) {
                         listOf(OnboardStep.PERMISSIONS)
                     } else {

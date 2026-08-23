@@ -124,16 +124,14 @@
     <string name="permission_external_storage_denied">Debe conceder permiso para acceder al almacenamiento externo.</string>
     <string name="permission_bluetooth_title">Dispositivos cercanos</string>
     <string name="permission_bluetooth_description">La aplicación necesita el permiso de dispositivos cercanos para buscar dispositivos Bluetooth</string>
-    <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
     <string name="permissions_denied">Permisos denegados</string>
-
+    <string name="permissions_needed">Permisos necesarios</string>
     <string name="grant_access_action">Permitir acceso</string>
     <string name="action_grant">Conceder</string>
     <string name="granted">Concedido</string>
-
-
+    <string name="welcome_to_x">Le damos la bienvenida a %s</string>
     <string name="get_started">Comenzar</string>
     <string name="select_storage_title">Seleccionar almacenamiento</string>
     <string name="now_playing">Ahora suena</string>

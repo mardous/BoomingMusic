@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Du skal give tilladelse til adgang til eksternt lager.</string>
     <string name="permission_bluetooth_title">Enheder I Nærheden</string>
     <string name="permission_bluetooth_description">Appen har brug for tilladelse i nærheden af enheder for at tjekke for bluetooth-enheder</string>
-    <string name="permission_bluetooth_denied">Tilladelse nægtet i nærheden af enheder.</string>
     <string name="permission_read_images_title">Læs billeder (valgfrit)</string>
     <string name="permission_read_images_summary">Denne tilladelse kræves for Booming Music til at finde album cover filer i dine musikmapper. Hvis du ikke planlægger at bruge denne funktion, kan du vælge ikke at give den.</string>
     <string name="permission_read_images_denied">Du skal give tilladelse til at læse billeder fra enheden.</string>
 
 
     <string name="permissions_denied">Tilladelser nægtet</string>
-
+    <string name="permissions_needed">Tilladelser nødvendig</string>
     <string name="grant_access_action">Giv adgang</string>
     <string name="action_grant">Tildel</string>
     <string name="granted">Tildelt</string>
-
-
+    <string name="welcome_to_x">Velkommen til %s</string>
     <string name="get_started">Kom I Gang</string>
     <string name="select_storage_title">Vælg lagerplads</string>
     <string name="now_playing">Afspiller nu</string>

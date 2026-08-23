@@ -49,13 +49,13 @@ import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.isTablet
-import com.mardous.booming.extensions.languageEndonym
 import com.mardous.booming.extensions.materialSharedAxis
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.extensions.utilities.toEnum
+import com.mardous.booming.ui.component.compose.languageEntries
 import com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
 import com.mardous.booming.ui.component.preferences.ThemePreference
@@ -154,12 +154,9 @@ class AdvancedPreferencesFragment : PreferenceScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_advanced)
         findPreference<ListPreference>(LANGUAGE_NAME)?.let { preference ->
-            preference.entries = preference.entryValues.map { entryValue ->
-                val tag = entryValue.toString()
-                if (tag == AUTO_LANGUAGE) {
-                    getString(R.string.system_default)
-                } else tag.languageEndonym()
-            }.toTypedArray()
+            preference.entries = requireContext().languageEntries()
+                .map { it.title }
+                .toTypedArray()
         }
     }
 }

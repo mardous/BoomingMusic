@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Sinun on myönnettävä lupa ulkoiseen tallennustilaan.</string>
     <string name="permission_bluetooth_title">Lähellä Olevat Laitteet</string>
     <string name="permission_bluetooth_description">Sovellus tarvitsee pääsyn lähistöllä oleviin laitteisiin, jotta se voi tarkistaa bluetooth-laitteita</string>
-    <string name="permission_bluetooth_denied">Lähellä olevien laitteiden käyttöoikeudet evätty.</string>
     <string name="permission_read_images_title">Lue kuvia (valinnainen)</string>
     <string name="permission_read_images_summary">Tämä lupa tarvitaan Booming Musiikkia varten löytääksesi albumin taidetiedostoja musiikkikansiostasi. Jos et aio käyttää tätä ominaisuutta, voit päättää olla myöntämättä sitä.</string>
     <string name="permission_read_images_denied">Sinun on myönnettävä lupa lukea kuvia laitteesta.</string>
 
 
     <string name="permissions_denied">Oikeudet evätty</string>
-
+    <string name="permissions_needed">Käyttöoikeudet tarvitaan</string>
     <string name="grant_access_action">Anna käyttöoikeus</string>
     <string name="action_grant">Myönnä</string>
     <string name="granted">Myönnetty</string>
-
-
+    <string name="welcome_to_x">Tervetuloa %s</string>
     <string name="get_started">Aloita Alusta</string>
     <string name="select_storage_title">Valitse tallennustila</string>
     <string name="now_playing">Nyt soi</string>

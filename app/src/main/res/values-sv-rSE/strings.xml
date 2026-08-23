@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Du måste bevilja behörighet att komma åt extern lagring.</string>
     <string name="permission_bluetooth_title">Enheter i närheten</string>
     <string name="permission_bluetooth_description">Appen behöver åtkomst till enheter i närheten för att söka efter bluetooth-enheter</string>
-    <string name="permission_bluetooth_denied">Åtkomst till enheter i närheten nekad.</string>
     <string name="permission_read_images_title">Läs bilder (valfritt)</string>
     <string name="permission_read_images_summary">Denna behörighet krävs för att Booming Music ska kunna hitta skivomslagsfiler i dina musikmappar. Om du inte planerar att använda den här funktionen kan du välja att inte bevilja den.</string>
     <string name="permission_read_images_denied">Du måste ge behörighet att läsa bilder från enheten.</string>
 
 
     <string name="permissions_denied">Åtkomst nekad</string>
-
+    <string name="permissions_needed">Behörigheter behövs</string>
     <string name="grant_access_action">Bevilja åtkomst</string>
     <string name="action_grant">Bevilja</string>
     <string name="granted">Beviljad</string>
-
-
+    <string name="welcome_to_x">Välkommen till %s</string>
     <string name="get_started">Kom igång</string>
     <string name="select_storage_title">Välj lagringsutrymme</string>
     <string name="now_playing">Nu spelas</string>

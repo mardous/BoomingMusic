@@ -132,19 +132,17 @@
     <string name="permission_external_storage_denied">شما باید اجازه دسترسی به حافظه خارجی را بدهید.</string>
     <string name="permission_bluetooth_title">دستگاه های نزدیک</string>
     <string name="permission_bluetooth_description">این برنامه برای بررسی دستگاه‌های بلوتوث به مجوز دستگاه‌های اطراف نیاز دارد</string>
-    <string name="permission_bluetooth_denied">مجوز دستگاه‌های اطراف رد شد.</string>
     <string name="permission_read_images_title">خواندن تصاویر (اختیاری)</string>
     <string name="permission_read_images_summary">این مجوز برای Booming Music لازم است تا فایل‌های هنری آلبوم را در پوشه‌های موسیقی شما پیدا کند. اگر قصد استفاده از این ویژگی را ندارید، می توانید آن را اعطا نکنید.</string>
     <string name="permission_read_images_denied">برای خواندن تصاویر از دستگاه باید اجازه دهید.</string>
 
 
     <string name="permissions_denied">مجوزها رد شد</string>
-
+    <string name="permissions_needed">مجوزهای مورد نیاز</string>
     <string name="grant_access_action">اجازه دسترسی</string>
     <string name="action_grant">گرانت</string>
     <string name="granted">داده شده است</string>
-
-
+    <string name="welcome_to_x">به %s خوش آمدید</string>
     <string name="get_started">شروع کنید</string>
     <string name="select_storage_title">فضای ذخیره سازی را انتخاب کنید</string>
     <string name="now_playing">در حال حاضر پخش</string>

@@ -124,17 +124,15 @@
     <string name="permission_external_storage_denied">Du musst die Berechtigung zum Zugriff auf den externen Speicher erteilen.</string>
     <string name="permission_bluetooth_title">Geräte in der Nähe</string>
     <string name="permission_bluetooth_description">Die App benötigt Zugriff auf Geräte in der Nähe, um Bluetooth-Geräte zu finden</string>
-    <string name="permission_bluetooth_denied">Zugriff auf Geräte in der Nähe verweigert.</string>
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
     <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
     <string name="permission_read_images_denied">Sie müssen die Berechtigung zum Lesen von Bildern auf diesem Gerät erteilen.</string>
     <string name="permissions_denied">Berechtigungen verweigert</string>
-
+    <string name="permissions_needed">Benötigte Berechtigungen</string>
     <string name="grant_access_action">Zugriff gewähren</string>
     <string name="action_grant">Gewähren</string>
     <string name="granted">Gewährt</string>
-
-
+    <string name="welcome_to_x">Willkommen bei %s</string>
     <string name="get_started">Los geht\'s</string>
     <string name="select_storage_title">Verzeichnis auswählen</string>
     <string name="now_playing">Aktuelle Wiedergabe</string>

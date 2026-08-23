@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">외부 저장공간 액세스 권한을 허용해야 합니다.</string>
     <string name="permission_bluetooth_title">근처 기기</string>
     <string name="permission_bluetooth_description">블루투스 기기 확인을 위해 근처 기기 권한이 필요합니다</string>
-    <string name="permission_bluetooth_denied">근처 기기 권한이 거부되었습니다.</string>
     <string name="permission_read_images_title">이미지 읽기 (선택 사항)</string>
     <string name="permission_read_images_summary">음악 폴더에서 앨범 아트 파일을 찾기 위해 이 권한이 필요합니다. 이 기능을 사용하지 않으려면 허용하지 않아도 됩니다.</string>
     <string name="permission_read_images_denied">기기에서 이미지를 읽기 위한 권한을 허용해야 합니다.</string>
 
 
     <string name="permissions_denied">권한 거부됨</string>
-
+    <string name="permissions_needed">권한 필요</string>
     <string name="grant_access_action">액세스 허용</string>
     <string name="action_grant">허용</string>
     <string name="granted">허용됨</string>
-
-
+    <string name="welcome_to_x">%s에 오신 것을 환영합니다</string>
     <string name="get_started">시작하기</string>
     <string name="select_storage_title">저장공간 선택</string>
     <string name="now_playing">현재 재생 중</string>
