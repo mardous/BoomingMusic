@@ -803,7 +803,7 @@ class PlaybackService :
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         val isPlaying = player.isPlaying
-        if (replayGainProcessor.mode.isOn) submitReplayGain()
+        if (replayGainProcessor.mode.isOn) submitReplayGain(mediaItem)
 
         serviceScope.launch(IO) {
             val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
@@ -852,8 +852,8 @@ class PlaybackService :
         widgets.refresh()
     }
 
-    private fun submitReplayGain() {
-        val uri = player.currentMediaItem?.contentUri ?: return
+    private fun submitReplayGain(currentItem: MediaItem? = player.currentMediaItem) {
+        val uri = currentItem?.contentUri ?: return
         serviceScope.launch(IO) {
             replayGainProcessor.submitGain(uri, ReplayGainTagExtractor.getReplayGain(uri))
         }
