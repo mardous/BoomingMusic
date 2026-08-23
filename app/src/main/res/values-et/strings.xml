@@ -972,4 +972,5 @@
     <string name="initial_configuration_note">Sa võid neid seadistusei alati muuta.</string>
     <string name="widget_show_navigation_title">Näita menüüriba</string>
     <string name="widget_show_navigation_summary">Näita menüüriba, mille abil saad loendi läbi lapata.</string>
+    <string name="listenbrainz_toggle_token_visibility">Lülita tunnusloa nähtavus sisse/välja</string>
 </resources>
