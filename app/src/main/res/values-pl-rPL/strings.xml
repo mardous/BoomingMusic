@@ -205,7 +205,7 @@
     <string name="view_type_colored_card">Kolorowa karta</string>
     <string name="view_type_circle">Okrąg</string>
     <string name="view_type_image">Kafelki</string>
-    <string name="action_grid_size">Rozmiar siatki</string>
+    <string name="action_grid_size">Szerokość siatki</string>
     <string name="action_grid_size_land">Rozmiar siatki (poziomo)</string>
     <string name="action_sort_order">Sortuj według</string>
     <string name="sort_order_artist">Wykonawca</string>
@@ -271,7 +271,7 @@
     <string name="last_played">Ostatnio odtwarzane</string>
     <string name="played">Odtworzono</string>
     <string name="skipped">Pominięto</string>
-    <string name="track">Numer utworu</string>
+    <string name="track">Nr utworu</string>
     <string name="track_total">Wszystkie utwory</string>
     <string name="disc">Numer płyty</string>
     <string name="disc_total">Liczba płyt</string>
@@ -361,22 +361,22 @@
     <string name="recent_albums">Ostatnio dodane albumy</string>
     <string name="no_suggestions">Brak sugestii dla Ciebie</string>
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">W pełni losowo</string>
+    <string name="shuffle_mode_pure_random">Całkowita losowość</string>
     <string name="shuffle_mode_most_played">Najczęściej odtwarzane</string>
     <string name="shuffle_mode_most_played_artists">Najczęściej odtwarzani artyści</string>
     <string name="shuffle_mode_most_played_albums">Najczęściej odtwarzane albumy</string>
-    <string name="shuffle_mode_favorite_songs">Wpierw ulubione</string>
+    <string name="shuffle_mode_favorite_songs">Najpierw ulubione</string>
     <string name="shuffle_mode_forgotten_songs">Zapomniane utwory</string>
     <string name="shuffle_mode_recently_added">Ostatnio dodane</string>
     <string name="shuffle_mode_combined">Inteligentny miks</string>
-    <string name="shuffle_mode_pure_random_description">Całkowicie losowe tasowanie.</string>
+    <string name="shuffle_mode_pure_random_description">Całkowicie losowe odtwarzanie.</string>
     <string name="shuffle_mode_most_played_description">Faworyzuje najczęściej odtwarzane utwory.</string>
     <string name="shuffle_mode_most_played_artists_description">Faworyzuje utwory ulubionych artystów.</string>
     <string name="shuffle_mode_most_played_albums_description">Faworyzuje utwory z najczęściej odtwarzanych albumów.</string>
     <string name="shuffle_mode_favorite_songs_description">Nadaje priorytet Twoim ulubionym utworom.</string>
     <string name="shuffle_mode_forgotten_songs_description">Faworyzuje utwory, których ostatnio nie odtwarzałeś.</string>
     <string name="shuffle_mode_recently_added_description">Faworyzuje utwory ostatnio dodane do biblioteki.</string>
-    <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych.</string>
+    <string name="shuffle_mode_combined_description">Miks oparty na ulubionych, liczbie odtworzeń i ostatnio słuchanych utworach.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Korektor dźwięku</string>
     <string name="autoeq_label">AutoEq</string>
@@ -572,7 +572,7 @@
     <string name="lyrics_center_current_line_title">Wyśrodkuj bieżący wers</string>
     <string name="lyrics_center_current_line_summary">Utrzymuj bieżący wers tekstu na środku ekranu zamiast wyrównania do góry.</string>
     <string name="lyrics_custom_font_title">Własna czcionka</string>
-    <string name="lyrics_custom_font_summary">Importuj i użyj własnej czcionki dla tekstów piosenek.</string>
+    <string name="lyrics_custom_font_summary">Importuj i użyj własnej czcionki dla tekstów utworów.</string>
     <string name="lyrics_import_custom_font_title">Wybierz własną czcionkę</string>
     <string name="lyrics_syllable_mode_title">Zsynchronizowany tekst</string>
     <string name="lyrics_syllable_mode_summary">Umożliwia wyświetlanie tekstu utworu zsynchronizowanego słowo po słowie. Działa tylko wtedy, gdy dostępny jest odpowiedni tekst i zgodny format (np. LRC lub TTML).</string>
