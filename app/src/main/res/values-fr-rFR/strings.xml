@@ -1001,4 +1001,5 @@
     <string name="initial_configuration_note">Vous pourrez toujours modifier ces paramètres ultérieurement.</string>
     <string name="restore_from_backup">Restaurer à partir d\'une sauvegarde</string>
     <string name="network_features_summary">Permet le scrobbling ainsi que le téléchargement des pochettes d\'album et des paroles.</string>
+    <string name="listenbrainz_toggle_token_visibility">Activer/désactiver la visibilité du jeton</string>
 </resources>
