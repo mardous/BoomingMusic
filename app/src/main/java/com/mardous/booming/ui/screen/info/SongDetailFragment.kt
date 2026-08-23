@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -43,6 +44,7 @@ import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,10 +56,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
@@ -83,7 +87,7 @@ import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragmentArgs
 import com.mardous.booming.ui.screen.tageditor.SongTagEditorActivity
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 data class SongInfoUiState(
     val isLoading: Boolean,
@@ -98,10 +102,7 @@ data class SongInfoUiState(
 class SongDetailFragment : BottomSheetDialogFragment() {
 
     private val navArgs: SongDetailFragmentArgs by navArgs()
-    private val viewModel: InfoViewModel by viewModel()
-
-    private val song: Song
-        get() = navArgs.extraSong
+    private val song: Song get() = navArgs.extraSong
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -125,7 +126,6 @@ class SongDetailFragment : BottomSheetDialogFragment() {
             setContent {
                 BoomingMusicTheme {
                     SongInfoScreen(
-                        viewModel = viewModel,
                         song = song,
                         onLyricsEditorClick = {
                             goToDestination(
@@ -154,12 +154,13 @@ class SongDetailFragment : BottomSheetDialogFragment() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     private fun SongInfoScreen(
-        viewModel: InfoViewModel,
         song: Song,
         onTagEditorClick: () -> Unit,
-        onLyricsEditorClick: () -> Unit
+        onLyricsEditorClick: () -> Unit,
+        viewModel: InfoViewModel = koinViewModel()
     ) {
         val context = LocalContext.current
+        val haptics = LocalHapticFeedback.current
         val uiState by viewModel.songInfoUiState.collectAsState()
 
         LaunchedEffect(Unit) {
@@ -246,19 +247,32 @@ class SongDetailFragment : BottomSheetDialogFragment() {
                         }
                     }
 
-                    if (!uiState.isLoading) {
+                    if (!uiState.isLoading || uiState.info != SongInfo.Empty) {
                         if (uiState.isSuccess) {
                             // Content sections
                             if (!uiState.info.isMissingMetadata) {
                                 item {
-                                    MetadataInfoSection(uiState.info, Modifier.fillMaxWidth())
+                                    MetadataInfoSection(
+                                        songInfo = uiState.info,
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
                                 }
                             }
                             item {
-                                PlayInfoSection(uiState.info, Modifier.fillMaxWidth())
+                                PlayInfoSection(
+                                    songInfo = uiState.info,
+                                    onResetPlaybackStacks = {
+                                        haptics.performHapticFeedback(HapticFeedbackType.KeyboardTap)
+                                        viewModel.resetPlaybackStats(context, song)
+                                    },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                             }
                             item {
-                                FileInfoSection(uiState.info, Modifier.fillMaxWidth())
+                                FileInfoSection(
+                                    songInfo = uiState.info,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                             }
                         } else {
                             item {
@@ -340,10 +354,22 @@ class SongDetailFragment : BottomSheetDialogFragment() {
     }
 
     @Composable
-    fun PlayInfoSection(songInfo: SongInfo, modifier: Modifier = Modifier) {
+    fun PlayInfoSection(
+        songInfo: SongInfo,
+        onResetPlaybackStacks: () -> Unit,
+        modifier: Modifier = Modifier
+    ) {
         InfoSection(
             icon = painterResource(R.drawable.ic_play_circle_24dp),
             title = stringResource(R.string.play_info),
+            titleEndContent = {
+                IconButton(
+                    onClick = onResetPlaybackStacks,
+                    modifier = Modifier.size(30.dp)
+                ) {
+                    Icon(painterResource(R.drawable.ic_restart_alt_24dp), contentDescription = null)
+                }
+            },
             modifier = modifier
         ) {
             InfoView(
@@ -491,11 +517,13 @@ class SongDetailFragment : BottomSheetDialogFragment() {
         icon: Painter,
         title: String,
         modifier: Modifier = Modifier,
+        titleEndContent: @Composable RowScope.() -> Unit = {},
         content: @Composable ColumnScope.() -> Unit
     ) {
         TitledCard(
             title = title,
             icon = icon,
+            titleEndContent = titleEndContent,
             modifier = modifier
         ) { contentPadding ->
             Column(

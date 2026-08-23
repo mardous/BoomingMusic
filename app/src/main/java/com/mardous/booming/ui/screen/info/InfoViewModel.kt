@@ -23,11 +23,14 @@ import com.mardous.booming.extensions.utilities.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 import org.jaudiotagger.audio.AudioHeader
 import java.io.File
 
-class InfoViewModel(private val repository: Repository) : ViewModel() {
+class InfoViewModel(
+    private val repository: Repository
+) : ViewModel() {
 
     private val _songInfoUiState = MutableStateFlow(
         SongInfoUiState(
@@ -158,6 +161,22 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
             isSuccess = songInfo.isSuccess,
             info = songInfo.getOrDefault(SongInfo.Empty)
         )
+    }
+
+    fun resetPlaybackStats(context: Context, song: Song) = viewModelScope.launch(Dispatchers.IO) {
+        val songInfoState = _songInfoUiState.updateAndGet { it.copy(isLoading = true) }
+        if (songInfoState.info != SongInfo.Empty) {
+            val playCountEntity = repository.resetPlayCount(song)
+
+            _songInfoUiState.value = songInfoState.copy(
+                isLoading = false,
+                info = songInfoState.info.copy(
+                    playCount = playCountEntity.playCount.asNumberOfTimes(context),
+                    skipCount = playCountEntity.skipCount.asNumberOfTimes(context),
+                    lastPlayedDate = context.dateStr(playCountEntity.timePlayed)
+                )
+            )
+        }
     }
 
     private fun getNumberAndTotal(number: String?, total: String?): String? {
