@@ -992,4 +992,5 @@
     <string name="widget_page_previous">Föregående låtar</string>
     <string name="widget_page_next">Nästkommande låtar</string>
     <string name="network_features_summary">Aktiverar scrobbling samt nedladdning av skivomslag och låttexter.</string>
+    <string name="listenbrainz_toggle_token_visibility">Växla tokensynlighet</string>
 </resources>
