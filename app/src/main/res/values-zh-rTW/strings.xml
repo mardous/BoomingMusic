@@ -983,4 +983,5 @@
     <string name="restore_from_backup">從備份還原</string>
     <string name="network_features_summary">啟用播放紀錄同步與專輯封面和歌詞下載。</string>
     <string name="welcome_to">歡迎使用</string>
+    <string name="listenbrainz_toggle_token_visibility">顯示/隱藏 Token</string>
 </resources>
