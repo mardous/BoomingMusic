@@ -874,8 +874,8 @@
     <string name="logout_action">退出登录</string>
     <string name="sign_in_to_x_title">登录 %s</string>
     <string name="error_listenbrainz_generic">ListenBrainz 发生了错误。</string>
-    <string name="error_listenbrainz_invalid_token">无效的 ListenBrainz 令牌。</string>
-    <string name="listenbrainz_token_label">用户令牌</string>
+    <string name="error_listenbrainz_invalid_token">ListenBrainz Token 无效。</string>
+    <string name="listenbrainz_token_label">用户 Token</string>
     <string name="listenbrainz_title">ListenBrainz</string>
     <string name="listenbrainz_login_title">登录 ListenBrainz</string>
     <string name="listenbrainz_login_summary">使用用户 Token 进行验证，以启用播放记录同步与“正在播放”状态更新。你可以在 ListenBrainz 的个人资料设置中找到你的 Token。</string>
@@ -983,4 +983,5 @@
     <string name="initial_configuration_note">你随时可以更改这些设置。</string>
     <string name="restore_from_backup">从备份还原</string>
     <string name="network_features_summary">启用播放记录同步与专辑封面和歌词下载。</string>
+    <string name="listenbrainz_toggle_token_visibility">显示/隐藏 Token</string>
 </resources>
