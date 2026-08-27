@@ -85,9 +85,12 @@ class LibraryProvider(private val repository: Repository) {
                     val results = searchResult(callerUid)
                     if (id == null || results.isEmpty()) return null
                     val transformedMediaItems = results.map { it.buildUpon().setMediaId(id).build() }
+                    val correctIndex = transformedMediaItems.indexOfFirst { it.mediaId == id }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
                     MediaItemsWithStartPosition(
                         transformedMediaItems,
-                        transformedMediaItems.indexOfFirst { it.mediaId == id }.coerceAtLeast(0),
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
@@ -95,85 +98,114 @@ class LibraryProvider(private val repository: Repository) {
                 MediaIDs.SONGS -> {
                     val id = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val allSongs = repository.allSongs()
+                    val correctIndex = allSongs.indexOfFirst { it.id == id }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
                     MediaItemsWithStartPosition(
                         allSongs.map { it.toPlayableMediaItem() },
-                        allSongs.indexOfFirst { it.id == id }.coerceAtLeast(0),
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                
                 MediaIDs.ALBUMS -> {
                     val albumId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val album = repository.albumById(albumId)
+                    val correctIndex = album.songs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+                    val parentId = MediaIDs.getPathId(MediaIDs.ALBUMS, albumId)
                     MediaItemsWithStartPosition(
-                        album.songs.map { it.toPlayableMediaItem() },
-                        album.songs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        album.songs.map { it.toPlayableMediaItem(parentId) },
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                
                 MediaIDs.ARTISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val artistId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val artistSongs = repository.artistById(artistId).sortedSongs
+                    val correctIndex = artistSongs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+                    val parentId = MediaIDs.getPathId(MediaIDs.ARTISTS, artistId)
                     MediaItemsWithStartPosition(
-                        artistSongs.map { it.toPlayableMediaItem() },
-                        artistSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        artistSongs.map { it.toPlayableMediaItem(parentId) },
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                
                 MediaIDs.ALBUM_ARTISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val albumArtistName = path.getOrNull(1) ?: return null
-                    val albumArtistSongs =
-                        repository.albumArtistByName(albumArtistName).sortedSongs
+                    val albumArtistSongs = repository.albumArtistByName(albumArtistName).sortedSongs
+                    val correctIndex = albumArtistSongs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+                    val parentId = MediaIDs.getPathId(MediaIDs.ALBUM_ARTISTS, albumArtistName)
                     MediaItemsWithStartPosition(
-                        albumArtistSongs.map { it.toPlayableMediaItem() },
-                        albumArtistSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        albumArtistSongs.map { it.toPlayableMediaItem(parentId) },
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                
                 MediaIDs.PLAYLISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val playlistId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val playlist = repository.playlistWithSongs(playlistId)
+                    val correctIndex = playlist.songs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+                    val parentId = MediaIDs.getPathId(MediaIDs.PLAYLISTS, playlistId)
                     MediaItemsWithStartPosition(
-                        playlist.songs.toSongs().map { it.toPlayableMediaItem() },
-                        playlist.songs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        playlist.songs.toSongs().map { it.toPlayableMediaItem(parentId) },
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                
                 MediaIDs.GENRES -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val genreId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val songsByGenre = repository.songsByGenre(genreId)
+                    val correctIndex = songsByGenre.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+                    val parentId = MediaIDs.getPathId(MediaIDs.GENRES, genreId)
                     MediaItemsWithStartPosition(
-                        songsByGenre.map { it.toPlayableMediaItem() },
-                        songsByGenre.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        songsByGenre.map { it.toPlayableMediaItem(parentId) },
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                                
                 MediaIDs.TOP_TRACKS -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val playCountSongs = repository.playCountSongs()
+                    val correctIndex = playCountSongs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error                    
                     MediaItemsWithStartPosition(
                         playCountSongs.map { it.toPlayableMediaItem() },
-                        playCountSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
+                
                 MediaIDs.RECENT_SONGS -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val historySongs = repository.historySongs()
+                    val correctIndex = historySongs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+
                     MediaItemsWithStartPosition(
                         historySongs.map { it.toPlayableMediaItem() },
-                        historySongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
@@ -181,13 +213,16 @@ class LibraryProvider(private val repository: Repository) {
                 MediaIDs.FAVORITES -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val favoriteSongs = repository.favoriteSongs()
+                    val correctIndex = favoriteSongs.indexOfFirst { it.id == songId }
+                    if (correctIndex < 0)
+                        return null // Bad user input, don't send the first song but a true error
+
                     MediaItemsWithStartPosition(
                         favoriteSongs.map { it.toPlayableMediaItem() },
-                        favoriteSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
+                        correctIndex,
                         C.TIME_UNSET
                     )
                 }
-
                 else -> null
             }
         } catch (e: Exception) {
