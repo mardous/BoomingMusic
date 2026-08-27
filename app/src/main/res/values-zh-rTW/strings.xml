@@ -282,10 +282,10 @@
     <string name="connection_unavailable">連線無法使用。</string>
     <string name="you_have_to_select_at_least_one_category">至少需要選擇一個類別</string>
     <string name="you_cannot_select_more_than_five_categories">不能選擇超過五個類別。</string>
-    <string name="backup_settings">設定</string>
-    <string name="backup_synced_lyrics">同步歌詞</string>
-    <string name="backup_artist_images">藝人圖片</string>
-    <string name="backup_playlists">播放清單</string>
+
+
+
+
     <string name="backup_successful">備份成功！</string>
     <string name="backup_failed">備份失敗。</string>
     <string name="select_content_to_restore">選擇要還原的內容：</string>
@@ -527,7 +527,7 @@
     <string name="audio_focus_header">音訊聚焦</string>
     <string name="shuffle_mode_header">隨機模式</string>
     <string name="display_header">顯示</string>
-    <string name="backup_restore_header">備份/還原</string>
+
     <string name="visuals_header">視覺效果</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">一般主題</string>
@@ -709,10 +709,10 @@
     <string name="min_song_duration_summary">只有長度至少達到指定秒數的歌曲才會顯示在曲庫中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">語言</string>
-    <string name="backup_data_title">備份所有資料</string>
-    <string name="backup_app_data_summary">建立包含重要應用程式資料的檔案，並儲存到外部儲存空間。</string>
-    <string name="restore_backup_title">還原備份</string>
-    <string name="restore_backup_summary">從先前備份還原應用程式資料與狀態。</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">在「最近」關閉應用程式後停止播放</string>
     <string name="stop_when_closed_from_recents_summary">在「最近」總覽關閉此應用程式後停止播放歌曲。</string>
     <string name="stop_when_closed_from_recents_note">注意：某些記憶體或電池管理較嚴格的裝置可能會忽略此設定，並在應用程式從最近使用清單移除時一律停止播放。</string>

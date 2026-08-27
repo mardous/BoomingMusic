@@ -287,10 +287,10 @@
     <string name="connection_unavailable">La connexió no està disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Heu de triar, pel cap baix, una categoria</string>
     <string name="you_cannot_select_more_than_five_categories">No podeu triar més de cinc categories.</string>
-    <string name="backup_settings">Configuració</string>
-    <string name="backup_synced_lyrics">Lletra sincronitzada</string>
-    <string name="backup_artist_images">Imatges d\'artistes</string>
-    <string name="backup_playlists">Llistes de reproducció</string>
+
+
+
+
     <string name="backup_successful">La còpia de seguretat ha reeixit!</string>
     <string name="backup_failed">No s\'ha pogut fer la còpia de seguretat.</string>
     <string name="select_content_to_restore">Trieu el contingut a restablir:</string>
@@ -548,7 +548,7 @@
     <string name="audio_focus_header">Focus d\'àudio</string>
     <string name="shuffle_mode_header">Mode aleatori</string>
     <string name="display_header">Mostra</string>
-    <string name="backup_restore_header">Fes còpia de seguretat/Restableix-la</string>
+
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
@@ -730,10 +730,10 @@
     <string name="min_song_duration_summary">Quants segons (pel cap baix) ha de durar una cançó per mostrar-la a la vostra biblioteca.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Idioma de l\'aplicació</string>
-    <string name="backup_data_title">Còpia de seguretat de dades de l\'aplicació</string>
-    <string name="backup_app_data_summary">Crea un fitxer amb dades essencials de l\'aplicació i el desa a l\'emmagatzematge.</string>
-    <string name="restore_backup_title">Restableix la còpia de seguretat</string>
-    <string name="restore_backup_summary">Restableix les dades (i estat) de l\'aplicació des d\'una còpia de seguretat.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Atura en tancar des de recents</string>
     <string name="stop_when_closed_from_recents_summary">Atura la reproducció si l\'aplicació es tanca des de la llista de recents.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositius amb gestió agressiva de la memòria o la bateria podrien ignorar aquesta opció i aturar sempre l\'aplicació en treure-la de recents.</string>

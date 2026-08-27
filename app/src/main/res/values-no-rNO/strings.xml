@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Utilgjengelig forbindelse</string>
     <string name="you_have_to_select_at_least_one_category">Du må velge minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan ikke velge mer enn fem kategorier.</string>
-    <string name="backup_settings">Innstillinger</string>
-    <string name="backup_synced_lyrics">Synkroniserte tekster</string>
-    <string name="backup_artist_images">Artistens bilder</string>
-    <string name="backup_playlists">Spillelister</string>
+
+
+
+
     <string name="backup_successful">Sikkerhetskopiering vellykket!</string>
     <string name="backup_failed">Sikkerhetskopieringen mislyktes.</string>
     <string name="select_content_to_restore">Velg innhold som skal gjenopprette:</string>
@@ -540,7 +540,7 @@
     <string name="audio_focus_header">Lyd fokus</string>
     <string name="shuffle_mode_header">Bland modus</string>
     <string name="display_header">Skjerm</string>
-    <string name="backup_restore_header">Sikkerhetskopiering/gjenoppretting</string>
+
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Generelt tema</string>
@@ -722,10 +722,10 @@
     <string name="min_song_duration_summary">Hvor mange sekunder (minst) må vare en sang for å vises i biblioteket.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App språk</string>
-    <string name="backup_data_title">Sikkerhetskopier appdata</string>
-    <string name="backup_app_data_summary">Opprett en fil som inneholder viktige appdata og lagre den til ekstern lagring.</string>
-    <string name="restore_backup_title">Gjenopprett sikkerhetskopi</string>
-    <string name="restore_backup_summary">Gjenopprette appdata (og status) fra en tidligere sikkerhetskopi.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>

@@ -26,12 +26,10 @@ import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO
 import java.io.File
 import java.io.InputStream
-import java.io.OutputStream
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.util.zip.ZipOutputStream
 import kotlin.math.log10
 import kotlin.math.pow
 
@@ -95,5 +93,3 @@ fun File.toAudioFile(): AudioFile? = runCatching { AudioFileIO.read(this) }.getO
  * @return the string with corresponding file content.
  */
 fun InputStream.readString(): String = this.bufferedReader().use { it.readText() }
-
-fun OutputStream.zipOutputStream(): ZipOutputStream = ZipOutputStream(buffered())

@@ -25,6 +25,7 @@ import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
+import com.mardous.booming.data.local.backup.BackupManager
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
@@ -61,6 +62,7 @@ import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
+import com.mardous.booming.ui.screen.backup.BackupViewModel
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.screen.info.InfoViewModel
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -129,6 +131,15 @@ private val mainModule = module {
     }
     single {
         AudioOutputObserver(context = androidContext())
+    }
+    factory {
+        BackupManager(
+            context = androidContext(),
+            repository = get(),
+            playCountDao = get(),
+            lyricsDao = get(),
+            customArtistImageManager = get()
+        )
     }
 }
 
@@ -337,6 +348,10 @@ private val viewModule = module {
 
     viewModel {
         UpdateViewModel(updateService = get())
+    }
+
+    viewModel {
+        BackupViewModel(contentResolver = get(), preferences = get(), backupManager = get())
     }
 }
 

@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Conexiune indisponibilă.</string>
     <string name="you_have_to_select_at_least_one_category">Trebuie să selectaţi cel puţin o categorie</string>
     <string name="you_cannot_select_more_than_five_categories">Nu puteți selecta mai mult de cinci categorii.</string>
-    <string name="backup_settings">Setări</string>
-    <string name="backup_synced_lyrics">Versuri sincronizate</string>
-    <string name="backup_artist_images">Imagini artist</string>
-    <string name="backup_playlists">Liste</string>
+
+
+
+
     <string name="backup_successful">Copie de rezervă reușită!</string>
     <string name="backup_failed">Copie de rezervă eșuată.</string>
     <string name="select_content_to_restore">Selectaţi conţinutul pentru restaurare:</string>
@@ -548,7 +548,7 @@
     <string name="audio_focus_header">Focalizare audio</string>
     <string name="shuffle_mode_header">Mod Amestecare</string>
     <string name="display_header">Afişare</string>
-    <string name="backup_restore_header">Backup/restaurare</string>
+
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Temă generală</string>
@@ -730,10 +730,10 @@
     <string name="min_song_duration_summary">Câte secunde (cel puțin) trebuie să dureze o melodie pentru a fi afișată în bibliotecă.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Limba aplicației</string>
-    <string name="backup_data_title">Copie de rezervă date aplicație</string>
-    <string name="backup_app_data_summary">Creați un fișier care conține date esențiale ale aplicației și salvați-l pe stocare externă.</string>
-    <string name="restore_backup_title">Restaurare copie de rezervă</string>
-    <string name="restore_backup_summary">Restabiliți datele aplicației (și stați) dintr-o copie de rezervă anterioară.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>

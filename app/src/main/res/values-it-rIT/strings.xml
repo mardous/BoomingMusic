@@ -282,10 +282,10 @@
     <string name="connection_unavailable">Connessione non disponibile.</string>
     <string name="you_have_to_select_at_least_one_category">Devi selezionare almeno una categoria</string>
     <string name="you_cannot_select_more_than_five_categories">Non puoi selezionare più di cinque categorie.</string>
-    <string name="backup_settings">Impostazioni</string>
-    <string name="backup_synced_lyrics">Testo sincronizzato</string>
-    <string name="backup_artist_images">Immagini dell\'artista</string>
-    <string name="backup_playlists">Playlist</string>
+
+
+
+
     <string name="backup_successful">Backup riuscito!</string>
     <string name="backup_failed">Backup non riuscito.</string>
     <string name="select_content_to_restore">Seleziona il contenuto da ripristinare:</string>
@@ -535,7 +535,7 @@
     <string name="audio_focus_header">Focus audio</string>
     <string name="shuffle_mode_header">Modalità di riproduzione casuale</string>
     <string name="display_header">Visualizzazione</string>
-    <string name="backup_restore_header">Backup/ripristino</string>
+
     <string name="visuals_header">Visivi</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema generale</string>
@@ -717,10 +717,10 @@
     <string name="min_song_duration_summary">Crea un file contenente i dati essenziali dell\'app e salvarlo nella memoria esterna.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Lingua app</string>
-    <string name="backup_data_title">Backup dati app</string>
-    <string name="backup_app_data_summary">Crea un file contenente i dati essenziali dell\'app e salvalo nella memoria esterna.</string>
-    <string name="restore_backup_title">Ripristina backup</string>
-    <string name="restore_backup_summary">Ripristina i dati (e lo stato) delle app da un backup precedente.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Ferma quando chiuso dai recenti</string>
     <string name="stop_when_closed_from_recents_summary">La riproduzione viene fermata se l\'app viene chiusa dalla lista delle app recenti.</string>
     <string name="stop_when_closed_from_recents_note">Nota: alcuni dispositivi con una gestione aggressiva della memoria e/o della batteria potrebbero ignorare questa impostazione e fermare sempre l\'app quando rimossa dalla lista delle app recenti.</string>

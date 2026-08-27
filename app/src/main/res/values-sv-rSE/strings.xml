@@ -282,10 +282,10 @@
     <string name="connection_unavailable">Anslutning ej tillgänglig.</string>
     <string name="you_have_to_select_at_least_one_category">Du måste välja minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan inte välja mer än fem kategorier.</string>
-    <string name="backup_settings">Inställningar</string>
-    <string name="backup_synced_lyrics">Synkroniserade låttexter</string>
-    <string name="backup_artist_images">Konstnärsbilder</string>
-    <string name="backup_playlists">Spellistor</string>
+
+
+
+
     <string name="backup_successful">Säkerhetskopiering lyckades!</string>
     <string name="backup_failed">Säkerhetskopiering misslyckades.</string>
     <string name="select_content_to_restore">Välj innehåll att återställa:</string>
@@ -535,7 +535,7 @@
     <string name="audio_focus_header">Fokus på ljud</string>
     <string name="shuffle_mode_header">Blanda läge</string>
     <string name="display_header">Visning</string>
-    <string name="backup_restore_header">Säkerhetskopiera/återställ</string>
+
     <string name="visuals_header">Visualer</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Allmänt tema</string>
@@ -717,10 +717,10 @@
     <string name="min_song_duration_summary">Hur många sekunder (minst) måste en låt vara för att visas i ditt bibliotek.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Appens språk</string>
-    <string name="backup_data_title">Säkerhetskopiera appdata</string>
-    <string name="backup_app_data_summary">Skapa en fil som innehåller viktiga appdata och spara den till extern lagring.</string>
-    <string name="restore_backup_title">Återställ säkerhetskopia</string>
-    <string name="restore_backup_summary">Återställ appdata (och stat) från en tidigare säkerhetskopia.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Stoppa när stängt från senaste</string>
     <string name="stop_when_closed_from_recents_summary">Uppspelning stoppas om appen är stängd från den senaste listan.</string>
     <string name="stop_when_closed_from_recents_note">Obs: Vissa enheter med aggressivt minne eller batterihantering kan ignorera denna inställning och alltid stoppa appen när den tas bort från senaste.</string>

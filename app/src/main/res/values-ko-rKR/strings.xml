@@ -287,10 +287,10 @@
     <string name="connection_unavailable">연결을 사용할 수 없습니다.</string>
     <string name="you_have_to_select_at_least_one_category">최소 한 개의 카테고리를 선택해야 합니다</string>
     <string name="you_cannot_select_more_than_five_categories">5개 이상의 카테고리를 선택할 수 없습니다.</string>
-    <string name="backup_settings">설정</string>
-    <string name="backup_synced_lyrics">동기화된 가사</string>
-    <string name="backup_artist_images">아티스트 이미지</string>
-    <string name="backup_playlists">재생목록</string>
+
+
+
+
     <string name="backup_successful">백업 성공!</string>
     <string name="backup_failed">백업 실패.</string>
     <string name="select_content_to_restore">복원할 콘텐츠 선택:</string>
@@ -532,7 +532,7 @@
     <string name="audio_focus_header">오디오 포커스</string>
     <string name="shuffle_mode_header">셔플 모드</string>
     <string name="display_header">표시</string>
-    <string name="backup_restore_header">백업/복원</string>
+
     <string name="visuals_header">비주얼</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">일반 테마</string>
@@ -714,10 +714,10 @@
     <string name="min_song_duration_summary">라이브러리에 표시할 최소 재생 시간(초)입니다.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">앱 언어</string>
-    <string name="backup_data_title">앱 데이터 백업</string>
-    <string name="backup_app_data_summary">주요 앱 데이터를 파일로 만들어 외부 저장공간에 저장합니다.</string>
-    <string name="restore_backup_title">백업 복원</string>
-    <string name="restore_backup_summary">이전 백업 파일로부터 데이터와 상태를 복원합니다.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">최근 앱 목록에서 닫을 때 중지</string>
     <string name="stop_when_closed_from_recents_summary">최근 앱 목록에서 앱을 종료하면 재생을 중지합니다.</string>
     <string name="stop_when_closed_from_recents_note">참고: 일부 기기에서는 설정과 무관하게 항상 중지될 수 있습니다.</string>

@@ -282,10 +282,10 @@
     <string name="connection_unavailable">З\'єднання відсутнє.</string>
     <string name="you_have_to_select_at_least_one_category">Ви повинні вибрати хоча б одну категорію</string>
     <string name="you_cannot_select_more_than_five_categories">Ви не можете вибрати більше п\'яти категорій.</string>
-    <string name="backup_settings">Налаштування</string>
-    <string name="backup_synced_lyrics">Синхронізовані тексти пісень</string>
-    <string name="backup_artist_images">Зображення виконавців</string>
-    <string name="backup_playlists">Списки відтворення</string>
+
+
+
+
     <string name="backup_successful">Резервне копіювання виконано успішно!</string>
     <string name="backup_failed">Помилка резервного копіювання.</string>
     <string name="select_content_to_restore">Виберіть контент для відновлення:</string>
@@ -551,7 +551,7 @@
     <string name="audio_focus_header">Фокус аудіо</string>
     <string name="shuffle_mode_header">Режим перемішування</string>
     <string name="display_header">Відображення</string>
-    <string name="backup_restore_header">Резервне копіювання/відновлення</string>
+
     <string name="visuals_header">Візуальні ефекти</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Загальна тема</string>
@@ -733,10 +733,10 @@
     <string name="min_song_duration_summary">Мінімальна тривалість пісні в секундах, щоб вона відображалася у вашій бібліотеці.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Мова програми</string>
-    <string name="backup_data_title">Резервне копіювання даних програми</string>
-    <string name="backup_app_data_summary">Створює файл з основними даними програми та зберігає його на зовнішнє сховище.</string>
-    <string name="restore_backup_title">Відновити резервну копію</string>
-    <string name="restore_backup_summary">Відновити дані програми (та стан) з попередньої резервної копії.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Зупиняти при закритті з нещодавніх</string>
     <string name="stop_when_closed_from_recents_summary">Відтворення зупиняється, якщо закрити застосунок зі списку нещодавніх.</string>
     <string name="stop_when_closed_from_recents_note">Примітка: деякі пристрої з агресивним керуванням пам’яттю або зарядом акумулятора можуть ігнорувати це налаштування та завжди зупиняти застосунок після його видалення з нещодавніх.</string>
