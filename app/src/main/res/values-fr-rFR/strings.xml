@@ -994,8 +994,6 @@
     <string name="widget_page_previous">Titres précédents</string>
     <string name="widget_page_next">Titres suivants</string>
     <string name="restart_app_message">L\'application va redémarrer pour terminer le processus.</string>
-    <string name="welcome_to">Bienvenue sur</string>
-    <string name="permissions_title">Autorisations requises</string>
     <string name="permissions_subtitle">Autorisez l\'accès à vos fichiers musicaux et aux appareils à proximité pour profiter d\'une expérience d\'écoute optimale.</string>
     <string name="initial_configuration_title">Configuration initiale</string>
     <string name="initial_configuration_subtitle">Personnalisez « Booming Music » à votre goût avant de commencer.</string>

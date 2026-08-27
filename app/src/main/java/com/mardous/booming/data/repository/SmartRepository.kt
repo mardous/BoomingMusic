@@ -26,6 +26,7 @@ import com.mardous.booming.data.local.room.HistoryEntity
 import com.mardous.booming.data.local.room.PlayCountDao
 import com.mardous.booming.data.local.room.PlayCountEntity
 import com.mardous.booming.data.mapper.toHistoryEntity
+import com.mardous.booming.data.mapper.toPlayCount
 import com.mardous.booming.data.mapper.toSong
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
@@ -51,6 +52,7 @@ interface SmartRepository {
     suspend fun playCountSongIds(limit: Int): List<Long>
     suspend fun findSongsInPlayCount(songs: List<Song>): List<PlayCountEntity>
     suspend fun findSongInPlayCount(songId: Long): PlayCountEntity?
+    suspend fun resetPlayCount(song: Song): PlayCountEntity
     suspend fun deleteSongInPlayCount(songId: Long)
     suspend fun deleteSongsInPlayCount(songIds: List<Long>)
     suspend fun insetOrIncrementPlayCount(song: Song, timePlayed: Long)
@@ -134,6 +136,12 @@ class RealSmartRepository(
 
     override suspend fun findSongInPlayCount(songId: Long): PlayCountEntity? =
         playCountDao.findSongExistInPlayCount(songId)
+
+    override suspend fun resetPlayCount(song: Song): PlayCountEntity {
+        val playCountEntity = song.toPlayCount()
+        playCountDao.upsertSongInPlayCount(playCountEntity)
+        return playCountEntity
+    }
 
     override suspend fun deleteSongInPlayCount(songId: Long) =
         playCountDao.deleteSongInPlayCount(songId)

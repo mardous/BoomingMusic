@@ -1002,8 +1002,6 @@
     <string name="widget_source_recent">Останні</string>
     <string name="widget_page_previous">Попередні пісні</string>
     <string name="widget_page_next">Наступні пісні</string>
-    <string name="welcome_to">Вітаємо в</string>
-    <string name="permissions_title">Потрібні довзоли</string>
     <string name="permissions_subtitle">Надайте доступ до своїх музичних файлів і пристроїв поблизу, щоб отримати найкращу якість відтворення.</string>
     <string name="initial_configuration_title">Початкова конфігурація</string>
     <string name="initial_configuration_subtitle">Налаштуйте Booming Music на свій смак перед початком.</string>

@@ -950,8 +950,6 @@
     <string name="musicbrainz_search_message">Cari metadata lagu di MusicBrainz menggunakan judul dan artis.</string>
     <string name="musicbrainz_no_results">Tidak ada hasil yang ditemukan di MusicBrainz.</string>
     <string name="musicbrainz_select_recording">Pilih rekaman</string>
-    <string name="welcome_to">Selamat datang di</string>
-    <string name="permissions_title">Izin diperlukan</string>
     <string name="permissions_subtitle">Berikan akses ke file musik dan perangkat di sekitar Anda untuk mendapatkan pengalaman pemutaran terbaik.</string>
     <string name="initial_configuration_title">Konfigurasi Awal</string>
     <string name="initial_configuration_subtitle">Sesuaikan Booming Music sesuai keinginan Anda sebelum memulai.</string>

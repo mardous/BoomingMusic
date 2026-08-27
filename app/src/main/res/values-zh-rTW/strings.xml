@@ -976,7 +976,6 @@
     <string name="widget_page_previous">上一頁</string>
     <string name="widget_page_next">下一頁</string>
     <string name="restart_app_message">應用程式將重新啟動以完成此作業。</string>
-    <string name="permissions_title">需要權限</string>
     <string name="permissions_subtitle">請授予音樂檔案和附近設備的存取權限，以獲得最佳播放體驗。</string>
     <string name="initial_configuration_title">初始設定</string>
     <string name="initial_configuration_subtitle">在開始之前，請根據你的喜好自訂 Booming Music。</string>

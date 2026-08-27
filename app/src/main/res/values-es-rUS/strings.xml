@@ -993,8 +993,6 @@
     <string name="widget_source_recent">Reciente</string>
     <string name="widget_page_previous">Canciones anteriores</string>
     <string name="widget_page_next">Canciones siguientes</string>
-    <string name="welcome_to">Bienvenido a</string>
-    <string name="permissions_title">Permisos necesarios</string>
     <string name="permissions_subtitle">Permite el acceso a tus archivos de audio y dispositivos cercanos para una mejor experiencia musical.</string>
     <string name="initial_configuration_title">Configuración inicial</string>
     <string name="initial_configuration_subtitle">Personaliza Booming Music a tu gusto antes de empezar.</string>
