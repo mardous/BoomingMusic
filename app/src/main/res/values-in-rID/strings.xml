@@ -282,10 +282,10 @@
     <string name="connection_unavailable">Koneksi tidak tersedia.</string>
     <string name="you_have_to_select_at_least_one_category">Anda harus memilih setidaknya satu kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Anda tidak dapat memilih lebih dari lima kategori.</string>
-    <string name="backup_settings">Pengaturan</string>
-    <string name="backup_synced_lyrics">Lirik tersinkronisasi</string>
-    <string name="backup_artist_images">Gambar artis</string>
-    <string name="backup_playlists">Daftar putar</string>
+
+
+
+
     <string name="backup_successful">Pencadangan berhasil!</string>
     <string name="backup_failed">Pencadangan gagal.</string>
     <string name="select_content_to_restore">Pilih konten yang ingin dipulihkan:</string>
@@ -527,7 +527,7 @@
     <string name="audio_focus_header">Fokus audio</string>
     <string name="shuffle_mode_header">Mode acak</string>
     <string name="display_header">Tampilan</string>
-    <string name="backup_restore_header">Cadangkan/pulihkan</string>
+
     <string name="visuals_header">Visual</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema umum</string>
@@ -709,10 +709,10 @@
     <string name="min_song_duration_summary">Berapa detik (minimal) yang harus dimiliki lagu untuk ditampilkan di perpustakaan Anda.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Bahasa aplikasi</string>
-    <string name="backup_data_title">Cadangkan data aplikasi</string>
-    <string name="backup_app_data_summary">Buat file yang berisi data penting aplikasi dan simpan ke penyimpanan eksternal.</string>
-    <string name="restore_backup_title">Pulihkan cadangan</string>
-    <string name="restore_backup_summary">Pulihkan data (dan status) aplikasi dari cadangan sebelumnya.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Hentikan saat ditutup dari recents</string>
     <string name="stop_when_closed_from_recents_summary">Pemutaran berhenti jika aplikasi ditutup dari daftar recents.</string>
     <string name="stop_when_closed_from_recents_note">Catatan: Beberapa perangkat dengan manajemen memori atau baterai yang agresif mungkin mengabaikan pengaturan ini dan selalu menghentikan aplikasi saat dihapus dari recents.</string>

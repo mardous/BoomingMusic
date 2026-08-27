@@ -126,6 +126,8 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.accompanist.permissions.rememberPermissionState
 import com.mardous.booming.R
+import com.mardous.booming.data.local.backup.BackupContent
+import com.mardous.booming.data.local.backup.BackupManager
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.getImagesPermission
@@ -139,14 +141,13 @@ import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.util.AUTO_LANGUAGE
-import com.mardous.booming.util.BackupContent
-import com.mardous.booming.util.BackupHelper
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
 import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.MATERIAL_YOU
 import com.mardous.booming.util.MINIMUM_SONG_DURATION
 import kotlinx.coroutines.launch
+import org.koin.compose.koinInject
 import kotlin.math.roundToInt
 
 enum class OnboardStep {
@@ -452,6 +453,7 @@ private fun ConfigurationStepContent(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val backupManager = koinInject<BackupManager>()
     val configuration = LocalConfiguration.current
 
     val coroutineScope = rememberCoroutineScope()
@@ -465,9 +467,10 @@ private fun ConfigurationStepContent(
     val networkEnabled by preferences.observeKeyAsState(NetworkFeature.NETWORK_FEATURES_KEY, networkEnabledByDefault)
     val currentLanguageTag by preferences.observeKeyAsState(LANGUAGE_NAME, AUTO_LANGUAGE)
 
-    val backupSelectorLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
-        coroutineScope.launch {
-            BackupHelper.restoreBackup(context, it, BackupContent.entries) { isSuccess ->
+    val backupSelectorLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        if (uri != null) {
+            coroutineScope.launch {
+                val isSuccess = backupManager.restoreBackup(uri, BackupContent.entries)
                 if (isSuccess) {
                     context.showToast(R.string.data_restored_successfully)
                 } else {

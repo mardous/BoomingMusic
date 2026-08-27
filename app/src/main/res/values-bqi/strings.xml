@@ -291,7 +291,7 @@
         <item quantity="one">آرنگ</item>
         <item quantity="other">آرنگا</item>
     </plurals>
-    <string name="backup_settings">سامووا</string>
+
     <plurals name="x_songs">
         <item quantity="one">%d آرنگ</item>
         <item quantity="other">%d آرنگا</item>
@@ -312,9 +312,9 @@
     <string name="connection_unavailable">منپیز من دسرس نؽ.</string>
     <string name="you_have_to_select_at_least_one_category">ایسا ٱقلن وا ی دسته ن پسند کۊنین</string>
     <string name="you_cannot_select_more_than_five_categories">ایسا نترین بیشتر ز پنج دسته ن پسند کۊنین.</string>
-    <string name="backup_synced_lyrics">بیتا هوم گوم وابیڌه</string>
-    <string name="backup_artist_images">شؽواتا هونرمند</string>
-    <string name="backup_playlists">نومگه یل پشک</string>
+
+
+
     <string name="backup_successful">لادراری گرؽڌن وا مووفقیت ٱنجوم وابی!</string>
     <string name="backup_failed">لادراری گرؽڌن ٱنجوم نوابی.</string>
     <string name="could_not_restore_data">داده یل نوورگشتن. فایل لادرار ن تئییڌ کۊنین وو دووارته امتهووݩ کۊنین.</string>

@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Sem conexão.</string>
     <string name="you_have_to_select_at_least_one_category">Você deve selecionar pelo menos uma categoria</string>
     <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais do que cinco categorias.</string>
-    <string name="backup_settings">Configurações</string>
-    <string name="backup_synced_lyrics">Letras sincronizadas</string>
-    <string name="backup_artist_images">Imagens do artista</string>
-    <string name="backup_playlists">Playlists</string>
+
+
+
+
     <string name="backup_successful">Backup bem-sucedido!</string>
     <string name="backup_failed">Backup falhou.</string>
     <string name="select_content_to_restore">Selecione o conteúdo para restaurar:</string>
@@ -548,7 +548,7 @@
     <string name="audio_focus_header">Foco de áudio</string>
     <string name="shuffle_mode_header">Modo aleatório</string>
     <string name="display_header">Visualização</string>
-    <string name="backup_restore_header">Backup/Restauração</string>
+
     <string name="visuals_header">Visuais</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema geral</string>
@@ -730,10 +730,10 @@
     <string name="min_song_duration_summary">Quantos segundos (no mínimo) deve ter uma música para aparecer na sua biblioteca.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Idioma do aplicativo</string>
-    <string name="backup_data_title">Backup de dados</string>
-    <string name="backup_app_data_summary">Cria um arquivo contendo dados essenciais do aplicativo e salva-o no armazenamento externo.</string>
-    <string name="restore_backup_title">Restaurar backup</string>
-    <string name="restore_backup_summary">Restaura os dados (e o estado) de um backup anterior.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Parar ao ser fechado a partir dos apps recentes</string>
     <string name="stop_when_closed_from_recents_summary">A reprodução é interrompida se o aplicativo for fechado a partir dos apps recentes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositivos com gerenciamento agressivo de memória ou bateria podem ignorar esta configuração e sempre encerrar o aplicativo ao removê-lo da lista de recentes.</string>

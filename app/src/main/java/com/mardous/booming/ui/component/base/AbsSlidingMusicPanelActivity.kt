@@ -259,11 +259,15 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        Preferences.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         clearNavigationViewGestures()
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback)
-        Preferences.unregisterOnSharedPreferenceChangeListener(this)
         miniPlayerFragment = null
         playerFragment = null
     }

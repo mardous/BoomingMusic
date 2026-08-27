@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.screen.settings
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
@@ -38,14 +39,11 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import coil3.SingletonImageLoader
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mardous.booming.App
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.data.model.network.ScrobblingService
-import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.isTablet
@@ -67,8 +65,8 @@ import com.mardous.booming.ui.component.preferences.dialog.LanguageSelectionDial
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
-import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
+import com.mardous.booming.ui.screen.backup.BackupActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
@@ -77,11 +75,8 @@ import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
 import com.mardous.booming.util.AUTO_LANGUAGE
-import com.mardous.booming.util.BACKUP_DATA
 import com.mardous.booming.util.BLACKLIST_ENABLED
 import com.mardous.booming.util.BLACK_THEME
-import com.mardous.booming.util.BackupContent
-import com.mardous.booming.util.BackupHelper
 import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
@@ -102,14 +97,11 @@ import com.mardous.booming.util.ON_CLEAR_QUEUE_ACTION
 import com.mardous.booming.util.ON_SONG_CLICK_ACTION
 import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.RESTORE_DATA
 import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.USE_CUSTOM_FONT
 import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -171,6 +163,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     private val lyricsViewModel: LyricsViewModel by activityViewModel()
     private val updateViewModel: UpdateViewModel by activityViewModel()
 
+    private val preferences: SharedPreferences by inject()
+
     private val importFontLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
             if (uri != null) {
@@ -184,59 +178,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                     }
             }
         }
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private val createBackupLauncher: ActivityResultLauncher<String> =
-        registerForActivityResult(ActivityResultContracts.CreateDocument("application/*")) { uri ->
-            if (uri != null) {
-                GlobalScope.launch {
-                    BackupHelper.createBackup(requireContext(), uri) { isSuccess ->
-                        if (isSuccess) {
-                            showToast(R.string.backup_successful)
-                        } else {
-                            showToast(R.string.backup_failed)
-                        }
-                    }
-                }
-            }
-        }
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private val selectBackupLauncher: ActivityResultLauncher<Array<String>> =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) { selection ->
-            if (selection != null) {
-                val items = BackupContent.entries.map {
-                    getString(it.titleRes)
-                }
-                val multiCheckDialog = MultiCheckDialog.Builder(requireContext())
-                    .title(R.string.select_content_to_restore)
-                    .items(items)
-                    .createDialog { _, whichPos, _ ->
-                        val content = BackupContent.entries.filterIndexed { i, _ ->
-                            whichPos.contains(i)
-                        }
-                        GlobalScope.launch {
-                            BackupHelper.restoreBackup(requireContext(), selection, content) { isSuccess ->
-                                if (isSuccess) {
-                                    MaterialAlertDialogBuilder(requireContext())
-                                        .setTitle(R.string.data_restored_successfully)
-                                        .setMessage(R.string.restart_app_message)
-                                        .setPositiveButton(android.R.string.ok, null)
-                                        .setOnDismissListener { App.restart(requireActivity()) }
-                                        .setCancelable(false)
-                                        .show()
-                                } else {
-                                    showToast(R.string.could_not_restore_data)
-                                }
-                            }
-                        }
-                        true
-                    }
-                multiCheckDialog.show(childFragmentManager, "RESTORE_DIALOG")
-            }
-        }
-
-    private val preferences: SharedPreferences by inject()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
@@ -373,18 +314,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             true
         }
 
-        findPreference<Preference>(BACKUP_DATA)?.setOnPreferenceClickListener {
-            createBackupLauncher.launch(
-                getFormattedFileName(
-                    "Backup",
-                    BackupHelper.BACKUP_EXTENSION
-                )
-            )
-            true
-        }
-
-        findPreference<Preference>(RESTORE_DATA)?.setOnPreferenceClickListener {
-            selectBackupLauncher.launch(arrayOf("application/*"))
+        findPreference<Preference>("backup_and_restore")?.setOnPreferenceClickListener {
+            startActivity(Intent(requireContext(), BackupActivity::class.java))
             true
         }
 

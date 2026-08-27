@@ -282,10 +282,10 @@
     <string name="connection_unavailable">Verbindung nicht möglich.</string>
     <string name="you_have_to_select_at_least_one_category">Du musst mindestens eine Kategorie auswählen</string>
     <string name="you_cannot_select_more_than_five_categories">Du kannst nicht mehr als fünf Kategorien auswählen.</string>
-    <string name="backup_settings">Einstellungen</string>
-    <string name="backup_synced_lyrics">Synchronisierte Liedtexte</string>
-    <string name="backup_artist_images">Interpretenbilder</string>
-    <string name="backup_playlists">Wiedergabelisten</string>
+
+
+
+
     <string name="backup_successful">Sicherung erfolgreich!</string>
     <string name="backup_failed">Sicherung fehlgeschlagen.</string>
     <string name="select_content_to_restore">Inhalt zum Wiederherstellen auswählen:</string>
@@ -535,7 +535,7 @@
     <string name="audio_focus_header">Audiofokus</string>
     <string name="shuffle_mode_header">Zufallswiedergabe-Modus</string>
     <string name="display_header">Anzeige</string>
-    <string name="backup_restore_header">Sicherung/Wiederherstellung</string>
+
     <string name="visuals_header">Visuelles</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Allgemeines Design</string>
@@ -717,10 +717,10 @@
     <string name="min_song_duration_summary">Mindestlänge eines Titels in Sekunden, um diesen in Deiner Bibliothek anzuzeigen.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App-Sprache</string>
-    <string name="backup_data_title">App-Daten sichern</string>
-    <string name="backup_app_data_summary">Sichere eine Datei mit den wichtigsten App-Daten auf Deinem Gerät.</string>
-    <string name="restore_backup_title">App-Daten wiederherstellen</string>
-    <string name="restore_backup_summary">Stelle die wichtigsten App-Daten aus einer vorherigen Sicherung wieder her.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Beenden, wenn aus den zuletzt verwendeten Apps geschlossen</string>
     <string name="stop_when_closed_from_recents_summary">Die Wiedergabe wird angehalten, wenn die App aus der Liste der zuletzt verwendeten Apps geschlossen wird.</string>
     <string name="stop_when_closed_from_recents_note">Hinweis: Einige Geräte mit aggressivem Arbeitsspeicher- oder Akku-Management ignorieren diese Einstellung möglicherweise und beenden die App immer, wenn sie aus den zuletzt verwendeten Apps entfernt wird.</string>

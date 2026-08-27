@@ -297,10 +297,10 @@
     <string name="connection_unavailable">இணைப்பு கிடைக்கவில்லை.</string>
     <string name="you_have_to_select_at_least_one_category">நீங்கள் குறைந்தபட்சம் ஒரு வகையைத் தேர்ந்தெடுக்க வேண்டும்</string>
     <string name="you_cannot_select_more_than_five_categories">நீங்கள் ஐந்து வகைகளுக்கு மேல் தேர்ந்தெடுக்க முடியாது.</string>
-    <string name="backup_settings">அமைப்புகள்</string>
-    <string name="backup_synced_lyrics">ஒத்திசைக்கப்பட்ட பாடல் வரிகள்</string>
-    <string name="backup_artist_images">கலைஞர் படங்கள்</string>
-    <string name="backup_playlists">பிளேலிச்ட்கள்</string>
+
+
+
+
     <string name="backup_successful">காப்புப்பிரதி வெற்றி!</string>
     <string name="backup_failed">காப்புப்பிரதி தோல்வியடைந்தது.</string>
     <string name="select_content_to_restore">மீட்டமைக்க உள்ளடக்கத்தைத் தேர்ந்தெடுக்கவும்:</string>
@@ -600,7 +600,7 @@
     <string name="audio_focus_header">ஆடியோ கவனம்</string>
     <string name="shuffle_mode_header">கலக்கு முறை</string>
     <string name="display_header">காட்சி</string>
-    <string name="backup_restore_header">காப்பு/மீட்டமை</string>
+
     <string name="visuals_header">காட்சிகள்</string>
     <string name="update_title">புதுப்பிப்பு</string>
     <string name="images_title">படங்கள்</string>
@@ -816,10 +816,10 @@
     <string name="delete_downloaded_lyrics_summary">பூமிங் மியூசிக் மூலம் பதிவிறக்கம் செய்யப்பட்ட பாடல் வரிகள் மட்டுமே. ID3v2 குறிச்சொற்கள் அல்லது LRC கோப்புகளில் உட்பொதிக்கப்பட்ட பாடல் வரிகளைப் பாதிக்காது.</string>
     <string name="lyrics_cleared">பாடல் வரிகள் அழிக்கப்பட்டன.</string>
     <string name="app_language_title">பயன்பாட்டு மொழி</string>
-    <string name="backup_data_title">ஆப்ச் தரவை காப்புப் பிரதி எடுக்கவும்</string>
-    <string name="backup_app_data_summary">அத்தியாவசிய பயன்பாட்டுத் தரவைக் கொண்ட கோப்பை உருவாக்கி அதை வெளிப்புற சேமிப்பகத்தில் சேமிக்கவும்.</string>
-    <string name="restore_backup_title">காப்புப்பிரதியை மீட்டெடுக்கவும்</string>
-    <string name="restore_backup_summary">முந்தைய காப்புப்பிரதியிலிருந்து பயன்பாட்டுத் தரவை (மற்றும் நிலை) மீட்டெடுக்கவும்.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">சமீபத்தியவற்றிலிருந்து மூடப்படும்போது நிறுத்தவும்</string>
     <string name="stop_when_closed_from_recents_summary">அண்மைக் கால பட்டியலிலிருந்து ஆப்ச் மூடப்பட்டால் பிளேபேக் நிறுத்தப்படும்.</string>
     <string name="stop_when_closed_from_recents_note">குறிப்பு: ஆக்ரோசிவ் நினைவக அல்லது பேட்டரி நிர்வாகத்தைக் கொண்ட சில சாதனங்கள் இந்த அமைப்பைப் புறக்கணித்து, சமீபத்தியவற்றிலிருந்து அகற்றப்படும்போது, ஆப்சை எப்போதும் நிறுத்தலாம்.</string>

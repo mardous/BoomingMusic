@@ -297,10 +297,10 @@
     <string name="connection_unavailable">اتصال در دسترس نیست.</string>
     <string name="you_have_to_select_at_least_one_category">شما باید حداقل یک دسته را انتخاب کنید</string>
     <string name="you_cannot_select_more_than_five_categories">شما نمی توانید بیش از پنج دسته را انتخاب کنید.</string>
-    <string name="backup_settings">تنظیمات</string>
-    <string name="backup_synced_lyrics">اشعار همگام شده</string>
-    <string name="backup_artist_images">تصاویر هنرمند</string>
-    <string name="backup_playlists">لیست‌های پخش</string>
+
+
+
+
     <string name="backup_successful">پشتیبان گیری با موفقیت انجام شد!</string>
     <string name="backup_failed">پشتیبان گیری انجام نشد.</string>
     <string name="select_content_to_restore">انتخاب محتوا برای بازیابی:</string>
@@ -550,7 +550,7 @@
     <string name="audio_focus_header">فوکوس صوتی</string>
     <string name="shuffle_mode_header">حالت مخلوط کردن</string>
     <string name="display_header">نمایش</string>
-    <string name="backup_restore_header">پشتیبان گیری/بازیابی</string>
+
     <string name="visuals_header">تصاویری</string>
     <string name="update_title">به روز رسانی</string>
     <string name="images_title">تصاویر</string>
@@ -762,10 +762,10 @@
     <string name="delete_downloaded_lyrics_summary">فقط اشعار دانلود شده توسط Booming Music. بر اشعار تعبیه شده در برچسب های ID3v2 یا فایل های LRC تأثیری نمی گذارد.</string>
     <string name="lyrics_cleared">متن ترانه پاک شد.</string>
     <string name="app_language_title">زبان برنامه</string>
-    <string name="backup_data_title">پشتیبان گیری از داده های برنامه</string>
-    <string name="backup_app_data_summary">یک فایل حاوی داده های ضروری برنامه ایجاد کنید و آن را در حافظه خارجی ذخیره کنید.</string>
-    <string name="restore_backup_title">بازیابی نسخه پشتیبان</string>
-    <string name="restore_backup_summary">بازیابی اطلاعات برنامه (و وضعیت) از نسخه پشتیبان قبلی.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">وقتی از موارد اخیر بسته شد، متوقف شود</string>
     <string name="stop_when_closed_from_recents_summary">اگر برنامه از لیست جدید بسته شود، پخش متوقف می شود.</string>
     <string name="stop_when_closed_from_recents_note">توجه: برخی از دستگاه‌های دارای حافظه تهاجمی یا مدیریت باتری ممکن است این تنظیم را نادیده بگیرند و هنگامی که از برنامه‌های اخیر حذف می‌شوند، همیشه برنامه را متوقف می‌کنند.</string>

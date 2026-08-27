@@ -287,10 +287,10 @@
     <string name="connection_unavailable">接続できません。</string>
     <string name="you_have_to_select_at_least_one_category">最低でも1つのカテゴリを選択を選択して下さい</string>
     <string name="you_cannot_select_more_than_five_categories">5つ以上のカテゴリは選択できません。</string>
-    <string name="backup_settings">設定</string>
-    <string name="backup_synced_lyrics">歌詞を同期</string>
-    <string name="backup_artist_images">アーティスト画像</string>
-    <string name="backup_playlists">プレイリスト</string>
+
+
+
+
     <string name="backup_successful">正常にバックアップしました！</string>
     <string name="backup_failed">バックアップに失敗しました。</string>
     <string name="select_content_to_restore">復元するコンテンツを選択:</string>
@@ -532,7 +532,7 @@
     <string name="audio_focus_header">オーディオフォーカス</string>
     <string name="shuffle_mode_header">シャッフルモード</string>
     <string name="display_header">表示</string>
-    <string name="backup_restore_header">バックアップ/復元</string>
+
     <string name="visuals_header">外観</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">一般的なテーマ</string>
@@ -714,10 +714,10 @@
     <string name="min_song_duration_summary">(少なくとも)何秒以上の曲をライブラリに表示するか。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">アプリの言語</string>
-    <string name="backup_data_title">アプリデータのバックアップ</string>
-    <string name="backup_app_data_summary">重要なアプリデータを含むファイルを作成し、外部ストレージに保存します。</string>
-    <string name="restore_backup_title">バックアップを復元</string>
-    <string name="restore_backup_summary">前のバックアップからアプリのデータ(および状態)を復元します。</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">アプリ履歴から閉じたときに停止</string>
     <string name="stop_when_closed_from_recents_summary">アプリがアプリ履歴から閉じられると再生を停止します。</string>
     <string name="stop_when_closed_from_recents_note">注意: 積極的なメモリ またはバッテリ管理を備えたデバイスの中には、この設定を無視してアプリを常に停止させることがあります。</string>

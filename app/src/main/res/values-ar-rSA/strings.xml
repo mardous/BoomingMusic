@@ -287,10 +287,10 @@
     <string name="connection_unavailable">الاتصال غير متوفر.</string>
     <string name="you_have_to_select_at_least_one_category">يجب تحديد فئة واحدة على الأقل</string>
     <string name="you_cannot_select_more_than_five_categories">لا يمكنك تحديد أكثر من خمس فئات.</string>
-    <string name="backup_settings">الإعدادات</string>
-    <string name="backup_synced_lyrics">كلمات الأغاني المتزامنة</string>
-    <string name="backup_artist_images">صور الفنانين</string>
-    <string name="backup_playlists">قوائم التشغيل</string>
+
+
+
+
     <string name="backup_successful">تم النسخ الاحتياطي بنجاح!</string>
     <string name="backup_failed">فشل النسخ الاحتياطي.</string>
     <string name="select_content_to_restore">اختر المحتوى المراد استعادته:</string>
@@ -572,7 +572,7 @@
     <string name="audio_focus_header">التركيز الصوتي</string>
     <string name="shuffle_mode_header">وضع التشغيل العشوائي</string>
     <string name="display_header">الشاشة</string>
-    <string name="backup_restore_header">النسخ الاحتياطي والاستعادة</string>
+
     <string name="visuals_header">التأثيرات المرئية</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">السمة العامة</string>
@@ -754,10 +754,10 @@
     <string name="min_song_duration_summary">أقل مدة بالثواني يجب أن تستغرقها الأغنية لتظهر في مكتبتك.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">لغة التطبيق</string>
-    <string name="backup_data_title">نسخ بيانات التطبيق احتياطيًا</string>
-    <string name="backup_app_data_summary">إنشاء ملف يحتوي على بيانات التطبيق الأساسية وحفظه في التخزين الخارجي.</string>
-    <string name="restore_backup_title">استعادة نسخة احتياطية</string>
-    <string name="restore_backup_summary">استعادة بيانات التطبيق (وحالته) من نسخة احتياطية سابقة.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">الإيقاف عند الإغلاق من التطبيقات الأخيرة</string>
     <string name="stop_when_closed_from_recents_summary">يتوقف التشغيل إذا أُغلق التطبيق من قائمة التطبيقات الأخيرة.</string>
     <string name="stop_when_closed_from_recents_note">ملاحظة: قد تتجاهل بعض الأجهزة ذات إدارة الذاكرة أو البطارية الصارمة هذا الإعداد وتوقف التطبيق دائمًا عند إزالته من التطبيقات الأخيرة.</string>

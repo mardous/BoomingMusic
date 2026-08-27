@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Forbindelsen er ikke tilgængelig.</string>
     <string name="you_have_to_select_at_least_one_category">Du skal vælge mindst én kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan ikke vælge mere end fem kategorier.</string>
-    <string name="backup_settings">Indstillinger</string>
-    <string name="backup_synced_lyrics">Synkroniserede sangtekster</string>
-    <string name="backup_artist_images">Kunstner billeder</string>
-    <string name="backup_playlists">Afspilningslister</string>
+
+
+
+
     <string name="backup_successful">Sikkerhedskopiering lykkedes!</string>
     <string name="backup_failed">Sikkerhedskopiering mislykkedes.</string>
     <string name="select_content_to_restore">Vælg indhold at gendanne:</string>
@@ -540,7 +540,7 @@
     <string name="audio_focus_header">Lyd fokus</string>
     <string name="shuffle_mode_header">Bland tilstand</string>
     <string name="display_header">Vis</string>
-    <string name="backup_restore_header">Sikkerhedskopiering/gendannelse</string>
+
     <string name="visuals_header">Visuelle</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Generelt tema</string>
@@ -722,10 +722,10 @@
     <string name="min_song_duration_summary">Hvor mange sekunder (mindst) skal vare en sang for at blive vist i dit bibliotek.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App sprog</string>
-    <string name="backup_data_title">Sikkerhedskopiér appdata</string>
-    <string name="backup_app_data_summary">Opret en fil, der indeholder vigtige app-data, og gem den til ekstern lagring.</string>
-    <string name="restore_backup_title">Gendan sikkerhedskopi</string>
-    <string name="restore_backup_summary">Gendan appdata (og tilstand) fra en tidligere sikkerhedskopi.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Stop når lukket fra de seneste</string>
     <string name="stop_when_closed_from_recents_summary">Afspilning stopper, hvis appen er lukket fra listen for nyeste.</string>
     <string name="stop_when_closed_from_recents_note">Bemærk: Nogle enheder med aggressiv hukommelse eller batteristyring kan ignorere denne indstilling og altid stoppe app\'en, når den fjernes fra de seneste år.</string>

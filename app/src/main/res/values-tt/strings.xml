@@ -304,11 +304,11 @@
     <string name="sort_order_number_of_albums">Альбом саны</string>
     <string name="sort_order_track_list">Трек чираты</string>
     <string name="sort_order_ignore_articles">Мәкалә игътибарсыз калдыру</string>
-    <string name="backup_settings">Көйләү</string>
+
     <string name="lastfm_biography_summary">Last.fm белән артистларның һәм альбомнарның биографияләрен алырга.</string>
-    <string name="backup_synced_lyrics">Синхронлаштырган җырларның текстлар</string>
-    <string name="backup_artist_images">Артист сурәтләр</string>
-    <string name="backup_playlists">Плейлистлар</string>
+
+
+
     <string name="backup_successful">Уңышлы бекап!</string>
     <string name="backup_failed">Ялгышлы бекап.</string>
     <string name="select_content_to_restore">Торгызу өчен контентны сайлагыз:</string>
@@ -616,7 +616,7 @@
     <string name="exclusion_header">Чыгару очраклар</string>
     <string name="controls_header">Идарә итү</string>
     <string name="display_header">Күрсәтү</string>
-    <string name="backup_restore_header">Бекап/торгызу</string>
+
     <string name="visuals_header">Визуаль эффектлар</string>
     <string name="update_title">Яңарту</string>
     <string name="images_title">Сурәтләр</string>

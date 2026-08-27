@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Bağlantı yok.</string>
     <string name="you_have_to_select_at_least_one_category">En az bir kategori seçmelisiniz</string>
     <string name="you_cannot_select_more_than_five_categories">Beşten fazla kategori seçemezsiniz.</string>
-    <string name="backup_settings">Ayarlar</string>
-    <string name="backup_synced_lyrics">Senkronize edilmiş şarkı sözleri</string>
-    <string name="backup_artist_images">Sanatçı resimleri</string>
-    <string name="backup_playlists">Çalma listeleri</string>
+
+
+
+
     <string name="backup_successful">Yedekleme başarılı!</string>
     <string name="backup_failed">Yedekleme başarısız.</string>
     <string name="select_content_to_restore">Geri yüklenecek içeriği seçin:</string>
@@ -540,7 +540,7 @@
     <string name="audio_focus_header">Ses odağı</string>
     <string name="shuffle_mode_header">Karıştırma modu</string>
     <string name="display_header">Ekran</string>
-    <string name="backup_restore_header">Yedekle/Geri Yükle</string>
+
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Genel tema</string>
@@ -722,10 +722,10 @@
     <string name="min_song_duration_summary">Bir şarkının kütüphanenizde gösterilmesi için en az kaç saniye sürmesi gerekir.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Uygulama dili</string>
-    <string name="backup_data_title">Uygulama verilerini yedekle</string>
-    <string name="backup_app_data_summary">Temel uygulama verilerini içeren bir dosya oluşturun ve harici depolamaya kaydedin.</string>
-    <string name="restore_backup_title">Yedekten geri yükle</string>
-    <string name="restore_backup_summary">Uygulama verilerini (ve durumunu) önceki bir yedekten geri yükleyin.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Son uygulamalardan kapatılınca durdur</string>
     <string name="stop_when_closed_from_recents_summary">Uygulama son uygulamalar listesinden kapatılırsa oynatma durur.</string>
     <string name="stop_when_closed_from_recents_note">Not: Agresif bellek veya pil yönetimine sahip bazı cihazlar bu ayarı yoksayabilir ve son uygulamalardan kaldırıldığında uygulamayı her zaman durdurabilir.</string>

@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Connection unavailable.</string>
     <string name="you_have_to_select_at_least_one_category">You have to select at least one category</string>
     <string name="you_cannot_select_more_than_five_categories">You can\'t select more than five categories.</string>
-    <string name="backup_settings">Settings</string>
-    <string name="backup_synced_lyrics">Synced lyrics</string>
-    <string name="backup_artist_images">Artist images</string>
-    <string name="backup_playlists">Playlists</string>
+
+
+
+
     <string name="backup_successful">Backup successful!</string>
     <string name="backup_failed">Backup failed.</string>
     <string name="select_content_to_restore">Select content to restore:</string>
@@ -540,7 +540,7 @@
     <string name="audio_focus_header">Audio focus</string>
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
-    <string name="backup_restore_header">Backup/restore</string>
+
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">General theme</string>
@@ -722,10 +722,10 @@
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App language</string>
-    <string name="backup_data_title">Backup app data</string>
-    <string name="backup_app_data_summary">Create a file containing essential app data and save it to external storage.</string>
-    <string name="restore_backup_title">Restore backup</string>
-    <string name="restore_backup_summary">Restore app data (and state) from a previous backup.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>

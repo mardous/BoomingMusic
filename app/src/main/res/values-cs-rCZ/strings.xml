@@ -287,10 +287,10 @@
     <string name="connection_unavailable">Připojení není k dispozici.</string>
     <string name="you_have_to_select_at_least_one_category">Musíte vybrat alespoň jednu kategorii</string>
     <string name="you_cannot_select_more_than_five_categories">Nelze vybrat více než pět kategorií.</string>
-    <string name="backup_settings">Nastavení</string>
-    <string name="backup_synced_lyrics">Synchronizované texty</string>
-    <string name="backup_artist_images">Obrázky interpreta</string>
-    <string name="backup_playlists">Seznamy stop</string>
+
+
+
+
     <string name="backup_successful">Záloha byla úspěšná!</string>
     <string name="backup_failed">Záloha se nezdařila.</string>
     <string name="select_content_to_restore">Vyberte obsah k obnovení:</string>
@@ -556,7 +556,7 @@
     <string name="audio_focus_header">Zaměření zvuku</string>
     <string name="shuffle_mode_header">Režim náhodného výběru</string>
     <string name="display_header">Zobrazení</string>
-    <string name="backup_restore_header">Zálohovat/obnovit</string>
+
     <string name="visuals_header">Vizuály</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Obecný motiv</string>
@@ -738,10 +738,10 @@
     <string name="min_song_duration_summary">Kolik sekund (alespoň) musí trvat skladba, aby se zobrazila ve vaší knihovně.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Jazyk aplikace</string>
-    <string name="backup_data_title">Zálohovat data aplikace</string>
-    <string name="backup_app_data_summary">Vytvořte soubor obsahující základní data aplikace a uložte jej do externího úložiště.</string>
-    <string name="restore_backup_title">Obnovit zálohu</string>
-    <string name="restore_backup_summary">Obnovit data aplikace (a stav) z předchozí zálohy.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Zastavit při zavření nedávných aplikací</string>
     <string name="stop_when_closed_from_recents_summary">Přehrávání se zastaví, pokud je aplikace uzavřena ze seznamu nedávných aplikací.</string>
     <string name="stop_when_closed_from_recents_note">Poznámka: Některá zařízení s agresivní pamětí nebo s řízením baterie mohou toto nastavení ignorovat a po odstranění z nedávných aplikací vždy aplikaci zastavit.</string>

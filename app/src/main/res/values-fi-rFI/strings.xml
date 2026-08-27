@@ -282,10 +282,10 @@
     <string name="connection_unavailable">Yhteys ei käytettävissä.</string>
     <string name="you_have_to_select_at_least_one_category">Sinun täytyy valita ainakin yksi kategoria</string>
     <string name="you_cannot_select_more_than_five_categories">Et voi valita enempää kuin viisi kategoriaa.</string>
-    <string name="backup_settings">Asetukset</string>
-    <string name="backup_synced_lyrics">Synkronoidut sanoitukset</string>
-    <string name="backup_artist_images">Esittäjän kuvat</string>
-    <string name="backup_playlists">Soittolistat</string>
+
+
+
+
     <string name="backup_successful">Varmuuskopiointi onnistui!</string>
     <string name="backup_failed">Varmuuskopiointi epäonnistui.</string>
     <string name="select_content_to_restore">Valitse palautettava sisältö:</string>
@@ -535,7 +535,7 @@
     <string name="audio_focus_header">Äänen tarkennus</string>
     <string name="shuffle_mode_header">Sekoita tila</string>
     <string name="display_header">Näyttö</string>
-    <string name="backup_restore_header">Varmuuskopiointi/palautus</string>
+
     <string name="visuals_header">Visuaalit</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Yleinen teema</string>
@@ -717,10 +717,10 @@
     <string name="min_song_duration_summary">Kuinka monta sekuntia (vähintään) täytyy kestää kappaletta, jotta se näkyisi kirjastossa.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Sovelluksen kieli</string>
-    <string name="backup_data_title">Varmuuskopioi sovellustiedot</string>
-    <string name="backup_app_data_summary">Luo tiedosto, joka sisältää sovelluksen olennaisia tietoja ja tallenna se ulkoiseen tallennustilaan.</string>
-    <string name="restore_backup_title">Palauta varmuuskopio</string>
-    <string name="restore_backup_summary">Palauta sovelluksen tiedot (ja tila) edellisestä varmuuskopiosta.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Pysäytä suljettaessa viimeisimmistä versioista</string>
     <string name="stop_when_closed_from_recents_summary">Toisto pysähtyy, jos sovellus on suljettu viimeisimpien sovellusten luettelosta.</string>
     <string name="stop_when_closed_from_recents_note">Huomautus: Jotkin laitteet, joilla on aggressiivinen muisti tai akun hallinta, saattavat ohittaa tämän asetuksen ja pysäyttää sovelluksen aina, kun se poistetaan viimeisimmistä.</string>
