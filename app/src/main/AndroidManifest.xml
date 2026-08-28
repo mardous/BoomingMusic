@@ -124,28 +124,24 @@
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:mimeType="application/octet-stream" />
-                <data android:mimeType="application/x-zip-compressed" />
-                <data android:mimeType="application/zip" />
-
-                <data android:scheme="file" />
                 <data android:scheme="content" />
-                <data android:mimeType="*/*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/x-zip-compressed" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:scheme="content" />
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.bmgbak" />
                 <data android:pathPattern=".*\\..*\\.bmgbak" />
                 <data android:pathPattern=".*\\..*\\..*\\.bmgbak" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\.bmgbak" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.bmgbak" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.bmgbak" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.bmgbak" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bmgbak" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.bmgbak" />
             </intent-filter>
         </activity>
 
