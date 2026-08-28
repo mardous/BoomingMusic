@@ -68,6 +68,11 @@ class BackupManager(
     private val customArtistImageManager: CustomArtistImageManager
 ) : BackupComponent() {
 
+    companion object {
+        private const val TAG = "BackupManager"
+        private const val APPEND_EXTENSION = ".$BACKUP_EXTENSION"
+    }
+
     private val backupFiles = object : LruCache<Uri, File>(10) {
         override fun entryRemoved(evicted: Boolean, key: Uri, oldValue: File, newValue: File?) {
             super.entryRemoved(evicted, key, oldValue, newValue)
@@ -81,7 +86,7 @@ class BackupManager(
 
     suspend fun createBackup(
         backupDirectory: Uri,
-        name: String,
+        enteredName: String,
         contents: List<BackupContent>
     ) = withContext(IO) {
         if (backupDirectory == Uri.EMPTY || contents.isEmpty())
@@ -90,10 +95,9 @@ class BackupManager(
         val directory = DocumentFile.fromTreeUri(context, backupDirectory)
             ?: return@withContext false
 
-        val fileName = name.trim { it.isWhitespace() || it == '.' }
-            .sanitize()
-            .let { if (it.endsWith(BACKUP_EXTENSION)) it else "$it.$BACKUP_EXTENSION" }
-            .ifEmpty { getFormattedFileName("Backup", BACKUP_EXTENSION) }
+        val fileName = enteredName.trim { it.isWhitespace() || it == '.' }
+            .sanitize().ifEmpty { getFormattedFileName("Backup", BACKUP_EXTENSION) }
+            .let { if (it.endsWith(APPEND_EXTENSION)) it else "$it$APPEND_EXTENSION" }
 
         val file = try {
             directory.createFile(BACKUP_MIME_TYPE, fileName)
@@ -690,10 +694,6 @@ class BackupManager(
                 onRestoreCustomArtistImages = { entry -> restoreCustomArtistImages(zipFile, entry) }
             )
         } else throw IllegalStateException("Unsupported legacy backup version")
-    }
-
-    companion object {
-        private const val TAG = "BackupManager"
     }
 
     private fun getBackupFileFromCacheDir(backupUri: Uri): File {
