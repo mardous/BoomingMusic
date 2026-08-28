@@ -982,5 +982,4 @@
     <string name="initial_configuration_note">你隨時可以變更這些設定。</string>
     <string name="restore_from_backup">從備份還原</string>
     <string name="network_features_summary">啟用播放紀錄同步與專輯封面和歌詞下載。</string>
-    <string name="welcome_to">歡迎使用</string>
 </resources>
