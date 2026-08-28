@@ -153,10 +153,6 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
         set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
 
-    var queueHeight: Boolean
-        get() = preferences.getBoolean(QUEUE_HEIGHT, false)
-        set(value) = preferences.edit { putBoolean(QUEUE_HEIGHT, value) }
-
     val largerHeaderImage: Boolean
         get() = preferences.getBoolean(LARGER_HEADER_IMAGE, false)
 
@@ -197,10 +193,6 @@ object Preferences : KoinComponent {
 
     val miniPlayerSwipeToSkip: Boolean
         get() = preferences.getBoolean(MINI_PLAYER_SWIPE_TO_SKIP, true)
-
-    var isQueueLocked: Boolean
-        get() = preferences.getBoolean(LOCKED_QUEUE, false)
-        set(value) = preferences.edit { putBoolean(LOCKED_QUEUE, value) }
 
     fun getNowPlayingColorSchemeKey(nps: NowPlayingScreen) =
         "player_${nps.name.lowercase()}_color_scheme"
@@ -425,9 +417,6 @@ object Preferences : KoinComponent {
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
 
-    val updateSearchMode: String
-        get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
-
     val experimentalUpdates: Boolean
         get() = preferences.getBoolean(EXPERIMENTAL_UPDATES, false)
 
@@ -446,10 +435,6 @@ object Preferences : KoinComponent {
     var startDirectory: File
         get() = File(preferences.requireString(START_DIRECTORY, FileUtil.getDefaultStartDirectory().path))
         set(file) = preferences.edit { putString(START_DIRECTORY, file.getCanonicalPathSafe()) }
-
-    var savedArtworkCopyrightNoticeShown: Boolean
-        get() = preferences.getBoolean(SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN, false)
-        set(value) = preferences.edit { putBoolean(SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN, value) }
 
     var initializedBlacklist: Boolean
         get() = preferences.getBoolean(INITIALIZED_BLACKLIST, false)
@@ -631,13 +616,10 @@ const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val LANGUAGE_NAME = "language_name"
 const val AUTO_LANGUAGE = "auto"
-const val UPDATE_SEARCH_MODE = "update_search_mode"
-const val ONLY_WIFI = "update_only_wifi"
 const val LAST_UPDATE_SEARCH = "last_update_search"
 const val LAST_UPDATE_ID = "last_update_id"
 const val EXPERIMENTAL_UPDATES = "experimental_updates"
 const val START_DIRECTORY = "start_directory"
-const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
@@ -645,6 +627,5 @@ const val SWIPE_UP_QUEUE = "swipe_up_queue"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
-const val QUEUE_HEIGHT = "queue_height"
 const val LASTFM_LOGIN = "lastfm_login"
 const val LISTENBRAINZ_LOGIN = "listenbrainz_login"
