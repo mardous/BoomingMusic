@@ -22,6 +22,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+enum class BackupContent { Settings, Lyrics, PlayInfo, ArtistImages, Playlists }
+
+@Serializable
 data class PlayInfoBackup(
     @SerialName("play_info")
     val playInfo: List<PlayInfoContent>
@@ -58,12 +61,6 @@ data class PreferenceContent(
     }
 }
 
-data class ZipItem(
-    val zipPath: String,
-    val filePath: String? = null,
-    val fileContent: String? = null
-)
-
 @Serializable
 data class BackupMetadata(
     @SerialName("backup_version")
@@ -73,10 +70,18 @@ data class BackupMetadata(
     @SerialName("app_version_name")
     val appVersionName: String? = null,
     @SerialName("app_version_code")
-    val appVersionCode: Long = 0
+    val appVersionCode: Long = 0,
+    @SerialName("contents")
+    val contents: List<BackupContent> = emptyList()
 ) {
     val isNewerFormat = backupVersion > BackupComponent.CURRENT_BACKUP_VERSION
 }
+
+data class ZipItem(
+    val zipPath: String,
+    val filePath: String? = null,
+    val fileContent: String? = null
+)
 
 data class BackupFile(
     val name: String,

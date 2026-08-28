@@ -21,6 +21,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -107,6 +108,15 @@ import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.compose.viewmodel.koinActivityViewModel
+
+@StringRes
+private fun BackupContent.titleRes(): Int = when (this) {
+    BackupContent.Settings -> R.string.backup_content_settings
+    BackupContent.Lyrics -> R.string.backup_content_lyrics
+    BackupContent.PlayInfo -> R.string.backup_content_play_info
+    BackupContent.ArtistImages -> R.string.backup_content_artist_images
+    BackupContent.Playlists -> R.string.backup_content_playlists
+}
 
 class BackupActivity : AbsThemeActivity() {
 
@@ -523,10 +533,14 @@ class BackupActivity : AbsThemeActivity() {
         onConfirm: (List<BackupContent>) -> Unit,
         backupFileWithMetadata: BackupFileWithMetadata,
     ) {
+        val availableContents = backupFileWithMetadata.metadata.contents
+            .ifEmpty { BackupContent.entries.toList() }
+
         SelectContentDialog(
             onConfirm = onConfirm,
             onDismiss = onDismiss,
             title = stringResource(R.string.select_content_to_restore),
+            contents = availableContents,
             message = {
                 BackupMetadataInfo(backupFileWithMetadata.metadata)
             }
@@ -538,11 +552,12 @@ class BackupActivity : AbsThemeActivity() {
         onConfirm: (List<BackupContent>) -> Unit,
         onDismiss: () -> Unit,
         title: String,
+        contents: List<BackupContent> = BackupContent.entries.toList(),
         message: @Composable (() -> Unit)? = null
     ) {
         val selectedContent = remember {
             mutableStateListOf<BackupContent>()
-                .apply { addAll(BackupContent.entries) }
+                .apply { addAll(contents) }
         }
 
         AlertDialog(
@@ -555,10 +570,10 @@ class BackupActivity : AbsThemeActivity() {
                         item { message() }
                     }
 
-                    items(BackupContent.entries) { content ->
+                    items(contents) { content ->
                         val isChecked = selectedContent.contains(content)
                         DialogListItemWithCheckBox(
-                            title = stringResource(content.titleRes),
+                            title = stringResource(content.titleRes()),
                             onClick = {
                                 if (isChecked) {
                                     selectedContent.remove(content)

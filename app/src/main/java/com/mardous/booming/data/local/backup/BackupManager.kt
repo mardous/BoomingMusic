@@ -26,12 +26,10 @@ import android.provider.DocumentsContract
 import android.provider.DocumentsContract.Document
 import android.provider.MediaStore.Audio.AudioColumns
 import android.util.Log
-import androidx.annotation.StringRes
 import androidx.collection.LruCache
 import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.documentfile.provider.DocumentFile
-import com.mardous.booming.R
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.core.appwidgets.config.WidgetConfigStore
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
@@ -61,14 +59,6 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 import java.util.zip.ZipOutputStream
 
-enum class BackupContent(@StringRes val titleRes: Int) {
-    Settings(R.string.backup_content_settings),
-    Lyrics(R.string.backup_content_lyrics),
-    PlayInfo(R.string.backup_content_play_info),
-    ArtistImages(R.string.backup_content_artist_images),
-    Playlists(R.string.backup_content_playlists)
-}
-
 class BackupManager(
     private val context: Context,
     private val repository: Repository,
@@ -88,53 +78,83 @@ class BackupManager(
         ignoreUnknownKeys = true
     }
 
-    suspend fun createBackup(backupDirectory: Uri, name: String) = withContext(IO) {
-        if (backupDirectory == Uri.EMPTY) return@withContext false
+    suspend fun createBackup(
+        backupDirectory: Uri,
+        name: String,
+        contents: List<BackupContent>
+    ) = withContext(IO) {
+        if (backupDirectory == Uri.EMPTY || contents.isEmpty())
+            return@withContext false
 
         val directory = DocumentFile.fromTreeUri(context, backupDirectory)
             ?: return@withContext false
 
-        val fileName = name.trim().takeIf { it.isNotEmpty() }
-            ?.let { if (it.endsWith(BACKUP_EXTENSION)) it else "$it.$BACKUP_EXTENSION" }
-            ?: getFormattedFileName("Backup", BACKUP_EXTENSION)
+        val fileName = name.trim { it.isWhitespace() || it == '.' }
+            .sanitize()
+            .let { if (it.endsWith(BACKUP_EXTENSION)) it else "$it.$BACKUP_EXTENSION" }
+            .ifEmpty { getFormattedFileName("Backup", BACKUP_EXTENSION) }
 
-        val file = directory.createFile(BACKUP_MIME_TYPE, fileName)
-            ?: return@withContext false
+        val file = try {
+            directory.createFile(BACKUP_MIME_TYPE, fileName)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error creating backup file", e)
+            null
+        } ?: return@withContext false
 
         val tempDir = File(context.cacheDir, "/backup_${System.currentTimeMillis()}/")
         if (tempDir.mkdirs()) {
             try {
+                val backedUpContents = mutableListOf<BackupContent>()
                 val zipItems = mutableListOf<ZipItem>()
 
-                // Metadata
-                val metadata = createMetadata(context)
-                    ?: throw IllegalStateException("Cannot create necessary metadata")
-                zipItems.add(metadata)
-
                 // Preferences
-                val mainPreferences = setOf(
-                    "${context.packageName}_preferences",
-                    PersistentStorage.PREFERENCE_NAME,
-                    WidgetConfigStore.PREFERENCES_NAME
-                )
-                zipItems.add(
-                    createSettingsContent(
-                        preferences = mainPreferences,
-                        settingsName = MAIN_SETTINGS_NAME
+                if (contents.contains(BackupContent.Settings)) {
+                    val mainPreferences = setOf(
+                        "${context.packageName}_preferences",
+                        PersistentStorage.PREFERENCE_NAME,
+                        WidgetConfigStore.PREFERENCES_NAME
                     )
-                )
+                    zipItems.add(
+                        createSettingsContent(
+                            preferences = mainPreferences,
+                            settingsName = MAIN_SETTINGS_NAME
+                        )
+                    )
+                    backedUpContents.add(BackupContent.Settings)
+                }
 
                 // Lyrics
-                zipItems.addNotNull(createLyricsContent())
+                if (contents.contains(BackupContent.Lyrics)) {
+                    if (zipItems.addNotNull(createLyricsContent())) {
+                        backedUpContents.add(BackupContent.Lyrics)
+                    }
+                }
 
                 // Custom Artist Images
-                zipItems.addAll(createCustomArtistImagesContent())
+                if (contents.contains(BackupContent.ArtistImages)) {
+                    if (zipItems.addAll(createCustomArtistImagesContent())) {
+                        backedUpContents.add(BackupContent.ArtistImages)
+                    }
+                }
 
                 // Playlists
-                zipItems.addAll(createPlaylistsContent(tempDir))
+                if (contents.contains(BackupContent.Playlists)) {
+                    if (zipItems.addAll(createPlaylistsContent(tempDir))) {
+                        backedUpContents.add(BackupContent.Playlists)
+                    }
+                }
 
                 // Play info
-                zipItems.addNotNull(createPlayInfoContent())
+                if (contents.contains(BackupContent.PlayInfo)) {
+                    if (zipItems.addNotNull(createPlayInfoContent())) {
+                        backedUpContents.add(BackupContent.PlayInfo)
+                    }
+                }
+
+                // Metadata (only the contents actually written to the backup)
+                val metadata = createMetadata(context, backedUpContents.sortedBy { it.ordinal })
+                    ?: throw IllegalStateException("Cannot create necessary metadata")
+                zipItems.add(0, metadata)
 
                 // Create backup zip file
                 if (zipItems.isNotEmpty()) {
@@ -307,7 +327,7 @@ class BackupManager(
         }
     }
 
-    private fun createMetadata(context: Context): ZipItem? {
+    private fun createMetadata(context: Context, contents: List<BackupContent>): ZipItem? {
         val packageInfo = try {
             context.packageManager.getPackageInfo(context.packageName, 0)
         } catch (_: PackageManager.NameNotFoundException) {
@@ -318,7 +338,8 @@ class BackupManager(
                 backupVersion = CURRENT_BACKUP_VERSION,
                 appName = packageInfo.packageName,
                 appVersionName = packageInfo.versionName,
-                appVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
+                appVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
+                contents = contents
             )
             return ZipItem(
                 zipPath = METADATA_NAME,
@@ -495,41 +516,46 @@ class BackupManager(
 
     @SuppressLint("ApplySharedPref")
     private suspend fun restoreSettings(zipFile: ZipFile, entry: ZipEntry) = withContext(IO) {
-        val preferenceBackup = zipFile.getInputStream(entry).use { stream ->
-            json.decodeFromString<PreferenceBackup>(stream.bufferedReader().use { it.readText() })
-        }
-        if (!preferenceBackup.prefs.isEmpty()) {
-            for (entry in preferenceBackup.prefs) {
-                val sharedPrefs = context.getSharedPreferences(entry.key, Context.MODE_PRIVATE)
-                val modifiedKeys = mutableSetOf<String>()
-                val currentKeys = sharedPrefs.all.keys
-                sharedPrefs.edit(commit = true) {
-                    for (content in entry.value) {
-                        if (content.key.isEmpty()) continue
-                        if (content.key == LyricsViewSettings.Key.SELECTED_CUSTOM_FONT) {
-                            if (!isValidFontPath(content.value)) continue
+        try {
+            val preferenceBackup = zipFile.getInputStream(entry).use { stream ->
+                json.decodeFromString<PreferenceBackup>(stream.bufferedReader().use { it.readText() })
+            }
+            if (!preferenceBackup.prefs.isEmpty()) {
+                for (entry in preferenceBackup.prefs) {
+                    val sharedPrefs = context.getSharedPreferences(entry.key, Context.MODE_PRIVATE)
+                    val modifiedKeys = mutableSetOf<String>()
+                    val currentKeys = sharedPrefs.all.keys
+                    sharedPrefs.edit(commit = true) {
+                        for (content in entry.value) {
+                            if (content.key.isEmpty()) continue
+                            if (content.key == LyricsViewSettings.Key.SELECTED_CUSTOM_FONT) {
+                                if (!isValidFontPath(content.value)) continue
+                            }
+                            when (content.type) {
+                                PreferenceContent.Type.String -> putString(content.key, content.value)
+                                PreferenceContent.Type.Integer -> putInt(content.key, content.value.toInt())
+                                PreferenceContent.Type.Long -> putLong(content.key, content.value.toLong())
+                                PreferenceContent.Type.Float -> putFloat(content.key, content.value.toFloat())
+                                PreferenceContent.Type.Boolean -> putBoolean(content.key, content.value.toBoolean())
+                                PreferenceContent.Type.Set -> putStringSet(content.key, content.value.split(",").toSet())
+                            }
+                            modifiedKeys.add(content.key)
                         }
-                        when (content.type) {
-                            PreferenceContent.Type.String -> putString(content.key, content.value)
-                            PreferenceContent.Type.Integer -> putInt(content.key, content.value.toInt())
-                            PreferenceContent.Type.Long -> putLong(content.key, content.value.toLong())
-                            PreferenceContent.Type.Float -> putFloat(content.key, content.value.toFloat())
-                            PreferenceContent.Type.Boolean -> putBoolean(content.key, content.value.toBoolean())
-                            PreferenceContent.Type.Set -> putStringSet(content.key, content.value.split(",").toSet())
-                        }
-                        modifiedKeys.add(content.key)
-                    }
-                    if (currentKeys.isNotEmpty() && modifiedKeys.isNotEmpty()) {
-                        for (currentKey in currentKeys) {
-                            if (!modifiedKeys.contains(currentKey)) {
-                                remove(currentKey)
+                        if (currentKeys.isNotEmpty() && modifiedKeys.isNotEmpty()) {
+                            for (currentKey in currentKeys) {
+                                if (!modifiedKeys.contains(currentKey)) {
+                                    remove(currentKey)
+                                }
                             }
                         }
                     }
                 }
-            }
-            true
-        } else false
+                true
+            } else false
+        } catch (e: Exception) {
+            Log.e(TAG, "Error restoring settings", e)
+            false
+        }
     }
 
     private suspend fun restoreLyrics(zipFile: ZipFile, entry: ZipEntry) = withContext(IO) {
@@ -537,7 +563,7 @@ class BackupManager(
             val serializedLyrics = zipFile.getInputStream(entry).use { zis ->
                 zis.bufferedReader().use { it.readText() }
             }
-            val lyrics = Json.decodeFromString<List<LyricsEntity>>(serializedLyrics)
+            val lyrics = json.decodeFromString<List<LyricsEntity>>(serializedLyrics)
             if (lyrics.isNotEmpty()) {
                 lyricsDao.insertLyrics(lyrics)
                 true

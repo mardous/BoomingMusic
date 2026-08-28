@@ -37,6 +37,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 
@@ -98,7 +99,7 @@ class BackupViewModel(
     }
 
     fun setBackupDirectory(uri: Uri?) {
-        if (uri != null && uri != this.backupDirectory) {
+        if (uri != null && uri != backupDirectory.value) {
             try {
                 if (DocumentsContract.isTreeUri(uri)) {
                     val flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or
@@ -143,10 +144,12 @@ class BackupViewModel(
             } else it
         }
         if (newState is BackupsState.Success) {
-            val success = backupManager.createBackup(backupDirectory.value, name)
+            val success = backupManager.createBackup(backupDirectory.value, name, backupContents)
             if (success) loadBackupsFromDirectory()
-            _createBackupEvent.trySend(true)
-            _state.value = newState.copy(isInBackupOperation = false)
+            _createBackupEvent.trySend(success)
+            _state.update {
+                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
+            }
         }
     }
 
@@ -159,7 +162,9 @@ class BackupViewModel(
         if (newState is BackupsState.Success) {
             val uri = backupManager.createShareUriForBackup(backupFile.uri)
             _shareBackupEvent.trySend(uri)
-            _state.value = newState.copy(isInBackupOperation = false)
+            _state.update {
+                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
+            }
         }
     }
 
@@ -173,7 +178,9 @@ class BackupViewModel(
             val success = backupManager.deleteBackup(backupFile.uri)
             if (success) loadBackupsFromDirectory()
             _deleteBackupEvent.trySend(success)
-            _state.value = newState.copy(isInBackupOperation = false)
+            _state.update {
+                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
+            }
         }
     }
 
@@ -186,7 +193,9 @@ class BackupViewModel(
         if (newState is BackupsState.Success) {
             val success = backupManager.restoreBackup(uri, contents)
             _restoreBackupEvent.trySend(success)
-            _state.value = newState.copy(isInBackupOperation = false)
+            _state.update {
+                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
+            }
         }
     }
 }
