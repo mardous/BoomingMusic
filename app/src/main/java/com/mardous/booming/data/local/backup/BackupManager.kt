@@ -47,6 +47,7 @@ import com.mardous.booming.extensions.files.getFileProviderUri
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.utilities.sanitize
 import com.mardous.booming.playback.PersistentStorage
+import com.mardous.booming.util.FileTypeVerifier
 import com.mardous.booming.util.FileUtil
 import com.mardous.booming.util.m3u.M3UWriter
 import kotlinx.coroutines.Dispatchers.IO
@@ -655,13 +656,19 @@ class BackupManager(
             val customArtistImagesDir = FileUtil.customArtistImagesDirectory()
                 ?: return false
 
-            val file = File(customArtistImagesDir, zipEntry.getFileName())
-            file.outputStream().buffered().use { bos ->
-                zipFile.getInputStream(zipEntry).use {
-                    it.copyTo(bos)
+            zipFile.getInputStream(zipEntry).buffered().use { input ->
+                input.mark(3) //limit to 3 bytes to check for JPEG
+                val isJpegImage = with(FileTypeVerifier) { input.isJpegImage() }
+                if (isJpegImage) {
+                    input.reset()
+                    val file = File(customArtistImagesDir, zipEntry.getFileName())
+                    val bytesCopied = file.outputStream().buffered().use { bos ->
+                        input.copyTo(bos)
+                    }
+                    // basic check since some ZIP stream headers may have 0 size
+                    return bytesCopied == zipEntry.size || zipEntry.size == -1L
                 }
             }
-            return true
         } catch (e: Exception) {
             Log.e("BackupManager", "Error restoring custom artist images", e)
         }
@@ -729,8 +736,11 @@ class BackupManager(
 
     private fun isValidFontPath(path: String): Boolean {
         if (path.endsWith(".ttf") || path.endsWith(".otf")) {
-            val fontsDir = File(context.filesDir, "fonts")
-            return File(path).belongsTo(fontsDir)
+            val fontsDir = FileUtil.fontsDirectory() ?: return false
+            val fontFile = File(path)
+            if (fontFile.belongsTo(fontsDir)) {
+                return with(FileTypeVerifier) { fontFile.inputStream().use { it.isFontFile() } }
+            }
         }
         return false
     }
