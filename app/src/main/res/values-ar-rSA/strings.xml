@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">قراءة الصور (اختياري)</string>
     <string name="permission_read_images_summary">هذا الإذن مطلوب كي يتمكن Booming Music من العثور على ملفات صور أغلفة الألبومات في مجلدات موسيقاك. إذا كنت لا تنوي استخدام هذه الميزة، يمكنك اختيار عدم منحه.</string>
     <string name="permission_read_images_denied">يجب منح إذن قراءة الصور من الجهاز.</string>
-
-
     <string name="permissions_denied">تم رفض الأذونات</string>
     <string name="permissions_needed">الأذونات المطلوبة</string>
     <string name="grant_access_action">منح الوصول</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">الاتصال غير متوفر.</string>
     <string name="you_have_to_select_at_least_one_category">يجب تحديد فئة واحدة على الأقل</string>
     <string name="you_cannot_select_more_than_five_categories">لا يمكنك تحديد أكثر من خمس فئات.</string>
-
-
-
-
     <string name="backup_successful">تم النسخ الاحتياطي بنجاح!</string>
     <string name="backup_failed">فشل النسخ الاحتياطي.</string>
     <string name="select_content_to_restore">اختر المحتوى المراد استعادته:</string>
@@ -570,7 +564,6 @@
     <string name="audio_focus_header">التركيز الصوتي</string>
     <string name="shuffle_mode_header">وضع التشغيل العشوائي</string>
     <string name="display_header">الشاشة</string>
-
     <string name="visuals_header">التأثيرات المرئية</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">السمة العامة</string>
@@ -752,10 +745,6 @@
     <string name="min_song_duration_summary">أقل مدة بالثواني يجب أن تستغرقها الأغنية لتظهر في مكتبتك.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">لغة التطبيق</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">الإيقاف عند الإغلاق من التطبيقات الأخيرة</string>
     <string name="stop_when_closed_from_recents_summary">يتوقف التشغيل إذا أُغلق التطبيق من قائمة التطبيقات الأخيرة.</string>
     <string name="stop_when_closed_from_recents_note">ملاحظة: قد تتجاهل بعض الأجهزة ذات إدارة الذاكرة أو البطارية الصارمة هذا الإعداد وتوقف التطبيق دائمًا عند إزالته من التطبيقات الأخيرة.</string>
