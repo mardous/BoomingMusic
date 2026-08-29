@@ -677,6 +677,8 @@
     <string name="network_summary">Manage internet features such as Last.fm integration, lyrics providers, and metadata downloads.</string>
     <string name="advanced_title">Advanced</string>
     <string name="advanced_summary">In-app language and other settings for advanced users.</string>
+    <string name="enforce_known_callers_title">Enforce Known Callers to browse the library</string>
+    <string name="enforce_known_callers_summary">When on, only trusted apps (Android Auto, Assistant, etc.) may browse the media library. Turn off to allow any app to browse it — like open source Android Auto clients.</string>
     <string name="about_title">About</string>
     <string name="about_summary">Booming Music %s, touch for more info.</string>
 

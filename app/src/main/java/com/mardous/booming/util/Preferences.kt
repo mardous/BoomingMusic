@@ -74,6 +74,15 @@ object Preferences : KoinComponent {
         get() = preferences.getStringSet("requested_permissions", emptySet()).orEmpty()
         set(value) = preferences.edit { putStringSet("requested_permissions", value) }
 
+    /**
+     * When ON (the default), only callers in `allowed_media_browser_callers` may browse the media library
+     * (Android Auto, Assistant, etc.). When OFF, any caller is allowed - needed
+     * for unofficial Android-Auto clients or other free media client. See [PackageValidator.isAllowedCaller].
+     */
+    var enforceKnownCallers: Boolean
+        get() = preferences.getBoolean(ENFORCE_KNOWN_CALLERS, true)
+        set(value) = preferences.edit { putBoolean(ENFORCE_KNOWN_CALLERS, value) }
+
     fun getGeneralTheme(isBlackMode: Boolean): String {
         return if (isBlackMode) {
             GeneralTheme.BLACK
@@ -618,6 +627,7 @@ const val ARTIST_MINIMUM_SONGS = "artist_minimum_songs"
 const val ALBUM_MINIMUM_SONGS = "album_minimum_songs"
 const val MINIMUM_SONG_DURATION = "minimum_song_duration"
 const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
+const val ENFORCE_KNOWN_CALLERS = "enforce_known_callers"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val LANGUAGE_NAME = "language_name"
 const val AUTO_LANGUAGE = "auto"
