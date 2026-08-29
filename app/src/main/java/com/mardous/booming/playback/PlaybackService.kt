@@ -407,7 +407,7 @@ class PlaybackService :
             if (sessionId == myPackageName) {
                 return mediaSession
             }
-        } else if (packageValidator.isKnownCaller(controllerPackageName, controllerInfo.uid)) {
+        } else if (packageValidator.isAllowedCaller(controllerPackageName, controllerInfo.uid)) {
             return mediaSession
         }
         return null
@@ -465,7 +465,7 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        val isKnownCaller = packageValidator.isKnownCaller(browser.packageName, browser.uid)
+        val isKnownCaller = packageValidator.isAllowedCaller(browser.packageName, browser.uid)
         val outExtras = Bundle().apply {
             putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isKnownCaller)
         }

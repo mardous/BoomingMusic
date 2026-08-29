@@ -150,8 +150,10 @@ class AdvancedPreferencesFragment : PreferenceScreenFragment() {
                 .map { it.title }
                 .toTypedArray()
         }
+        addPreferencesFromResource(R.xml.preferences_screen_gatekeeper)
     }
 }
+
 
 open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
