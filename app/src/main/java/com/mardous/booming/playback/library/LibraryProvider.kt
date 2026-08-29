@@ -59,9 +59,7 @@ class LibraryProvider(private val repository: Repository) {
                 missingMediaItems.forEach { missingMediaItem ->
                     getPlayableSongs(missingMediaItem.mediaId).let { playableSongs ->
                         if (playableSongs.isNotEmpty()) {
-                            resolvedMediaItems.addAll(
-                                playableSongs.map { song -> buildPlayableMediaItem(song) }
-                            )
+                            resolvedMediaItems.addAll(playableSongs.toPlayableMediaItems())
                         }
                     }
                 }
@@ -97,97 +95,60 @@ class LibraryProvider(private val repository: Repository) {
                 MediaIDs.SONGS -> {
                     val id = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val allSongs = repository.allSongs()
-                    MediaItemsWithStartPosition(
-                        allSongs.map { buildPlayableMediaItem(it) },
-                        allSongs.indexOfFirst { it.id == id }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(allSongs, id)
                 }
 
                 MediaIDs.ALBUMS -> {
                     val albumId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val album = repository.albumById(albumId)
-                    MediaItemsWithStartPosition(
-                        album.songs.map { buildPlayableMediaItem(it) },
-                        album.songs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(album.songs, songId)
                 }
 
                 MediaIDs.ARTISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val artistId = path.getOrNull(1)?.toLongOrNull() ?: return null
-                    val artistSongs = repository.artistById(artistId).sortedSongs
-                    MediaItemsWithStartPosition(
-                        artistSongs.map { buildPlayableMediaItem(it) },
-                        artistSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    val artist = repository.artistById(artistId)
+                    getMediaItemsWithStartPosition(artist.sortedSongs, songId)
                 }
 
                 MediaIDs.ALBUM_ARTISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val albumArtistName = path.getOrNull(1) ?: return null
-                    val albumArtistSongs =
-                        repository.albumArtistByName(albumArtistName).sortedSongs
-                    MediaItemsWithStartPosition(
-                        albumArtistSongs.map { buildPlayableMediaItem(it) },
-                        albumArtistSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    val albumArtist = repository.albumArtistByName(albumArtistName)
+                    getMediaItemsWithStartPosition(albumArtist.sortedSongs, songId)
                 }
 
                 MediaIDs.PLAYLISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val playlistId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val playlist = repository.playlistWithSongs(playlistId)
-                    MediaItemsWithStartPosition(
-                        playlist.songs.toSongs().map { buildPlayableMediaItem(it) },
-                        playlist.songs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(playlist.songs.toSongs(), songId)
                 }
 
                 MediaIDs.GENRES -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val genreId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val songsByGenre = repository.songsByGenre(genreId)
-                    MediaItemsWithStartPosition(
-                        songsByGenre.map { buildPlayableMediaItem(it) },
-                        songsByGenre.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(songsByGenre, songId)
                 }
 
                 MediaIDs.TOP_TRACKS -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val playCountSongs = repository.playCountSongs()
-                    MediaItemsWithStartPosition(
-                        playCountSongs.map { buildPlayableMediaItem(it) },
-                        playCountSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(playCountSongs, songId)
                 }
 
                 MediaIDs.RECENT_SONGS -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val historySongs = repository.historySongs()
-                    MediaItemsWithStartPosition(
-                        historySongs.map { buildPlayableMediaItem(it) },
-                        historySongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(historySongs, songId)
                 }
 
                 MediaIDs.FAVORITES -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val favoriteSongs = repository.favoriteSongs()
-                    MediaItemsWithStartPosition(
-                        favoriteSongs.map { buildPlayableMediaItem(it) },
-                        favoriteSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0),
-                        C.TIME_UNSET
-                    )
+                    getMediaItemsWithStartPosition(favoriteSongs, songId)
                 }
 
                 else -> null
@@ -480,4 +441,18 @@ class LibraryProvider(private val repository: Repository) {
                 val parentPath = if (childId.isNullOrEmpty()) parentId else MediaIDs.getPathId(parentId, childId)
                 buildPlayableMediaItem(song, MediaIDs.getPathId(parentPath, song.id))
             }
+
+    @OptIn(UnstableApi::class)
+    private fun getMediaItemsWithStartPosition(
+        songs: List<Song>,
+        startPositionId: Long
+    ): MediaItemsWithStartPosition? {
+        var startIndex: Int = -1
+        val mediaItems = mutableListOf<MediaItem>()
+        songs.forEachIndexed { index, song ->
+            if (song.id == startPositionId) startIndex = index
+            mediaItems.add(buildPlayableMediaItem(song))
+        }
+        return if (startIndex == -1) null else MediaItemsWithStartPosition(mediaItems, startIndex, C.TIME_UNSET)
+    }
 }
