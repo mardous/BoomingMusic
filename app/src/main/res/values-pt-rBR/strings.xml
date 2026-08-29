@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">Ler imagens (opcional)</string>
     <string name="permission_read_images_summary">Essa permissão é necessária para que o Booming Music encontre arquivos de capas de álbuns nas suas pastas de música. Se você não pretende usar esse recurso, pode optar por não conceder a permissão.</string>
     <string name="permission_read_images_denied">Você precisa conceder permissão para ler imagens do dispositivo.</string>
-
-
     <string name="permissions_denied">Permissões negadas</string>
     <string name="permissions_needed">Permissões necessárias</string>
     <string name="grant_access_action">Conceder acesso</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">Sem conexão.</string>
     <string name="you_have_to_select_at_least_one_category">Você deve selecionar pelo menos uma categoria</string>
     <string name="you_cannot_select_more_than_five_categories">Você não pode selecionar mais do que cinco categorias.</string>
-
-
-
-
     <string name="backup_successful">Backup bem-sucedido!</string>
     <string name="backup_failed">Backup falhou.</string>
     <string name="select_content_to_restore">Selecione o conteúdo para restaurar:</string>
@@ -546,7 +540,6 @@
     <string name="audio_focus_header">Foco de áudio</string>
     <string name="shuffle_mode_header">Modo aleatório</string>
     <string name="display_header">Visualização</string>
-
     <string name="visuals_header">Visuais</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema geral</string>
@@ -728,10 +721,6 @@
     <string name="min_song_duration_summary">Quantos segundos (no mínimo) deve ter uma música para aparecer na sua biblioteca.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Idioma do aplicativo</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Parar ao ser fechado a partir dos apps recentes</string>
     <string name="stop_when_closed_from_recents_summary">A reprodução é interrompida se o aplicativo for fechado a partir dos apps recentes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Alguns dispositivos com gerenciamento agressivo de memória ou bateria podem ignorar esta configuração e sempre encerrar o aplicativo ao removê-lo da lista de recentes.</string>
@@ -966,4 +955,66 @@
     <string name="terms_of_service">Termos de Serviço</string>
     <string name="privacy_policy">Política de Privacidade</string>
     <string name="legal">Legal</string>
+    <string name="create_new_backup"></string>
+    <string name="widget_action_repeat"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="backup_content_play_info"></string>
+    <string name="initial_configuration_note"></string>
+    <string name="backup_recent_list"></string>
+    <string name="widget_show_artist_summary"></string>
+    <string name="share_backup"></string>
+    <string name="backup_warning_ver_newer"></string>
+    <string name="select_content_to_backup"></string>
+    <string name="app_widget_library_desc"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="listenbrainz_toggle_token_visibility"></string>
+    <string name="widget_show_artist_title"></string>
+    <string name="widget_page_next"></string>
+    <string name="widget_action_favourite"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="widget_side_buttons_skip"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="widget_show_progress_title"></string>
+    <string name="backup_content_lyrics"></string>
+    <string name="widget_source_title"></string>
+    <string name="backup_warning_app_ver_newer"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="widget_side_buttons_title"></string>
+    <string name="network_features_summary"></string>
+    <string name="widget_show_progress_summary"></string>
+    <string name="widget_show_controls_summary"></string>
+    <string name="restart_app_message"></string>
+    <string name="could_not_delete_backup"></string>
+    <string name="backup_deleted_successfully"></string>
+    <string name="backup_app_version"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="backup_restore_title"></string>
+    <string name="cannot_share_this_backup"></string>
+    <string name="widget_show_navigation_title"></string>
+    <string name="widget_show_navigation_summary"></string>
+    <string name="widget_settings_title"></string>
+    <string name="initial_configuration_subtitle"></string>
+    <string name="app_widget_tap_to_play"></string>
+    <string name="widget_page_previous"></string>
+    <string name="restore_from_backup"></string>
+    <string name="open_backup"></string>
+    <string name="widget_trailing_action_title"></string>
+    <string name="widget_leading_action_title"></string>
+    <string name="backup_content_settings"></string>
+    <string name="app_widget_nothing_playing"></string>
+    <string name="widget_show_controls_title"></string>
+    <string name="backup_file_name"></string>
+    <string name="confirm_delete_backup"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_source_recent"></string>
+    <string name="select_backup_folder"></string>
+    <string name="initial_configuration_title"></string>
+    <string name="backup_warning_legacy_format"></string>
+    <string name="no_backup_folder_selected"></string>
+    <string name="backup_content_playlists"></string>
+    <string name="backup_content_artist_images"></string>
+    <string name="no_backups_found"></string>
+    <string name="permissions_subtitle"></string>
+    <string name="backup_restore_summary"></string>
 </resources>
