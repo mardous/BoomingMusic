@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-
-
     <string name="permissions_denied">Άρνηση δικαιωμάτων</string>
     <string name="permissions_needed">Απαιτούνται δικαιώματα</string>
     <string name="grant_access_action">Παραχώρηση πρόσβασης</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
     <string name="you_have_to_select_at_least_one_category">Πρέπει να επιλέξετε τουλάχιστον μία κατηγορία</string>
     <string name="you_cannot_select_more_than_five_categories">Δεν μπορείτε να επιλέξετε περισσότερες από πέντε κατηγορίες.</string>
-
-
-
-
     <string name="backup_successful">Επιτυχής δημιουργία αντιγράφου!</string>
     <string name="backup_failed">Αποτυχία αντιγράφου ασφαλείας.</string>
     <string name="select_content_to_restore">Επιλέξτε περιεχόμενο για επαναφορά:</string>
@@ -538,7 +532,6 @@
     <string name="audio_focus_header">Εστίαση ήχου</string>
     <string name="shuffle_mode_header">Λειτουργία ανακατέματος</string>
     <string name="display_header">Εμφάνιση</string>
-
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Γενικό θέμα</string>
@@ -720,10 +713,6 @@
     <string name="min_song_duration_summary">Πόσα δευτερόλεπτα (τουλάχιστον) πρέπει να διαρκέσουν ένα τραγούδι που θα εμφανιστεί στη βιβλιοθήκη σας.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Γλώσσα εφαρμογής</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
@@ -817,4 +806,200 @@
     <string name="telegram_community">Κοινότητα στο Telegram</string>
     <string name="telegram_community_summary">Συνδεθείτε στην κοινότητά μας στο Telegram για να μένετε ενημερωμένοι για νέες εκδόσεις και νέα.</string>
     <string name="app_widget_card">Κάρτα</string>
+    <string name="action_auto_fill_from_musicbrainz"></string>
+    <string name="lyrics_center_horizontally_title"></string>
+    <string name="advanced_settings"></string>
+    <string name="songs_added_to_playlists"></string>
+    <string name="contributor_ttop_description"></string>
+    <string name="create_new_backup"></string>
+    <string name="error_lastfm_service"></string>
+    <string name="logout_action"></string>
+    <string name="channel_surround_6_1"></string>
+    <string name="eq_pro_mode"></string>
+    <string name="contributor_dawid_description"></string>
+    <string name="widget_action_repeat"></string>
+    <string name="lyrics_show_transliteration_title"></string>
+    <string name="no_playlists_that_match_x"></string>
+    <string name="lyrics_show_translation_title"></string>
+    <string name="preferred_lyrics_file_format_title"></string>
+    <string name="error_lastfm_generic"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="channel_surround_5_0"></string>
+    <string name="wifi_only_network_features_title"></string>
+    <string name="backup_content_play_info"></string>
+    <string name="lastfm_login_toggle_password_visibility"></string>
+    <string name="initial_configuration_note"></string>
+    <string name="backup_recent_list"></string>
+    <string name="lyrics_bold_synced_summary"></string>
+    <string name="widget_show_artist_summary"></string>
+    <string name="terms_of_service"></string>
+    <string name="mini_player_swipe_to_skip_summary"></string>
+    <string name="lastfm_biography_summary"></string>
+    <string name="website"></string>
+    <string name="share_backup"></string>
+    <string name="lastfm_scrobbling_summary"></string>
+    <string name="channel_stereo_2_1"></string>
+    <string name="eq_pre_gain"></string>
+    <string name="backup_warning_ver_newer"></string>
+    <plurals name="x_playlists_selected">
+    </plurals>
+    <string name="search_playlists"></string>
+    <string name="select_content_to_backup"></string>
+    <string name="go_to_current_track"></string>
+    <string name="contributor_alex_description"></string>
+    <string name="app_widget_library_desc"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="listenbrainz_toggle_token_visibility"></string>
+    <string name="widget_show_artist_title"></string>
+    <string name="channel_surround_5_1"></string>
+    <string name="widget_page_next"></string>
+    <string name="lyrics_karaoke_style_summary"></string>
+    <string name="contributor_ray_description"></string>
+    <string name="widget_action_favourite"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="github"></string>
+    <string name="bit_perfect_info"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="listenbrainz_scrobbling_title"></string>
+    <string name="widget_side_buttons_skip"></string>
+    <string name="listenbrainz_login_title"></string>
+    <string name="eq_expander_ratio"></string>
+    <string name="lastfm_scrobbling_title"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="lyrics_resume_on_seek_summary"></string>
+    <string name="cannot_edit_lyrics_file"></string>
+    <string name="channel_surround_11_1"></string>
+    <string name="legal"></string>
+    <string name="error_lastfm_credentials"></string>
+    <string name="widget_show_progress_title"></string>
+    <string name="backup_content_lyrics"></string>
+    <string name="widget_source_title"></string>
+    <string name="lrc_file_lyrics"></string>
+    <string name="musicbrainz_select_recording"></string>
+    <string name="lastfm_login_username"></string>
+    <string name="limiter_label"></string>
+    <string name="lastfm_now_playing_title"></string>
+    <string name="musicbrainz_no_results"></string>
+    <string name="channel_surround_13_1"></string>
+    <string name="listenbrainz_title"></string>
+    <string name="compressor_label"></string>
+    <string name="backup_warning_app_ver_newer"></string>
+    <string name="login_action"></string>
+    <string name="use_lrclib_provider_title"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="rg_without_tag"></string>
+    <string name="widget_side_buttons_title"></string>
+    <string name="eq_release_time"></string>
+    <string name="listenbrainz_now_playing_summary"></string>
+    <string name="app_version_x"></string>
+    <string name="network_features_summary"></string>
+    <string name="use_betterlyrics_provider_summary"></string>
+    <string name="error_listenbrainz_invalid_token"></string>
+    <string name="widget_show_progress_summary"></string>
+    <string name="images_title"></string>
+    <string name="lyrics_by_x"></string>
+    <string name="channel_quadraphonic"></string>
+    <string name="widget_show_controls_summary"></string>
+    <string name="sign_in_to_x_title"></string>
+    <string name="lastfm_title"></string>
+    <string name="preferred_lyrics_file_format_summary"></string>
+    <string name="use_betterlyrics_provider_title"></string>
+    <string name="lyrics_show_transliteration_summary"></string>
+    <string name="wifi_only_network_features_summary"></string>
+    <string name="no_playlists_create_new"></string>
+    <string name="play_all_songs_when_searching_title"></string>
+    <string name="restart_app_message"></string>
+    <string name="mini_player_swipe_to_skip_title"></string>
+    <string name="could_not_delete_backup"></string>
+    <string name="error_lastfm_params"></string>
+    <string name="lastfm_login_title"></string>
+    <string name="lyrics_karaoke_style_title"></string>
+    <string name="error_listenbrainz_generic"></string>
+    <string name="channel_stereo"></string>
+    <string name="bit_perfect_title"></string>
+    <string name="bit_perfect_description"></string>
+    <string name="backup_deleted_successfully"></string>
+    <string name="backup_app_version"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="up_next"></string>
+    <string name="backup_restore_title"></string>
+    <string name="cannot_share_this_backup"></string>
+    <string name="eq_attack_time"></string>
+    <string name="error_lastfm_auth"></string>
+    <string name="use_lrclib_provider_summary"></string>
+    <string name="privacy_policy"></string>
+    <string name="lastfm_now_playing_summary"></string>
+    <string name="bit_perfect_is_active"></string>
+    <string name="lastfm_login_password"></string>
+    <string name="widget_show_navigation_title"></string>
+    <string name="widget_dynamic_colors_summary"></string>
+    <string name="channel_mono"></string>
+    <string name="widget_show_navigation_summary"></string>
+    <string name="rg_with_tag"></string>
+    <string name="widget_settings_title"></string>
+    <string name="channel_surround_9_1"></string>
+    <string name="initial_configuration_subtitle"></string>
+    <string name="lyrics_center_horizontally_summary"></string>
+    <string name="app_widget_tap_to_play"></string>
+    <string name="no_playlists_label"></string>
+    <string name="widget_page_previous"></string>
+    <string name="eq_knee_width"></string>
+    <string name="restore_from_backup"></string>
+    <string name="more_contributors_summary"></string>
+    <string name="use_lyrically_provider_summary"></string>
+    <string name="sort_order_name"></string>
+    <string name="musicbrainz_search_message"></string>
+    <string name="contributor_lenard_description"></string>
+    <string name="lyrics_bold_synced_title"></string>
+    <string name="open_backup"></string>
+    <string name="widget_trailing_action_title"></string>
+    <string name="widget_leading_action_title"></string>
+    <string name="reorder_action"></string>
+    <string name="connected_account_label"></string>
+    <string name="listenbrainz_now_playing_title"></string>
+    <string name="lyrics_resume_on_seek_title"></string>
+    <string name="channel_surround_7_1"></string>
+    <string name="listenbrainz_token_label"></string>
+    <string name="undo_changes"></string>
+    <string name="network_title"></string>
+    <string name="select_playlists_title"></string>
+    <string name="play_all_songs_when_searching_summary"></string>
+    <string name="backup_content_settings"></string>
+    <string name="more_contributors_title"></string>
+    <string name="lyrics_show_translation_summary"></string>
+    <string name="musicbrainz_search_title"></string>
+    <string name="app_widget_nothing_playing"></string>
+    <string name="arranger"></string>
+    <string name="eq_post_gain"></string>
+    <string name="error_network_timeout"></string>
+    <string name="widget_show_controls_title"></string>
+    <string name="backup_file_name"></string>
+    <string name="network_summary"></string>
+    <string name="confirm_delete_backup"></string>
+    <string name="lastfm_biography_title"></string>
+    <string name="searching"></string>
+    <string name="network_features_title"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_source_recent"></string>
+    <string name="eq_ratio"></string>
+    <string name="eq_noise_gate"></string>
+    <string name="select_backup_folder"></string>
+    <string name="file_lyrics"></string>
+    <string name="initial_configuration_title"></string>
+    <string name="listenbrainz_scrobbling_summary"></string>
+    <string name="sleep_timer_x_secs"></string>
+    <string name="backup_warning_legacy_format"></string>
+    <string name="no_backup_folder_selected"></string>
+    <string name="backup_content_playlists"></string>
+    <string name="listenbrainz_login_summary"></string>
+    <string name="backup_content_artist_images"></string>
+    <string name="lastfm_login_summary"></string>
+    <string name="eq_threshold"></string>
+    <string name="widget_dynamic_colors_title"></string>
+    <string name="ttml_file_lyrics"></string>
+    <string name="error_lastfm_rate_limit"></string>
+    <string name="no_backups_found"></string>
+    <string name="permissions_subtitle"></string>
+    <string name="use_lyrically_provider_title"></string>
+    <string name="backup_restore_summary"></string>
 </resources>
