@@ -139,8 +139,6 @@
     <string name="disc">Plaat</string>
     <string name="lyrics">Laulusõnad</string>
     <string name="lyricist">Laulusõnade autor</string>
-
-
     <string name="audio_device_hdmi">HDMI</string>
     <string name="home_label">Avaleht</string>
     <string name="shuffle_action">Sega lood</string>
@@ -387,7 +385,6 @@
     <string name="audio_focus_header">Helifookus</string>
     <string name="shuffle_mode_header">Lugude segamise viis</string>
     <string name="display_header">Ekraanivaade</string>
-
     <string name="visuals_header">Visuaalsed efektid</string>
     <string name="appearance_title">Välimus</string>
     <string name="appearance_summary">Kohenda rakenduse kujundust ja muud väljanägemist.</string>
@@ -493,10 +490,6 @@
     <string name="delete_downloaded_lyrics_summary">See käib vaid rakenduse Booming Music poolt allalaaditud laulusõnade kohta. Ei mõjuta laulusõnu, mis on lõimitud ID3v2 siltidesse või LRC-failidena.</string>
     <string name="lyrics_cleared">Laulusõnad on kustutatud.</string>
     <string name="app_language_title">Rakenduse keel</string>
-
-
-
-
     <string name="rotation_lock_title">Pööramise lukustus</string>
     <string name="rotation_lock_summary">Lukusta seadme pööramise olek. Kasulik näiteks olukorras, kus seadme pööramisel muusika esitus peatub (mõnede seadmevalmistajate tingimuste tõttu).</string>
     <string name="horizontal_flip">Rõhtne pööramine</string>
@@ -604,8 +597,6 @@
     <string name="connection_unavailable">Võrguühendus pole saadaval.</string>
     <string name="you_have_to_select_at_least_one_category">Sa pead valima vähemalt ühe kategooria</string>
     <string name="you_cannot_select_more_than_five_categories">Sa ei saa valida üle viie kategooria.</string>
-
-
     <string name="backup_successful">Varundamine õnnestus!</string>
     <string name="backup_failed">Varukoopa tegemine ei õnnestunud.</string>
     <string name="select_content_to_restore">Vali taastatav sisu:</string>
@@ -970,4 +961,28 @@
     <string name="widget_show_navigation_title">Näita menüüriba</string>
     <string name="widget_show_navigation_summary">Näita menüüriba, mille abil saad loendi läbi lapata.</string>
     <string name="listenbrainz_toggle_token_visibility">Lülita tunnusloa nähtavus sisse/välja</string>
+    <string name="backup_restore_title">Varundus ja taastamine</string>
+    <string name="backup_restore_summary">Halda rakenduse varundust ja taastamist.</string>
+    <string name="no_backup_folder_selected">Sa pole valinud kausta varundamiseks</string>
+    <string name="select_backup_folder">Vali varunduskaust</string>
+    <string name="no_backups_found">Selles kaustas ei leidu ühtegi varukoopiat.</string>
+    <string name="backup_recent_list">Hiljutised varukoopiad</string>
+    <string name="backup_file_name">Failinimi (kui soovid lisada)</string>
+    <string name="create_new_backup">Tee varukoopia</string>
+    <string name="open_backup">Ava varukoopia</string>
+    <string name="share_backup">Jaga varukoopiat</string>
+    <string name="cannot_share_this_backup">Selle varukoopia jagamine pole võimalik.</string>
+    <string name="confirm_delete_backup">Kas kustutad selle varukoopia?</string>
+    <string name="backup_deleted_successfully">Varukoopia kustutamine õnnestus.</string>
+    <string name="could_not_delete_backup">Varukoopia kustutamine ei õnnestunud.</string>
+    <string name="select_content_to_backup">Vali varundatav sisu:</string>
+    <string name="backup_content_settings">Rakenduse seadistused</string>
+    <string name="backup_content_lyrics">Sünkroonitud laulusõnad</string>
+    <string name="backup_content_play_info">Kuulamiste statistika</string>
+    <string name="backup_content_playlists">Esitusloendid</string>
+    <string name="backup_content_artist_images">Esitajate pildid</string>
+    <string name="backup_app_version">Loodud</string>
+    <string name="backup_warning_legacy_format">See varukoopia vorming on vananenud. Hetkel saad küll sellest veel taastada, kuid selline võimalus võib tulevikus kaduda.</string>
+    <string name="backup_warning_ver_newer">See varukoopia vorming on uuem, kui Booming Music oskab seda kasutada.</string>
+    <string name="backup_warning_app_ver_newer">See varukoopia on loodud Booming Musicu uuema versiooniga. Kui kasutad seda taastamisel selles versioonis, siis võib tekkida vigu või poolikuid andmeid.</string>
 </resources>
