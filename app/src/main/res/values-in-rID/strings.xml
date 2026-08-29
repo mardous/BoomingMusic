@@ -997,4 +997,5 @@
     <string name="backup_warning_legacy_format">Format cadangan ini dianggap lawas. Saat ini Anda masih dapat memulihkannya, namun kami mungkin akan menghentikan dukungannya di masa mendatang.</string>
     <string name="backup_warning_ver_newer">Format cadangan lebih baru daripada yang dapat ditangani oleh versi Booming Music ini.</string>
     <string name="backup_warning_app_ver_newer">Cadangan ini dibuat di versi Booming Music yang lebih baru. Memulihkannya di versi ini dapat menyebabkan kesalahan atau pemulihan data yang tidak lengkap.</string>
+    <string name="app_widget_circle"></string>
 </resources>
