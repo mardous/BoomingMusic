@@ -9,7 +9,6 @@
     <string name="history_label">Historyjŏ</string>
     <string name="sort_order_artist">Wykōnawca</string>
     <string name="lyrics">Tekst śpiywki</string>
-
     <string name="sleep_timer_cancel_current_timer">Pociep</string>
     <string name="action_about">Ô aplikacyji</string>
     <string name="website">Strōna WWW</string>
@@ -61,7 +60,7 @@
     <string name="genres_label">Zorty</string>
     <string name="folders_label">Katalogi</string>
     <string name="favorites_label">Nojrodsze</string>
-    <string name="last_added_label">Przōdzij przidane</string>
+    <string name="last_added_label">Niyedawno przidane</string>
     <string name="sort_order_name">Miana</string>
     <string name="size">Wielgość pliku</string>
     <string name="song">Kōnsek</string>
@@ -110,7 +109,7 @@
     <string name="app_widget_grid">Siatka</string>
     <string name="app_widget_library">Bibliotyka</string>
     <string name="app_widget_nothing_playing">Żŏdyn utwōr niy leci</string>
-    <string name="search_hint">Sznupej we swojij bibliotyce…</string>
+    <string name="search_hint">Sznupej w swojij bibliotyce…</string>
     <string name="continue_action">Idź dalij</string>
     <string name="grant_access_action">Zezwól</string>
     <string name="get_started">Sztart</string>
@@ -121,7 +120,7 @@
     <string name="length">Długość utworu</string>
     <string name="track">Nōmer utworu</string>
     <string name="app_description">Mōderny wyglōnd. Czysty klang. Całkiem twōj.</string>
-    <string name="changelog">Zmiany</string>
+    <string name="changelog">Wykaz zmjan</string>
     <string name="playback_title">Puszczanie</string>
     <string name="network_title">Nec</string>
     <string name="advanced_title">Zaawansowane</string>
@@ -133,4 +132,27 @@
     <string name="rotation_lock_title">Zablokuj ôriyntacyjo ekranu</string>
     <string name="initial_configuration_title">Poczōntkowo kōnfiguracyjo</string>
     <string name="permissions_title">Wymagane uprŏwniynia</string>
+    <string name="app_widget_card">Karta</string>
+    <string name="top_tracks_label">Najczynścij grane</string>
+    <string name="not_recently_played">Dawno niygrane</string>
+    <string name="restore_default">Prziwrōć domyślne</string>
+    <string name="home_label">Głōwnŏ</string>
+    <string name="shuffle_action">Losowo</string>
+    <string name="recent_artists">Niyedawno przidani wykōnawcy</string>
+    <string name="recent_albums">Niyedawno przidane albōmy</string>
+    <string name="shuffle_mode_recently_added">Niyedawno przidane</string>
+    <string name="speed_and_pitch_label">Gibkość i wysokość klangu</string>
+    <string name="no_lyrics_found">Niy znŏdło tekstu śpiywki</string>
+    <string name="app_shortcut_top_tracks_short">Najczynścij grane</string>
+    <string name="faq">Czynste pytania</string>
+    <string name="share_app">Udostympnij ta aplikacyjo</string>
+    <string name="resume_on_connect_title">Puść dalij po połōnczyniu</string>
+    <string name="image_size_large">Wielgi (pōwolniejszy)</string>
+    <string name="image_size_medium">Strzedni (dōmyślny, zalycany)</string>
+    <string name="image_size_small">Mały (gibszy, niskŏ jakość)</string>
+    <string name="initial_configuration_subtitle">Nim zaczniesz, dopasuj Booming Music do swojich upodobań.</string>
+    <string name="backup_restore_title">Kopije zapasowe</string>
+    <string name="initial_configuration_note">Wszystke te sztalowania możesz zmjynić niyskorzyj.</string>
+    <string name="restore_from_backup">Prziwrōć z kopije zapasowej</string>
+    <string name="app_widget_tap_to_play">Tyknij, coby ôdewrzić Booming Music</string>
 </resources>
