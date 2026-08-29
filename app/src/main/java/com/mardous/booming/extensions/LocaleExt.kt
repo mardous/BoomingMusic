@@ -16,7 +16,8 @@ private val displayTagOverrides = mapOf(
 
 private val displayNameOverrides = mapOf(
     "zh-Hans" to "中文（简体）",
-    "zh-Hant" to "中文（繁體）"
+    "zh-Hant" to "中文（繁體）",
+    "szl" to "Ślōnski"
 )
 
 private const val REGIONAL_INDICATOR_A = 0x1F1E6

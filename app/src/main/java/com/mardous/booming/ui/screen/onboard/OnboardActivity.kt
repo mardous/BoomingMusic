@@ -33,6 +33,13 @@ import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
 import com.mardous.booming.util.MATERIAL_YOU
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.LANGUAGE_NAME
+import android.content.res.Resources
+import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.edit
+import androidx.core.os.LocaleListCompat
+import java.util.Locale
 
 /**
  * @author Christians M. A. (mardous)
@@ -46,6 +53,7 @@ class OnboardActivity : AbsBaseActivity() {
 
         setContent {
             val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+            detectLegacySilesian(prefs)
 
             val generalTheme by prefs.observeKeyAsState(GENERAL_THEME, GeneralTheme.AUTO)
             val materialYou by prefs.observeKeyAsState(MATERIAL_YOU, hasS())
@@ -78,5 +86,14 @@ class OnboardActivity : AbsBaseActivity() {
                 )
             }
         }
+    }
+}
+private fun detectLegacySilesian(prefs: SharedPreferences) {
+    val isAuto = AppCompatDelegate.getApplicationLocales().isEmpty
+    if (!isAuto) return
+    val systemLocale: Locale? = Resources.getSystem().configuration.locales[0]
+    if (systemLocale?.toLanguageTag() == "pl-SP") {
+        prefs.edit { putString(LANGUAGE_NAME, "szl") }
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("szl"))
     }
 }
