@@ -985,12 +985,4 @@
     <string name="backup_warning_legacy_format">See varukoopia vorming on vananenud. Hetkel saad küll sellest veel taastada, kuid selline võimalus võib tulevikus kaduda.</string>
     <string name="backup_warning_ver_newer">See varukoopia vorming on uuem, kui Booming Music oskab seda kasutada.</string>
     <string name="backup_warning_app_ver_newer">See varukoopia on loodud Booming Musicu uuema versiooniga. Kui kasutad seda taastamisel selles versioonis, siis võib tekkida vigu või poolikuid andmeid.</string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="grid_size_5" translatable="false"></string>
 </resources>

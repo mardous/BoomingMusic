@@ -983,37 +983,4 @@
     <string name="widget_page_previous">Brani precedenti</string>
     <string name="widget_page_next">Brani successivi</string>
     <string name="network_features_summary">Abilita lo scrobbling e il download di copertine degli album e testi.</string>
-    <string name="create_new_backup"></string>
-    <string name="grid_size_6" translatable="false"></string>
-    <string name="backup_content_play_info"></string>
-    <string name="backup_recent_list"></string>
-    <string name="share_backup"></string>
-    <string name="backup_warning_ver_newer"></string>
-    <string name="select_content_to_backup"></string>
-    <string name="grid_size_4" translatable="false"></string>
-    <string name="listenbrainz_toggle_token_visibility"></string>
-    <string name="grid_size_7" translatable="false"></string>
-    <string name="grid_size_8" translatable="false"></string>
-    <string name="grid_size_2" translatable="false"></string>
-    <string name="backup_content_lyrics"></string>
-    <string name="backup_warning_app_ver_newer"></string>
-    <string name="grid_size_3" translatable="false"></string>
-    <string name="could_not_delete_backup"></string>
-    <string name="backup_deleted_successfully"></string>
-    <string name="backup_app_version"></string>
-    <string name="grid_size_1" translatable="false"></string>
-    <string name="backup_restore_title"></string>
-    <string name="cannot_share_this_backup"></string>
-    <string name="open_backup"></string>
-    <string name="backup_content_settings"></string>
-    <string name="backup_file_name"></string>
-    <string name="confirm_delete_backup"></string>
-    <string name="grid_size_5" translatable="false"></string>
-    <string name="select_backup_folder"></string>
-    <string name="backup_warning_legacy_format"></string>
-    <string name="no_backup_folder_selected"></string>
-    <string name="backup_content_playlists"></string>
-    <string name="backup_content_artist_images"></string>
-    <string name="no_backups_found"></string>
-    <string name="backup_restore_summary"></string>
 </resources>
