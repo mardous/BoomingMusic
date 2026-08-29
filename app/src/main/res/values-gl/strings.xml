@@ -964,4 +964,15 @@
     <string name="repeat_mode"></string>
     <string name="playlist_label"></string>
     <string name="action_scan"></string>
+    <string name="scan_media"></string>
+    <string name="app_widget_circle"></string>
+    <string name="app_widget_grid"></string>
+    <string name="app_widget_cookie"></string>
+    <string name="app_widget_grid_desc"></string>
+    <string name="scan_media_positive"></string>
+    <string name="app_widget_cookie_desc"></string>
+    <string name="scan_media_message"></string>
+    <string name="app_widget_circle_desc"></string>
+    <string name="app_widget_card"></string>
+    <string name="app_widget_library"></string>
 </resources>
