@@ -281,10 +281,6 @@
     <string name="connection_unavailable">Anslutning ej tillgänglig.</string>
     <string name="you_have_to_select_at_least_one_category">Du måste välja minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan inte välja mer än fem kategorier.</string>
-
-
-
-
     <string name="backup_successful">Säkerhetskopiering lyckades!</string>
     <string name="backup_failed">Säkerhetskopiering misslyckades.</string>
     <string name="select_content_to_restore">Välj innehåll att återställa:</string>
@@ -534,7 +530,6 @@
     <string name="audio_focus_header">Fokus på ljud</string>
     <string name="shuffle_mode_header">Blanda läge</string>
     <string name="display_header">Visning</string>
-
     <string name="visuals_header">Visualer</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Allmänt tema</string>
@@ -716,10 +711,6 @@
     <string name="min_song_duration_summary">Hur många sekunder (minst) måste en låt vara för att visas i ditt bibliotek.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Appens språk</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Stoppa när stängt från senaste</string>
     <string name="stop_when_closed_from_recents_summary">Uppspelning stoppas om appen är stängd från den senaste listan.</string>
     <string name="stop_when_closed_from_recents_note">Obs: Vissa enheter med aggressivt minne eller batterihantering kan ignorera denna inställning och alltid stoppa appen när den tas bort från senaste.</string>
@@ -990,4 +981,36 @@
     <string name="widget_page_next">Nästkommande låtar</string>
     <string name="network_features_summary">Aktiverar scrobbling samt nedladdning av skivomslag och låttexter.</string>
     <string name="listenbrainz_toggle_token_visibility">Växla tokensynlighet</string>
+    <string name="create_new_backup"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="backup_content_play_info"></string>
+    <string name="backup_recent_list"></string>
+    <string name="share_backup"></string>
+    <string name="backup_warning_ver_newer"></string>
+    <string name="select_content_to_backup"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="backup_content_lyrics"></string>
+    <string name="backup_warning_app_ver_newer"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="could_not_delete_backup"></string>
+    <string name="backup_deleted_successfully"></string>
+    <string name="backup_app_version"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="backup_restore_title"></string>
+    <string name="cannot_share_this_backup"></string>
+    <string name="open_backup"></string>
+    <string name="backup_content_settings"></string>
+    <string name="backup_file_name"></string>
+    <string name="confirm_delete_backup"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="select_backup_folder"></string>
+    <string name="backup_warning_legacy_format"></string>
+    <string name="no_backup_folder_selected"></string>
+    <string name="backup_content_playlists"></string>
+    <string name="backup_content_artist_images"></string>
+    <string name="no_backups_found"></string>
+    <string name="backup_restore_summary"></string>
 </resources>
