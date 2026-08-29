@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
     <string name="permission_external_storage_description">La app necesita acceso al almacenamiento para listar y reproducir tu música</string>
     <string name="permission_external_storage_denied">Debes permitir a la app acceder al almacenamiento externo.</string>
-    <string name="permission_bluetooth_title">Dispositivos cercanos</string>
+    <string name="permission_bluetooth_title">Dispositivos cercanos (opcional)</string>
     <string name="permission_bluetooth_description">La app necesita este permiso con el fin de encontrar dispositivos Bluetooth</string>
     <string name="permission_read_images_title">Acceso a imágenes (opcional)</string>
     <string name="permission_read_images_summary">Este permiso se requiere para que Booming Music pueda encontrar carátulas de álbumes en las carpetas de música. Si no planeas usar esta característica, puedes optar por no concederlo.</string>
@@ -991,4 +991,6 @@
     <string name="restore_from_backup">Restaurar desde copia de seguridad</string>
     <string name="restart_app_message">La app se reiniciará para completar el proceso.</string>
     <string name="network_features_summary">Habilita el scrobbling y la descarga de carátulas y letras.</string>
+    <string name="invalid_search_params">No se pudieron procesar los parámetros de la búsqueda.</string>
+    <string name="permission_notifications_title">Notificaciones (opcional)</string>
 </resources>
