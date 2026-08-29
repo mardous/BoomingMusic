@@ -100,7 +100,7 @@ interface Repository {
     fun artistById(artistId: Long): Artist
     fun albumArtistByName(name: String): Artist
     suspend fun similarAlbumArtists(artist: Artist): List<Artist>
-    fun songById(songId: Long): Song
+    suspend fun songById(songId: Long): Song
     suspend fun songsByGenre(genreId: Long): List<Song>
     fun songByGenre(genreId: Long): Song
     suspend fun genreBySong(song: Song): Genre
@@ -317,7 +317,7 @@ class RealRepository(
     override suspend fun similarAlbumArtists(artist: Artist): List<Artist> =
         artistRepository.similarAlbumArtists(artist)
 
-    override fun songById(songId: Long): Song = songRepository.song(songId)
+    override suspend fun songById(songId: Long): Song = songRepository.song(songId)
 
     override suspend fun songsByGenre(genreId: Long): List<Song> = genreRepository.songs(genreId)
 

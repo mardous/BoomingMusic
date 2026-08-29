@@ -554,12 +554,8 @@ class PlaybackService :
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
         session.denyUntrusted<Void>(browser)?.let { return it }
-        return serviceScope.future(IO) {
-            runCatching { libraryProvider.search(browser.uid, query) }
-                .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
-
-            LibraryResult.ofVoid()
-        }
+        session.notifySearchResultChanged(browser, query, 0, params)
+        return Futures.immediateFuture(LibraryResult.ofVoid())
     }
 
     override fun onGetSearchResult(
@@ -571,9 +567,14 @@ class PlaybackService :
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
         session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
-        return Futures.immediateFuture(
-            LibraryResult.ofItemList(libraryProvider.searchResult(browser.uid), params)
-        )
+        return serviceScope.future(IO) {
+            val result = runCatching { libraryProvider.getSearchResult(query, page, pageSize) }
+            if (result.isSuccess) {
+                LibraryResult.ofItemList(result.getOrThrow(), params)
+            } else {
+                LibraryResult.ofError(SessionError.ERROR_UNKNOWN)
+            }
+        }
     }
 
     override fun onAddMediaItems(
@@ -607,8 +608,9 @@ class PlaybackService :
             var resolvedMediaItems: MediaItemsWithStartPosition? = null
             if (mediaItems.size == 1) {
                 resolvedMediaItems = libraryProvider.tryToResolveComplexMediaItems(
-                    callerUid = controller.uid,
-                    mediaItems = mediaItems
+                    mediaItems = mediaItems,
+                    startIndex = startIndex,
+                    startPositionMs = startPositionMs
                 )
             }
             resolvedMediaItems ?: MediaItemsWithStartPosition(

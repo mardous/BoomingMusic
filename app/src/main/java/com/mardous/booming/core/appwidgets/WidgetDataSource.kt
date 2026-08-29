@@ -10,8 +10,8 @@ import com.mardous.booming.core.appwidgets.config.SongSource
 import com.mardous.booming.core.appwidgets.state.PlaybackState
 import com.mardous.booming.core.appwidgets.widget.LibraryWidget
 import com.mardous.booming.core.palette.PaletteProcessor
-import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.playback.library.LibraryProvider
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -56,7 +56,7 @@ internal object WidgetDataSource : KoinComponent {
     }
 
     // Avoid repeated MediaStore reads
-    private fun songFor(id: Long): Song =
+    private suspend fun songFor(id: Long): Song =
         cachedSong?.takeIf { it.id == id } ?: repository.songById(id).also { cachedSong = it }
 
     private suspend fun seedColorFor(context: Context, song: Song): Int? {
