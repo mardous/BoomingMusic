@@ -283,10 +283,6 @@
     <string name="connection_unavailable">Conexión a Internet no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debes seleccionar al menos una categoría</string>
     <string name="you_cannot_select_more_than_five_categories">No puedes elegir más de cinco categorías.</string>
-
-
-
-
     <string name="backup_successful">¡Respaldo exitoso!</string>
     <string name="backup_failed">Respaldo fallido.</string>
     <string name="select_content_to_restore">Elija el contenido a restaurar:</string>
@@ -544,7 +540,6 @@
     <string name="audio_focus_header">Foco de audio</string>
     <string name="shuffle_mode_header">Modo aleatorio</string>
     <string name="display_header">Vista</string>
-
     <string name="visuals_header">Visuales</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
@@ -726,10 +721,6 @@
     <string name="min_song_duration_summary">Cuántos segundos debería (como mínimo) durar una canción para aparecer en la biblioteca.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Idioma de la app</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Detener al eliminar de recientes</string>
     <string name="stop_when_closed_from_recents_summary">La reproducción se detiene al remover la app de la lista de aplicaciones recientes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: algunos dispositivos con gestión agresiva de recursos podrían ignorar esta configuración y siempre forzar el cierre de la app al removerla de la lista de recientes.</string>
@@ -1000,4 +991,37 @@
     <string name="restore_from_backup">Restaurar desde copia de seguridad</string>
     <string name="restart_app_message">La app se reiniciará para completar el proceso.</string>
     <string name="network_features_summary">Habilita el scrobbling y la descarga de carátulas y letras.</string>
+    <string name="create_new_backup"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="backup_content_play_info"></string>
+    <string name="backup_recent_list"></string>
+    <string name="share_backup"></string>
+    <string name="backup_warning_ver_newer"></string>
+    <string name="select_content_to_backup"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="listenbrainz_toggle_token_visibility"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="backup_content_lyrics"></string>
+    <string name="backup_warning_app_ver_newer"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="could_not_delete_backup"></string>
+    <string name="backup_deleted_successfully"></string>
+    <string name="backup_app_version"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="backup_restore_title"></string>
+    <string name="cannot_share_this_backup"></string>
+    <string name="open_backup"></string>
+    <string name="backup_content_settings"></string>
+    <string name="backup_file_name"></string>
+    <string name="confirm_delete_backup"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="select_backup_folder"></string>
+    <string name="backup_warning_legacy_format"></string>
+    <string name="no_backup_folder_selected"></string>
+    <string name="backup_content_playlists"></string>
+    <string name="backup_content_artist_images"></string>
+    <string name="no_backups_found"></string>
+    <string name="backup_restore_summary"></string>
 </resources>
