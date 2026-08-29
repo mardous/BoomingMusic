@@ -165,4 +165,22 @@
     <string name="balance_right">Prawo</string>
     <string name="sleep_timer_set_action">Nastŏw</string>
     <string name="player_color_mode_simple_color_title">Prostŏ farba</string>
+    <plurals name="x_albums">
+    </plurals>
+    <plurals name="x_items">
+    </plurals>
+    <plurals name="x_playlists_selected">
+    </plurals>
+    <plurals name="x_songs">
+    </plurals>
+    <plurals name="x_plays">
+    </plurals>
+    <plurals name="albums">
+    </plurals>
+    <plurals name="x_times">
+    </plurals>
+    <plurals name="x_artists">
+    </plurals>
+    <plurals name="songs">
+    </plurals>
 </resources>
