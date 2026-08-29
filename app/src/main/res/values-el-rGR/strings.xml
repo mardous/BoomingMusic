@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Πρέπει να παραχωρήσετε δικαιώματα πρόσβασης στον εξωτερικό χώρο αποθήκευσης.</string>
     <string name="permission_bluetooth_title">Κοντινές Συσκευές</string>
     <string name="permission_bluetooth_description">Η εφαρμογή χρειάζεται άδεια σε κοντινές συσκευές για έλεγχο για συσκευές bluetooth</string>
-    <string name="permission_bluetooth_denied">Η άδεια πρόσβασης σε κοντινές συσκευές δεν επιτρέπεται.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
 
 
     <string name="permissions_denied">Άρνηση δικαιωμάτων</string>
-
+    <string name="permissions_needed">Απαιτούνται δικαιώματα</string>
     <string name="grant_access_action">Παραχώρηση πρόσβασης</string>
     <string name="action_grant">Παραχώρηση</string>
     <string name="granted">Χορηγήθηκε</string>
-
-
+    <string name="welcome_to_x">Καλώς ήλθατε στο %s</string>
     <string name="get_started">Ας Αρχίσουμε</string>
     <string name="select_storage_title">Επιλογή αποθ. χώρου</string>
     <string name="now_playing">Παίζεται τώρα</string>

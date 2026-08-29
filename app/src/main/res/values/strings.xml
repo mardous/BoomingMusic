@@ -147,19 +147,21 @@
     <string name="permission_external_storage_title">Storage Access</string>
     <string name="permission_external_storage_description">The app needs permission to access your device storage for playing music</string>
     <string name="permission_external_storage_denied">You must grant permission to access external storage.</string>
-    <string name="permission_bluetooth_title">Nearby Devices</string>
+    <string name="permission_bluetooth_title">Nearby devices (optional)</string>
     <string name="permission_bluetooth_description">The app needs nearby devices permission to check for bluetooth devices</string>
-    <string name="permission_bluetooth_denied">Nearby devices permission denied.</string>
+    <string name="permission_notifications_title">Notifications (optional)</string>
+    <string name="permission_notifications_summary">This permission lets Booming Music show playback controls in your notification shade and on the lock screen.
+        If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
         If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
     <string name="permissions_denied">Permissions denied</string>
+    <string name="permissions_needed">Permissions needed</string>
     <string name="grant_access_action">Grant access</string>
     <string name="action_grant">Grant</string>
     <string name="granted">Granted</string>
-    <string name="welcome_to">Welcome to</string>
-    <string name="permissions_title">Permissions needed</string>
+    <string name="welcome_to_x">Welcome to %s</string>
     <string name="permissions_subtitle">Grant access to your music files and nearby devices to get the best playback experience.</string>
     <string name="initial_configuration_title">Initial Configuration</string>
     <string name="initial_configuration_subtitle">Customize Booming Music to your liking before you start.</string>
@@ -957,6 +959,7 @@
     <string name="backup_warning_app_ver_newer">This backup was created in a newer version of Booming Music.
         Restoring it in this version may result in errors or incomplete data restoration.</string>
     <string name="select_content_to_restore">Select content to restore:</string>
+    <string name="restoring_data">Restoring your data…</string>
     <string name="could_not_restore_data">Couldn\'t not restore data. Verify backup file and retry.</string>
     <string name="data_restored_successfully">Data restored successfully.</string>
     <string name="restart_app_message">The app will restart to complete the process.</string>

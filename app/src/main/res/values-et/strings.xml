@@ -593,7 +593,6 @@
     <string name="sleep_timer_stop_after_x">Peatu „%s“ loo lõppemisel</string>
     <string name="sleep_timer_stop_after_x_canceled">Peatu „%s“ loo lõppemisel on katkestatud</string>
     <string name="permission_bluetooth_description">Bluetoothi kasutamiseks vajab see rakendus õigust kontrollida lähikonnas asuvaid seadmeid</string>
-    <string name="permission_bluetooth_denied">Õigus kontrollida lähikonnast on keelatud.</string>
     <string name="album_artist">Albumi esitaja</string>
     <string name="label_last_modified">Viimati muudetud</string>
     <string name="label_sampling_rate">Diskreetimissagedus</string>
@@ -964,8 +963,6 @@
     <string name="app_widget_grid_desc">Kaanepilt, esitus, juhtnupud neljas plokis</string>
     <string name="app_widget_library">Muusikakogu</string>
     <string name="app_widget_library_desc">Kaanepiltide ruudustik, kus saad valida</string>
-    <string name="welcome_to">Tere tulemast, see on</string>
-    <string name="permissions_title">Õigused on vajalikud</string>
     <string name="permissions_subtitle">Parima kasutuskogemuse nimel luba rakendusele ligipääs sinu muusikafailidele ja ümbruskonnas olevatele seadmetele.</string>
     <string name="initial_configuration_title">Algne seadistus</string>
     <string name="initial_configuration_subtitle">Enne alustamist kohenda Booming Music vastavalt sinu eelistustele.</string>

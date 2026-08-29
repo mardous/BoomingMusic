@@ -70,6 +70,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean("onboard_shown", false)
         set(value) = preferences.edit { putBoolean("onboard_shown", value) }
 
+    var requestedPermissions: Set<String>
+        get() = preferences.getStringSet("requested_permissions", emptySet()).orEmpty()
+        set(value) = preferences.edit { putStringSet("requested_permissions", value) }
+
     fun getGeneralTheme(isBlackMode: Boolean): String {
         return if (isBlackMode) {
             GeneralTheme.BLACK
@@ -411,8 +415,9 @@ object Preferences : KoinComponent {
     val minimumSongCountForAlbum: Int
         get() = preferences.getInt(ALBUM_MINIMUM_SONGS, 1)
 
-    val minimumSongDuration: Int
+    var minimumSongDuration: Int
         get() = preferences.getInt(MINIMUM_SONG_DURATION, 15)
+        set(value) = preferences.edit { putInt(MINIMUM_SONG_DURATION, value) }
 
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)

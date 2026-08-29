@@ -124,14 +124,15 @@
     <string name="permission_external_storage_denied">Anda harus memberikan izin untuk mengakses penyimpanan eksternal.</string>
     <string name="permission_bluetooth_title">Perangkat Terdekat</string>
     <string name="permission_bluetooth_description">Aplikasi memerlukan izin perangkat terdekat untuk memeriksa perangkat bluetooth</string>
-    <string name="permission_bluetooth_denied">Izin perangkat terdekat ditolak.</string>
     <string name="permission_read_images_title">Baca gambar (opsional)</string>
     <string name="permission_read_images_summary">Izin ini diperlukan agar Booming Music dapat menemukan file sampul album di folder musik Anda. Jika Anda tidak berencana menggunakan fitur ini, Anda dapat memilih untuk tidak memberikan izin.</string>
     <string name="permission_read_images_denied">Anda harus memberikan izin untuk membaca gambar dari perangkat.</string>
     <string name="permissions_denied">Izin ditolak</string>
+    <string name="permissions_needed">Izin diperlukan</string>
     <string name="grant_access_action">Berikan akses</string>
     <string name="action_grant">Berikan</string>
     <string name="granted">Diberikan</string>
+    <string name="welcome_to_x">Selamat datang di %s</string>
     <string name="get_started">Mulai</string>
     <string name="select_storage_title">Pilih penyimpanan</string>
     <string name="now_playing">Sedang diputar</string>
@@ -949,8 +950,6 @@
     <string name="musicbrainz_search_message">Cari metadata lagu di MusicBrainz menggunakan judul dan artis.</string>
     <string name="musicbrainz_no_results">Tidak ada hasil yang ditemukan di MusicBrainz.</string>
     <string name="musicbrainz_select_recording">Pilih rekaman</string>
-    <string name="welcome_to">Selamat datang di</string>
-    <string name="permissions_title">Izin diperlukan</string>
     <string name="permissions_subtitle">Berikan akses ke file musik dan perangkat di sekitar Anda untuk mendapatkan pengalaman pemutaran terbaik.</string>
     <string name="initial_configuration_title">Konfigurasi Awal</string>
     <string name="initial_configuration_subtitle">Sesuaikan Booming Music sesuai keinginan Anda sebelum memulai.</string>

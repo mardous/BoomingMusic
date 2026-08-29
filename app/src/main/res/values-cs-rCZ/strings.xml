@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Musíte udělit oprávnění pro přístup k externímu úložišti.</string>
     <string name="permission_bluetooth_title">Blízká zařízení</string>
     <string name="permission_bluetooth_description">Aplikace potřebuje oprávnění zařízení v blízkosti pro kontrolu bluetooth zařízení</string>
-    <string name="permission_bluetooth_denied">Oprávnění zařízení v blízkosti bylo odepřeno.</string>
     <string name="permission_read_images_title">Číst obrázky (volitelné)</string>
     <string name="permission_read_images_summary">Toto oprávnění je vyžadováno pro Booming Music pro nalezení souborů s obaly alba ve vašich hudebních složkách. Pokud neplánujete používat tuto funkci, můžete se rozhodnout, že ji neudělíte.</string>
     <string name="permission_read_images_denied">Musíte udělit oprávnění ke čtení obrázků ze zařízení.</string>
 
 
     <string name="permissions_denied">Oprávnění odepřena</string>
-
+    <string name="permissions_needed">Potřebná oprávnění</string>
     <string name="grant_access_action">Povolit přístup</string>
     <string name="action_grant">Udělit</string>
     <string name="granted">Uděleno</string>
-
-
+    <string name="welcome_to_x">Vítejte v %s</string>
     <string name="get_started">Začněte</string>
     <string name="select_storage_title">Vyberte úložiště</string>
     <string name="now_playing">Právě hraje</string>

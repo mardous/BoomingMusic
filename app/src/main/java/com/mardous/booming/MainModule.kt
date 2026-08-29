@@ -74,6 +74,7 @@ import com.mardous.booming.ui.screen.library.playlists.PlaylistDetailViewModel
 import com.mardous.booming.ui.screen.library.search.SearchViewModel
 import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.onboard.OnboardViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
@@ -352,6 +353,10 @@ private val viewModule = module {
 
     viewModel {
         BackupViewModel(contentResolver = get(), preferences = get(), backupManager = get())
+    }
+
+    viewModel {
+        OnboardViewModel(application = androidApplication())
     }
 }
 

@@ -29,7 +29,7 @@ import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import com.google.android.material.snackbar.Snackbar
 import com.mardous.booming.R
-import com.mardous.booming.extensions.getNecessaryPermissions
+import com.mardous.booming.extensions.getStoragePermissions
 import com.mardous.booming.extensions.rootView
 
 abstract class AbsBaseActivity : AbsThemeActivity() {
@@ -60,7 +60,7 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
     protected open fun onHasPermissionsChanged(hasPermissions: Boolean) {}
 
     protected open fun getPermissionsToRequest(): Array<String> {
-        return getNecessaryPermissions().toTypedArray()
+        return getStoragePermissions().toTypedArray()
     }
 
     protected fun hasPermissions(): Boolean {

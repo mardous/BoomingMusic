@@ -132,19 +132,17 @@
     <string name="permission_external_storage_denied">Сез тышкы саклагычка керү өчен рөхсәт бирергә тиеш.</string>
     <string name="permission_bluetooth_title">Якын-тирәдәге җайланмалар</string>
     <string name="permission_bluetooth_description">Кушымта Bluetooth-җайланмаларны тикшерү өчен якын-тирәдәге җайланмаларга керү өчен рөхсәт таләп ителә</string>
-    <string name="permission_bluetooth_denied">Якын-тирәдәге җайланмаларга керү мөмкинлеге кире кагылды.</string>
     <string name="permission_read_images_title">Сурәтләр уку (мөмкинлекле)</string>
     <string name="permission_read_images_summary">Бу рөхсәт сезнең музыкаль папкаларыгызда альбомнар тышлыгын эзләү өчен Booming Music кирәк. Әгәр дә сез бу функцияне кулланырга җыенмыйсыз икән, сез аны тәкъдим итә аласыз.</string>
     <string name="permission_read_images_denied">Сез җайланмадан сурәтләр укырга рөхсәт бирергә тиешсез.</string>
 
 
     <string name="permissions_denied">Рөхсәтләр кире кагылды</string>
-
+    <string name="permissions_needed">Рөхсәт таләп ителә</string>
     <string name="grant_access_action">Керү мөмкинлеге бирү</string>
     <string name="action_grant">Бирү</string>
     <string name="granted">Биргән</string>
-
-
+    <string name="welcome_to_x">Рәхим итегез %sга</string>
     <string name="get_started">Башланырга</string>
     <string name="select_storage_title">Саклауханәне сайлагыз</string>
     <string name="now_playing">Хәзер уйный</string>

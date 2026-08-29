@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Harici depolama alanına erişim izni vermelisiniz.</string>
     <string name="permission_bluetooth_title">Yakındaki Cihazlar</string>
     <string name="permission_bluetooth_description">Uygulamanın bluetooth cihazlarını kontrol etmek için yakındaki cihazlar iznine ihtiyacı var</string>
-    <string name="permission_bluetooth_denied">Yakındaki cihazlar izni reddedildi.</string>
     <string name="permission_read_images_title">Görselleri okuma (isteğe bağlı)</string>
     <string name="permission_read_images_summary">Booming Music\'in müzik klasörlerinizdeki albüm kapağı dosyalarını bulabilmesi için bu izin gereklidir. Bu özelliği kullanmayı planlamıyorsanız, izin vermemeyi seçebilirsiniz.</string>
     <string name="permission_read_images_denied">Cihazdan görselleri okuma izni vermelisiniz.</string>
 
 
     <string name="permissions_denied">İzinler reddedildi</string>
-
+    <string name="permissions_needed">İzinler gerekli</string>
     <string name="grant_access_action">Erişim izni ver</string>
     <string name="action_grant">İzin ver</string>
     <string name="granted">İzin verildi</string>
-
-
+    <string name="welcome_to_x">%s\'a hoş geldiniz</string>
     <string name="get_started">Başlayın</string>
     <string name="select_storage_title">Depolama birimi seç</string>
     <string name="now_playing">Şimdi Çalıyor</string>

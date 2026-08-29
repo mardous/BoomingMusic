@@ -19,10 +19,11 @@
 
 package com.mardous.booming.ui.screen.onboard
 
-import android.content.res.Configuration
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
@@ -61,21 +62,20 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilledTonalIconButton
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.ListItemShapes
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Slider
@@ -86,17 +86,17 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.graphicsLayer
@@ -107,7 +107,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.booleanResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -118,13 +117,10 @@ import androidx.graphics.shapes.CornerRounding
 import androidx.graphics.shapes.RoundedPolygon
 import androidx.graphics.shapes.star
 import androidx.graphics.shapes.toPath
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.preference.PreferenceManager
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.MultiplePermissionsState
-import com.google.accompanist.permissions.PermissionState
-import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
-import com.google.accompanist.permissions.rememberPermissionState
 import com.mardous.booming.R
 import com.mardous.booming.data.local.backup.BackupContent
 import com.mardous.booming.data.local.backup.BackupManager
@@ -132,14 +128,18 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.getImagesPermission
 import com.mardous.booming.extensions.getNearbyDevicesPermissions
+import com.mardous.booming.extensions.getNotificationsPermission
 import com.mardous.booming.extensions.getStoragePermissions
 import com.mardous.booming.extensions.hasS
-import com.mardous.booming.extensions.hasT
-import com.mardous.booming.extensions.languageEndonym
+import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.observeKeyAsState
+import com.mardous.booming.extensions.openAppDetailsSettings
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.ui.component.compose.ButtonGroup
-import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
+import com.mardous.booming.ui.component.compose.LanguageList
+import com.mardous.booming.ui.component.compose.ObserveAsEvent
+import com.mardous.booming.ui.component.compose.languageTitle
+import com.mardous.booming.ui.component.compose.rememberLanguageEntries
 import com.mardous.booming.util.AUTO_LANGUAGE
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
@@ -148,7 +148,11 @@ import com.mardous.booming.util.MATERIAL_YOU
 import com.mardous.booming.util.MINIMUM_SONG_DURATION
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
+import com.mardous.booming.util.Preferences
 import kotlin.math.roundToInt
+import org.koin.androidx.compose.koinViewModel
+
+private const val PLACEHOLDER = "%s"
 
 enum class OnboardStep {
     WELCOME,
@@ -156,16 +160,15 @@ enum class OnboardStep {
     CONFIGURATION
 }
 
-private fun List<OnboardStep>.canGoBack(currentStep: OnboardStep) = any { it < currentStep }
-
 @Composable
 fun OnboardScreen(
     onFinish: () -> Unit,
     onBackToExit: () -> Unit,
+    onRestartRequired: () -> Unit,
     modifier: Modifier = Modifier,
     availableSteps: List<OnboardStep> = OnboardStep.entries
 ) {
-    check(availableSteps.isNotEmpty())
+    check(availableSteps.isNotEmpty()) { "OnboardScreen needs at least one step" }
     var currentStep by rememberSaveable { mutableStateOf(availableSteps.first()) }
 
     fun goToStep(step: OnboardStep, onStepNotAvailable: () -> Unit = onFinish) {
@@ -176,17 +179,10 @@ fun OnboardScreen(
         }
     }
 
-    val storagePermission = remember { getStoragePermissions().toList() }
-    val storagePermissionState = rememberMultiplePermissionsState(storagePermission)
-    val nearbyPermissionState =
-        if (hasS()) rememberPermissionState(getNearbyDevicesPermissions().single()) else null
-    val readImagesPermissionState =
-        if (hasT()) rememberPermissionState(getImagesPermission().single()) else null
-
     BackHandler {
         when (currentStep) {
-            OnboardStep.CONFIGURATION -> goToStep(OnboardStep.PERMISSIONS) { onBackToExit() }
-            OnboardStep.PERMISSIONS -> goToStep(OnboardStep.WELCOME) { onBackToExit() }
+            OnboardStep.CONFIGURATION -> goToStep(OnboardStep.PERMISSIONS, onBackToExit)
+            OnboardStep.PERMISSIONS -> goToStep(OnboardStep.WELCOME, onBackToExit)
             OnboardStep.WELCOME -> onBackToExit()
         }
     }
@@ -221,19 +217,17 @@ fun OnboardScreen(
 
                     OnboardStep.PERMISSIONS -> {
                         PermissionsStepContent(
-                            availableSteps = availableSteps,
-                            storagePermissionState = storagePermissionState,
-                            nearbyPermissionState = nearbyPermissionState,
-                            readImagesPermissionState = readImagesPermissionState,
+                            canGoBack = availableSteps.any { it < OnboardStep.PERMISSIONS },
                             onNextClick = { goToStep(OnboardStep.CONFIGURATION) },
-                            onBackClick = { goToStep(OnboardStep.WELCOME) { onBackToExit() } }
+                            onBackClick = { goToStep(OnboardStep.WELCOME, onBackToExit) }
                         )
                     }
 
                     OnboardStep.CONFIGURATION -> {
                         ConfigurationStepContent(
                             onFinish = onFinish,
-                            onBackClick = { goToStep(OnboardStep.PERMISSIONS) { onBackToExit() } }
+                            onBackClick = { goToStep(OnboardStep.PERMISSIONS, onBackToExit) },
+                            onRestartRequired = onRestartRequired
                         )
                     }
                 }
@@ -255,10 +249,22 @@ private fun WelcomeStepContent(
         )
     }
 
-    val progress = animState.value
+    val progress = { animState.value }
+    val isLandscape = LocalConfiguration.current.isLandscape
 
-    val configuration = LocalConfiguration.current
-    if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+    val startButton: @Composable () -> Unit = {
+        ContinueButton(
+            onClick = onNextClick,
+            text = stringResource(R.string.get_started),
+            modifier = Modifier.graphicsLayer {
+                alpha = (progress() * 2f - 0.8f).coerceIn(0f, 1f)
+                val offset = (1f - progress()) * 60f
+                if (isLandscape) translationX = offset else translationY = offset
+            }
+        )
+    }
+
+    if (isLandscape) {
         Row(
             modifier = modifier
                 .fillMaxSize()
@@ -267,19 +273,8 @@ private fun WelcomeStepContent(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            WelcomeAppContent(
-                progress = progress,
-                modifier = Modifier.weight(1f)
-            )
-
-            ContinueButton(
-                onClick = onNextClick,
-                text = stringResource(R.string.get_started),
-                modifier = Modifier.graphicsLayer {
-                    alpha = (progress * 2f - 0.8f).coerceIn(0f, 1f)
-                    translationX = (1f - progress) * 60f
-                }
-            )
+            WelcomeAppContent(progress = progress, modifier = Modifier.weight(1f))
+            startButton()
         }
     } else {
         Column(
@@ -291,235 +286,303 @@ private fun WelcomeStepContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            WelcomeAppContent(
-                progress = progress,
-                modifier = Modifier.weight(1f)
+            WelcomeAppContent(progress = progress, modifier = Modifier.weight(1f))
+            startButton()
+        }
+    }
+}
+
+@Composable
+private fun WelcomeAppContent(
+    progress: () -> Float,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Surface(
+            shape = RoundedCornerShape(32.dp),
+            color = MaterialTheme.colorScheme.primaryContainer,
+            modifier = Modifier
+                .size(100.dp)
+                .graphicsLayer {
+                    alpha = progress().coerceIn(0f, 1f)
+                    scaleX = 0.6f + (0.4f * progress())
+                    scaleY = 0.6f + (0.4f * progress())
+                }
+        ) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_booming_music_24dp),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.size(54.dp)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(36.dp))
+
+        // Split, not formatted: not every language puts the app name last (ja: "%s へようこそ").
+        val appName = stringResource(R.string.app_name)
+        val parts = stringResource(R.string.welcome_to_x).split(PLACEHOLDER, limit = 2)
+        val beforeName = parts[0].trim()
+        val afterName = parts.getOrElse(1) { "" }.trim()
+
+        if (beforeName.isNotEmpty()) {
+            Text(
+                text = beforeName,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.graphicsLayer {
+                    alpha = (progress() * 1.3f - 0.2f).coerceIn(0f, 1f)
+                    translationY = (1f - progress()) * 30f
+                }
             )
 
-            ContinueButton(
-                onClick = onNextClick,
-                text = stringResource(R.string.get_started),
+            Spacer(modifier = Modifier.height(6.dp))
+        }
+
+        Text(
+            text = appName,
+            style = MaterialTheme.typography.displayMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.graphicsLayer {
+                alpha = (progress() * 1.5f - 0.3f).coerceIn(0f, 1f)
+                translationY = (1f - progress()) * 40f
+            }
+        )
+
+        if (afterName.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                text = afterName,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
                 modifier = Modifier.graphicsLayer {
-                    alpha = (progress * 2f - 0.8f).coerceIn(0f, 1f)
-                    translationY = (1f - progress) * 60f
+                    alpha = (progress() * 1.5f - 0.3f).coerceIn(0f, 1f)
+                    translationY = (1f - progress()) * 40f
                 }
             )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = stringResource(R.string.app_description),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .graphicsLayer {
+                    alpha = (progress() * 1.8f - 0.5f).coerceIn(0f, 1f)
+                    translationY = (1f - progress()) * 50f
+                }
+        )
     }
 }
 
 @Composable
 private fun PermissionsStepContent(
-    availableSteps: List<OnboardStep>,
-    storagePermissionState: MultiplePermissionsState,
-    nearbyPermissionState: PermissionState?,
-    readImagesPermissionState: PermissionState?,
+    canGoBack: Boolean,
     onNextClick: () -> Unit,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val permissionItems = remember(
-        storagePermissionState.allPermissionsGranted,
-        nearbyPermissionState?.status?.isGranted,
-        readImagesPermissionState?.status?.isGranted
-    ) {
-        buildList {
-            add(
-                PermissionItemData(
-                    title = R.string.permission_external_storage_title,
-                    description = R.string.permission_external_storage_description,
-                    icon = R.drawable.ic_sd_card_24dp,
-                    isGranted = storagePermissionState.allPermissionsGranted,
-                    onRequest = { storagePermissionState.launchMultiplePermissionRequest() }
-                )
-            )
-            if (nearbyPermissionState != null) {
-                add(
-                    PermissionItemData(
-                        title = R.string.permission_bluetooth_title,
-                        description = R.string.permission_bluetooth_description,
-                        icon = R.drawable.ic_bluetooth_connected_24dp,
-                        isGranted = nearbyPermissionState.status.isGranted,
-                        onRequest = { nearbyPermissionState.launchPermissionRequest() }
-                    )
-                )
-            }
-            if (readImagesPermissionState != null) {
-                add(
-                    PermissionItemData(
-                        title = R.string.permission_read_images_title,
-                        description = R.string.permission_read_images_summary,
-                        icon = R.drawable.ic_image_24dp,
-                        isGranted = readImagesPermissionState.status.isGranted,
-                        onRequest = { readImagesPermissionState.launchPermissionRequest() }
-                    )
-                )
-            }
-        }
-    }
+    val context = LocalContext.current
+    val storageItem = permissionItem(
+        permissions = remember { getStoragePermissions().toList() },
+        title = R.string.permission_external_storage_title,
+        description = R.string.permission_external_storage_description,
+        icon = R.drawable.ic_sd_card_24dp
+    )
+
+    val permissionItems = listOfNotNull(
+        storageItem,
+        permissionItem(
+            permissions = getNotificationsPermission().toList(),
+            title = R.string.permission_notifications_title,
+            description = R.string.permission_notifications_summary,
+            icon = R.drawable.ic_notifications_24dp
+        ),
+        permissionItem(
+            permissions = getNearbyDevicesPermissions().toList(),
+            title = R.string.permission_bluetooth_title,
+            description = R.string.permission_bluetooth_description,
+            icon = R.drawable.ic_bluetooth_connected_24dp
+        ),
+        permissionItem(
+            permissions = getImagesPermission().toList(),
+            title = R.string.permission_read_images_title,
+            description = R.string.permission_read_images_summary,
+            icon = R.drawable.ic_image_24dp
+        )
+    )
 
     OnboardSurface(
         onBackClick = onBackClick,
         onContinueClick = onNextClick,
-        canGoBack = availableSteps.canGoBack(OnboardStep.PERMISSIONS),
-        canGoForward = storagePermissionState.allPermissionsGranted &&
-                (nearbyPermissionState?.status?.isGranted ?: true),
-        title = stringResource(R.string.permissions_title),
+        canGoBack = canGoBack,
+        canGoForward = storageItem?.isGranted == true,
+        title = stringResource(R.string.permissions_needed),
         description = stringResource(R.string.permissions_subtitle),
         modifier = modifier
     ) {
         itemsIndexed(permissionItems) { index, item ->
-            SegmentedListItem(
-                onClick = {
-                    if (!item.isGranted) {
-                        item.onRequest()
-                    }
-                },
+            val onAction = {
+                if (item.isDeniedForever) context.openAppDetailsSettings() else item.onRequest()
+            }
+            OnboardPreference(
+                title = stringResource(item.title),
+                summary = stringResource(item.description),
                 shapes = ListItemDefaults.segmentedShapes(index, permissionItems.size),
-                colors = ListItemDefaults.segmentedColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-                ),
-                verticalAlignment = Alignment.CenterVertically,
-                leadingContent = {
-                    Icon(
-                        painter = painterResource(item.icon),
-                        contentDescription = null,
-                        tint = if (item.isGranted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(24.dp)
-                    )
+                onClick = if (item.isGranted) null else onAction,
+                leadingIcon = painterResource(item.icon),
+                leadingIconTint = if (item.isGranted) {
+                    MaterialTheme.colorScheme.primary
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
                 },
                 trailingContent = {
                     if (item.isGranted) {
-                        FilterChip(
-                            selected = true,
-                            onClick = {},
-                            label = {
-                                Text(
-                                    text = stringResource(R.string.granted),
-                                    style = MaterialTheme.typography.labelMedium
-                                )
-                            },
-                            leadingIcon = {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_check_24dp),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(16.dp)
-                                )
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                selectedLeadingIconColor = MaterialTheme.colorScheme.onPrimaryContainer
-                            ),
-                            border = null
-                        )
+                        GrantedBadge()
                     } else {
                         Button(
-                            onClick = item.onRequest,
+                            onClick = onAction,
                             contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp),
                             shape = RoundedCornerShape(18.dp)
                         ) {
                             Text(
-                                text = stringResource(R.string.grant_access_action),
+                                text = if (item.isDeniedForever) {
+                                    stringResource(R.string.settings_title)
+                                } else {
+                                    stringResource(R.string.grant_access_action)
+                                },
                                 style = MaterialTheme.typography.labelLarge
                             )
                         }
                     }
                 }
-            ) {
-                Column(modifier = Modifier.padding(vertical = 6.dp)) {
-                    Text(
-                        text = stringResource(item.title),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    Text(
-                        text = stringResource(item.description),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
+            )
         }
     }
 }
 
 @Composable
+private fun GrantedBadge() {
+    Surface(
+        shape = RoundedCornerShape(18.dp),
+        color = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_check_24dp),
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
+            Text(
+                text = stringResource(R.string.granted),
+                style = MaterialTheme.typography.labelMedium
+            )
+        }
+    }
+}
+
+@Composable
+private fun permissionItem(
+    permissions: List<String>,
+    @StringRes title: Int,
+    @StringRes description: Int,
+    @DrawableRes icon: Int
+): PermissionItemData? {
+    if (permissions.isEmpty()) return null
+    val state = rememberMultiplePermissionsState(permissions)
+    // Persisted: onboarding relaunches on every cold start without access, and a per-activity
+    // flag would make a permanently denied permission look like one never asked for.
+    val key = permissions.first()
+    var requested by remember(key) { mutableStateOf(key in Preferences.requestedPermissions) }
+    return PermissionItemData(
+        title = title,
+        description = description,
+        icon = icon,
+        isGranted = state.allPermissionsGranted,
+        // Android stops showing the dialog once denied twice; app settings is the only route.
+        isDeniedForever = requested && !state.allPermissionsGranted && !state.shouldShowRationale,
+        onRequest = {
+            Preferences.requestedPermissions += key
+            requested = true
+            state.launchMultiplePermissionRequest()
+        }
+    )
+}
+
+private data class PermissionItemData(
+    @param:StringRes val title: Int,
+    @param:StringRes val description: Int,
+    @param:DrawableRes val icon: Int,
+    val isGranted: Boolean,
+    val isDeniedForever: Boolean,
+    val onRequest: () -> Unit
+)
+
+@Composable
 private fun ConfigurationStepContent(
     onFinish: () -> Unit,
     onBackClick: () -> Unit,
-    modifier: Modifier = Modifier
+    onRestartRequired: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: OnboardViewModel = koinViewModel()
 ) {
     val context = LocalContext.current
-    val backupManager = koinInject<BackupManager>()
-    val configuration = LocalConfiguration.current
-
-    val coroutineScope = rememberCoroutineScope()
     val preferences = remember { PreferenceManager.getDefaultSharedPreferences(context) }
 
     val selectedTheme by preferences.observeKeyAsState(GENERAL_THEME, GeneralTheme.AUTO)
     val materialYou by preferences.observeKeyAsState(MATERIAL_YOU, hasS())
-    val minDuration by preferences.observeKeyAsState(MINIMUM_SONG_DURATION, 15)
 
     val networkEnabledByDefault = booleanResource(R.bool.network_features_enabled_by_default)
     val networkEnabled by preferences.observeKeyAsState(NetworkFeature.NETWORK_FEATURES_KEY, networkEnabledByDefault)
     val currentLanguageTag by preferences.observeKeyAsState(LANGUAGE_NAME, AUTO_LANGUAGE)
 
     val backupSelectorLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        if (uri != null) {
-            coroutineScope.launch {
-                val isSuccess = backupManager.restoreBackup(uri, BackupContent.entries)
-                if (isSuccess) {
-                    context.showToast(R.string.data_restored_successfully)
-                } else {
-                    context.showToast(R.string.could_not_restore_data)
-                }
-            }
-        }
+        uri?.let(viewModel::restoreBackup)
     }
+
+    ObserveAsEvent(viewModel.restoreFailedEvent) {
+        context.showToast(R.string.could_not_restore_data)
+    }
+
+    val restoreState by viewModel.restoreState.collectAsStateWithLifecycle()
+    RestoreDialog(state = restoreState, onRestart = onRestartRequired)
 
     var languageDialogShown by rememberSaveable { mutableStateOf(false) }
     if (languageDialogShown) {
-        val languageCodes = stringArrayResource(R.array.pref_language_codes)
-        AlertDialog(
-            onDismissRequest = { languageDialogShown = false },
-            title = { Text(text = stringResource(R.string.app_language_title)) },
-            text = {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .heightIn(max = 500.dp)
-                ) {
-                    items(languageCodes) { tag ->
-                        DialogListItemWithRadio(
-                            title = if (tag == AUTO_LANGUAGE) {
-                                stringResource(R.string.auto_theme_name)
-                            } else {
-                                tag.languageEndonym()
-                            },
-                            isSelected = (tag == currentLanguageTag),
-                            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
-                            onClick = {
-                                preferences.edit { putString(LANGUAGE_NAME, tag) }
-                                AppCompatDelegate.setApplicationLocales(
-                                    if (tag == AUTO_LANGUAGE) {
-                                        LocaleListCompat.getEmptyLocaleList()
-                                    } else {
-                                        LocaleListCompat.forLanguageTags(tag)
-                                    }
-                                )
-                                languageDialogShown = false
-                            }
-                        )
-                    }
-                }
-            },
-            confirmButton = {
-                TextButton(onClick = { languageDialogShown = false }) {
-                    Text(stringResource(android.R.string.cancel))
-                }
+        LanguagePickerDialog(
+            currentTag = currentLanguageTag,
+            onDismiss = { languageDialogShown = false },
+            onSelected = { tag ->
+                preferences.edit { putString(LANGUAGE_NAME, tag) }
+                AppCompatDelegate.setApplicationLocales(
+                    LocaleListCompat.forLanguageTags(tag.takeIf { it != AUTO_LANGUAGE })
+                )
+                languageDialogShown = false
             }
         )
     }
@@ -529,50 +592,15 @@ private fun ConfigurationStepContent(
         onContinueClick = onFinish,
         title = stringResource(R.string.initial_configuration_title),
         description = stringResource(R.string.initial_configuration_subtitle),
-        continueButton = {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    FilledTonalIconButton(
-                        onClick = { backupSelectorLauncher.launch(MIME_TYPE_APPLICATION) },
-                        modifier = Modifier.size(IconButtonDefaults.mediumContainerSize())
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_settings_backup_restore_24dp),
-                            contentDescription = stringResource(R.string.restore_from_backup),
-                            modifier = Modifier.size(IconButtonDefaults.mediumIconSize)
-                        )
-                    }
-                } else {
-                    FilledTonalButton(
-                        onClick = { backupSelectorLauncher.launch(MIME_TYPE_APPLICATION) }
-                    ) {
-                        Text(stringResource(R.string.restore_from_backup))
-                    }
-                }
-
-                ContinueButton(
-                    onClick = onFinish,
-                    text = stringResource(R.string.continue_action)
-                )
-            }
+        secondaryAction = {
+            RestoreBackupButton(onClick = { backupSelectorLauncher.launch(MIME_TYPE_APPLICATION) })
         },
         modifier = modifier
     ) {
-        item {
-            Text(
-                text = stringResource(R.string.appearance_title),
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
-            )
-        }
+        sectionHeader(R.string.appearance_title)
 
         item {
             OnboardPreference(
-                onClick = {},
                 title = stringResource(R.string.general_theme_title),
                 supportingContent = {
                     ButtonGroup(
@@ -590,10 +618,7 @@ private fun ConfigurationStepContent(
                                 else -> stringResource(R.string.auto_theme_name)
                             }
                         },
-                        buttonContentPadding = PaddingValues(
-                            horizontal = 4.dp,
-                            vertical = 12.dp
-                        ),
+                        buttonContentPadding = PaddingValues(horizontal = 4.dp, vertical = 12.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(bottom = 8.dp)
@@ -605,39 +630,23 @@ private fun ConfigurationStepContent(
 
         item {
             OnboardPreference(
-                onClick = { preferences.edit { putBoolean(MATERIAL_YOU, !materialYou) } },
                 title = stringResource(R.string.material_you_title),
-                trailingContent = {
-                    Switch(
-                        checked = materialYou,
-                        onCheckedChange = null
-                    )
-                },
+                checked = materialYou,
+                onCheckedChange = { preferences.edit { putBoolean(MATERIAL_YOU, it) } },
                 shapes = ListItemDefaults.segmentedShapes(1, 2)
             )
         }
 
         item { Spacer(modifier = Modifier.height(24.dp)) }
 
-        item {
-            Text(
-                text = stringResource(R.string.advanced_title),
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
-            )
-        }
+        sectionHeader(R.string.advanced_title)
 
         item {
             OnboardPreference(
                 onClick = { languageDialogShown = true },
                 leadingIcon = painterResource(R.drawable.ic_translate_24dp),
                 title = stringResource(R.string.app_language_title),
-                summary = if (currentLanguageTag == AUTO_LANGUAGE) {
-                    stringResource(R.string.auto_theme_name)
-                } else {
-                    currentLanguageTag.languageEndonym()
-                },
+                summary = context.languageTitle(currentLanguageTag),
                 trailingContent = {
                     Icon(
                         painter = painterResource(R.drawable.ic_arrow_forward_24dp),
@@ -651,54 +660,22 @@ private fun ConfigurationStepContent(
 
         item {
             OnboardPreference(
-                onClick = {},
                 leadingIcon = painterResource(R.drawable.ic_timer_24dp),
                 title = stringResource(R.string.min_song_duration_title),
-                supportingContent = {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Slider(
-                            value = minDuration.toFloat(),
-                            onValueChange = {
-                                preferences.edit {
-                                    putInt(
-                                        MINIMUM_SONG_DURATION,
-                                        it.roundToInt()
-                                    )
-                                }
-                            },
-                            valueRange = 0f..120f,
-                            modifier = Modifier.weight(1f)
-                        )
-                        Text(
-                            text = "${minDuration}s",
-                            style = MaterialTheme.typography.labelLarge,
-                            modifier = Modifier.widthIn(min = 32.dp)
-                        )
-                    }
-                },
+                supportingContent = { MinDurationSlider() },
                 shapes = ListItemDefaults.segmentedShapes(1, 3)
             )
         }
 
         item {
             OnboardPreference(
-                onClick = {
-                    preferences.edit {
-                        putBoolean(NetworkFeature.NETWORK_FEATURES_KEY, !networkEnabled)
-                    }
+                checked = networkEnabled,
+                onCheckedChange = {
+                    preferences.edit { putBoolean(NetworkFeature.NETWORK_FEATURES_KEY, it) }
                 },
                 leadingIcon = painterResource(R.drawable.ic_language_24dp),
                 title = stringResource(R.string.network_features_title),
                 summary = stringResource(R.string.network_features_summary),
-                trailingContent = {
-                    Switch(
-                        checked = networkEnabled,
-                        onCheckedChange = null
-                    )
-                },
                 shapes = ListItemDefaults.segmentedShapes(2, 3)
             )
         }
@@ -706,16 +683,133 @@ private fun ConfigurationStepContent(
         item { Spacer(modifier = Modifier.height(24.dp)) }
 
         item {
-            Box(Modifier.fillMaxWidth()) {
-                Text(
-                    text = stringResource(R.string.initial_configuration_note),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
+            Text(
+                text = stringResource(R.string.initial_configuration_note),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.secondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
+}
+
+private fun LazyListScope.sectionHeader(@StringRes text: Int) = item {
+    Text(
+        text = stringResource(text),
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
+    )
+}
+
+@Composable
+private fun RestoreBackupButton(onClick: () -> Unit) {
+    if (LocalConfiguration.current.isLandscape) {
+        FilledTonalIconButton(
+            onClick = onClick,
+            modifier = Modifier.size(IconButtonDefaults.mediumContainerSize())
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_settings_backup_restore_24dp),
+                contentDescription = stringResource(R.string.restore_from_backup),
+                modifier = Modifier.size(IconButtonDefaults.mediumIconSize)
+            )
+        }
+    } else {
+        FilledTonalButton(onClick = onClick) {
+            Text(stringResource(R.string.restore_from_backup))
+        }
+    }
+}
+
+@Composable
+private fun MinDurationSlider() {
+    var draggedDuration by remember {
+        mutableFloatStateOf(Preferences.minimumSongDuration.toFloat())
+    }
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Slider(
+            value = draggedDuration,
+            onValueChange = { draggedDuration = it },
+            onValueChangeFinished = {
+                val seconds = draggedDuration.roundToInt()
+                if (seconds != Preferences.minimumSongDuration) {
+                    Preferences.minimumSongDuration = seconds
+                }
+            },
+            valueRange = 0f..120f,
+            modifier = Modifier.weight(1f)
+        )
+        Text(
+            text = "${draggedDuration.roundToInt()}s",
+            style = MaterialTheme.typography.labelLarge,
+            modifier = Modifier.widthIn(min = 32.dp)
+        )
+    }
+}
+
+@Composable
+private fun RestoreDialog(state: RestoreState, onRestart: () -> Unit) {
+    when (state) {
+        RestoreState.Restoring -> AlertDialog(
+            onDismissRequest = {},
+            title = { Text(text = stringResource(R.string.restore_from_backup)) },
+            text = {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    CircularProgressIndicator()
+                    Text(text = stringResource(R.string.restoring_data))
+                }
+            },
+            confirmButton = {}
+        )
+
+        RestoreState.Restored -> AlertDialog(
+            onDismissRequest = {},
+            title = { Text(text = stringResource(R.string.data_restored_successfully)) },
+            text = { Text(text = stringResource(R.string.restart_app_message)) },
+            confirmButton = {
+                TextButton(onClick = onRestart) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            }
+        )
+
+        RestoreState.Idle -> Unit
+    }
+}
+
+@Composable
+private fun LanguagePickerDialog(
+    currentTag: String,
+    onDismiss: () -> Unit,
+    onSelected: (String) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(text = stringResource(R.string.app_language_title)) },
+        text = {
+            LanguageList(
+                entries = rememberLanguageEntries(),
+                selectedTag = currentTag,
+                onSelected = { onSelected(it.tag) },
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
+                modifier = Modifier.heightIn(max = 500.dp)
+            )
+        },
+        confirmButton = {},
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(android.R.string.cancel))
+            }
+        }
+    )
 }
 
 @Composable
@@ -727,31 +821,30 @@ private fun OnboardSurface(
     modifier: Modifier = Modifier,
     canGoBack: Boolean = true,
     canGoForward: Boolean = true,
-    backButton: @Composable () -> Unit = {
-        if (canGoBack) {
-            IconButton(
-                onClick = onBackClick,
-                modifier = modifier
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_back_24dp),
-                    contentDescription = stringResource(R.string.back_action),
-                    tint = MaterialTheme.colorScheme.onSurface
-                )
+    secondaryAction: @Composable () -> Unit = {},
+    content: LazyListScope.() -> Unit
+) {
+    val isLandscape = LocalConfiguration.current.isLandscape
+
+    val body: LazyListScope.() -> Unit = {
+        if (!isLandscape) {
+            if (canGoBack) {
+                item { BackButton(onBackClick) }
             }
+            item { Spacer(modifier = Modifier.height(12.dp)) }
         }
-    },
-    continueButton: @Composable () -> Unit = {
+        item { OnboardHeader(title, description) }
+        item { Spacer(modifier = Modifier.height(24.dp)) }
+        content()
+    }
+    val actions: @Composable () -> Unit = {
+        secondaryAction()
         ContinueButton(
             onClick = onContinueClick,
             text = stringResource(R.string.continue_action),
             enabled = canGoForward
         )
-    },
-    content: LazyListScope.() -> Unit
-) {
-    val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    }
 
     if (isLandscape) {
         Row(
@@ -762,19 +855,18 @@ private fun OnboardSurface(
                 .safeDrawingPadding()
                 .padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
-            backButton()
+            if (canGoBack) {
+                BackButton(onBackClick)
+            }
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
-            ) {
-                item { OnboardHeader(title, description) }
-                item { Spacer(modifier = Modifier.height(24.dp)) }
-                content()
-            }
-            continueButton()
+                    .weight(1f),
+                content = body
+            )
+            actions()
         }
     } else {
         val density = LocalDensity.current
@@ -782,6 +874,10 @@ private fun OnboardSurface(
 
         var buttonHeightInPx by remember { mutableIntStateOf(0) }
         val listPaddingBottom = with(density) { buttonHeightInPx.toDp() } + 32.dp
+        // PaddingValues.plus has no equals, so an unremembered result re-measures the list.
+        val listPadding = remember(safeDrawingPadding, listPaddingBottom) {
+            safeDrawingPadding + PaddingValues(top = 16.dp, bottom = listPaddingBottom)
+        }
 
         Box(
             modifier = modifier
@@ -789,21 +885,14 @@ private fun OnboardSurface(
                 .padding(horizontal = 20.dp)
         ) {
             LazyColumn(
-                contentPadding = safeDrawingPadding + PaddingValues(top = 16.dp, bottom = listPaddingBottom),
+                contentPadding = listPadding,
                 verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                item {
-                    Box(Modifier.align(Alignment.CenterStart)) {
-                        backButton()
-                    }
-                }
-                item { Spacer(Modifier.height(12.dp)) }
-                item { OnboardHeader(title, description) }
-                item { Spacer(Modifier.height(24.dp)) }
-                content()
-            }
-            Box(
+                modifier = Modifier.fillMaxWidth(),
+                content = body
+            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .safeDrawingPadding()
@@ -815,7 +904,7 @@ private fun OnboardSurface(
                     }
                     .align(Alignment.BottomCenter)
             ) {
-                continueButton()
+                actions()
             }
         }
     }
@@ -878,7 +967,8 @@ private fun OnboardBackground(
             modifier = Modifier
                 .size(300.dp)
                 .offset(x = (-80).dp, y = (-70).dp)
-                .rotate(cookieRotation)
+                // Read inside the layer block so the rotation never recomposes this screen.
+                .graphicsLayer { rotationZ = cookieRotation }
         ) {
             val radius = size.minDimension / 2f
             withTransform({
@@ -897,7 +987,7 @@ private fun OnboardBackground(
                 .align(Alignment.BottomEnd)
                 .size(260.dp)
                 .offset(x = 60.dp, y = 60.dp)
-                .rotate(squircleRotation)
+                .graphicsLayer { rotationZ = squircleRotation }
         ) {
             val radius = size.minDimension / 2f
             withTransform({
@@ -920,9 +1010,7 @@ private fun ContinueButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true
 ) {
-    val configuration = LocalConfiguration.current
-    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-    if (isLandscape) {
+    if (LocalConfiguration.current.isLandscape) {
         FilledIconButton(
             onClick = onClick,
             enabled = enabled,
@@ -942,7 +1030,7 @@ private fun ContinueButton(
             contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
             modifier = modifier
                 .fillMaxWidth()
-                .height(56.dp)
+                .heightIn(min = 56.dp)
         ) {
             Text(
                 text = text,
@@ -960,35 +1048,41 @@ private fun ContinueButton(
 }
 
 @Composable
+private fun BackButton(onClick: () -> Unit) {
+    IconButton(onClick = onClick) {
+        Icon(
+            painter = painterResource(R.drawable.ic_back_24dp),
+            contentDescription = stringResource(R.string.back_action),
+            tint = MaterialTheme.colorScheme.onSurface
+        )
+    }
+}
+
+@Composable
 private fun OnboardPreference(
-    onClick: () -> Unit,
     title: String,
     shapes: ListItemShapes,
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
+    checked: Boolean? = null,
+    onCheckedChange: ((Boolean) -> Unit)? = null,
     leadingIcon: Painter? = null,
+    leadingIconTint: Color = LocalContentColor.current,
     supportingContent: @Composable (() -> Unit)? = null,
-    trailingContent: @Composable (() -> Unit)? = null,
+    trailingContent: @Composable (() -> Unit)? = checked?.let {
+        { Switch(checked = it, onCheckedChange = null) }
+    },
     summary: String? = null
 ) {
-    SegmentedListItem(
-        onClick = onClick,
-        shapes = shapes,
-        colors = ListItemDefaults.segmentedColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-        ),
-        leadingContent = {
-            if (leadingIcon != null) {
-                Icon(
-                    painter = leadingIcon,
-                    contentDescription = null
-                )
-            }
-        },
-        trailingContent = trailingContent,
-        supportingContent = supportingContent,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-    ) {
+    val colors = ListItemDefaults.segmentedColors(
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+    )
+    val leading: @Composable () -> Unit = {
+        if (leadingIcon != null) {
+            Icon(painter = leadingIcon, contentDescription = null, tint = leadingIconTint)
+        }
+    }
+    val content: @Composable () -> Unit = {
         Column(modifier = Modifier.padding(vertical = 8.dp)) {
             Text(
                 text = title,
@@ -1004,6 +1098,44 @@ private fun OnboardPreference(
             }
         }
     }
+
+    when {
+        checked != null && onCheckedChange != null -> SegmentedListItem(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            shapes = shapes,
+            colors = colors,
+            leadingContent = leading,
+            trailingContent = trailingContent,
+            supportingContent = supportingContent,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier,
+            content = content
+        )
+
+        onClick != null -> SegmentedListItem(
+            onClick = onClick,
+            shapes = shapes,
+            colors = colors,
+            leadingContent = leading,
+            trailingContent = trailingContent,
+            supportingContent = supportingContent,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier,
+            content = content
+        )
+
+        else -> SegmentedListItem(
+            shapes = shapes,
+            colors = colors,
+            leadingContent = leading,
+            trailingContent = trailingContent,
+            supportingContent = supportingContent,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier,
+            content = content
+        )
+    }
 }
 
 @Composable
@@ -1012,9 +1144,8 @@ private fun OnboardHeader(
     description: String,
     modifier: Modifier = Modifier
 ) {
-    val configuration = LocalConfiguration.current
     Column(
-        verticalArrangement = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+        verticalArrangement = if (!LocalConfiguration.current.isLandscape)
             Arrangement.spacedBy(8.dp)
         else Arrangement.Top,
         modifier = modifier
@@ -1035,89 +1166,3 @@ private fun OnboardHeader(
         )
     }
 }
-
-@Composable
-private fun WelcomeAppContent(
-    progress: Float,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.Center
-    ) {
-        Surface(
-            shape = RoundedCornerShape(32.dp),
-            color = MaterialTheme.colorScheme.primaryContainer,
-            modifier = Modifier
-                .size(100.dp)
-                .graphicsLayer {
-                    alpha = progress.coerceIn(0f, 1f)
-                    scaleX = 0.6f + (0.4f * progress)
-                    scaleY = 0.6f + (0.4f * progress)
-                }
-        ) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_booming_music_24dp),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                    modifier = Modifier.size(54.dp)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(36.dp))
-
-        Text(
-            text = stringResource(R.string.welcome_to),
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.graphicsLayer {
-                alpha = (progress * 1.3f - 0.2f).coerceIn(0f, 1f)
-                translationY = (1f - progress) * 30f
-            }
-        )
-
-        Spacer(modifier = Modifier.height(6.dp))
-
-        Text(
-            text = stringResource(R.string.app_name),
-            style = MaterialTheme.typography.displayMedium,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.primary,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.graphicsLayer {
-                alpha = (progress * 1.5f - 0.3f).coerceIn(0f, 1f)
-                translationY = (1f - progress) * 40f
-            }
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = stringResource(R.string.app_description),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .graphicsLayer {
-                    alpha = (progress * 1.8f - 0.5f).coerceIn(0f, 1f)
-                    translationY = (1f - progress) * 50f
-                }
-        )
-    }
-}
-
-private data class PermissionItemData(
-    val title: Int,
-    val description: Int,
-    val icon: Int,
-    val isGranted: Boolean,
-    val onRequest: () -> Unit
-)

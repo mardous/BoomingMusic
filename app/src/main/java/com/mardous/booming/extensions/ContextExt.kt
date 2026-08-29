@@ -30,9 +30,11 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
+import android.provider.Settings
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
@@ -93,6 +95,13 @@ fun Context.openUrl(url: String) =
             showToast("No browser installed.")
         }
     }
+
+fun Context.openAppDetailsSettings() =
+    tryStartActivity(
+        intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            .setData(Uri.fromParts("package", packageName, null))
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    )
 
 fun Context.tryStartActivity(intent: Intent, onError: (Throwable) -> Unit = {}) = try {
     startActivity(intent)

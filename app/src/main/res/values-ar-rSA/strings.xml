@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">يجب منح إذن الوصول إلى التخزين الخارجي.</string>
     <string name="permission_bluetooth_title">الأجهزة القريبة</string>
     <string name="permission_bluetooth_description">يحتاج التطبيق إلى إذن الأجهزة القريبة للتحقق من أجهزة البلوتوث</string>
-    <string name="permission_bluetooth_denied">تم رفض إذن الأجهزة القريبة.</string>
     <string name="permission_read_images_title">قراءة الصور (اختياري)</string>
     <string name="permission_read_images_summary">هذا الإذن مطلوب كي يتمكن Booming Music من العثور على ملفات صور أغلفة الألبومات في مجلدات موسيقاك. إذا كنت لا تنوي استخدام هذه الميزة، يمكنك اختيار عدم منحه.</string>
     <string name="permission_read_images_denied">يجب منح إذن قراءة الصور من الجهاز.</string>
 
 
     <string name="permissions_denied">تم رفض الأذونات</string>
-
+    <string name="permissions_needed">الأذونات المطلوبة</string>
     <string name="grant_access_action">منح الوصول</string>
     <string name="action_grant">منح</string>
     <string name="granted">تم المنح</string>
-
-
+    <string name="welcome_to_x">مرحبًا بك في %s</string>
     <string name="get_started">ابدأ الآن</string>
     <string name="select_storage_title">اختيار مساحة التخزين</string>
     <string name="now_playing">قيد التشغيل الآن</string>

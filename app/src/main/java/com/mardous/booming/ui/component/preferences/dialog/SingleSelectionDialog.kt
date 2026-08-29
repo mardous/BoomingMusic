@@ -33,10 +33,6 @@ open class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
     protected var entryValues: Array<CharSequence>? = null
         private set
 
-    protected open fun subtitleFor(index: Int): String? = null
-
-    protected open fun leadingFor(index: Int): (@Composable () -> Unit)? = null
-
     private var clickedDialogEntryIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,27 +63,41 @@ open class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
 
     override fun onCreateDialogView(context: Context): View {
         val titles = entries?.map { it.toString() }.orEmpty()
-        return ComposeView(context).apply {
+        return composeDialogView(context) {
+            DialogView(
+                titles = titles,
+                selectedIndex = clickedDialogEntryIndex,
+                onSelection = ::selectIndex
+            )
+        }
+    }
+
+    protected fun composeDialogView(context: Context, content: @Composable () -> Unit): View =
+        ComposeView(context).apply {
             setViewCompositionStrategy(
                 ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
             )
             setContent {
                 BoomingMusicTheme {
-                    DialogView(
-                        titles = titles,
-                        selectedIndex = clickedDialogEntryIndex,
-                        onSelection = {
-                            clickedDialogEntryIndex = it
-                            dialog?.let { dialog ->
-                                onClick(dialog, DialogInterface.BUTTON_POSITIVE)
-                                dialog.dismiss()
-                            }
-                        }
-                    )
+                    Surface(
+                        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                        modifier = Modifier.wrapContentHeight()
+                    ) {
+                        content()
+                    }
                 }
             }
         }
+
+    private fun selectIndex(index: Int) {
+        clickedDialogEntryIndex = index
+        dialog?.let {
+            onClick(it, DialogInterface.BUTTON_POSITIVE)
+            it.dismiss()
+        }
     }
+
+    protected fun selectValue(value: String) = selectIndex(listPreference.findIndexOfValue(value))
 
     override fun onBindDialogView(view: View) {}
 
@@ -114,28 +124,21 @@ open class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
         selectedIndex: Int,
         onSelection: (Int) -> Unit
     ) {
-        Surface(
-            color = MaterialTheme.colorScheme.surfaceContainerHigh,
-            modifier = Modifier.wrapContentHeight()
+        LazyColumn(
+            state = rememberLazyListState(selectedIndex.coerceAtLeast(0)),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(vertical = 24.dp)
         ) {
-            LazyColumn(
-                state = rememberLazyListState(selectedIndex.coerceAtLeast(0)),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(vertical = 24.dp)
-            ) {
-                itemsIndexed(titles) { index, action ->
-                    DialogListItemWithRadio(
-                        title = action,
-                        subtitle = subtitleFor(index),
-                        isSelected = selectedIndex == index,
-                        leadingIcon = leadingFor(index),
-                        onClick = {
-                            onSelection(index)
-                        }
-                    )
-                }
+            itemsIndexed(titles) { index, action ->
+                DialogListItemWithRadio(
+                    title = action,
+                    isSelected = selectedIndex == index,
+                    onClick = {
+                        onSelection(index)
+                    }
+                )
             }
         }
     }

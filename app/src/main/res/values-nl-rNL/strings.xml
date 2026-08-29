@@ -124,14 +124,15 @@
     <string name="permission_external_storage_denied">U moet toestemming geven om toegang te krijgen tot externe opslag.</string>
     <string name="permission_bluetooth_title">Nabijgelegen apparaten</string>
     <string name="permission_bluetooth_description">De app heeft toestemming in de buurt nodig om te controleren op bluetooth apparaten</string>
-    <string name="permission_bluetooth_denied">Machtiging in de buurt geweigerd.</string>
     <string name="permission_read_images_title">Lees afbeeldingen (optioneel)</string>
     <string name="permission_read_images_summary">Deze toestemming is vereist voor het vinden van albumhoezen in je muziekmappen. Als u niet van plan bent om deze functie te gebruiken, kunt u ervoor kiezen deze niet toe te staan.</string>
     <string name="permission_read_images_denied">Je moet toestemming geven om afbeeldingen van het apparaat te lezen.</string>
     <string name="permissions_denied">Permissies geweigerd</string>
+    <string name="permissions_needed">Machtigingen vereist</string>
     <string name="grant_access_action">Toegang verlenen</string>
     <string name="action_grant">Toestaan</string>
     <string name="granted">Toegekend</string>
+    <string name="welcome_to_x">Welkom bij %s</string>
     <string name="get_started">Nu inschrijven</string>
     <string name="select_storage_title">Opslag selecteren</string>
     <string name="now_playing">Afspelende media</string>
@@ -983,8 +984,6 @@
     <string name="widget_source_recent">Recent</string>
     <string name="widget_page_previous">Vorige liedjes</string>
     <string name="widget_page_next">Volgende liedjes</string>
-    <string name="welcome_to">Welkom bij</string>
-    <string name="permissions_title">Toestemmingen vereist</string>
     <string name="permissions_subtitle">Geeft toegang tot uw muziekbestanden en nabije apparaten om de beste terugspeelervaring te beleven.</string>
     <string name="initial_configuration_title">Eerste Installatie</string>
     <string name="initial_configuration_subtitle">Pas Booming Music naar uw smaak aan voor u begint.</string>

@@ -124,14 +124,15 @@
     <string name="permission_external_storage_denied">必须授予访问外部存储的权限。</string>
     <string name="permission_bluetooth_title">附近设备</string>
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
-    <string name="permission_bluetooth_denied">附近设备权限被拒绝。</string>
     <string name="permission_read_images_title">查看图像（可选）</string>
     <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。你可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">需要授予访问所有文件的权限以允许应用读取封面图像。</string>
     <string name="permissions_denied">权限被拒绝</string>
+    <string name="permissions_needed">需要权限</string>
     <string name="grant_access_action">授予权限</string>
     <string name="action_grant">授权</string>
     <string name="granted">已授权</string>
+    <string name="welcome_to_x">欢迎使用 %s</string>
     <string name="get_started">开始</string>
     <string name="select_storage_title">选择存储</string>
     <string name="now_playing">正在播放</string>
@@ -975,8 +976,6 @@
     <string name="widget_page_previous">上一页</string>
     <string name="widget_page_next">下一页</string>
     <string name="restart_app_message">应用将重启以完成操作。</string>
-    <string name="welcome_to">欢迎使用</string>
-    <string name="permissions_title">需要权限</string>
     <string name="permissions_subtitle">请授予音乐文件和附近设备的访问权限，以获得最佳播放体验。</string>
     <string name="initial_configuration_title">初始设置</string>
     <string name="initial_configuration_subtitle">在开始之前，请根据你的喜好自定义 Booming Music。</string>

@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">עליך להעניק הרשאת גישה לאחסון חיצוני.</string>
     <string name="permission_bluetooth_title">מכשירים בקרבת מקום</string>
     <string name="permission_bluetooth_description">האפליקציה זקוקה להרשאה מכשירים בקרבת מקום כדי לבדוק אם יש מכשירי בלוטות\'</string>
-    <string name="permission_bluetooth_denied">הרשאת הגישה למכשירים בקרבת מקום נדחתה.</string>
     <string name="permission_read_images_title">קריאת תמונות (אופציונלי)</string>
     <string name="permission_read_images_summary">הרשאה זו נדרשת כדי ש־Booming Music תוכל למצוא קובצי עטיפות אלבומים בתיקיות המוזיקה שלך. אם אינך מתכנן להשתמש בפונקציה זו, אפשר לבחור לא לאשר אותה.</string>
     <string name="permission_read_images_denied">עליך להעניק הרשאה לקריאת תמונות מהמכשיר.</string>
 
 
     <string name="permissions_denied">הרשאות נדחו</string>
-
+    <string name="permissions_needed">הרשאות נדרשות</string>
     <string name="grant_access_action">הענק גישה</string>
     <string name="action_grant">הענק</string>
     <string name="granted">הוענק</string>
-
-
+    <string name="welcome_to_x">ברוך הבא ל-%s</string>
     <string name="get_started">בא נתחיל</string>
     <string name="select_storage_title">בחר אחסון</string>
     <string name="now_playing">מנגן כעת</string>

@@ -124,7 +124,6 @@
     <string name="permission_external_storage_denied">Debe conceder permiso para acceder al almacenamiento externo.</string>
     <string name="permission_bluetooth_title">Dispositivos cercanos</string>
     <string name="permission_bluetooth_description">La aplicación necesita el permiso de dispositivos cercanos para buscar dispositivos Bluetooth</string>
-    <string name="permission_bluetooth_denied">Permiso de dispositivos cercanos denegado.</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
     <string name="permissions_denied">Permisos denegados</string>
@@ -991,8 +990,6 @@
     <string name="widget_source_recent">Reciente</string>
     <string name="widget_page_previous">Canciones anteriores</string>
     <string name="widget_page_next">Siguientes canciones</string>
-    <string name="welcome_to">Bienvenidos a</string>
-    <string name="permissions_title">Se necesitan permisos</string>
     <string name="permissions_subtitle">Concede acceso a tus archivos de música y a dispositivos cercanos para obtener la mejor experiencia de reproducción.</string>
     <string name="initial_configuration_title">Configuración inicial</string>
     <string name="initial_configuration_subtitle">Personaliza Booming Music a tu gusto antes de empezar.</string>

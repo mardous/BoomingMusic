@@ -124,19 +124,17 @@
     <string name="permission_external_storage_denied">Du må gi tilgang til ekstern lagring.</string>
     <string name="permission_bluetooth_title">Nærliggende enheter</string>
     <string name="permission_bluetooth_description">Appen trenger nærliggende enheter tillatelse til å sjekke etter bluetooth-enheter</string>
-    <string name="permission_bluetooth_denied">Tillatelse i nærheten av enheter nektet.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
 
 
     <string name="permissions_denied">Tillatelser avvist</string>
-
+    <string name="permissions_needed">Tillatelser nødvendig</string>
     <string name="grant_access_action">Gi Tilgang</string>
     <string name="action_grant">Tillat</string>
     <string name="granted">Tildelt</string>
-
-
+    <string name="welcome_to_x">Velkommen til %s</string>
     <string name="get_started">Kom i gang</string>
     <string name="select_storage_title">Velg lagring</string>
     <string name="now_playing">Spiller nå</string>
