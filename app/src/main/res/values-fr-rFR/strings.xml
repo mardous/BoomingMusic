@@ -283,10 +283,6 @@
     <string name="connection_unavailable">Connexion indisponible.</string>
     <string name="you_have_to_select_at_least_one_category">Vous devez sélectionner au moins une catégorie</string>
     <string name="you_cannot_select_more_than_five_categories">Vous ne pouvez pas sélectionner plus de cinq catégories.</string>
-
-
-
-
     <string name="backup_successful">Sauvegarde réussie !</string>
     <string name="backup_failed">Échec de la sauvegarde.</string>
     <string name="select_content_to_restore">Sélectionner le contenu à restaurer :</string>
@@ -544,7 +540,6 @@
     <string name="audio_focus_header">Focus audio</string>
     <string name="shuffle_mode_header">Mode aléatoire</string>
     <string name="display_header">Afficher</string>
-
     <string name="visuals_header">Visuels</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Thème général</string>
@@ -726,10 +721,6 @@
     <string name="min_song_duration_summary">Combien de secondes (au moins) doit durer un titre pour être affiché dans votre bibliothèque.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Langue de l\'application</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Arrêter lorsque fermé depuis les récents</string>
     <string name="stop_when_closed_from_recents_summary">La lecture s\'arrête si l\'application est fermée à partir de la liste des applications récentes.</string>
     <string name="stop_when_closed_from_recents_note">Remarque : certains appareils dotés d\'une gestion agressive de la mémoire ou de la batterie peuvent ignorer ce paramètre et toujours arrêter l\'application lorsqu\'elle est supprimée des applications récentes.</string>
@@ -1001,4 +992,28 @@
     <string name="restore_from_backup">Restaurer à partir d\'une sauvegarde</string>
     <string name="network_features_summary">Permet le scrobbling ainsi que le téléchargement des pochettes d\'album et des paroles.</string>
     <string name="listenbrainz_toggle_token_visibility">Activer/désactiver la visibilité du jeton</string>
+    <string name="backup_restore_title">Sauvegarde et restauration</string>
+    <string name="backup_restore_summary">Gérer la sauvegarde et la restauration des données de l\'application.</string>
+    <string name="no_backup_folder_selected">Aucun dossier de sauvegarde n\'a été sélectionné</string>
+    <string name="select_backup_folder">Sélectionner le dossier de sauvegarde</string>
+    <string name="no_backups_found">Aucune sauvegarde n\'a été trouvée dans ce dossier.</string>
+    <string name="backup_recent_list">Sauvegardes récentes</string>
+    <string name="backup_file_name">Nom du fichier (facultatif)</string>
+    <string name="create_new_backup">Créer une sauvegarde</string>
+    <string name="open_backup">Ouvrir la sauvegarde</string>
+    <string name="share_backup">Partager la sauvegarde</string>
+    <string name="cannot_share_this_backup">Impossible de partager cette sauvegarde.</string>
+    <string name="confirm_delete_backup">Supprimer cette sauvegarde ?</string>
+    <string name="backup_deleted_successfully">La sauvegarde a été effectuée avec succès.</string>
+    <string name="could_not_delete_backup">Impossible de supprimer la sauvegarde.</string>
+    <string name="select_content_to_backup">Sélectionnez le contenu à sauvegarder :</string>
+    <string name="backup_content_settings">Paramètres de l\'application</string>
+    <string name="backup_content_lyrics">Paroles synchronisées</string>
+    <string name="backup_content_play_info">Statistiques de lecture</string>
+    <string name="backup_content_playlists">Playlists</string>
+    <string name="backup_content_artist_images">Images d\'artistes</string>
+    <string name="backup_app_version">Créé en</string>
+    <string name="backup_warning_legacy_format">Ce format de sauvegarde est considéré comme obsolète. Pour l\'instant, vous pouvez encore restaurer vos données, mais il se peut que nous cessions de le prendre en charge à l\'avenir.</string>
+    <string name="backup_warning_ver_newer">Le format de sauvegarde est plus récent que celui pris en charge par cette version de Booming Music.</string>
+    <string name="backup_warning_app_ver_newer">Cette sauvegarde a été créée dans une version plus récente de Booming Music. Sa restauration dans cette version pourrait entraîner des erreurs ou une restauration incomplète des données.</string>
 </resources>
