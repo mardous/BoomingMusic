@@ -963,4 +963,18 @@
     <string name="use_lyrically_provider_title"></string>
     <string name="backup_restore_summary"></string>
     <string name="swipe_up_queue_title"></string>
+    <string name="app_widget_circle"></string>
+    <string name="app_widget_grid"></string>
+    <string name="auto_theme_name"></string>
+    <string name="app_widget_cookie"></string>
+    <string name="app_widget_grid_desc"></string>
+    <string name="stop_when_closed_from_recents_title"></string>
+    <string name="squiggly_seek_bar_title"></string>
+    <string name="app_widget_cookie_desc"></string>
+    <string name="stop_when_closed_from_recents_note"></string>
+    <string name="app_widget_circle_desc"></string>
+    <string name="stop_when_closed_from_recents_summary"></string>
+    <string name="extra_controls_title"></string>
+    <string name="carousel_effect_title"></string>
+    <string name="app_widget_library"></string>
 </resources>
