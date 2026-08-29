@@ -1013,4 +1013,14 @@
     <string name="permissions_subtitle"></string>
     <string name="use_lyrically_provider_title"></string>
     <string name="backup_restore_summary"></string>
+    <string name="app_description"></string>
+    <string name="support_my_work"></string>
+    <string name="app_widget_circle"></string>
+    <string name="app_widget_grid"></string>
+    <string name="auto_theme_name"></string>
+    <string name="app_widget_cookie"></string>
+    <string name="app_widget_grid_desc"></string>
+    <string name="app_widget_cookie_desc"></string>
+    <string name="app_widget_circle_desc"></string>
+    <string name="app_widget_library"></string>
 </resources>
