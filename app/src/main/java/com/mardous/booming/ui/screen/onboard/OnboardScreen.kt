@@ -122,8 +122,6 @@ import androidx.preference.PreferenceManager
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.mardous.booming.R
-import com.mardous.booming.data.local.backup.BackupContent
-import com.mardous.booming.data.local.backup.BackupManager
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.getImagesPermission
@@ -145,12 +143,9 @@ import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
 import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.MATERIAL_YOU
-import com.mardous.booming.util.MINIMUM_SONG_DURATION
-import kotlinx.coroutines.launch
-import org.koin.compose.koinInject
 import com.mardous.booming.util.Preferences
-import kotlin.math.roundToInt
 import org.koin.androidx.compose.koinViewModel
+import kotlin.math.roundToInt
 
 private const val PLACEHOLDER = "%s"
 

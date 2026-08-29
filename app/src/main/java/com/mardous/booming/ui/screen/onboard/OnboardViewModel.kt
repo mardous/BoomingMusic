@@ -17,12 +17,11 @@
 
 package com.mardous.booming.ui.screen.onboard
 
-import android.app.Application
 import android.net.Uri
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mardous.booming.util.BackupContent
-import com.mardous.booming.util.BackupHelper
+import com.mardous.booming.data.local.backup.BackupContent
+import com.mardous.booming.data.local.backup.BackupManager
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,7 +34,7 @@ enum class RestoreState {
     Restored
 }
 
-class OnboardViewModel(application: Application) : AndroidViewModel(application) {
+class OnboardViewModel(private val backupManager: BackupManager) : ViewModel() {
 
     private val _restoreState = MutableStateFlow(RestoreState.Idle)
     val restoreState = _restoreState.asStateFlow()
@@ -49,13 +48,12 @@ class OnboardViewModel(application: Application) : AndroidViewModel(application)
 
         _restoreState.value = RestoreState.Restoring
         viewModelScope.launch {
-            BackupHelper.restoreBackup(getApplication(), uri, BackupContent.entries) { isSuccess ->
-                if (isSuccess) {
-                    _restoreState.value = RestoreState.Restored
-                } else {
-                    _restoreState.value = RestoreState.Idle
-                    _restoreFailedEvent.trySend(Unit)
-                }
+            val isSuccess = backupManager.restoreBackup(uri, BackupContent.entries)
+            if (isSuccess) {
+                _restoreState.value = RestoreState.Restored
+            } else {
+                _restoreState.value = RestoreState.Idle
+                _restoreFailedEvent.trySend(Unit)
             }
         }
     }
