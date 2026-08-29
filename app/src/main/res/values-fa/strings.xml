@@ -877,4 +877,114 @@
         <item quantity="one">%d لیست پخش انتخاب شده</item>
         <item quantity="other">%d لیست‌ پخش‌ انتخاب شده</item>
     </plurals>
+    <string name="action_auto_fill_from_musicbrainz"></string>
+    <string name="contributor_ttop_description"></string>
+    <string name="create_new_backup"></string>
+    <string name="eq_pro_mode"></string>
+    <string name="contributor_dawid_description"></string>
+    <string name="widget_action_repeat"></string>
+    <string name="lyrics_show_transliteration_title"></string>
+    <string name="lyrics_show_translation_title"></string>
+    <string name="grid_size_6" translatable="false"></string>
+    <string name="backup_content_play_info"></string>
+    <string name="initial_configuration_note"></string>
+    <string name="backup_recent_list"></string>
+    <string name="lyrics_bold_synced_summary"></string>
+    <string name="widget_show_artist_summary"></string>
+    <string name="terms_of_service"></string>
+    <string name="website"></string>
+    <string name="share_backup"></string>
+    <string name="eq_pre_gain"></string>
+    <string name="backup_warning_ver_newer"></string>
+    <string name="select_content_to_backup"></string>
+    <string name="go_to_current_track"></string>
+    <string name="contributor_alex_description"></string>
+    <string name="app_widget_library_desc"></string>
+    <string name="grid_size_4" translatable="false"></string>
+    <string name="listenbrainz_toggle_token_visibility"></string>
+    <string name="widget_show_artist_title"></string>
+    <string name="widget_page_next"></string>
+    <string name="lyrics_karaoke_style_summary"></string>
+    <string name="contributor_ray_description"></string>
+    <string name="widget_action_favourite"></string>
+    <string name="grid_size_7" translatable="false"></string>
+    <string name="grid_size_8" translatable="false"></string>
+    <string name="widget_side_buttons_skip"></string>
+    <string name="eq_expander_ratio"></string>
+    <string name="grid_size_2" translatable="false"></string>
+    <string name="lyrics_resume_on_seek_summary"></string>
+    <string name="legal"></string>
+    <string name="widget_show_progress_title"></string>
+    <string name="backup_content_lyrics"></string>
+    <string name="widget_source_title"></string>
+    <string name="musicbrainz_select_recording"></string>
+    <string name="limiter_label"></string>
+    <string name="musicbrainz_no_results"></string>
+    <string name="compressor_label"></string>
+    <string name="backup_warning_app_ver_newer"></string>
+    <string name="grid_size_3" translatable="false"></string>
+    <string name="rg_without_tag"></string>
+    <string name="widget_side_buttons_title"></string>
+    <string name="eq_release_time"></string>
+    <string name="app_version_x"></string>
+    <string name="network_features_summary"></string>
+    <string name="widget_show_progress_summary"></string>
+    <string name="widget_show_controls_summary"></string>
+    <string name="lyrics_show_transliteration_summary"></string>
+    <string name="play_all_songs_when_searching_title"></string>
+    <string name="restart_app_message"></string>
+    <string name="could_not_delete_backup"></string>
+    <string name="lyrics_karaoke_style_title"></string>
+    <string name="backup_deleted_successfully"></string>
+    <string name="backup_app_version"></string>
+    <string name="grid_size_1" translatable="false"></string>
+    <string name="up_next"></string>
+    <string name="backup_restore_title"></string>
+    <string name="cannot_share_this_backup"></string>
+    <string name="eq_attack_time"></string>
+    <string name="privacy_policy"></string>
+    <string name="widget_show_navigation_title"></string>
+    <string name="widget_show_navigation_summary"></string>
+    <string name="rg_with_tag"></string>
+    <string name="widget_settings_title"></string>
+    <string name="initial_configuration_subtitle"></string>
+    <string name="app_widget_tap_to_play"></string>
+    <string name="widget_page_previous"></string>
+    <string name="eq_knee_width"></string>
+    <string name="restore_from_backup"></string>
+    <string name="more_contributors_summary"></string>
+    <string name="sort_order_name"></string>
+    <string name="musicbrainz_search_message"></string>
+    <string name="contributor_lenard_description"></string>
+    <string name="lyrics_bold_synced_title"></string>
+    <string name="open_backup"></string>
+    <string name="widget_trailing_action_title"></string>
+    <string name="widget_leading_action_title"></string>
+    <string name="reorder_action"></string>
+    <string name="lyrics_resume_on_seek_title"></string>
+    <string name="play_all_songs_when_searching_summary"></string>
+    <string name="backup_content_settings"></string>
+    <string name="more_contributors_title"></string>
+    <string name="lyrics_show_translation_summary"></string>
+    <string name="musicbrainz_search_title"></string>
+    <string name="app_widget_nothing_playing"></string>
+    <string name="eq_post_gain"></string>
+    <string name="widget_show_controls_title"></string>
+    <string name="backup_file_name"></string>
+    <string name="confirm_delete_backup"></string>
+    <string name="searching"></string>
+    <string name="grid_size_5" translatable="false"></string>
+    <string name="widget_source_recent"></string>
+    <string name="eq_ratio"></string>
+    <string name="eq_noise_gate"></string>
+    <string name="select_backup_folder"></string>
+    <string name="initial_configuration_title"></string>
+    <string name="backup_warning_legacy_format"></string>
+    <string name="no_backup_folder_selected"></string>
+    <string name="backup_content_playlists"></string>
+    <string name="backup_content_artist_images"></string>
+    <string name="eq_threshold"></string>
+    <string name="no_backups_found"></string>
+    <string name="permissions_subtitle"></string>
+    <string name="backup_restore_summary"></string>
 </resources>
