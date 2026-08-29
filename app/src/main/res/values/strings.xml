@@ -149,9 +149,6 @@
     <string name="permission_external_storage_denied">You must grant permission to access external storage.</string>
     <string name="permission_bluetooth_title">Nearby devices (optional)</string>
     <string name="permission_bluetooth_description">The app needs nearby devices permission to check for bluetooth devices</string>
-    <string name="permission_notifications_title">Notifications (optional)</string>
-    <string name="permission_notifications_summary">This permission lets Booming Music show playback controls in your notification shade and on the lock screen.
-        If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders.
         If you don\'t plan to use this feature, you can choose not to grant it.</string>

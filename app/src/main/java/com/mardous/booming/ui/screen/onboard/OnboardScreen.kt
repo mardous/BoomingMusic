@@ -126,7 +126,6 @@ import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.MIME_TYPE_APPLICATION
 import com.mardous.booming.extensions.getImagesPermission
 import com.mardous.booming.extensions.getNearbyDevicesPermissions
-import com.mardous.booming.extensions.getNotificationsPermission
 import com.mardous.booming.extensions.getStoragePermissions
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.isLandscape
@@ -407,12 +406,6 @@ private fun PermissionsStepContent(
 
     val permissionItems = listOfNotNull(
         storageItem,
-        permissionItem(
-            permissions = getNotificationsPermission().toList(),
-            title = R.string.permission_notifications_title,
-            description = R.string.permission_notifications_summary,
-            icon = R.drawable.ic_notifications_24dp
-        ),
         permissionItem(
             permissions = getNearbyDevicesPermissions().toList(),
             title = R.string.permission_bluetooth_title,

@@ -7,7 +7,6 @@ Booming Music requests the following permissions:
 | **FOREGROUND\_SERVICE\_MEDIA\_PLAYBACK** | Essential for continuous playback in the background on Android 14 and higher.               | From 14         |
 | **READ\_MEDIA\_AUDIO**                   | Allows access to audio files on the device. Required starting from Android 13.              | From 13         |
 | **READ\_MEDIA\_IMAGES**                  | Allows the app to read image files (such as album covers) stored on the device.             | From 13         |
-| **POST\_NOTIFICATIONS**                  | Required to show playback notifications on Android 13 or higher.                            | From 13         |
 | **BLUETOOTH\_CONNECT**                   | Replaces `BLUETOOTH` on Android 12+ for detecting and interacting with Bluetooth devices.   | From 12         |
 | **READ\_EXTERNAL\_STORAGE**              | Needed to list music files on devices running Android 12 or lower.                          | Up to 12        |
 | **BLUETOOTH**                            | Used on Android 11 and below to detect Bluetooth devices (e.g., headphones).                | Up to 11        |
