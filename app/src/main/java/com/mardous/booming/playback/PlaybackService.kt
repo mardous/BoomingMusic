@@ -407,7 +407,7 @@ class PlaybackService :
             if (sessionId == myPackageName) {
                 return mediaSession
             }
-        } else if (packageValidator.isKnownCaller(controllerPackageName, controllerInfo.uid)) {
+        } else if (packageValidator.isAllowedCaller(controllerPackageName, controllerInfo.uid)) {
             return mediaSession
         }
         return null
@@ -465,7 +465,7 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        val isKnownCaller = packageValidator.isKnownCaller(browser.packageName, browser.uid)
+        val isKnownCaller = packageValidator.isAllowedCaller(browser.packageName, browser.uid)
         val outExtras = Bundle().apply {
             putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isKnownCaller)
         }
@@ -634,7 +634,10 @@ class PlaybackService :
     private fun <T : Any> MediaSession.denyUntrusted(
         controller: MediaSession.ControllerInfo
     ): ListenableFuture<LibraryResult<T>>? =
-        if (isTrustedController(controller)) null
+        // Same gate the library root uses: when caller enforcement is off (Advanced Settings),
+        // any controller may browse - otherwise browsing the children would still be
+        // denied even though the root was allowed, giving an empty library.
+        if (!Preferences.enforceKnownCallers || isTrustedController(controller)) null
         else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(
