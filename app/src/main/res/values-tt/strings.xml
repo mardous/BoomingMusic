@@ -329,31 +329,22 @@
     <string name="audio_device_usb_device">USB-җайланма</string>
     <string name="audio_device_usb_headset">USB-колаксалар</string>
     <plurals name="songs">
-        <item quantity="other">Җыр</item>
     </plurals>
     <plurals name="albums">
-        <item quantity="other">Альбом</item>
     </plurals>
     <plurals name="x_songs">
-        <item quantity="other">%d җыр</item>
     </plurals>
     <plurals name="x_albums">
-        <item quantity="other">%d альбом</item>
     </plurals>
     <plurals name="x_artists">
-        <item quantity="other">%d артист</item>
     </plurals>
     <plurals name="x_times">
-        <item quantity="other">%d тапкыр</item>
     </plurals>
     <plurals name="x_plays">
-        <item quantity="other">%d уйнау</item>
     </plurals>
     <plurals name="x_items">
-        <item quantity="other">%d әйбер</item>
     </plurals>
     <plurals name="x_playlists_selected">
-        <item quantity="other">%d плейлист сайлаган</item>
     </plurals>
     <string name="home_label">Баш бит</string>
     <string name="shuffle_action">Болгатырга</string>
@@ -409,7 +400,7 @@
     <string name="shuffle_mode_recently_added_description">Күптән түгел өстәлгән җырларга сайлау.</string>
     <string name="shuffle_mode_combined_description">Сайланган, тыңлау һәм күптән түгел өстәлгән микс.</string>
     <string name="change_band_count_title">Юллар санын үзгәртергә</string>
-    <string name="change_band_count_message">Юлларның санын үзгәртү агымдагы юнәлешне башлангыч халәткә алып ташлаячак. Юлларның агымдагы конфигурациясе өчен сакланган теләсә нинди башка профильләрне яңа конфигурация белән кулланырга ярамый. \n\nСез дәвам итәргә телисезме?</string>
+    <string name="change_band_count_message">Юлларның санын үзгәртү агымдагы юнәлешне башлангыч халәткә алып ташлаячак. Юлларның агымдагы конфигурациясе өчен сакланган теләсә нинди башка профильләрне яңа конфигурация белән кулланырга ярамый. \n\nСез дәвам итәргә телисезме?</string>
     <string name="band_configuration_changed_successfully">Юлларның конфигурациясе уңышлы үзгәртергән.</string>
     <string name="band_configuration_could_not_be_changed">Юлларның конфигурациясе үзгәртергә чыкмады.</string>
     <string name="share_eq_profiles">Эквалайзер профильләр белән бүлешү</string>
