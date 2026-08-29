@@ -356,7 +356,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        OnboardViewModel(application = androidApplication())
+        OnboardViewModel(backupManager = get())
     }
 }
 
