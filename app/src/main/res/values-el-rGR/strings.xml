@@ -1012,4 +1012,5 @@
     <string name="app_widget_cookie_desc"></string>
     <string name="app_widget_circle_desc"></string>
     <string name="app_widget_library"></string>
+    <string name="new_playlist_action"></string>
 </resources>
