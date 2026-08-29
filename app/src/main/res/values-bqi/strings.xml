@@ -982,4 +982,16 @@
     <string name="backup_restore_summary"></string>
     <string name="playback_summary"></string>
     <string name="swipe_up_queue_title"></string>
+    <string name="app_description"></string>
+    <string name="support_my_work"></string>
+    <string name="auto_theme_name"></string>
+    <string name="library_categories_title"></string>
+    <string name="pure_black_theme_title"></string>
+    <string name="appbar_mode_title"></string>
+    <string name="stop_when_closed_from_recents_title"></string>
+    <string name="squiggly_seek_bar_title"></string>
+    <string name="stop_when_closed_from_recents_note"></string>
+    <string name="stop_when_closed_from_recents_summary"></string>
+    <string name="extra_controls_title"></string>
+    <string name="carousel_effect_title"></string>
 </resources>
