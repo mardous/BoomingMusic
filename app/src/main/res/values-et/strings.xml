@@ -139,8 +139,8 @@
     <string name="disc">Plaat</string>
     <string name="lyrics">Laulusõnad</string>
     <string name="lyricist">Laulusõnade autor</string>
-    <string name="backup_settings">Seadistused</string>
-    <string name="backup_playlists">Esitusloendid</string>
+
+
     <string name="audio_device_hdmi">HDMI</string>
     <string name="home_label">Avaleht</string>
     <string name="shuffle_action">Sega lood</string>
@@ -387,7 +387,7 @@
     <string name="audio_focus_header">Helifookus</string>
     <string name="shuffle_mode_header">Lugude segamise viis</string>
     <string name="display_header">Ekraanivaade</string>
-    <string name="backup_restore_header">Varundus ja taastamine</string>
+
     <string name="visuals_header">Visuaalsed efektid</string>
     <string name="appearance_title">Välimus</string>
     <string name="appearance_summary">Kohenda rakenduse kujundust ja muud väljanägemist.</string>
@@ -493,10 +493,10 @@
     <string name="delete_downloaded_lyrics_summary">See käib vaid rakenduse Booming Music poolt allalaaditud laulusõnade kohta. Ei mõjuta laulusõnu, mis on lõimitud ID3v2 siltidesse või LRC-failidena.</string>
     <string name="lyrics_cleared">Laulusõnad on kustutatud.</string>
     <string name="app_language_title">Rakenduse keel</string>
-    <string name="backup_data_title">Varunda rakenduse andmed</string>
-    <string name="restore_backup_title">Taasta varukoopiast</string>
-    <string name="backup_app_data_summary">Koosta faili sinu rakenduse põhiandmetega ja salvesta ta välisesse andmeruumi.</string>
-    <string name="restore_backup_summary">Taasta rakenduse andmed (ja olek) hiljutisest varukoopiast.</string>
+
+
+
+
     <string name="rotation_lock_title">Pööramise lukustus</string>
     <string name="rotation_lock_summary">Lukusta seadme pööramise olek. Kasulik näiteks olukorras, kus seadme pööramisel muusika esitus peatub (mõnede seadmevalmistajate tingimuste tõttu).</string>
     <string name="horizontal_flip">Rõhtne pööramine</string>
@@ -604,8 +604,8 @@
     <string name="connection_unavailable">Võrguühendus pole saadaval.</string>
     <string name="you_have_to_select_at_least_one_category">Sa pead valima vähemalt ühe kategooria</string>
     <string name="you_cannot_select_more_than_five_categories">Sa ei saa valida üle viie kategooria.</string>
-    <string name="backup_synced_lyrics">Sünkroonitud laulusõnad</string>
-    <string name="backup_artist_images">Esitajate pildid</string>
+
+
     <string name="backup_successful">Varundamine õnnestus!</string>
     <string name="backup_failed">Varukoopa tegemine ei õnnestunud.</string>
     <string name="select_content_to_restore">Vali taastatav sisu:</string>
@@ -969,4 +969,5 @@
     <string name="initial_configuration_note">Sa võid neid seadistusei alati muuta.</string>
     <string name="widget_show_navigation_title">Näita menüüriba</string>
     <string name="widget_show_navigation_summary">Näita menüüriba, mille abil saad loendi läbi lapata.</string>
+    <string name="listenbrainz_toggle_token_visibility">Lülita tunnusloa nähtavus sisse/välja</string>
 </resources>

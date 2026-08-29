@@ -238,8 +238,6 @@
     <string name="playlist_description_hint">توزیهات نومگه پشک (اختیاری)</string>
     <string name="permission_read_images_summary">ای موجوز سی Booming Music لازوم هڌ تا فایلا هونری آلبوم ن من دوبلگه یل آرنگ ایسا بجۊره. ٱر نؽخۊین ای ویژیی ن و کار بوورین، ترین ای موجوز ن نڌین.</string>
     <string name="permission_read_images_denied">سی خوندن شؽواتا ز دسگا وا موجوز ن بڌین.</string>
-
-
     <string name="select_storage_title">جاگه زفت کردنی ن پسند کۊنین</string>
     <string name="now_playing">هیم سکو پشک</string>
     <string name="playing_queue_label">هونی سف ن پشک اکونه</string>
@@ -262,7 +260,7 @@
     <string name="sort_order_year">سال</string>
     <string name="sort_order_duration">موڌت زمووݩ</string>
     <string name="sort_order_date_added">ویرگار ازاف وابیڌن</string>
-    <string name="sort_order_date_modified">ویرگار آلشت وابی</string>
+    <string name="sort_order_date_modified">ویرگار آلشت وابیڌن</string>
     <string name="sort_order_number_of_songs">تعداد آرنگا</string>
     <string name="action_set_as_start_directory">و عونوان دایرکتوری شۊرۊع سامووݩ کۊنین</string>
     <string name="start_directory_set">نومگه هیاری ری %s سامووݩ وابی</string>
@@ -294,7 +292,7 @@
         <item quantity="one">آرنگ</item>
         <item quantity="other">آرنگا</item>
     </plurals>
-    <string name="backup_settings">سامووا</string>
+
     <plurals name="x_songs">
         <item quantity="one">%d آرنگ</item>
         <item quantity="other">%d آرنگا</item>
@@ -315,9 +313,9 @@
     <string name="connection_unavailable">منپیز من دسرس نؽ.</string>
     <string name="you_have_to_select_at_least_one_category">ایسا ٱقلن وا ی دسته ن پسند کۊنین</string>
     <string name="you_cannot_select_more_than_five_categories">ایسا نترین بیشتر ز پنج دسته ن پسند کۊنین.</string>
-    <string name="backup_synced_lyrics">بیتا هوم گوم وابیڌه</string>
-    <string name="backup_artist_images">شؽواتا هونرمند</string>
-    <string name="backup_playlists">نومگه یل پشک</string>
+
+
+
     <string name="backup_successful">لادراری گرؽڌن وا مووفقیت ٱنجوم وابی!</string>
     <string name="backup_failed">لادراری گرؽڌن ٱنجوم نوابی.</string>
     <string name="could_not_restore_data">داده یل نوورگشتن. فایل لادرار ن تئییڌ کۊنین وو دووارته امتهووݩ کۊنین.</string>
@@ -411,7 +409,7 @@
     <string name="lyrics_were_updated_successfully">هؽل آرنگ وا مووفقیت ورۊ وابی.</string>
     <string name="sleep_timer_finish_current_music">آرنگ دیندایی ن تموم کۊنین</string>
     <string name="sleep_timer_music_fades_out">آرنگ مئو ابۊ</string>
-    <string name="sleep_timer_stop_after_this_track">بئڌ ای تور واسته</string>
+    <string name="sleep_timer_stop_after_this_track">بئڌ ای آرنگ واسته</string>
     <string name="action_auto_fill_from_musicbrainz">تکمیل خوتکار ز MusicBrainz</string>
     <string name="searching">هونی اپیتینه…</string>
     <string name="musicbrainz_search_title">پیتینیڌن MusicBrainz</string>
@@ -419,4 +417,111 @@
     <string name="musicbrainz_no_results">هیچ نتیجه‌ای من MusicBrainz نجۊرست.</string>
     <string name="musicbrainz_select_recording">پسند ی زفت</string>
     <string name="up_next">بئڌی</string>
+    <string name="app_widget_circle">دایره</string>
+    <string name="app_widget_circle_desc">ی پشک کوننده گرد وا کونتورولایی ک داور هو در اخورن</string>
+    <string name="app_widget_cookie">کیلیچه</string>
+    <string name="app_widget_cookie_desc">جلد و عونوان ی کیلیچه گپ، کونتورولا داور وو ورسه گرؽڌنه</string>
+    <string name="app_widget_grid">شبکه</string>
+    <string name="app_widget_grid_desc">کونتورولا آسار هونری، پشک وو رڌ وابیڌن من چار سلۊل</string>
+    <string name="app_widget_library">کتاوهووه</string>
+    <string name="app_widget_library_desc">شبکه‌ای ز جلدا ز نومگهی ک پسند اکۊنین</string>
+    <string name="app_widget_nothing_playing">هیچی پشک نؽبۊ</string>
+    <string name="app_widget_tap_to_play">سی گۊشیڌن Booming Music زربه بزنین</string>
+    <string name="welcome_to">خش ٱوۊڌین و</string>
+    <string name="permissions_title">موجوزا موورد نیاز</string>
+    <string name="permissions_subtitle">سی بؽڌرین تجروبه پشک، و فایلا آرنگ وو دسگایل نهنگ خوتووݩ دسرسی بڌین.</string>
+    <string name="initial_configuration_title">سامووݩ ٱولیه</string>
+    <string name="initial_configuration_subtitle">پؽش ز شۊرۊع، Booming Music ن باو دل خوتووݩ سفارشی کۊنین.</string>
+    <string name="initial_configuration_note">هی ترین ای سامووا ن دینداتر هم آلشت کۊنین.</string>
+    <string name="restore_from_backup">وورگندن ز نوسخه لادرار</string>
+    <string name="reorder_action">ترتیب دووارته</string>
+    <string name="go_to_current_track">رئڌن و آرنگ هیم سکویی</string>
+    <string name="top_tracks_label">آرنگا برتر</string>
+    <string name="not_recently_played">ای دمۊویا پشک نوابیڌه</string>
+    <string name="track_play_counts">تعداد پشک آرنگ</string>
+    <string name="sort_order_name">نوم</string>
+    <string name="sort_order_descending">نۊزۊلی</string>
+    <string name="sort_order_ignore_articles">نیڌه گرؽڌن مقالات</string>
+    <string name="action_hierarchy_view">نما سلسله مراتبی</string>
+    <string name="scan_media_message">من بیشتر مووردا، Android و هالت خوتکار فایلا وارسگر ن من دسگا ایسا اشناسه وو نومگه اکونه، سی دل یو لنگ اسکن دستی نؽڌی.</string>
+    <string name="metadata_label">متادیتا</string>
+    <string name="restart_app_message">برنومه سی ٱنجوم ای کار، دووارته ره اۊفته.</string>
+    <plurals name="albums">
+        <item quantity="one">آلبوم</item>
+        <item quantity="other">آلبوما</item>
+    </plurals>
+    <plurals name="x_artists">
+        <item quantity="one">%d هونرمند</item>
+        <item quantity="other">%d هونرمندووݩ</item>
+    </plurals>
+    <plurals name="x_times">
+        <item quantity="one">%d زمووݩ</item>
+        <item quantity="other">%d زمووا</item>
+    </plurals>
+    <plurals name="x_plays">
+        <item quantity="one">%d پشک</item>
+        <item quantity="other">%d پشکا</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="one">%d موورد</item>
+        <item quantity="other">%d مووردا</item>
+    </plurals>
+    <plurals name="x_playlists_selected">
+        <item quantity="one">%d نومگه پشک پسند وابیڌه</item>
+        <item quantity="other">%d نومگه پشک پسند وابیڌه</item>
+    </plurals>
+    <string name="top_artists">هونرمندووݩ برتر</string>
+    <string name="top_albums">آلبوما برتر</string>
+    <string name="shuffle_mode_most_played_artists_description">آرنگا هونرمندووݩ برتر ایسا ن موورد پسند دووه.</string>
+    <string name="shuffle_mode_favorite_songs_description">و آرنگا موورد دلخا ایسا اولویت اده.</string>
+    <string name="shuffle_mode_forgotten_songs_description">آرنگایی ک موڌتی هڌ ک پشک نکردین ن اولویت اده.</string>
+    <string name="shuffle_mode_combined_description">و ری مووردا دلخا، نمایشنومه وو مووردا دمۊوی بشؽونین.</string>
+    <string name="an_unexpected_error_occurred">ی ختا یهاوی پؽش ٱووڌ.</string>
+    <string name="are_you_sure_you_want_to_reset_the_equalizer">الن اخۊین اکولایزر ن وورنشۊوی کۊنین؟ \n\nوا ای کار پوی پوروفایلا ایسا پاک ابۊن.</string>
+    <string name="eq_engine_basic_description">ی سامووݩ کلاسیک 5 باند ک سی هدکسر سازگاری وا دسگا تراهی وابیڌه.</string>
+    <string name="eq_engine_precision_title">موتور دییق</string>
+    <string name="action_about">زبار</string>
+    <string name="about_title">زبار</string>
+    <string name="bit_perfect_info">بیت کامل: %1$s | %2$s</string>
+    <string name="skip_silence_title">ز بؽ دونگ بیڌن بوگوڌرت</string>
+    <string name="downloaded_lyrics">دانلود وابی</string>
+    <string name="file_lyrics">فایل</string>
+    <string name="enable_audio_offload_title">Offload آرنگی</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="lrc_file_lyrics">LRC</string>
+    <string name="undo_changes">لقو آلشتکاریا</string>
+    <string name="search_lyrics">پیتینیڌن هؽل آرنگ</string>
+    <string name="failed_to_update_lyrics">هؽل آرنگ ورۊ رسۊوی نوابی.</string>
+    <string name="there_are_no_changes_to_save">هیچ آلشتکاری سی زفت کردن وۊجۊد نڌاره.</string>
+    <string name="font_imported_successfully">فونت وا مووفقیت و من ٱوورده وابی.</string>
+    <string name="could_not_import_font">فونت و من ٱوورده نوابی.</string>
+    <string name="lastfm_login_username">نوم منتوری</string>
+    <string name="lastfm_login_password">رزم</string>
+    <string name="lastfm_login_toggle_password_visibility">قابلیت نیشتن رزم ن آلشت کۊنین</string>
+    <string name="listenbrainz_token_label">توکن منتور</string>
+    <string name="sleep_timer_stop_after_x">واڌاشتن بئڌ ز %s</string>
+    <string name="sleep_timer_stop_after_x_canceled">واڌاشتن بئڌ ز %s: لقو وابی</string>
+    <string name="app_shortcut_shuffle_all_short">پشک تساڌۊفی</string>
+    <string name="app_shortcut_top_tracks_short">آرنگا برتر</string>
+    <string name="app_shortcut_last_added_short">ازاف وابیڌه دیندایی</string>
+    <string name="app_shortcut_favorites_short">مووردا دلخا</string>
+    <string name="app_version_x">نوسخه %s</string>
+    <string name="changelog">آلشتکاریا</string>
+    <string name="github">GitHub</string>
+    <string name="faq">سوالا موتداول</string>
+    <string name="website">وبگه</string>
+    <string name="licenses">لایسنس</string>
+    <string name="legal">قانۊوی</string>
+    <string name="terms_of_service">شرتا و کار گرؽڌن سرویس</string>
+    <string name="author">هؽل کون</string>
+    <string name="mardous_summary">برنومه نویس ٱسلی</string>
+    <string name="contributors">شرکت کوننده یل</string>
+    <string name="more_contributors_title">شرکت کوننده یل قلوه</string>
+    <string name="more_contributors_summary">ترین نومگه کامل شرکت کوننده یل ن من GitHub بنیرین.</string>
+    <string name="translators_title">ولرنی کارووݩ</string>
+    <string name="translators_summary">ممنووݩ دار هونووی هڌیم ک Booming Music ن و زووا موختلف من دسرس انن.</string>
+    <string name="telegram_community">ٱنجومن تلگرام</string>
+    <string name="telegram_community_summary">و ٱنجومن تلگرام ایما بیاین تا ز هوالا نۊ وو نوسخه یل نۊ هوال دار بۊین.</string>
+    <string name="view_profile_on_github">پوروفایل ن من GitHub بنیرین</string>
+    <string name="write_an_email">ی ایمیل هؽل کۊنین</string>
 </resources>

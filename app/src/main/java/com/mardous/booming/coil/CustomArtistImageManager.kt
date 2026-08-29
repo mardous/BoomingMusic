@@ -26,7 +26,7 @@ class CustomArtistImageManager(private val context: Context) {
 
     private val contentResolver get() = context.contentResolver
     private val imagesPreferences by lazy {
-        context.getSharedPreferences("custom_artist_images", Context.MODE_PRIVATE)
+        context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
     }
     private val signaturesPreferences by lazy {
         context.getSharedPreferences("artist_signatures", Context.MODE_PRIVATE)
@@ -107,6 +107,15 @@ class CustomArtistImageManager(private val context: Context) {
         } ?: false
     }
 
+    fun getImageFiles(): List<File> {
+        val imagesDir = FileUtil.customArtistImagesDirectory()
+        if (imagesDir != null) {
+            return imagesDir.listFiles { it.extension == IMAGE_EXTENSION }
+                ?.toList() ?: emptyList()
+        }
+        return emptyList()
+    }
+
     private fun Artist.updateHasImage(hasImage: Boolean) {
         imagesPreferences.edit(true) {
             putBoolean(getFileName(), hasImage)
@@ -117,19 +126,19 @@ class CustomArtistImageManager(private val context: Context) {
     }
 
     private fun Artist.getFileName(): String {
-        return "${name}.jpeg".sanitize()
+        return "${name}.$IMAGE_EXTENSION".sanitize()
     }
 
     private fun Artist.getLegacyFileName(): String {
-        return String.format(Locale.US, "#%d#%s.jpeg", id, name).sanitize()
+        return String.format(Locale.US, "#%d#%s.$IMAGE_EXTENSION", id, name).sanitize()
     }
 
     private fun ArtistImage.getFileName(): String {
-        return "${name}.jpeg".sanitize()
+        return "${name}.$IMAGE_EXTENSION".sanitize()
     }
 
     private fun ArtistImage.getLegacyFileName(): String {
-        return String.format(Locale.US, "#%d#%s.jpeg", id, name).sanitize()
+        return String.format(Locale.US, "#%d#%s.$IMAGE_EXTENSION", id, name).sanitize()
     }
 
     private fun File.deleteQuietly() = try {
@@ -141,5 +150,7 @@ class CustomArtistImageManager(private val context: Context) {
 
     companion object {
         private const val MAX_BITMAP_SIZE = 2048
+        const val PREFERENCE_NAME = "custom_artist_images"
+        private const val IMAGE_EXTENSION = "jpeg"
     }
 }

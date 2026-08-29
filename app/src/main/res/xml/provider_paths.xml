@@ -9,4 +9,9 @@
     <external-cache-path
         name="exported_profiles"
         path="exports/" />
+
+    <!-- For sharing backup files -->
+    <external-cache-path
+        name="backups"
+        path="backups/" />
 </paths>

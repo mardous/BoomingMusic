@@ -31,6 +31,8 @@ import com.mardous.booming.data.repository.LyricsRepository
 import com.mardous.booming.extensions.files.belongsTo
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.extensions.utilities.sanitize
+import com.mardous.booming.util.FileTypeVerifier
+import com.mardous.booming.util.FileUtil
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -173,7 +175,7 @@ class LyricsViewModel(
     fun importCustomFont(context: Context, uri: Uri) = liveData(IO) {
         try {
             val defaultName = "custom_font_${System.currentTimeMillis()}.ttf"
-            val fontsDir = File(context.filesDir, "fonts").apply { mkdirs() }
+            val fontsDir = FileUtil.fontsDirectory() ?: return@liveData
             val rawFileName = context.contentResolver.query(uri, null, null, null, null)
                 ?.use { cursor ->
                     if (cursor.moveToFirst()) {
@@ -192,13 +194,7 @@ class LyricsViewModel(
             // 2. Magic-byte check before choosing any destination path or writing
             if (isValid) {
                 context.contentResolver.openInputStream(uri)?.use { input ->
-                    val header = ByteArray(4)
-                    if (input.read(header) == 4) {
-                        val hex = header.joinToString("") { "%02X".format(it) }
-                        isValid = hex == "00010000" || hex == "4F54544F" // TTF or OTF
-                    } else {
-                        isValid = false
-                    }
+                    isValid = with(FileTypeVerifier) { input.isFontFile() }
                 }
             }
 

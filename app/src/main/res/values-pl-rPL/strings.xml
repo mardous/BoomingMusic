@@ -32,7 +32,7 @@
     <string name="search_year_x_label">Szukaj w roku: %s</string>
     <string name="search_in_folder_x">Szukaj w folderze: %s</string>
     <string name="search_last_added">Szukaj w ostatnio dodanych</string>
-    <string name="shuffle_mode_album">Przetasowanie albumu</string>
+    <string name="shuffle_mode_album">Losowe odtwarzanie albumu</string>
     <string name="shuffle_mode_artist">Losuj wykonawcę</string>
     <string name="action_share">Udostępnij</string>
     <string name="action_save">Zapisz</string>
@@ -283,10 +283,10 @@
     <string name="connection_unavailable">Połączenie niedostępne.</string>
     <string name="you_have_to_select_at_least_one_category">Musisz wybrać co najmniej jedną kategorię</string>
     <string name="you_cannot_select_more_than_five_categories">Nie możesz wybrać więcej niż pięciu kategorii.</string>
-    <string name="backup_settings">Ustawienia</string>
-    <string name="backup_synced_lyrics">Zsynchronizowane teksty</string>
-    <string name="backup_artist_images">Obrazy artysty</string>
-    <string name="backup_playlists">Listy odtwarzania</string>
+
+
+
+
     <string name="backup_successful">Kopia zapasowa zakończona!</string>
     <string name="backup_failed">Nie udało się stworzyć kopii zapasowej.</string>
     <string name="select_content_to_restore">Wybierz zawartość do przywrócenia:</string>
@@ -371,8 +371,8 @@
     <string name="shuffle_mode_recently_added">Ostatnio dodane</string>
     <string name="shuffle_mode_combined">Inteligentny miks</string>
     <string name="shuffle_mode_pure_random_description">Całkowicie losowe odtwarzanie.</string>
-    <string name="shuffle_mode_most_played_description">Faworyzuje najczęściej odtwarzane utwory.</string>
-    <string name="shuffle_mode_most_played_artists_description">Faworyzuje utwory ulubionych artystów.</string>
+    <string name="shuffle_mode_most_played_description">Daje pierwszeństwo najczęściej odtwarzanym utworom.</string>
+    <string name="shuffle_mode_most_played_artists_description">Daje pierwszeństwo utworom ulubionych artystów.</string>
     <string name="shuffle_mode_most_played_albums_description">Faworyzuje utwory z najczęściej odtwarzanych albumów.</string>
     <string name="shuffle_mode_favorite_songs_description">Nadaje priorytet Twoim ulubionym utworom.</string>
     <string name="shuffle_mode_forgotten_songs_description">Faworyzuje utwory, których ostatnio nie odtwarzałeś.</string>
@@ -552,7 +552,7 @@
     <string name="audio_focus_header">Priorytet audio</string>
     <string name="shuffle_mode_header">Tryb losowy</string>
     <string name="display_header">Wyświetlanie</string>
-    <string name="backup_restore_header">Kopia zapasowa/przywracanie danych</string>
+
     <string name="visuals_header">Wizualne</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Motyw ogólny</string>
@@ -734,10 +734,10 @@
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać utwór, by wyświetlić go twojej bibliotece.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Język aplikacji</string>
-    <string name="backup_data_title">Utwórz kopię zapasową</string>
-    <string name="backup_app_data_summary">Utwórz plik z niezbędnymi danymi aplikacji i zapisz go w pamięci zewnętrznej.</string>
-    <string name="restore_backup_title">Przywróć kopię zapasową</string>
-    <string name="restore_backup_summary">Przywróć dane aplikacji (i stan) z wcześniejszej kopii zapasowej.</string>
+
+
+
+
     <string name="stop_when_closed_from_recents_title">Zatrzymaj odtwarzanie po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią lub baterią mogą to zignorować i zatrzymać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>
@@ -1009,4 +1009,5 @@
     <string name="initial_configuration_note">Wszystkie te ustawienia możesz zmienić później.</string>
     <string name="restore_from_backup">Przywróć z kopii zapasowej</string>
     <string name="network_features_summary">Włącza scrobblowanie oraz pobieranie okładek albumów i tekstów utworów.</string>
+    <string name="listenbrainz_toggle_token_visibility">Przełącz widoczność tokenu</string>
 </resources>

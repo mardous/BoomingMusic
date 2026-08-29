@@ -143,6 +143,7 @@
     <string name="no_audio_ID">Bad audio ID.</string>
     <string name="playback_error_code">Playback error (%s).</string>
     <string name="unplayable_file">Couldn\'t play this song.</string>
+    <string name="invalid_search_params">The search params could not be processed.</string>
     <string name="permission_external_storage_title">Storage Access</string>
     <string name="permission_external_storage_description">The app needs permission to access your device storage for playing music</string>
     <string name="permission_external_storage_denied">You must grant permission to access external storage.</string>
@@ -330,17 +331,6 @@
     <string name="connection_unavailable">Connection unavailable.</string>
     <string name="you_have_to_select_at_least_one_category">You have to select at least one category</string>
     <string name="you_cannot_select_more_than_five_categories">You can\'t select more than five categories.</string>
-    <string name="backup_settings">Settings</string>
-    <string name="backup_synced_lyrics">Synced lyrics</string>
-    <string name="backup_artist_images">Artist images</string>
-    <string name="backup_playlists">Playlists</string>
-    <string name="backup_successful">Backup successful!</string>
-    <string name="backup_failed">Backup failed.</string>
-    <string name="select_content_to_restore">Select content to restore:</string>
-    <string name="could_not_restore_data">Couldn\'t not restore data. Verify backup file and retry.</string>
-    <string name="data_restored_successfully">Data restored successfully.</string>
-    <string name="restoring_data">Restoring your data…</string>
-    <string name="restart_app_message">The app will restart to complete the process.</string>
     <string name="action_toggle_playlist_lock">Lock/unlock playlist</string>
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
@@ -678,7 +668,6 @@
     <string name="audio_focus_header">Audio focus</string>
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
-    <string name="backup_restore_header">Backup/restore</string>
     <string name="visuals_header">Visuals</string>
     <string name="update_title">Update</string>
     <string name="images_title">Images</string>
@@ -941,10 +930,39 @@
     <string name="lyrics_cleared">Lyrics cleared.</string>
 
     <string name="app_language_title">App language</string>
-    <string name="backup_data_title">Backup app data</string>
-    <string name="backup_app_data_summary">Create a file containing essential app data and save it to external storage.</string>
-    <string name="restore_backup_title">Restore backup</string>
-    <string name="restore_backup_summary">Restore app data (and state) from a previous backup.</string>
+    <string name="backup_restore_title">Backup and restore</string>
+    <string name="backup_restore_summary">Manage app data backup and restore.</string>
+    <string name="no_backup_folder_selected">No backup folder selected</string>
+    <string name="select_backup_folder">Select backup folder</string>
+    <string name="no_backups_found">No backups found in this folder.</string>
+    <string name="backup_recent_list">Recent backups</string>
+    <string name="backup_file_name">File name (optional)</string>
+    <string name="create_new_backup">Create backup</string>
+    <string name="open_backup">Open backup</string>
+    <string name="share_backup">Share backup</string>
+    <string name="cannot_share_this_backup">Cannot share this backup.</string>
+    <string name="confirm_delete_backup">Delete this backup?</string>
+    <string name="backup_deleted_successfully">Backup deleted successfully.</string>
+    <string name="could_not_delete_backup">Could not delete backup.</string>
+    <string name="select_content_to_backup">Select content to backup:</string>
+    <string name="backup_successful">Backup successful!</string>
+    <string name="backup_failed">Backup failed.</string>
+    <string name="backup_content_settings">App settings</string>
+    <string name="backup_content_lyrics">Synced lyrics</string>
+    <string name="backup_content_play_info">Playback stats.</string>
+    <string name="backup_content_playlists">Playlists</string>
+    <string name="backup_content_artist_images">Artist images</string>
+    <string name="backup_app_version">Created in</string>
+    <string name="backup_warning_legacy_format">This backup format is considered legacy.
+        For now, you can restore it, but we may stop supporting it in the future.</string>
+    <string name="backup_warning_ver_newer">The backup format is newer than what this version of Booming Music can handle.</string>
+    <string name="backup_warning_app_ver_newer">This backup was created in a newer version of Booming Music.
+        Restoring it in this version may result in errors or incomplete data restoration.</string>
+    <string name="select_content_to_restore">Select content to restore:</string>
+    <string name="restoring_data">Restoring your data…</string>
+    <string name="could_not_restore_data">Couldn\'t not restore data. Verify backup file and retry.</string>
+    <string name="data_restored_successfully">Data restored successfully.</string>
+    <string name="restart_app_message">The app will restart to complete the process.</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory

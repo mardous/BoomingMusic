@@ -32,8 +32,8 @@ import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
 typealias RestorationListener = (MediaItemsWithStartPosition, ShuffleOrder?) -> Unit
 
-@UnstableApi
 @OptIn(ExperimentalAtomicApi::class)
+@androidx.annotation.OptIn(UnstableApi::class)
 class PersistentStorage(
     context: Context,
     private val coroutineScope: CoroutineScope,
@@ -327,15 +327,15 @@ class PersistentStorage(
 
     companion object {
         private const val TAG = "PersistentStorage"
-        private const val PREFERENCE_NAME = "playback_state"
+        const val PREFERENCE_NAME = "playback_state"
 
         /** Guards [awaitPendingSave] against a player that keeps queueing new writes. */
         private const val MAX_SAVE_WAITS = 5
 
-        const val REPEAT_MODE = "repeat_mode"
-        const val SHUFFLE_MODE = "shuffle_mode"
-        const val SHUFFLE_ORDER = "shuffle_order"
-        const val POSITION_IN_TRACK = "position_in_track"
-        const val LAST_INDEX = "last_index"
+        private const val REPEAT_MODE = "repeat_mode"
+        private const val SHUFFLE_MODE = "shuffle_mode"
+        private const val SHUFFLE_ORDER = "shuffle_order"
+        private const val POSITION_IN_TRACK = "position_in_track"
+        private const val LAST_INDEX = "last_index"
     }
 }

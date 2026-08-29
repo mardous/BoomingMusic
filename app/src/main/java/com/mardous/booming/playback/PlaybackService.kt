@@ -554,12 +554,8 @@ class PlaybackService :
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
         session.denyUntrusted<Void>(browser)?.let { return it }
-        return serviceScope.future(IO) {
-            runCatching { libraryProvider.search(browser.uid, query) }
-                .onSuccess { session.notifySearchResultChanged(browser, query, it.size, params) }
-
-            LibraryResult.ofVoid()
-        }
+        session.notifySearchResultChanged(browser, query, 0, params)
+        return Futures.immediateFuture(LibraryResult.ofVoid())
     }
 
     override fun onGetSearchResult(
@@ -571,9 +567,14 @@ class PlaybackService :
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
         session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
-        return Futures.immediateFuture(
-            LibraryResult.ofItemList(libraryProvider.searchResult(browser.uid), params)
-        )
+        return serviceScope.future(IO) {
+            val result = runCatching { libraryProvider.getSearchResult(query, page, pageSize) }
+            if (result.isSuccess) {
+                LibraryResult.ofItemList(result.getOrThrow(), params)
+            } else {
+                LibraryResult.ofError(SessionError.ERROR_UNKNOWN)
+            }
+        }
     }
 
     override fun onAddMediaItems(
@@ -607,8 +608,9 @@ class PlaybackService :
             var resolvedMediaItems: MediaItemsWithStartPosition? = null
             if (mediaItems.size == 1) {
                 resolvedMediaItems = libraryProvider.tryToResolveComplexMediaItems(
-                    callerUid = controller.uid,
-                    mediaItems = mediaItems
+                    mediaItems = mediaItems,
+                    startIndex = startIndex,
+                    startPositionMs = startPositionMs
                 )
             }
             resolvedMediaItems ?: MediaItemsWithStartPosition(
@@ -1302,21 +1304,11 @@ class PlaybackService :
     }
 
     companion object {
-        private const val PACKAGE_NAME = "com.mardous.booming"
-
-        const val ACTION_PLAY_SONG = "$PACKAGE_NAME.action.ACTION_PLAY_SONG"
-        const val EXTRA_SONG_ID = "$PACKAGE_NAME.extra.SONG_ID"
-        const val EXTRA_SONG_SOURCE = "$PACKAGE_NAME.extra.SONG_SOURCE"
-
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "playing_notification"
 
-        private const val TAG = "PlaybackService"
-
         private const val MAX_RETRY_COUNT_AFTER_ERROR = 3
-
         private const val REWIND_INSTEAD_PREVIOUS_MILLIS = 5000L
-
         private const val FOREGROUND_SERVICE_TIMEOUT = (60 * 1000) * 2L
     }
 }

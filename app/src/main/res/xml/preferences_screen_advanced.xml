@@ -20,24 +20,11 @@
         app:widgetLayout="@layout/preference_switch"
         app:key="enable_rotation_lock"/>
 
-    <PreferenceCategory
-        app:title="@string/backup_restore_header"
-        app:layout="@layout/preference_category_title">
-
-        <Preference
-            app:title="@string/backup_data_title"
-            app:summary="@string/backup_app_data_summary"
-            app:persistent="false"
-            app:layout="@layout/list_item_view"
-            app:key="backup_data"/>
-
-        <Preference
-            app:title="@string/restore_backup_title"
-            app:summary="@string/restore_backup_summary"
-            app:persistent="false"
-            app:layout="@layout/list_item_view"
-            app:key="restore_data"/>
-
-    </PreferenceCategory>
+    <Preference
+        app:title="@string/backup_restore_title"
+        app:summary="@string/backup_restore_summary"
+        app:persistent="false"
+        app:layout="@layout/list_item_view"
+        app:key="backup_and_restore" />
 
 </PreferenceScreen>

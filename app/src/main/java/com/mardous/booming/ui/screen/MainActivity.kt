@@ -1,10 +1,14 @@
 package com.mardous.booming.ui.screen
 
+import android.app.SearchManager
 import android.content.Intent
 import android.content.pm.ShortcutManager
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.annotation.OptIn
 import androidx.core.content.getSystemService
+import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionCommand
@@ -18,6 +22,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.MediaEvent
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.data.model.ContentType
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.extensions.currentFragment
@@ -28,9 +33,10 @@ import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.playback.Playback
 import com.mardous.booming.playback.library.MediaIDs
-import com.mardous.booming.core.model.shuffle.OpenShuffleMode
+import com.mardous.booming.playback.library.SearchQueryProvider
 import com.mardous.booming.ui.IScrollHelper
 import com.mardous.booming.ui.component.base.AbsSlidingMusicPanelActivity
+import com.mardous.booming.ui.screen.library.search.SearchFragment
 import com.mardous.booming.ui.screen.update.UpdateDialog
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
@@ -192,6 +198,7 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
         handlePlaybackIntent(intent, false)
     }
 
+    @Suppress("DEPRECATION")
     private fun handlePlaybackIntent(intent: Intent, canRestorePlayback: Boolean) {
         when (intent.action) {
             ACTION_SHOW_CONTENT -> {
@@ -204,20 +211,63 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
 
             APP_SHORTCUT_LAST_ADDED -> {
                 playerViewModel.playMediaId(MediaIDs.LAST_ADDED)
+                ShortcutManagerCompat.reportShortcutUsed(this, "last_added")
                 setIntent(Intent())
             }
             APP_SHORTCUT_TOP_TRACKS -> {
                 playerViewModel.playMediaId(MediaIDs.TOP_TRACKS)
+                ShortcutManagerCompat.reportShortcutUsed(this, "top_tracks")
                 setIntent(Intent())
             }
             APP_SHORTCUT_SHUFFLE -> {
                 playerViewModel.playMediaId(MediaIDs.SONGS, true)
+                ShortcutManagerCompat.reportShortcutUsed(this, "shuffle_all")
                 setIntent(Intent())
             }
             APP_SHORTCUT_FAVORITES -> {
                 playerViewModel.playMediaId(MediaIDs.FAVORITES, true)
+                ShortcutManagerCompat.reportShortcutUsed(this, "favorites")
                 setIntent(Intent())
             }
+
+            Intent.ACTION_SEARCH -> {
+                val query = intent.getStringExtra(SearchManager.QUERY)
+                whichFragment<NavHostFragment>(R.id.fragment_container).navController
+                    .navigate(
+                        R.id.nav_search,
+                        Bundle().apply { putString(SearchFragment.QUERY, query) }
+                    )
+                setIntent(Intent())
+            }
+
+            MediaStore.INTENT_ACTION_MEDIA_SEARCH,
+            MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH -> {
+                SearchQueryProvider.handleSearchIntent(intent) { mainQuery, subQueries ->
+                    if (mainQuery == null) {
+                        showToast(R.string.invalid_search_params)
+                    } else {
+                        if (intent.action == MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH) {
+                            playerViewModel.playMediaItem(
+                                MediaItem.Builder()
+                                    .setRequestMetadata(
+                                        MediaItem.RequestMetadata.Builder()
+                                            .setSearchQuery(mainQuery)
+                                            .setExtras(subQueries)
+                                            .build()
+                                    )
+                                    .build()
+                            )
+                        } else {
+                            whichFragment<NavHostFragment>(R.id.fragment_container).navController
+                                .navigate(
+                                    R.id.nav_search,
+                                    Bundle().apply { putString(SearchFragment.QUERY, mainQuery) }
+                                )
+                        }
+                    }
+                }
+            }
+
             else -> {
                 libraryViewModel.handleIntent(intent).observe(this) { result ->
                     if (result.handled) {

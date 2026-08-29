@@ -273,18 +273,22 @@ class PlayerViewModel(
         }
     }
 
-    fun playMediaId(mediaId: String, shuffleMode: Boolean = false) {
+    fun playMediaItem(mediaItem: MediaItem, shuffleMode: Boolean = false) {
         mediaController?.let { controller ->
             controller.shuffleModeEnabled = shuffleMode
-            controller.setMediaItem(
-                MediaItem.Builder()
-                    .setMediaId(mediaId)
-                    .build(),
-                true
-            )
+            controller.setMediaItem(mediaItem, true)
             controller.prepare()
             controller.play()
         }
+    }
+
+    fun playMediaId(mediaId: String, shuffleMode: Boolean = false) {
+        playMediaItem(
+            mediaItem = MediaItem.Builder()
+                .setMediaId(mediaId)
+                .build(),
+            shuffleMode = shuffleMode
+        )
     }
 
     fun openQueue(

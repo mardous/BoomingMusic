@@ -5,7 +5,7 @@ import androidx.core.content.edit
 
 object WidgetConfigStore {
 
-    private const val FILE_NAME = "widget_config"
+    const val PREFERENCES_NAME = "widget_config"
 
     fun read(context: Context, appWidgetId: Int, settings: List<WidgetSetting>): WidgetConfig {
         val preferences = preferences(context)
@@ -52,7 +52,7 @@ object WidgetConfigStore {
     }
 
     private fun preferences(context: Context) =
-        context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
+        context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     private fun key(appWidgetId: Int, setting: WidgetSetting) = "${appWidgetId}_${setting.key}"
 
