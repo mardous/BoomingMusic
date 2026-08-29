@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">Truy cập hình ảnh (tùy chọn)</string>
     <string name="permission_read_images_summary">Quyền này là bắt buộc để Booming Music tìm các tệp ảnh bìa album trong thư mục nhạc của mày. Nếu bạn không định dùng tính năng này, bạn có thể chọn không cấp quyền.</string>
     <string name="permission_read_images_denied">Bạn phải cấp quyền truy cập hình ảnh từ thiết bị.</string>
-
-
     <string name="permissions_denied">Quyền truy cập bị từ chối</string>
     <string name="permissions_needed">Cần có quyền tuy cập</string>
     <string name="grant_access_action">Cấp quyền truy cập</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">Không thể kết nối.</string>
     <string name="you_have_to_select_at_least_one_category">Bạn phải chọn ít nhất một mục</string>
     <string name="you_cannot_select_more_than_five_categories">Bạn không thể chọn quá năm mục.</string>
-
-
-
-
     <string name="backup_successful">Sao lưu thành công!</string>
     <string name="backup_failed">Sao lưu thất bại.</string>
     <string name="select_content_to_restore">Chọn nội dung cần khôi phục:</string>
@@ -530,7 +524,6 @@
     <string name="audio_focus_header">Ưu tiên âm thanh</string>
     <string name="shuffle_mode_header">Chế độ ngẫu nhiên</string>
     <string name="display_header">Hiển thị</string>
-
     <string name="visuals_header">Hiệu ứng trực quan</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">General theme</string>
@@ -712,10 +705,6 @@
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Ngôn ngữ ứng dụng</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>

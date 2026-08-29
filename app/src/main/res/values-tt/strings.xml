@@ -135,8 +135,6 @@
     <string name="permission_read_images_title">Сурәтләр уку (мөмкинлекле)</string>
     <string name="permission_read_images_summary">Бу рөхсәт сезнең музыкаль папкаларыгызда альбомнар тышлыгын эзләү өчен Booming Music кирәк. Әгәр дә сез бу функцияне кулланырга җыенмыйсыз икән, сез аны тәкъдим итә аласыз.</string>
     <string name="permission_read_images_denied">Сез җайланмадан сурәтләр укырга рөхсәт бирергә тиешсез.</string>
-
-
     <string name="permissions_denied">Рөхсәтләр кире кагылды</string>
     <string name="permissions_needed">Рөхсәт таләп ителә</string>
     <string name="grant_access_action">Керү мөмкинлеге бирү</string>
@@ -302,11 +300,7 @@
     <string name="sort_order_number_of_albums">Альбом саны</string>
     <string name="sort_order_track_list">Трек чираты</string>
     <string name="sort_order_ignore_articles">Мәкалә игътибарсыз калдыру</string>
-
     <string name="lastfm_biography_summary">Last.fm белән артистларның һәм альбомнарның биографияләрен алырга.</string>
-
-
-
     <string name="backup_successful">Уңышлы бекап!</string>
     <string name="backup_failed">Ялгышлы бекап.</string>
     <string name="select_content_to_restore">Торгызу өчен контентны сайлагыз:</string>
@@ -334,33 +328,6 @@
     <string name="audio_device_headset">Үткәргечле колаксалар</string>
     <string name="audio_device_usb_device">USB-җайланма</string>
     <string name="audio_device_usb_headset">USB-колаксалар</string>
-    <plurals name="songs">
-        <item quantity="other">Җыр</item>
-    </plurals>
-    <plurals name="albums">
-        <item quantity="other">Альбом</item>
-    </plurals>
-    <plurals name="x_songs">
-        <item quantity="other">%d җыр</item>
-    </plurals>
-    <plurals name="x_albums">
-        <item quantity="other">%d альбом</item>
-    </plurals>
-    <plurals name="x_artists">
-        <item quantity="other">%d артист</item>
-    </plurals>
-    <plurals name="x_times">
-        <item quantity="other">%d тапкыр</item>
-    </plurals>
-    <plurals name="x_plays">
-        <item quantity="other">%d уйнау</item>
-    </plurals>
-    <plurals name="x_items">
-        <item quantity="other">%d әйбер</item>
-    </plurals>
-    <plurals name="x_playlists_selected">
-        <item quantity="other">%d плейлист сайлаган</item>
-    </plurals>
     <string name="home_label">Баш бит</string>
     <string name="shuffle_action">Болгатырга</string>
     <string name="top_artists">Иң яхшы артистлар</string>
@@ -415,7 +382,7 @@
     <string name="shuffle_mode_recently_added_description">Күптән түгел өстәлгән җырларга сайлау.</string>
     <string name="shuffle_mode_combined_description">Сайланган, тыңлау һәм күптән түгел өстәлгән микс.</string>
     <string name="change_band_count_title">Юллар санын үзгәртергә</string>
-    <string name="change_band_count_message">Юлларның санын үзгәртү агымдагы юнәлешне башлангыч халәткә алып ташлаячак. Юлларның агымдагы конфигурациясе өчен сакланган теләсә нинди башка профильләрне яңа конфигурация белән кулланырга ярамый. \n\nСез дәвам итәргә телисезме?</string>
+    <string name="change_band_count_message">Юлларның санын үзгәртү агымдагы юнәлешне башлангыч халәткә алып ташлаячак. Юлларның агымдагы конфигурациясе өчен сакланган теләсә нинди башка профильләрне яңа конфигурация белән кулланырга ярамый. \n\nСез дәвам итәргә телисезме?</string>
     <string name="band_configuration_changed_successfully">Юлларның конфигурациясе уңышлы үзгәртергән.</string>
     <string name="band_configuration_could_not_be_changed">Юлларның конфигурациясе үзгәртергә чыкмады.</string>
     <string name="share_eq_profiles">Эквалайзер профильләр белән бүлешү</string>
@@ -614,7 +581,6 @@
     <string name="exclusion_header">Чыгару очраклар</string>
     <string name="controls_header">Идарә итү</string>
     <string name="display_header">Күрсәтү</string>
-
     <string name="visuals_header">Визуаль эффектлар</string>
     <string name="update_title">Яңарту</string>
     <string name="images_title">Сурәтләр</string>

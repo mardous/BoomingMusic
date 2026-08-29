@@ -283,10 +283,6 @@
     <string name="connection_unavailable">Połączenie niedostępne.</string>
     <string name="you_have_to_select_at_least_one_category">Musisz wybrać co najmniej jedną kategorię</string>
     <string name="you_cannot_select_more_than_five_categories">Nie możesz wybrać więcej niż pięciu kategorii.</string>
-
-
-
-
     <string name="backup_successful">Kopia zapasowa zakończona!</string>
     <string name="backup_failed">Nie udało się stworzyć kopii zapasowej.</string>
     <string name="select_content_to_restore">Wybierz zawartość do przywrócenia:</string>
@@ -552,7 +548,6 @@
     <string name="audio_focus_header">Priorytet audio</string>
     <string name="shuffle_mode_header">Tryb losowy</string>
     <string name="display_header">Wyświetlanie</string>
-
     <string name="visuals_header">Wizualne</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Motyw ogólny</string>
@@ -734,10 +729,6 @@
     <string name="min_song_duration_summary">Ile sekund (przynajmniej) musi trwać utwór, by wyświetlić go twojej bibliotece.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Język aplikacji</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Zatrzymaj odtwarzanie po zamknięciu z ostatnich</string>
     <string name="stop_when_closed_from_recents_summary">Zatrzymuje odtwarzanie po zamknięciu aplikacji z listy ostatnich aplikacji.</string>
     <string name="stop_when_closed_from_recents_note">Uwaga: niektóre urządzenia z agresywnym zarządzaniem pamięcią lub baterią mogą to zignorować i zatrzymać aplikację po usunięciu jej z ekranu ostatnich aplikacji.</string>

@@ -283,10 +283,6 @@
     <string name="connection_unavailable">连接不可用。</string>
     <string name="you_have_to_select_at_least_one_category">至少需要选择一个类别</string>
     <string name="you_cannot_select_more_than_five_categories">不能选择超过五个类别。</string>
-
-
-
-
     <string name="backup_successful">备份成功！</string>
     <string name="backup_failed">备份失败。</string>
     <string name="select_content_to_restore">选择要还原的内容：</string>
@@ -528,7 +524,6 @@
     <string name="audio_focus_header">音频焦点</string>
     <string name="shuffle_mode_header">随机模式</string>
     <string name="display_header">显示</string>
-
     <string name="visuals_header">视觉效果</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">一般主题</string>
@@ -710,10 +705,6 @@
     <string name="min_song_duration_summary">歌曲时长需要至少有多少秒才会显示在曲库中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">应用语言</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">从“最近应用”关闭应用后停止播放</string>
     <string name="stop_when_closed_from_recents_summary">从“最近应用”视图关闭此应用后停止播放歌曲。</string>
     <string name="stop_when_closed_from_recents_note">注意：某些内存管理或电池管理较为严格的设备可能会忽略此设置，并在从最近使用的应用列表中移除时始终停止应用。</string>

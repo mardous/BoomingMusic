@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">Görselleri okuma (isteğe bağlı)</string>
     <string name="permission_read_images_summary">Booming Music\'in müzik klasörlerinizdeki albüm kapağı dosyalarını bulabilmesi için bu izin gereklidir. Bu özelliği kullanmayı planlamıyorsanız, izin vermemeyi seçebilirsiniz.</string>
     <string name="permission_read_images_denied">Cihazdan görselleri okuma izni vermelisiniz.</string>
-
-
     <string name="permissions_denied">İzinler reddedildi</string>
     <string name="permissions_needed">İzinler gerekli</string>
     <string name="grant_access_action">Erişim izni ver</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">Bağlantı yok.</string>
     <string name="you_have_to_select_at_least_one_category">En az bir kategori seçmelisiniz</string>
     <string name="you_cannot_select_more_than_five_categories">Beşten fazla kategori seçemezsiniz.</string>
-
-
-
-
     <string name="backup_successful">Yedekleme başarılı!</string>
     <string name="backup_failed">Yedekleme başarısız.</string>
     <string name="select_content_to_restore">Geri yüklenecek içeriği seçin:</string>
@@ -538,7 +532,6 @@
     <string name="audio_focus_header">Ses odağı</string>
     <string name="shuffle_mode_header">Karıştırma modu</string>
     <string name="display_header">Ekran</string>
-
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Genel tema</string>
@@ -720,10 +713,6 @@
     <string name="min_song_duration_summary">Bir şarkının kütüphanenizde gösterilmesi için en az kaç saniye sürmesi gerekir.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Uygulama dili</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Son uygulamalardan kapatılınca durdur</string>
     <string name="stop_when_closed_from_recents_summary">Uygulama son uygulamalar listesinden kapatılırsa oynatma durur.</string>
     <string name="stop_when_closed_from_recents_note">Not: Agresif bellek veya pil yönetimine sahip bazı cihazlar bu ayarı yoksayabilir ve son uygulamalardan kaldırıldığında uygulamayı her zaman durdurabilir.</string>

@@ -135,8 +135,6 @@
     <string name="permission_read_images_title">خواندن تصاویر (اختیاری)</string>
     <string name="permission_read_images_summary">این مجوز برای Booming Music لازم است تا فایل‌های هنری آلبوم را در پوشه‌های موسیقی شما پیدا کند. اگر قصد استفاده از این ویژگی را ندارید، می توانید آن را اعطا نکنید.</string>
     <string name="permission_read_images_denied">برای خواندن تصاویر از دستگاه باید اجازه دهید.</string>
-
-
     <string name="permissions_denied">مجوزها رد شد</string>
     <string name="permissions_needed">مجوزهای مورد نیاز</string>
     <string name="grant_access_action">اجازه دسترسی</string>
@@ -295,10 +293,6 @@
     <string name="connection_unavailable">اتصال در دسترس نیست.</string>
     <string name="you_have_to_select_at_least_one_category">شما باید حداقل یک دسته را انتخاب کنید</string>
     <string name="you_cannot_select_more_than_five_categories">شما نمی توانید بیش از پنج دسته را انتخاب کنید.</string>
-
-
-
-
     <string name="backup_successful">پشتیبان گیری با موفقیت انجام شد!</string>
     <string name="backup_failed">پشتیبان گیری انجام نشد.</string>
     <string name="select_content_to_restore">انتخاب محتوا برای بازیابی:</string>
@@ -548,7 +542,6 @@
     <string name="audio_focus_header">فوکوس صوتی</string>
     <string name="shuffle_mode_header">حالت مخلوط کردن</string>
     <string name="display_header">نمایش</string>
-
     <string name="visuals_header">تصاویری</string>
     <string name="update_title">به روز رسانی</string>
     <string name="images_title">تصاویر</string>
@@ -760,10 +753,6 @@
     <string name="delete_downloaded_lyrics_summary">فقط اشعار دانلود شده توسط Booming Music. بر اشعار تعبیه شده در برچسب های ID3v2 یا فایل های LRC تأثیری نمی گذارد.</string>
     <string name="lyrics_cleared">متن ترانه پاک شد.</string>
     <string name="app_language_title">زبان برنامه</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">وقتی از موارد اخیر بسته شد، متوقف شود</string>
     <string name="stop_when_closed_from_recents_summary">اگر برنامه از لیست جدید بسته شود، پخش متوقف می شود.</string>
     <string name="stop_when_closed_from_recents_note">توجه: برخی از دستگاه‌های دارای حافظه تهاجمی یا مدیریت باتری ممکن است این تنظیم را نادیده بگیرند و هنگامی که از برنامه‌های اخیر حذف می‌شوند، همیشه برنامه را متوقف می‌کنند.</string>

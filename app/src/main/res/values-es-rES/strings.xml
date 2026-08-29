@@ -276,10 +276,6 @@
     <string name="connection_unavailable">Conexión no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debe seleccionar al menos una categoría</string>
     <string name="you_cannot_select_more_than_five_categories">No puede seleccionar más de cinco categorías.</string>
-
-
-
-
     <string name="backup_successful">¡Copia de seguridad exitosa!</string>
     <string name="backup_failed">Copia de seguridad fallida.</string>
     <string name="select_content_to_restore">Seleccionar contenido para restaurar:</string>
@@ -537,7 +533,6 @@
     <string name="audio_focus_header">Enfoque de audio</string>
     <string name="shuffle_mode_header">Modo aleatorio</string>
     <string name="display_header">Mostrar</string>
-
     <string name="visuals_header">Visuales</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema general</string>
@@ -719,10 +714,6 @@
     <string name="min_song_duration_summary">Cuántos segundos (como mínimo) debe tener una canción para que aparezca en la fonoteca.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Idioma de la aplicación</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Detener cuando se cierra desde recientes</string>
     <string name="stop_when_closed_from_recents_summary">La reproducción se detiene si la aplicación está cerrada de la lista de recientes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Algunos dispositivos con memoria agresiva o administración de batería pueden ignorar esta configuración y siempre detener la aplicación cuando se quita de los recientes.</string>

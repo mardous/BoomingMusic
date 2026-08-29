@@ -283,10 +283,6 @@
     <string name="connection_unavailable">Verbinding niet beschikbaar.</string>
     <string name="you_have_to_select_at_least_one_category">Je moet ten minste één categorie selecteren</string>
     <string name="you_cannot_select_more_than_five_categories">U kunt niet meer dan vijf categorieën selecteren.</string>
-
-
-
-
     <string name="backup_successful">Back-up succesvol!</string>
     <string name="backup_failed">Back-up mislukt.</string>
     <string name="select_content_to_restore">Selecteer inhoud om te herstellen:</string>
@@ -536,7 +532,6 @@
     <string name="audio_focus_header">Audio focus</string>
     <string name="shuffle_mode_header">Shuffle modus</string>
     <string name="display_header">Weergeven</string>
-
     <string name="visuals_header">Visuelen</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Algemeen thema</string>
@@ -718,10 +713,6 @@
     <string name="min_song_duration_summary">Hoeveel seconden (tenminste) moet er een nummer meegaan in je bibliotheek.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App taal</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Stop bij sluiten van recente apps</string>
     <string name="stop_when_closed_from_recents_summary">Afspelen stopt als de app is gesloten vanuit de lijst met recente programma\'s.</string>
     <string name="stop_when_closed_from_recents_note">Opmerking: Sommige apparaten met agressief geheugen of accubeheer kunnen deze instelling negeren en de app altijd stoppen wanneer deze uit recente apps wordt verwijderd.</string>

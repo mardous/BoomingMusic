@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">קריאת תמונות (אופציונלי)</string>
     <string name="permission_read_images_summary">הרשאה זו נדרשת כדי ש־Booming Music תוכל למצוא קובצי עטיפות אלבומים בתיקיות המוזיקה שלך. אם אינך מתכנן להשתמש בפונקציה זו, אפשר לבחור לא לאשר אותה.</string>
     <string name="permission_read_images_denied">עליך להעניק הרשאה לקריאת תמונות מהמכשיר.</string>
-
-
     <string name="permissions_denied">הרשאות נדחו</string>
     <string name="permissions_needed">הרשאות נדרשות</string>
     <string name="grant_access_action">הענק גישה</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">החיבור אינו זמין.</string>
     <string name="you_have_to_select_at_least_one_category">עליך לבחור לפחות קטגוריה אחת</string>
     <string name="you_cannot_select_more_than_five_categories">לא ניתן לבחור יותר מחמש קטגוריות.</string>
-
-
-
-
     <string name="backup_successful">הגיבוי הצליח!</string>
     <string name="backup_failed">הגיבוי נכשל.</string>
     <string name="select_content_to_restore">בחר תוכן לשחזור:</string>
@@ -546,7 +540,6 @@
     <string name="audio_focus_header">מיקוד שמע</string>
     <string name="shuffle_mode_header">מצב ערבוב</string>
     <string name="display_header">תצוגה</string>
-
     <string name="visuals_header">ויזואליים</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">ערכת נושא כללית</string>
@@ -728,10 +721,6 @@
     <string name="min_song_duration_summary">כמה שניות (לפחות) שיר חייב להימשך כדי שיוצג בספרייה שלך.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">שפת האפליקציה</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">עצור כאשר נסגר מהאחרונים</string>
     <string name="stop_when_closed_from_recents_summary">הניגון ייעצר אם האפליקציה תיסגר מרשימת האחרונים.</string>
     <string name="stop_when_closed_from_recents_note">הערה: במכשירים מסוימים עם ניהול זיכרון או סוללה אגרסיבי, ייתכן שהגדרה זו תתעלם והאפליקציה תיעצר תמיד כאשר מסירים אותה מהרשימה האחרונה.</string>

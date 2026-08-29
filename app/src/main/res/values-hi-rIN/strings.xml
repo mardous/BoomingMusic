@@ -127,8 +127,6 @@
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-
-
     <string name="permissions_denied">अनुमतियाँ अस्वीकृत</string>
     <string name="permissions_needed">अनुमतियाँ आवश्यक हैं</string>
     <string name="grant_access_action">अनुज्ञा प्रदान करें</string>
@@ -285,10 +283,6 @@
     <string name="connection_unavailable">कनेक्शन अनुपलब्ध है।</string>
     <string name="you_have_to_select_at_least_one_category">आपको कम से कम एक श्रेणी चुननी होगी</string>
     <string name="you_cannot_select_more_than_five_categories">आप पाँच से अधिक श्रेणियाँ नहीं चुन सकते।</string>
-
-
-
-
     <string name="backup_successful">बैकअप सफल रहा!</string>
     <string name="backup_failed">बैकअप विफल हो गया</string>
     <string name="select_content_to_restore">बैकअप से बहाल करने के लिए सामग्री चुनें:</string>
@@ -538,7 +532,6 @@
     <string name="audio_focus_header">ऑडियो फ़ोकस</string>
     <string name="shuffle_mode_header">शफल मोड</string>
     <string name="display_header">डिस्प्ले</string>
-
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">जनरल थीम</string>
@@ -720,10 +713,6 @@
     <string name="min_song_duration_summary">आपकी लाइब्रेरी में दिखाने के लिए एक गाने को कितने सेकंड (कम से कम) तक चलना चाहिए?</string>
     <!-- Remote preferences -->
     <string name="app_language_title">ऐप की भाषा</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
