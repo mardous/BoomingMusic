@@ -144,7 +144,7 @@
     <string name="speed_and_pitch_label">Gibkość i wysokość klangu</string>
     <string name="no_lyrics_found">Niy znŏdło tekstu śpiywki</string>
     <string name="app_shortcut_top_tracks_short">Najczynścij grane</string>
-    <string name="faq">Czynste pytania</string>
+    <string name="faq">Cz. pytania</string>
     <string name="share_app">Udostympnij ta aplikacyjo</string>
     <string name="resume_on_connect_title">Puść dalij po połōnczyniu</string>
     <string name="image_size_large">Wielgi (pōwolniejszy)</string>
@@ -155,4 +155,16 @@
     <string name="initial_configuration_note">Wszystke te sztalowania możesz zmjynić niyskorzyj.</string>
     <string name="restore_from_backup">Prziwrōć z kopije zapasowej</string>
     <string name="app_widget_tap_to_play">Tyknij, coby ôdewrzić Booming Music</string>
+    <string name="web_search">Wysznupej w necu</string>
+    <string name="action_add_to_playing_queue">Przidaj do raji</string>
+    <string name="added_title_to_playing_queue">Przidano 1 śpiywka do raji.</string>
+    <string name="added_x_titles_to_playing_queue">Przidano śpiywki do raji: %1$d</string>
+    <string name="label_last_modified">Ôstatniŏ modyfikacyjŏ</string>
+    <string name="sound_settings">Nasztalowania klangu</string>
+    <string name="listening_on">Granie na</string>
+    <string name="volume_label">Głośność</string>
+    <string name="balance_left">Lewo</string>
+    <string name="balance_right">Prawo</string>
+    <string name="sleep_timer_set_action">Nastŏw</string>
+    <string name="player_color_mode_simple_color_title">Prostŏ farba</string>
 </resources>
