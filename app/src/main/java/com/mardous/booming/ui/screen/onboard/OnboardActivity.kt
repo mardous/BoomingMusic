@@ -39,6 +39,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.core.os.LocaleListCompat
+import java.util.Locale
 
 /**
  * @author Christians M. A. (mardous)
@@ -88,8 +89,10 @@ class OnboardActivity : AbsBaseActivity() {
     }
 }
 private fun detectLegacySilesian(prefs: SharedPreferences) {
-    val systemLocale = Resources.getSystem().configuration.locales[0]
-    if (systemLocale.toLanguageTag() == "pl-SP") {
+    val isAuto = AppCompatDelegate.getApplicationLocales().isEmpty
+    if (!isAuto) return
+    val systemLocale: Locale? = Resources.getSystem().configuration.locales[0]
+    if (systemLocale?.toLanguageTag() == "pl-SP") {
         prefs.edit { putString(LANGUAGE_NAME, "szl") }
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("szl"))
     }
