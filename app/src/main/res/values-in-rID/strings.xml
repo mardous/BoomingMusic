@@ -283,10 +283,6 @@
     <string name="connection_unavailable">Koneksi tidak tersedia.</string>
     <string name="you_have_to_select_at_least_one_category">Anda harus memilih setidaknya satu kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Anda tidak dapat memilih lebih dari lima kategori.</string>
-
-
-
-
     <string name="backup_successful">Pencadangan berhasil!</string>
     <string name="backup_failed">Pencadangan gagal.</string>
     <string name="select_content_to_restore">Pilih konten yang ingin dipulihkan:</string>
@@ -528,7 +524,6 @@
     <string name="audio_focus_header">Fokus audio</string>
     <string name="shuffle_mode_header">Mode acak</string>
     <string name="display_header">Tampilan</string>
-
     <string name="visuals_header">Visual</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Tema umum</string>
@@ -710,10 +705,6 @@
     <string name="min_song_duration_summary">Berapa detik (minimal) yang harus dimiliki lagu untuk ditampilkan di perpustakaan Anda.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Bahasa aplikasi</string>
-
-
-
-
     <string name="stop_when_closed_from_recents_title">Hentikan saat ditutup dari recents</string>
     <string name="stop_when_closed_from_recents_summary">Pemutaran berhenti jika aplikasi ditutup dari daftar recents.</string>
     <string name="stop_when_closed_from_recents_note">Catatan: Beberapa perangkat dengan manajemen memori atau baterai yang agresif mungkin mengabaikan pengaturan ini dan selalu menghentikan aplikasi saat dihapus dari recents.</string>
@@ -943,13 +934,13 @@
     <string name="app_widget_library">Pustaka</string>
     <string name="app_widget_library_desc">Kisi sampul dari daftar yang Anda pilih</string>
     <string name="app_widget_nothing_playing">Tidak ada yang sedang diputar</string>
-    <string name="app_widget_tap_to_play">Ketuk untuk membuka Booming</string>
+    <string name="app_widget_tap_to_play">Ketuk untuk membuka Booming Music</string>
     <string name="action_auto_fill_from_musicbrainz">Isi otomatis dari MusicBrainz</string>
     <string name="searching">Mencari…</string>
     <string name="musicbrainz_search_title">Pencarian MusicBrainz</string>
     <string name="musicbrainz_search_message">Cari metadata lagu di MusicBrainz menggunakan judul dan artis.</string>
     <string name="musicbrainz_no_results">Tidak ada hasil yang ditemukan di MusicBrainz.</string>
-    <string name="musicbrainz_select_recording">Pilih rekaman</string>
+    <string name="musicbrainz_select_recording">Pilih hasil</string>
     <string name="permissions_subtitle">Berikan akses ke file musik dan perangkat di sekitar Anda untuk mendapatkan pengalaman pemutaran terbaik.</string>
     <string name="initial_configuration_title">Konfigurasi Awal</string>
     <string name="initial_configuration_subtitle">Sesuaikan Booming Music sesuai keinginan Anda sebelum memulai.</string>
@@ -962,7 +953,7 @@
     <string name="terms_of_service">Ketentuan Layanan</string>
     <string name="privacy_policy">Kebijakan Privasi</string>
     <string name="widget_settings_title">Pengaturan widget</string>
-    <string name="widget_show_progress_title">Tampilkan linimasa</string>
+    <string name="widget_show_progress_title">Tampilkan progres</string>
     <string name="widget_show_progress_summary">Tampilkan progres trek yang sedang diputar.</string>
     <string name="widget_show_controls_title">Tampilkan kontrol</string>
     <string name="widget_show_controls_summary">Tampilkan tombol pemutaran.</string>
@@ -981,4 +972,29 @@
     <string name="widget_page_previous">Lagu sebelumnya</string>
     <string name="widget_page_next">Lagu berikutnya</string>
     <string name="network_features_summary">Mengaktifkan scrobbling serta pengunduhan sampul album dan lirik.</string>
+    <string name="listenbrainz_toggle_token_visibility">Alihkan visibilitas token</string>
+    <string name="backup_restore_title">Cadangkan dan pulihkan</string>
+    <string name="backup_restore_summary">Kelola pencadangan dan pemulihan data aplikasi.</string>
+    <string name="no_backup_folder_selected">Tidak ada folder cadangan yang dipilih</string>
+    <string name="select_backup_folder">Pilih folder cadangan</string>
+    <string name="no_backups_found">Tidak ditemukan cadangan di folder ini.</string>
+    <string name="backup_recent_list">Cadangan terbaru</string>
+    <string name="backup_file_name">Nama file (opsional)</string>
+    <string name="create_new_backup">Buat cadangan</string>
+    <string name="open_backup">Buka cadangan</string>
+    <string name="share_backup">Bagikan cadangan</string>
+    <string name="cannot_share_this_backup">Tidak dapat membagikan cadangan ini.</string>
+    <string name="confirm_delete_backup">Hapus cadangan ini?</string>
+    <string name="backup_deleted_successfully">Cadangan berhasil dihapus.</string>
+    <string name="could_not_delete_backup">Gagal menghapus cadangan.</string>
+    <string name="select_content_to_backup">Pilih konten untuk dicadangkan:</string>
+    <string name="backup_content_settings">Pengaturan aplikasi</string>
+    <string name="backup_content_lyrics">Lirik tersinkronisasi</string>
+    <string name="backup_content_play_info">Statistik pemutaran.</string>
+    <string name="backup_content_playlists">Daftar putar</string>
+    <string name="backup_content_artist_images">Gambar artis</string>
+    <string name="backup_app_version">Dibuat di</string>
+    <string name="backup_warning_legacy_format">Format cadangan ini dianggap lawas. Saat ini Anda masih dapat memulihkannya, namun kami mungkin akan menghentikan dukungannya di masa mendatang.</string>
+    <string name="backup_warning_ver_newer">Format cadangan lebih baru daripada yang dapat ditangani oleh versi Booming Music ini.</string>
+    <string name="backup_warning_app_ver_newer">Cadangan ini dibuat di versi Booming Music yang lebih baru. Memulihkannya di versi ini dapat menyebabkan kesalahan atau pemulihan data yang tidak lengkap.</string>
 </resources>
