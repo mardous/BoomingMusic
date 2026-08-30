@@ -24,17 +24,19 @@ object Constants {
     const val SUPPORT_EMAIL = "support@boomingmusic.org"
 
     // App-related URLs
+    const val WEBSITE_LINK = "https://www.boomingmusic.org"
+    const val CHANGELOG_LINK = "$WEBSITE_LINK/changelog"
+    const val TERMS_OF_SERVICE_LINK = "$WEBSITE_LINK/terms-of-service"
+    const val PRIVACY_POLICY_LINK = "$WEBSITE_LINK/privacy-policy"
+
     const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
     const val APP_GITHUB_URL = "https://www.github.com/mardous/BoomingMusic"
-    const val RELEASES_LINK = "$APP_GITHUB_URL/releases"
     const val ISSUE_TRACKER_LINK = "$APP_GITHUB_URL/issues"
     const val COMMUNITY_LINK = "$APP_GITHUB_URL/wiki/Community"
     const val FAQ_LINK = "$APP_GITHUB_URL/wiki/FAQ"
+
     const val TRANSLATIONS_LINK = "https://hosted.weblate.org/engage/booming-music/"
     const val TELEGRAM_LINK = "https://t.me/mardousdev"
-    const val WEBSITE_LINK = "https://www.boomingmusic.org"
-    const val TERMS_OF_SERVICE_LINK = "$WEBSITE_LINK/terms-of-service"
-    const val PRIVACY_POLICY_LINK = "$WEBSITE_LINK/privacy-policy"
 
     // External Links
     const val DOWNLOAD_URL = BuildConfig.DOWNLOAD_URL

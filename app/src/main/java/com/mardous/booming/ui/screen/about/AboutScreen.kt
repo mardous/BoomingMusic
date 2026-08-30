@@ -94,13 +94,13 @@ import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.util.Constants.APP_GITHUB_URL
 import com.mardous.booming.util.Constants.AUTHOR_GITHUB_URL
+import com.mardous.booming.util.Constants.CHANGELOG_LINK
 import com.mardous.booming.util.Constants.COMMUNITY_LINK
 import com.mardous.booming.util.Constants.DONATION_LINK
 import com.mardous.booming.util.Constants.DOWNLOAD_URL
 import com.mardous.booming.util.Constants.FAQ_LINK
 import com.mardous.booming.util.Constants.ISSUE_TRACKER_LINK
 import com.mardous.booming.util.Constants.PRIVACY_POLICY_LINK
-import com.mardous.booming.util.Constants.RELEASES_LINK
 import com.mardous.booming.util.Constants.SUPPORT_EMAIL
 import com.mardous.booming.util.Constants.TELEGRAM_LINK
 import com.mardous.booming.util.Constants.TERMS_OF_SERVICE_LINK
@@ -291,14 +291,12 @@ private fun BoomingMusicHeader(version: String) {
             horizontalArrangement = Arrangement.spacedBy(2.dp),
             modifier = Modifier.clip(RoundedCornerShape(16.dp))
         ) {
-            if (!App.isPlayStoreBuild()) {
-                AboutHeaderButton(
-                    icon = R.drawable.ic_history_24dp,
-                    label = stringResource(R.string.changelog),
-                    modifier = Modifier.weight(1f),
-                    onClick = { context.openUrl(RELEASES_LINK) }
-                )
-            }
+            AboutHeaderButton(
+                icon = R.drawable.ic_history_24dp,
+                label = stringResource(R.string.changelog),
+                modifier = Modifier.weight(1f),
+                onClick = { context.openUrl(CHANGELOG_LINK) }
+            )
 
             AboutHeaderButton(
                 icon = R.drawable.ic_github_circle_24dp,
