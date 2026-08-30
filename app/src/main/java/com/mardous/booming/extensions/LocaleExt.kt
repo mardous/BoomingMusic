@@ -15,6 +15,7 @@ private val displayTagOverrides = mapOf(
 )
 
 private val displayNameOverrides = mapOf(
+    "bqi" to "Luri Bakhtiari",
     "zh-Hans" to "中文（简体）",
     "zh-Hant" to "中文（繁體）"
 )
