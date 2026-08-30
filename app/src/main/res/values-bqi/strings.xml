@@ -56,7 +56,7 @@
     <string name="no_device_playlists">نومگه پشک وۊجۊڌ نڌاره</string>
     <string name="select_songs_title">آرنگا ن پسند کۊنین</string>
     <string name="playlist_x_is_empty">نومگه پشک %s پتی هڌ.</string>
-    <string name="action_play">بازی کۊنین</string>
+    <string name="action_play">پشک کۊنین</string>
     <string name="playlist_name_cannot_be_empty">نوم نومگه پشک نؽبۊ ک پتی بۊ</string>
     <string name="could_not_import_the_playlist_x">نومگه پشک «%s» و من نووڌ</string>
     <string name="there_are_no_importable_playlists">هیچ نومگه پشک قابل و وورگندنی وۊجۊڌ نڌاره.</string>
@@ -290,11 +290,11 @@
     <string name="audio_device_usb_headset">هدست USB</string>
     <plurals name="songs">
         <item quantity="one">آرنگ</item>
-        <item quantity="other">آرنگا</item>
+        <item quantity="other">آرنگ</item>
     </plurals>
     <plurals name="x_songs">
         <item quantity="one">%d آرنگ</item>
-        <item quantity="other">%d آرنگا</item>
+        <item quantity="other">%d آرنگ</item>
     </plurals>
     <string name="comment">منشڌ بنین</string>
     <string name="last_played">پشک دیندایی</string>
@@ -317,7 +317,8 @@
     <string name="could_not_restore_data">داده یل نوورگشتن. فایل لادرار ن تئییڌ کۊنین وو دووارته امتهووݩ کۊنین.</string>
     <string name="audio_device_bluetooth_a2dp">بۊلۊتۊس A2DP</string>
     <plurals name="x_albums">
-        <item quantity="other">آلبوما</item>
+        <item quantity="one">%d آلبوم</item>
+        <item quantity="other">%d آلبوم</item>
     </plurals>
     <string name="conductor">هادی</string>
     <string name="label_loss_less">زرر-کمتر</string>
@@ -442,7 +443,7 @@
     <string name="restart_app_message">برنومه سی ٱنجوم ای کار، دووارته ره اۊفته.</string>
     <plurals name="albums">
         <item quantity="one">آلبوم</item>
-        <item quantity="other">آلبوما</item>
+        <item quantity="other">آلبوم</item>
     </plurals>
     <plurals name="x_artists">
         <item quantity="one">%d هونرمند</item>
@@ -466,7 +467,7 @@
     </plurals>
     <string name="top_artists">هونرمندووݩ برتر</string>
     <string name="top_albums">آلبوما برتر</string>
-    <string name="shuffle_mode_most_played_artists_description">آرنگا هونرمندووݩ برتر ایسا ن موورد پسند دووه.</string>
+    <string name="shuffle_mode_most_played_artists_description">آرنگا هونرمندووݩ برتر ایسا ن اپسنده.</string>
     <string name="shuffle_mode_favorite_songs_description">و آرنگا موورد دلخا ایسا اولویت اده.</string>
     <string name="shuffle_mode_forgotten_songs_description">آرنگایی ک موڌتی هڌ ک پشک نکردین ن اولویت اده.</string>
     <string name="shuffle_mode_combined_description">و ری مووردا دلخا، نمایشنومه وو مووردا دمۊوی بشؽونین.</string>
@@ -518,4 +519,9 @@
     <string name="telegram_community_summary">و ٱنجومن تلگرام ایما بیاین تا ز هوالا نۊ وو نوسخه یل نۊ هوال دار بۊین.</string>
     <string name="view_profile_on_github">پوروفایل ن من GitHub بنیرین</string>
     <string name="write_an_email">ی ایمیل هؽل کۊنین</string>
+    <string name="enable_equalizer">EQ ن فعال کۊنین</string>
+    <string name="autoeq_profile_x_deleted">پوروفایل AutoEq \" %s\" پاک وابی.</string>
+    <string name="loudness_enhancer">تقویت کوننده</string>
+    <string name="bassboost_label">تقویت بیس</string>
+    <string name="virtualizer_label">مجازی ساز</string>
 </resources>
