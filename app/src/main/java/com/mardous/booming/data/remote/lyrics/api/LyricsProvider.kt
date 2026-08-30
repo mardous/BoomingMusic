@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Christians Martínez Alvarado
+ * Copyright (c) 2026 Christians Martínez Alvarado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +17,21 @@
 
 package com.mardous.booming.data.remote.lyrics.api
 
-import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.model.network.NetworkFeature
 
-interface LyricsApi {
-    val provider: LyricsProvider
-    suspend fun downloadLyrics(song: Song, title: String, artist: String): RawLyrics.Remote?
+enum class LyricsProvider(
+    val displayName: String,
+    private val networkFeature: NetworkFeature
+) {
+    LRCLib("LRCLib", NetworkFeature.Lyrics.LRCLib),
+    BetterLyrics("BetterLyrics", NetworkFeature.Lyrics.BetterLyrics),
+    Lyrically("Lyrically", NetworkFeature.Lyrics.Lyrically);
+
+    val isAvailableForCurrentPolicy get() = networkFeature.isAvailableForCurrentPolicy
+    val isEnabled get() = networkFeature.isEnabled
+
+    companion object {
+        val AvailableProviders: List<LyricsProvider>
+            get() = LyricsProvider.entries.filter { it.isAvailableForCurrentPolicy }
+    }
 }

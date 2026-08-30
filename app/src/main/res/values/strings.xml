@@ -535,6 +535,7 @@
     <string name="search_lyrics">Search lyrics</string>
     <string name="choose_lyrics">Choose the type of lyrics</string>
     <string name="download_lyrics">Download lyrics</string>
+    <string name="allow_lyrics_download_from">Allow download from:</string>
     <string name="write_lyrics_here">Write lyrics here</string>
     <string name="no_lyrics_found">No lyrics found</string>
     <string name="lyrics_were_updated_successfully">Lyrics were updated successfully.</string>

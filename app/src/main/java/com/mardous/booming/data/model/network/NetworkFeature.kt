@@ -7,6 +7,7 @@ import android.net.NetworkCapabilities
 import androidx.core.content.getSystemService
 import com.mardous.booming.R
 import com.mardous.booming.util.Preferences
+import com.mardous.booming.util.Preferences.requireString
 import com.mardous.booming.util.UpdateSearchMode
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -22,14 +23,15 @@ sealed class NetworkFeature(
 
     open val isEnabled: Boolean
         get() {
-            val networkEnabledByDefault = get<Context>().resources
-                .getBoolean(R.bool.network_features_enabled_by_default)
+            val networkEnabledByDefault = boolResource(R.bool.network_features_enabled_by_default)
             return preferences.getBoolean(NETWORK_FEATURES_KEY, networkEnabledByDefault) &&
                     preferences.getBoolean(preferenceKey, isOnByDefault)
         }
 
     open val isAvailable: Boolean
-        get() = if (isEnabled) isOnline() else false
+        get() = if (isAvailableForCurrentPolicy && isEnabled) isOnline() else false
+
+    open val isAvailableForCurrentPolicy: Boolean get() = true
 
     protected fun boolResource(id: Int): Boolean {
         return get<Context>().resources.getBoolean(id)
@@ -46,8 +48,8 @@ sealed class NetworkFeature(
         object LRCLib : Lyrics(LRCLIB_ENABLED_KEY, true)
         object BetterLyrics : Lyrics(BETTERLYRICS_ENABLED_KEY, false)
         object Lyrically : Lyrics(LYRICALLY_ENABLED_KEY, false) {
-            override val isEnabled: Boolean
-                get() = boolResource(R.bool.enable_lyrically_provider) && super.isEnabled
+            override val isAvailableForCurrentPolicy: Boolean
+                get() = boolResource(R.bool.enable_lyrically_provider)
         }
     }
 
@@ -56,9 +58,8 @@ sealed class NetworkFeature(
         object Scrobbling : Lastfm(LASTFM_SCROBBLING_ENABLED_KEY, false)
         object NowPlaying : Lastfm(LASTFM_NOW_PLAYING_ENABLED_KEY, false)
         object Biographies : Lastfm(LASTFM_INFO_ENABLED_KEY, true)
-
-        override val isEnabled: Boolean
-            get() = boolResource(R.bool.enable_lastfm_integration) && super.isEnabled
+        override val isAvailableForCurrentPolicy: Boolean
+            get() = boolResource(R.bool.enable_lastfm_integration)
     }
 
     sealed class ListenBrainz(preferenceKey: String, isOnByDefault: Boolean) :
@@ -68,14 +69,16 @@ sealed class NetworkFeature(
     }
 
     data object Updater : NetworkFeature(UPDATE_SEARCH_MODE_KEY, false) {
-        override val isEnabled: Boolean
+        override val isAvailableForCurrentPolicy: Boolean
             get() = boolResource(R.bool.enable_builtin_updater)
 
-        override val isAvailable: Boolean
+        override val isEnabled: Boolean
             get() {
-                if (!isEnabled) return false
+                val networkEnabledByDefault = boolResource(R.bool.network_features_enabled_by_default)
+                val networkEnabled = preferences.getBoolean(NETWORK_FEATURES_KEY, networkEnabledByDefault)
+                if (!networkEnabled) return false
 
-                val updateMode = preferences.getString(preferenceKey, UpdateSearchMode.WEEKLY)
+                val updateMode = preferences.requireString(preferenceKey, UpdateSearchMode.WEEKLY)
                 val minElapsedMillis = when (updateMode) {
                     UpdateSearchMode.EVERY_DAY -> TimeUnit.DAYS.toMillis(1)
                     UpdateSearchMode.EVERY_FIFTEEN_DAYS -> TimeUnit.DAYS.toMillis(15)
@@ -84,10 +87,7 @@ sealed class NetworkFeature(
                     else -> -1
                 }
                 val elapsedMillis = System.currentTimeMillis() - Preferences.lastUpdateSearch
-                if ((minElapsedMillis > -1) && elapsedMillis >= minElapsedMillis) {
-                    return isOnline()
-                }
-                return false
+                return ((minElapsedMillis > -1) && elapsedMillis >= minElapsedMillis)
             }
     }
 

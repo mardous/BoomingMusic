@@ -18,6 +18,7 @@ import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
+import com.mardous.booming.data.remote.lyrics.LyricsProviderParams
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.util.Preferences.requireString
@@ -34,7 +35,7 @@ interface LyricsRepository {
     suspend fun fileLyrics(song: Song): RawLyrics.File?
     suspend fun embeddedLyrics(song: Song): RawLyrics.Embedded?
     suspend fun storedLyrics(song: Song, allowDownload: Boolean): RawLyrics.Stored?
-    suspend fun downloadLyrics(song: Song, searchTitle: String, searchArtist: String): RawLyrics.Remote?
+    suspend fun downloadLyrics(song: Song, searchTitle: String, searchArtist: String, providerParams: LyricsProviderParams): RawLyrics.Remote?
 
     suspend fun saveLyrics(
         song: Song,
@@ -154,8 +155,7 @@ class RealLyricsRepository(
             getCachedLyrics<RawLyrics.Stored>(LyricsSource.Downloaded, song.id)?.let { return it }
             val storedLyrics = lyricsDao.getLyrics(song.id)
             if (storedLyrics == null && allowDownload) {
-                val storableLyrics = lyricsDownloadService.remoteLyrics(song)
-                    .prepareToStore()
+                val storableLyrics = lyricsDownloadService.remoteLyrics(song).prepareToStore()
                 if (storableLyrics != null) {
                     if (storableLyrics.instrumental) {
                         lyricsDao.insertLyrics(
@@ -188,13 +188,14 @@ class RealLyricsRepository(
     override suspend fun downloadLyrics(
         song: Song,
         searchTitle: String,
-        searchArtist: String
+        searchArtist: String,
+        providerParams: LyricsProviderParams
     ): RawLyrics.Remote? {
         if (song.id == Song.emptySong.id || searchArtist.isArtistNameUnknown()) {
             return null
         }
         return try {
-            lyricsDownloadService.remoteLyrics(song, searchTitle, searchArtist, fromUser = true)
+            lyricsDownloadService.remoteLyrics(song, searchTitle, searchArtist, providerParams)
         } catch (_: Exception) {
             null
         }

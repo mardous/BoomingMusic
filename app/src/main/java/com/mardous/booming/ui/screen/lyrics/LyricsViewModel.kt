@@ -23,10 +23,8 @@ import com.mardous.booming.data.local.lyrics.InstrumentalDetector
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.model.lyrics.RawLyrics
-import com.mardous.booming.data.model.network.NetworkFeature
-import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.BetterLyrics
-import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.LRCLib
-import com.mardous.booming.data.model.network.NetworkFeature.Lyrics.Lyrically
+import com.mardous.booming.data.remote.lyrics.LyricsProviderParams
+import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.repository.LyricsRepository
 import com.mardous.booming.extensions.files.belongsTo
 import com.mardous.booming.extensions.media.isArtistNameUnknown
@@ -64,9 +62,6 @@ class LyricsViewModel(
     private val _lyricsEditorUiState = MutableStateFlow<LyricsEditorUiState>(LyricsEditorUiState.Disposed)
     val lyricsEditorUiState = _lyricsEditorUiState.asStateFlow()
 
-    private val _lyricsDownloadEnabled = MutableStateFlow(isLyricsDownloadEnabled())
-    val lyricsDownloadEnabled = _lyricsDownloadEnabled.asStateFlow()
-
     private val _saveEvent = Channel<LyricsEditorResult>(Channel.BUFFERED)
     val saveEvent = _saveEvent.receiveAsFlow()
 
@@ -92,7 +87,6 @@ class LyricsViewModel(
     override fun onCleared() {
         lyricsJob?.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
-        super.onCleared()
     }
 
     fun getSearchUrl(song: Song): String {
@@ -146,7 +140,7 @@ class LyricsViewModel(
         }
     }
 
-    fun downloadLyrics(song: Song, title: String, artist: String) =
+    fun downloadLyrics(song: Song, title: String, artist: String, providers: List<LyricsProvider>) =
         viewModelScope.launch(IO) {
             val uiState = _lyricsEditorUiState.updateAndGet {
                 if (it is LyricsEditorUiState.Visible) {
@@ -154,7 +148,12 @@ class LyricsViewModel(
                 } else it
             }
             if (uiState is LyricsEditorUiState.Visible) {
-                val onlineLyrics = repository.downloadLyrics(song, title, artist)
+                val providerParams = LyricsProviderParams(
+                    providers = providers,
+                    ignoreWifiSetting = true,
+                    ignoreProviderSetting = true
+                )
+                val onlineLyrics = repository.downloadLyrics(song, title, artist, providerParams)
                 if (onlineLyrics != null) {
                     _downloadEvent.send(onlineLyrics)
                 } else {
@@ -399,10 +398,6 @@ class LyricsViewModel(
         )
     }
 
-    private fun isLyricsDownloadEnabled(): Boolean {
-        return BetterLyrics.isEnabled || Lyrically.isEnabled || LRCLib.isEnabled
-    }
-
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when (key) {
             Key.ENABLE_SYLLABLE_LYRICS,
@@ -431,12 +426,6 @@ class LyricsViewModel(
             Key.SYNCED_FONT_SIZE_FULL,
             Key.UNSYNCED_FONT_SIZE_FULL -> {
                 _fullLyricsViewSettings.value = createViewSettings(LyricsViewMode.Full)
-            }
-            NetworkFeature.NETWORK_FEATURES_KEY,
-            NetworkFeature.BETTERLYRICS_ENABLED_KEY,
-            NetworkFeature.LYRICALLY_ENABLED_KEY,
-            NetworkFeature.LRCLIB_ENABLED_KEY -> {
-                _lyricsDownloadEnabled.value = isLyricsDownloadEnabled()
             }
             INSTRUMENTAL_TRACK_IDENTIFIERS,
             MARK_INSTRUMENTAL_BY_TITLE -> {

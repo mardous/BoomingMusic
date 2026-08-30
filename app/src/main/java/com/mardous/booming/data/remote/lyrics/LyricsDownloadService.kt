@@ -21,6 +21,7 @@ import android.util.Log
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.api.betterlyrics.BetterLyricsApi
 import com.mardous.booming.data.remote.lyrics.api.lrclib.LrcLibApi
 import com.mardous.booming.data.remote.lyrics.api.lyrically.LyricallyApi
@@ -29,12 +30,18 @@ import com.mardous.booming.extensions.media.extractMainArtistName
 import io.ktor.client.HttpClient
 import java.io.IOException
 
+class LyricsProviderParams(
+    val providers: List<LyricsProvider> = LyricsProvider.AvailableProviders,
+    val ignoreWifiSetting: Boolean = false,
+    val ignoreProviderSetting: Boolean = false
+)
+
 class LyricsDownloadService(client: HttpClient) {
 
-    private val lyricsApi = listOf(
-        LyricallyApi(client),
-        BetterLyricsApi(client),
-        LrcLibApi(client)
+    private val apiByProvider = mapOf(
+        LyricsProvider.Lyrically to LyricallyApi(client),
+        LyricsProvider.BetterLyrics to BetterLyricsApi(client),
+        LyricsProvider.LRCLib to LrcLibApi(client)
     )
 
     @Throws(IOException::class)
@@ -42,20 +49,22 @@ class LyricsDownloadService(client: HttpClient) {
         song: Song,
         title: String = song.title,
         artist: String = song.albumArtistName(),
-        fromUser: Boolean = false
+        providerParams: LyricsProviderParams = LyricsProviderParams()
     ): RawLyrics.Remote {
-        var result = RawLyrics.Remote()
+        check(providerParams.providers.isNotEmpty()) { "No providers configured" }
 
-        if (song == Song.emptySong || !NetworkFeature.isOnline(ignoreWifiSetting = fromUser))
+        var result = RawLyrics.Remote()
+        if (song == Song.emptySong || !NetworkFeature.isOnline(ignoreWifiSetting = providerParams.ignoreWifiSetting))
             return result
 
         try {
             val cleanedTitle = cleanTitle(title)
             val cleanedArtist = artist.extractMainArtistName()
-            for (api in lyricsApi) {
-                if (!api.networkFeature.isEnabled)
-                    continue
+            for (provider in providerParams.providers) {
+                if (!provider.isAvailableForCurrentPolicy ||
+                    (!provider.isEnabled && !providerParams.ignoreProviderSetting)) continue
 
+                val api = apiByProvider.getValue(provider)
                 val apiResult = runCatching { api.downloadLyrics(song, cleanedTitle, cleanedArtist) }
                 if (apiResult.isFailure) {
                     Log.e(TAG, "Error during lyrics request", apiResult.exceptionOrNull())

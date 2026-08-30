@@ -20,8 +20,8 @@ package com.mardous.booming.data.remote.lyrics.api.lyrically
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
-import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
+import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
@@ -46,8 +46,7 @@ import kotlin.math.abs
  */
 class LyricallyApi(private val client: HttpClient) : LyricsApi {
 
-    override val name: String = "Lyrically"
-    override val networkFeature = NetworkFeature.Lyrics.Lyrically
+    override val provider = LyricsProvider.Lyrically
 
     private val searchHelper = PaxsenixSearchHelper(client)
 
@@ -84,18 +83,18 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
 
     private fun parseLyricallyResponse(response: LyricallyLyricsResponse): RawLyrics.Remote {
         var lyrics = if (!response.ttml.isNullOrEmpty()) {
-            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.ttml))
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(provider.displayName, response.ttml))
         } else if (!response.elrcMultiPerson.isNullOrEmpty()) {
-            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.elrcMultiPerson))
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(provider.displayName, response.elrcMultiPerson))
         } else if (!response.elrc.isNullOrEmpty()) {
-            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.elrc))
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(provider.displayName, response.elrc))
         } else if (!response.lrc.isNullOrEmpty()) {
-            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, response.lrc))
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(provider.displayName, response.lrc))
         } else {
-            RawLyrics.Remote(synced = RawLyrics.Remote.Content(name, parseLyricallyContent(response)))
+            RawLyrics.Remote(synced = RawLyrics.Remote.Content(provider.displayName, parseLyricallyContent(response)))
         }
         if (!response.plain.isNullOrEmpty()) {
-            lyrics = lyrics.copy(plain = RawLyrics.Remote.Content(name, response.plain))
+            lyrics = lyrics.copy(plain = RawLyrics.Remote.Content(provider.displayName, response.plain))
         }
         return lyrics
     }
