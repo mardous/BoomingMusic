@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Accès au stockage</string>
     <string name="permission_external_storage_description">L\'application a besoin d\'une autorisation pour accéder au stockage de votre appareil pour écouter de la musique</string>
     <string name="permission_external_storage_denied">Vous devez accorder l’autorisation d’accéder au stockage externe.</string>
-    <string name="permission_bluetooth_title">Appareils à proximité</string>
+    <string name="permission_bluetooth_title">Appareils à proximité (facultatif)</string>
     <string name="permission_bluetooth_description">L\'application a besoin de l\'autorisation des appareils à proximité pour vérifier les appareils Bluetooth</string>
     <string name="permission_read_images_title">Lire les images (optionnel)</string>
     <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux. Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
@@ -1016,4 +1016,6 @@
     <string name="backup_warning_legacy_format">Ce format de sauvegarde est considéré comme obsolète. Pour l\'instant, vous pouvez encore restaurer vos données, mais il se peut que nous cessions de le prendre en charge à l\'avenir.</string>
     <string name="backup_warning_ver_newer">Le format de sauvegarde est plus récent que celui pris en charge par cette version de Booming Music.</string>
     <string name="backup_warning_app_ver_newer">Cette sauvegarde a été créée dans une version plus récente de Booming Music. Sa restauration dans cette version pourrait entraîner des erreurs ou une restauration incomplète des données.</string>
+    <string name="invalid_search_params">Les paramètres de recherche n\'ont pas pu être traités.</string>
+    <string name="restoring_data">Restauration de vos données…</string>
 </resources>
