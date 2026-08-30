@@ -79,8 +79,10 @@ class LibraryProvider(private val repository: Repository) {
     ): MediaItemsWithStartPosition? {
         try {
             val mediaItem = mediaItems.single()
-            if (!mediaItem.requestMetadata.searchQuery.isNullOrEmpty()) {
-                val songs = searchWithRequestMetadata(mediaItem.requestMetadata)
+            if (mediaItem.mediaId == MediaItem.DEFAULT_MEDIA_ID) {
+                val songs = if (mediaItem.requestMetadata.searchQuery?.trim() == "") {
+                    repository.allSongs()
+                } else searchWithRequestMetadata(mediaItem.requestMetadata)
                 if (songs.isNotEmpty()) {
                     return MediaItemsWithStartPosition(
                         songs.map { buildPlayableMediaItem(it) },
@@ -435,12 +437,14 @@ class LibraryProvider(private val repository: Repository) {
     }
 
     private suspend fun getPlayableMediaItems(parentId: String, childId: String? = null) =
-        getPlayableSongs(parentId, childId)
-            .filterNot { it == Song.emptySong }
-            .map { song ->
-                val parentPath = if (childId.isNullOrEmpty()) parentId else MediaIDs.getPathId(parentId, childId)
-                buildPlayableMediaItem(song, MediaIDs.getPathId(parentPath, song.id))
+        getPlayableSongs(parentId, childId).mapNotNull { song ->
+            song.takeIf { it != Song.emptySong }?.let { actualSong ->
+                val parentPath = if (childId.isNullOrEmpty()) parentId else {
+                    MediaIDs.getPathId(parentId, childId)
+                }
+                buildPlayableMediaItem(actualSong, MediaIDs.getPathId(parentPath, actualSong.id))
             }
+        }
 
     @OptIn(UnstableApi::class)
     private fun getMediaItemsWithStartPosition(
