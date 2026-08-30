@@ -61,12 +61,27 @@ jobs:
           fi
 
       - name: Upload Artifacts
+        if: matrix.variant != 'playstore'
         uses: actions/upload-artifact@v7
         with:
           name: artifacts-${{ matrix.variant }}-release
           path: |
             app/build/outputs/apk/*/release/BoomingMusic-*.apk
-            app/build/outputs/bundle/*/*.aab
+
+      - name: Upload AAB to Telegram
+        if: matrix.variant == 'playstore'
+        uses: xz-dev/TelegramFileUploader@f597b98950e55d2b15f2fc94d1410cb557d829e0 # v1.2.3
+        with:
+          to-who: ${{ secrets.TG_AAB_STORE_ID }}
+          message: |
+            📌 **Version:** `${{ github.ref_name }}`
+            🚀 **Run:** [Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          files: |
+            app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab
+        env:
+          API_ID: ${{ secrets.TG_API_ID }}
+          API_HASH: ${{ secrets.TG_API_HASH }}
+          BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
 
   publish-release:
     needs: build
