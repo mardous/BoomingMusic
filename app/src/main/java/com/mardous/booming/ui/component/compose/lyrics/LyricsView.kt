@@ -110,6 +110,7 @@ fun LyricsView(
             if (!isInDragGesture && !isScrollInProgress) {
                 val layoutInfo = listState.layoutInfo
                 val viewportHeight = with(layoutInfo) { viewportEndOffset - viewportStartOffset }
+                if (viewportHeight <= 0) return@LaunchedEffect
                 val bottomPadding = with(density) { contentPadding.calculateBottomPadding().toPx() }
                 val activeItem = layoutInfo.visibleItemsInfo.find { it.index == state.currentLineIndex }
                 if (activeItem != null) {

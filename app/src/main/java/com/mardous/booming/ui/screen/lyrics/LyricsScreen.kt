@@ -29,7 +29,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -99,22 +98,23 @@ private fun rememberLyricsViewState(lyrics: SyncedLyrics): LyricsViewState {
 
 @Composable
 fun rememberSmoothPlaybackPosition(
-    playerPosition: Long,
+    id: Long,
+    playerProgress: Long,
     playbackSpeed: Float,
     isPlaying: Boolean
-): State<Long> {
-    val position = remember { mutableLongStateOf(playerPosition) }
-    LaunchedEffect(playerPosition, isPlaying) {
+): Long {
+    var position by remember(id) { mutableLongStateOf(playerProgress) }
+    LaunchedEffect(id, playerProgress, isPlaying) {
         val baseRealtime = SystemClock.elapsedRealtime()
         if (!isPlaying) {
-            position.longValue = playerPosition
+            position = playerProgress
             return@LaunchedEffect
         }
 
         while (isActive) {
             withFrameNanos {
                 val elapsed = SystemClock.elapsedRealtime() - baseRealtime
-                position.longValue = playerPosition + (elapsed * playbackSpeed).toLong()
+                position = playerProgress + (elapsed * playbackSpeed).toLong()
             }
         }
     }
@@ -403,16 +403,18 @@ private fun LyricsSurface(
             is LyricsUiState.Synced -> {
                 val lyricsViewState = rememberLyricsViewState(uiState.syncedLyrics)
 
-                val playerPosition by playerViewModel.progressFlow.collectAsStateWithLifecycle()
+                val song by playerViewModel.currentSongFlow.collectAsStateWithLifecycle()
+                val playerProgress by playerViewModel.progressFlow.collectAsStateWithLifecycle()
                 val playbackSpeed by playerViewModel.playbackSpeed.collectAsStateWithLifecycle()
 
-                val smoothProgress by rememberSmoothPlaybackPosition(
-                    playerPosition = playerPosition,
+                val smoothProgress = rememberSmoothPlaybackPosition(
+                    id = song.id,
+                    playerProgress = playerProgress,
                     playbackSpeed = playbackSpeed,
                     isPlaying = isPlaying
                 )
 
-                LaunchedEffect(playerPosition) {
+                LaunchedEffect(playerProgress) {
                     lyricsViewState.updatePosition(smoothProgress)
                 }
 
