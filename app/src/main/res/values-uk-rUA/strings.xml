@@ -1016,4 +1016,16 @@
     <string name="confirm_delete_backup">Видалити цю резервну копію?</string>
     <string name="backup_deleted_successfully">Резервну копію успішно видалено.</string>
     <string name="could_not_delete_backup">Не вдалося видалити резервну копію.</string>
+    <string name="allow_lyrics_download_from">Дозволити завантаження з:</string>
+    <string name="select_content_to_backup">Виберіть вміст для резервного копіювання:</string>
+    <string name="backup_content_settings">Налаштування застосунку</string>
+    <string name="backup_content_lyrics">Синхронізовані тексти пісень</string>
+    <string name="backup_content_play_info">Статистика відтворення.</string>
+    <string name="backup_content_playlists">Списки відтворення</string>
+    <string name="backup_content_artist_images">Зображення виконавця</string>
+    <string name="backup_app_version">Дата створення</string>
+    <string name="backup_warning_legacy_format">Цей формат резервного копіювання вважається застарілим. Наразі ви можете його відновити, але в майбутньому ми можемо припинити його підтримку.</string>
+    <string name="backup_warning_ver_newer">Формат резервної копії новіший, ніж той, який підтримує ця версія Booming Music.</string>
+    <string name="backup_warning_app_ver_newer">Ця резервна копія була створена в новішій версії Booming Music. Відновлення її в цій версії може призвести до помилок або неповного відновлення даних.</string>
+    <string name="restoring_data">Відновлення ваших даних…</string>
 </resources>
