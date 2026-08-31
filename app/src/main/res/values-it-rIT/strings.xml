@@ -1010,4 +1010,5 @@
     <string name="backup_warning_ver_newer">Il formato di backup è più recente di quello che questa versione di Booming Music può gestire.</string>
     <string name="backup_warning_app_ver_newer">Questo backup è stato creato in una versione più recente di Booming Music. Ripristinarlo in questa versione potrebbe comportare errori o un ripristino parziale dei dati.</string>
     <string name="restoring_data">Ripristino dei tuoi dati…</string>
+    <string name="allow_lyrics_download_from">Consenti il download da:</string>
 </resources>
