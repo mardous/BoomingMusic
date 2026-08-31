@@ -1009,4 +1009,5 @@
     <string name="backup_warning_ver_newer">Het backupformat is nieuwer dan waar deze versie van Booming Music mee om kan gaan.</string>
     <string name="backup_warning_app_ver_newer">Deze backup is gemaakt in een nieuwere versie van Booming Music. Herstellen in deze versie kan fouten of incompleet gegevensherstel veroorzaken.</string>
     <string name="restoring_data">Gegevens herstellen…</string>
+    <string name="allow_lyrics_download_from">Sta download toe vanuit:</string>
 </resources>
