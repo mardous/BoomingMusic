@@ -1018,4 +1018,5 @@
     <string name="backup_warning_app_ver_newer">Cette sauvegarde a été créée dans une version plus récente de Booming Music. Sa restauration dans cette version pourrait entraîner des erreurs ou une restauration incomplète des données.</string>
     <string name="invalid_search_params">Les paramètres de recherche n\'ont pas pu être traités.</string>
     <string name="restoring_data">Restauration de vos données…</string>
+    <string name="allow_lyrics_download_from">Autoriser le téléchargement depuis :</string>
 </resources>
