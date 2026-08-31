@@ -1019,4 +1019,5 @@
     <string name="backup_warning_ver_newer">El formato de la copia de seguridad es más reciente de lo que esta versión de Booming Music puede manejar.</string>
     <string name="backup_warning_app_ver_newer">Esta copia de seguridad se creó en una versión más reciente de Booming Music. Restaurarla en esta versión podría provocar errores o una restauración incompleta de los datos.</string>
     <string name="restoring_data">Restaurando tus datos…</string>
+    <string name="allow_lyrics_download_from">Permitir descarga desde:</string>
 </resources>
