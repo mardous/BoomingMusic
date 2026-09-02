@@ -1001,4 +1001,21 @@
     <string name="restore_from_backup">Przywróć z kopii zapasowej</string>
     <string name="network_features_summary">Włącza scrobblowanie oraz pobieranie okładek albumów i tekstów utworów.</string>
     <string name="listenbrainz_toggle_token_visibility">Przełącz widoczność tokenu</string>
+    <string name="home_for_you_title">Dla Ciebie</string>
+    <string name="home_for_you_subtitle_2">Perełki wybrane specjalnie dla Ciebie</string>
+    <string name="home_for_you_subtitle_3">Twoja codzienna dawka muzycznej inspiracji</string>
+    <string name="home_forgotten_tracks_title">Odkryj na nowo</string>
+    <string name="backup_restore_title">Kopia zapasowa i przywracanie</string>
+    <string name="no_backup_folder_selected">Nie wybrano folderu do tworzenia kopii zapasowych</string>
+    <string name="select_backup_folder">Wybierz folder</string>
+    <string name="no_backups_found">Nie znaleziono kopii zapasowych w tym folderze.</string>
+    <string name="backup_recent_list">Ostatnie kopie zapasowe</string>
+    <string name="backup_file_name">Nazwa pliku (opcjonalna)</string>
+    <string name="create_new_backup">Utwórz</string>
+    <string name="open_backup">Przywróć</string>
+    <string name="share_backup">Udostępnij kopię zapasową</string>
+    <string name="cannot_share_this_backup">Nie udało się udostępnić kopii zapasowej.</string>
+    <string name="confirm_delete_backup">Usunąć tą kopię zapasową?</string>
+    <string name="backup_deleted_successfully">Usunięto kopię zapasową.</string>
+    <string name="could_not_delete_backup">Nie udało się usunąć kopii zapasowej.</string>
 </resources>
