@@ -106,6 +106,7 @@ import com.mardous.booming.util.Constants.TELEGRAM_LINK
 import com.mardous.booming.util.Constants.TERMS_OF_SERVICE_LINK
 import com.mardous.booming.util.Constants.TRANSLATIONS_LINK
 import com.mardous.booming.util.Constants.WEBSITE_LINK
+import com.mardous.booming.util.Preferences
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import dev.jeziellago.compose.markdowntext.MarkdownText
@@ -186,6 +187,7 @@ fun AboutScreen(
 
     CollapsibleAppBarScaffold(
         title = stringResource(R.string.about_title),
+        headerMode = Preferences.appBarMode,
         onBackClick = onBackClick
     ) { contentPadding ->
         LazyColumn(
@@ -251,7 +253,7 @@ private fun BoomingMusicHeader(version: String) {
         }
         Spacer(Modifier.height(16.dp))
         Text(
-            text = stringResource(R.string.app_name),
+            text = stringResource(R.string.app_title),
             style = MaterialTheme.typography.headlineMedium,
             maxLines = 1
         )

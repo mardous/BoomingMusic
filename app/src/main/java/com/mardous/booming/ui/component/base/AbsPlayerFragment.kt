@@ -52,6 +52,7 @@ import com.commit451.coiltransformations.BlurTransformation
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.button.MaterialButton
 import com.mardous.booming.R
+import com.mardous.booming.core.MediaEventBus
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.action.NowPlayingAction
@@ -96,6 +97,7 @@ import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -108,6 +110,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
     val playerViewModel: PlayerViewModel by activityViewModel()
     val libraryViewModel: LibraryViewModel by activityViewModel()
+
+    protected val mediaEventBus: MediaEventBus by inject()
 
     private var gesturesController: PlayerGesturesController? = null
     private var coverFragment: CoverPagerFragment? = null
@@ -129,7 +133,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         onCreateChildFragments()
         onPrepareViewGestures(view)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.mediaEvent.filter { it == MediaEvent.FavoriteContentChanged }
+            mediaEventBus.eventFlow.filter { it == MediaEvent.FavoriteContentChanged }
                 .collect {
                     updateIsFavorite(withAnim = true)
                 }

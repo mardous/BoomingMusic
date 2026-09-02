@@ -112,6 +112,7 @@ import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.component.compose.menu.MenuItem
 import com.mardous.booming.ui.component.compose.menu.TopAppBarMenu
 import com.mardous.booming.ui.screen.library.LibraryViewModel
+import com.mardous.booming.util.Preferences
 import java.util.Locale
 
 private const val PRESET_NAME_MAX_LENGTH = 48
@@ -589,6 +590,7 @@ fun EqualizerScreen(
                 )
             )
         },
+        headerMode = Preferences.appBarMode,
         snackbarHost = { SnackbarHost(snackbarHostState) },
         miniPlayerMargin = miniPlayerMargin.totalMargin,
         onBackClick = onBackClick

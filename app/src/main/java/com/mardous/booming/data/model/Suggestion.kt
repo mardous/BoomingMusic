@@ -17,7 +17,14 @@
 
 package com.mardous.booming.data.model
 
+import androidx.annotation.StringRes
+
 /**
  * @author Christians M. A. (mardous)
  */
-class Suggestion(val type: ContentType, val items: List<Any>)
+class Suggestion(
+    val type: ContentType,
+    val items: List<Any>,
+    @StringRes val titleRes: Int,
+    @StringRes val subtitleRes: Int
+)

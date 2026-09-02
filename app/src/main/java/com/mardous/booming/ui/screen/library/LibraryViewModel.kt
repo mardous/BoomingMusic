@@ -59,7 +59,6 @@ import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.files.getCanonicalPathSafe
 import com.mardous.booming.extensions.media.indexOfSong
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistUiState
-import com.mardous.booming.ui.screen.library.home.SuggestedResult
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.StorageUtil
 import kotlinx.coroutines.Dispatchers.IO
@@ -84,7 +83,9 @@ class LibraryViewModel(
         }
     }
 
-    private val suggestions = MutableLiveData(SuggestedResult.Idle)
+    private val _addToPlaylistUiState = MutableStateFlow<AddToPlaylistUiState?>(null)
+    val addToPlaylistUiState = _addToPlaylistUiState.asStateFlow()
+
     private val songs = MutableLiveData<List<Song>>()
     private val albums = MutableLiveData<List<Album>>()
     private val artists = MutableLiveData<List<Artist>>()
@@ -96,7 +97,6 @@ class LibraryViewModel(
     private val miniPlayerMargin = MutableLiveData(LibraryMargin(0))
     private val songHistory = MutableLiveData<List<Song>>()
 
-    fun getSuggestions(): LiveData<SuggestedResult> = suggestions
     fun getSongs(): LiveData<List<Song>> = songs
     fun getAlbums(): LiveData<List<Album>> = albums
     fun getArtists(): LiveData<List<Artist>> = artists
@@ -153,17 +153,7 @@ class LibraryViewModel(
             ReloadType.Genres -> fetchGenres()
             ReloadType.Folders -> fetchFolders()
             ReloadType.Years -> fetchYears()
-            ReloadType.Suggestions -> fetchSuggestions()
         }
-    }
-
-    private suspend fun fetchSuggestions() {
-        val currentValue = suggestions.value?.copy(state = SuggestedResult.State.Loading)
-            ?: SuggestedResult(SuggestedResult.State.Loading)
-        suggestions.postValue(currentValue)
-
-        val data = repository.homeSuggestions()
-        suggestions.postValue(SuggestedResult(SuggestedResult.State.Ready, data))
     }
 
     private suspend fun fetchSongs() {
@@ -337,9 +327,6 @@ class LibraryViewModel(
     fun notRecentlyPlayedSongs(): LiveData<List<Song>> = liveData(IO) {
         emit(repository.notRecentlyPlayedSongs())
     }
-
-    private val _addToPlaylistUiState = MutableStateFlow<AddToPlaylistUiState?>(null)
-    val addToPlaylistUiState = _addToPlaylistUiState.asStateFlow()
 
     fun prepareToAddToPlaylist(searchQuery: String? = null) = viewModelScope.launch(IO) {
         _addToPlaylistUiState.update { it ?: AddToPlaylistUiState.Loading }
@@ -601,6 +588,5 @@ enum class ReloadType {
     Playlists,
     Genres,
     Folders,
-    Years,
-    Suggestions
+    Years
 }

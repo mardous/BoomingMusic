@@ -114,7 +114,7 @@ abstract class AbsRecyclerViewFragment<A : RecyclerView.Adapter<*>, LM : Recycle
             }
         }
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.mediaEvent.collect {
+            mediaEventBus.eventFlow.collect {
                 if (it == MediaEvent.PlaybackStarted) {
                     whichFragment<DialogFragment>("SHUFFLE_MODE")
                         ?.dismissAllowingStateLoss()

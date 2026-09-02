@@ -68,7 +68,6 @@ import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPrefer
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
 import com.mardous.booming.ui.screen.backup.BackupActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.library.ReloadType
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
 import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
@@ -87,7 +86,6 @@ import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.LASTFM_LOGIN
-import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
 import com.mardous.booming.util.LISTENBRAINZ_LOGIN
 import com.mardous.booming.util.MATERIAL_YOU
@@ -264,12 +262,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         if (!hasR()) {
             findPreference<Preference>(TRASH_MUSIC_FILES)?.isVisible = false
         }
-
-        findPreference<Preference>(LAST_ADDED_CUTOFF)?.onPreferenceChangeListener =
-            Preference.OnPreferenceChangeListener { _, _ ->
-                libraryViewModel.forceReload(ReloadType.Suggestions)
-                true
-            }
 
         findPreference<SwitchWithButtonPreference>(WHITELIST_ENABLED)?.apply {
             setButtonPressedListener(object : SwitchWithButtonPreference.OnButtonPressedListener {

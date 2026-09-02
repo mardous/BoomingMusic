@@ -42,6 +42,7 @@ import com.mardous.booming.ui.component.base.AbsThemeActivity
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.theme.BoomingMusicTheme
+import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.launch
 
 class WidgetSettingsActivity : AbsThemeActivity() {
@@ -69,6 +70,7 @@ class WidgetSettingsActivity : AbsThemeActivity() {
             BoomingMusicTheme {
                 CollapsibleAppBarScaffold(
                     title = info.loadLabel(packageManager),
+                    headerMode = Preferences.appBarMode,
                     onBackClick = { finish() }
                 ) { padding ->
                     WidgetSettingsList(

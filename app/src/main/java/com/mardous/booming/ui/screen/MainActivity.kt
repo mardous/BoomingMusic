@@ -20,6 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.mardous.booming.R
+import com.mardous.booming.core.MediaEventBus
 import com.mardous.booming.core.model.CategoryInfo
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.shuffle.OpenShuffleMode
@@ -41,6 +42,7 @@ import com.mardous.booming.ui.screen.update.UpdateDialog
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.Preferences
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -49,6 +51,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
 
     private val updateViewModel: UpdateViewModel by viewModel()
+    private val mediaEventBus: MediaEventBus by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,22 +79,22 @@ class MainActivity : AbsSlidingMusicPanelActivity(), MediaController.Listener {
     ): ListenableFuture<SessionResult> {
         val sessionResult = when (command.customAction) {
             Playback.EVENT_MEDIA_CONTENT_CHANGED -> {
-                playerViewModel.submitEvent(MediaEvent.MediaContentChanged)
+                mediaEventBus.postEvent(MediaEvent.MediaContentChanged)
                 SessionResult(SessionResult.RESULT_SUCCESS)
             }
 
             Playback.EVENT_FAVORITE_CONTENT_CHANGED -> {
-                playerViewModel.submitEvent(MediaEvent.FavoriteContentChanged)
+                mediaEventBus.postEvent(MediaEvent.FavoriteContentChanged)
                 SessionResult(SessionResult.RESULT_SUCCESS)
             }
 
             Playback.EVENT_PLAYBACK_STARTED -> {
-                playerViewModel.submitEvent(MediaEvent.PlaybackStarted)
+                mediaEventBus.postEvent(MediaEvent.PlaybackStarted)
                 SessionResult(SessionResult.RESULT_SUCCESS)
             }
 
             Playback.EVENT_PLAYBACK_RESTORED -> {
-                playerViewModel.submitEvent(MediaEvent.PlaybackRestored)
+                mediaEventBus.postEvent(MediaEvent.PlaybackRestored)
                 SessionResult(SessionResult.RESULT_SUCCESS)
             }
 

@@ -16,7 +16,6 @@ import androidx.media3.session.MediaController
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
-import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.action.SongClickBehavior
@@ -44,12 +43,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -77,13 +73,6 @@ class PlayerViewModel(
     private val progressObserver = ProgressObserver(intervalMs = 100)
     private val shuffleManager = ShuffleManager()
     private var mediaController: MediaController? = null
-
-    private val _mediaEvent = MutableSharedFlow<MediaEvent>(
-        replay = 0,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val mediaEvent = _mediaEvent.asSharedFlow()
 
     val queueFlow = queueStateHolder.queue
     val queue get() = queueFlow.value
@@ -162,10 +151,6 @@ class PlayerViewModel(
                 _durationFlow.value = mediaController.contentDuration
             }
         }
-    }
-
-    fun submitEvent(mediaEvent: MediaEvent) {
-        _mediaEvent.tryEmit(mediaEvent)
     }
 
     private fun setIsPlaying(isPlaying: Boolean) {

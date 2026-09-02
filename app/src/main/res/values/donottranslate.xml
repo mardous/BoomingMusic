@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- The name that identifies the app -->
 	<string name="app_name" translatable="false">Booming Music</string>
+    <!-- The name used in app title bars and other internal places -->
+    <string name="app_title" translatable="false">Booming Music</string>
 
 	<string name="mardous" translatable="false">Christians Martínez A.</string>
 

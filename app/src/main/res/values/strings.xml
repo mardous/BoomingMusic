@@ -222,9 +222,13 @@
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favorites</string>
+    <string name="favorites_subtitle">The heart of your sonic world</string>
     <string name="last_added_label">Last added</string>
+    <string name="last_added_subtitle">Freshly added to your library</string>
     <string name="top_tracks_label">Top Tracks</string>
+    <string name="top_tracks_subtitle">Your personal anthems on repeat</string>
     <string name="history_label">History</string>
+    <string name="history_subtitle">An echo of your past sessions</string>
     <string name="not_recently_played">Not Recently Played</string>
     <string name="play_info">Play info</string>
     <string name="track_play_counts">Track Play Counts</string>
@@ -399,6 +403,25 @@
     <string name="recent_artists">Recent artists</string>
     <string name="recent_albums">Recent albums</string>
     <string name="no_suggestions">There are no suggestions for you</string>
+    <string name="home_empty_title">No suggestions yet</string>
+    <string name="home_empty_subtitle">Listen to some music to get started</string>
+    <string name="home_shuffle_title">Shuffle your music</string>
+    <string name="home_for_you_title">For you</string>
+    <string name="home_for_you_subtitle">Your all-time favorites in one place</string>
+    <string name="home_for_you_subtitle_2">Hand-picked gems just for you</string>
+    <string name="home_for_you_subtitle_3">Your daily dose of musical inspiration</string>
+    <string name="home_albums_title">Listen now</string>
+    <string name="home_albums_subtitle">Top and recent albums</string>
+    <string name="home_albums_subtitle_2">Dive into your latest collections</string>
+    <string name="home_albums_subtitle_3">What\'s trending in your library</string>
+    <string name="home_artists_title">Recommended artists</string>
+    <string name="home_artists_subtitle">Artists you listen to most</string>
+    <string name="home_artists_subtitle_2">New faces and old favorites</string>
+    <string name="home_artists_subtitle_3">Faces behind the music you love</string>
+    <string name="home_forgotten_tracks_title">Rediscover</string>
+    <string name="home_forgotten_tracks_subtitle">Bring old favorites back into the spotlight</string>
+    <string name="home_forgotten_tracks_subtitle_2">Dust off those hidden treasures</string>
+    <string name="home_forgotten_tracks_subtitle_3">Songs you haven\'t heard in a while</string>
 
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>

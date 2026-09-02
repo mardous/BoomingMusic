@@ -25,7 +25,8 @@ import androidx.compose.runtime.produceState
 @Composable
 fun <T> SharedPreferences.observeKeyAsState(
     key: String,
-    defaultValue: T
+    defaultValue: T,
+    resolveValue: (key: String) -> T = { defaultValue }
 ): State<T> {
     return produceState(initialValue = defaultValue, key1 = key) {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, changedKey ->
@@ -37,7 +38,7 @@ fun <T> SharedPreferences.observeKeyAsState(
                     is Int -> getInt(key, defaultValue) as T
                     is Float -> getFloat(key, defaultValue) as T
                     is Long -> getLong(key, defaultValue) as T
-                    else -> defaultValue
+                    else -> resolveValue(key)
                 }
             }
         }
@@ -49,7 +50,7 @@ fun <T> SharedPreferences.observeKeyAsState(
             is Int -> getInt(key, defaultValue) as T
             is Float -> getFloat(key, defaultValue) as T
             is Long -> getLong(key, defaultValue) as T
-            else -> defaultValue
+            else -> resolveValue(key)
         }
 
         registerOnSharedPreferenceChangeListener(listener)

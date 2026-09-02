@@ -21,6 +21,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.media3.common.MediaItem
+import com.mardous.booming.R
 import com.mardous.booming.core.model.filesystem.FileSystemQuery
 import com.mardous.booming.data.SearchFilter
 import com.mardous.booming.data.local.room.PlayCountEntity
@@ -113,12 +114,6 @@ interface Repository {
     suspend fun songsByFolder(folderPath: String, includeSubfolders: Boolean): List<Song>
     suspend fun songByFilePath(path: String, ignoreBlacklist: Boolean): Song
     suspend fun homeSuggestions(): List<Suggestion>
-    suspend fun topArtistsSuggestion(): Suggestion
-    suspend fun topAlbumsSuggestion(): Suggestion
-    suspend fun recentArtistsSuggestion(): Suggestion
-    suspend fun recentAlbumsSuggestion(): Suggestion
-    suspend fun favoritesSuggestion(): Suggestion
-    suspend fun recommendedSongSuggestion(): Suggestion
     suspend fun recentSongs(): List<Song>
     suspend fun topArtists(): List<Artist>
     suspend fun recentArtists(): List<Artist>
@@ -348,46 +343,63 @@ class RealRepository(
         songRepository.songByFilePath(path, ignoreBlacklist)
 
     override suspend fun homeSuggestions(): List<Suggestion> {
+        val favorites = (favoriteSongs() + playCountSongs())
+            .distinctBy { it.id }
+            .shuffled()
+            .take(20)
+        val albums = (topAlbums() + recentAlbums())
+            .distinctBy { it.id }
+            .take(10)
+        val artists = (topArtists() + recentArtists())
+            .distinctBy { it.id }
+            .take(10)
+        val forgotten = notRecentlyPlayedSongs()
+            .take(20)
+
         return listOf(
-            topArtistsSuggestion(),
-            topAlbumsSuggestion(),
-            recentArtistsSuggestion(),
-            recentAlbumsSuggestion(),
-            favoritesSuggestion(),
-            recommendedSongSuggestion()
+            Suggestion(
+                type = ContentType.Favorites,
+                items = favorites,
+                titleRes = R.string.home_for_you_title,
+                subtitleRes = listOf(
+                    R.string.home_for_you_subtitle,
+                    R.string.home_for_you_subtitle_2,
+                    R.string.home_for_you_subtitle_3
+                ).random()
+            ),
+            Suggestion(
+                type = ContentType.TopAlbums,
+                items = albums,
+                titleRes = R.string.home_albums_title,
+                subtitleRes = listOf(
+                    R.string.home_albums_subtitle,
+                    R.string.home_albums_subtitle_2,
+                    R.string.home_albums_subtitle_3
+                ).random()
+            ),
+            Suggestion(
+                type = ContentType.TopArtists,
+                items = artists,
+                titleRes = R.string.home_artists_title,
+                subtitleRes = listOf(
+                    R.string.home_artists_subtitle,
+                    R.string.home_artists_subtitle_2,
+                    R.string.home_artists_subtitle_3
+                ).random()
+            ),
+            Suggestion(
+                type = ContentType.NotRecentlyPlayed,
+                items = forgotten,
+                titleRes = R.string.home_forgotten_tracks_title,
+                subtitleRes = listOf(
+                    R.string.home_forgotten_tracks_subtitle,
+                    R.string.home_forgotten_tracks_subtitle_2,
+                    R.string.home_forgotten_tracks_subtitle_3
+                ).random()
+            )
         ).filter {
             it.items.isNotEmpty()
         }
-    }
-
-    override suspend fun topArtistsSuggestion(): Suggestion {
-        val artists = smartRepository.topAlbumArtists().take(10)
-        return Suggestion(ContentType.TopArtists, artists)
-    }
-
-    override suspend fun topAlbumsSuggestion(): Suggestion {
-        val albums = smartRepository.topAlbums().take(10)
-        return Suggestion(ContentType.TopAlbums, albums)
-    }
-
-    override suspend fun recentArtistsSuggestion(): Suggestion {
-        val artists = smartRepository.recentAlbumArtists().take(10)
-        return Suggestion(ContentType.RecentArtists, artists)
-    }
-
-    override suspend fun recentAlbumsSuggestion(): Suggestion {
-        val albums = smartRepository.recentAlbums().take(10)
-        return Suggestion(ContentType.RecentAlbums, albums)
-    }
-
-    override suspend fun favoritesSuggestion(): Suggestion {
-        val songs = favoriteSongs()
-        return Suggestion(ContentType.Favorites, songs.take(10))
-    }
-
-    override suspend fun recommendedSongSuggestion(): Suggestion {
-        val songs = smartRepository.notRecentlyPlayedSongs().take(10)
-        return Suggestion(ContentType.NotRecentlyPlayed, songs)
     }
 
     override suspend fun recentSongs(): List<Song> = smartRepository.recentSongs()

@@ -22,6 +22,7 @@ import androidx.room.Room
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
+import com.mardous.booming.core.MediaEventBus
 import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
@@ -70,6 +71,7 @@ import com.mardous.booming.ui.screen.library.albums.AlbumDetailViewModel
 import com.mardous.booming.ui.screen.library.artists.ArtistDetailViewModel
 import com.mardous.booming.ui.screen.library.folders.FolderDetailViewModel
 import com.mardous.booming.ui.screen.library.genres.GenreDetailViewModel
+import com.mardous.booming.ui.screen.library.home.HomeViewModel
 import com.mardous.booming.ui.screen.library.playlists.PlaylistDetailViewModel
 import com.mardous.booming.ui.screen.library.search.SearchViewModel
 import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
@@ -132,6 +134,9 @@ private val mainModule = module {
     }
     single {
         AudioOutputObserver(context = androidContext())
+    }
+    single {
+        MediaEventBus()
     }
     factory {
         BackupManager(
@@ -272,6 +277,10 @@ private val dataModule = module {
 private val viewModule = module {
     viewModel {
         LibraryViewModel(repository = get(), inclExclDao = get(), customPlaylistImageManager = get())
+    }
+
+    viewModel {
+        HomeViewModel(repository = get(), eventBus = get())
     }
 
     viewModel {
