@@ -346,15 +346,15 @@ class RealRepository(
         val favorites = (favoriteSongs() + playCountSongs())
             .distinctBy { it.id }
             .shuffled()
-            .take(20)
+            .take(Suggestion.FOR_YOU_MAX_ITEMS)
         val albums = (topAlbums() + recentAlbums())
             .distinctBy { it.id }
-            .take(10)
+            .take(Suggestion.TOP_CONTENT_MAX_ITEMS)
         val artists = (topArtists() + recentArtists())
             .distinctBy { it.id }
-            .take(10)
+            .take(Suggestion.TOP_CONTENT_MAX_ITEMS)
         val forgotten = notRecentlyPlayedSongs()
-            .take(20)
+            .take(Suggestion.REDISCOVER_MAX_ITEMS)
 
         return listOf(
             Suggestion(
@@ -398,7 +398,11 @@ class RealRepository(
                 ).random()
             )
         ).filter {
-            it.items.isNotEmpty()
+            if (it.type == ContentType.Favorites) {
+                it.items.size >= Suggestion.FOR_YOU_MIN_ITEMS
+            } else {
+                it.items.isNotEmpty()
+            }
         }
     }
 

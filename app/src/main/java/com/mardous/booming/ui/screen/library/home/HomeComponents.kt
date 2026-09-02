@@ -17,9 +17,13 @@
 
 package com.mardous.booming.ui.screen.library.home
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -320,48 +324,57 @@ private fun AlbumCarouselItem(
                 model = album,
                 modifier = Modifier.fillMaxSize()
             )
-            if (isCurrentItem) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            Brush.verticalGradient(
-                                listOf(Color.Transparent, Color.Black.copy(alpha = 0.8f)),
-                                startY = 300f
-                            )
+            AnimatedContent(
+                targetState = isCurrentItem,
+                transitionSpec = {
+                    fadeIn(animationSpec = tween(300))
+                        .togetherWith(fadeOut(animationSpec = tween(300)))
+                },
+                contentAlignment = Alignment.BottomCenter
+            ) { canShowItemInfo ->
+                Box(Modifier.fillMaxSize()) {
+                    if (canShowItemInfo) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(
+                                    Brush.verticalGradient(
+                                        listOf(Color.Transparent, Color.Black.copy(alpha = 0.8f)),
+                                        startY = 300f
+                                    )
+                                )
                         )
-                )
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(bottom = 16.dp)
-                ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(0.7f)
-                    ) {
-                        Text(
-                            text = album.name,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = Color.White,
-                            fontWeight = FontWeight.Bold,
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                        Text(
-                            text = album.artistName,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color.White.copy(alpha = 0.8f),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                    FilledIconButton(onClick = onPlayClick) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_play_24dp),
-                            contentDescription = "Play ${album.name}"
-                        )
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(bottom = 16.dp)
+                        ) {
+                            Column(Modifier.fillMaxWidth(0.7f)) {
+                                Text(
+                                    text = album.name,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    maxLines = 2,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                                Text(
+                                    text = album.artistName,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = Color.White.copy(alpha = 0.8f),
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                            FilledIconButton(onClick = onPlayClick) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_play_24dp),
+                                    contentDescription = stringResource(R.string.action_play_x, album.name)
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -376,7 +389,7 @@ private fun ForYouBentoGrid(
     onShuffleClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (songs.size < 8) return
+    if (songs.size < Suggestion.FOR_YOU_MIN_ITEMS) return
 
     val horizontalItems: @Composable (IntRange) -> Unit = { indices ->
         Row(

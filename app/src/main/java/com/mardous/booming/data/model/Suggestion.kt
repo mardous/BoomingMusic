@@ -27,4 +27,11 @@ class Suggestion(
     val items: List<Any>,
     @StringRes val titleRes: Int,
     @StringRes val subtitleRes: Int
-)
+) {
+    companion object {
+        const val REDISCOVER_MAX_ITEMS = 16
+        const val TOP_CONTENT_MAX_ITEMS = 10
+        const val FOR_YOU_MAX_ITEMS = 20
+        const val FOR_YOU_MIN_ITEMS = 8
+    }
+}
