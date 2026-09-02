@@ -356,7 +356,6 @@
     <string name="top_albums">Ulubione albumy</string>
     <string name="recent_artists">Ostatnio dodani wykonawcy</string>
     <string name="recent_albums">Ostatnio dodane albumy</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Całkowita losowość</string>
     <string name="shuffle_mode_most_played">Najczęściej odtwarzane</string>
@@ -1018,4 +1017,22 @@
     <string name="confirm_delete_backup">Usunąć tą kopię zapasową?</string>
     <string name="backup_deleted_successfully">Usunięto kopię zapasową.</string>
     <string name="could_not_delete_backup">Nie udało się usunąć kopii zapasowej.</string>
+    <string name="select_content_to_backup">Wybierz zawartość:</string>
+    <string name="backup_content_settings">Ustawienia aplikacji</string>
+    <string name="backup_content_lyrics">Zsynchronizowane teksty</string>
+    <string name="backup_content_play_info">Statystyki odtwarzania</string>
+    <string name="backup_content_playlists">Playlisty</string>
+    <string name="backup_content_artist_images">Obrazy wykonawców</string>
+    <string name="backup_app_version">Stworzony w</string>
+    <string name="backup_warning_legacy_format">Ten format kopii zapasowej jest przestarzały. Możesz go jeszcze przywrócić, ale w przyszłości ta opcja może zostać usunięta.</string>
+    <string name="backup_warning_ver_newer">Format tej kopii zapasowej jest zbyt nowy dla tej wersji Booming Music.</string>
+    <string name="backup_warning_app_ver_newer">Ta kopia zapasowa pochodzi z nowszej wersji Booming Music. Jej przywrócenie może powodować błędy lub nie przywrócić wszystkich danych.</string>
+    <string name="restoring_data">Przywracanie danych…</string>
+    <string name="home_artists_title">Rekomendowani wykonawcy</string>
+    <string name="action_play_x">Odtwórz %s</string>
+    <string name="home_artists_subtitle_3">Tysiące twarzy, setki miraży</string>
+    <string name="home_albums_title">Odtwarzaj teraz</string>
+    <string name="home_empty_title">Jeszcze nic tu nie ma</string>
+    <string name="allow_lyrics_download_from">Zezwól na pobieranie z:</string>
+    <string name="home_empty_subtitle">Najpierw odtwórz kilka utworów</string>
 </resources>
