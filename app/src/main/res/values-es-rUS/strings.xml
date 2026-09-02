@@ -348,7 +348,6 @@
     <string name="top_albums">Álbumes más reproducidos</string>
     <string name="recent_artists">Artistas recientes</string>
     <string name="recent_albums">Álbumes recientes</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Aleatorio puro</string>
     <string name="shuffle_mode_most_played">Más reproducidas</string>
@@ -1020,8 +1019,8 @@
     <string name="backup_warning_app_ver_newer">Esta copia de seguridad se creó en una versión más reciente de Booming Music. Restaurarla en esta versión podría provocar errores o una restauración incompleta de los datos.</string>
     <string name="restoring_data">Restaurando tus datos…</string>
     <string name="allow_lyrics_download_from">Permitir descarga desde:</string>
-    <string name="home_empty_title">No hay sugerencias aún</string>
-    <string name="home_empty_subtitle">Escucha algo de música para empezar</string>
+    <string name="home_empty_title">Nada que recomendar</string>
+    <string name="home_empty_subtitle">Escucha algo de música primero</string>
     <string name="home_shuffle_title">Mezcla tu música</string>
     <string name="home_for_you_title">Para ti</string>
     <string name="home_for_you_subtitle">Tus favoritas de siempre en un solo lugar</string>
@@ -1039,4 +1038,5 @@
     <string name="home_forgotten_tracks_subtitle">Trae de vuelta a los viejos favoritos</string>
     <string name="home_forgotten_tracks_subtitle_2">Desempolva esos tesoros escondidos</string>
     <string name="home_forgotten_tracks_subtitle_3">Canciones que no has escuchado en un tiempo</string>
+    <string name="action_play_x">Reproducir %s</string>
 </resources>
