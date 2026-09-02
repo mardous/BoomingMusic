@@ -12,9 +12,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LargeFlexibleTopAppBar
-import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -56,11 +57,12 @@ fun CollapsibleAppBarScaffold(
     snackbarHost: @Composable () -> Unit = {},
     showNavigationButton: Boolean = true,
     navigationButton: @Composable () -> Unit = {
-        TopAppBarFilledIconButton(
-            onClick = onBackClick,
-            icon = painterResource(R.drawable.ic_back_24dp),
-            contentDescription = stringResource(R.string.back_action)
-        )
+        IconButton(onClick = onBackClick) {
+            Icon(
+                painter = painterResource(R.drawable.ic_back_24dp),
+                contentDescription = stringResource(R.string.back_action)
+            )
+        }
     },
     headerMode: AppHeaderMode = LocalHeaderMode.current,
     miniPlayerMargin: Int = 0,
@@ -167,12 +169,12 @@ fun TopAppBarFilledIconButton(
     onClick: () -> Unit,
     icon: Painter,
     modifier: Modifier = Modifier,
-    contentDescription: String? = null
+    contentDescription: String = stringResource(R.string.back_action)
 ) {
     FilledIconButton(
         onClick = onClick,
         colors = IconButtonDefaults.filledIconButtonColors(
-            containerColor = LocalContentColor.current.copy(alpha = .1f)
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
         ),
         modifier = modifier
     ) {
