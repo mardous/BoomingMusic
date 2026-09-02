@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.screen.library.home
 
+import android.content.res.Configuration
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -43,6 +44,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.items
@@ -68,6 +70,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -86,6 +89,8 @@ import com.mardous.booming.data.model.Suggestion
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.ui.component.compose.MediaImage
 import com.mardous.booming.ui.component.compose.RoundedPolygonShape
+
+private val HORIZONTAL_GRID_HEIGHT = 154.dp
 
 @Composable
 fun HomeTopActions(
@@ -195,6 +200,9 @@ fun SuggestionSection(
         RoundedPolygonShape(cookiePolygon)
     }
 
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
     val showOpenButton = suggestion.type == ContentType.TopAlbums ||
             suggestion.type == ContentType.TopArtists ||
             suggestion.type == ContentType.NotRecentlyPlayed
@@ -256,11 +264,19 @@ fun SuggestionSection(
             }
 
             ContentType.Favorites -> {
-                ForYouBentoGrid(
-                    songs = suggestion.items.filterIsInstance<Song>(),
-                    onItemClick = onSongItemClick,
-                    onShuffleClick = onShuffleClick
-                )
+                if (isLandscape) {
+                    ForYouHorizontalGrid(
+                        songs = suggestion.items.filterIsInstance<Song>(),
+                        onItemClick = onSongItemClick,
+                        onShuffleClick = onShuffleClick
+                    )
+                } else {
+                    ForYouBentoGrid(
+                        songs = suggestion.items.filterIsInstance<Song>(),
+                        onItemClick = onSongItemClick,
+                        onShuffleClick = onShuffleClick
+                    )
+                }
             }
 
             ContentType.NotRecentlyPlayed -> {
@@ -281,6 +297,8 @@ private fun AlbumCarousel(
     onAlbumClick: (Album) -> Unit,
     onPlayClick: (Album) -> Unit
 ) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     val carouselState = rememberCarouselState { albums.size }
     HorizontalCenteredHeroCarousel(
         state = carouselState,
@@ -299,7 +317,7 @@ private fun AlbumCarousel(
             onClick = { onAlbumClick(album) },
             onPlayClick = { onPlayClick(album) },
             modifier = Modifier
-                .height(200.dp)
+                .height(if (isLandscape) 160.dp else 200.dp)
                 .fillMaxWidth()
                 .maskClip(MaterialTheme.shapes.medium)
         )
@@ -339,8 +357,7 @@ private fun AlbumCarouselItem(
                                 .fillMaxSize()
                                 .background(
                                     Brush.verticalGradient(
-                                        listOf(Color.Transparent, Color.Black.copy(alpha = 0.8f)),
-                                        startY = 300f
+                                        listOf(Color.Transparent, Color.Black.copy(alpha = 0.8f))
                                     )
                                 )
                         )
@@ -378,6 +395,38 @@ private fun AlbumCarouselItem(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun ForYouHorizontalGrid(
+    songs: List<Song>,
+    onItemClick: (List<Song>, Int) -> Unit,
+    onShuffleClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(2),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = modifier.height(HORIZONTAL_GRID_HEIGHT)
+    ) {
+        item(span = { GridItemSpan(2) }) {
+            ShuffleBentoButton(
+                onClick = onShuffleClick,
+                modifier = Modifier.aspectRatio(1f)
+            )
+        }
+        itemsIndexed(songs, key = { _, song -> song.id }) { index, song ->
+            HorizontalGridItem(
+                onClick = {
+                    onItemClick(songs, index)
+                },
+                song = song,
+                modifier = Modifier.width(200.dp)
+            )
         }
     }
 }
@@ -555,10 +604,10 @@ private fun ForgottenTracksGrid(
         contentPadding = PaddingValues(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = modifier.height(154.dp)
+        modifier = modifier.height(HORIZONTAL_GRID_HEIGHT)
     ) {
         itemsIndexed(songs, key = { _, item -> item.id }) { index, item ->
-            ForgottenSongItem(
+            HorizontalGridItem(
                 onClick = { onItemClick(songs, index) },
                 song = item,
                 modifier = Modifier.width(200.dp)
@@ -568,7 +617,7 @@ private fun ForgottenTracksGrid(
 }
 
 @Composable
-private fun ForgottenSongItem(
+private fun HorizontalGridItem(
     onClick: () -> Unit,
     song: Song,
     modifier: Modifier = Modifier
