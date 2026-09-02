@@ -222,13 +222,9 @@
     <string name="playlists_label">Playlists</string>
     <string name="playlist_label">Playlist</string>
     <string name="favorites_label">Favorites</string>
-    <string name="favorites_subtitle">The heart of your sonic world</string>
     <string name="last_added_label">Last added</string>
-    <string name="last_added_subtitle">Freshly added to your library</string>
     <string name="top_tracks_label">Top Tracks</string>
-    <string name="top_tracks_subtitle">Your personal anthems on repeat</string>
     <string name="history_label">History</string>
-    <string name="history_subtitle">An echo of your past sessions</string>
     <string name="not_recently_played">Not Recently Played</string>
     <string name="play_info">Play info</string>
     <string name="track_play_counts">Track Play Counts</string>
