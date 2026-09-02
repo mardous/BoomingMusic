@@ -326,7 +326,7 @@
     <string name="top_albums">آلبوم های برتر</string>
     <string name="recent_artists">هنرمندان اخیر</string>
     <string name="recent_albums">آلبوم های اخیر</string>
-    <string name="no_suggestions">هیچ پیشنهادی برای شما وجود ندارد</string>
+
     <string name="shuffle_mode_pure_random">تصادفی محض</string>
     <string name="shuffle_mode_most_played">بیشترین پخش‌ شده‌ها</string>
     <string name="shuffle_mode_most_played_artists">بیشتر هنرمندانی که پخش می کردند</string>

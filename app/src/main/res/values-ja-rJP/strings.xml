@@ -332,7 +332,7 @@
     <string name="top_albums">トップアルバム</string>
     <string name="recent_artists">最近のアーティスト</string>
     <string name="recent_albums">最近のアルバム</string>
-    <string name="no_suggestions">あなたに提案はありません</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全なランダムシャッフル</string>
     <string name="shuffle_mode_most_played">最も再生された曲</string>

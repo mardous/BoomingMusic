@@ -340,7 +340,7 @@
     <string name="top_albums">En iyi albümler</string>
     <string name="recent_artists">Son dinlenen sanatçılar</string>
     <string name="recent_albums">Son dinlenen albümler</string>
-    <string name="no_suggestions">Sizin için öneri yok</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Tamamen rastgele</string>
     <string name="shuffle_mode_most_played">En çok çalınanlar</string>

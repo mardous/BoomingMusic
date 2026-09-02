@@ -356,7 +356,7 @@
     <string name="top_albums">Ulubione albumy</string>
     <string name="recent_artists">Ostatnio dodani wykonawcy</string>
     <string name="recent_albums">Ostatnio dodane albumy</string>
-    <string name="no_suggestions">Brak sugestii dla Ciebie</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Całkowita losowość</string>
     <string name="shuffle_mode_most_played">Najczęściej odtwarzane</string>

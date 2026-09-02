@@ -348,7 +348,7 @@
     <string name="top_albums">Meilleurs albums</string>
     <string name="recent_artists">Artistes récents</string>
     <string name="recent_albums">Albums récents</string>
-    <string name="no_suggestions">Il n\'y a aucune suggestion pour vous</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Seulement en aléatoire</string>
     <string name="shuffle_mode_most_played">Les plus joués</string>

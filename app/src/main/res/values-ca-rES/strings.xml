@@ -348,7 +348,7 @@
     <string name="top_albums">Els àlbums més populars</string>
     <string name="recent_artists">Artistes recents</string>
     <string name="recent_albums">Àlbums recents</string>
-    <string name="no_suggestions">No teniu cap suggeriment</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Ben aleatori</string>
     <string name="shuffle_mode_most_played">El més reproduït</string>

@@ -338,7 +338,7 @@
     <string name="top_albums">Topp album</string>
     <string name="recent_artists">Senaste artister</string>
     <string name="recent_albums">Senaste album</string>
-    <string name="no_suggestions">Det finns inga förslag för dig</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Ren slumpmässig</string>
     <string name="shuffle_mode_most_played">Mest spelade</string>

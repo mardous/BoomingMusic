@@ -338,7 +338,7 @@
     <string name="top_albums">Top-Alben</string>
     <string name="recent_artists">Kürzlich gehörte Interpreten</string>
     <string name="recent_albums">Kürzlich gehörte Alben</string>
-    <string name="no_suggestions">Es gibt keine Vorschläge für Dich</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Rein zufällig</string>
     <string name="shuffle_mode_most_played">Meistgespielte</string>

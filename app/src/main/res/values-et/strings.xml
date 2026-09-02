@@ -613,7 +613,7 @@
     <string name="top_albums">Populaarsemad albumid</string>
     <string name="recent_artists">Hiljutised esitajad</string>
     <string name="recent_albums">Hiljutised albumid</string>
-    <string name="no_suggestions">Sulle pole veel soovitusi</string>
+
     <string name="share_eq_profiles">Jaga ekvalaiseri profiile</string>
     <string name="there_is_nothing_to_export">Pole mitte midagi eksporditavat.</string>
     <string name="there_is_nothing_to_import">Pole mitte midagi imporditavat.</string>

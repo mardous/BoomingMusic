@@ -348,7 +348,7 @@
     <string name="top_albums">Albume de top</string>
     <string name="recent_artists">Artiști recenți</string>
     <string name="recent_albums">Albume recente</string>
-    <string name="no_suggestions">Nu există sugestii pentru dvs.</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>

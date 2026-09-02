@@ -348,7 +348,7 @@
     <string name="top_albums">Álbuns Populares</string>
     <string name="recent_artists">Artistas Recentes</string>
     <string name="recent_albums">Álbuns Recentes</string>
-    <string name="no_suggestions">Não há sugestões para você</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Totalmente aleatório</string>
     <string name="shuffle_mode_most_played">Mais reproduzidas</string>

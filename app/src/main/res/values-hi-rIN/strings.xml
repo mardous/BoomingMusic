@@ -340,7 +340,7 @@
     <string name="top_albums">सर्वश्रेष्ठ एल्बम्स</string>
     <string name="recent_artists">हाल के कलाकार</string>
     <string name="recent_albums">हालिया एल्बम</string>
-    <string name="no_suggestions">आपके लिए कोई सुझाव नहीं हैं</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">बिल्कुल यादृच्छिक</string>
     <string name="shuffle_mode_most_played">सबसे ज्यादा चलें जाने वाले</string>

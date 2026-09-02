@@ -340,7 +340,7 @@
     <string name="top_albums">Top albums</string>
     <string name="recent_artists">Seneste kunstnere</string>
     <string name="recent_albums">Seneste albummer</string>
-    <string name="no_suggestions">Der er ingen forslag til dig</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Rent tilfældigt</string>
     <string name="shuffle_mode_most_played">Mest spillede</string>

@@ -338,7 +338,7 @@
     <string name="top_albums">Parhaat albumit</string>
     <string name="recent_artists">Viimeisimmät esittäjät</string>
     <string name="recent_albums">Viimeisimmät albumit</string>
-    <string name="no_suggestions">Sinulle ei ole ehdotuksia</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pelkkä satunnainen</string>
     <string name="shuffle_mode_most_played">Eniten soitetut</string>

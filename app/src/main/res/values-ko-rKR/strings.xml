@@ -332,7 +332,7 @@
     <string name="top_albums">인기 앨범</string>
     <string name="recent_artists">최근 아티스트</string>
     <string name="recent_albums">최근 앨범</string>
-    <string name="no_suggestions">추천 항목이 없습니다</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">완전 랜덤</string>
     <string name="shuffle_mode_most_played">가장 많이 재생됨</string>

@@ -340,7 +340,7 @@
     <string name="top_albums">Κορυφαία άλμπουμ</string>
     <string name="recent_artists">Πρόσφατοι καλλιτέχνες</string>
     <string name="recent_albums">Πρόσφατα λευκώματα</string>
-    <string name="no_suggestions">Δεν υπάρχουν προτάσεις για εσάς</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>

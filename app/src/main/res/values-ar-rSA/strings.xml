@@ -372,7 +372,7 @@
     <string name="top_albums">أبرز الألبومات</string>
     <string name="recent_artists">فنانون حديثون</string>
     <string name="recent_albums">ألبومات حديثة</string>
-    <string name="no_suggestions">لا توجد اقتراحات لك حاليًا</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">عشوائي بحت</string>
     <string name="shuffle_mode_most_played">الأكثر تشغيلًا</string>

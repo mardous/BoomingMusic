@@ -356,7 +356,7 @@
     <string name="top_albums">Nejlepší alba</string>
     <string name="recent_artists">Nedávní umělci</string>
     <string name="recent_albums">Nedávná alba</string>
-    <string name="no_suggestions">Neexistují žádné návrhy pro vás</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Naprosto náhodně</string>
     <string name="shuffle_mode_most_played">Nejvíce přehrávané</string>

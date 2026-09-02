@@ -356,7 +356,7 @@
     <string name="top_albums">Лучшие альбомы</string>
     <string name="recent_artists">Недавние исполнители</string>
     <string name="recent_albums">Недавние альбомы</string>
-    <string name="no_suggestions">Предложений для вас нет</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Полная случайность</string>
     <string name="shuffle_mode_most_played">Часто прослушиваемые</string>

@@ -332,7 +332,7 @@
     <string name="top_albums">Album teratas</string>
     <string name="recent_artists">Artis terkini</string>
     <string name="recent_albums">Album terkini</string>
-    <string name="no_suggestions">Tidak ada saran untuk Anda</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Acak murni</string>
     <string name="shuffle_mode_most_played">Paling sering diputar</string>

@@ -362,7 +362,7 @@
     <string name="top_albums">சிறந்த ஆல்பங்கள்</string>
     <string name="recent_artists">அண்மைக் கால கலைஞர்கள்</string>
     <string name="recent_albums">அண்மைக் கால ஆல்பங்கள்</string>
-    <string name="no_suggestions">உங்களுக்கான பரிந்துரைகள் எதுவும் இல்லை</string>
+
     <string name="shuffle_mode_pure_random">தூய சீரற்ற</string>
     <string name="shuffle_mode_most_played">அதிகம் விளையாடியது</string>
     <string name="shuffle_mode_most_played_artists">பெரும்பாலான கலைஞர்கள் நடித்துள்ளனர்</string>

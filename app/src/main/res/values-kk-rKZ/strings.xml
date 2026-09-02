@@ -340,7 +340,7 @@
     <string name="top_albums">Top albums</string>
     <string name="recent_artists">Recent artists</string>
     <string name="recent_albums">Recent albums</string>
-    <string name="no_suggestions">There are no suggestions for you</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>

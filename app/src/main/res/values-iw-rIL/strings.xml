@@ -348,7 +348,7 @@
     <string name="top_albums">אלבומים מובילים</string>
     <string name="recent_artists">אומנים אחרונים</string>
     <string name="recent_albums">אלבומים אחרונים</string>
-    <string name="no_suggestions">אין הצעות עבורך</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">אקראי טהור</string>
     <string name="shuffle_mode_most_played">המושמע ביותר</string>

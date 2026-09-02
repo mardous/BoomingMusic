@@ -334,7 +334,7 @@
     <string name="top_albums">Иң яхшы альбомнар</string>
     <string name="recent_artists">Күптән түгел артистлар</string>
     <string name="recent_albums">Күптән түгел альбомнар</string>
-    <string name="no_suggestions">Сезнең өчен тәкъдимнәр юк</string>
+
     <string name="shuffle_mode_pure_random">Тулы очраклылык</string>
     <string name="shuffle_mode_most_played">Еш кына тыңлаучылар</string>
     <string name="shuffle_mode_most_played_artists">Иң тыңлаучылар артистлар</string>
