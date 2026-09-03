@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Åtkomst till lagring</string>
     <string name="permission_external_storage_description">Appen behöver behörighet för att komma åt din enhets lagringsutrymme för att spela musik</string>
     <string name="permission_external_storage_denied">Du måste bevilja behörighet att komma åt extern lagring.</string>
-    <string name="permission_bluetooth_title">Enheter i närheten</string>
+    <string name="permission_bluetooth_title">Enheter i närheten (valfritt)</string>
     <string name="permission_bluetooth_description">Appen behöver åtkomst till enheter i närheten för att söka efter bluetooth-enheter</string>
     <string name="permission_read_images_title">Läs bilder (valfritt)</string>
     <string name="permission_read_images_summary">Denna behörighet krävs för att Booming Music ska kunna hitta skivomslagsfiler i dina musikmappar. Om du inte planerar att använda den här funktionen kan du välja att inte bevilja den.</string>
@@ -332,15 +332,14 @@
         <item quantity="other">%d föremål</item>
     </plurals>
     <!-- Home -->
-    <string name="home_label">Home</string>
+    <string name="home_label">Hem</string>
     <string name="shuffle_action">Blanda</string>
     <string name="top_artists">Topp artister</string>
     <string name="top_albums">Topp album</string>
     <string name="recent_artists">Senaste artister</string>
     <string name="recent_albums">Senaste album</string>
-
     <!-- Shuffle modes -->
-    <string name="shuffle_mode_pure_random">Ren slumpmässig</string>
+    <string name="shuffle_mode_pure_random">Helt slumpmässigt</string>
     <string name="shuffle_mode_most_played">Mest spelade</string>
     <string name="shuffle_mode_most_played_artists">Mest spelade artister</string>
     <string name="shuffle_mode_most_played_albums">Mest spelade album</string>
@@ -355,7 +354,7 @@
     <string name="shuffle_mode_favorite_songs_description">Ger prioritet till dina favoritlåtar.</string>
     <string name="shuffle_mode_forgotten_songs_description">Prioriterar låtar som du inte spelat på ett tag.</string>
     <string name="shuffle_mode_recently_added_description">Gynnar låtar som nyligen lagts till i ditt bibliotek.</string>
-    <string name="shuffle_mode_combined_description">Blanda baserat på favoriter, pjäser och recency.</string>
+    <string name="shuffle_mode_combined_description">Blanda baserat på favoriter, spelningar och hur nyligen de spelats.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Utjämnare (Eq)</string>
     <string name="autoeq_label">AutoEq</string>
@@ -981,4 +980,53 @@
     <string name="widget_page_next">Nästkommande låtar</string>
     <string name="network_features_summary">Aktiverar scrobbling samt nedladdning av skivomslag och låttexter.</string>
     <string name="listenbrainz_toggle_token_visibility">Växla tokensynlighet</string>
+    <string name="action_play_x">Spela %s</string>
+    <string name="invalid_search_params">Sökparametrarna kunde inte bearbetas.</string>
+    <string name="permissions_needed">Behörigheter som krävs</string>
+    <string name="welcome_to_x">Välkommen till %s</string>
+    <string name="home_empty_title">Inget att rekommendera</string>
+    <string name="home_empty_subtitle">Lyssna på lite musik först</string>
+    <string name="home_shuffle_title">Spela din musik i slumpvis ordning</string>
+    <string name="home_for_you_title">För dig</string>
+    <string name="home_for_you_subtitle">Dina absoluta favoriter på ett ställe</string>
+    <string name="home_for_you_subtitle_2">Handplockade pärlor bara för dig</string>
+    <string name="home_for_you_subtitle_3">Din dagliga dos av musikalisk inspiration</string>
+    <string name="home_albums_title">Lyssna nu</string>
+    <string name="home_albums_subtitle">Populära och nytillkomna album</string>
+    <string name="home_albums_subtitle_2">Dyk in i dina senaste samlingar</string>
+    <string name="home_albums_subtitle_3">Vad är populärt i ditt bibliotek</string>
+    <string name="home_artists_title">Rekommenderade artister</string>
+    <string name="home_artists_subtitle">Artister du lyssnar mest på</string>
+    <string name="home_artists_subtitle_2">Nya ansikten och gamla favoriter</string>
+    <string name="home_artists_subtitle_3">Människorna bakom musiken du älskar</string>
+    <string name="home_forgotten_tracks_title">Upptäck på nytt</string>
+    <string name="home_forgotten_tracks_subtitle">Återupptäck gamla favoriter</string>
+    <string name="home_forgotten_tracks_subtitle_2">Damma av de där gömda pärlorna</string>
+    <string name="home_forgotten_tracks_subtitle_3">Låtar du inte har hört på länge</string>
+    <string name="allow_lyrics_download_from">Tillåt nedladdning från:</string>
+    <string name="backup_restore_title">Säkerhetskopiera och återställ</string>
+    <string name="backup_restore_summary">Hantera säkerhetskopiering och återställning av appdata.</string>
+    <string name="no_backup_folder_selected">Ingen säkerhetskopieringsmapp vald</string>
+    <string name="select_backup_folder">Välj säkerhetskopieringsmapp</string>
+    <string name="no_backups_found">Inga säkerhetskopior hittades i den här mappen.</string>
+    <string name="backup_recent_list">Senaste säkerhetskopiorna</string>
+    <string name="backup_file_name">Filnamn (valfritt)</string>
+    <string name="create_new_backup">Skapa säkerhetskopia</string>
+    <string name="open_backup">Öppna säkerhetskopia</string>
+    <string name="share_backup">Dela säkerhetskopia</string>
+    <string name="cannot_share_this_backup">Det går inte att dela den här säkerhetskopian.</string>
+    <string name="confirm_delete_backup">Vill du ta bort den här säkerhetskopian?</string>
+    <string name="backup_deleted_successfully">Säkerhetskopian togs bort.</string>
+    <string name="could_not_delete_backup">Det gick inte att ta bort säkerhetskopian.</string>
+    <string name="select_content_to_backup">Välj innehåll att säkerhetskopiera:</string>
+    <string name="backup_content_settings">Appinställningar</string>
+    <string name="backup_content_lyrics">Synkroniserade låttexter</string>
+    <string name="backup_content_play_info">Uppspelningsstatistik.</string>
+    <string name="backup_content_playlists">Spellistor</string>
+    <string name="backup_content_artist_images">Artistbilder</string>
+    <string name="backup_app_version">Skapad i</string>
+    <string name="backup_warning_legacy_format">Detta säkerhetskopieringsformat betraktas som föråldrat. För närvarande går det att återställa det, men vi kan komma att upphöra med stödet för det i framtiden.</string>
+    <string name="backup_warning_ver_newer">Säkerhetskopieringsformatet är nyare än vad den här versionen av Booming Music klarar av.</string>
+    <string name="backup_warning_app_ver_newer">Denna säkerhetskopia skapades i en nyare version av Booming Music. Om du återställer den i den här versionen kan det leda till fel eller att data inte återställs fullständigt.</string>
+    <string name="restoring_data">Återställer dina data…</string>
 </resources>
