@@ -356,7 +356,6 @@
     <string name="top_albums">Лучшие альбомы</string>
     <string name="recent_artists">Недавние исполнители</string>
     <string name="recent_albums">Недавние альбомы</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Полная случайность</string>
     <string name="shuffle_mode_most_played">Часто прослушиваемые</string>
@@ -964,4 +963,13 @@
     <string name="terms_of_service">Условия предоставления услуг</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="legal">Правовое</string>
+    <string name="app_widget_grid">Сетка</string>
+    <string name="backup_app_version">Создано в</string>
+    <string name="backup_warning_database_ver">Некоторые данные из этой резервной копии, такие как плейлисты и тексты песен, несовместимы и не могут быть восстановлены.</string>
+    <string name="app_widget_library">Библиотека</string>
+    <string name="app_widget_nothing_playing">Ничего не играет</string>
+    <string name="app_widget_tap_to_play">Нажмите, чтобы открыть Booming Music</string>
+    <string name="action_play_x">Воспроизвести %s</string>
+    <string name="restore_from_backup">Восстановить из резервной копии</string>
+    <string name="home_artists_title">Рекомендуемые исполнители</string>
 </resources>
