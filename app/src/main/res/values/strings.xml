@@ -468,8 +468,11 @@
     <string name="imported_x_profiles">Imported %d profiles.</string>
     <string name="no_profile_imported">No profile imported.</string>
     <string name="import_autoeq_profile">Import AutoEq profile</string>
-    <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
-    <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
+    <string name="select_a_file_containing_autoeq_params">Select a file with AutoEq (GraphicEq) parameters</string>
+    <string name="no_autoeq_profiles">No AutoEq profiles imported</string>
+    <string name="import_or_sync_autoeq_database">Import a profile or sync the database to view available profiles</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Import a profile or search your device name among %d profiles</string>
+    <string name="autoeq_search_device_name">Search device or model</string>
     <string name="reset_equalizer">Reset equalizer</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer?
         \n\nThis will clear all your profiles.</string>
@@ -498,6 +501,10 @@
     <string name="autoeq_profile_imported_successfully">AutoEq profile imported successfully.</string>
     <string name="profile_x_deleted">Profile \"%s\" deleted.</string>
     <string name="autoeq_profile_x_deleted">AutoEq profile \"%s\" deleted.</string>
+    <string name="autoeq_sync_success">Synced %d AutoEq profiles successfully.</string>
+    <string name="autoeq_sync_failed">Failed to sync AutoEq profiles.</string>
+    <string name="sync_autoeq_database">Sync AutoEq Database</string>
+    <string name="search_autoeq_placeholder">Search headphone model</string>
     <string name="bassboost_label">BassBoost</string>
     <string name="virtualizer_label">Virtualizer</string>
     <string name="loudness_enhancer">Amplifier</string>

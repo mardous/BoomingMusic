@@ -17,13 +17,15 @@
 package com.mardous.booming.data.remote.github
 
 import android.content.Context
-import com.mardous.booming.BuildConfig
+import com.mardous.booming.R
 import com.mardous.booming.data.remote.github.model.GitHubRelease
+import com.mardous.booming.data.remote.github.model.GitHubTreeResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
 import kotlin.time.ExperimentalTime
 
 class GitHubService(private val context: Context, private val client: HttpClient, private val authToken: String? = null) {
@@ -44,6 +46,9 @@ class GitHubService(private val context: Context, private val client: HttpClient
 
     @OptIn(ExperimentalTime::class)
     suspend fun latestRelease(user: String = DEFAULT_USER, repo: String = DEFAULT_REPO, allowExperimental: Boolean = true): GitHubRelease {
+        val updaterEnabled = context.resources.getBoolean(R.bool.enable_builtin_updater)
+        if (!updaterEnabled) return GitHubRelease("", "", "", "", "", false, emptyList())
+
         val stableRelease = fetchStableRelease(user, repo)
         if (stableRelease.hasApk && stableRelease.isNewer(context)) {
             return stableRelease
@@ -58,8 +63,28 @@ class GitHubService(private val context: Context, private val client: HttpClient
         return stableRelease
     }
 
+    suspend fun fetchTree(
+        owner: String,
+        repo: String,
+        branch: String
+    ): GitHubTreeResponse {
+        val url = "${GITHUB_API_URL}repos/$owner/$repo/git/trees/$branch?recursive=1"
+        return client.get(url).body()
+    }
+
+    suspend fun fetchRawFile(
+        owner: String,
+        repo: String,
+        branch: String,
+        path: String
+    ): String {
+        val url = "${GITHUB_CONTENT_URL}$owner/$repo/$branch/$path"
+        return client.get(url).bodyAsText()
+    }
+
     companion object {
-        private const val GITHUB_API_URL = BuildConfig.GITHUB_API_URL
+        private const val GITHUB_API_URL = "https://api.github.com/"
+        private const val GITHUB_CONTENT_URL = "https://raw.githubusercontent.com/"
 
         private const val DEFAULT_USER = "mardous"
         private const val DEFAULT_REPO = "BoomingMusic"

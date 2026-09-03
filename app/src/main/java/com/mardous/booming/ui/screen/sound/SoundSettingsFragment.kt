@@ -28,16 +28,12 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.extensions.isLandscape
-import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.BoomingMusicTheme
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Christians M. A. (mardous)
  */
 class SoundSettingsFragment : BottomSheetDialogFragment() {
-
-    private val viewModel: EqualizerViewModel by viewModel()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -60,7 +56,7 @@ class SoundSettingsFragment : BottomSheetDialogFragment() {
             )
             setContent {
                 BoomingMusicTheme {
-                    SoundSettingsSheet(viewModel)
+                    SoundSettingsSheet()
                 }
             }
         }

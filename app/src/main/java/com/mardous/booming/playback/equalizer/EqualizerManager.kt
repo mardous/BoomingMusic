@@ -21,6 +21,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.media.audiofx.AudioEffect
+import android.net.Uri
+import android.util.JsonReader
+import android.util.JsonToken
 import android.util.Log
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
@@ -30,6 +33,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.media3.common.util.UnstableApi
 import com.mardous.booming.core.audio.AudioOutputObserver
+import com.mardous.booming.core.audio.AutoEqParser
 import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
 import com.mardous.booming.core.model.equalizer.BalanceState
@@ -48,7 +52,10 @@ import com.mardous.booming.core.model.equalizer.TempoState
 import com.mardous.booming.core.model.equalizer.VirtualizerState
 import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
+import com.mardous.booming.data.local.room.AutoEqEntity
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
+import com.mardous.booming.data.repository.RealAutoEqRepository
+import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
 import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.utilities.toEnum
 import com.mardous.booming.playback.equalizer.engine.BasicEQEngine
@@ -73,7 +80,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import kotlin.time.Duration.Companion.milliseconds
 
 val Context.eqDataStore by preferencesDataStore("equalizer")
@@ -84,6 +93,7 @@ class EqualizerManager(
     private val context: Context,
     private val balanceProcessor: BalanceAudioProcessor,
     private val replayGainProcessor: ReplayGainAudioProcessor,
+    private val eqRepository: RealAutoEqRepository,
     audioOutputObserver: AudioOutputObserver,
 ) {
 
@@ -920,6 +930,58 @@ class EqualizerManager(
                 isAutoEq = true
             )
             setCustomProfile(profile, fromUser = true)
+        }
+    }
+
+    fun syncAutoEqDatabase() = eqRepository.syncAutoEqDatabase()
+
+    suspend fun getRemoteAutoEqProfilesCount() = eqRepository.getRemoteProfilesCount()
+
+    suspend fun setRemoteAutoEqProfile(entity: AutoEqEntity) = withContext(IO) {
+        eqRepository.loadAutoEqProfile(entity)?.let { profile ->
+            setAutoEqProfile(profile)
+            importAutoEqProfile(
+                profile = profile,
+                suggestedName = profile.name,
+                allowReplace = true
+            )
+        }
+    }
+
+    suspend fun searchAutoEqHeadphones(query: String) = eqRepository.searchHeadphones(query)
+
+    @OptIn(ExperimentalSerializationApi::class)
+    suspend fun parseProfilesFromUri(uri: Uri): Result<List<EqProfile>> = withContext(IO) {
+        runCatching {
+            val mimeType = context.contentResolver.getType(uri)
+            if (mimeType == null || (
+                        mimeType != "application/json" &&
+                                mimeType != "text/plain" &&
+                                !mimeType.startsWith("application/"))) {
+                throw IllegalArgumentException("Invalid MIME type: $mimeType")
+            }
+
+            context.contentResolver.openInputStream(uri)?.buffered()?.use { bufferedStream ->
+                bufferedStream.mark(1024)
+                val reader = JsonReader(bufferedStream.reader())
+                if (reader.peek() != JsonToken.BEGIN_ARRAY) {
+                    throw IllegalArgumentException("Not a JSON array")
+                }
+
+                bufferedStream.reset()
+
+                Json.decodeFromStream<List<EqProfile>>(bufferedStream)
+            } ?: throw IllegalStateException("Could not open stream for $uri")
+        }
+    }
+
+    suspend fun parseAutoEqProfileFromUri(uri: Uri): Result<AutoEqProfile> = withContext(IO) {
+        runCatching {
+            val mimeType = context.contentResolver.getType(uri)
+            if (mimeType == null || mimeType != MIME_TYPE_PLAIN_TEXT) {
+                throw IllegalArgumentException("Invalid MIME type: $mimeType")
+            }
+            AutoEqParser.parse(context, uri) ?: throw IllegalStateException("Failed to parse AutoEq profile")
         }
     }
 

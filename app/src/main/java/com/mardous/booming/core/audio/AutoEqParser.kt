@@ -8,9 +8,10 @@ import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-object AutoEqTxtParser {
+object AutoEqParser {
 
-    private const val GRAPHIC_EQ_PREFIX = "GraphicEQ:"
+    const val GRAPHIC_EQ = "GraphicEQ"
+    private const val GRAPHIC_EQ_PREFIX = "${GRAPHIC_EQ}:"
     private const val NAME_FALLBACK = "AutoEq Preset"
 
     fun parse(context: Context, uri: Uri): AutoEqProfile? {
@@ -18,14 +19,17 @@ object AutoEqTxtParser {
         val inputStream = context.contentResolver.openInputStream(uri) ?: return null
 
         val fullText = BufferedReader(InputStreamReader(inputStream)).use { it.readText() }
+        return parseContent(fileName, fullText)
+    }
 
+    fun parseContent(name: String, fullText: String): AutoEqProfile? {
         val graphicEqLine = fullText.lines()
             .firstOrNull { it.trim().startsWith(GRAPHIC_EQ_PREFIX, ignoreCase = true) }
             ?: return null
 
         val dataString = graphicEqLine.substringAfter(GRAPHIC_EQ_PREFIX).trim()
         if (dataString.isEmpty()) {
-            return AutoEqProfile(name = fileName, points = emptyList())
+            return AutoEqProfile(name = name, points = emptyList())
         }
 
         val points = mutableListOf<AutoEqPoint>()
@@ -44,7 +48,7 @@ object AutoEqTxtParser {
         }
 
         return if (points.isNotEmpty()) {
-            AutoEqProfile(name = fileName, preamp = 0f, points = points)
+            AutoEqProfile(name = name, preamp = 0f, points = points)
         } else {
             null
         }

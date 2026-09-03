@@ -38,6 +38,7 @@ import com.mardous.booming.data.remote.musicbrainz.MusicBrainzService
 import com.mardous.booming.data.remote.provideOkHttp
 import com.mardous.booming.data.repository.AlbumRepository
 import com.mardous.booming.data.repository.ArtistRepository
+import com.mardous.booming.data.repository.AutoEqRepository
 import com.mardous.booming.data.repository.GenreRepository
 import com.mardous.booming.data.repository.LyricsRepository
 import com.mardous.booming.data.repository.NetworkRepository
@@ -45,6 +46,7 @@ import com.mardous.booming.data.repository.NetworkRepositoryImpl
 import com.mardous.booming.data.repository.PlaylistRepository
 import com.mardous.booming.data.repository.RealAlbumRepository
 import com.mardous.booming.data.repository.RealArtistRepository
+import com.mardous.booming.data.repository.RealAutoEqRepository
 import com.mardous.booming.data.repository.RealGenreRepository
 import com.mardous.booming.data.repository.RealLyricsRepository
 import com.mardous.booming.data.repository.RealPlaylistRepository
@@ -120,6 +122,7 @@ private val mainModule = module {
             context = androidContext(),
             balanceProcessor = get(),
             replayGainProcessor = get(),
+            eqRepository = get(),
             audioOutputObserver = get()
         )
     }
@@ -157,7 +160,8 @@ private val roomModule = module {
                 BoomingDatabase.MIGRATION_2_3,
                 BoomingDatabase.MIGRATION_3_4,
                 BoomingDatabase.MIGRATION_4_5,
-                BoomingDatabase.MIGRATION_5_6
+                BoomingDatabase.MIGRATION_5_6,
+                BoomingDatabase.MIGRATION_6_7
             )
             .build()
     }
@@ -184,6 +188,10 @@ private val roomModule = module {
 
     factory {
         get<BoomingDatabase>().lyricsDao()
+    }
+
+    factory {
+        get<BoomingDatabase>().autoEqDao()
     }
 }
 
@@ -272,6 +280,10 @@ private val dataModule = module {
             musicBrainzService = get()
         )
     } bind NetworkRepository::class
+
+    single {
+        RealAutoEqRepository(gitHubService = get(), autoEqDao = get())
+    } bind AutoEqRepository::class
 }
 
 private val viewModule = module {
@@ -289,7 +301,6 @@ private val viewModule = module {
 
     viewModel {
         EqualizerViewModel(
-            contentResolver = get(),
             equalizerManager = get(),
             audioOutputObserver = get(),
             mediaStoreWriter = get()

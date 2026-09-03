@@ -69,12 +69,13 @@ import com.mardous.booming.ui.component.compose.ShapedText
 import com.mardous.booming.ui.component.compose.TitledCard
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.SliderTokens
+import org.koin.compose.viewmodel.koinViewModel
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun SoundSettingsSheet(
-    viewModel: EqualizerViewModel
+    viewModel: EqualizerViewModel = koinViewModel()
 ) {
     val context = LocalContext.current
     val hapticFeedback = LocalHapticFeedback.current

@@ -4,6 +4,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.mardous.booming.data.local.room.AutoEqDao
+import com.mardous.booming.data.local.room.AutoEqEntity
 import com.mardous.booming.data.local.room.HistoryDao
 import com.mardous.booming.data.local.room.HistoryEntity
 import com.mardous.booming.data.local.room.InclExclDao
@@ -26,7 +28,8 @@ import com.mardous.booming.data.local.room.SongEntity
         PlayCountEntity::class,
         QueueEntity::class,
         InclExclEntity::class,
-        LyricsEntity::class
+        LyricsEntity::class,
+        AutoEqEntity::class
     ],
     version = BoomingDatabase.VERSION,
     exportSchema = false
@@ -38,9 +41,10 @@ abstract class BoomingDatabase : RoomDatabase() {
     abstract fun queueDao(): QueueDao
     abstract fun inclExclDao(): InclExclDao
     abstract fun lyricsDao(): LyricsDao
+    abstract fun autoEqDao(): AutoEqDao
 
     companion object {
-        const val VERSION = 6
+        const val VERSION = 7
 
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
@@ -78,6 +82,27 @@ abstract class BoomingDatabase : RoomDatabase() {
                         is_instrumental INTEGER NOT NULL DEFAULT 0
                     )
                 """.trimIndent())
+            }
+        }
+
+        val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `AutoEqEntity` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                        `label` TEXT NOT NULL, 
+                        `source` TEXT NOT NULL, 
+                        `rig` TEXT NOT NULL, 
+                        `form` TEXT NOT NULL, 
+                        `model_name` TEXT NOT NULL, 
+                        `path` TEXT NOT NULL
+                    )
+                    """.trimIndent()
+                )
+                db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_label` ON `AutoEqEntity` (`label`)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_source` ON `AutoEqEntity` (`source`)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_model_name` ON `AutoEqEntity` (`model_name`)")
             }
         }
     }
