@@ -87,6 +87,8 @@ fun EmptyView(
             style = MaterialTheme.typography.titleLarge
         )
 
+        Spacer(Modifier.height(4.dp))
+
         if (!subtitle.isNullOrEmpty()) {
             Text(
                 text = subtitle,

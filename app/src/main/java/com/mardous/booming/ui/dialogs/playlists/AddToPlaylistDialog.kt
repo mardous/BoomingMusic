@@ -308,7 +308,7 @@ class AddToPlaylistDialog : BottomSheetDialogFragment() {
                                                 state.searchQuery
                                             )
                                         },
-                                        modifier = Modifier.fillParentMaxSize()
+                                        modifier = Modifier.fillMaxSize()
                                     )
                                 }
                             }
