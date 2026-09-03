@@ -130,11 +130,11 @@ class RealAutoEqRepository(
     }
 
     companion object {
-        private const val TAG = "RealAutoEqRepository"
+        private const val TAG = "AutoEqRepository"
 
         private const val GRAPHIC_EQ_FILE_SUFFIX = " ${AutoEqParser.GRAPHIC_EQ}.txt"
 
-        private const val AUTOEQ_REPO_AUTHOR = "jaakkopasanen"
+        private const val AUTOEQ_REPO_AUTHOR = "mardous"
         private const val AUTOEQ_REPO_NAME = "AutoEq"
         private const val AUTOEQ_BRANCH = "master"
     }
