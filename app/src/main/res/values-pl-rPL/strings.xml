@@ -3,7 +3,7 @@
     <string name="action_play">Odtwórz</string>
     <string name="action_play_all">Odtwórz wszystko</string>
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
-    <string name="action_queue_next">Dodaj jako następne</string>
+    <string name="action_queue_next">Dodaj jako następny</string>
     <string name="shuffle_all_label">Odtwarzanie losowe</string>
     <string name="shuffle_mode">Tryb odtwarzania losowego</string>
     <string name="repeat_mode">Tryb powtarzania</string>
@@ -886,7 +886,7 @@
     <string name="github">GitHub</string>
     <string name="more_contributors_title">Więcej współtwórców</string>
     <string name="more_contributors_summary">Pełną listę współtwórców znajdziesz na GitHubie.</string>
-    <string name="telegram_community">Społeczność Telegrama</string>
+    <string name="telegram_community">Społeczność Telegram</string>
     <string name="telegram_community_summary">Dołącz do społeczności na Telegramie i bądź na bieżąco z nowościami oraz aktualizacjami.</string>
     <string name="support_my_work">Wesprzyj moją prace</string>
     <string name="contributor_dawid_description">Główny współtwórca i projektant kilku kluczowych funkcji aplikacji.</string>
