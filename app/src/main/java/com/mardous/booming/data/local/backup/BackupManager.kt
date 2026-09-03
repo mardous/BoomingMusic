@@ -31,6 +31,7 @@ import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.documentfile.provider.DocumentFile
 import com.mardous.booming.coil.CustomArtistImageManager
+import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.appwidgets.config.WidgetConfigStore
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.LyricsDao
@@ -189,7 +190,7 @@ class BackupManager(
                         )
                     }
                     if (metadata.backupVersion == CURRENT_BACKUP_VERSION) {
-                        restoreBackupWithMetadata(contents, zipFile)
+                        restoreBackupWithMetadata(metadata, contents, zipFile)
                     } else if (metadata.backupVersion < CURRENT_BACKUP_VERSION) {
                         restoreLegacyBackup(contents, zipFile, metadata.backupVersion)
                     } else {
@@ -250,7 +251,7 @@ class BackupManager(
             onZipFile = { zipFile ->
                 val metadataEntry = zipFile.getEntry("metadata.json")
                 if (metadataEntry == null) {
-                    BackupFileWithMetadata(backupUri, BackupMetadata(FIRST_BACKUP_VERSION))
+                    BackupFileWithMetadata(backupUri, BackupMetadata(FIRST_BACKUP_VERSION, LEGACY_DB_VERSION))
                 } else {
                     val metadata = zipFile.getInputStream(metadataEntry).use { metadataInput ->
                         json.decodeFromString<BackupMetadata>(
@@ -341,6 +342,7 @@ class BackupManager(
         if (packageInfo != null) {
             val metadata = BackupMetadata(
                 backupVersion = CURRENT_BACKUP_VERSION,
+                databaseVersion = BoomingDatabase.VERSION,
                 appName = packageInfo.packageName,
                 appVersionName = packageInfo.versionName,
                 appVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
@@ -468,6 +470,7 @@ class BackupManager(
     }
 
     private suspend fun restoreBackupWithMetadata(
+        metadata: BackupMetadata,
         contents: List<BackupContent>,
         zipFile: ZipFile
     ): Boolean {
@@ -489,19 +492,19 @@ class BackupManager(
 
                     entry.isPlayInfoEntry(DEFAULT_PLAY_INFO_NAME) -> {
                         if (contents.contains(BackupContent.PlayInfo)) {
-                            if (!restorePlayInfo(zipFile, entry)) errors++
+                            if (!restorePlayInfo(zipFile, entry, metadata.databaseVersion)) errors++
                         } else Log.d(TAG, "Skipping play info entry")
                     }
 
                     entry.isLyricsEntry() -> {
                         if (contents.contains(BackupContent.Lyrics)) {
-                            if (!restoreLyrics(zipFile, entry)) errors++
+                            if (!restoreLyrics(zipFile, entry, metadata.databaseVersion)) errors++
                         } else Log.d(TAG, "Skipping lyrics entry")
                     }
 
                     entry.isPlaylistEntry() -> {
                         if (contents.contains(BackupContent.Playlists)) {
-                            if (!restorePlaylist(zipFile, entry)) errors++
+                            if (!restorePlaylist(zipFile, entry, metadata.databaseVersion)) errors++
                         } else Log.d(TAG, "Skipping playlist entry")
                     }
 
@@ -563,8 +566,14 @@ class BackupManager(
         }
     }
 
-    private suspend fun restoreLyrics(zipFile: ZipFile, entry: ZipEntry) = withContext(IO) {
+    private suspend fun restoreLyrics(
+        zipFile: ZipFile,
+        entry: ZipEntry,
+        databaseVersion: Int
+    ) = withContext(IO) {
         try {
+            checkDatabaseVersion(databaseVersion)
+
             val serializedLyrics = zipFile.getInputStream(entry).use { zis ->
                 zis.bufferedReader().use { it.readText() }
             }
@@ -581,8 +590,14 @@ class BackupManager(
         }
     }
 
-    private suspend fun restorePlaylist(zipFile: ZipFile, zipEntry: ZipEntry): Boolean {
+    private suspend fun restorePlaylist(
+        zipFile: ZipFile,
+        zipEntry: ZipEntry,
+        databaseVersion: Int
+    ): Boolean {
         try {
+            checkDatabaseVersion(databaseVersion)
+
             val playlistName = zipEntry.getFileName().substringBeforeLast(".")
             val songs = mutableListOf<Song>()
 
@@ -618,8 +633,14 @@ class BackupManager(
         }
     }
 
-    private suspend fun restorePlayInfo(zipFile: ZipFile, entry: ZipEntry) = withContext(IO) {
+    private suspend fun restorePlayInfo(
+        zipFile: ZipFile,
+        entry: ZipEntry,
+        databaseVersion: Int
+    ) = withContext(IO) {
         try {
+            checkDatabaseVersion(databaseVersion)
+
             val playInfoBackup = zipFile.getInputStream(entry).use { stream ->
                 json.decodeFromString<PlayInfoBackup>(stream.bufferedReader().use { it.readText() })
             }
@@ -689,8 +710,8 @@ class BackupManager(
                 context = context,
                 zipFile = zipFile,
                 contents = contents,
-                onRestorePlaylist = { entry -> restorePlaylist(zipFile, entry) },
-                onRestoreLyrics = { entry -> restoreLyrics(zipFile, entry) },
+                onRestorePlaylist = { entry -> restorePlaylist(zipFile, entry, LEGACY_DB_VERSION) },
+                onRestoreLyrics = { entry -> restoreLyrics(zipFile, entry, LEGACY_DB_VERSION) },
                 onRestoreCustomArtistImages = { entry -> restoreCustomArtistImages(zipFile, entry) }
             )
         } else throw IllegalStateException("Unsupported legacy backup version")
@@ -731,6 +752,12 @@ class BackupManager(
             }
         } catch (e: Exception) {
             onError(e)
+        }
+    }
+
+    private fun checkDatabaseVersion(databaseVersion: Int) {
+        if (databaseVersion != CURRENT_DB_VERSION) {
+            throw IllegalStateException("Database version mismatch: required=${CURRENT_DB_VERSION}, actual=$databaseVersion")
         }
     }
 

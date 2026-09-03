@@ -65,6 +65,8 @@ data class PreferenceContent(
 data class BackupMetadata(
     @SerialName("backup_version")
     val backupVersion: Int,
+    @SerialName("database_version")
+    val databaseVersion: Int = -1,
     @SerialName("app_name")
     val appName: String? = null,
     @SerialName("app_version_name")

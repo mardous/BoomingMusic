@@ -17,6 +17,7 @@
 
 package com.mardous.booming.data.local.backup
 
+import com.mardous.booming.core.BoomingDatabase
 import org.koin.core.component.KoinComponent
 import java.io.File
 import java.util.zip.ZipEntry
@@ -40,6 +41,8 @@ open class BackupComponent : KoinComponent {
 
         const val FIRST_BACKUP_VERSION = 1
         const val CURRENT_BACKUP_VERSION = 2
+        const val LEGACY_DB_VERSION = 6
+        const val CURRENT_DB_VERSION = BoomingDatabase.VERSION
     }
 
     protected fun ZipEntry.isSettingsEntry(settingsName: String): Boolean {

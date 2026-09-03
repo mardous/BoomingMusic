@@ -970,6 +970,7 @@
     <string name="backup_content_playlists">Playlists</string>
     <string name="backup_content_artist_images">Artist images</string>
     <string name="backup_app_version">Created in</string>
+    <string name="backup_warning_database_ver">Some data from this backup, such as playlists and lyrics, is not compatible and may not be restored.</string>
     <string name="backup_warning_legacy_format">This backup format is considered legacy.
         For now, you can restore it, but we may stop supporting it in the future.</string>
     <string name="backup_warning_ver_newer">The backup format is newer than what this version of Booming Music can handle.</string>

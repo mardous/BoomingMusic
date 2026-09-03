@@ -4,7 +4,19 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.mardous.booming.data.local.room.*
+import com.mardous.booming.data.local.room.HistoryDao
+import com.mardous.booming.data.local.room.HistoryEntity
+import com.mardous.booming.data.local.room.InclExclDao
+import com.mardous.booming.data.local.room.InclExclEntity
+import com.mardous.booming.data.local.room.LyricsDao
+import com.mardous.booming.data.local.room.LyricsEntity
+import com.mardous.booming.data.local.room.PlayCountDao
+import com.mardous.booming.data.local.room.PlayCountEntity
+import com.mardous.booming.data.local.room.PlaylistDao
+import com.mardous.booming.data.local.room.PlaylistEntity
+import com.mardous.booming.data.local.room.QueueDao
+import com.mardous.booming.data.local.room.QueueEntity
+import com.mardous.booming.data.local.room.SongEntity
 
 @Database(
     entities = [
@@ -16,7 +28,7 @@ import com.mardous.booming.data.local.room.*
         InclExclEntity::class,
         LyricsEntity::class
     ],
-    version = 6,
+    version = BoomingDatabase.VERSION,
     exportSchema = false
 )
 abstract class BoomingDatabase : RoomDatabase() {
@@ -28,6 +40,8 @@ abstract class BoomingDatabase : RoomDatabase() {
     abstract fun lyricsDao(): LyricsDao
 
     companion object {
+        const val VERSION = 6
+
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE PlaylistEntity ADD COLUMN custom_cover_uri TEXT")

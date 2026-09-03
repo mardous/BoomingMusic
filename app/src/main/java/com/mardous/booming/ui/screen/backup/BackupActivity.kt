@@ -623,6 +623,7 @@ class BackupActivity : AbsThemeActivity() {
         }
 
         val isLegacy = metadata.backupVersion == BackupComponent.FIRST_BACKUP_VERSION
+        val isIncompatibleSchema = metadata.databaseVersion != BackupComponent.CURRENT_DB_VERSION
         val isNewerApp = metadata.appVersionCode > currentAppVersionCode
 
         Column(
@@ -655,6 +656,14 @@ class BackupActivity : AbsThemeActivity() {
                     text = stringResource(R.string.backup_warning_legacy_format),
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                )
+            }
+
+            if (isIncompatibleSchema) {
+                MetadataWarning(
+                    text = stringResource(R.string.backup_warning_database_ver),
+                    containerColor = MaterialTheme.colorScheme.errorContainer,
+                    contentColor = MaterialTheme.colorScheme.onErrorContainer
                 )
             }
 
