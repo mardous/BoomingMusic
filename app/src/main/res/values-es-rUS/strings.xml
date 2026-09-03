@@ -393,8 +393,8 @@
     <string name="imported_x_profiles">Se importaron %d perfiles.</string>
     <string name="no_profile_imported">No se importar ningún perfil.</string>
     <string name="import_autoeq_profile">Importar perfil de AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Selecciona un archivo que contenga parámetros de AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">No hay perfiles de AutoEq importados.</string>
+    <string name="select_a_file_containing_autoeq_params">Selecciona un archivo con parámetros de AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">No hay perfiles de AutoEq importados</string>
     <string name="reset_equalizer">Restablecer ecualizador</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">¿Seguro que quieres restablecer el ecualizador?\n\nEsto limpiará todos tus perfiles.</string>
     <string name="not_supported">No soportado</string>
@@ -1039,4 +1039,12 @@
     <string name="home_forgotten_tracks_subtitle_2">Desempolva esos tesoros escondidos</string>
     <string name="home_forgotten_tracks_subtitle_3">Canciones que no has escuchado en un tiempo</string>
     <string name="action_play_x">Reproducir %s</string>
+    <string name="import_or_sync_autoeq_database">Importa un perfil o sincroniza la base de datos para ver perfiles disponibles</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importa un perfil o busca el nombre de tu dispositivo entre %d perfiles</string>
+    <string name="autoeq_search_device_name">Buscar dispositivo o modelo</string>
+    <string name="autoeq_sync_success">Se sincronizaron %d perfiles de AutoEq correctamente.</string>
+    <string name="autoeq_sync_failed">Falló la sincronización de perfiles de AutoEq.</string>
+    <string name="sync_autoeq_database">Sincronizar base de datos de AutoEq</string>
+    <string name="search_autoeq_placeholder">Buscar modelo de audífono</string>
+    <string name="backup_warning_database_ver">Algunos datos de esta copia de seguridad, como playlists y letras, no son compatibles y podrían no ser restaurados.</string>
 </resources>
