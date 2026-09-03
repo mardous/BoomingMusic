@@ -340,7 +340,6 @@
     <string name="top_albums">Album migliori</string>
     <string name="recent_artists">Artisti recenti</string>
     <string name="recent_albums">Album recenti</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Completamente casuale</string>
     <string name="shuffle_mode_most_played">Più riprodotti</string>
@@ -1011,4 +1010,24 @@
     <string name="backup_warning_app_ver_newer">Questo backup è stato creato in una versione più recente di Booming Music. Ripristinarlo in questa versione potrebbe comportare errori o un ripristino parziale dei dati.</string>
     <string name="restoring_data">Ripristino dei tuoi dati…</string>
     <string name="allow_lyrics_download_from">Consenti il download da:</string>
+    <string name="action_play_x">Riproduci %s</string>
+    <string name="home_empty_title">Niente da consigliare</string>
+    <string name="home_empty_subtitle">Ascolta prima un po\' di musica</string>
+    <string name="home_shuffle_title">Riproduzione casuale</string>
+    <string name="home_for_you_title">Per te</string>
+    <string name="home_for_you_subtitle">I tuoi preferiti di sempre in un unico posto</string>
+    <string name="home_for_you_subtitle_2">Gemme scelte appositamente per te</string>
+    <string name="home_for_you_subtitle_3">La tua dose giornaliera di ispirazione musicale</string>
+    <string name="home_albums_title">Ascolta ora</string>
+    <string name="home_albums_subtitle">Album migliori e recenti</string>
+    <string name="home_albums_subtitle_2">Immergiti nelle collezioni più recenti</string>
+    <string name="home_albums_subtitle_3">Cos\'è di tendenza nella tua libreria</string>
+    <string name="home_artists_title">Artisti consigliati</string>
+    <string name="home_artists_subtitle">Gli artisti che ascolti di più</string>
+    <string name="home_artists_subtitle_2">Nuovi volti e vecchi preferiti</string>
+    <string name="home_artists_subtitle_3">I volti dietro la musica che ami</string>
+    <string name="home_forgotten_tracks_title">Riscopri</string>
+    <string name="home_forgotten_tracks_subtitle">Riporta alla luce i vecchi preferiti</string>
+    <string name="home_forgotten_tracks_subtitle_2">Spolvera questi tesori nascosti</string>
+    <string name="home_forgotten_tracks_subtitle_3">Canzoni che non ascolti da un po\'</string>
 </resources>
