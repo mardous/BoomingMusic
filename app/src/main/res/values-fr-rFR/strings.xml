@@ -348,7 +348,6 @@
     <string name="top_albums">Meilleurs albums</string>
     <string name="recent_artists">Artistes récents</string>
     <string name="recent_albums">Albums récents</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Seulement en aléatoire</string>
     <string name="shuffle_mode_most_played">Les plus joués</string>
@@ -1019,4 +1018,19 @@
     <string name="invalid_search_params">Les paramètres de recherche n\'ont pas pu être traités.</string>
     <string name="restoring_data">Restauration de vos données…</string>
     <string name="allow_lyrics_download_from">Autoriser le téléchargement depuis :</string>
+    <string name="action_play_x">Lire %s</string>
+    <string name="home_empty_title">Rien à recommander</string>
+    <string name="home_empty_subtitle">Écoute d\'abord un peu de musique</string>
+    <string name="home_shuffle_title">Écouter votre musique en mode aléatoire</string>
+    <string name="home_for_you_title">Pour vous</string>
+    <string name="home_for_you_subtitle">Tous vos coups de cœur réunis au même endroit</string>
+    <string name="home_for_you_subtitle_2">Des pépites sélectionnées avec soin, rien que pour vous</string>
+    <string name="home_for_you_subtitle_3">Votre dose quotidienne d\'inspiration musicale</string>
+    <string name="home_albums_title">Écoutez dès maintenant</string>
+    <string name="home_albums_subtitle">Les meilleurs albums et les dernières sorties</string>
+    <string name="home_albums_subtitle_2">Découvrez vos dernières collections</string>
+    <string name="home_albums_subtitle_3">Quelles sont les tendances dans votre bibliothèque ?</string>
+    <string name="home_artists_title">Artistes recommandés</string>
+    <string name="home_artists_subtitle">Les artistes que vous écoutez le plus</string>
+    <string name="home_artists_subtitle_2">De nouveaux visages et des valeurs sûres</string>
 </resources>
