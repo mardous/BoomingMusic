@@ -385,8 +385,8 @@
     <string name="imported_x_profiles">%d profili importati.</string>
     <string name="no_profile_imported">Nessun profilo importato.</string>
     <string name="import_autoeq_profile">Importa profilo AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Seleziona un file contenente parametri AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Nessun profilo AutoEq è stato importato.</string>
+    <string name="select_a_file_containing_autoeq_params">Seleziona un file con parametri AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Nessun profilo AutoEq importato</string>
     <string name="reset_equalizer">Reimposta l\'equalizzatore</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Sei sicuro di voler reimpostare l\'equalizzatore?\n \n\nQuesta operazione cancellerà tutti i tuoi profili.</string>
     <string name="not_supported">Non supportato</string>
@@ -1030,4 +1030,12 @@
     <string name="home_forgotten_tracks_subtitle">Riporta alla luce i vecchi preferiti</string>
     <string name="home_forgotten_tracks_subtitle_2">Spolvera questi tesori nascosti</string>
     <string name="home_forgotten_tracks_subtitle_3">Canzoni che non ascolti da un po\'</string>
+    <string name="import_or_sync_autoeq_database">Importa un profilo o sincronizza il database per visualizzare i profili disponibili</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importa un profilo o cerca il nome del tuo dispositivo tra %d profili</string>
+    <string name="autoeq_search_device_name">Cerca dispositivo o modello</string>
+    <string name="autoeq_sync_success">%d profili AutoEq sincronizzati correttamente.</string>
+    <string name="autoeq_sync_failed">Impossibile sincronizzare i profili AutoEq.</string>
+    <string name="sync_autoeq_database">Sincronizza database AutoEq</string>
+    <string name="search_autoeq_placeholder">Cerca modello delle cuffie</string>
+    <string name="backup_warning_database_ver">Alcuni dati di questo backup, come le playlist e i testi, non sono compatibili e potrebbero non essere ripristinati.</string>
 </resources>
