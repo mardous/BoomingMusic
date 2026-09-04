@@ -393,8 +393,8 @@
     <string name="imported_x_profiles">Profils importés %d.</string>
     <string name="no_profile_imported">Aucun profil importé.</string>
     <string name="import_autoeq_profile">Importer le profil AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant les paramètres AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Aucun profil AutoEq n\'a été importé.</string>
+    <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant des paramètres AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Aucun profil AutoEq n\'a été importé</string>
     <string name="reset_equalizer">Réinitialiser l\'égaliseur</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ? \n\nCette opération effacera tous vos profils.</string>
     <string name="not_supported">Non pris en charge</string>
@@ -1033,4 +1033,17 @@
     <string name="home_artists_title">Artistes recommandés</string>
     <string name="home_artists_subtitle">Les artistes que vous écoutez le plus</string>
     <string name="home_artists_subtitle_2">De nouveaux visages et des valeurs sûres</string>
+    <string name="home_artists_subtitle_3">Les visages qui se cachent derrière la musique que vous aimez</string>
+    <string name="home_forgotten_tracks_title">Redécouvrir</string>
+    <string name="home_forgotten_tracks_subtitle">Remettez vos anciens coups de cœur à l\'honneur</string>
+    <string name="home_forgotten_tracks_subtitle_2">Dépoussiérez ces trésors cachés</string>
+    <string name="home_forgotten_tracks_subtitle_3">Des morceaux que vous n\'avez pas écoutés depuis longtemps</string>
+    <string name="import_or_sync_autoeq_database">Importez un profil ou synchronisez la base de données pour afficher les profils disponibles</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importez un profil ou recherchez le nom de votre appareil parmi %d profils</string>
+    <string name="autoeq_search_device_name">Rechercher un appareil ou un modèle</string>
+    <string name="autoeq_sync_success">%d profils AutoEq ont été synchronisés avec succès.</string>
+    <string name="autoeq_sync_failed">Échec de la synchronisation des profils AutoEq.</string>
+    <string name="sync_autoeq_database">Synchroniser la base de données AutoEq</string>
+    <string name="search_autoeq_placeholder">Rechercher un modèle de casque</string>
+    <string name="backup_warning_database_ver">Certaines données issues de cette sauvegarde, telles que les playlists et les paroles, ne sont pas compatibles et risquent de ne pas pouvoir être restaurées.</string>
 </resources>
