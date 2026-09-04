@@ -3,7 +3,7 @@
     <string name="action_play">Odtwórz</string>
     <string name="action_play_all">Odtwórz wszystko</string>
     <string name="action_shuffle_play">Odtwarzaj losowo</string>
-    <string name="action_queue_next">Dodaj jako następne</string>
+    <string name="action_queue_next">Dodaj jako następny</string>
     <string name="shuffle_all_label">Odtwarzanie losowe</string>
     <string name="shuffle_mode">Tryb odtwarzania losowego</string>
     <string name="repeat_mode">Tryb powtarzania</string>
@@ -356,7 +356,6 @@
     <string name="top_albums">Ulubione albumy</string>
     <string name="recent_artists">Ostatnio dodani wykonawcy</string>
     <string name="recent_albums">Ostatnio dodane albumy</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Całkowita losowość</string>
     <string name="shuffle_mode_most_played">Najczęściej odtwarzane</string>
@@ -887,7 +886,7 @@
     <string name="github">GitHub</string>
     <string name="more_contributors_title">Więcej współtwórców</string>
     <string name="more_contributors_summary">Pełną listę współtwórców znajdziesz na GitHubie.</string>
-    <string name="telegram_community">Społeczność Telegrama</string>
+    <string name="telegram_community">Społeczność Telegram</string>
     <string name="telegram_community_summary">Dołącz do społeczności na Telegramie i bądź na bieżąco z nowościami oraz aktualizacjami.</string>
     <string name="support_my_work">Wesprzyj moją prace</string>
     <string name="contributor_dawid_description">Główny współtwórca i projektant kilku kluczowych funkcji aplikacji.</string>
@@ -1001,4 +1000,39 @@
     <string name="restore_from_backup">Przywróć z kopii zapasowej</string>
     <string name="network_features_summary">Włącza scrobblowanie oraz pobieranie okładek albumów i tekstów utworów.</string>
     <string name="listenbrainz_toggle_token_visibility">Przełącz widoczność tokenu</string>
+    <string name="home_for_you_title">Dla Ciebie</string>
+    <string name="home_for_you_subtitle_2">Perełki wybrane specjalnie dla Ciebie</string>
+    <string name="home_for_you_subtitle_3">Twoja codzienna dawka muzycznej inspiracji</string>
+    <string name="home_forgotten_tracks_title">Odkryj na nowo</string>
+    <string name="backup_restore_title">Kopia zapasowa i przywracanie</string>
+    <string name="no_backup_folder_selected">Nie wybrano folderu do tworzenia kopii zapasowych</string>
+    <string name="select_backup_folder">Wybierz folder</string>
+    <string name="no_backups_found">Nie znaleziono kopii zapasowych w tym folderze.</string>
+    <string name="backup_recent_list">Ostatnie kopie zapasowe</string>
+    <string name="backup_file_name">Nazwa pliku (opcjonalna)</string>
+    <string name="create_new_backup">Utwórz</string>
+    <string name="open_backup">Przywróć</string>
+    <string name="share_backup">Udostępnij kopię zapasową</string>
+    <string name="cannot_share_this_backup">Nie udało się udostępnić kopii zapasowej.</string>
+    <string name="confirm_delete_backup">Usunąć tą kopię zapasową?</string>
+    <string name="backup_deleted_successfully">Usunięto kopię zapasową.</string>
+    <string name="could_not_delete_backup">Nie udało się usunąć kopii zapasowej.</string>
+    <string name="select_content_to_backup">Wybierz zawartość:</string>
+    <string name="backup_content_settings">Ustawienia aplikacji</string>
+    <string name="backup_content_lyrics">Zsynchronizowane teksty</string>
+    <string name="backup_content_play_info">Statystyki odtwarzania</string>
+    <string name="backup_content_playlists">Playlisty</string>
+    <string name="backup_content_artist_images">Obrazy wykonawców</string>
+    <string name="backup_app_version">Stworzony w</string>
+    <string name="backup_warning_legacy_format">Ten format kopii zapasowej jest przestarzały. Możesz go jeszcze przywrócić, ale w przyszłości ta opcja może zostać usunięta.</string>
+    <string name="backup_warning_ver_newer">Format tej kopii zapasowej jest zbyt nowy dla tej wersji Booming Music.</string>
+    <string name="backup_warning_app_ver_newer">Ta kopia zapasowa pochodzi z nowszej wersji Booming Music. Jej przywrócenie może powodować błędy lub nie przywrócić wszystkich danych.</string>
+    <string name="restoring_data">Przywracanie danych…</string>
+    <string name="home_artists_title">Rekomendowani wykonawcy</string>
+    <string name="action_play_x">Odtwórz %s</string>
+    <string name="home_artists_subtitle_3">Tysiące twarzy, setki miraży</string>
+    <string name="home_albums_title">Odtwarzaj teraz</string>
+    <string name="home_empty_title">Jeszcze nic tu nie ma</string>
+    <string name="allow_lyrics_download_from">Zezwól na pobieranie z:</string>
+    <string name="home_empty_subtitle">Najpierw odtwórz kilka utworów</string>
 </resources>

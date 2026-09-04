@@ -412,7 +412,7 @@
     <string name="no_audio_ID">Helifaili vigane tunnus.</string>
     <string name="permission_external_storage_description">Muusika esitamiseks vajab see rakendus õigust kasutada sinu nutiseadme andmeruumi</string>
     <string name="permission_external_storage_denied">Palun luba välise andmeruumi kasutamine.</string>
-    <string name="permission_bluetooth_title">Läheduses asuvad seadmed</string>
+    <string name="permission_bluetooth_title">Läheduses asuvad seadmed (kui soovid kasutada)</string>
     <string name="settings_title">Seadistused</string>
     <string name="update_title">Uuenda</string>
     <string name="lyrics_background_blur">Hägustamine</string>
@@ -613,7 +613,6 @@
     <string name="top_albums">Populaarsemad albumid</string>
     <string name="recent_artists">Hiljutised esitajad</string>
     <string name="recent_albums">Hiljutised albumid</string>
-
     <string name="share_eq_profiles">Jaga ekvalaiseri profiile</string>
     <string name="there_is_nothing_to_export">Pole mitte midagi eksporditavat.</string>
     <string name="there_is_nothing_to_import">Pole mitte midagi imporditavat.</string>
@@ -628,8 +627,8 @@
     <string name="select_profiles_to_import">Vali imsporditavad profiilid:</string>
     <string name="select_a_file_containing_booming_eq_profiles">Vali fail, kus leiduvad Booming Musicu ekvalaiseri EQ profiilid.</string>
     <string name="imported_x_profiles">Importisin %d profiili.</string>
-    <string name="select_a_file_containing_autoeq_params">Vali fail, kus leiduvad AutoEq (GraphicEq) ekvalaiseri parameetrid.</string>
-    <string name="no_autoeq_profiles">Ühtegi AutoEq profiili pole imporditud.</string>
+    <string name="select_a_file_containing_autoeq_params">Vali fail, kus leiduvad AutoEq (GraphicEq) ekvalaiseri parameetrid</string>
+    <string name="no_autoeq_profiles">Ühtegi AutoEq profiili pole imporditud</string>
     <string name="reset_equalizer">Lähtesta ekvalaiser</string>
     <string name="import_autoeq_profile">Impordi AutoEq profiil</string>
     <string name="no_profile_imported">Ühtegi profiili pole imporditud.</string>
@@ -985,4 +984,37 @@
     <string name="backup_warning_legacy_format">See varukoopia vorming on vananenud. Hetkel saad küll sellest veel taastada, kuid selline võimalus võib tulevikus kaduda.</string>
     <string name="backup_warning_ver_newer">See varukoopia vorming on uuem, kui Booming Music oskab seda kasutada.</string>
     <string name="backup_warning_app_ver_newer">See varukoopia on loodud Booming Musicu uuema versiooniga. Kui kasutad seda taastamisel selles versioonis, siis võib tekkida vigu või poolikuid andmeid.</string>
+    <string name="invalid_search_params">Otsinguparameetrite töötlemine ei õnnestunud.</string>
+    <string name="permissions_needed">Õigused on vajalikud</string>
+    <string name="welcome_to_x">Tere tulemast, see on %s</string>
+    <string name="allow_lyrics_download_from">Luba allalaadimine teenusest:</string>
+    <string name="restoring_data">Taastan sinu andmeid…</string>
+    <string name="action_play_x">Esita: %s</string>
+    <string name="home_empty_title">Pole midagi soovitada</string>
+    <string name="home_empty_subtitle">Esmalt kuula natuke muusikat</string>
+    <string name="home_shuffle_title">Sega oma muusikat</string>
+    <string name="home_for_you_title">Sinu jaoks</string>
+    <string name="home_for_you_subtitle">Sinu suurimad lemmikud ühes kohas</string>
+    <string name="home_for_you_subtitle_2">Käsitsi valitud pärlid just sinu jaoks</string>
+    <string name="home_for_you_subtitle_3">Sinu igapäevane annus muusikat</string>
+    <string name="home_albums_title">Kuula kohe</string>
+    <string name="home_albums_subtitle">Populaarsed ja hiljutised albumid</string>
+    <string name="home_albums_subtitle_2">Süvene oma viimastesse kogumikesse</string>
+    <string name="home_albums_subtitle_3">Mis kogub sinu muusikakogus populaarsust</string>
+    <string name="home_artists_title">Soovitatud esitajad</string>
+    <string name="home_artists_subtitle">Esitajad, keda sa enamust aega kuulad</string>
+    <string name="home_artists_subtitle_2">Uued tegelased ja vanad lemmikud</string>
+    <string name="home_artists_subtitle_3">Näod sinu lemmikmuusika taga</string>
+    <string name="home_forgotten_tracks_title">Avasta uuesti</string>
+    <string name="home_forgotten_tracks_subtitle">Too oma vanad lemmikud esile</string>
+    <string name="home_forgotten_tracks_subtitle_2">Tõsta need peidetud aarded päevavalgele</string>
+    <string name="home_forgotten_tracks_subtitle_3">Lood, mida sa pole mõnda aega kuulnud</string>
+    <string name="import_or_sync_autoeq_database">Impordi profiil või sünkrooni andmebaas saadavalolevate profiilide vaatamiseks</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Impordi profiil või otsi oma seadme nime %d profiili seast</string>
+    <string name="autoeq_search_device_name">Otsi seadet või mudelit</string>
+    <string name="autoeq_sync_success">AutoEq „%d“ profiili sünkroonimine õnnestus.</string>
+    <string name="autoeq_sync_failed">AutoEq profiilide sünkroonimine ei õnnestnud.</string>
+    <string name="sync_autoeq_database">Sünkrooni AutoEq andmebaas</string>
+    <string name="search_autoeq_placeholder">Otsi kõrvaklappide mudelit</string>
+    <string name="backup_warning_database_ver">Mõned selle varukoopia andmed, näiteks esitusloendid ja laulusõnad, ei ole ühilduvad ning neid ei pruugi olla võimalik taastada.</string>
 </resources>

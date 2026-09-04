@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Accès au stockage</string>
     <string name="permission_external_storage_description">L\'application a besoin d\'une autorisation pour accéder au stockage de votre appareil pour écouter de la musique</string>
     <string name="permission_external_storage_denied">Vous devez accorder l’autorisation d’accéder au stockage externe.</string>
-    <string name="permission_bluetooth_title">Appareils à proximité</string>
+    <string name="permission_bluetooth_title">Appareils à proximité (facultatif)</string>
     <string name="permission_bluetooth_description">L\'application a besoin de l\'autorisation des appareils à proximité pour vérifier les appareils Bluetooth</string>
     <string name="permission_read_images_title">Lire les images (optionnel)</string>
     <string name="permission_read_images_summary">Cette permission est nécessaire pour que Booming Music puisse trouver les couvertures d\'albums dans vos dossiers musicaux. Si vous ne prévoyez pas d\'utiliser cette fonctionnalité, vous pouvez choisir de ne pas l\'accorder.</string>
@@ -348,7 +348,6 @@
     <string name="top_albums">Meilleurs albums</string>
     <string name="recent_artists">Artistes récents</string>
     <string name="recent_albums">Albums récents</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Seulement en aléatoire</string>
     <string name="shuffle_mode_most_played">Les plus joués</string>
@@ -394,8 +393,8 @@
     <string name="imported_x_profiles">Profils importés %d.</string>
     <string name="no_profile_imported">Aucun profil importé.</string>
     <string name="import_autoeq_profile">Importer le profil AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant les paramètres AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Aucun profil AutoEq n\'a été importé.</string>
+    <string name="select_a_file_containing_autoeq_params">Sélectionnez un fichier contenant des paramètres AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Aucun profil AutoEq n\'a été importé</string>
     <string name="reset_equalizer">Réinitialiser l\'égaliseur</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Êtes-vous sûr de vouloir réinitialiser l\'égaliseur ? \n\nCette opération effacera tous vos profils.</string>
     <string name="not_supported">Non pris en charge</string>
@@ -1016,4 +1015,35 @@
     <string name="backup_warning_legacy_format">Ce format de sauvegarde est considéré comme obsolète. Pour l\'instant, vous pouvez encore restaurer vos données, mais il se peut que nous cessions de le prendre en charge à l\'avenir.</string>
     <string name="backup_warning_ver_newer">Le format de sauvegarde est plus récent que celui pris en charge par cette version de Booming Music.</string>
     <string name="backup_warning_app_ver_newer">Cette sauvegarde a été créée dans une version plus récente de Booming Music. Sa restauration dans cette version pourrait entraîner des erreurs ou une restauration incomplète des données.</string>
+    <string name="invalid_search_params">Les paramètres de recherche n\'ont pas pu être traités.</string>
+    <string name="restoring_data">Restauration de vos données…</string>
+    <string name="allow_lyrics_download_from">Autoriser le téléchargement depuis :</string>
+    <string name="action_play_x">Lire %s</string>
+    <string name="home_empty_title">Rien à recommander</string>
+    <string name="home_empty_subtitle">Écoute d\'abord un peu de musique</string>
+    <string name="home_shuffle_title">Écouter votre musique en mode aléatoire</string>
+    <string name="home_for_you_title">Pour vous</string>
+    <string name="home_for_you_subtitle">Tous vos coups de cœur réunis au même endroit</string>
+    <string name="home_for_you_subtitle_2">Des pépites sélectionnées avec soin, rien que pour vous</string>
+    <string name="home_for_you_subtitle_3">Votre dose quotidienne d\'inspiration musicale</string>
+    <string name="home_albums_title">Écoutez dès maintenant</string>
+    <string name="home_albums_subtitle">Les meilleurs albums et les dernières sorties</string>
+    <string name="home_albums_subtitle_2">Découvrez vos dernières collections</string>
+    <string name="home_albums_subtitle_3">Quelles sont les tendances dans votre bibliothèque ?</string>
+    <string name="home_artists_title">Artistes recommandés</string>
+    <string name="home_artists_subtitle">Les artistes que vous écoutez le plus</string>
+    <string name="home_artists_subtitle_2">De nouveaux visages et des valeurs sûres</string>
+    <string name="home_artists_subtitle_3">Les visages qui se cachent derrière la musique que vous aimez</string>
+    <string name="home_forgotten_tracks_title">Redécouvrir</string>
+    <string name="home_forgotten_tracks_subtitle">Remettez vos anciens coups de cœur à l\'honneur</string>
+    <string name="home_forgotten_tracks_subtitle_2">Dépoussiérez ces trésors cachés</string>
+    <string name="home_forgotten_tracks_subtitle_3">Des morceaux que vous n\'avez pas écoutés depuis longtemps</string>
+    <string name="import_or_sync_autoeq_database">Importez un profil ou synchronisez la base de données pour afficher les profils disponibles</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importez un profil ou recherchez le nom de votre appareil parmi %d profils</string>
+    <string name="autoeq_search_device_name">Rechercher un appareil ou un modèle</string>
+    <string name="autoeq_sync_success">%d profils AutoEq ont été synchronisés avec succès.</string>
+    <string name="autoeq_sync_failed">Échec de la synchronisation des profils AutoEq.</string>
+    <string name="sync_autoeq_database">Synchroniser la base de données AutoEq</string>
+    <string name="search_autoeq_placeholder">Rechercher un modèle de casque</string>
+    <string name="backup_warning_database_ver">Certaines données issues de cette sauvegarde, telles que les playlists et les paroles, ne sont pas compatibles et risquent de ne pas pouvoir être restaurées.</string>
 </resources>

@@ -356,7 +356,6 @@
     <string name="top_albums">Лучшие альбомы</string>
     <string name="recent_artists">Недавние исполнители</string>
     <string name="recent_albums">Недавние альбомы</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Полная случайность</string>
     <string name="shuffle_mode_most_played">Часто прослушиваемые</string>
@@ -402,8 +401,8 @@
     <string name="imported_x_profiles">Импортировано профилей: %d.</string>
     <string name="no_profile_imported">Ни один профиль не импортирован.</string>
     <string name="import_autoeq_profile">Импортировать профиль AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Выберите файл с параметрами AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Нет импортированных профилей AutoEq.</string>
+    <string name="select_a_file_containing_autoeq_params">Выберите файл с параметрами AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Нет импортированных профилей AutoEq</string>
     <string name="reset_equalizer">Сбросить эквалайзер</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Вы уверены, что хотите сбросить настройки эквалайзера? \n\nЭто удалит все ваши профили.</string>
     <string name="not_supported">Не поддерживается</string>
@@ -964,4 +963,31 @@
     <string name="terms_of_service">Условия предоставления услуг</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="legal">Правовое</string>
+    <string name="app_widget_grid">Сетка</string>
+    <string name="backup_app_version">Создано в</string>
+    <string name="backup_warning_database_ver">Некоторые данные из этой резервной копии, такие как плейлисты и тексты песен, несовместимы и не могут быть восстановлены.</string>
+    <string name="app_widget_library">Библиотека</string>
+    <string name="app_widget_nothing_playing">Ничего не играет</string>
+    <string name="app_widget_tap_to_play">Нажмите, чтобы открыть Booming Music</string>
+    <string name="action_play_x">Воспроизвести %s</string>
+    <string name="restore_from_backup">Восстановить из резервной копии</string>
+    <string name="home_artists_title">Рекомендуемые исполнители</string>
+    <string name="widget_settings_title">Настройки виджета</string>
+    <string name="create_new_backup">Создать резервную копию</string>
+    <string name="open_backup">Открыть резервную копию</string>
+    <string name="share_backup">Поделиться резервной копией</string>
+    <string name="cannot_share_this_backup">Невозможно поделиться этой резервной копией.</string>
+    <string name="confirm_delete_backup">Удалить эту резервную копию?</string>
+    <string name="backup_deleted_successfully">Резервная копия успешно удалена.</string>
+    <string name="could_not_delete_backup">Не удалось удалить резервную копию.</string>
+    <string name="widget_leading_action_title">Левая кнопка</string>
+    <string name="widget_trailing_action_title">Правая кнопка</string>
+    <string name="widget_side_buttons_title">Боковые кнопки</string>
+    <string name="widget_page_previous">Предыдущие песни</string>
+    <string name="widget_page_next">Следующие песни</string>
+    <string name="backup_content_settings">Настройки приложения</string>
+    <string name="backup_content_lyrics">Синхронизированные тексты песен</string>
+    <string name="backup_content_playlists">Плейлисты</string>
+    <string name="app_widget_circle">Круг</string>
+    <string name="initial_configuration_note">Вы всегда можете изменить эти настройки позже.</string>
 </resources>
