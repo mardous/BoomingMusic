@@ -991,7 +991,6 @@
     <string name="restart_app_message">La app se reiniciará para completar el proceso.</string>
     <string name="network_features_summary">Habilita el scrobbling y la descarga de carátulas y letras.</string>
     <string name="invalid_search_params">No se pudieron procesar los parámetros de la búsqueda.</string>
-    <string name="permission_notifications_title">Notificaciones (opcional)</string>
     <string name="listenbrainz_toggle_token_visibility">Alternar visibilidad del token</string>
     <string name="backup_restore_title">Copia de seguridad y restauración</string>
     <string name="backup_restore_summary">Gestiona copias de seguridad y restauración de datos de la app.</string>
