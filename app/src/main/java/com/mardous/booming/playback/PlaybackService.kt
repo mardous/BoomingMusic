@@ -243,7 +243,7 @@ class PlaybackService :
         nm = requireNotNull(getSystemService<NotificationManager>())
         createNotificationChannel()
 
-        packageValidator = PackageValidator(this, R.xml.allowed_media_browser_callers)
+        packageValidator = PackageValidator(this)
 
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
@@ -517,7 +517,6 @@ class PlaybackService :
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
         // getChildren resolves any id it is handed, so FAVORITES and HISTORY are reachable without ever
         // appearing in a root listing.
-        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching {
                 libraryProvider.getChildren(this@PlaybackService, parentId)
@@ -535,7 +534,6 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         mediaId: String
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        session.denyUntrusted<MediaItem>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
                 .getOrDefault(MediaItem.EMPTY)
@@ -553,7 +551,6 @@ class PlaybackService :
         query: String,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
-        session.denyUntrusted<Void>(browser)?.let { return it }
         session.notifySearchResultChanged(browser, query, 0, params)
         return Futures.immediateFuture(LibraryResult.ofVoid())
     }
@@ -566,7 +563,6 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
-        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching { libraryProvider.getSearchResult(query, page, pageSize) }
             if (result.isSuccess) {
@@ -630,12 +626,6 @@ class PlaybackService :
             }, ContextCompat.getMainExecutor(this))
         }
     }
-
-    private fun <T : Any> MediaSession.denyUntrusted(
-        controller: MediaSession.ControllerInfo
-    ): ListenableFuture<LibraryResult<T>>? =
-        if (isTrustedController(controller)) null
-        else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(
         session: MediaSession,

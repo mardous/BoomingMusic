@@ -30,6 +30,7 @@ import android.util.Log
 import androidx.annotation.XmlRes
 import androidx.core.app.NotificationManagerCompat
 import androidx.media.MediaBrowserServiceCompat
+import com.mardous.booming.R
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import java.security.MessageDigest
@@ -48,7 +49,7 @@ import java.util.Locale
  *
  * For more information, see res/xml/allowed_media_browser_callers.xml.
  */
-internal class PackageValidator(context: Context, @XmlRes xmlResId: Int) {
+class PackageValidator(context: Context, @XmlRes xmlResId: Int = R.xml.allowed_media_browser_callers) {
     private val context: Context
     private val packageManager: PackageManager
 
