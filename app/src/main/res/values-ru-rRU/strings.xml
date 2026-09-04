@@ -990,4 +990,7 @@
     <string name="backup_content_playlists">Плейлисты</string>
     <string name="app_widget_circle">Круг</string>
     <string name="initial_configuration_note">Вы всегда можете изменить эти настройки позже.</string>
+    <string name="invalid_search_params">Не удалось обработать параметры поиска.</string>
+    <string name="home_albums_subtitle">Лучшие и недавние альбомы</string>
+    <string name="autoeq_sync_failed">Не удалось синхронизировать профили AutoEq.</string>
 </resources>
