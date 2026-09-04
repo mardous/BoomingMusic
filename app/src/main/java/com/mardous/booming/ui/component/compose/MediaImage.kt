@@ -27,6 +27,7 @@ fun MediaImage(
         model = model,
         contentDescription = contentDescription,
         contentScale = ContentScale.Crop,
+        error = rememberMediaPlaceholderPainter(placeholderIcon),
         placeholder = rememberMediaPlaceholderPainter(placeholderIcon),
         modifier = modifier
     )
