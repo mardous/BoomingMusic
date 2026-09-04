@@ -2,7 +2,7 @@
 
 <img src="metadata/en-US/images/icon.png" width="160" height="160" alt="Booming Music icon">
 
-# 🎵 Booming Music
+# Booming Music
 
 ### Modern design. Pure sound. Fully yours.
 
@@ -13,13 +13,19 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
+<a href="https://play.google.com/apps/testing/com.mardous.booming"><img src="assets/badge-playstore.png" height="60" alt="Play Store - Closed Beta"></a>
+<a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
+<a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
+<a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
+<a href="https://www.openapk.net/boomingmusic/com.mardous.booming/"><img src="assets/badge-openapk.png" height="60" alt="OpenAPK"></a>
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/"><img src="assets/badge-obtainium.png" height="60" alt="Obtainium"></a>
+
 </div>
 
 ## 🗂️ Table of Contents
 
 - [✨ Key Features](#-key-features)
 - [📸 Screenshots](#-screenshots)
-- [📥 Download & Install](#-download--install)
 - [💻 Tech Stack](#-tech-stack)
 - [🧩 Roadmap](#-roadmap)
 - [🔗 Useful Links](#-useful-links)
@@ -54,41 +60,24 @@
 <div align="center">
 <table>
 <tr>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/1.jpg" alt="For You" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/2.jpg" alt="Songs" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/3.jpg" alt="Albums" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/4.jpg" alt="Album View" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Home.jpg" alt="Home" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Player_Expressive.jpg" alt="Expressive Player" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Player_Gradient.jpg" alt="Gradient Player" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Favorites.jpg" alt="Favorites" width="180"/></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/5.jpg" alt="Search" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/6.jpg" alt="Normal" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/7.jpg" alt="Full" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/8.jpg" alt="Gradient" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Lyrics_Full.jpg" alt="Immersive Lyrics" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Lyrics_Player.jpg" alt="Player Lyrics" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Lyrics_Editor.jpg" alt="Lyrics Editor" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Tag_Editor.jpg" alt="Tag Editor" width="180"/></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/9.jpg" alt="Plain" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/10.jpg" alt="M3" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/11.jpg" alt="Expressive" width="180"/></td>
-<td align="center" width="25%"><img src="metadata/en-US/images/phoneScreenshots/12.jpg" alt="Peek" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/EQ.jpg" alt="EQ" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/AutoEq.jpg" alt="AutoEq" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Sound_Settings.jpg" alt="Sound Settings" width="180"/></td>
+<td align="center" width="25%"><img src="assets/screenshots/Info.jpg" alt="Info Sheet" width="180"/></td>
 </tr>
 </table>
-</div>
-
-## 📥 Download & Install
-
-Booming Music is available for download from various sources:
-
-<div align="center">
-
-|                                                                                   Source                                                                                    | Details                                   |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------|
-|                               [<img src="assets/badge-playstore.png" alt="Play Store" height="40">](https://github.com/mardous/BoomingMusic)                                | Coming soon!                              |                                     |
-|                      [<img src="assets/badge-github.png" alt="GitHub Releases" height="40">](https://github.com/mardous/BoomingMusic/releases/latest)                       | Direct APK download                       |
-|                              [<img src="assets/badge-fdroid.png" alt="F-Droid" height="40">](https://f-droid.org/packages/com.mardous.booming)                              | Fully FOSS version                        |
-|                       [<img src="assets/badge-izzyondroid.png" alt="IzzyOnDroid" height="40">](https://apt.izzysoft.de/packages/com.mardous.booming/)                       | Just like F-Droid but with faster updates |                         |
-| [<img src="assets/badge-obtainium.png" alt="Obtainium" height="40">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/BoomingMusic/) | Automatic updates from GitHub             |
-|                         [<img src="assets/badge-openapk.png" alt="OpenAPK" height="40">](https://www.openapk.net/boomingmusic/com.mardous.booming/)                         | Alternative APK source                    |
-
 </div>
 
 ## 💻 Tech Stack
