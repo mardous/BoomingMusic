@@ -328,11 +328,10 @@
     <!-- Home -->
     <string name="home_label">首頁</string>
     <string name="shuffle_action">隨機播放</string>
-    <string name="top_artists">頂尖藝人</string>
-    <string name="top_albums">熱門專輯</string>
+    <string name="top_artists">常聽藝人</string>
+    <string name="top_albums">常聽專輯</string>
     <string name="recent_artists">最近的藝人</string>
     <string name="recent_albums">最近的專輯</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全隨機</string>
     <string name="shuffle_mode_most_played">常聽歌曲</string>
@@ -378,8 +377,8 @@
     <string name="imported_x_profiles">已匯入 %d 個設定檔。</string>
     <string name="no_profile_imported">沒有匯入任何設定檔。</string>
     <string name="import_autoeq_profile">匯入 AutoEq 設定檔</string>
-    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq（圖形等化器）參數的檔案。</string>
-    <string name="no_autoeq_profiles">未匯入 AutoEq 設定檔。</string>
+    <string name="select_a_file_containing_autoeq_params">請選擇包含 AutoEq（圖形等化器）參數的檔案</string>
+    <string name="no_autoeq_profiles">未匯入 AutoEq 設定檔</string>
     <string name="reset_equalizer">重設等化器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">確定要重設等化器嗎？ \n\n這會清除所有設定檔。</string>
     <string name="not_supported">不支援</string>
@@ -1001,4 +1000,32 @@
     <string name="backup_warning_ver_newer">此備份格式過新，目前版本的 Booming Music 無法處理。</string>
     <string name="backup_warning_app_ver_newer">此備份是在較新版本的 Booming Music 中建立的。在此版本中還原可能會導致錯誤或資料還原不完整。</string>
     <string name="restoring_data">正在還原資料…</string>
+    <string name="action_play_x">播放 %s</string>
+    <string name="home_empty_title">暫無推薦</string>
+    <string name="home_empty_subtitle">先聽點音樂吧</string>
+    <string name="home_shuffle_title">隨機播放音樂</string>
+    <string name="home_for_you_title">專屬推薦</string>
+    <string name="home_for_you_subtitle">匯聚你的最愛</string>
+    <string name="home_for_you_subtitle_2">精選寶藏單曲</string>
+    <string name="home_for_you_subtitle_3">每日音樂補給</string>
+    <string name="home_albums_title">即刻聆聽</string>
+    <string name="home_albums_subtitle">最常播放與最新專輯</string>
+    <string name="home_albums_subtitle_2">暢聽最近新增的專輯</string>
+    <string name="home_albums_subtitle_3">曲庫中的流行專輯</string>
+    <string name="home_artists_title">推薦藝人</string>
+    <string name="home_artists_subtitle">那些你最常聽的聲音</string>
+    <string name="home_artists_subtitle_2">新面孔與老朋友</string>
+    <string name="home_artists_subtitle_3">遇見你鍾愛旋律背後的靈魂</string>
+    <string name="home_forgotten_tracks_title">重拾舊愛</string>
+    <string name="home_forgotten_tracks_subtitle">昔日經典縈繞耳畔</string>
+    <string name="home_forgotten_tracks_subtitle_2">細撫蒙塵遺珠</string>
+    <string name="home_forgotten_tracks_subtitle_3">許久未聞的旋律</string>
+    <string name="import_or_sync_autoeq_database">匯入設定檔或同步資料庫以查看可用設定檔</string>
+    <string name="import_or_type_to_search_autoeq_profiles">匯入設定檔或在 %d 個設定檔中搜尋你的裝置名稱</string>
+    <string name="autoeq_search_device_name">搜尋設備或型號</string>
+    <string name="autoeq_sync_success">已成功同步 %d 個 AutoEq 設定檔。</string>
+    <string name="autoeq_sync_failed">AutoEq 設定檔同步失敗。</string>
+    <string name="sync_autoeq_database">同步 AutoEq 資料庫</string>
+    <string name="search_autoeq_placeholder">搜尋耳機型號</string>
+    <string name="backup_warning_database_ver">此備份中的部分資料（例如播放清單和歌詞）不相容，可能無法還原。</string>
 </resources>
