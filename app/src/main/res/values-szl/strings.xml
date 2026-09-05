@@ -346,4 +346,7 @@
     <string name="action_delete_playlist">Wyciep playlistã</string>
     <string name="add_directory">Przidej katalog</string>
     <string name="action_add_to_playlist">Przidej do playlisty</string>
+    <string name="new_playlist_action">Nowŏ</string>
+    <string name="new_playlist_title">Nowŏ playlista</string>
+    <string name="playlist_name_empty">Miano playlisty</string>
 </resources>
