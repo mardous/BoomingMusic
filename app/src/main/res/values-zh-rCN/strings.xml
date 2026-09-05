@@ -328,11 +328,10 @@
     <!-- Home -->
     <string name="home_label">主页</string>
     <string name="shuffle_action">随机播放</string>
-    <string name="top_artists">最常听的艺人</string>
-    <string name="top_albums">最常听的专辑</string>
+    <string name="top_artists">常听艺人</string>
+    <string name="top_albums">常听专辑</string>
     <string name="recent_artists">最近艺人</string>
     <string name="recent_albums">最近的专辑</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全随机</string>
     <string name="shuffle_mode_most_played">常听歌曲</string>
@@ -378,8 +377,8 @@
     <string name="imported_x_profiles">导入了 %d 个预设。</string>
     <string name="no_profile_imported">没有预设被导入。</string>
     <string name="import_autoeq_profile">导入 AutoEq 预设</string>
-    <string name="select_a_file_containing_autoeq_params">请选择包含 AutoEq（图形均衡器）参数的文件。</string>
-    <string name="no_autoeq_profiles">未导入 AutoEq 预设。</string>
+    <string name="select_a_file_containing_autoeq_params">请选择包含 AutoEq（图形均衡器）参数的文件</string>
+    <string name="no_autoeq_profiles">未导入 AutoEq 预设</string>
     <string name="reset_equalizer">重置均衡器</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">确定要重置均衡器吗？ \n\n这将清除所有预设。</string>
     <string name="not_supported">不支持</string>
@@ -903,7 +902,7 @@
     <string name="rg_with_tag">带有标签</string>
     <string name="rg_without_tag">不带标签</string>
     <string name="lyrics_karaoke_style_title">卡拉 OK 风格歌词</string>
-    <string name="lyrics_karaoke_style_summary">为逐词同步歌词启用卡拉 OK 风格效果。请注意，本功能为试验性功能。</string>
+    <string name="lyrics_karaoke_style_summary">为逐字同步歌词启用卡拉 OK 风格效果。请注意，此功能仍在实验阶段。</string>
     <string name="lyrics_bold_synced_title">粗体同步歌词</string>
     <string name="lyrics_bold_synced_summary">以粗体显示同步歌词。</string>
     <string name="lyrics_show_translation_title">显示翻译</string>
@@ -1001,4 +1000,32 @@
     <string name="backup_warning_ver_newer">此备份格式过新，当前版本的 Booming Music 无法处理。</string>
     <string name="backup_warning_app_ver_newer">此备份是在较新版本的 Booming Music 中创建的。在此版本中还原可能会导致错误或数据还原不完整。</string>
     <string name="restoring_data">正在还原数据…</string>
+    <string name="action_play_x">播放 %s</string>
+    <string name="home_empty_title">暂无推荐</string>
+    <string name="home_empty_subtitle">先听点音乐吧</string>
+    <string name="home_shuffle_title">随机播放音乐</string>
+    <string name="home_for_you_title">专属推荐</string>
+    <string name="home_for_you_subtitle">汇聚你的最爱</string>
+    <string name="home_for_you_subtitle_2">精选宝藏单曲</string>
+    <string name="home_for_you_subtitle_3">每日音乐补给</string>
+    <string name="home_albums_title">即刻聆听</string>
+    <string name="home_albums_subtitle">最常播放与最新专辑</string>
+    <string name="home_albums_subtitle_2">畅听最近新增的专辑</string>
+    <string name="home_albums_subtitle_3">曲库中的流行专辑</string>
+    <string name="home_artists_title">推荐艺人</string>
+    <string name="home_artists_subtitle">那些你最常听的声音</string>
+    <string name="home_artists_subtitle_2">新面孔与老朋友</string>
+    <string name="home_artists_subtitle_3">遇见你钟爱旋律背后的灵魂</string>
+    <string name="home_forgotten_tracks_title">重拾旧爱</string>
+    <string name="home_forgotten_tracks_subtitle">昔日经典萦绕耳畔</string>
+    <string name="home_forgotten_tracks_subtitle_2">细抚蒙尘遗珠</string>
+    <string name="home_forgotten_tracks_subtitle_3">许久未闻的旋律</string>
+    <string name="import_or_sync_autoeq_database">导入预设或同步数据库以查看可用预设</string>
+    <string name="import_or_type_to_search_autoeq_profiles">导入预设或在 %d 个预设中搜索你的设备名称</string>
+    <string name="autoeq_search_device_name">搜索设备或型号</string>
+    <string name="autoeq_sync_success">已成功同步 %d 个 AutoEq 预设。</string>
+    <string name="autoeq_sync_failed">AutoEq 预设同步失败。</string>
+    <string name="sync_autoeq_database">同步 AutoEq 数据库</string>
+    <string name="search_autoeq_placeholder">搜索耳机型号</string>
+    <string name="backup_warning_database_ver">此备份中的部分数据（例如播放列表和歌词）不兼容，可能无法还原。</string>
 </resources>
