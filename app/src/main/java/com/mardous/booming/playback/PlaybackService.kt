@@ -413,6 +413,99 @@ class PlaybackService :
         return null
     }
 
+    // ---- Playback ownership arbitration (Bluetooth vs Android Auto) -------------------------------
+    // One transport "owns" active playback so a second transport's automatic behaviour can't fight
+    // it: a Bluetooth connect/disconnect resume-or-pause won't disrupt an Android-Auto session, and
+    // vice-versa. LOCAL (this app's own UI) is a pass-through override — it always applies and never
+    // changes ownership. Only BLUETOOTH / ANDROID_AUTO are ever stored as owner.
+    private enum class PlaybackSource { BLUETOOTH, ANDROID_AUTO, LOCAL }
+
+    @Volatile private var playbackOwner: PlaybackSource? = null
+    // Re-armed when all AA controllers disconnect, so 'resume on connect' fires once per AA session.
+    @Volatile private var aaAutoResumeArmed = true
+
+    private fun sourceOf(controller: MediaSession.ControllerInfo): PlaybackSource = when {
+        controller.uid == Process.myUid() -> PlaybackSource.LOCAL
+        // The Bluetooth stack drives playback over AVRCP as this controller; keep it distinct from
+        // an Android-Auto client so the two arbitrate against each other (and BT connect/disconnect
+        // auto-actions apply in Bluetooth-only sessions).
+        controller.packageName == "com.android.bluetooth" -> PlaybackSource.BLUETOOTH
+        else -> PlaybackSource.ANDROID_AUTO
+    }
+
+    private fun releaseOwnership() {
+        playbackOwner = null
+    }
+
+    /** Rule 2: tell a rejected controller why. For a legacy client this surfaces as a PlaybackState
+     *  error the client can display. */
+    private fun notifyRejected(controller: MediaSession.ControllerInfo) {
+        runCatching {
+            mediaSession?.sendError(
+                controller,
+                SessionError(SessionError.ERROR_INVALID_STATE, getString(R.string.playback_owned_by_other))
+            )
+        }
+    }
+
+    override fun onPlayerCommandRequest(
+        session: MediaSession,
+        controller: MediaSession.ControllerInfo,
+        playerCommand: Int
+    ): Int {
+        val src = sourceOf(controller)
+        // LOCAL (this app) is a pass-through override: always allowed, never owns.
+        if (src != PlaybackSource.LOCAL &&
+            (playerCommand == Player.COMMAND_PLAY_PAUSE ||
+                playerCommand == Player.COMMAND_SET_MEDIA_ITEM ||
+                playerCommand == Player.COMMAND_PREPARE)
+        ) {
+            val owner = playbackOwner
+            if (owner != null && owner != src) {
+                notifyRejected(controller)
+                return SessionResult.RESULT_ERROR_PERMISSION_DENIED
+            }
+            // A start command from an unowned session assigns ownership (not a mere pause).
+            val isStart = playerCommand == Player.COMMAND_SET_MEDIA_ITEM ||
+                (playerCommand == Player.COMMAND_PLAY_PAUSE && !player.isPlaying)
+            if (owner == null && isStart) {
+                playbackOwner = src
+            }
+        }
+        return super.onPlayerCommandRequest(session, controller, playerCommand)
+    }
+
+    override fun onPostConnect(session: MediaSession, controller: MediaSession.ControllerInfo) {
+        super.onPostConnect(session, controller)
+        // Rule 5: symmetric with Bluetooth. An AA client connecting while nobody owns playback
+        // auto-resumes if 'resume on connect' is enabled. Debounced so fakeaa's browser+controller
+        // pair only triggers once.
+        if (sourceOf(controller) == PlaybackSource.ANDROID_AUTO &&
+            playbackOwner == null && aaAutoResumeArmed &&
+            !player.isPlaying && Preferences.isResumeOnConnect(true)
+        ) {
+            aaAutoResumeArmed = false
+            playbackOwner = PlaybackSource.ANDROID_AUTO
+            player.play()
+        }
+    }
+
+    override fun onDisconnected(session: MediaSession, controller: MediaSession.ControllerInfo) {
+        if (sourceOf(controller) == PlaybackSource.ANDROID_AUTO) {
+            val aaStillConnected = mediaSession?.connectedControllers.orEmpty()
+                .any { it != controller && sourceOf(it) == PlaybackSource.ANDROID_AUTO }
+            if (!aaStillConnected) {
+                aaAutoResumeArmed = true
+                if (playbackOwner == PlaybackSource.ANDROID_AUTO) {
+                    // Rule 4: the disconnect pref applies to AA just like Bluetooth.
+                    if (Preferences.isPauseOnDisconnect(true)) player.pause()
+                    releaseOwnership()
+                }
+            }
+        }
+        super.onDisconnected(session, controller)
+    }
+
     override fun onConnectAsync(
         session: MediaSession,
         controller: MediaSession.ControllerInfo
@@ -427,10 +520,19 @@ class PlaybackService :
             availableSessionCommands.add(SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY))
             availableSessionCommands.add(SessionCommand(Playback.SET_STOP_POSITION, Bundle.EMPTY))
         }
+        // Media3 grants an untrusted controller (e.g. an unofficial Android-Auto client) NO player
+        // commands, so its play / playFromMediaId are dropped before any callback. When caller
+        // enforcement is off, grant the full player command set so such clients can actually
+        // control playback (Media3 intersects this with what the player really supports).
+        val playerCommands = if (!Preferences.enforceKnownCallers) {
+            Player.Commands.Builder().addAllCommands().build()
+        } else {
+            connectionResult.availablePlayerCommands
+        }
         return Futures.immediateFuture(
             MediaSession.ConnectionResult.accept(
                 availableSessionCommands.build(),
-                connectionResult.availablePlayerCommands
+                playerCommands
             )
         )
     }
@@ -473,36 +575,39 @@ class PlaybackService :
             .setOffline(true)
             .setExtras(outExtras)
             .build()
-        val mediaItem = if (isKnownCaller) {
-            when {
-                params?.isRecent == true -> {
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.RECENT_SONGS)
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .build()
-                        )
-                        .build()
-                }
 
-                else -> {
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.ROOT)
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .build()
-                        )
-                        .build()
-                }
+        // Deny untrusted callers instead of returning an empty MediaItem: LibraryResult.ofItem
+        // rejects an empty mediaId ("mediaId must not be empty") and would crash the service.
+        if (!isKnownCaller) {
+            return Futures.immediateFuture(LibraryResult.ofError(SessionError.ERROR_PERMISSION_DENIED))
+        }
+
+        val mediaItem = when {
+            params?.isRecent == true -> {
+                MediaItem.Builder()
+                    .setMediaId(MediaIDs.RECENT_SONGS)
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                            .setIsBrowsable(true)
+                            .setIsPlayable(false)
+                            .build()
+                    )
+                    .build()
             }
-        } else {
-            MediaItem.EMPTY
+
+            else -> {
+                MediaItem.Builder()
+                    .setMediaId(MediaIDs.ROOT)
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                            .setIsBrowsable(true)
+                            .setIsPlayable(false)
+                            .build()
+                    )
+                    .build()
+            }
         }
         return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
     }
@@ -749,6 +854,12 @@ class PlaybackService :
             preferences.getBoolean(CLEAR_QUEUE_ON_COMPLETION, false)) {
             player.exoPlayer.clearMediaItems()
         }
+        // Ownership ends when playback truly stops (queue finished, or stopped while not starting),
+        // so another transport can take over. A pause stays STATE_READY, so the owner is kept.
+        if (playbackState == Player.STATE_ENDED ||
+            (playbackState == Player.STATE_IDLE && !player.playWhenReady)) {
+            releaseOwnership()
+        }
         refreshMediaButtonCustomLayout()
     }
 
@@ -762,6 +873,16 @@ class PlaybackService :
     }
 
     override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
+        // While Android Auto owns playback the audio is captured to the car, not the phone's local
+        // output, so a Bluetooth route drop ("becoming noisy") shouldn't pause the cast. ExoPlayer's
+        // own becoming-noisy handler pauses independently of our arbitration, so undo it here.
+        if (!playWhenReady &&
+            reason == Player.PLAY_WHEN_READY_CHANGE_REASON_AUDIO_BECOMING_NOISY &&
+            playbackOwner == PlaybackSource.ANDROID_AUTO
+        ) {
+            player.play()
+            return
+        }
         if (reason == Player.PLAY_WHEN_READY_CHANGE_REASON_END_OF_MEDIA_ITEM) {
             player.exoPlayer.pauseAtEndOfMediaItems = false
             sleepTimer.consumePendingQuit()
@@ -1263,23 +1384,33 @@ class PlaybackService :
             when (intent?.action) {
                 BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED -> {
                     when (intent.getIntExtra(BluetoothProfile.EXTRA_STATE, -1)) {
-                        BluetoothA2dp.STATE_CONNECTED -> if (Preferences.isResumeOnConnect(true)) {
-                            player.play()
-                        }
-                        BluetoothA2dp.STATE_DISCONNECTED -> if (Preferences.isPauseOnDisconnect(true)) {
-                            player.pause()
-                        }
+                        BluetoothA2dp.STATE_CONNECTED -> onBluetoothConnected()
+                        BluetoothA2dp.STATE_DISCONNECTED -> onBluetoothDisconnected()
                     }
                 }
                 BluetoothDevice.ACTION_ACL_CONNECTED ->
-                    if (context.isBluetoothA2dpConnected() && Preferences.isResumeOnConnect(true)) {
-                        player.play()
-                    }
+                    if (context.isBluetoothA2dpConnected()) onBluetoothConnected()
                 BluetoothDevice.ACTION_ACL_DISCONNECTED ->
-                    if (context.isBluetoothA2dpDisconnected() && Preferences.isPauseOnDisconnect(true)) {
-                        player.pause()
-                    }
+                    if (context.isBluetoothA2dpDisconnected()) onBluetoothDisconnected()
             }
+        }
+    }
+
+    // Bluetooth auto-resume/pause, ownership-aware: suppressed only while Android Auto owns playback
+    // (so a flapping BT link to the car can't pause an AA session). Otherwise stock behaviour.
+    private fun onBluetoothConnected() {
+        if (playbackOwner == PlaybackSource.ANDROID_AUTO) return
+        if (Preferences.isResumeOnConnect(true)) {
+            if (playbackOwner == null) playbackOwner = PlaybackSource.BLUETOOTH
+            player.play()
+        }
+    }
+
+    private fun onBluetoothDisconnected() {
+        if (playbackOwner == PlaybackSource.ANDROID_AUTO) return
+        if (Preferences.isPauseOnDisconnect(true)) {
+            player.pause()
+            if (playbackOwner == PlaybackSource.BLUETOOTH) releaseOwnership()
         }
     }
 

@@ -57,9 +57,22 @@ class LibraryProvider(private val repository: Repository) {
             // We must try to resolve any MediaItems that could not be found in the repository:
             if (missingMediaItems.isNotEmpty()) {
                 missingMediaItems.forEach { missingMediaItem ->
-                    getPlayableSongs(missingMediaItem.mediaId).let { playableSongs ->
-                        if (playableSongs.isNotEmpty()) {
-                            resolvedMediaItems.addAll(playableSongs.toPlayableMediaItems())
+                    // A playable mediaId is a category path whose LAST component is the song id
+                    // ("SONGS:123", "ALBUMS:5:123"); songsByMediaItems only matches a bare numeric
+                    // _ID, so those land here. Resolve the trailing id directly - this is the path a
+                    // legacy playFromMediaId takes through onAddMediaItems. Only if it isn't a leaf
+                    // song do we fall back to treating the id as a category parent to expand.
+                    val leafSong = MediaIDs.splitPath(missingMediaItem.mediaId).lastOrNull()
+                        ?.toLongOrNull()
+                        ?.let { repository.songById(it) }
+                        ?.takeIf { it != Song.emptySong }
+                    if (leafSong != null) {
+                        resolvedMediaItems.add(buildPlayableMediaItem(leafSong))
+                    } else {
+                        getPlayableSongs(missingMediaItem.mediaId).let { playableSongs ->
+                            if (playableSongs.isNotEmpty()) {
+                                resolvedMediaItems.addAll(playableSongs.toPlayableMediaItems())
+                            }
                         }
                     }
                 }
