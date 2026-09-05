@@ -480,7 +480,7 @@
     <string name="sleep_timer_1_hour">1 godzina</string>
     <string name="sleep_timer_2_hour">2 godziny</string>
     <string name="sleep_timer_finish_current_music">Dokończ ostatni utwór</string>
-    <string name="sleep_timer_music_fades_out">Muzyka wycisza się</string>
+    <string name="sleep_timer_music_fades_out">Stopniowe ściszanie muzyki</string>
     <string name="sleep_timer_stop_after_this_track">Zatrzymaj się po tym utworze</string>
     <string name="sleep_timer_stop_after_x">Zatrzymaj się za %s</string>
     <string name="sleep_timer_stop_after_x_canceled">Zatrzymaj się po %s: anulowany</string>
