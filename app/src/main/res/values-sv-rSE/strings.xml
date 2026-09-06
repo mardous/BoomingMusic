@@ -383,8 +383,8 @@
     <string name="imported_x_profiles">%d profiler har importerats.</string>
     <string name="no_profile_imported">Ingen profil importerad.</string>
     <string name="import_autoeq_profile">Importera AutoEq-profil</string>
-    <string name="select_a_file_containing_autoeq_params">Välj en fil som innehåller parametrar för AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Inga AutoEq-profiler har importerats.</string>
+    <string name="select_a_file_containing_autoeq_params">Välj en fil som innehåller parametrar för AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Inga AutoEq-profiler har importerats</string>
     <string name="reset_equalizer">Återställ utjämnaren (Eq)</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Är du säker på att du vill återställa utjämnaren (Eq)? \n\nDetta raderar alla dina profiler.</string>
     <string name="not_supported">Stöds inte</string>
@@ -1029,4 +1029,12 @@
     <string name="backup_warning_ver_newer">Säkerhetskopieringsformatet är nyare än vad den här versionen av Booming Music klarar av.</string>
     <string name="backup_warning_app_ver_newer">Denna säkerhetskopia skapades i en nyare version av Booming Music. Om du återställer den i den här versionen kan det leda till fel eller att data inte återställs fullständigt.</string>
     <string name="restoring_data">Återställer dina data…</string>
+    <string name="import_or_sync_autoeq_database">Importera en profil eller synkronisera databasen för att se tillgängliga profiler</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importera en profil eller sök efter din enhets namn bland %d profiler</string>
+    <string name="autoeq_search_device_name">Sök efter enhet eller modell</string>
+    <string name="autoeq_sync_success">%d AutoEq-profiler har synkroniserats.</string>
+    <string name="autoeq_sync_failed">Det gick inte att synkronisera AutoEq-profilerna.</string>
+    <string name="sync_autoeq_database">Synkronisera AutoEq-databasen</string>
+    <string name="search_autoeq_placeholder">Sök efter hörlursmodell</string>
+    <string name="backup_warning_database_ver">Vissa data från denna säkerhetskopia, till exempel spellistor och sångtexter, är inte kompatibla och kan eventuellt inte återställas.</string>
 </resources>
