@@ -356,7 +356,6 @@
     <string name="top_albums">Найкращі альбоми</string>
     <string name="recent_artists">Останні виконавці</string>
     <string name="recent_albums">Останні альбоми</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Випадковий порядок</string>
     <string name="shuffle_mode_most_played">Найчастіше відтворювані</string>
@@ -402,8 +401,8 @@
     <string name="imported_x_profiles">Імпортовано %d профілів.</string>
     <string name="no_profile_imported">Жодного профілю не імпортовано.</string>
     <string name="import_autoeq_profile">Імпортувати профіль автоеквалайзера</string>
-    <string name="select_a_file_containing_autoeq_params">Оберіть файл, що містить параметри AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Жодних профілів автоеквалайзера не було імпортовано.</string>
+    <string name="select_a_file_containing_autoeq_params">Виберіть файл із параметрами AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Профілі AutoEq не імпортовано</string>
     <string name="reset_equalizer">Скинути еквалайзер</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Упевнені, що хочете скинути налаштування еквалайзера? \n\nЦе призведе до видалення всіх ваших профілів.</string>
     <string name="not_supported">Не підтримується</string>
@@ -1028,4 +1027,32 @@
     <string name="backup_warning_ver_newer">Формат резервної копії новіший, ніж той, який підтримує ця версія Booming Music.</string>
     <string name="backup_warning_app_ver_newer">Ця резервна копія була створена в новішій версії Booming Music. Відновлення її в цій версії може призвести до помилок або неповного відновлення даних.</string>
     <string name="restoring_data">Відновлення ваших даних…</string>
+    <string name="action_play_x">Відтворити %s</string>
+    <string name="home_empty_title">Нічого рекомендувати</string>
+    <string name="home_empty_subtitle">Спершу послухайте якусь музику</string>
+    <string name="home_shuffle_title">Перемішати музику</string>
+    <string name="home_for_you_title">Для вас</string>
+    <string name="home_for_you_subtitle">Усе найулюбленіше в одному місці</string>
+    <string name="home_for_you_subtitle_2">Ретельно відібрані перлини саме для вас</string>
+    <string name="home_for_you_subtitle_3">Ваша щоденна порція музичного натхнення</string>
+    <string name="home_albums_title">Слухахайте зараз</string>
+    <string name="home_albums_subtitle">Найпопулярніші та нещодавні альбоми</string>
+    <string name="home_albums_subtitle_2">Пориньте у ваші нові колекції</string>
+    <string name="home_albums_subtitle_3">Що зараз у тренді у вашій бібліотеці</string>
+    <string name="home_artists_title">Рекомендовані виконавці</string>
+    <string name="home_artists_subtitle">Виконавці, яких ви слухаєте найбільше</string>
+    <string name="home_artists_subtitle_2">Нові обличчя та старі улюбленці</string>
+    <string name="home_artists_subtitle_3">Обличчя за музикою, яку ви любите</string>
+    <string name="home_forgotten_tracks_title">Відкрийте заново</string>
+    <string name="home_forgotten_tracks_subtitle">Поверніть старих улюбленців знову в центр уваги</string>
+    <string name="home_forgotten_tracks_subtitle_2">Здуйте пил із цих прихованих скарбів</string>
+    <string name="home_forgotten_tracks_subtitle_3">Пісні, які ви давно не чули</string>
+    <string name="import_or_sync_autoeq_database">Імпортуйте профіль або синхронізуйте базу даних, щоби переглянути доступні профілі</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Імпортуйте профіль або знайдіть назву свого пристрою серед %d профілів</string>
+    <string name="autoeq_search_device_name">Пошук пристрою або моделі</string>
+    <string name="autoeq_sync_success">Успішно синхронізовано %d профілів AutoEq.</string>
+    <string name="autoeq_sync_failed">Не вдалося синхронізувати профілі AutoEq.</string>
+    <string name="sync_autoeq_database">Синхронізувати базу даних AutoEq</string>
+    <string name="search_autoeq_placeholder">Пошук моделі навушників</string>
+    <string name="backup_warning_database_ver">Деякі дані з цієї резервної копії, як-от списки відтворення та тексти пісень, несумісні й можуть бути не відновлені.</string>
 </resources>
