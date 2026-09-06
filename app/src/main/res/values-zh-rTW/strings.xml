@@ -545,7 +545,7 @@
     <string name="lyrics_custom_font_title">自訂歌詞字型</string>
     <string name="lyrics_custom_font_summary">匯入並使用自訂歌詞字型。</string>
     <string name="lyrics_import_custom_font_title">匯入自訂字型</string>
-    <string name="lyrics_syllable_mode_title">逐字滾動歌詞</string>
+    <string name="lyrics_syllable_mode_title">逐字同步歌詞</string>
     <string name="lyrics_syllable_mode_summary">可顯示逐字同步歌詞。取決於歌詞是否可用，以及是否為 LRC 或 TTML 等相容格式。</string>
     <string name="lyrics_effects_note">進階效果可增強視覺體驗，但可能需要耗費更多系統資源和電量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
