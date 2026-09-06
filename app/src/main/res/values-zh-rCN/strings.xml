@@ -545,8 +545,8 @@
     <string name="lyrics_custom_font_title">自定义歌词字体</string>
     <string name="lyrics_custom_font_summary">导入并使用自定义歌词字体。</string>
     <string name="lyrics_import_custom_font_title">导入自定义字体</string>
-    <string name="lyrics_syllable_mode_title">逐字滚动歌词</string>
-    <string name="lyrics_syllable_mode_summary">逐字同步滚动歌词。取决于歌词的可用性以及兼容的歌词格式，例如 LRC 或 TTML。</string>
+    <string name="lyrics_syllable_mode_title">逐字同步歌词</string>
+    <string name="lyrics_syllable_mode_summary">可显示逐字同步歌词。取决于歌词是否可用，以及是否为 LRC 或 TTML 等兼容的格式。</string>
     <string name="lyrics_effects_note">高级效果可增强视觉体验，但可能需要耗费更多系统资源和电量。</string>
     <string name="lyrics_background_effect_title">背景特效</string>
     <string name="lyrics_background_gradient">渐变</string>
@@ -825,7 +825,7 @@
     <string name="use_lrclib_provider_title">使用 LRCLib 服务</string>
     <string name="use_lrclib_provider_summary">社区驱动的歌词数据库。</string>
     <string name="use_betterlyrics_provider_title">使用 BetterLyrics 服务</string>
-    <string name="use_betterlyrics_provider_summary">逐词同步歌词服务。</string>
+    <string name="use_betterlyrics_provider_summary">逐字同步歌词服务。</string>
     <string name="channel_quadraphonic">四声道</string>
     <string name="channel_mono">单声道</string>
     <string name="channel_stereo">立体声</string>
