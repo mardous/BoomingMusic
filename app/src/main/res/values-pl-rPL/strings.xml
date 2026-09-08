@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Dostęp do pamięci</string>
     <string name="permission_external_storage_description">Aplikacja potrzebuje pozwolenia na dostęp do pamięci urządzenia, aby odtwarzać muzykę</string>
     <string name="permission_external_storage_denied">Musisz zezwolić na dostęp do pamięci zewnętrznej.</string>
-    <string name="permission_bluetooth_title">Urządzenia w pobliżu</string>
+    <string name="permission_bluetooth_title">Urządzenia w pobliżu (opcjonalne)</string>
     <string name="permission_bluetooth_description">Dostęp do pobliskich urządzeń jest wymagany do wykrywania urządzeń Bluetooth</string>
     <string name="permission_read_images_title">Dostęp do zdjęć (opcjonalny)</string>
     <string name="permission_read_images_summary">Pozwala aplikacji Booming Music znajdować okładki albumów w folderach z muzyką. Nie jest wymagane, jeśli nie zależy ci na tej funkcji.</string>
@@ -402,7 +402,7 @@
     <string name="no_profile_imported">Nie zaimportowano profilu.</string>
     <string name="import_autoeq_profile">Importuj profil AutoEq</string>
     <string name="select_a_file_containing_autoeq_params">Wybierz plik zawierający parametry AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Żadne profile AutoEq nie zostały zaimportowane.</string>
+    <string name="no_autoeq_profiles">Nie zaimportowano żadnych profili AutoEq</string>
     <string name="reset_equalizer">Zresetuj equalizer</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Czy na pewno chcesz zresetować equalizer? \n\nTo wyczyści wszystkie twoje profile.</string>
     <string name="not_supported">Nie obsługiwane</string>
@@ -1035,4 +1035,21 @@
     <string name="home_empty_title">Jeszcze nic tu nie ma</string>
     <string name="allow_lyrics_download_from">Zezwól na pobieranie z:</string>
     <string name="home_empty_subtitle">Najpierw odtwórz kilka utworów</string>
+    <string name="home_shuffle_title">Odtwarzaj bibliotekę losowo</string>
+    <string name="invalid_search_params">Nie udało się przetworzyć parametrów wyszukiwania.</string>
+    <string name="home_for_you_subtitle">Twoje ulubione utwory w jednym miejscu</string>
+    <string name="home_albums_subtitle">Najczęściej odtwarzane i najnowsze albumy</string>
+    <string name="home_albums_subtitle_3">Najczęstsze wybory z twojej biblioteki</string>
+    <string name="home_artists_subtitle">Wykonawcy, których słuchasz najczęściej</string>
+    <string name="home_artists_subtitle_2">Nowe twarze i dawni ulubieńcy</string>
+    <string name="autoeq_search_device_name">Wyszukaj urządzenie lub model</string>
+    <string name="autoeq_sync_success">Zsynchronizowano profile AutoEq: %d</string>
+    <string name="autoeq_sync_failed">Nie udało się zsynchronizować profili AutoEq.</string>
+    <string name="sync_autoeq_database">Zsynchronizuj bazę danych AutoEq</string>
+    <string name="search_autoeq_placeholder">Wyszukaj model słuchawek</string>
+    <string name="backup_restore_summary">Zarządzaj kopiami zapasowymi danych aplikacji.</string>
+    <string name="backup_warning_database_ver">Część danych z tej kopii zapasowej, takich jak playlisty i teksty utworów, nie jest kompatybilna i może nie zostać przywrócona.</string>
+    <string name="home_forgotten_tracks_subtitle_2">Zakurzone hity</string>
+    <string name="import_or_sync_autoeq_database">Zaimportuje Profil lub zsynchronizuj bazę danych, aby wyświetlić dostępne profile</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Zaimportuj profil lub wyszukaj nazwę swojego urządzenia wśród %d profili</string>
 </resources>
