@@ -385,8 +385,8 @@
     <string name="imported_x_profiles">%d profielen geïmporteerd.</string>
     <string name="no_profile_imported">Geen profiel geïmporteerd.</string>
     <string name="import_autoeq_profile">Importeer AutoEq profiel</string>
-    <string name="select_a_file_containing_autoeq_params">Selecteer een bestand met AutoEq (GraphicEq) parameters.</string>
-    <string name="no_autoeq_profiles">Er zijn geen AutoEq-profielen geïmporteerd.</string>
+    <string name="select_a_file_containing_autoeq_params">Selecteer een bestand met AutoEq (GraphicEq) parameters</string>
+    <string name="no_autoeq_profiles">Geen AutoEq-profielen geïmporteerd</string>
     <string name="reset_equalizer">Equalizer resetten</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Weet je zeker dat je de equalizer wilt resetten?\n\nHiermee worden al je profielen verwijderd.</string>
     <string name="not_supported">Niet ondersteund</string>
@@ -1029,4 +1029,12 @@
     <string name="home_forgotten_tracks_subtitle">Breng oude favorieten terug in de spotlight</string>
     <string name="home_forgotten_tracks_subtitle_2">Stof die verborgen schatten af</string>
     <string name="home_forgotten_tracks_subtitle_3">Liedjes die u al een tijdje niet gehoord heeft</string>
+    <string name="import_or_sync_autoeq_database">Importeer een profiel of synchronizeer de database om beschikbare profielen te bekijken</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importeer een profiel of zoek naar uw apparaatnaam tussen %d profielen</string>
+    <string name="autoeq_search_device_name">Zoek naar apparaat of model</string>
+    <string name="autoeq_sync_success">%d AutoEq profielen succesvol gesynchronizeerd.</string>
+    <string name="autoeq_sync_failed">Synchronizeren van AutoEq profielen mislukt.</string>
+    <string name="sync_autoeq_database">Synchronizeer AutoEq Database</string>
+    <string name="search_autoeq_placeholder">Zoek naar koptelefoonmodel</string>
+    <string name="backup_warning_database_ver">Sommige data uit deze backup, zoals afspeellijsten en songteksten, is not compatibel en wordt mogelijk niet hersteld.</string>
 </resources>
