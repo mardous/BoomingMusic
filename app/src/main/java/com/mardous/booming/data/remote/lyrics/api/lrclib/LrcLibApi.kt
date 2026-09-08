@@ -33,12 +33,15 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
         } else {
             val songDurationInSeconds = (song.duration / 1000).toDouble()
             var matchingLyrics = lyrics.firstOrNull {
-                val maxValue = maxOf(songDurationInSeconds, it.durationInSeconds)
-                val minValue = minOf(songDurationInSeconds, it.durationInSeconds)
+                val resultDuration = it.durationInSeconds ?: return@firstOrNull false
+                val maxValue = maxOf(songDurationInSeconds, resultDuration)
+                val minValue = minOf(songDurationInSeconds, resultDuration)
                 ((maxValue - minValue) < 2)
             }
             if (matchingLyrics == null) {
-                matchingLyrics = lyrics.first { !it.plainLyrics.isNullOrEmpty() }
+                matchingLyrics = lyrics.firstOrNull {
+                    !it.plainLyrics.isNullOrEmpty() || !it.syncedLyrics.isNullOrEmpty()
+                } ?: return null
             }
             return RawLyrics.Remote(
                 plain = RawLyrics.Remote.Content(provider.displayName, matchingLyrics.plainLyrics),

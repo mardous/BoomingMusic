@@ -13,7 +13,7 @@ data class LRCLibResponse(
     val album: String,
     val instrumental: Boolean,
     @SerialName("duration")
-    val durationInSeconds: Double,
+    val durationInSeconds: Double?,
     val plainLyrics: String?,
     val syncedLyrics: String?
 )
