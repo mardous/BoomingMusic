@@ -571,6 +571,36 @@
     <string name="could_not_import_font">Could not import font.</string>
     <string name="cannot_edit_lyrics_file">You cannot edit the file content directly from Booming Music.</string>
     <string name="lyrics_by_x">Lyrics by %s</string>
+    <string name="lyrics_search_finding">Finding lyrics</string>
+    <string name="lyrics_search_progress">%1$d of %2$d providers checked</string>
+    <string name="lyrics_search_found_better">Lyrics found — checking for a better result</string>
+    <string name="lyrics_search_details">Details</string>
+    <string name="lyrics_search_collapse">Collapse</string>
+    <string name="lyrics_search_results">Lyrics results</string>
+    <string name="lyrics_search_complete">Search complete</string>
+    <string name="lyrics_search_recommended">Recommended</string>
+    <string name="lyrics_search_other_results">Other results</string>
+    <string name="lyrics_search_nothing_found">Nothing found · %1$d providers</string>
+    <string name="lyrics_search_use">Use</string>
+    <string name="lyrics_search_use_lyrics">Use lyrics</string>
+    <string name="lyrics_search_best_available">Best available</string>
+    <string name="lyrics_search_line_synced">Line synced</string>
+    <string name="lyrics_search_plain_and_synced">Plain and line synced</string>
+    <string name="lyrics_search_status_searching">Searching</string>
+    <string name="lyrics_search_status_waiting">Waiting</string>
+    <string name="lyrics_search_status_found">Found</string>
+    <string name="lyrics_search_status_no_match">No match</string>
+    <string name="lyrics_search_status_failed">Failed</string>
+    <string name="lyrics_search_status_timed_out">Timed out</string>
+    <string name="lyrics_search_no_results_title">No lyrics found</string>
+    <string name="lyrics_search_no_results_message">None of the selected providers returned usable lyrics.</string>
+    <string name="lyrics_search_manual_search">Search manually</string>
+    <string name="lyrics_search_most_complete_reason">Includes both plain and line-synced lyrics</string>
+    <string name="lyrics_search_synced_reason">Line-synced lyrics are preferred for playback</string>
+    <string name="lyrics_search_plain_reason">Best available text result</string>
+    <string name="lyrics_search_expand_results">Expand lyrics results</string>
+    <string name="lyrics_search_collapse_results">Collapse lyrics results</string>
+    <string name="action_expand_lyrics">Expand lyrics</string>
 
     <!-- Scrobbling Service -->
     <string name="sign_in_to_x_title">Sign in to %s</string>
