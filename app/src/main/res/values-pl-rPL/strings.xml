@@ -175,7 +175,7 @@
     <string name="no_albums_label">Brak albumów</string>
     <string name="no_artists_label">Brak artystów</string>
     <string name="no_genres_label">Brak gatunków</string>
-    <string name="empty_label">Pusty</string>
+    <string name="empty_label">Pusto tutaj</string>
     <string name="nothing_to_see">Nic do zobaczenia</string>
     <string name="show_album_artists">Tylko wykonawcy albumów</string>
     <string name="songs_label">Utwory</string>
@@ -219,7 +219,7 @@
     <string name="sort_order_number_of_songs">Liczba utworów</string>
     <string name="sort_order_number_of_albums">Liczba albumów</string>
     <string name="sort_order_last_played_date">Data ostatniego odtwarzania</string>
-    <string name="sort_order_track_list">Lista ścieżek</string>
+    <string name="sort_order_track_list">Lista utworów</string>
     <string name="sort_order_descending">Malejąco</string>
     <string name="sort_order_ignore_articles">Ignoruj rodzajniki</string>
     <string name="action_details">Szczegóły</string>
@@ -264,7 +264,7 @@
     <string name="label_last_modified">Ostatnia modyfikacja</string>
     <string name="label_channels">Kanały</string>
     <string name="label_variable_bitrate">Zmienna przepływność (VBR)</string>
-    <string name="label_loss_less">Bezstratna</string>
+    <string name="label_loss_less">Bezstratny (Lossless)</string>
     <string name="label_bit_rate">Bitrate</string>
     <string name="label_sampling_rate">Próbkowanie</string>
     <string name="replay_gain">Wzmocnienie ReplayGain</string>
@@ -283,7 +283,7 @@
     <string name="connection_unavailable">Połączenie niedostępne.</string>
     <string name="you_have_to_select_at_least_one_category">Musisz wybrać co najmniej jedną kategorię</string>
     <string name="you_cannot_select_more_than_five_categories">Nie możesz wybrać więcej niż pięciu kategorii.</string>
-    <string name="backup_successful">Kopia zapasowa zakończona!</string>
+    <string name="backup_successful">Utworzono kopię zapasową!</string>
     <string name="backup_failed">Nie udało się stworzyć kopii zapasowej.</string>
     <string name="select_content_to_restore">Wybierz zawartość do przywrócenia:</string>
     <string name="could_not_restore_data">Nie można przywrócić danych. Zweryfikuj plik kopii zapasowej i spróbuj ponownie.</string>
@@ -406,7 +406,7 @@
     <string name="reset_equalizer">Zresetuj equalizer</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Czy na pewno chcesz zresetować equalizer? \n\nTo wyczyści wszystkie twoje profile.</string>
     <string name="not_supported">Nie obsługiwane</string>
-    <string name="set_eq_engine_title">Set EQ engine</string>
+    <string name="set_eq_engine_title">Ustaw silnik EQ</string>
     <string name="eq_engine_basic_title">Silnik Legacy</string>
     <string name="eq_engine_basic_description">5-pasmowa konfiguracja zaprojektowana dla maksymalnej kompatybilności urządzeń.</string>
     <string name="eq_engine_precision_title">Silnik Precision</string>
@@ -473,7 +473,7 @@
     <string name="action_sleep_timer">Zegar uśpienia</string>
     <string name="sleep_timer_waiting_pending_quit">Oczekiwanie na zakończenie obecnego utworu</string>
     <string name="sleep_timer_cancel_current_timer">Anuluj</string>
-    <string name="sleep_timer_set_action">Uruchom</string>
+    <string name="sleep_timer_set_action">Ustaw</string>
     <string name="sleep_timer_x_mins">%d minut</string>
     <string name="sleep_timer_15_mins">15 minut</string>
     <string name="sleep_timer_45_mins">45 minut</string>
@@ -523,7 +523,7 @@
     <string name="appearance_summary">Dostosuj motyw i wygląd aplikacji.</string>
     <string name="now_playing_title">Teraz odtwarzane</string>
     <string name="now_playing_summary">Dostosuj wygląd odtwarzacza.</string>
-    <string name="lyrics_preferences_title">Tekst</string>
+    <string name="lyrics_preferences_title">Teksty utworów</string>
     <string name="lyrics_preferences_summary">Dostosuj czcionkę, odstępy i inne opcje wyświetlania tekstu.</string>
     <string name="playback_title">Odtwarzanie</string>
     <string name="playback_summary">Ustawienia audio, urządzeń Bluetooth i nie tylko.</string>
@@ -936,7 +936,7 @@
     <string name="sort_order_name">Nazwa</string>
     <string name="eq_knee_width">Szerokość kolanka</string>
     <string name="error_lastfm_rate_limit">Zbyt wiele zapytań. Poczekaj chwilę przed kolejnym scrobblowaniem.</string>
-    <string name="website">Strona WWW</string>
+    <string name="website">Strona</string>
     <string name="legal">Informacje prawne</string>
     <string name="terms_of_service">Warunki świadczenia usług</string>
     <string name="privacy_policy">Polityka prywatności</string>
@@ -1002,9 +1002,9 @@
     <string name="listenbrainz_toggle_token_visibility">Przełącz widoczność tokenu</string>
     <string name="home_for_you_title">Dla Ciebie</string>
     <string name="home_for_you_subtitle_2">Perełki wybrane specjalnie dla Ciebie</string>
-    <string name="home_for_you_subtitle_3">Twoja codzienna dawka muzycznej inspiracji</string>
+    <string name="home_for_you_subtitle_3">Codzienna dawka inspiracji</string>
     <string name="home_forgotten_tracks_title">Odkryj na nowo</string>
-    <string name="backup_restore_title">Kopia zapasowa i przywracanie</string>
+    <string name="backup_restore_title">Kopie zapasowe</string>
     <string name="no_backup_folder_selected">Nie wybrano folderu do tworzenia kopii zapasowych</string>
     <string name="select_backup_folder">Wybierz folder</string>
     <string name="no_backups_found">Nie znaleziono kopii zapasowych w tym folderze.</string>
@@ -1023,7 +1023,7 @@
     <string name="backup_content_play_info">Statystyki odtwarzania</string>
     <string name="backup_content_playlists">Playlisty</string>
     <string name="backup_content_artist_images">Obrazy wykonawców</string>
-    <string name="backup_app_version">Stworzony w</string>
+    <string name="backup_app_version">Stworzono w</string>
     <string name="backup_warning_legacy_format">Ten format kopii zapasowej jest przestarzały. Możesz go jeszcze przywrócić, ale w przyszłości ta opcja może zostać usunięta.</string>
     <string name="backup_warning_ver_newer">Format tej kopii zapasowej jest zbyt nowy dla tej wersji Booming Music.</string>
     <string name="backup_warning_app_ver_newer">Ta kopia zapasowa pochodzi z nowszej wersji Booming Music. Jej przywrócenie może powodować błędy lub nie przywrócić wszystkich danych.</string>
@@ -1049,7 +1049,9 @@
     <string name="search_autoeq_placeholder">Wyszukaj model słuchawek</string>
     <string name="backup_restore_summary">Zarządzaj kopiami zapasowymi danych aplikacji.</string>
     <string name="backup_warning_database_ver">Część danych z tej kopii zapasowej, takich jak playlisty i teksty utworów, nie jest kompatybilna i może nie zostać przywrócona.</string>
-    <string name="home_forgotten_tracks_subtitle_2">Zakurzone hity</string>
+    <string name="home_forgotten_tracks_subtitle_2">Przeboje, które na chwilę zeszły na drugi plan</string>
     <string name="import_or_sync_autoeq_database">Zaimportuje Profil lub zsynchronizuj bazę danych, aby wyświetlić dostępne profile</string>
     <string name="import_or_type_to_search_autoeq_profiles">Zaimportuj profil lub wyszukaj nazwę swojego urządzenia wśród %d profili</string>
+    <string name="home_forgotten_tracks_subtitle">Uciekinierzy! Złapać ich!</string>
+    <string name="home_forgotten_tracks_subtitle_3">Te utwory zniknęły ci z radaru</string>
 </resources>
