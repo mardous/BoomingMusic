@@ -22,23 +22,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.mardous.booming.MainActivity
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EqualizerFragment : Fragment() {
 
     private val arguments: EqualizerFragmentArgs by navArgs()
-
-    private val libraryViewModel: LibraryViewModel by activityViewModel()
-    private val equalizerViewModel: EqualizerViewModel by viewModel()
     private val playerViewModel: PlayerViewModel by activityViewModel()
 
     override fun onCreateView(
@@ -47,11 +43,12 @@ class EqualizerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(
+                ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+            )
             setContent {
                 BoomingMusicTheme {
                     EqualizerScreen(
-                        libraryViewModel = libraryViewModel,
-                        eqViewModel = equalizerViewModel,
                         onBackClick = { findNavController().navigateUp() }
                     )
                 }

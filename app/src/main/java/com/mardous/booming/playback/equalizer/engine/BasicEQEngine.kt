@@ -34,7 +34,8 @@ class BasicEQEngine(sessionId: Int) : EQEngine(sessionId) {
                         bandCount = bandCount,
                         bandFrequenciesInHz = bandFrequenciesInHz.toIntArray()
                     )
-                )
+                ),
+                maxBandCountInNormalMode = bandCount
             )
         }
 

@@ -8,18 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import com.mardous.booming.R
 import com.mardous.booming.core.model.task.Event
 import com.mardous.booming.data.remote.github.GitHubService
 import com.mardous.booming.data.remote.github.model.GitHubRelease
-import com.mardous.booming.extensions.isOnline
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.UpdateSearchMode
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Date
-import java.util.concurrent.TimeUnit
 
 class UpdateViewModel(private val updateService: GitHubService): ViewModel() {
 
@@ -86,22 +82,4 @@ class UpdateViewModel(private val updateService: GitHubService): ViewModel() {
                 }
             }
         }
-
-    fun isAllowedToUpdate(context: Context): Boolean {
-        if (!context.resources.getBoolean(R.bool.enable_app_update))
-            return false
-
-        val minElapsedMillis = when (Preferences.updateSearchMode) {
-            UpdateSearchMode.EVERY_DAY -> TimeUnit.DAYS.toMillis(1)
-            UpdateSearchMode.EVERY_FIFTEEN_DAYS -> TimeUnit.DAYS.toMillis(15)
-            UpdateSearchMode.WEEKLY -> TimeUnit.DAYS.toMillis(7)
-            UpdateSearchMode.MONTHLY -> TimeUnit.DAYS.toMillis(30)
-            else -> -1
-        }
-        val elapsedMillis = System.currentTimeMillis() - Preferences.lastUpdateSearch
-        if ((minElapsedMillis > -1) && elapsedMillis >= minElapsedMillis) {
-            return context.isOnline(Preferences.updateOnlyWifi)
-        }
-        return false
-    }
 }

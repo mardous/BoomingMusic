@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
@@ -22,6 +23,9 @@ class ShuffleModeFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(
+                ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+            )
             setContent {
                 BoomingMusicTheme {
                     ShuffleModeBottomSheet(

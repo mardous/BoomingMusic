@@ -14,8 +14,7 @@
         android:layout_height="match_parent"
         android:background="?colorSurface"
         app:defaultNavHost="true"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        tools:layout="@layout/fragment_home"/>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <FrameLayout
         android:id="@+id/sheet_view"

@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import com.mardous.booming.MainActivity
 import com.mardous.booming.R
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.ui.component.base.goToDestination
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.lyrics.CoverLyricsScreen
 import com.mardous.booming.ui.screen.lyrics.LyricsFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel

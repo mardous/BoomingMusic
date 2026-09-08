@@ -65,9 +65,7 @@ abstract class AbsThemeActivity : AppCompatActivity() {
         if (appTheme.applyDynamicColors) {
             val dynamicColorsOptions = DynamicColorsOptions.Builder()
                 .setOnAppliedCallback {
-                    if (appTheme.isBlackTheme) {
-                        setTheme(R.style.BlackThemeOverlay)
-                    }
+                    appTheme.dynamicColorOverlay?.let { setTheme(it) }
                 }
             if (appTheme.seedColor != null) {
                 dynamicColorsOptions.setContentBasedSource(appTheme.seedColor)

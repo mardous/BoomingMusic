@@ -39,7 +39,7 @@ import com.mardous.booming.extensions.media.songsDurationStr
 import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.setSupportActionBar
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.ISongCallback
 import com.mardous.booming.ui.adapters.song.SongAdapter
 import com.mardous.booming.ui.component.base.AbsMainActivityFragment

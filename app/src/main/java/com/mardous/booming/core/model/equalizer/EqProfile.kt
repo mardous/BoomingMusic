@@ -26,7 +26,7 @@ data class EqProfile(
         get() = levels.size
 
     fun getName(context: Context): String {
-        if (isCustom && name == CUSTOM_PRESET_NAME) {
+        if (isCustom && name == CUSTOM_PROFILE_NAME) {
             return context.getString(R.string.custom)
         }
         return name
@@ -37,7 +37,7 @@ data class EqProfile(
         if (isAutoEq) {
             description.add(context.getString(R.string.autoeq_label))
         }
-        if (isCustom && name != CUSTOM_PRESET_NAME) {
+        if (isCustom && name != CUSTOM_PROFILE_NAME) {
             description.add(context.getString(R.string.custom))
         }
         return description.joinToString(DEFAULT_INFO_DELIMITER)
@@ -66,6 +66,6 @@ data class EqProfile(
     }
 
     companion object {
-        const val CUSTOM_PRESET_NAME = "Custom"
+        const val CUSTOM_PROFILE_NAME = "Custom"
     }
 }

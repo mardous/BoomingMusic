@@ -41,12 +41,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -76,11 +74,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -187,216 +183,199 @@ class AddToPlaylistDialog : BottomSheetDialogFragment() {
             }
         }
 
-        BottomSheetDialogSurface {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .nestedScroll(rememberNestedScrollInteropConnection())
-            ) {
-                BottomSheetDefaults.DragHandle(
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-                Box {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(
-                            start = 16.dp,
-                            end = 16.dp,
-                            bottom = listBottomPadding
-                        ),
-                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+        BottomSheetDialogSurface(
+            title = {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.select_playlists_title),
+                            style = MaterialTheme.typography.headlineSmallEmphasized,
+                            maxLines = 1
+                        )
+
+                        Text(
+                            text = songs.songCountStr(context),
+                            style = MaterialTheme.typography.titleSmall,
+                            maxLines = 1
+                        )
+                    }
+
+                    Button(
+                        onClick = onCreatePlaylistClick,
+                        contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
+                        enabled = uiState?.isLoading?.not() ?: false
                     ) {
-                        item {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Column(
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.select_playlists_title),
-                                        style = MaterialTheme.typography.headlineSmallEmphasized,
-                                        maxLines = 1
-                                    )
-
-                                    Text(
-                                        text = songs.songCountStr(context),
-                                        style = MaterialTheme.typography.titleSmall,
-                                        maxLines = 1
-                                    )
-                                }
-
-                                Button(
-                                    onClick = onCreatePlaylistClick,
-                                    contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
-                                    enabled = uiState?.isLoading?.not() ?: false
-                                ) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_playlist_add_24dp),
-                                        contentDescription = null
-                                    )
-                                    Spacer(Modifier.width(ButtonDefaults.IconSpacing))
-                                    Text(stringResource(R.string.new_playlist_action))
-                                }
-                            }
-                        }
-
-                        item { Spacer(Modifier.height(16.dp)) }
-
-                        item {
-                            TextField(
-                                value = searchQuery,
-                                onValueChange = { searchQuery = it },
-                                singleLine = true,
-                                label = { Text(stringResource(R.string.search_playlists)) },
-                                leadingIcon = {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_search_24dp),
-                                        contentDescription = null
-                                    )
-                                },
-                                trailingIcon = {
-                                    if (searchQuery.isNotEmpty()) {
-                                        IconButton(onClick = { searchQuery = "" }) {
-                                            Icon(
-                                                painter = painterResource(R.drawable.ic_cancel_24dp),
-                                                contentDescription = null
-                                            )
-                                        }
-                                    }
-                                },
-                                shape = CircleShape,
-                                colors = TextFieldDefaults.colors(
-                                    unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                                    focusedIndicatorColor = Color.Transparent,
-                                    unfocusedIndicatorColor = Color.Transparent,
-                                    errorIndicatorColor = Color.Transparent,
-                                    disabledIndicatorColor = Color.Transparent
-                                ),
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                        }
-
-                        item { Spacer(Modifier.height(16.dp)) }
-
-                        when (val state = uiState) {
-                            is AddToPlaylistUiState.Loading -> {
-                                item {
-                                    Box(
-                                        contentAlignment = Alignment.Center,
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(top = 72.dp)
-                                    ) {
-                                        CircularWavyProgressIndicator()
-                                    }
-                                }
-                            }
-
-                            is AddToPlaylistUiState.Empty -> {
-                                item {
-                                    EmptyView(
-                                        icon = painterResource(R.drawable.ic_queue_music_24dp),
-                                        title = stringResource(R.string.no_playlists_label),
-                                        subtitle = if (state.searchQuery.isNullOrBlank()) {
-                                            stringResource(R.string.no_playlists_create_new)
-                                        } else {
-                                            stringResource(
-                                                R.string.no_playlists_that_match_x,
-                                                state.searchQuery
-                                            )
-                                        },
-                                        modifier = Modifier.fillParentMaxSize()
-                                    )
-                                }
-                            }
-
-                            is AddToPlaylistUiState.Ready -> {
-                                if (state.isLoading) {
-                                    item {
-                                        LinearWavyProgressIndicator(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(bottom = 16.dp)
+                        Icon(
+                            painter = painterResource(R.drawable.ic_playlist_add_24dp),
+                            contentDescription = null
+                        )
+                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                        Text(stringResource(R.string.new_playlist_action))
+                    }
+                }
+            },
+        ) {
+            Box {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = listBottomPadding),
+                    verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+                ) {
+                    item {
+                        TextField(
+                            value = searchQuery,
+                            onValueChange = { searchQuery = it },
+                            singleLine = true,
+                            label = { Text(stringResource(R.string.search_playlists)) },
+                            leadingIcon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_search_24dp),
+                                    contentDescription = null
+                                )
+                            },
+                            trailingIcon = {
+                                if (searchQuery.isNotEmpty()) {
+                                    IconButton(onClick = { searchQuery = "" }) {
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_cancel_24dp),
+                                            contentDescription = null
                                         )
                                     }
                                 }
-
-                                itemsIndexed(
-                                    state.playlists,
-                                    { _, playlist -> playlist.playlistEntity.playListId }
-                                ) { index, playlist ->
-                                    val isSelected = checkedPlaylists.contains(playlist.playlistEntity.playListId)
-                                    PlaylistItem(
-                                        onClick = {
-                                            if (isSelected) {
-                                                checkedPlaylists.remove(playlist.playlistEntity.playListId)
-                                            } else {
-                                                checkedPlaylists.add(playlist.playlistEntity.playListId)
-                                            }
-                                        },
-                                        index = index,
-                                        count = state.playlists.size,
-                                        selected = isSelected,
-                                        enabled = !state.isLoading,
-                                        playlist = playlist
-                                    )
-                                }
-                            }
-
-                            is AddToPlaylistUiState.Completed -> {
-                                if (state.isSuccess) {
-                                    context.showToast(R.string.songs_added_to_playlists)
-                                }
-                                onDismiss()
-                            }
-
-                            else -> {}
-                        }
+                            },
+                            shape = CircleShape,
+                            colors = TextFieldDefaults.colors(
+                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                errorIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent
+                            ),
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
 
-                    androidx.compose.animation.AnimatedVisibility(
-                        visible = checkedPlaylists.isNotEmpty(),
-                        enter = fadeIn() + slideInVertically { it },
-                        exit = fadeOut() + slideOutVertically { it },
-                        modifier = Modifier
-                            .padding(bottom = 16.dp)
-                            .align(Alignment.BottomCenter)
-                    ) {
-                        ElevatedCard(
-                            shape = CircleShape
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.padding(8.dp)
-                            ) {
-                                Text(
-                                    text = pluralStringResource(
-                                        R.plurals.x_playlists_selected,
-                                        checkedPlaylists.size,
-                                        checkedPlaylists.size
-                                    ),
-                                    style = MaterialTheme.typography.labelLarge,
-                                    maxLines = 2,
-                                    modifier = Modifier.padding(start = 8.dp)
-                                )
+                    item { Spacer(Modifier.height(16.dp)) }
 
-                                Button(
-                                    onClick = {
-                                        libraryViewModel.addToPlaylists(checkedPlaylists, songs)
-                                    },
-                                    contentPadding = ButtonDefaults.MediumContentPadding
+                    when (val state = uiState) {
+                        is AddToPlaylistUiState.Loading -> {
+                            item {
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(top = 72.dp)
                                 ) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_check_24dp),
-                                        contentDescription = null
-                                    )
-                                    Spacer(Modifier.width(ButtonDefaults.IconSpacing))
-                                    Text(stringResource(R.string.add_action))
+                                    CircularWavyProgressIndicator()
                                 }
+                            }
+                        }
+
+                        is AddToPlaylistUiState.Empty -> {
+                            item {
+                                EmptyView(
+                                    icon = painterResource(R.drawable.ic_queue_music_24dp),
+                                    title = stringResource(R.string.no_playlists_label),
+                                    subtitle = if (state.searchQuery.isNullOrBlank()) {
+                                        stringResource(R.string.no_playlists_create_new)
+                                    } else {
+                                        stringResource(
+                                            R.string.no_playlists_that_match_x,
+                                            state.searchQuery
+                                        )
+                                    },
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                        }
+
+                        is AddToPlaylistUiState.Ready -> {
+                            if (state.isLoading) {
+                                item {
+                                    LinearWavyProgressIndicator(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(bottom = 16.dp)
+                                    )
+                                }
+                            }
+
+                            itemsIndexed(
+                                state.playlists,
+                                { _, playlist -> playlist.playlistEntity.playListId }
+                            ) { index, playlist ->
+                                val isSelected =
+                                    checkedPlaylists.contains(playlist.playlistEntity.playListId)
+                                PlaylistItem(
+                                    onClick = {
+                                        if (isSelected) {
+                                            checkedPlaylists.remove(playlist.playlistEntity.playListId)
+                                        } else {
+                                            checkedPlaylists.add(playlist.playlistEntity.playListId)
+                                        }
+                                    },
+                                    index = index,
+                                    count = state.playlists.size,
+                                    selected = isSelected,
+                                    enabled = !state.isLoading,
+                                    playlist = playlist
+                                )
+                            }
+                        }
+
+                        is AddToPlaylistUiState.Completed -> {
+                            if (state.isSuccess) {
+                                context.showToast(R.string.songs_added_to_playlists)
+                            }
+                            onDismiss()
+                        }
+
+                        else -> {}
+                    }
+                }
+
+                androidx.compose.animation.AnimatedVisibility(
+                    visible = checkedPlaylists.isNotEmpty(),
+                    enter = fadeIn() + slideInVertically { it },
+                    exit = fadeOut() + slideOutVertically { it },
+                    modifier = Modifier
+                        .padding(bottom = 16.dp)
+                        .align(Alignment.BottomCenter)
+                ) {
+                    ElevatedCard(
+                        shape = CircleShape
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(8.dp)
+                        ) {
+                            Text(
+                                text = pluralStringResource(
+                                    R.plurals.x_playlists_selected,
+                                    checkedPlaylists.size,
+                                    checkedPlaylists.size
+                                ),
+                                style = MaterialTheme.typography.labelLarge,
+                                maxLines = 2,
+                                modifier = Modifier.padding(start = 8.dp)
+                            )
+
+                            Button(
+                                onClick = {
+                                    libraryViewModel.addToPlaylists(checkedPlaylists, songs)
+                                },
+                                contentPadding = ButtonDefaults.MediumContentPadding
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_check_24dp),
+                                    contentDescription = null
+                                )
+                                Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                                Text(stringResource(R.string.add_action))
                             }
                         }
                     }

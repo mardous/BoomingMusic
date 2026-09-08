@@ -373,7 +373,7 @@ class SearchFragment : AbsMainActivityFragment(R.layout.fragment_search),
 
     companion object {
         const val MODE = "mode"
+        const val QUERY = "query"
         private const val FILTER = "filter"
-        private const val QUERY = "query"
     }
 }

@@ -1,10 +1,9 @@
 package com.mardous.booming.data.local.lyrics.lrc
 
-import com.mardous.booming.data.model.lyrics.Lyrics
 import com.mardous.booming.data.model.lyrics.LyricsActor
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 
-internal class LrcNode(
-    val rawIndex: Int,
+data class LrcNode(
     val start: Long,
     val text: String?,
     var bgText: String?,
@@ -15,46 +14,51 @@ internal class LrcNode(
 
     var end: Long = INVALID_DURATION
 
-    fun addChild(start: Long, text: String?, actor: LyricsActor?): Boolean {
+    fun addChild(start: Long, end: Long = INVALID_DURATION, text: String?, actor: LyricsActor?): Boolean {
         if (start > INVALID_DURATION) {
-            return children.add(LrcNode(
-                rawIndex = -1,
+            val node = LrcNode(
                 start = start,
                 text = text,
                 bgText = null,
                 rawLine = null,
                 actor = actor
-            ))
+            )
+            node.end = end
+            return children.add(node)
         }
         return false
     }
 
-    private fun toWord(startIndex: Int, trimEnd: Boolean = false): Lyrics.Word {
+    private fun toWord(startIndex: Int, trimEnd: Boolean = false): SyncedLyrics.Word {
         checkNotNull(text)
         val wordText = if (trimEnd) text.trimEnd() else text
-        return Lyrics.Word(
+        return SyncedLyrics.Word(
             content = wordText,
-            startMillis = start,
+            start = start,
             startIndex = startIndex,
-            endMillis = end,
+            end = end,
             endIndex = startIndex + (wordText.length - 1),
-            durationMillis = (end - start),
+            duration = (end - start),
             actor = actor
         )
     }
 
-    fun getTextContent(): Lyrics.TextContent {
+    fun getTextContent(): SyncedLyrics.TextContent {
         return if (children.isNotEmpty()) {
             children.sortBy { it.start }
             for (i in 0 until children.lastIndex) {
-                children[i].end = children[i + 1].start
+                if (children[i].end == INVALID_DURATION) {
+                    children[i].end = children[i + 1].start
+                }
             }
-            children[children.lastIndex].end = end
+            if (children[children.lastIndex].end == INVALID_DURATION) {
+                children[children.lastIndex].end = end
+            }
 
             var nextWordStartIndex = 0
             val lastWordIndex = children.lastIndex
 
-            val words = mutableListOf<Lyrics.Word>()
+            val words = mutableListOf<SyncedLyrics.Word>()
             for ((index, child) in children.withIndex()) {
                 if (index == lastWordIndex && child.text.isNullOrBlank())
                     continue
@@ -69,36 +73,36 @@ internal class LrcNode(
                 }
             }
 
-            Lyrics.TextContent(
+            SyncedLyrics.TextContent(
                 content = words.filterNot { it.isBackground }
                     .joinToString(separator = "") { it.content }.trim(),
                 backgroundContent = words.filter { it.isBackground }
                     .joinToString(separator = "") { it.content }.trim(),
                 rawContent = rawLine.orEmpty(),
-                words = words
+                syllables = words
             )
         } else {
-            Lyrics.TextContent(
+            SyncedLyrics.TextContent(
                 content = text.orEmpty(),
                 backgroundContent = null,
                 rawContent = rawLine.orEmpty(),
-                words = emptyList()
+                syllables = emptyList()
             )
         }
     }
 
-    fun toLine(): Lyrics.Line? {
+    fun toLine(): SyncedLyrics.Line? {
         if (start <= INVALID_DURATION && end <= INVALID_DURATION) {
             return null
         }
-        return Lyrics.Line(
-            startAt = start,
+        return SyncedLyrics.Line(
+            start = start,
             end = end,
-            durationMillis = (end - start),
+            duration = (end - start),
             content = getTextContent(),
+            transliteration = null,
             translation = null,
-            actor = actor,
-            rawIndex = rawIndex
+            actor = actor
         )
     }
 

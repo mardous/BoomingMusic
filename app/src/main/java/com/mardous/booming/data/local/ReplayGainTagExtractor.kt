@@ -38,9 +38,13 @@ object ReplayGainTagExtractor {
         if (song == Song.emptySong) {
             return ReplayGain.Empty
         }
-        var gainValues = cache.get(song.uri)
+        return getReplayGain(song.uri)
+    }
+
+    fun getReplayGain(uri: Uri): ReplayGain {
+        var gainValues = cache.get(uri)
         if (gainValues == null) {
-            val metadataReader = MetadataReader(song.uri)
+            val metadataReader = MetadataReader(uri)
             val rawTags = metadataReader.all()
 
             val gainTags = parseStandardTags(rawTags)
@@ -54,10 +58,13 @@ object ReplayGainTagExtractor {
                 trackPeak = gainTags[TAG_TRACK_PEAK] ?: 1f
             )
 
-            cache.put(song.uri, gainValues)
+            cache.put(uri, gainValues)
         }
         return gainValues
     }
+
+    /** Cache-only, unlike [getReplayGain]. Safe on the audio thread. */
+    fun peek(uri: Uri): ReplayGain? = cache.get(uri)
 
     fun removeFromCache(uri: Uri) {
         cache.remove(uri)

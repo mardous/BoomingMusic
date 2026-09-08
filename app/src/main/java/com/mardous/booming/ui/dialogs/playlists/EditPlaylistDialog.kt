@@ -23,6 +23,7 @@ import android.os.Bundle
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import androidx.core.view.isGone
 import androidx.fragment.app.DialogFragment
 import coil3.load
 import coil3.size.Precision
@@ -71,6 +72,7 @@ class EditPlaylistDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogCreatePlaylistBinding.inflate(layoutInflater)
+        binding.message.isGone = true
 
         // Pre-fill existing data
         binding.playlistNameEditText.isEnabled = !playlistEntity.isFavorites(requireContext())

@@ -4,4 +4,5 @@
 
     <exclude domain="sharedpref" path="artist_signatures.xml" tools:ignore="FullBackupContent"/>
     <exclude domain="sharedpref" path="custom_artist_images.xml" tools:ignore="FullBackupContent"/>
+    <exclude domain="sharedpref" path="widget_config.xml" tools:ignore="FullBackupContent"/>
 </full-backup-content>

@@ -31,6 +31,7 @@ import androidx.core.app.ActivityCompat.checkSelfPermission
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mardous.booming.R
+import com.mardous.booming.core.sort.sortedByName
 import com.mardous.booming.databinding.DialogRecyclerViewBinding
 import com.mardous.booming.extensions.create
 import com.mardous.booming.extensions.hasT
@@ -159,7 +160,7 @@ class FolderChooserDialog : DialogFragment(), SimpleItemAdapter.Callback<String>
         val results = mutableListOf<File>()
         parentFolder?.listFiles()?.let { files ->
             files.forEach { file -> if (file.isDirectory) results.add(file) }
-            return results.sortedBy { it.name }.toTypedArray()
+            return results.sortedByName { it.name }.toTypedArray()
         }
         return null
     }

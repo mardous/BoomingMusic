@@ -38,6 +38,9 @@ captures/
 .idea/
 .kotlin/
 
+# Agents
+.artifacts/
+
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 
@@ -70,10 +73,9 @@ fastlane/screenshots/screenshots.html
 # scan temporary files
 fastlane/test_output
 
-# Google Play files
-fastlane/metadata/
-
 Gemfile.lock
 
 local.properties
 /.kotlin/
+
+get_weblate_translators.*

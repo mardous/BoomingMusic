@@ -8,9 +8,6 @@
         android:name="android.permission.BLUETOOTH_CONNECT"
         android:minSdkVersion="31"
         android:usesPermissionFlags="neverForLocation"/>
-    <uses-permission
-        android:name="android.permission.POST_NOTIFICATIONS"
-        android:minSdkVersion="33"/>
     <!-- For reading cover files (i.e. cover.jpg, albumart.jpg, etc.) -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
         android:minSdkVersion="33" />
@@ -23,12 +20,6 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="29"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
-        tools:ignore="ProtectedPermissions"/>
-    <uses-permission
-        android:name="android.permission.SCHEDULE_EXACT_ALARM"
-        android:minSdkVersion="31"
-        tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission
         android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
@@ -37,7 +28,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:name=".App"
@@ -58,88 +48,20 @@
         tools:ignore="UnusedAttribute">
 
         <activity
-            android:name=".ui.screen.MainActivity"
+            android:name=".MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Booming.SplashScreen"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".ui.screen.tageditor.SongTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".ui.screen.tageditor.AlbumTagEditorActivity"/>
-
-        <activity
-            android:label="@string/action_tag_editor"
-            android:name=".ui.screen.tageditor.ArtistTagEditorActivity"/>
-
-        <activity android:name=".ui.screen.permissions.PermissionsActivity"/>
-
-        <activity
-            android:name=".ui.screen.error.ErrorActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="cat.ereza.customactivityoncrash.RESTART"/>
-            </intent-filter>
-        </activity>
-
-        <!-- In order not to break compatibility with icon-packs -->
-        <activity-alias
-            android:name=".activities.MainActivity"
-            android:targetActivity=".ui.screen.MainActivity"
             android:exported="true"
-            android:enabled="true">
+            android:theme="@style/Theme.Booming.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.MUSIC_PLAYER"/>
+                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.MEDIA_SEARCH"/>
+                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <category android:name="android.intent.category.APP_MUSIC"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data android:scheme="content"/>
-                <data android:mimeType="audio/*"/>
-                <data android:mimeType="application/ogg"/>
-                <data android:mimeType="application/x-ogg"/>
-                <data android:mimeType="application/itunes"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data android:scheme="file"/>
-                <data android:mimeType="audio/*"/>
-                <data android:mimeType="application/ogg"/>
-                <data android:mimeType="application/x-ogg"/>
-                <data android:mimeType="application/itunes"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data android:scheme="http"/>
-                <data android:mimeType="audio/*"/>
-                <data android:mimeType="application/ogg"/>
-                <data android:mimeType="application/x-ogg"/>
-                <data android:mimeType="application/itunes"/>
             </intent-filter>
 
             <intent-filter tools:ignore="AppLinkUrlError">
@@ -153,25 +75,12 @@
             </intent-filter>
 
             <intent-filter>
-                <action android:name="com.cyanogenmod.eleven.AUDIO_PLAYER"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
-            <intent-filter>
                 <action android:name="android.intent.action.PICK"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.OPENABLE"/>
 
                 <data android:mimeType="vnd.android.cursor.dir/audio"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
-                <action android:name="android.intent.action.MEDIA_SEARCH"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
             <meta-data
@@ -181,7 +90,72 @@
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
-        </activity-alias>
+        </activity>
+
+        <activity
+            android:name=".ui.screen.AudioPreviewActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.Booming.AudioPreview">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="application/ogg" />
+                <data android:mimeType="application/x-ogg" />
+                <data android:mimeType="application/x-flac" />
+                <data android:mimeType="application/itunes" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.screen.backup.BackupActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:label="@string/backup_restore_title"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/x-zip-compressed" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.bmgbak" />
+                <data android:pathPattern=".*\\..*\\.bmgbak" />
+                <data android:pathPattern=".*\\..*\\..*\\.bmgbak" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.SongTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.AlbumTagEditorActivity"/>
+
+        <activity
+            android:label="@string/action_tag_editor"
+            android:name=".ui.screen.tageditor.ArtistTagEditorActivity"/>
+
+        <activity android:name=".ui.screen.onboard.OnboardActivity"/>
+        <activity android:name=".ui.screen.error.ErrorActivity"/>
 
         <service
             android:name=".playback.PlaybackService"
@@ -195,6 +169,10 @@
         </service>
 
         <receiver
+            android:name=".core.appwidgets.WidgetActionReceiver"
+            android:exported="false" />
+
+        <receiver
             android:name="androidx.media3.session.MediaButtonReceiver"
             android:exported="true">
             <intent-filter>
@@ -203,20 +181,17 @@
             </intent-filter>
         </receiver>
 
-        <!-- Begin: App Widgets -->
-        <receiver
-            android:name=".core.appwidgets.BoomingGlanceWidgetReceiver"
-            android:label="@string/app_widget_responsive"
-            android:exported="false">
+        <activity
+            android:name=".ui.screen.widgets.WidgetSettingsActivity"
+            android:label="@string/widget_settings_title"
+            android:excludeFromRecents="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
+        </activity>
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/glance_responsive_widget_info"/>
-        </receiver>
-
+        <!-- Begin: App Widgets -->
         <receiver
             android:name=".core.appwidgets.CardWidgetReceiver"
             android:label="@string/app_widget_card"
@@ -227,12 +202,12 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/glance_card_widget_info"/>
+                android:resource="@xml/widget_card_info"/>
         </receiver>
 
         <receiver
-            android:name=".core.appwidgets.FullWidgetReceiver"
-            android:label="@string/app_widget_full"
+            android:name=".core.appwidgets.CircleWidgetReceiver"
+            android:label="@string/app_widget_circle"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -240,7 +215,46 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/glance_full_widget_info"/>
+                android:resource="@xml/widget_circle_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.CookieWidgetReceiver"
+            android:label="@string/app_widget_cookie"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_cookie_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.GridWidgetReceiver"
+            android:label="@string/app_widget_grid"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_grid_info"/>
+        </receiver>
+
+        <receiver
+            android:name=".core.appwidgets.LibraryWidgetReceiver"
+            android:label="@string/app_widget_library"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_library_info"/>
         </receiver>
         <!-- End: App Widgets -->
 
@@ -257,7 +271,9 @@
         <provider
             android:name=".coil.CoverProvider"
             android:authorities="${applicationId}.cover"
-            android:exported="true" />
+            android:exported="true"
+            android:grantUriPermissions="true"
+            tools:ignore="ExportedContentProvider" />
 
         <meta-data
             android:name="android.max_aspect"
@@ -267,6 +283,9 @@
             android:value="true"/>
 
         <!-- Android Auto -->
+        <meta-data
+            android:name="androidx.car.app.TintableAttributionIcon"
+            android:resource="@drawable/ic_booming_music_24dp" />
         <meta-data
             android:name="com.google.android.gms.car.application"
             android:resource="@xml/automotive_app_desc"/>

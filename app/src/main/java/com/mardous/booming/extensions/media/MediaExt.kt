@@ -111,8 +111,7 @@ fun String.normalizeForSorting(
     language: String = Locale.getDefault().language
 ): String {
     return if (ignoreArticles) {
-        val articles = ARTICLES_BY_LANGUAGE[language] ?: return this
-        val regex = Regex("^(${articles.joinToString("|")})\\s+", RegexOption.IGNORE_CASE)
+        val regex = ARTICLES_REGEX_BY_LANGUAGE[language] ?: return this
         return trim().replace(regex, "")
     } else {
         this
@@ -128,3 +127,7 @@ private val ARTICLES_BY_LANGUAGE = mapOf(
     "pt" to listOf("o", "a", "os", "as", "um", "uma"),
     "nl" to listOf("de", "het", "een")
 )
+
+private val ARTICLES_REGEX_BY_LANGUAGE = ARTICLES_BY_LANGUAGE.mapValues { (_, articles) ->
+    Regex("^(${articles.joinToString("|")})\\s+", RegexOption.IGNORE_CASE)
+}

@@ -1,21 +1,17 @@
 package com.mardous.booming.data.model.lyrics
 
-import android.net.Uri
-import java.io.File
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-class LyricsFile(val file: File, val format: Format) {
-    constructor(file: File, format: String) : this(
-        file,
-        Format.entries.first { it.value == format })
-
+@Parcelize
+@Serializable
+class LyricsFile(
+    val path: String,
+    val format: Format
+) : Parcelable {
     enum class Format(val value: String) {
         TTML("ttml"),
         LRC("lrc")
-    }
-
-    companion object {
-        fun isSupportedFormat(uri: Uri) = uri.path?.let { path ->
-            Format.entries.any { path.endsWith(".${it.value}") }
-        } == true
     }
 }

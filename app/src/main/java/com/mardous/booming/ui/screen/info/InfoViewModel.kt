@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.mardous.booming.data.local.MetadataReader
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.mapper.toPlayCount
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.files.asReadableFileSize
-import com.mardous.booming.extensions.files.formatFixed
 import com.mardous.booming.extensions.files.getHumanReadableSize
 import com.mardous.booming.extensions.files.getPrettyAbsolutePath
 import com.mardous.booming.extensions.files.toAudioFile
@@ -24,11 +23,14 @@ import com.mardous.booming.extensions.utilities.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 import org.jaudiotagger.audio.AudioHeader
 import java.io.File
 
-class InfoViewModel(private val repository: Repository) : ViewModel() {
+class InfoViewModel(
+    private val repository: Repository
+) : ViewModel() {
 
     private val _songInfoUiState = MutableStateFlow(
         SongInfoUiState(
@@ -121,6 +123,8 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                 val composer = metadataReader.merge(MetadataReader.COMPOSER)
                 val conductor = metadataReader.merge(MetadataReader.PRODUCER)
                 val publisher = metadataReader.merge(MetadataReader.COPYRIGHT)
+                val lyricist = metadataReader.merge(MetadataReader.LYRICIST)
+                val arranger = metadataReader.merge(MetadataReader.ARRANGER)
                 val genre = metadataReader.merge(MetadataReader.GENRE)
                 val comment = metadataReader.value(MetadataReader.COMMENT)
 
@@ -143,6 +147,8 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
                     composer = composer,
                     conductor = conductor,
                     publisher = publisher,
+                    lyricist = lyricist,
+                    arranger = arranger,
                     genre = genre,
                     replayGain = replayGain,
                     comment = comment
@@ -157,6 +163,22 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
         )
     }
 
+    fun resetPlaybackStats(context: Context, song: Song) = viewModelScope.launch(Dispatchers.IO) {
+        val songInfoState = _songInfoUiState.updateAndGet { it.copy(isLoading = true) }
+        if (songInfoState.info != SongInfo.Empty) {
+            val playCountEntity = repository.resetPlayCount(song)
+
+            _songInfoUiState.value = songInfoState.copy(
+                isLoading = false,
+                info = songInfoState.info.copy(
+                    playCount = playCountEntity.playCount.asNumberOfTimes(context),
+                    skipCount = playCountEntity.skipCount.asNumberOfTimes(context),
+                    lastPlayedDate = context.dateStr(playCountEntity.timePlayed)
+                )
+            )
+        }
+    }
+
     private fun getNumberAndTotal(number: String?, total: String?): String? {
         val numberInt = number?.toIntOrNull() ?: return null
         val totalInt = total?.toIntOrNull()
@@ -169,7 +191,7 @@ class InfoViewModel(private val repository: Repository) : ViewModel() {
 
     private fun getAudioHeader(header: AudioHeader?, metadataReader: MetadataReader): AudioHeaderInfo {
         return AudioHeaderInfo(
-            format = header?.formatFixed,
+            format = header?.format,
             bitrate = metadataReader.bitrate(),
             sampleRate = metadataReader.sampleRate(),
             channels = metadataReader.channelName(),

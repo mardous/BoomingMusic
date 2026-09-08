@@ -1,12 +1,16 @@
 package com.mardous.booming.playback.processor
 
+import android.net.Uri
 import androidx.annotation.OptIn
 import androidx.media3.common.C
+import androidx.media3.common.Timeline
 import androidx.media3.common.audio.AudioProcessor
 import androidx.media3.common.audio.BaseAudioProcessor
 import androidx.media3.common.util.UnstableApi
+import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.data.model.replaygain.ReplayGain
 import com.mardous.booming.data.model.replaygain.ReplayGainMode
+import com.mardous.booming.playback.contentUri
 import com.mardous.booming.playback.processor.ByteUtils.getInt24
 import com.mardous.booming.playback.processor.ByteUtils.putInt24
 import java.nio.ByteBuffer
@@ -21,9 +25,13 @@ class ReplayGainAudioProcessor(
     var preAmpGainWithoutTag: Float = 0f
 ) : BaseAudioProcessor() {
 
-    var currentGain: ReplayGain? = null
-        @Synchronized get
-        @Synchronized set
+    private val period = Timeline.Period()
+    private val window = Timeline.Window()
+
+    private var currentUri: Uri? = null
+
+    @Volatile
+    private var currentGain: ReplayGain? = null
 
     private val gain: Float
         get() = currentGain?.let { rg ->
@@ -58,6 +66,31 @@ class ReplayGainAudioProcessor(
             adjustDB
         } ?: 0f
 
+    /** Ignored once the pipeline moved past [uri], so a late read cannot scale the wrong track. */
+    @Synchronized
+    fun submitGain(uri: Uri, replayGain: ReplayGain) {
+        val expectedUri = currentUri
+        if (expectedUri == null || expectedUri == uri) {
+            currentGain = replayGain
+        }
+    }
+
+    /** Runs before the new item's first buffer, so the gain applies from its very first sample. */
+    @Synchronized
+    override fun onFlush(streamMetadata: AudioProcessor.StreamMetadata) {
+        val uri = streamMetadata.resolveMediaUri()
+        currentUri = uri
+        // Peek only; a tag read would block the audio thread.
+        if (uri != null) currentGain = ReplayGainTagExtractor.peek(uri)
+    }
+
+    private fun AudioProcessor.StreamMetadata.resolveMediaUri(): Uri? {
+        val periodUid = periodUid ?: return null
+        if (timeline.isEmpty) return null
+        val windowIndex = timeline.getPeriodByUid(periodUid, period).windowIndex
+        return timeline.getWindow(windowIndex, window).mediaItem.contentUri
+    }
+
     override fun onConfigure(inputAudioFormat: AudioProcessor.AudioFormat): AudioProcessor.AudioFormat {
         if (inputAudioFormat.encoding != C.ENCODING_PCM_16BIT &&
             inputAudioFormat.encoding != C.ENCODING_PCM_24BIT
@@ -68,10 +101,11 @@ class ReplayGainAudioProcessor(
     }
 
     override fun queueInput(inputBuffer: ByteBuffer) {
-        if (gain != 0.0f) {
+        val gainDB = gain
+        if (gainDB != 0.0f) {
             val size = inputBuffer.remaining()
             val buffer = replaceOutputBuffer(size)
-            val delta = 10.0.pow(gain / 20.0)
+            val delta = 10.0.pow(gainDB / 20.0)
 
             when (outputAudioFormat.encoding) {
                 C.ENCODING_PCM_16BIT -> {

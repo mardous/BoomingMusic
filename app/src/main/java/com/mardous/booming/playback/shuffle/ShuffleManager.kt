@@ -5,7 +5,7 @@ import com.mardous.booming.core.model.shuffle.GroupShuffleMode
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
 import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
-import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.data.model.ExpandedSong
 import com.mardous.booming.data.model.Song
 import kotlinx.coroutines.Dispatchers

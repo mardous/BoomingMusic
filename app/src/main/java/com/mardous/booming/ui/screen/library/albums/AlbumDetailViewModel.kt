@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -35,7 +35,7 @@ class AlbumDetailViewModel(
     }
 
     fun getAlbumWiki(album: Album, lang: String?) = liveData(Dispatchers.IO) {
-        if (NetworkFeature.Lastfm.Biographies.isAvailable(getApplication())) {
+        if (NetworkFeature.Lastfm.Biographies.isAvailable) {
             emit(repository.albumInfo(album.albumArtistName ?: album.artistName, album.name, lang))
         }
     }

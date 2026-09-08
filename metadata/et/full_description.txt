@@ -1,6 +1,6 @@
 Booming Music on kaasaegne ja võimas kohalik muusikaesitaja Androidile, mis on loodud sujuva, kohandatava ja visuaalselt meeldiva kasutuskogemuse jaoks. Rakendus on loodud Material You kujunduskeele alusel ja töötab Media3 platvormil, ühendades endas lihtsuse ja täiustatud taasesitusfunktsioonid.
 
-Naudi oma lemmiklaule sõna-sõnalt sünkroniseeritud laulusõnadega, tõlgitud laulusõnade toega (TTML/LRC) ja ilusa „Hetkel esitamisel“ liidesega, milles leidub täiustatud välimus, sujuvamad üleminekud ja rohkem kohandamisvõimalusi.
+Naudi oma lemmiklaule sõna-sõnalt sünkroniseeritud laulusõnadega, tõlgitud laulusõnade toega (TTML/LRC) ja ilusa „Hetkel esitamisel“ liidesega, milles leidub täiustatud välimus, sujuvad üleminekud ja rohkem kohandamisvõimalusi.
 
 Tuuni oma kuulamiskogemust sisseehitatud ekvalaiseriga, esitusvaljus tundlikkusega (ReplayGain), kogu raudvara kasutamisega (Audio Offload) ja katkematu taasesitusega sujuvate üleminekute jaoks. Halda oma muusikat omal viisil nutikate esitusloendite, kohandatava järjestamise ja hierarhilise kaustavaate abil.
 
@@ -9,8 +9,9 @@ Põhifunktsionaalsus:
 * Laulusõnade automaatne allalaadimine ja rakendusesisene laulusõnade muutja
 * Sõna-sõnalt sünkroonitud ja tõlgitud laulusõnad (TTML, LRC)
 * Media3-põhine taasesitusmootor, mis toetab heli töötlust kogu raudvaras
-* Bititäpse taasesituse tugi ja ALAC-vormingu sisseehitatud dekodeerimine
-* Sisseehitatud kraasimisvõimalus ListenBrainzi teenusesse
+* Helivaljuse tundlikkus (ReplayGain) ühtlase valjuse tagamsieks lugudeüleselt
+* Sisseehitatud ALAC-i dekooder
+* Kraasimine ListenBrainzi teenusesse
 * Kohanduv minipleier ja esituse juhtimine viipamisega
 * Esitusloendite kohandatavad kaanepildid ja kirjeldused
 * Siltide muutmise võimalus koos kohese muusikakogu uuendamisega

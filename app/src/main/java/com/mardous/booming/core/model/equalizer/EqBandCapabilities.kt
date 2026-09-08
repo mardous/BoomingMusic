@@ -11,10 +11,17 @@ class EqBandCapabilities(
     /**
      * Supported band configurations.
      */
-    val bandConfigurations: Set<BandConfiguration>
+    val bandConfigurations: Set<BandConfiguration>,
+    /**
+     * How many bands the engine can handle when Pro Mode isn't enabled.
+     */
+    val maxBandCountInNormalMode: Int
 ) {
-    val availableBandCounts: List<Int> = bandConfigurations.map { it.bandCount }
     val hasMultipleBandConfigurations: Boolean = bandConfigurations.size > 1
+
+    fun getAvailableBandCounts(isProMode: Boolean) =
+        bandConfigurations.filter { it.bandCount <= maxBandCountInNormalMode || isProMode }
+            .map { it.bandCount }
 
     fun isBandCountSupported(bandCount: Int) =
         bandConfigurations.any { it.bandCount == bandCount }
@@ -65,6 +72,6 @@ class EqBandCapabilities(
     }
 
     companion object {
-        val Empty = EqBandCapabilities(-1f..0f, emptySet())
+        val Empty = EqBandCapabilities(-1f..0f, emptySet(), -1)
     }
 }

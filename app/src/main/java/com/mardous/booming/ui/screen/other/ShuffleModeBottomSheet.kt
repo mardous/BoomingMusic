@@ -18,27 +18,28 @@
 package com.mardous.booming.ui.screen.other
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.SegmentedListItem
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mardous.booming.core.model.shuffle.ShuffleOperationState
 import com.mardous.booming.core.model.shuffle.SpecialShuffleMode
@@ -65,110 +66,41 @@ fun ShuffleModeBottomSheet(
         }
     }
 
-    var maxItemHeight by remember { mutableIntStateOf(0) }
-
     BottomSheetDialogSurface {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(bottom = 16.dp)
-                .padding(horizontal = 16.dp)
-                .nestedScroll(rememberNestedScrollInteropConnection())
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
         ) {
-            BottomSheetDefaults.DragHandle(
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(24.dp)),
-                verticalArrangement = Arrangement.spacedBy(2.dp)
-            ) {
-                items(modes) { mode ->
-                    ShuffleModeItem(
-                        mode = mode,
-                        isEnabled = allSongs.isNotEmpty() && !isBusy,
-                        isShuffling = shuffleState.mode == mode,
-                        onClick = {
-                            playerViewModel.openSpecialShuffle(allSongs, mode)
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .then(
-                                if (maxItemHeight > 0)
-                                    with(LocalDensity.current) {
-                                        Modifier.height(maxItemHeight.toDp())
-                                    }
-                                else Modifier
-                            )
-                            .onGloballyPositioned { coordinates ->
-                                val height = coordinates.size.height
-                                if (height > maxItemHeight) {
-                                    maxItemHeight = height
-                                }
+            itemsIndexed(modes) { index, mode ->
+                SegmentedListItem(
+                    enabled = allSongs.isNotEmpty() && !isBusy,
+                    shapes = ListItemDefaults.segmentedShapes(index, modes.size),
+                    onClick = { playerViewModel.openSpecialShuffle(allSongs, mode) },
+                    leadingContent = {
+                        Crossfade(
+                            targetState = shuffleState.mode == mode,
+                            animationSpec = tween(500)
+                        ) { loading ->
+                            if (loading) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(24.dp),
+                                    strokeWidth = 2.dp
+                                )
+                            } else {
+                                Icon(
+                                    painter = painterResource(mode.iconRes),
+                                    contentDescription = null
+                                )
                             }
-                    )
+                        }
+                    },
+                    supportingContent = { Text(stringResource(mode.descriptionRes)) },
+                    contentPadding = PaddingValues(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(stringResource(mode.titleRes))
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ShuffleModeItem(
-    mode: SpecialShuffleMode,
-    modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
-    isShuffling: Boolean = false,
-    onClick: () -> Unit
-) {
-    val animatedAlpha by animateFloatAsState(
-        targetValue = if (isEnabled) 1f else 0.5f,
-        animationSpec = tween(500)
-    )
-    Surface(
-        color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = .75f),
-        shape = RoundedCornerShape(4.dp),
-        modifier = modifier.clickable(enabled = isEnabled, onClick = onClick)
-    ) {
-        Row(
-            modifier = modifier
-                .alpha(animatedAlpha)
-                .padding(horizontal = 16.dp, vertical = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Crossfade(
-                targetState = isShuffling,
-                animationSpec = tween(500)
-            ) { loading ->
-                if (loading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        strokeWidth = 2.dp
-                    )
-                } else {
-                    Icon(
-                        painter = painterResource(mode.iconRes),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
-            Column {
-                Text(
-                    text = stringResource(mode.titleRes),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Text(
-                    text = stringResource(mode.descriptionRes),
-                    overflow = TextOverflow.Ellipsis,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    style = MaterialTheme.typography.bodyMedium
-                )
             }
         }
     }

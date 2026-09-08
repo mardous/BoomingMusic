@@ -26,14 +26,17 @@ import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.view.ViewConfiguration
 import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.Player
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.mardous.booming.MainActivity
 import com.mardous.booming.R
 import com.mardous.booming.core.model.action.NowPlayingAction
 import com.mardous.booming.core.model.player.PlayerColorScheme
@@ -46,7 +49,6 @@ import com.mardous.booming.extensions.media.asReadableDuration
 import com.mardous.booming.extensions.resources.applyColor
 import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
 import com.mardous.booming.ui.component.views.MusicSlider
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.player.PlayerAnimator
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.ANIMATE_PLAYER_CONTROL
@@ -57,9 +59,12 @@ import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.PREFER_ALBUM_ARTIST_NAME
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.SQUIGGLY_SEEK_BAR
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.lang.ref.WeakReference
 
@@ -206,7 +211,7 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
     override fun onLongClick(view: View): Boolean {
         if (view.id == R.id.songInfo) {
             ExtraInfoPreferenceDialog
-                .nowPlaying(requireContext())
+                .nowPlaying()
                 .show(childFragmentManager, "NOW_PLAYING_EXTRA_INFO")
             return true
         }
@@ -354,7 +359,14 @@ abstract class AbsPlayerControlsFragment(@LayoutRes layoutRes: Int) : Fragment(l
             DISPLAY_ALBUM_TITLE,
             PREFER_ALBUM_ARTIST_NAME -> onSongInfoChanged(playerViewModel.currentSong, playerViewModel.nextSong)
             DISPLAY_EXTRA_INFO,
-            NOW_PLAYING_EXTRA_INFO -> playerViewModel.generateExtraInfo()
+            NOW_PLAYING_EXTRA_INFO -> {
+                lifecycleScope.launch {
+                    val extraInfo = withContext(Dispatchers.IO) {
+                        playerViewModel.getExtraInfo(playerViewModel.currentSong)
+                    }
+                    onExtraInfoChanged(extraInfo)
+                }
+            }
         }
     }
 
@@ -377,6 +389,7 @@ class SkipButtonTouchHandler(
     private val handler = Handler(Looper.getMainLooper())
     private var isHolding = false
     private var touchedViewRef: WeakReference<View>? = null
+    private var touchSlop: Int = -1
 
     private val repeatRunnable = object : Runnable {
         override fun run() {
@@ -393,6 +406,10 @@ class SkipButtonTouchHandler(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(view: View, event: MotionEvent): Boolean {
+        if (touchSlop < 0) {
+            touchSlop = ViewConfiguration.get(view.context).scaledTouchSlop
+        }
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 touchedViewRef = WeakReference(view)
@@ -402,12 +419,21 @@ class SkipButtonTouchHandler(
                 return true
             }
 
+            MotionEvent.ACTION_MOVE -> {
+                if (!isPointInsideView(event.x, event.y, view)) {
+                    cancel()
+                }
+            }
+
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 handler.removeCallbacks(repeatRunnable)
+                val wasPressed = view.isPressed
                 view.isPressed = false
 
-                if (!isHolding) {
-                    callback.onSkipButtonTap(direction)
+                if (event.action == MotionEvent.ACTION_UP && !isHolding && wasPressed) {
+                    if (isPointInsideView(event.x, event.y, view)) {
+                        callback.onSkipButtonTap(direction)
+                    }
                 }
 
                 touchedViewRef?.clear()
@@ -417,6 +443,11 @@ class SkipButtonTouchHandler(
             }
         }
         return false
+    }
+
+    private fun isPointInsideView(x: Float, y: Float, view: View): Boolean {
+        return x >= -touchSlop && x <= view.width + touchSlop &&
+                y >= -touchSlop && y <= view.height + touchSlop
     }
 
     private fun cancel() {

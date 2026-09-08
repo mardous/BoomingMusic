@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">कलाकार फेरबदल</string>
     <string name="action_share">शेयर</string>
     <string name="action_save">बचाना</string>
-    <string name="what_do_you_want_to_share">आप क्या साझा करना चाहते हैं?</string>
-    <string name="the_audio_file">ऑडियो फ़ाइल</string>
-    <string name="i_am_listening">मैं सुन रहा हूँ…</string>
-    <string name="currently_listening_to_x_by_x">मैं %2$s का %1$s सुन रहा हूँ</string>
-    <string name="share_to_stories">कहानियों को साझा करें</string>
-    <string name="could_not_create_the_story">कहानी नहीं बना सका.</string>
     <string name="back_action">Back</string>
     <string name="add_action">जोड़ना</string>
     <string name="delete_action">मिटाना</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">प्लेलिस्ट में जोड़ें</string>
     <string name="rename_playlist_title">प्लेलिस्ट का नाम बदलें</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">प्लेलिस्ट हटाएं</string>
+    <string name="action_delete_playlist">प्लेलिस्ट हटाएं</string>
     <string name="action_export_playlist">फ़ाइल में निर्यात करें</string>
     <string name="action_clear_history">इतिहास मिटा दें</string>
     <string name="history_cleared">इतिहास साफ हो गया</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">आपको बाहरी संग्रहण तक पहुँचने की अनुमति देनी होगी</string>
     <string name="permission_bluetooth_title">नज़दीकी उपकरण</string>
     <string name="permission_bluetooth_description">ऐप को ब्लूटूथ डिवाइस की जांच करने के लिए नजदीकी डिवाइस अनुमति की आवश्यकता है</string>
-    <string name="permission_bluetooth_denied">निकटवर्ती उपकरणों की अनुमति अस्वीकृत।</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">सटीक अलार्म निर्धारित करें (वैकल्पिक)</string>
-    <string name="permission_exact_alarms_description">स्लीप टाइमर के सही तरीके से काम करने के लिए सटीक अलार्म निर्धारित करने की अनुमति आवश्यक है</string>
-    <string name="permission_ringtone_title">रिंगटोन (वैकल्पिक)</string>
-    <string name="permission_ringtone_description">ऐप को आपकी डिवाइस सेटिंग्स तक पहुंच के लिए अनुमति की आवश्यकता है ताकि संगीत को रिंगटोन के रूप में सेट किया जा सके।</string>
-    <string name="permission_request_write_settings"><![CDATA[आपको Booming Music को सिस्टम सेटिंग्स को संशोधित करने की अनुमति देनी होगी ताकि <b>%s</b> को आपका रिंगटोन सेट किया जा सके]]></string>
     <string name="permissions_denied">अनुमतियाँ अस्वीकृत</string>
     <string name="permissions_needed">अनुमतियाँ आवश्यक हैं</string>
     <string name="grant_access_action">अनुज्ञा प्रदान करें</string>
     <string name="action_grant">अनुदान</string>
     <string name="granted">स्वीकृत</string>
-    <string name="hello_there">नमस्ते!</string>
     <string name="welcome_to_x">आपका स्वागत है %s</string>
     <string name="get_started">शुरू करें</string>
     <string name="select_storage_title">स्टोरेज चुनें</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">ग्रिड आकार</string>
     <string name="action_grid_size_land">ग्रिड का साइज (जगह)</string>
     <string name="action_sort_order">क्रमबद्ध करें</string>
-    <string name="sort_order_az">A से Z तक</string>
     <string name="sort_order_artist">कलाकार</string>
     <string name="sort_order_album">एल्बम</string>
     <string name="sort_order_year">साल</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">ट्रैक सूची</string>
     <string name="sort_order_descending">उपलव्धी</string>
     <string name="sort_order_ignore_articles">अनुच्छेदों को अनदेखा करें</string>
-    <string name="action_set_as_ringtone">रिंगटोन के रूप में सेट करें</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> को आपकी रिंगटोन के रूप में सेट किया जाएगा]]></string>
-    <string name="x_has_been_set_as_ringtone">अपने रिंगटोन के रूप में %s सेट करें</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s को अपनी रिंगटोन और अलार्म अलर्ट के रूप में सेट करें</string>
-    <string name="use_also_as_alarm_alert">अलार्म चेतावनी के रूप में भी उपयोग करें</string>
     <string name="action_details">जानकारी</string>
     <string name="action_set_as_start_directory">स्टार्ट डायरेक्टरी के रूप में सेट करें</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -260,15 +241,6 @@
     <string name="download_image">चित्र डाउनलोड करें</string>
     <string name="pick_from_local_storage">लोकल स्टोरेज से चुनें</string>
     <string name="about_x_title">%s के बारे में</string>
-    <string name="listeners_label">श्रोतागण</string>
-    <string name="scrobbles_label">स्क्रॉब्ल्स</string>
-    <string name="save_cover">एल्बम कवर सेव करें</string>
-    <string name="saving_cover_please_wait">सेविंग कवर, इंतज़ार करें…</string>
-    <string name="save_artwork_error">लोकल स्टोरेज में कवर सेव करने में फेल हो गया</string>
-    <string name="save_artwork_success">एल्बम कवर सेव कर लिया</string>
-    <string name="save_artwork_view_action">दृश्य</string>
-    <string name="save_artwork_copyright_info_title">कॉपीराइट सूचना</string>
-    <string name="save_artwork_copyright_info_message">कुछ एल्बम कवर (या उनमें से सभी) कॉपीराइट कानूनों से सुरक्षित हो सकते हैं। आप ऐसी छवियों का उपयोग व्यावसायिक या विज्ञापन उद्देश्यों के लिए नहीं कर सकते।आपके द्वारा सहेजे गए एल्बम कवर के उपयोग पर पूरी जिम्मेदारी केवल आपकी है।</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
     <string name="keyboard">कीबोर्ड</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">फॉर्मेट</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">शीर्षक और कलाकार</string>
     <string name="song">गाना</string>
     <string name="title">शीर्षक</string>
     <string name="album">एल्बम</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">कनेक्शन अनुपलब्ध है।</string>
     <string name="you_have_to_select_at_least_one_category">आपको कम से कम एक श्रेणी चुननी होगी</string>
     <string name="you_cannot_select_more_than_five_categories">आप पाँच से अधिक श्रेणियाँ नहीं चुन सकते।</string>
-    <string name="backup_settings">सेटिंग्स</string>
-    <string name="backup_synced_lyrics">सिंक की हुई लिरिक्स</string>
-    <string name="backup_artist_images">कलाकारों की तस्वीरें</string>
-    <string name="backup_playlists">प्लेलिस्ट्स</string>
     <string name="backup_successful">बैकअप सफल रहा!</string>
     <string name="backup_failed">बैकअप विफल हो गया</string>
     <string name="select_content_to_restore">बैकअप से बहाल करने के लिए सामग्री चुनें:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">ऑक्स लाइन</string>
     <string name="audio_device_bluetooth_a2dp">ब्लुटूथ A2DP</string>
@@ -375,7 +340,7 @@
     <string name="top_albums">सर्वश्रेष्ठ एल्बम्स</string>
     <string name="recent_artists">हाल के कलाकार</string>
     <string name="recent_albums">हालिया एल्बम</string>
-    <string name="no_suggestions">आपके लिए कोई सुझाव नहीं हैं</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">बिल्कुल यादृच्छिक</string>
     <string name="shuffle_mode_most_played">सबसे ज्यादा चलें जाने वाले</string>
@@ -478,25 +443,15 @@
     <string name="synced_lyrics">सिंक्रनाइज़ किया गया</string>
     <string name="embedded_lyrics">एम्बेडेड</string>
     <string name="downloaded_lyrics">डाउनलोड किया गया</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">सिंक्रनाइज़ की गई लिरिक्स इंपोर्ट करें</string>
-    <string name="action_share_synchronized_lyrics">सिंक्रोनाइज़ की गई लिरिक्स शेयर करें</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[क्या आप <b>%s</b> के लिए समलयित LRC गीत बोलों को इम्पोर्ट करना चाहते हैं?]]></string>
-    <string name="import_lyrics_for_song_x">इम्पोर्टेड लिरिक्स फॉर %s</string>
-    <string name="could_not_import_lyrics_for_song_x">संदेश %ss के लिए गीत इम्पोर्ट नहीं किया जा सका</string>
-    <string name="select_a_file_containing_synchronized_lyrics">एक LRC फ़ाइल चुनो जिसमें सिंक है</string>
     <string name="cannot_download_lyrics">बूमिंग म्यूजिक को इस गीत के बोल नहीं मिल सके। क्या आप मैन्युअल रूप से खोज करना चाहते हैं?</string>
     <string name="search_lyrics">गाने के बोल खोजें</string>
     <string name="choose_lyrics">गाने के बोल का प्रकार चुनें</string>
     <string name="download_lyrics">गाने के बोल डाउनलोड करें</string>
     <string name="write_lyrics_here">यहाँ गीत के बोल लिखें</string>
-    <string name="write_synced_lyrics_here">यहां समन्वित गीत के बोल लिखें</string>
     <string name="no_lyrics_found">कोई गीत का बोल नहीं मिला</string>
-    <string name="no_synced_lyrics_found">कोई समन्वित गीत के बोल नहीं मिले</string>
     <string name="lyrics_were_updated_successfully">गाने के बोल सफलतापूर्वक अपडेट कर दिए गए।</string>
     <string name="failed_to_update_lyrics">गीत का अपडेट करना असफल रहा।</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
@@ -527,11 +482,8 @@
     <string name="author">लेखक</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">स्वीकृति</string>
     <string name="translators_title">अनुवादक</string>
     <string name="translators_summary">उन लोगों का धन्यवाद जिन्होंने बूमिंग म्यूजिक को कई भाषाओं में उपलब्ध कराया।</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">GitHub पर प्रोफ़ाइल देखें</string>
     <string name="write_an_email">एक ईमेल लिखें</string>
     <string name="support_development">विकास का समर्थन करें</string>
@@ -544,7 +496,6 @@
     <string name="send_invitation_message">निमंत्रण संदेश भेजें</string>
     <string name="invitation_message_content">नमस्ते। Booming Music पर नज़र डालें! Android पर लोकल म्यूज़िक सुनने के लिए यह सबसे अच्छा ऐप है। आप इसे यहाँ से डाउनलोड कर सकते हैं: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">आपको मुद्दा ट्रैकर वेबसाइट पर अग्रेषित किया जाएगा।</string>
     <!-- SAF -->
     <string name="saf_access_required_title">स्टोरेज एक्सेस आवश्यक है</string>
     <string name="saf_access_required_message">बूमिंग म्यूजिक को इन फ़ाइलों तक पहुँचने के लिए अनुमति की आवश्यकता है। कृपया उस रूट फ़ोल्डर का चयन करें जहाँ आपके संगीत फ़ाइलें संग्रहीत हैं।</string>
@@ -581,7 +532,6 @@
     <string name="audio_focus_header">ऑडियो फ़ोकस</string>
     <string name="shuffle_mode_header">शफल मोड</string>
     <string name="display_header">डिस्प्ले</string>
-    <string name="backup_restore_header">बैकअप/रिस्टोर</string>
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">जनरल थीम</string>
@@ -653,8 +603,6 @@
     <string name="circle_button_title">गोल प्ले बटन</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">कवर पर डबल टैप करें</string>
     <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
@@ -765,10 +713,6 @@
     <string name="min_song_duration_summary">आपकी लाइब्रेरी में दिखाने के लिए एक गाने को कितने सेकंड (कम से कम) तक चलना चाहिए?</string>
     <!-- Remote preferences -->
     <string name="app_language_title">ऐप की भाषा</string>
-    <string name="backup_data_title">बैकअप ऐप डेटा</string>
-    <string name="backup_app_data_summary">एक फ़ाइल बनाएं जिसमें आवश्यक ऐप डेटा हो और इसे बाहरी स्टोरेज में सहेजें।</string>
-    <string name="restore_backup_title">बैकअप पुनर्स्थापित करें</string>
-    <string name="restore_backup_summary">पिछले बैकअप से ऐप डेटा (और स्थिति) पुनर्स्थापित करें।</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
@@ -840,8 +784,6 @@
     <string name="every_fifteen_days">हर पंद्रह दिन में</string>
     <string name="monthly">मासिक</string>
     <string name="never">कभी नहीं</string>
-    <string name="only_wifi_title">केवल वाई-फाई</string>
-    <string name="only_wifi_summary">केवल तब जब वाई-फाई जुड़ा हो, तब अपडेट की खोज करें।</string>
     <string name="receive_experimental_updates_title">प्रायोगिक अपडेट प्राप्त करें</string>
     <string name="receive_experimental_updates_summary">कृपया ध्यान दें कि ये अपडेट अक्सर बहुत अस्थिर होते हैं और अनुभवी उपयोगकर्ताओं के लिए बनाए गए हैं।</string>
     <string name="search_for_update_title">अपडेट के लिए सर्च खोजें</string>
@@ -860,4 +802,14 @@
     <string name="uncaught_error_restart_app">ऐप को पुनः प्रारंभ करें</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="app_widget_card">कार्ड</string>
+    <string name="search_playlists">प्लेलिस्ट खोजें</string>
+    <string name="select_playlists_title">प्लेलिस्ट चुनें</string>
+    <string name="no_playlists_create_new">प्लेलिस्ट बनाने के लिए \"नई\" बटन दबाएं</string>
+    <string name="new_playlist_action">नई</string>
+    <string name="no_playlists_that_match_x">\"%s\" से मेल खाती कोई प्लेलिस्ट नहीं है</string>
+    <string name="songs_added_to_playlists">प्लेलिस्ट में जोड़े गए गाने।</string>
+    <string name="no_playlists_label">कोई प्लेलिस्ट नहीं</string>
+    <string name="channel_stereo">स्टीरियो</string>
+    <string name="channel_stereo_2_1">2.1 स्टीरियो</string>
 </resources>

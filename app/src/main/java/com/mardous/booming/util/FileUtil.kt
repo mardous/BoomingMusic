@@ -25,11 +25,10 @@ import java.io.File
 
 object FileUtil : KoinComponent {
 
-    // Publicly accessible directories
-    const val BOOMING_ARTWORK_DIRECTORY_NAME = "Booming Artwork"
     const val PLAYLISTS_DIRECTORY_NAME = "Playlists"
 
     // Directories that are accessible only for Booming
+    private const val FONTS_DIRECTORY_NAME = "fonts"
     private const val CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME = "custom_artist_images"
     private const val CUSTOM_PLAYLIST_IMAGES_DIRECTORY_NAME = "custom_playlist_images"
     private const val THUMBS_DIRECTORY_NAME = "Thumbs"
@@ -42,11 +41,11 @@ object FileUtil : KoinComponent {
         }
     }
 
-    fun imagesDirectory(dirName: String) =
-        externalStorageDirectory(Environment.DIRECTORY_PICTURES).resolve(dirName).ensureDirectory()
-
     fun playlistsDirectory() =
         externalStorageDirectory().resolve(PLAYLISTS_DIRECTORY_NAME).ensureDirectory()
+
+    fun fontsDirectory() =
+        get<Context>().filesDir.resolve(FONTS_DIRECTORY_NAME).ensureDirectory()
 
     fun customArtistImagesDirectory() =
         get<Context>().filesDir.resolve(CUSTOM_ARTIST_IMAGES_DIRECTORY_NAME).ensureDirectory()

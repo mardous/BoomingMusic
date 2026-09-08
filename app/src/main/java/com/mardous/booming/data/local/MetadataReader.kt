@@ -148,6 +148,7 @@ class MetadataReader(uri: Uri, readPictures: Boolean = false) : KoinComponent {
         const val YEAR = "DATE"
         const val LYRICS = "LYRICS"
         const val LYRICIST = "LYRICIST"
+        const val ARRANGER = "ARRANGER"
         const val COMPOSER = "COMPOSER"
         const val PRODUCER = "PRODUCER"
         const val COMMENT = "COMMENT"

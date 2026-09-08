@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_play">Play</string>
-    <string name="action_play_all">Play all</string>
+    <string name="action_play">Прайграваць</string>
+    <string name="action_play_all">Прайграваць усё</string>
     <string name="action_shuffle_play">Shuffle play</string>
     <string name="action_queue_next">Queue next</string>
     <string name="shuffle_all_label">Shuffle all</string>
@@ -9,22 +9,22 @@
     <string name="repeat_mode">Repeat mode</string>
     <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
     <string name="action_play_pause">Play/Pause</string>
-    <string name="action_pause">Pause</string>
-    <string name="action_next">Next</string>
-    <string name="action_previous">Previous</string>
-    <string name="action_cancel">Cancel</string>
+    <string name="action_pause">Прыпыніць</string>
+    <string name="action_next">Наступны</string>
+    <string name="action_previous">Папярэдні</string>
+    <string name="action_cancel">Скасаваць</string>
     <string name="action_seek_backward">Seek backward</string>
     <string name="action_seek_forward">Seek forward</string>
     <string name="action_cycle_repeat">Cycle repeat mode</string>
     <string name="action_toggle_shuffle">Toggle shuffle mode</string>
-    <string name="reset_action">Reset</string>
-    <string name="action_more">More</string>
-    <string name="import_action">Import</string>
-    <string name="create_action">Create</string>
-    <string name="search_label">Search</string>
-    <string name="search_hint">Search your library…</string>
-    <string name="action_voice_search">Voice search</string>
-    <string name="speech_not_supported">Your device doesn\'t support speech input</string>
+    <string name="reset_action">Скінуць</string>
+    <string name="action_more">Больш</string>
+    <string name="import_action">Імпартаваць</string>
+    <string name="create_action">Стварыць</string>
+    <string name="search_label">Пошук</string>
+    <string name="search_hint">Пошук у бібліятэцы…</string>
+    <string name="action_voice_search">Галасавы пошук</string>
+    <string name="speech_not_supported">Ваша прылада не падтрымлівае галасавога ўводу</string>
     <string name="search_artist_x_label">Search artist: %s</string>
     <string name="search_album_x_label">Search album: %s</string>
     <string name="search_list_x_label">Search list: %s</string>
@@ -34,30 +34,24 @@
     <string name="search_last_added">Search latest music</string>
     <string name="shuffle_mode_album">Album shuffle</string>
     <string name="shuffle_mode_artist">Artist shuffle</string>
-    <string name="action_share">Share</string>
-    <string name="action_save">Save</string>
-    <string name="what_do_you_want_to_share">What do you want to share?</string>
-    <string name="the_audio_file">The audio file</string>
-    <string name="i_am_listening">I\'m listening…</string>
-    <string name="currently_listening_to_x_by_x">I\'m listening to %1$s by %2$s</string>
-    <string name="share_to_stories">Share to stories</string>
-    <string name="could_not_create_the_story">Couldn\'t create the story.</string>
-    <string name="back_action">Back</string>
-    <string name="add_action">Add</string>
-    <string name="delete_action">Delete</string>
-    <string name="remove_action">Remove</string>
-    <string name="clear_action">Clear</string>
-    <string name="close_action">Close</string>
-    <string name="continue_action">Continue</string>
-    <string name="select_all_title">Select all</string>
-    <string name="x_selected">%d selected</string>
-    <string name="preparing_playback_title">Preparing</string>
+    <string name="action_share">Абагуліць</string>
+    <string name="action_save">Захаваць</string>
+    <string name="back_action">Назад</string>
+    <string name="add_action">Дадаць</string>
+    <string name="delete_action">Выдаліць</string>
+    <string name="remove_action">Выдаліць</string>
+    <string name="clear_action">Ачысціць</string>
+    <string name="close_action">Закрыць</string>
+    <string name="continue_action">Працягнуць</string>
+    <string name="select_all_title">Выбраць усё</string>
+    <string name="x_selected">Выбрана: %d</string>
+    <string name="preparing_playback_title">Ідзе падрыхтоўка</string>
     <string name="restoring_playback_state">Restoring playback state and queue…</string>
-    <string name="playback_stopped_title">Playback stopped</string>
+    <string name="playback_stopped_title">Прайграванне спынена</string>
     <string name="playing_notification_description">The playing notification provides actions for play/pause etc.</string>
     <string name="playing_notification_name">Playing notification</string>
-    <string name="action_scan_directory">Scan directory</string>
-    <string name="no_device_playlists">No playlists</string>
+    <string name="action_scan_directory">Адсканаваць каталог</string>
+    <string name="no_device_playlists">Няма плэй-лістоў</string>
     <string name="select_songs_title">Select songs</string>
     <string name="playlist_x_is_empty">Playlist %s is empty.</string>
     <string name="playlist_name_cannot_be_empty">Playlist name can\'t be empty</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">Add to playlist</string>
     <string name="rename_playlist_title">Rename playlist</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Delete playlist</string>
+    <string name="action_delete_playlist">Delete playlist</string>
     <string name="action_export_playlist">Export to file</string>
     <string name="action_clear_history">Clear history</string>
     <string name="history_cleared">History cleared</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">You must grant permission to access external storage.</string>
     <string name="permission_bluetooth_title">Nearby Devices</string>
     <string name="permission_bluetooth_description">The app needs nearby devices permission to check for bluetooth devices</string>
-    <string name="permission_bluetooth_denied">Nearby devices permission denied.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">Schedule exact alarms (optional)</string>
-    <string name="permission_exact_alarms_description">Permission to schedule exact alarms is required for the sleep timer to work properly</string>
-    <string name="permission_ringtone_title">Ringtone (optional)</string>
-    <string name="permission_ringtone_description">The app needs permission to access your device settings in order to set music as Ringtone</string>
-    <string name="permission_request_write_settings"><![CDATA[You must allow Booming Music to modify the system settings in order to set <b>%s</b> as your ringtone]]></string>
     <string name="permissions_denied">Permissions denied</string>
     <string name="permissions_needed">Permissions needed</string>
     <string name="grant_access_action">Grant access</string>
     <string name="action_grant">Grant</string>
     <string name="granted">Granted</string>
-    <string name="hello_there">Hello there!</string>
     <string name="welcome_to_x">Welcome to %s</string>
     <string name="get_started">Get Started</string>
     <string name="select_storage_title">Select storage</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">Grid size</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sort by</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Artist</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Year</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">Track list</string>
     <string name="sort_order_descending">Descending</string>
     <string name="sort_order_ignore_articles">Ignore articles</string>
-    <string name="action_set_as_ringtone">Set as ringtone</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Will set <b>%s</b> as your ringtone]]></string>
-    <string name="x_has_been_set_as_ringtone">Set %s as your ringtone</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Set %s as your ringtone and as alarm alert</string>
-    <string name="use_also_as_alarm_alert">Use also as alarm alert</string>
     <string name="action_details">Details</string>
     <string name="action_set_as_start_directory">Set as start directory</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -260,15 +241,6 @@
     <string name="download_image">Download image</string>
     <string name="pick_from_local_storage">Pick from local storage</string>
     <string name="about_x_title">About %s</string>
-    <string name="listeners_label">Listeners</string>
-    <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Save album cover</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_error">Failed to save cover to local storage</string>
-    <string name="save_artwork_success">Album cover saved</string>
-    <string name="save_artwork_view_action">View</string>
-    <string name="save_artwork_copyright_info_title">Copyright notice</string>
-    <string name="save_artwork_copyright_info_message">Some album covers (or all of them) might be protected by Copyright laws. You can not use such images for commercial or advertisement purposes. \n\nOnly you have total responsibility over your usage of saved album covers.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="keyboard">Keyboard</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">Format</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Title and Artist</string>
     <string name="song">Song</string>
     <string name="title">Title</string>
     <string name="album">Album</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">Connection unavailable.</string>
     <string name="you_have_to_select_at_least_one_category">You have to select at least one category</string>
     <string name="you_cannot_select_more_than_five_categories">You can\'t select more than five categories.</string>
-    <string name="backup_settings">Settings</string>
-    <string name="backup_synced_lyrics">Synced lyrics</string>
-    <string name="backup_artist_images">Artist images</string>
-    <string name="backup_playlists">Playlists</string>
     <string name="backup_successful">Backup successful!</string>
     <string name="backup_failed">Backup failed.</string>
     <string name="select_content_to_restore">Select content to restore:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux Line</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -391,7 +356,7 @@
     <string name="top_albums">Top albums</string>
     <string name="recent_artists">Recent artists</string>
     <string name="recent_albums">Recent albums</string>
-    <string name="no_suggestions">There are no suggestions for you</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>
@@ -494,25 +459,15 @@
     <string name="synced_lyrics">Synced</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Downloaded</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">Import synced lyrics</string>
-    <string name="action_share_synchronized_lyrics">Share synced lyrics</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Do you want to import synchronized LRC lyrics for <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Imported lyrics for %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Couldn\'t import lyrics for %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Select a LRC file containing synced lyrics.</string>
     <string name="cannot_download_lyrics">Booming Music couldn\'t find the lyrics for this song. Do you want to search manually?</string>
     <string name="search_lyrics">Search lyrics</string>
     <string name="choose_lyrics">Choose the type of lyrics</string>
     <string name="download_lyrics">Download lyrics</string>
     <string name="write_lyrics_here">Write lyrics here</string>
-    <string name="write_synced_lyrics_here">Write synced lyrics here</string>
     <string name="no_lyrics_found">No lyrics found</string>
-    <string name="no_synced_lyrics_found">No synced lyrics found</string>
     <string name="lyrics_were_updated_successfully">Lyrics were updated successfully.</string>
     <string name="failed_to_update_lyrics">Failed to update lyrics.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
@@ -543,11 +498,8 @@
     <string name="author">Author</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">View profile on GitHub</string>
     <string name="write_an_email">Write an email</string>
     <string name="support_development">Support development</string>
@@ -560,7 +512,6 @@
     <string name="send_invitation_message">Send invitation message</string>
     <string name="invitation_message_content">Hi. Check out Booming Music! The best app to listen local music on Android. You can download it from here: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">You will be forwarded to the issue tracker website.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Storage Access Required</string>
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
@@ -597,7 +548,6 @@
     <string name="audio_focus_header">Audio focus</string>
     <string name="shuffle_mode_header">Shuffle mode</string>
     <string name="display_header">Display</string>
-    <string name="backup_restore_header">Backup/restore</string>
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">General theme</string>
@@ -669,8 +619,6 @@
     <string name="circle_button_title">Circular play button</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Double tap on cover</string>
     <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
@@ -781,10 +729,6 @@
     <string name="min_song_duration_summary">How many seconds (at least) must last a song to be shown in your library.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App language</string>
-    <string name="backup_data_title">Backup app data</string>
-    <string name="backup_app_data_summary">Create a file containing essential app data and save it to external storage.</string>
-    <string name="restore_backup_title">Restore backup</string>
-    <string name="restore_backup_summary">Restore app data (and state) from a previous backup.</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
@@ -851,14 +795,12 @@
     <string name="player_color_mode_blur_description">Blurred background with Material You colors</string>
     <!-- Update -->
     <string name="auto_update_title">Auto update search</string>
-    <string name="every_day">Every day</string>
-    <string name="weekly">Weekly</string>
-    <string name="every_fifteen_days">Every fifteen days</string>
-    <string name="monthly">Monthly</string>
-    <string name="never">Never</string>
-    <string name="only_wifi_title">Only Wi-Fi</string>
-    <string name="only_wifi_summary">Search for updates only when Wi-Fi is connected.</string>
-    <string name="receive_experimental_updates_title">Receive experimental updates</string>
+    <string name="every_day">Штодзень</string>
+    <string name="weekly">Штотыдзень</string>
+    <string name="every_fifteen_days">Кожныя пятнаццаць дзён</string>
+    <string name="monthly">Штомесяц</string>
+    <string name="never">Ніколі</string>
+    <string name="receive_experimental_updates_title">Атрымліваць эксперэментальныя абнаўленні</string>
     <string name="receive_experimental_updates_summary">Please note that these updates are often very unstable and are intended for experienced users.</string>
     <string name="search_for_update_title">Search for update</string>
     <string name="last_update_search_x">Last check: %s</string>
@@ -866,14 +808,15 @@
     <string name="could_not_check_for_updates">Could not check for updates.</string>
     <string name="the_app_is_up_to_date">The app is up-to-date</string>
     <string name="update_available_title">Update available</string>
-    <string name="more_info_action">More info.</string>
-    <string name="download_action">Download</string>
+    <string name="more_info_action">Больш звестак.</string>
+    <string name="download_action">Спампаваць</string>
     <string name="downloading_update">Downloading Booming Music update.</string>
     <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
     <string name="uncaught_error_message">It seems something went wrong and caused the app to crash. It would be helpful if you could send us the error report to our Telegram group or via email.</string>
     <string name="uncaught_error_report">Error report</string>
     <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
-    <string name="uncaught_error_restart_app">Restart app</string>
+    <string name="uncaught_error_restart_app">Перазапусціць праграму</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
-    <string name="uncaught_error_send">Send report</string>
+    <string name="uncaught_error_send">Адправіць справаздачу</string>
+    <string name="app_widget_card">Картка</string>
 </resources>

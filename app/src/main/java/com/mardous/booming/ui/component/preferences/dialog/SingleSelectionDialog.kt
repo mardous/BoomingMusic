@@ -24,13 +24,14 @@ import com.mardous.booming.extensions.withArgs
 import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 
-class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
+open class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
 
-    private val listPreference: ListPreference
+    protected val listPreference: ListPreference
         get() = getPreference() as ListPreference
 
     private var entries: Array<CharSequence>? = null
-    private var entryValues: Array<CharSequence>? = null
+    protected var entryValues: Array<CharSequence>? = null
+        private set
 
     private var clickedDialogEntryIndex: Int = 0
 
@@ -61,27 +62,42 @@ class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
     }
 
     override fun onCreateDialogView(context: Context): View {
-        return ComposeView(context).apply {
+        val titles = entries?.map { it.toString() }.orEmpty()
+        return composeDialogView(context) {
+            DialogView(
+                titles = titles,
+                selectedIndex = clickedDialogEntryIndex,
+                onSelection = ::selectIndex
+            )
+        }
+    }
+
+    protected fun composeDialogView(context: Context, content: @Composable () -> Unit): View =
+        ComposeView(context).apply {
             setViewCompositionStrategy(
                 ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
             )
             setContent {
                 BoomingMusicTheme {
-                    DialogView(
-                        titles = entries?.map { it.toString() }.orEmpty(),
-                        selectedIndex = clickedDialogEntryIndex,
-                        onSelection = {
-                            clickedDialogEntryIndex = it
-                            dialog?.let { dialog ->
-                                onClick(dialog, DialogInterface.BUTTON_POSITIVE)
-                                dialog.dismiss()
-                            }
-                        }
-                    )
+                    Surface(
+                        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                        modifier = Modifier.wrapContentHeight()
+                    ) {
+                        content()
+                    }
                 }
             }
         }
+
+    private fun selectIndex(index: Int) {
+        clickedDialogEntryIndex = index
+        dialog?.let {
+            onClick(it, DialogInterface.BUTTON_POSITIVE)
+            it.dismiss()
+        }
     }
+
+    protected fun selectValue(value: String) = selectIndex(listPreference.findIndexOfValue(value))
 
     override fun onBindDialogView(view: View) {}
 
@@ -108,26 +124,21 @@ class SingleSelectionDialog : PreferenceDialogFragmentCompat() {
         selectedIndex: Int,
         onSelection: (Int) -> Unit
     ) {
-        Surface(
-            color = MaterialTheme.colorScheme.surfaceContainerHigh,
-            modifier = Modifier.wrapContentHeight()
+        LazyColumn(
+            state = rememberLazyListState(selectedIndex.coerceAtLeast(0)),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(vertical = 24.dp)
         ) {
-            LazyColumn(
-                state = rememberLazyListState(selectedIndex.coerceAtLeast(0)),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(vertical = 24.dp)
-            ) {
-                itemsIndexed(titles) { index, action ->
-                    DialogListItemWithRadio(
-                        title = action,
-                        isSelected = selectedIndex == index,
-                        onClick = {
-                            onSelection(index)
-                        }
-                    )
-                }
+            itemsIndexed(titles) { index, action ->
+                DialogListItemWithRadio(
+                    title = action,
+                    isSelected = selectedIndex == index,
+                    onClick = {
+                        onSelection(index)
+                    }
+                )
             }
         }
     }

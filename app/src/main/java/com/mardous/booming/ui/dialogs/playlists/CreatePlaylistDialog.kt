@@ -61,20 +61,9 @@ class CreatePlaylistDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogCreatePlaylistBinding.inflate(layoutInflater)
-        
-        val message = if (songs.isEmpty()) {
-            getString(R.string.create_a_playlist)
-        } else if (songs.size == 1) {
-            getString(R.string.create_a_playlist_with_one_song)
-        } else {
-            getString(R.string.create_a_playlist_with_x_songs, songs.size)
-        }
-
         setupViews()
-
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.new_playlist_title)
-            .setMessage(message)
             .setView(binding.root)
             .setPositiveButton(R.string.create_action, null)
             .setNegativeButton(android.R.string.cancel, null)
@@ -88,6 +77,14 @@ class CreatePlaylistDialog : DialogFragment() {
     }
 
     private fun setupViews() {
+        binding.message.text = if (songs.isEmpty()) {
+            getString(R.string.create_a_playlist)
+        } else if (songs.size == 1) {
+            getString(R.string.create_a_playlist_with_one_song)
+        } else {
+            getString(R.string.create_a_playlist_with_x_songs, songs.size)
+        }
+
         // Set up cover image selection
         binding.selectCoverFab.setOnClickListener {
             imagePickerLauncher.launch(

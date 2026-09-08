@@ -22,32 +22,11 @@ import androidx.room.Room
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.CustomPlaylistImageManager
 import com.mardous.booming.core.BoomingDatabase
+import com.mardous.booming.core.MediaEventBus
 import com.mardous.booming.core.audio.AudioOutputObserver
-import com.mardous.booming.data.local.AlbumCoverSaver
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.MediaStoreWriter
-import com.mardous.booming.data.local.repository.AlbumRepository
-import com.mardous.booming.data.local.repository.ArtistRepository
-import com.mardous.booming.data.local.repository.GenreRepository
-import com.mardous.booming.data.local.repository.LyricsRepository
-import com.mardous.booming.data.local.repository.NetworkRepository
-import com.mardous.booming.data.local.repository.NetworkRepositoryImpl
-import com.mardous.booming.data.local.repository.PlaylistRepository
-import com.mardous.booming.data.local.repository.RealAlbumRepository
-import com.mardous.booming.data.local.repository.RealArtistRepository
-import com.mardous.booming.data.local.repository.RealGenreRepository
-import com.mardous.booming.data.local.repository.RealLyricsRepository
-import com.mardous.booming.data.local.repository.RealPlaylistRepository
-import com.mardous.booming.data.local.repository.RealRepository
-import com.mardous.booming.data.local.repository.RealSearchRepository
-import com.mardous.booming.data.local.repository.RealSmartRepository
-import com.mardous.booming.data.local.repository.RealSongRepository
-import com.mardous.booming.data.local.repository.RealSpecialRepository
-import com.mardous.booming.data.local.repository.Repository
-import com.mardous.booming.data.local.repository.SearchRepository
-import com.mardous.booming.data.local.repository.SmartRepository
-import com.mardous.booming.data.local.repository.SongRepository
-import com.mardous.booming.data.local.repository.SpecialRepository
+import com.mardous.booming.data.local.backup.BackupManager
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.remote.deezer.DeezerService
 import com.mardous.booming.data.remote.github.GitHubService
@@ -55,12 +34,38 @@ import com.mardous.booming.data.remote.jsonHttpClient
 import com.mardous.booming.data.remote.lastfm.LastFmService
 import com.mardous.booming.data.remote.listenbrainz.ListenBrainzService
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
+import com.mardous.booming.data.remote.musicbrainz.MusicBrainzService
 import com.mardous.booming.data.remote.provideOkHttp
+import com.mardous.booming.data.repository.AlbumRepository
+import com.mardous.booming.data.repository.ArtistRepository
+import com.mardous.booming.data.repository.AutoEqRepository
+import com.mardous.booming.data.repository.GenreRepository
+import com.mardous.booming.data.repository.LyricsRepository
+import com.mardous.booming.data.repository.NetworkRepository
+import com.mardous.booming.data.repository.NetworkRepositoryImpl
+import com.mardous.booming.data.repository.PlaylistRepository
+import com.mardous.booming.data.repository.RealAlbumRepository
+import com.mardous.booming.data.repository.RealArtistRepository
+import com.mardous.booming.data.repository.RealAutoEqRepository
+import com.mardous.booming.data.repository.RealGenreRepository
+import com.mardous.booming.data.repository.RealLyricsRepository
+import com.mardous.booming.data.repository.RealPlaylistRepository
+import com.mardous.booming.data.repository.RealRepository
+import com.mardous.booming.data.repository.RealSearchRepository
+import com.mardous.booming.data.repository.RealSmartRepository
+import com.mardous.booming.data.repository.RealSongRepository
+import com.mardous.booming.data.repository.RealSpecialRepository
+import com.mardous.booming.data.repository.Repository
+import com.mardous.booming.data.repository.SearchRepository
+import com.mardous.booming.data.repository.SmartRepository
+import com.mardous.booming.data.repository.SongRepository
+import com.mardous.booming.data.repository.SpecialRepository
+import com.mardous.booming.playback.QueueStateHolder
 import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
-import com.mardous.booming.ui.screen.about.AboutViewModel
+import com.mardous.booming.ui.screen.backup.BackupViewModel
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.screen.info.InfoViewModel
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -68,10 +73,12 @@ import com.mardous.booming.ui.screen.library.albums.AlbumDetailViewModel
 import com.mardous.booming.ui.screen.library.artists.ArtistDetailViewModel
 import com.mardous.booming.ui.screen.library.folders.FolderDetailViewModel
 import com.mardous.booming.ui.screen.library.genres.GenreDetailViewModel
+import com.mardous.booming.ui.screen.library.home.HomeViewModel
 import com.mardous.booming.ui.screen.library.playlists.PlaylistDetailViewModel
 import com.mardous.booming.ui.screen.library.search.SearchViewModel
 import com.mardous.booming.ui.screen.library.years.YearDetailViewModel
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.onboard.OnboardViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.sleeptimer.SleepTimerViewModel
 import com.mardous.booming.ui.screen.tageditor.TagEditorViewModel
@@ -83,27 +90,15 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val networkModule = module {
-    factory {
-        jsonHttpClient(okHttpClient = get())
-    }
-    factory {
-        provideOkHttp(context = get())
-    }
-    single {
-        GitHubService(context = androidContext(), client = get())
-    }
-    single {
-        DeezerService(client = get())
-    }
-    single {
-        LastFmService(client = get())
-    }
-    single {
-        ListenBrainzService(client = get())
-    }
-    single {
-        LyricsDownloadService(context = get(), client = get())
-    }
+    factory { jsonHttpClient(okHttpClient = get()) }
+    factory { provideOkHttp(context = get()) }
+    single { GitHubService(context = androidContext(), client = get()) }
+    single { DeezerService(client = get()) }
+    single { LastFmService(client = get()) }
+    single { ListenBrainzService(client = get()) }
+    single { MusicBrainzService(client = get()) }
+    single { LyricsDownloadService(client = get()) }
+    single { QueueStateHolder() }
 }
 
 private val mainModule = module {
@@ -114,7 +109,7 @@ private val mainModule = module {
         PreferenceManager.getDefaultSharedPreferences(androidContext())
     }
     single {
-        SleepTimer(context = androidContext())
+        SleepTimer()
     }
     single {
         BalanceAudioProcessor()
@@ -127,14 +122,12 @@ private val mainModule = module {
             context = androidContext(),
             balanceProcessor = get(),
             replayGainProcessor = get(),
+            eqRepository = get(),
             audioOutputObserver = get()
         )
     }
     single {
-        MediaStoreWriter(context = androidContext(), contentResolver = get())
-    }
-    single {
-        AlbumCoverSaver(context = androidContext(), mediaStoreWriter = get())
+        MediaStoreWriter(contentResolver = get())
     }
     single {
         CustomArtistImageManager(context = androidContext())
@@ -145,6 +138,18 @@ private val mainModule = module {
     single {
         AudioOutputObserver(context = androidContext())
     }
+    single {
+        MediaEventBus()
+    }
+    factory {
+        BackupManager(
+            context = androidContext(),
+            repository = get(),
+            playCountDao = get(),
+            lyricsDao = get(),
+            customArtistImageManager = get()
+        )
+    }
 }
 
 private val roomModule = module {
@@ -154,7 +159,9 @@ private val roomModule = module {
                 BoomingDatabase.MIGRATION_1_2,
                 BoomingDatabase.MIGRATION_2_3,
                 BoomingDatabase.MIGRATION_3_4,
-                BoomingDatabase.MIGRATION_4_5
+                BoomingDatabase.MIGRATION_4_5,
+                BoomingDatabase.MIGRATION_5_6,
+                BoomingDatabase.MIGRATION_6_7
             )
             .build()
     }
@@ -181,6 +188,10 @@ private val roomModule = module {
 
     factory {
         get<BoomingDatabase>().lyricsDao()
+    }
+
+    factory {
+        get<BoomingDatabase>().autoEqDao()
     }
 }
 
@@ -254,7 +265,6 @@ private val dataModule = module {
         RealLyricsRepository(
             context = androidContext(),
             preferences = get(),
-            contentResolver = get(),
             lyricsDownloadService = get(),
             lyricsDao = get()
         )
@@ -266,9 +276,14 @@ private val dataModule = module {
             preferences = get(),
             lastFmService = get(),
             listenBrainzService = get(),
-            deezerService = get()
+            deezerService = get(),
+            musicBrainzService = get()
         )
     } bind NetworkRepository::class
+
+    single {
+        RealAutoEqRepository(gitHubService = get(), autoEqDao = get())
+    } bind AutoEqRepository::class
 }
 
 private val viewModule = module {
@@ -277,12 +292,15 @@ private val viewModule = module {
     }
 
     viewModel {
-        PlayerViewModel(preferences = get(), repository = get(), albumCoverSaver = get())
+        HomeViewModel(repository = get(), eventBus = get())
+    }
+
+    viewModel {
+        PlayerViewModel(preferences = get(), queueStateHolder = get(), repository = get())
     }
 
     viewModel {
         EqualizerViewModel(
-            contentResolver = get(),
             equalizerManager = get(),
             audioOutputObserver = get(),
             mediaStoreWriter = get()
@@ -342,7 +360,7 @@ private val viewModule = module {
     }
 
     viewModel {
-        LyricsViewModel(preferences = get(), lyricsRepository = get())
+        LyricsViewModel(application = androidApplication(), preferences = get(), repository = get())
     }
 
     viewModel {
@@ -354,7 +372,11 @@ private val viewModule = module {
     }
 
     viewModel {
-        AboutViewModel(repository = get())
+        BackupViewModel(contentResolver = get(), preferences = get(), backupManager = get())
+    }
+
+    viewModel {
+        OnboardViewModel(backupManager = get())
     }
 }
 

@@ -3,5 +3,6 @@
 
 # Release output files
 /release
-/normal
+/github
 /fdroid
+/playstore

@@ -46,7 +46,7 @@ import com.mardous.booming.extensions.navigation.searchArgs
 import com.mardous.booming.extensions.resources.createFastScroller
 import com.mardous.booming.extensions.resources.hide
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.IArtistCallback
 import com.mardous.booming.ui.ISongCallback

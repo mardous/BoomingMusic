@@ -1,6 +1,7 @@
 package com.mardous.booming.core.sort
 
 import android.content.SharedPreferences
+import android.icu.text.Collator
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.edit
@@ -15,9 +16,9 @@ import com.mardous.booming.data.model.*
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.asReadableTrackNumber
 import com.mardous.booming.extensions.media.normalizeForSorting
+import com.mardous.booming.util.Preferences
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
-import java.text.Collator
 import java.util.Locale
 
 sealed class SortMode(
@@ -26,12 +27,11 @@ sealed class SortMode(
     private val items: List<SortItem>
 ) : KoinComponent {
 
-    protected val collator: Collator by lazy {
-        Collator.getInstance(Locale.getDefault()).apply { strength = Collator.PRIMARY }
-    }
+    protected val collator: Collator
+        get() = sortingCollator()
 
     val ignoreArticles: Boolean
-        get() =  get<SharedPreferences>().getBoolean("ignore_articles_when_sorting", false)
+        get() = Preferences.ignoreArticlesWhenSorting
 
     private val key = "${id}_sort_order"
     open var selectedKey: SortKey
@@ -111,6 +111,11 @@ sealed class SortMode(
     }
 }
 
+private fun <T, K : Comparable<K>> List<T>.sortedWithTiebreak(
+    tiebreak: Comparator<T>,
+    selector: (T) -> K
+): List<T> = sortedWith(compareBy(selector).then(tiebreak))
+
 sealed class SongSortMode(
     id: String,
     defaults: Pair<SortKey, Boolean>,
@@ -119,9 +124,9 @@ sealed class SongSortMode(
 
     object AllSongs : SongSortMode(
         id = "song",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Artist,
             KeySortItem.Album,
             KeySortItem.Duration,
@@ -137,7 +142,7 @@ sealed class SongSortMode(
         id = "album_song",
         defaults = SortKey.Track to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Track,
             KeySortItem.Duration,
             DescendingItem
@@ -146,9 +151,9 @@ sealed class SongSortMode(
 
     object ArtistSongs : SongSortMode(
         id = "artist_song",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Album,
             KeySortItem.Duration,
             KeySortItem.Year,
@@ -159,9 +164,9 @@ sealed class SongSortMode(
 
     object GenreSongs : SongSortMode(
         id = "genre_song",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Artist,
             KeySortItem.Album,
             KeySortItem.Duration,
@@ -171,9 +176,9 @@ sealed class SongSortMode(
 
     object YearSongs : SongSortMode(
         id = "year_song",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Artist,
             KeySortItem.Album,
             KeySortItem.Duration,
@@ -185,7 +190,7 @@ sealed class SongSortMode(
         id = "folder_song",
         defaults = SortKey.DateAdded to true,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Artist,
             KeySortItem.Album,
             KeySortItem.Duration,
@@ -203,28 +208,25 @@ sealed class SongSortMode(
     ) : SongSortMode("dynamic_song", selectedKey to selectedDescending, items)
 
     fun List<Song>.sorted(): List<Song> {
+        val byTitle: Comparator<Song> = compareBy(collator) { it.title.normalize() }
         val songs = when (selectedKey) {
-            SortKey.AZ -> sortedWith(compareBy(collator) {
-                it.title.normalize()
-            })
+            SortKey.Name -> sortedWith(byTitle)
 
-            SortKey.Artist -> sortedWith(compareBy(collator) {
-                it.artistName.normalize()
-            })
-
-            SortKey.Album -> sortedWith(
-                Comparator.comparing<Song, String>({ it.albumName.normalize() }, collator)
-                    .thenComparingInt {
-                        if (it.trackNumber > 0) it.trackNumber else Int.MAX_VALUE
-                    }
+            SortKey.Artist -> sortedWith(
+                compareBy<Song, String>(collator) { it.artistName.normalize() }.then(byTitle)
             )
 
-            SortKey.Track -> sortedWith(compareBy { it.trackNumber })
-            SortKey.Duration -> sortedWith(compareBy { it.duration })
-            SortKey.Year -> sortedWith(compareBy { it.year })
-            SortKey.DateAdded -> sortedWith(compareBy { it.dateAdded })
-            SortKey.DateModified -> sortedWith(compareBy { it.rawDateModified })
-            SortKey.FileName -> sortedWith(compareBy { it.fileName })
+            SortKey.Album -> sortedWith(
+                compareBy<Song, String>(collator) { it.albumName.normalize() }
+                    .thenBy { if (it.trackNumber > 0) it.trackNumber else Int.MAX_VALUE }
+            )
+
+            SortKey.Track -> sortedWithTiebreak(byTitle) { it.trackNumber }
+            SortKey.Duration -> sortedWithTiebreak(byTitle) { it.duration }
+            SortKey.Year -> sortedWithTiebreak(byTitle) { it.year }
+            SortKey.DateAdded -> sortedWithTiebreak(byTitle) { it.dateAdded }
+            SortKey.DateModified -> sortedWithTiebreak(byTitle) { it.rawDateModified }
+            SortKey.FileName -> sortedWith(compareBy(collator) { it.fileName })
             else -> this
         }
         return if (selectedDescending) songs.reversed() else songs
@@ -239,9 +241,9 @@ sealed class AlbumSortMode(
 
     object AllAlbums : AlbumSortMode(
         id = "album",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Artist,
             KeySortItem.Year,
             KeySortItem.SongCount,
@@ -254,7 +256,7 @@ sealed class AlbumSortMode(
         id = "artist_album",
         defaults = SortKey.Year to true,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Year,
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
@@ -264,9 +266,9 @@ sealed class AlbumSortMode(
 
     object SimilarAlbums : AlbumSortMode(
         id = "similar_album",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Year,
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
@@ -275,18 +277,17 @@ sealed class AlbumSortMode(
     )
 
     fun List<Album>.sorted(): List<Album> {
+        val byName: Comparator<Album> = compareBy(collator) { it.name.normalize() }
         val albums = when (selectedKey) {
-            SortKey.AZ -> sortedWith(compareBy(collator) {
-                it.name.normalize()
-            })
+            SortKey.Name -> sortedWith(byName)
 
-            SortKey.Artist -> sortedWith(compareBy(collator) {
-                it.albumArtistName().normalize()
-            })
+            SortKey.Artist -> sortedWith(
+                compareBy<Album, String>(collator) { it.albumArtistName().normalize() }.then(byName)
+            )
 
-            SortKey.Year -> sortedWith(compareBy { it.year })
-            SortKey.SongCount -> sortedWith(compareBy { it.songCount })
-            SortKey.DateAdded -> sortedWith(compareBy { it.dateAdded })
+            SortKey.Year -> sortedWithTiebreak(byName) { it.year }
+            SortKey.SongCount -> sortedWithTiebreak(byName) { it.songCount }
+            SortKey.DateAdded -> sortedWithTiebreak(byName) { it.dateAdded }
             else -> this
         }
         return if (selectedDescending) albums.reversed() else albums
@@ -301,9 +302,9 @@ sealed class ArtistSortMode(
 
     object AllArtists : ArtistSortMode(
         id = "artist",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.SongCount,
             KeySortItem.AlbumCount,
             DescendingItem
@@ -311,12 +312,11 @@ sealed class ArtistSortMode(
     )
 
     fun List<Artist>.sorted(): List<Artist> {
+        val byName: Comparator<Artist> = compareBy(collator) { it.name.normalize() }
         val artists = when (selectedKey) {
-            SortKey.AZ -> sortedWith(compareBy(collator) {
-                it.name.normalize()
-            })
-            SortKey.SongCount -> sortedWith(compareBy({ it.songCount }, { it.name.normalize() }))
-            SortKey.AlbumCount -> sortedWith(compareBy({ it.albumCount }, { it.name.normalize() }))
+            SortKey.Name -> sortedWith(byName)
+            SortKey.SongCount -> sortedWithTiebreak(byName) { it.songCount }
+            SortKey.AlbumCount -> sortedWithTiebreak(byName) { it.albumCount }
             else -> this
         }
         return if (selectedDescending) artists.reversed() else artists
@@ -331,21 +331,19 @@ sealed class GenreSortMode(
 
     object AllGenres : GenreSortMode(
         id = "genre",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.SongCount,
             DescendingItem
         )
     )
 
     fun List<Genre>.sorted(): List<Genre> {
+        val byName: Comparator<Genre> = compareBy(collator) { it.name.normalize() }
         val genres = when (selectedKey) {
-            SortKey.AZ -> sortedWith(compareBy(collator) {
-                it.name.normalize()
-            })
-
-            SortKey.SongCount -> sortedWith(compareBy { it.songCount })
+            SortKey.Name -> sortedWith(byName)
+            SortKey.SongCount -> sortedWithTiebreak(byName) { it.songCount }
             else -> this
         }
         return if (selectedDescending) genres.reversed() else genres
@@ -371,7 +369,7 @@ sealed class YearSortMode(
     fun List<ReleaseYear>.sorted(): List<ReleaseYear> {
         val years = when (selectedKey) {
             SortKey.Year -> sortedWith(compareBy { it.year })
-            SortKey.SongCount -> sortedWith(compareBy { it.songCount })
+            SortKey.SongCount -> sortedWithTiebreak(compareBy { it.year }) { it.songCount }
             else -> this
         }
         return if (selectedDescending) years.reversed() else years
@@ -386,18 +384,21 @@ sealed class PlaylistSortMode(
 
     object AllPlaylists : PlaylistSortMode(
         id = "playlist",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.SongCount,
             DescendingItem
         )
     )
 
     fun List<PlaylistWithSongs>.sorted(): List<PlaylistWithSongs> {
+        val byName: Comparator<PlaylistWithSongs> = compareBy(collator) {
+            it.playlistEntity.playlistName.normalize()
+        }
         val playlists = when (selectedKey) {
-            SortKey.AZ -> sortedWith(compareBy { it.playlistEntity.playlistName })
-            SortKey.SongCount -> sortedWith(compareBy { it.songCount })
+            SortKey.Name -> sortedWith(byName)
+            SortKey.SongCount -> sortedWithTiebreak(byName) { it.songCount }
             else -> this
         }
         return if (selectedDescending) playlists.reversed() else playlists
@@ -412,9 +413,9 @@ sealed class FileSortMode(
 
     object AllFolders : FileSortMode(
         id = "folder",
-        defaults = SortKey.AZ to false,
+        defaults = SortKey.Name to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.SongCount,
             KeySortItem.DateAdded,
             KeySortItem.DateModified,
@@ -426,7 +427,7 @@ sealed class FileSortMode(
         id = "file",
         defaults = SortKey.FileName to false,
         items = listOf(
-            KeySortItem.Title,
+            KeySortItem.Name,
             KeySortItem.Track,
             KeySortItem.DateAdded,
             KeySortItem.DateModified,
@@ -436,12 +437,15 @@ sealed class FileSortMode(
     )
 
     fun List<FileSystemItem>.sorted(): List<FileSystemItem> {
+        val byFolderName: Comparator<Folder> = compareBy(collator) { it.fileName }
+        val byTitle: Comparator<Song> = compareBy(collator) { it.title.normalize() }
+
         val sortedFolders = filterIsInstance<Folder>().let { folders ->
             when (selectedKey) {
-                SortKey.AZ -> folders.sortedWith(compareBy { it.fileName })
-                SortKey.SongCount -> folders.sortedWith(compareBy { it.songCount })
-                SortKey.DateAdded -> folders.sortedWith(compareBy { it.fileDateAdded })
-                SortKey.DateModified -> folders.sortedWith(compareBy { it.fileDateModified })
+                SortKey.Name -> folders.sortedWith(byFolderName)
+                SortKey.SongCount -> folders.sortedWithTiebreak(byFolderName) { it.songCount }
+                SortKey.DateAdded -> folders.sortedWithTiebreak(byFolderName) { it.fileDateAdded }
+                SortKey.DateModified -> folders.sortedWithTiebreak(byFolderName) { it.fileDateModified }
                 else -> folders
             }
         }.let { folders ->
@@ -450,13 +454,13 @@ sealed class FileSortMode(
 
         val sortedSongs = filterIsInstance<Song>().let { songs ->
             when (selectedKey) {
-                SortKey.AZ -> songs.sortedWith(compareBy { it.title })
-                SortKey.Track -> songs.sortedWith(compareBy {
+                SortKey.Name -> songs.sortedWith(byTitle)
+                SortKey.Track -> songs.sortedWithTiebreak(byTitle) {
                     if (it.trackNumber > 0) it.trackNumber.asReadableTrackNumber() else -1
-                })
-                SortKey.DateAdded -> songs.sortedWith(compareBy { it.fileDateAdded })
-                SortKey.DateModified -> songs.sortedWith(compareBy { it.fileDateModified })
-                SortKey.FileName -> songs.sortedWith(compareBy { it.fileName })
+                }
+                SortKey.DateAdded -> songs.sortedWithTiebreak(byTitle) { it.fileDateAdded }
+                SortKey.DateModified -> songs.sortedWithTiebreak(byTitle) { it.fileDateModified }
+                SortKey.FileName -> songs.sortedWith(compareBy(collator) { it.fileName })
                 else -> songs
             }
         }.let { songs ->

@@ -21,13 +21,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.mardous.booming.MainActivity
 import com.mardous.booming.R
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.materialSharedAxis
-import com.mardous.booming.ui.screen.MainActivity
-import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -37,8 +37,6 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
  */
 class LyricsFragment : Fragment() {
 
-    private val libraryViewModel: LibraryViewModel by activityViewModel()
-    private val lyricsViewModel: LyricsViewModel by activityViewModel()
     private val playerViewModel: PlayerViewModel by activityViewModel()
 
     override fun onCreateView(
@@ -47,14 +45,13 @@ class LyricsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(
+                ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+            )
             setContent {
                 BoomingMusicTheme {
                     LyricsScreen(
-                        libraryViewModel = libraryViewModel,
-                        lyricsViewModel = lyricsViewModel,
-                        playerViewModel = playerViewModel,
-                        onEditClick = {
-                            val currentSong = playerViewModel.currentSong
+                        onEditClick = { currentSong ->
                             findNavController().navigate(
                                 R.id.nav_lyrics_editor,
                                 LyricsEditorFragmentArgs.Builder(currentSong)

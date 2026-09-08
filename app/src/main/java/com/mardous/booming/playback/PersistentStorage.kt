@@ -11,13 +11,14 @@ import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.source.ShuffleOrder
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.local.room.QueueDao
 import com.mardous.booming.data.local.room.QueueEntity
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.playback.ImprovedShuffleOrder.SerializedOrder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -31,8 +32,8 @@ import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
 typealias RestorationListener = (MediaItemsWithStartPosition, ShuffleOrder?) -> Unit
 
-@UnstableApi
 @OptIn(ExperimentalAtomicApi::class)
+@androidx.annotation.OptIn(UnstableApi::class)
 class PersistentStorage(
     context: Context,
     private val coroutineScope: CoroutineScope,
@@ -126,10 +127,8 @@ class PersistentStorage(
                 }
 
                 // Resolve valid items from repository
-                val (restoredMediaItems) = repository.songsByMediaItems(savedMediaItems)
-                    .let { (songs, missingMediaItems) ->
-                        songs.toMediaItems() to missingMediaItems
-                    }
+                val restoredMediaItems = repository.songsByMediaItems(savedMediaItems, ignoreBlacklist = false)
+                    .let { (songs, _) -> songs.map { buildPlayableMediaItem(it) } }
 
                 // Build session state object
                 val items = if (restoredMediaItems.isNotEmpty()) {
@@ -220,8 +219,10 @@ class PersistentStorage(
                 shuffleOrder = null
             )
         } finally {
-            // Always mark as restored to unblock future listeners
+            // Always mark as restored to unblock future listeners, and release anyone already
+            // waiting
             state.store(RestorationState.Restored)
+            withContext(NonCancellable + Dispatchers.Main) { runSimpleListeners() }
         }
     }
 
@@ -270,8 +271,10 @@ class PersistentStorage(
 
                         // Optionally save playlist order
                         if (savePlaylist) {
-                            val queueItems = mediaItems.mapIndexed { index, item ->
-                                QueueEntity(id = item.mediaId, order = index)
+                            val queueItems = mediaItems.mapIndexedNotNull { index, item ->
+                                if (item.mediaMetadata.extras?.getBoolean(RESOLVED_FROM_FILE) != true)
+                                    QueueEntity(id = item.mediaId, order = index)
+                                else null
                             }
                             if (isActive) {
                                 queueDao.replaceQueue(queueItems)
@@ -285,12 +288,23 @@ class PersistentStorage(
         }
     }
 
+    /** Suspends until nothing is queued for writing */
+    suspend fun awaitPendingSave() {
+        repeat(MAX_SAVE_WAITS) {
+            val job = saveJob ?: return
+            job.join()
+            if (job === saveJob) return
+        }
+    }
+
     private suspend fun dispatchItems(
         callback: RestorationListener,
         items: MediaItemsWithStartPosition,
         shuffleOrder: ShuffleOrder?
     ) {
         withContext(Dispatchers.Main) {
+            // Before the listeners run, otherwise would be dropped by [saveState]
+            state.store(RestorationState.Restored)
             synchronized(lock) {
                 if (!mediaItemsListeners.contains(callback)) {
                     callback(items, shuffleOrder)
@@ -298,21 +312,30 @@ class PersistentStorage(
 
                 mediaItemsListeners.forEach { it(items, null) }
                 mediaItemsListeners.clear()
-
-                simpleListeners.forEach { it.run() }
-                simpleListeners.clear()
             }
+            runSimpleListeners()
         }
+    }
+
+    /** Runs after the queue is back in the player, so a waiter sees the restored state. */
+    private fun runSimpleListeners() {
+        val pending = synchronized(lock) {
+            simpleListeners.toList().also { simpleListeners.clear() }
+        }
+        pending.forEach { it.run() }
     }
 
     companion object {
         private const val TAG = "PersistentStorage"
-        private const val PREFERENCE_NAME = "playback_state"
+        const val PREFERENCE_NAME = "playback_state"
 
-        const val REPEAT_MODE = "repeat_mode"
-        const val SHUFFLE_MODE = "shuffle_mode"
-        const val SHUFFLE_ORDER = "shuffle_order"
-        const val POSITION_IN_TRACK = "position_in_track"
-        const val LAST_INDEX = "last_index"
+        /** Guards [awaitPendingSave] against a player that keeps queueing new writes. */
+        private const val MAX_SAVE_WAITS = 5
+
+        private const val REPEAT_MODE = "repeat_mode"
+        private const val SHUFFLE_MODE = "shuffle_mode"
+        private const val SHUFFLE_ORDER = "shuffle_order"
+        private const val POSITION_IN_TRACK = "position_in_track"
+        private const val LAST_INDEX = "last_index"
     }
 }

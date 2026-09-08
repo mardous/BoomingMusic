@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        variant: [ normal, fdroid ]
+        variant: [ github, fdroid, playstore ]
 
     steps:
       - uses: actions/checkout@v6
@@ -28,29 +28,60 @@ jobs:
       - name: Setup Android-SDK
         uses: android-actions/setup-android@v4
 
-      - name: Create files for signing
+      - name: Create signing key
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-          SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
         run: |
-          echo $SIGNING_KEY | base64 -di > ./booming_keystore.jks
-          echo $SIGNING_PROPERTIES | base64 -di > ./keystore.properties
+          echo $SIGNING_KEY | base64 -di > ${{ runner.temp }}/booming_keystore.jks
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
       - name: Build app
         env:
-          BUILD_VARIANT: ${{ matrix.variant == 'normal' && 'Normal' || 'Fdroid' }}
+          VARIANT: ${{ matrix.variant }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
-        run: ./gradlew assemble${{ env.BUILD_VARIANT }}Release
+          SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
+        run: |
+          # Extract signing properties
+          echo "$SIGNING_PROPERTIES" | base64 -di > temp.properties
+          export KEY_ALIAS=$(grep keyAlias temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export KEY_PASSWORD=$(grep keyPassword temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export STORE_PASSWORD=$(grep storePassword temp.properties | cut -d'=' -f2 | tr -d '\r' | xargs)
+          export KEYSTORE_FILE="${{ runner.temp }}/booming_keystore.jks"
+          rm temp.properties
 
-      - name: Upload APKs
+          CAP_VARIANT="$(echo ${VARIANT:0:1} | tr '[:lower:]' '[:upper:]')${VARIANT:1}"
+          
+          if [ "$VARIANT" == "playstore" ]; then
+            ./gradlew bundle${CAP_VARIANT}Release
+          else
+            ./gradlew assemble${CAP_VARIANT}Release
+          fi
+
+      - name: Upload Artifacts
+        if: matrix.variant != 'playstore'
         uses: actions/upload-artifact@v7
         with:
-          name: apk-${{ matrix.variant }}-release
-          path: app/build/outputs/apk/*/release/BoomingMusic-*.apk
+          name: artifacts-${{ matrix.variant }}-release
+          path: |
+            app/build/outputs/apk/*/release/BoomingMusic-*.apk
+
+      - name: Upload AAB to Telegram
+        if: matrix.variant == 'playstore'
+        uses: xz-dev/TelegramFileUploader@f597b98950e55d2b15f2fc94d1410cb557d829e0 # v1.2.3
+        with:
+          to-who: ${{ secrets.TG_AAB_STORE_ID }}
+          message: |
+            📌 **Version:** `${{ github.ref_name }}`
+            🚀 **Run:** [Link](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          files: |
+            app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab
+        env:
+          API_ID: ${{ secrets.TG_API_ID }}
+          API_HASH: ${{ secrets.TG_API_HASH }}
+          BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
 
   publish-release:
     needs: build
@@ -61,11 +92,11 @@ jobs:
       !contains(github.ref_name, 'rc')
 
     steps:
-      - name: Download APKs
+      - name: Download Artifacts
         uses: actions/download-artifact@v8
         with:
-          path: release-apks
-          pattern: apk-*-release
+          path: release-artifacts
+          pattern: artifacts-*-release
           merge-multiple: true
 
       - name: Set prerelease flag
@@ -84,5 +115,4 @@ jobs:
           prerelease: ${{ steps.prerelease.outputs.value }}
           generate_release_notes: true
           files: |
-            release-apks/*/release/*-fdroid-release.apk
-            release-apks/*/release/*-normal-release.apk
+            release-artifacts/*/release/BoomingMusic-*.apk

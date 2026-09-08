@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">アーティストシャッフル</string>
     <string name="action_share">共有</string>
     <string name="action_save">保存展開</string>
-    <string name="what_do_you_want_to_share">何を共有しますか？</string>
-    <string name="the_audio_file">オーディオファイル</string>
-    <string name="i_am_listening">私が今聴いているのは…</string>
-    <string name="currently_listening_to_x_by_x">%1$s が %2$sを聴いています</string>
-    <string name="share_to_stories">ストーリーに共有</string>
-    <string name="could_not_create_the_story">ストーリーを作成できませんでした。</string>
     <string name="back_action">戻る</string>
     <string name="add_action">追加</string>
     <string name="delete_action">削除</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">プレイリストに追加</string>
     <string name="rename_playlist_title">プレイリストの名前を変更</string>
     <string name="action_edit_playlist">プレイリストの編集</string>
-    <string name="action_delete">プレイリストを削除</string>
+    <string name="action_delete_playlist">プレイリストを削除</string>
     <string name="action_export_playlist">ファイルにエクスポート</string>
     <string name="action_clear_history">履歴を消去</string>
     <string name="history_cleared">履歴を消去しました</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">外部ストレージへのアクセス権限を付与する必要があります。</string>
     <string name="permission_bluetooth_title">付近のデバイス</string>
     <string name="permission_bluetooth_description">Bluetoothデバイスを確認するには、\"付近のデバイス\"の許可が必要です</string>
-    <string name="permission_bluetooth_denied">\"付近のデバイス\"にアクセスできません。</string>
     <string name="permission_read_images_title">画像の読み取り (オプション)</string>
     <string name="permission_read_images_summary">この権限は、音楽フォルダ内のアルバムアートファイルを検索するために必要です。 この機能を使用する予定がない場合は、許可しないことを選択できます.</string>
     <string name="permission_read_images_denied">デバイスから画像を読み取る権限を許可する必要があります。</string>
-    <string name="permission_exact_alarms_title">正確なアラームをスケジュールする（オプション）</string>
-    <string name="permission_exact_alarms_description">スリープタイマーが正常に動作するには、正確なアラームをスケジュールする権限が必要です</string>
-    <string name="permission_ringtone_title">着信音 (オプション)</string>
-    <string name="permission_ringtone_description">音楽を着信音に設定するには、アプリが端末の設定にアクセスする権限が必要です</string>
-    <string name="permission_request_write_settings"><![CDATA[<b>%s</b>を着信音に設定するには、Booming Musicによるシステム設定の変更を許可する必要があります。]]></string>
     <string name="permissions_denied">権限が拒否されました</string>
     <string name="permissions_needed">権限が必要です</string>
     <string name="grant_access_action">アクセスを許可</string>
     <string name="action_grant">許可</string>
     <string name="granted">付与済み</string>
-    <string name="hello_there">こんにちは！</string>
     <string name="welcome_to_x">%s へようこそ</string>
     <string name="get_started">はじめよう</string>
     <string name="select_storage_title">ストレージを選択</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">グリッドサイズ</string>
     <string name="action_grid_size_land">グリッドサイズ (横)</string>
     <string name="action_sort_order">並び替え</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">アーティスト</string>
     <string name="sort_order_album">アルバム</string>
     <string name="sort_order_year">年</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">トラックリスト</string>
     <string name="sort_order_descending">降順</string>
     <string name="sort_order_ignore_articles">記事を無視</string>
-    <string name="action_set_as_ringtone">着信音に設定</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[<b>%s</b> を着信音に設定します]]></string>
-    <string name="x_has_been_set_as_ringtone">%s を着信音に設定</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">%s を着信音とアラームアラートに設定</string>
-    <string name="use_also_as_alarm_alert">アラームアラートとしても使用する</string>
     <string name="action_details">詳細</string>
     <string name="action_set_as_start_directory">開始ディレクトリに設定</string>
     <string name="start_directory_set">開始ディレクトリを %sに設定</string>
@@ -260,15 +241,6 @@
     <string name="download_image">画像をダウンロード</string>
     <string name="pick_from_local_storage">ローカルストレージから選択</string>
     <string name="about_x_title">%s について</string>
-    <string name="listeners_label">リスナー</string>
-    <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">アルバムカバーを保存</string>
-    <string name="saving_cover_please_wait">カバーをセーブしています。お待ち下さい…</string>
-    <string name="save_artwork_error">ローカルストレージにカバーを保存できませんでした</string>
-    <string name="save_artwork_success">アルバムカバーを保存しました</string>
-    <string name="save_artwork_view_action">表示</string>
-    <string name="save_artwork_copyright_info_title">著作権通知</string>
-    <string name="save_artwork_copyright_info_message">アルバムカバーの一部（または全部）は、著作権法によって保護されている場合があります。これらの画像を商業目的または広告目的で使用することはできません。 \n\n保存したアルバムカバーの使用に関しては、利用者個人の責任となります。</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="keyboard">キーボード</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">フォーマット</string>
     <string name="file_label">ファイル</string>
     <string name="metadata_label">メタデータ</string>
-    <string name="title_and_artist">タイトルとアーティスト</string>
     <string name="song">曲</string>
     <string name="title">タイトル</string>
     <string name="album">アルバム</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">接続できません。</string>
     <string name="you_have_to_select_at_least_one_category">最低でも1つのカテゴリを選択を選択して下さい</string>
     <string name="you_cannot_select_more_than_five_categories">5つ以上のカテゴリは選択できません。</string>
-    <string name="backup_settings">設定</string>
-    <string name="backup_synced_lyrics">歌詞を同期</string>
-    <string name="backup_artist_images">アーティスト画像</string>
-    <string name="backup_playlists">プレイリスト</string>
     <string name="backup_successful">正常にバックアップしました！</string>
     <string name="backup_failed">バックアップに失敗しました。</string>
     <string name="select_content_to_restore">復元するコンテンツを選択:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">プレイリストはロックされました</string>
     <string name="playlist_unlocked">プレイリストのロックは解除されました</string>
     <string name="action_toggle_queue_lock">キューのロック/ロック解除</string>
-    <string name="queue_locked">キューはロックされました</string>
-    <string name="queue_unlocked">キューのロックは解除されました</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Auxライン</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -367,7 +332,7 @@
     <string name="top_albums">トップアルバム</string>
     <string name="recent_artists">最近のアーティスト</string>
     <string name="recent_albums">最近のアルバム</string>
-    <string name="no_suggestions">あなたに提案はありません</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全なランダムシャッフル</string>
     <string name="shuffle_mode_most_played">最も再生された曲</string>
@@ -470,25 +435,15 @@
     <string name="synced_lyrics">同期済み</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">ダウンロード済み</string>
-    <string name="external_file_lyrics">外部ファイル</string>
-    <string name="action_import_synchronized_lyrics">同期した歌詞をインポート</string>
-    <string name="action_share_synchronized_lyrics">同期した歌詞を共有</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[<b>%s</b> の同期したLRC歌詞をインポートしますか？]]></string>
-    <string name="import_lyrics_for_song_x">%sの歌詞をインポートしました</string>
-    <string name="could_not_import_lyrics_for_song_x">%sの歌詞をインポートできませんでした</string>
-    <string name="select_a_file_containing_synchronized_lyrics">同期した歌詞を含むLRCファイルを選択します。</string>
     <string name="cannot_download_lyrics">この曲の歌詞を見つけることができませんでした。手動で検索しますか？</string>
     <string name="search_lyrics">歌詞を検索</string>
     <string name="choose_lyrics">歌詞の種類を選択</string>
     <string name="download_lyrics">歌詞をダウンロード</string>
     <string name="write_lyrics_here">ここに歌詞を書く</string>
-    <string name="write_synced_lyrics_here">同期した歌詞をここに書く</string>
     <string name="no_lyrics_found">歌詞が見つかりません</string>
-    <string name="no_synced_lyrics_found">同期された歌詞が見つかりません</string>
     <string name="lyrics_were_updated_successfully">歌詞が更新されました。</string>
     <string name="failed_to_update_lyrics">歌詞の更新に失敗しました。</string>
     <string name="there_are_no_changes_to_save">保存する変更はありません。</string>
-    <string name="lyrics_source_external_file">歌詞は外部ファイルのものです。このファイルはBooming Musicから直接編集することはできません。</string>
     <string name="font_imported_successfully">フォントが正常にインポートされました。</string>
     <string name="could_not_import_font">フォントをインポートできませんでした。</string>
     <!-- Sleep timer -->
@@ -519,11 +474,8 @@
     <string name="author">作成者</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">コントリビューター</string>
-    <string name="acknowledgments_title">謝辞</string>
     <string name="translators_title">翻訳者</string>
     <string name="translators_summary">Booming Musicを多くの言語で利用可能にしてくれた人たちに感謝します。</string>
-    <string name="contributors_title">貢献者</string>
-    <string name="contributors_summary">プロジェクトに何らかの方法で貢献したユーザーのリスト。</string>
     <string name="view_profile_on_github">GitHubでプロフィールを表示</string>
     <string name="write_an_email">メールを書く</string>
     <string name="support_development">開発を支援する</string>
@@ -536,7 +488,6 @@
     <string name="send_invitation_message">招待メッセージを送信</string>
     <string name="invitation_message_content">こんにちは！ Androidでローカルミュージックを聴くのに最適なアプリ、『Booming Music』をぜひチェックしてみてください！ こちらからダウンロードできます: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">バグ管理システムのウェブサイトに移動します。</string>
     <!-- SAF -->
     <string name="saf_access_required_title">ストレージアクセスが必要です</string>
     <string name="saf_access_required_message">Booming Musicはこれらのファイルへのアクセス許可を必要としています。音楽ファイルが保存されているルートフォルダを選択してください。</string>
@@ -573,7 +524,6 @@
     <string name="audio_focus_header">オーディオフォーカス</string>
     <string name="shuffle_mode_header">シャッフルモード</string>
     <string name="display_header">表示</string>
-    <string name="backup_restore_header">バックアップ/復元</string>
     <string name="visuals_header">外観</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">一般的なテーマ</string>
@@ -645,8 +595,6 @@
     <string name="circle_button_title">丸い再生ボタン</string>
     <string name="swipe_album_cover_title">アルバムカバーのスワイプ</string>
     <string name="swipe_album_cover_summary">アルバムカバーを左右にスワイプして曲間をスキップできるようになります</string>
-    <string name="queue_height_title">キューの高さを半分にする</string>
-    <string name="queue_height_summary">再生キューの高さを画面の半分に固定します。</string>
     <string name="single_tap_on_album_cover_title">カバーをシングルタップ</string>
     <string name="double_tap_on_album_cover_title">カバーをダブルタップする</string>
     <string name="double_tap_on_left_album_cover_title">アルバムカバーの左端をダブルタップ</string>
@@ -757,10 +705,6 @@
     <string name="min_song_duration_summary">(少なくとも)何秒以上の曲をライブラリに表示するか。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">アプリの言語</string>
-    <string name="backup_data_title">アプリデータのバックアップ</string>
-    <string name="backup_app_data_summary">重要なアプリデータを含むファイルを作成し、外部ストレージに保存します。</string>
-    <string name="restore_backup_title">バックアップを復元</string>
-    <string name="restore_backup_summary">前のバックアップからアプリのデータ(および状態)を復元します。</string>
     <string name="stop_when_closed_from_recents_title">アプリ履歴から閉じたときに停止</string>
     <string name="stop_when_closed_from_recents_summary">アプリがアプリ履歴から閉じられると再生を停止します。</string>
     <string name="stop_when_closed_from_recents_note">注意: 積極的なメモリ またはバッテリ管理を備えたデバイスの中には、この設定を無視してアプリを常に停止させることがあります。</string>
@@ -832,8 +776,6 @@
     <string name="every_fifteen_days">15日ごと</string>
     <string name="monthly">月ごと</string>
     <string name="never">一切なし</string>
-    <string name="only_wifi_title">Wi-Fiのみ</string>
-    <string name="only_wifi_summary">Wi-Fi接続時にのみアップデートを検索します。</string>
     <string name="receive_experimental_updates_title">実験的な更新を受け取る</string>
     <string name="receive_experimental_updates_summary">これらのアップデートはしばしば非常に不安定であり、経験豊富なユーザーを対象としています。</string>
     <string name="search_for_update_title">アップデートを検索</string>

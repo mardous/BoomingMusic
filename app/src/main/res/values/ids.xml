@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="action_sort_order_az" type="id"/>
+    <item name="action_sort_order_name" type="id"/>
     <item name="action_sort_order_artist" type="id"/>
     <item name="action_sort_order_album" type="id"/>
     <item name="action_sort_order_duration" type="id"/>

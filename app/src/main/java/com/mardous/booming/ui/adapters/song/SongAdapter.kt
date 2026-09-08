@@ -140,7 +140,7 @@ open class SongAdapter(
         return when (sortMode?.selectedKey) {
             SortKey.Album -> song.albumName.asSectionName(sortMode)
             SortKey.Artist -> song.displayArtistName().asSectionName(sortMode)
-            SortKey.AZ -> song.title.asSectionName(sortMode)
+            SortKey.Name -> song.title.asSectionName(sortMode)
             SortKey.Year -> ""
             SortKey.FileName -> song.fileName.asSectionName(sortMode)
             else -> song.title.asSectionName(sortMode)

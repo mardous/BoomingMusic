@@ -65,6 +65,7 @@ import com.mardous.booming.core.model.action.QueueClearingBehavior
 import com.mardous.booming.core.model.theme.NowPlayingScreen
 import com.mardous.booming.data.model.search.SearchQuery
 import com.mardous.booming.databinding.SlidingMusicPanelLayoutBinding
+import com.mardous.booming.extensions.EXTRA_IS_PERMISSION_REQUEST
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.dip
@@ -79,13 +80,11 @@ import com.mardous.booming.extensions.resources.peekHeightAnimate
 import com.mardous.booming.extensions.resources.show
 import com.mardous.booming.extensions.whichFragment
 import com.mardous.booming.ui.IBackConsumer
-import com.mardous.booming.ui.screen.info.PlayInfoFragment
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.library.search.SearchFragment
-import com.mardous.booming.ui.screen.lyrics.LyricsEditorFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.onboard.OnboardActivity
 import com.mardous.booming.ui.screen.other.MiniPlayerFragment
-import com.mardous.booming.ui.screen.permissions.PermissionsActivity
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.screen.player.styles.defaultstyle.DefaultPlayerFragment
 import com.mardous.booming.ui.screen.player.styles.expressivestyle.ExpressivePlayerFragment
@@ -153,6 +152,12 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     val isBottomSheetHidden: Boolean
         get() = panelState == STATE_COLLAPSED && bottomSheetBehavior.peekHeight == 0
 
+    /**
+     * Set while a destination is holding the sheet down.
+     * Queue changes must not slide the mini player back in until the next destination.
+     */
+    private var isHiddenByDestination = false
+
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             if (handleBackPress()) {
@@ -172,7 +177,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!hasPermissions()) {
-            startActivity(Intent(this, PermissionsActivity::class.java))
+            startActivity(
+                Intent(this, OnboardActivity::class.java)
+                    .putExtra(EXTRA_IS_PERMISSION_REQUEST, Preferences.onboardShown)
+            )
             finish()
         }
 
@@ -197,9 +205,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
 
         launchAndRepeatWithViewLifecycle {
             playerViewModel.queueFlow.collect { queue ->
-                val currentFragment = currentFragment(R.id.fragment_container)
-                if (currentFragment !is LyricsEditorFragment &&
-                    currentFragment !is PlayInfoFragment) {
+                if (!isHiddenByDestination) {
                     hideBottomSheet(queue.isEmpty())
                 }
             }
@@ -253,11 +259,15 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        Preferences.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         clearNavigationViewGestures()
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback)
-        Preferences.unregisterOnSharedPreferenceChangeListener(this)
         miniPlayerFragment = null
         playerFragment = null
     }
@@ -298,13 +308,18 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         })
     }
 
+    /**
+     * @param hideBottomSheet `true` hides the sheet. `null` lets the queue decide
+     */
     fun setBottomNavVisibility(
         visible: Boolean,
         animate: Boolean = false,
-        hideBottomSheet: Boolean = playerViewModel.queue.isEmpty(),
+        hideBottomSheet: Boolean? = null,
     ) {
+        isHiddenByDestination = (hideBottomSheet == true)
+        val hide = hideBottomSheet ?: playerViewModel.queue.isEmpty()
         if (isInOneTabMode) {
-            hideBottomSheet(hide = hideBottomSheet, animate = animate, isBottomNavVisible = false)
+            hideBottomSheet(hide = hide, animate = animate, isBottomNavVisible = false)
             return
         }
         val isBottomNavView = (navigationView is BottomNavigationView)
@@ -325,7 +340,7 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             }
         }
         hideBottomSheet(
-            hide = hideBottomSheet,
+            hide = hide,
             animate = animate,
             isBottomNavVisible = visible && navigationView is BottomNavigationView
         )

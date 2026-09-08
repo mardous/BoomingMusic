@@ -22,7 +22,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.util.Log
 import androidx.annotation.WorkerThread
-import com.mardous.booming.data.local.repository.RealSongRepository.Companion.getAudioContentUri
+import com.mardous.booming.data.repository.RealSongRepository.Companion.getAudioContentUri
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 

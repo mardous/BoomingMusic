@@ -33,10 +33,10 @@ class Folder(
         get() = filePath.substringAfterLast("/")
 
     override val fileDateAdded: Long
-        get() = musicFiles.minOf { it.fileDateAdded }
+        get() = musicFiles.minOfOrNull { it.fileDateAdded } ?: -1
 
     override val fileDateModified: Long
-        get() = musicFiles.maxOf { it.fileDateModified }
+        get() = musicFiles.maxOfOrNull { it.fileDateModified } ?: -1
 
     override val songs: List<Song>
         get() = musicFiles.filterIsInstance<Song>()

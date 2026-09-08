@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Amestecare Artist</string>
     <string name="action_share">Distribuie</string>
     <string name="action_save">Salvează</string>
-    <string name="what_do_you_want_to_share">Ce vrei să partajezi?</string>
-    <string name="the_audio_file">Fișierul audio</string>
-    <string name="i_am_listening">Eu ascult…</string>
-    <string name="currently_listening_to_x_by_x">Eu ascult %1$s de %2$s</string>
-    <string name="share_to_stories">Distribuie povestirilor</string>
-    <string name="could_not_create_the_story">Nu s-a putut crea povestea.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Adăugare</string>
     <string name="delete_action">Ștergere</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">Adaugă la playlist</string>
     <string name="rename_playlist_title">Redenumește playlist</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Șterge playlist</string>
+    <string name="action_delete_playlist">Șterge playlist</string>
     <string name="action_export_playlist">Exportă în fișier</string>
     <string name="action_clear_history">Ștergeți istoricul</string>
     <string name="history_cleared">Istoric golit</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">Trebuie să acordați permisiunea de a accesa stocarea externă.</string>
     <string name="permission_bluetooth_title">Dispozitive în apropiere</string>
     <string name="permission_bluetooth_description">Aplicația are nevoie de permisiuni în apropiere pentru a verifica dacă există dispozitive bluetooth</string>
-    <string name="permission_bluetooth_denied">Permisiunea dispozitivelor din apropiere a fost refuzată.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">Programează alarmele exacte (opțional)</string>
-    <string name="permission_exact_alarms_description">Permisiunea de a programa alarmele este necesară pentru ca temporizatorul de somn să funcționeze corespunzător</string>
-    <string name="permission_ringtone_title">Ton sonerie (opţional)</string>
-    <string name="permission_ringtone_description">Aplicația are nevoie de permisiunea de a accesa setările dispozitivului pentru a seta muzica ca ton de apel</string>
-    <string name="permission_request_write_settings"><![CDATA[Trebuie să permiteți muzicii de fierbere să modifice setările de sistem pentru a seta <b>%s</b> ca ton de apel]]></string>
     <string name="permissions_denied">Permisiuni refuzate</string>
     <string name="permissions_needed">Permisiuni necesare</string>
     <string name="grant_access_action">Acordă acces</string>
     <string name="action_grant">Acordă</string>
     <string name="granted">Oferit</string>
-    <string name="hello_there">Bună ziua!</string>
     <string name="welcome_to_x">Bun venit la %s</string>
     <string name="get_started">Începeți</string>
     <string name="select_storage_title">Selectați stocarea</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">Dimensiune grilă</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sortează după</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Artist</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">An</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">Urmărire listă</string>
     <string name="sort_order_descending">Descrescător</string>
     <string name="sort_order_ignore_articles">Ignoră articole</string>
-    <string name="action_set_as_ringtone">Setare ca ton de apel</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Va seta <b>%s</b> ca ton de apel]]></string>
-    <string name="x_has_been_set_as_ringtone">Setează %s ca ton de apel</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Setaţi %s ca ton de apel şi ca alertă de alarmă</string>
-    <string name="use_also_as_alarm_alert">Utilizați și ca alertă de alarmă</string>
     <string name="action_details">Detalii</string>
     <string name="action_set_as_start_directory">Setează ca director de pornire</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -260,15 +241,6 @@
     <string name="download_image">Descarcă imaginea</string>
     <string name="pick_from_local_storage">Alege din stocarea locală</string>
     <string name="about_x_title">Despre %s</string>
-    <string name="listeners_label">Ascultători</string>
-    <string name="scrobbles_label">Fructuri</string>
-    <string name="save_cover">Salvează coperta de album</string>
-    <string name="saving_cover_please_wait">Se salvează coperta, așteptați…</string>
-    <string name="save_artwork_error">Salvarea coperții la stocarea locală a eșuat</string>
-    <string name="save_artwork_success">Copertă album salvată</string>
-    <string name="save_artwork_view_action">Vizualizare</string>
-    <string name="save_artwork_copyright_info_title">Drepturi de autor</string>
-    <string name="save_artwork_copyright_info_message">Unele coperte de album (sau toate acestea) ar putea fi protejate de legile drepturilor de autor. Nu puteți folosi astfel de imagini în scopuri comerciale sau publicitare. \n\nDoar tu ai responsabilitatea totală pentru utilizarea copertelor de album salvate.</string>
     <string name="yes">Da</string>
     <string name="no">Nr</string>
     <string name="keyboard">Keyboard</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">Format</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Titlu și Artist</string>
     <string name="song">Melodie</string>
     <string name="title">Titlu</string>
     <string name="album">Album</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">Conexiune indisponibilă.</string>
     <string name="you_have_to_select_at_least_one_category">Trebuie să selectaţi cel puţin o categorie</string>
     <string name="you_cannot_select_more_than_five_categories">Nu puteți selecta mai mult de cinci categorii.</string>
-    <string name="backup_settings">Setări</string>
-    <string name="backup_synced_lyrics">Versuri sincronizate</string>
-    <string name="backup_artist_images">Imagini artist</string>
-    <string name="backup_playlists">Liste</string>
     <string name="backup_successful">Copie de rezervă reușită!</string>
     <string name="backup_failed">Copie de rezervă eșuată.</string>
     <string name="select_content_to_restore">Selectaţi conţinutul pentru restaurare:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Linie automată</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -383,7 +348,7 @@
     <string name="top_albums">Albume de top</string>
     <string name="recent_artists">Artiști recenți</string>
     <string name="recent_albums">Albume recente</string>
-    <string name="no_suggestions">Nu există sugestii pentru dvs.</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>
@@ -486,25 +451,15 @@
     <string name="synced_lyrics">Sincronizat</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Descărcat</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">Importă versuri sincronizate</string>
-    <string name="action_share_synchronized_lyrics">Distribuie versuri sincronizate</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Doriți să importați versuri sincronizate LRC pentru <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Versuri importate pentru %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Nu s-au putut importa versuri pentru %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Selectați un fișier LRC care conține versuri sincronizate.</string>
     <string name="cannot_download_lyrics">Booming Music nu a putut găsi versurile acestei melodii. Vrei să cauți manual?</string>
     <string name="search_lyrics">Caută versuri</string>
     <string name="choose_lyrics">Alege tipul de versuri</string>
     <string name="download_lyrics">Descarcă versuri</string>
     <string name="write_lyrics_here">Scrie versuri aici</string>
-    <string name="write_synced_lyrics_here">Scrie versuri sincronizate aici</string>
     <string name="no_lyrics_found">Nu s-au găsit versuri</string>
-    <string name="no_synced_lyrics_found">Nu s-au găsit versuri sincronizate</string>
     <string name="lyrics_were_updated_successfully">Versurile au fost actualizate cu succes.</string>
     <string name="failed_to_update_lyrics">Actualizarea versurilor a eșuat.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
@@ -535,11 +490,8 @@
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">Vezi profilul pe GitHub</string>
     <string name="write_an_email">Scrie un e-mail</string>
     <string name="support_development">Sprijină dezvoltarea</string>
@@ -552,7 +504,6 @@
     <string name="send_invitation_message">Trimite mesaj de invitație</string>
     <string name="invitation_message_content">Salut. Uită-te la Booming Music! Cea mai bună aplicație pentru a asculta muzică locală pe Android. Poți să o descarci de aici: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Veţi fi redirecţionat către site-ul de urmărire a problemelor.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Acces la stocare necesar</string>
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
@@ -589,7 +540,6 @@
     <string name="audio_focus_header">Focalizare audio</string>
     <string name="shuffle_mode_header">Mod Amestecare</string>
     <string name="display_header">Afişare</string>
-    <string name="backup_restore_header">Backup/restaurare</string>
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Temă generală</string>
@@ -661,8 +611,6 @@
     <string name="circle_button_title">Butonul de redare circulară</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dublă atingere pe copertă</string>
     <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
@@ -773,10 +721,6 @@
     <string name="min_song_duration_summary">Câte secunde (cel puțin) trebuie să dureze o melodie pentru a fi afișată în bibliotecă.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Limba aplicației</string>
-    <string name="backup_data_title">Copie de rezervă date aplicație</string>
-    <string name="backup_app_data_summary">Creați un fișier care conține date esențiale ale aplicației și salvați-l pe stocare externă.</string>
-    <string name="restore_backup_title">Restaurare copie de rezervă</string>
-    <string name="restore_backup_summary">Restabiliți datele aplicației (și stați) dintr-o copie de rezervă anterioară.</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
@@ -848,8 +792,6 @@
     <string name="every_fifteen_days">La fiecare cincisprezece zile</string>
     <string name="monthly">Lunar</string>
     <string name="never">Niciodată</string>
-    <string name="only_wifi_title">Numai Wi-Fi</string>
-    <string name="only_wifi_summary">Căutaţi actualizări numai atunci când Wi-Fi este conectat.</string>
     <string name="receive_experimental_updates_title">Primește actualizări experimentale</string>
     <string name="receive_experimental_updates_summary">Vă rugăm să reţineţi că aceste actualizări sunt adesea foarte instabile şi sunt destinate utilizatorilor experimentaţi.</string>
     <string name="search_for_update_title">Căutare actualizare</string>

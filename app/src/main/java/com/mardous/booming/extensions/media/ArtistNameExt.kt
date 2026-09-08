@@ -10,9 +10,9 @@ import java.util.regex.Pattern
  * A pattern that matches any artist name containing some sequences like "feat.", "ft.", "featuring"
  * and/or other special characters like "/" and ";".
  */
-private val artistNamePattern = Pattern.compile("(.*)([(?\\s](feat(uring)?|ft)\\.? |\\s?[/;]\\s?)(.*)")
+private val artistNamePattern = Pattern.compile("(.*)([(?\\s](feat(uring)?|ft|with)\\.? |\\s?[/;,]\\s?|\\s+x\\s+)(.*)")
 
-fun String.toAlbumArtistName(): String {
+fun String.extractMainArtistName(): String {
     val matcher = artistNamePattern.matcher(lowercase())
     if (matcher.matches()) {
         val goIndex = matcher.start(2)

@@ -25,8 +25,10 @@ import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.local.room.SongEntity
 import com.mardous.booming.data.mapper.toSongs
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.extensions.files.belongsTo
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.extensions.showToast
+import com.mardous.booming.extensions.utilities.sanitize
 import com.mardous.booming.util.FileUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -101,8 +103,10 @@ object M3UWriter : KoinComponent {
 
     @Throws(IOException::class)
     fun writeToDirectory(dir: File, playlist: PlaylistWithSongs): File {
-        val exportFile = File(dir, String.format("%s.%s", playlist.playlistEntity.playlistName, M3UConstants.EXTENSION))
-        if (exportFile.createNewFile()) {
+        val fileName = playlist.playlistEntity.playlistName.sanitize()
+            .ifBlank { "playlist-${System.currentTimeMillis()}" }
+        val exportFile = File(dir, "$fileName.${M3UConstants.EXTENSION}")
+        if (exportFile.belongsTo(dir) && exportFile.createNewFile()) {
             exportFile.bufferedWriter().use {
                 if (!writeImpl(it, playlist.songs)) {
                     exportFile.delete()

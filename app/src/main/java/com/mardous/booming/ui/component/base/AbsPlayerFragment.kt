@@ -19,8 +19,6 @@ package com.mardous.booming.ui.component.base
 
 import android.animation.AnimatorSet
 import android.app.Activity
-import android.content.ActivityNotFoundException
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -53,9 +51,9 @@ import coil3.size.Scale
 import com.commit451.coiltransformations.BlurTransformation
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
+import com.mardous.booming.MainActivity
 import com.mardous.booming.R
+import com.mardous.booming.core.MediaEventBus
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.core.model.PaletteColor
 import com.mardous.booming.core.model.action.NowPlayingAction
@@ -74,7 +72,6 @@ import com.mardous.booming.extensions.navigation.albumDetailArgs
 import com.mardous.booming.extensions.navigation.artistDetailArgs
 import com.mardous.booming.extensions.navigation.findActivityNavController
 import com.mardous.booming.extensions.navigation.genreDetailArgs
-import com.mardous.booming.extensions.requestView
 import com.mardous.booming.extensions.resources.animateBackgroundColor
 import com.mardous.booming.extensions.resources.animateTintColor
 import com.mardous.booming.extensions.resources.inflateMenu
@@ -86,8 +83,6 @@ import com.mardous.booming.ui.component.menu.onSongMenu
 import com.mardous.booming.ui.dialogs.WebSearchDialog
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.songs.DeleteSongsDialog
-import com.mardous.booming.ui.dialogs.songs.ShareSongDialog
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragment
 import com.mardous.booming.ui.screen.equalizer.EqualizerFragmentArgs
 import com.mardous.booming.ui.screen.library.LibraryViewModel
@@ -102,6 +97,7 @@ import com.mardous.booming.util.NOW_PLAYING_EXTRA_INFO
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -114,6 +110,8 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
 
     val playerViewModel: PlayerViewModel by activityViewModel()
     val libraryViewModel: LibraryViewModel by activityViewModel()
+
+    protected val mediaEventBus: MediaEventBus by inject()
 
     private var gesturesController: PlayerGesturesController? = null
     private var coverFragment: CoverPagerFragment? = null
@@ -135,7 +133,7 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
         onCreateChildFragments()
         onPrepareViewGestures(view)
         viewLifecycleOwner.launchAndRepeatWithViewLifecycle {
-            playerViewModel.mediaEvent.filter { it == MediaEvent.FavoriteContentChanged }
+            mediaEventBus.eventFlow.filter { it == MediaEvent.FavoriteContentChanged }
                 .collect {
                     updateIsFavorite(withAnim = true)
                 }
@@ -261,12 +259,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 libraryViewModel.genreBySong(currentSong).observe(viewLifecycleOwner) { genre ->
                     goToGenre(requireActivity(), genre)
                 }
-                true
-            }
-
-            R.id.action_share_now_playing -> {
-                ShareSongDialog.create(playerViewModel.currentSong)
-                    .show(childFragmentManager, "SHARE_SONG")
                 true
             }
 
@@ -469,11 +461,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
                 true
             }
 
-            NowPlayingAction.SaveAlbumCover -> {
-                requestSaveCover()
-                true
-            }
-
             NowPlayingAction.DeleteFromDevice -> {
                 DeleteSongsDialog.create(currentSong).show(childFragmentManager, "DELETE_SONGS")
                 true
@@ -652,44 +639,6 @@ abstract class AbsPlayerFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes
             }
         } else {
             getString(R.string.list_end)
-        }
-    }
-
-    private fun requestSaveCover() {
-        if (!Preferences.savedArtworkCopyrightNoticeShown) {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.save_artwork_copyright_info_title)
-                .setMessage(R.string.save_artwork_copyright_info_message)
-                .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                    Preferences.savedArtworkCopyrightNoticeShown = true
-                    requestSaveCover()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-        } else {
-            playerViewModel.saveCover(playerViewModel.currentSong).observe(viewLifecycleOwner) { result ->
-                requestView { view ->
-                    if (result.isWorking) {
-                        Snackbar.make(view, R.string.saving_cover_please_wait, Snackbar.LENGTH_SHORT)
-                            .show()
-                    } else if (result.uri != null) {
-                        Snackbar.make(view, R.string.save_artwork_success, Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.save_artwork_view_action) {
-                                try {
-                                    startActivity(
-                                        Intent(Intent.ACTION_VIEW)
-                                            .setDataAndType(result.uri, "image/jpeg")
-                                            .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                                    )
-                                } catch (_: ActivityNotFoundException) {}
-                            }
-                            .show()
-                    } else {
-                        Snackbar.make(view, R.string.save_artwork_error, Snackbar.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-            }
         }
     }
 }

@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Zamíchání umělce</string>
     <string name="action_share">Sdílet</string>
     <string name="action_save">Uložit</string>
-    <string name="what_do_you_want_to_share">Co chcete sdílet?</string>
-    <string name="the_audio_file">Zvukový soubor</string>
-    <string name="i_am_listening">Poslouchám…</string>
-    <string name="currently_listening_to_x_by_x">Poslouchám %1$s od %2$s</string>
-    <string name="share_to_stories">Sdílet s příběhy</string>
-    <string name="could_not_create_the_story">Nelze vytvořit příběh.</string>
     <string name="back_action">Zpět</string>
     <string name="add_action">Přidat</string>
     <string name="delete_action">Vymazat</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">Přidat do playlistu</string>
     <string name="rename_playlist_title">Přejmenovat seznam skladeb</string>
     <string name="action_edit_playlist">Upravit seznam skladeb</string>
-    <string name="action_delete">Odstranit seznam skladeb</string>
+    <string name="action_delete_playlist">Odstranit seznam skladeb</string>
     <string name="action_export_playlist">Exportovat do souboru</string>
     <string name="action_clear_history">Vymazat historii</string>
     <string name="history_cleared">Historie vymazána</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">Musíte udělit oprávnění pro přístup k externímu úložišti.</string>
     <string name="permission_bluetooth_title">Blízká zařízení</string>
     <string name="permission_bluetooth_description">Aplikace potřebuje oprávnění zařízení v blízkosti pro kontrolu bluetooth zařízení</string>
-    <string name="permission_bluetooth_denied">Oprávnění zařízení v blízkosti bylo odepřeno.</string>
     <string name="permission_read_images_title">Číst obrázky (volitelné)</string>
     <string name="permission_read_images_summary">Toto oprávnění je vyžadováno pro Booming Music pro nalezení souborů s obaly alba ve vašich hudebních složkách. Pokud neplánujete používat tuto funkci, můžete se rozhodnout, že ji neudělíte.</string>
     <string name="permission_read_images_denied">Musíte udělit oprávnění ke čtení obrázků ze zařízení.</string>
-    <string name="permission_exact_alarms_title">Naplánovat přesné budíky (volitelné)</string>
-    <string name="permission_exact_alarms_description">Pro správné fungování časovače spánku je vyžadováno oprávnění naplánovat přesné výstrahy</string>
-    <string name="permission_ringtone_title">Vyzvánění (volitelné)</string>
-    <string name="permission_ringtone_description">Aplikace potřebuje oprávnění pro přístup k nastavení zařízení pro nastavení hudby jako vyzvánění</string>
-    <string name="permission_request_write_settings"><![CDATA[Musíš povolit Booming Music měnit nastavení systému, aby jsi mohl nastavit <b>%s</b> jako vyzváněcí tón]]></string>
     <string name="permissions_denied">Oprávnění odepřena</string>
     <string name="permissions_needed">Potřebná oprávnění</string>
     <string name="grant_access_action">Povolit přístup</string>
     <string name="action_grant">Udělit</string>
     <string name="granted">Uděleno</string>
-    <string name="hello_there">Ahoj!</string>
     <string name="welcome_to_x">Vítejte v %s</string>
     <string name="get_started">Začněte</string>
     <string name="select_storage_title">Vyberte úložiště</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">Velikost mřížky</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Seřadit podle</string>
-    <string name="sort_order_az">A-Z</string>
     <string name="sort_order_artist">Umělec</string>
     <string name="sort_order_album">Album</string>
     <string name="sort_order_year">Rok</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">Seznam skladeb</string>
     <string name="sort_order_descending">sestupně</string>
     <string name="sort_order_ignore_articles">Ignorovat články</string>
-    <string name="action_set_as_ringtone">Nastavit jako vyzvánění</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Nastaví <b>%s</b> jako vyzvánění]]></string>
-    <string name="x_has_been_set_as_ringtone">Nastavit %s jako vyzváněcí tón</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Nastavit %s jako vyzváněcí tón a budík</string>
-    <string name="use_also_as_alarm_alert">Použít také jako budík</string>
     <string name="action_details">Detaily</string>
     <string name="action_set_as_start_directory">Nastavit jako počáteční adresář</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -260,15 +241,6 @@
     <string name="download_image">Stáhnout obrázek</string>
     <string name="pick_from_local_storage">Vybrat z místního úložiště</string>
     <string name="about_x_title">O %s</string>
-    <string name="listeners_label">Posluchači</string>
-    <string name="scrobbles_label">Scrobble</string>
-    <string name="save_cover">Uložit obal alba</string>
-    <string name="saving_cover_please_wait">Ukládání krytu, počkejte…</string>
-    <string name="save_artwork_error">Nepodařilo se uložit obal do místního úložiště</string>
-    <string name="save_artwork_success">Obal alba byl uložen</string>
-    <string name="save_artwork_view_action">Zobrazit</string>
-    <string name="save_artwork_copyright_info_title">Autorská práva oznámení</string>
-    <string name="save_artwork_copyright_info_message">Některé obálky alba (nebo všechny obálky) mohou být chráněny autorským právem. Takové obrázky nelze použít pro komerční nebo reklamní účely. \n\nPouze vy máte celkovou odpovědnost za používání uložených obalů alba.</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
     <string name="keyboard">Keyboard</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">Formát</string>
     <string name="file_label">Soubor</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Název a interpret</string>
     <string name="song">Skladba</string>
     <string name="title">Hlava 1 – Celkem</string>
     <string name="album">Album</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">Připojení není k dispozici.</string>
     <string name="you_have_to_select_at_least_one_category">Musíte vybrat alespoň jednu kategorii</string>
     <string name="you_cannot_select_more_than_five_categories">Nelze vybrat více než pět kategorií.</string>
-    <string name="backup_settings">Nastavení</string>
-    <string name="backup_synced_lyrics">Synchronizované texty</string>
-    <string name="backup_artist_images">Obrázky interpreta</string>
-    <string name="backup_playlists">Seznamy stop</string>
     <string name="backup_successful">Záloha byla úspěšná!</string>
     <string name="backup_failed">Záloha se nezdařila.</string>
     <string name="select_content_to_restore">Vyberte obsah k obnovení:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">Seznam skladeb uzamčen</string>
     <string name="playlist_unlocked">Seznam skladeb odemknut</string>
     <string name="action_toggle_queue_lock">Zamknout/odemknout frontu</string>
-    <string name="queue_locked">Fronta uzamčena</string>
-    <string name="queue_unlocked">Fronta odemčena</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Automatická čára</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -391,7 +356,7 @@
     <string name="top_albums">Nejlepší alba</string>
     <string name="recent_artists">Nedávní umělci</string>
     <string name="recent_albums">Nedávná alba</string>
-    <string name="no_suggestions">Neexistují žádné návrhy pro vás</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Naprosto náhodně</string>
     <string name="shuffle_mode_most_played">Nejvíce přehrávané</string>
@@ -494,25 +459,15 @@
     <string name="synced_lyrics">Synchronizováno</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Staženo</string>
-    <string name="external_file_lyrics">Externí soubor</string>
-    <string name="action_import_synchronized_lyrics">Importovat synchronizované texty</string>
-    <string name="action_share_synchronized_lyrics">Sdílet synchronizované texty</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Chcete importovat synchronizované texty LRC pro <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Importován text pro %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Nelze importovat texty pro %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Vyberte soubor LRC obsahující synchronizované texty.</string>
     <string name="cannot_download_lyrics">Booming hudba nenalezla text pro tuto skladbu. Chcete hledat ručně?</string>
     <string name="search_lyrics">Hledat texty</string>
     <string name="choose_lyrics">Vyberte typ textů</string>
     <string name="download_lyrics">Stáhnout texty</string>
     <string name="write_lyrics_here">Zde napište texty</string>
-    <string name="write_synced_lyrics_here">Napsat synchronizované texty zde</string>
     <string name="no_lyrics_found">Nenalezeny žádné texty</string>
-    <string name="no_synced_lyrics_found">Nebyly nalezeny žádné synchronizované texty</string>
     <string name="lyrics_were_updated_successfully">Texty byly úspěšně aktualizovány.</string>
     <string name="failed_to_update_lyrics">Aktualizace textů se nezdařila.</string>
     <string name="there_are_no_changes_to_save">Neexistují žádné změny k uložení.</string>
-    <string name="lyrics_source_external_file">Texty pocházejí z externího souboru. Tento soubor nelze upravovat přímo z Booming Music.</string>
     <string name="font_imported_successfully">Písmo bylo úspěšně importováno.</string>
     <string name="could_not_import_font">Písmo nelze importovat.</string>
     <!-- Sleep timer -->
@@ -543,11 +498,8 @@
     <string name="author">Autor</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Přispěvatelé</string>
-    <string name="acknowledgments_title">Potvrzení</string>
     <string name="translators_title">Překladatelé</string>
     <string name="translators_summary">Díky těm, kteří zpřístupňují Booming Music v mnoha jazycích.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">Zobrazit profil na GitHub</string>
     <string name="write_an_email">Napsat e-mail</string>
     <string name="support_development">Podpořte vývoj</string>
@@ -560,7 +512,6 @@
     <string name="send_invitation_message">Odeslat pozvánku</string>
     <string name="invitation_message_content">Ahoj. Podívejte se na Booming Musice! Nejlepší aplikace pro poslech místní hudby na Android. Můžete si ji stáhnout zde: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Budete přesměrováni na webovou stránku pro sledování problémů.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Vyžadován přístup k úložišti</string>
     <string name="saf_access_required_message">Booming Music vyžaduje oprávnění pro přístup k těmto souborům. Prosím vyberte kořenovou složku, kde jsou vaše hudební soubory uloženy.</string>
@@ -597,7 +548,6 @@
     <string name="audio_focus_header">Zaměření zvuku</string>
     <string name="shuffle_mode_header">Režim náhodného výběru</string>
     <string name="display_header">Zobrazení</string>
-    <string name="backup_restore_header">Zálohovat/obnovit</string>
     <string name="visuals_header">Vizuály</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Obecný motiv</string>
@@ -669,8 +619,6 @@
     <string name="circle_button_title">Kruhové tlačítko přehrávání</string>
     <string name="swipe_album_cover_title">Přejeďte přes obal alba</string>
     <string name="swipe_album_cover_summary">Přejeďte prstem vlevo nebo vpravo na obal alba pro přeskočení mezi skladbami.</string>
-    <string name="queue_height_title">Výška poloobrazovky fronty</string>
-    <string name="queue_height_summary">Opravte výšku fronty přehrávání do poloviny obrazovky.</string>
     <string name="single_tap_on_album_cover_title">Jedním klepnutím na úvodní fotku</string>
     <string name="double_tap_on_album_cover_title">Dvojím poklepáním na obal</string>
     <string name="double_tap_on_left_album_cover_title">Dvojitým klepnutím na levý albový kryt</string>
@@ -781,10 +729,6 @@
     <string name="min_song_duration_summary">Kolik sekund (alespoň) musí trvat skladba, aby se zobrazila ve vaší knihovně.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Jazyk aplikace</string>
-    <string name="backup_data_title">Zálohovat data aplikace</string>
-    <string name="backup_app_data_summary">Vytvořte soubor obsahující základní data aplikace a uložte jej do externího úložiště.</string>
-    <string name="restore_backup_title">Obnovit zálohu</string>
-    <string name="restore_backup_summary">Obnovit data aplikace (a stav) z předchozí zálohy.</string>
     <string name="stop_when_closed_from_recents_title">Zastavit při zavření nedávných aplikací</string>
     <string name="stop_when_closed_from_recents_summary">Přehrávání se zastaví, pokud je aplikace uzavřena ze seznamu nedávných aplikací.</string>
     <string name="stop_when_closed_from_recents_note">Poznámka: Některá zařízení s agresivní pamětí nebo s řízením baterie mohou toto nastavení ignorovat a po odstranění z nedávných aplikací vždy aplikaci zastavit.</string>
@@ -856,8 +800,6 @@
     <string name="every_fifteen_days">Každých patnáct dní</string>
     <string name="monthly">Měsíčně</string>
     <string name="never">Nikdy</string>
-    <string name="only_wifi_title">Pouze Wi-Fi</string>
-    <string name="only_wifi_summary">Vyhledat aktualizace pouze při připojení k Wi-Fi.</string>
     <string name="receive_experimental_updates_title">Přijímat experimentální aktualizace</string>
     <string name="receive_experimental_updates_summary">Vezměte prosím na vědomí, že tyto aktualizace jsou často velmi nestabilní a jsou určeny pro zkušené uživatele.</string>
     <string name="search_for_update_title">Hledat aktualizace</string>

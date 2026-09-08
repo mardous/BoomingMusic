@@ -1,77 +1,81 @@
 package com.mardous.booming.ui.component.compose
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import coil3.compose.AsyncImagePainter.State
-import coil3.compose.LocalPlatformContext
-import coil3.compose.rememberAsyncImagePainter
-import coil3.compose.rememberConstraintsSizeResolver
-import coil3.request.ImageRequest
+import coil3.compose.AsyncImage
 import com.mardous.booming.R
 
 @Composable
 fun MediaImage(
     model: Any?,
+    modifier: Modifier = Modifier,
     placeholderIcon: Int = R.drawable.ic_music_note_24dp,
-    contentDescription: String? = null,
-    modifier: Modifier = Modifier
+    contentDescription: String? = null
 ) {
-    val sizeResolver = rememberConstraintsSizeResolver()
-    val painter = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalPlatformContext.current)
-            .data(model)
-            .size(sizeResolver)
-            .build(),
-        contentScale = ContentScale.Crop
+    AsyncImage(
+        model = model,
+        contentDescription = contentDescription,
+        contentScale = ContentScale.Crop,
+        error = rememberMediaPlaceholderPainter(placeholderIcon),
+        placeholder = rememberMediaPlaceholderPainter(placeholderIcon),
+        modifier = modifier
     )
-    val state by painter.state.collectAsState()
-    when {
-        state is State.Error || state is State.Loading -> {
-            MediaPlaceholder(
-                iconRes = placeholderIcon,
-                modifier = modifier
-            )
-        }
-        else -> {
-            Image(
-                painter = painter,
-                contentDescription = contentDescription,
-                contentScale = ContentScale.Crop,
-                modifier = modifier.then(sizeResolver)
-            )
-        }
-    }
 }
 
 @Composable
-fun MediaPlaceholder(
+fun rememberMediaPlaceholderPainter(
     @DrawableRes iconRes: Int,
     iconScale: Float = 0.5f,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-            .background(MaterialTheme.colorScheme.surfaceContainerHighest)
-    ) {
-        Icon(
-            painter = painterResource(iconRes),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier
-                .fillMaxSize(iconScale)
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceContainerHighest,
+    iconColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+): Painter {
+    val iconPainter = painterResource(iconRes)
+    return remember(iconPainter, backgroundColor, iconColor, iconScale) {
+        MediaPlaceholderPainter(
+            iconPainter = iconPainter,
+            backgroundColor = backgroundColor,
+            iconColor = iconColor,
+            iconScale = iconScale
         )
+    }
+}
+
+class MediaPlaceholderPainter(
+    private val iconPainter: Painter,
+    private val backgroundColor: Color,
+    private val iconColor: Color,
+    private val iconScale: Float = 0.5f
+) : Painter() {
+
+    override val intrinsicSize: Size = Size.Unspecified
+
+    override fun DrawScope.onDraw() {
+        drawRect(color = backgroundColor)
+
+        val minDim = size.minDimension
+        val iconSize = Size(minDim * iconScale, minDim * iconScale)
+
+        translate(
+            left = (size.width - iconSize.width) / 2f,
+            top = (size.height - iconSize.height) / 2f
+        ) {
+            with(iconPainter) {
+                draw(
+                    size = iconSize,
+                    colorFilter = ColorFilter.tint(iconColor)
+                )
+            }
+        }
     }
 }

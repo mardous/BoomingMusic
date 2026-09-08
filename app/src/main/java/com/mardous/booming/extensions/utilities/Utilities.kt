@@ -17,12 +17,29 @@
 
 package com.mardous.booming.extensions.utilities
 
+import android.os.Build
 import android.util.Log
 import kotlinx.serialization.json.Json
 import java.text.Normalizer
 
 private val SPACES_REGEX = Regex("\\s+")
 const val DEFAULT_INFO_DELIMITER = " • "
+
+private val arabicBlocks: Set<Character.UnicodeBlock> by lazy {
+    mutableSetOf(
+        Character.UnicodeBlock.ARABIC,
+        Character.UnicodeBlock.ARABIC_SUPPLEMENT,
+        Character.UnicodeBlock.ARABIC_EXTENDED_A,
+        Character.UnicodeBlock.ARABIC_PRESENTATION_FORMS_A,
+        Character.UnicodeBlock.ARABIC_PRESENTATION_FORMS_B
+    ).apply {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) {
+            add(Character.UnicodeBlock.ARABIC_EXTENDED_B)
+        }
+    }
+}
+
+fun String?.isWhitespace() = this != null && this.length == 1 && this[0] == ' '
 
 fun String.collapseSpaces() = trim().replace(SPACES_REGEX, " ")
 
@@ -43,6 +60,24 @@ fun CharSequence.sanitize(): String {
         .replace("|", "_")
         .replace("\\", "_")
         .replace("&", "_")
+}
+
+fun String.capitalize(): String {
+    return this.split(" ")
+        .joinToString(" ") { word ->
+            word.lowercase().replaceFirstChar { char ->
+                if (char.isLowerCase()) char.titlecase() else char.toString()
+            }
+        }
+}
+
+fun Char.isArabic(): Boolean {
+    val unicodeBlock = Character.UnicodeBlock.of(this) ?: return false
+    return unicodeBlock in arabicBlocks
+}
+
+fun String.isRtl(): Boolean {
+    return any { it.isArabic() }
 }
 
 fun buildInfoString(vararg parts: Any?, delimiter: String = DEFAULT_INFO_DELIMITER): String {

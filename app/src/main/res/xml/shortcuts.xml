@@ -8,7 +8,7 @@
         android:shortcutShortLabel="@string/last_added_label">
         <intent
             android:action="com.mardous.booming.shortcut.LAST_ADDED"
-            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetClass="com.mardous.booming.MainActivity"
             android:targetPackage="com.mardous.booming" />
     </shortcut>
     <shortcut
@@ -19,7 +19,7 @@
         android:shortcutShortLabel="@string/top_tracks_label">
         <intent
             android:action="com.mardous.booming.shortcut.TOP_TRACKS"
-            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetClass="com.mardous.booming.MainActivity"
             android:targetPackage="com.mardous.booming" />
     </shortcut>
     <shortcut
@@ -30,7 +30,7 @@
         android:shortcutShortLabel="@string/favorites_label">
         <intent
             android:action="com.mardous.booming.shortcut.FAVORITES"
-            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetClass="com.mardous.booming.MainActivity"
             android:targetPackage="com.mardous.booming" />
     </shortcut>
     <shortcut
@@ -41,7 +41,7 @@
         android:shortcutShortLabel="@string/shuffle_all_label">
         <intent
             android:action="com.mardous.booming.shortcut.SHUFFLE"
-            android:targetClass="com.mardous.booming.ui.screen.MainActivity"
+            android:targetClass="com.mardous.booming.MainActivity"
             android:targetPackage="com.mardous.booming" />
     </shortcut>
 </shortcuts>

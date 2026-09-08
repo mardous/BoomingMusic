@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:background="@drawable/widget_shape_card"
+    android:backgroundTint="?attr/colorSurfaceContainer"
+    android:theme="@style/Theme.AppWidget"
+    tools:ignore="UselessLeaf">
+    <!-- Spacers are FrameLayouts, not Space: RemoteViews only inflates @RemoteView classes and Space
+         is not one, so lint's UselessLeaf suggestion would break this layout as an initialLayout. -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_music_note_24dp"
+            android:background="@drawable/widget_shape_card"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_widget_nothing_playing"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_widget_tap_to_play"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/widget_shape_stadium"
+        android:backgroundTint="?attr/colorOutline"
+        android:contentDescription="@null" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_previous_m3_24dp"
+            android:background="@drawable/widget_shape_scallop"
+            android:contentDescription="@string/action_previous" />
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Accent"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_play_24dp"
+            android:background="@drawable/widget_shape_stadium"
+            android:contentDescription="@string/action_play_pause" />
+
+        <ImageView
+            style="@style/Widget.Booming.AppWidget.Preview.Control"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_next_m3_24dp"
+            android:background="@drawable/widget_shape_scallop"
+            android:contentDescription="@string/action_next" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

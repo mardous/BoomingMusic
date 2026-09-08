@@ -66,6 +66,14 @@ object Preferences : KoinComponent {
         preferences.unregisterOnSharedPreferenceChangeListener(listener)
     }
 
+    var onboardShown: Boolean
+        get() = preferences.getBoolean("onboard_shown", false)
+        set(value) = preferences.edit { putBoolean("onboard_shown", value) }
+
+    var requestedPermissions: Set<String>
+        get() = preferences.getStringSet("requested_permissions", emptySet()).orEmpty()
+        set(value) = preferences.edit { putStringSet("requested_permissions", value) }
+
     fun getGeneralTheme(isBlackMode: Boolean): String {
         return if (isBlackMode) {
             GeneralTheme.BLACK
@@ -142,13 +150,12 @@ object Preferences : KoinComponent {
     val holdTabToSearch: Boolean
         get() = preferences.getBoolean(HOLD_TAB_TO_SEARCH, true)
 
+    val ignoreArticlesWhenSorting: Boolean
+        get() = preferences.getBoolean(IGNORE_ARTICLES_WHEN_SORTING, false)
+
     var lockedPlaylists: Boolean
         get() = preferences.getBoolean(LOCKED_PLAYLISTS, false)
         set(value) = preferences.edit { putBoolean(LOCKED_PLAYLISTS, value) }
-
-    var queueHeight: Boolean
-        get() = preferences.getBoolean(QUEUE_HEIGHT, false)
-        set(value) = preferences.edit { putBoolean(QUEUE_HEIGHT, value) }
 
     val largerHeaderImage: Boolean
         get() = preferences.getBoolean(LARGER_HEADER_IMAGE, false)
@@ -188,9 +195,8 @@ object Preferences : KoinComponent {
     val swipeOnCover: Boolean
         get() = preferences.getBoolean(SWIPE_ON_COVER, true)
 
-    var isQueueLocked: Boolean
-        get() = preferences.getBoolean(LOCKED_QUEUE, false)
-        set(value) = preferences.edit { putBoolean(LOCKED_QUEUE, value) }
+    val miniPlayerSwipeToSkip: Boolean
+        get() = preferences.getBoolean(MINI_PLAYER_SWIPE_TO_SKIP, true)
 
     fun getNowPlayingColorSchemeKey(nps: NowPlayingScreen) =
         "player_${nps.name.lowercase()}_color_scheme"
@@ -257,7 +263,7 @@ object Preferences : KoinComponent {
         get() = preferences.enumValue(COVER_RIGHT_DOUBLE_TAP_ACTION, NowPlayingAction.SeekForward)
 
     val coverLongPressAction: NowPlayingAction
-        get() = preferences.enumValue(COVER_LONG_PRESS_ACTION, NowPlayingAction.SaveAlbumCover)
+        get() = preferences.enumValue(COVER_LONG_PRESS_ACTION, NowPlayingAction.SleepTimer)
 
     val animateControls: Boolean
         get() = preferences.getBoolean(ANIMATE_PLAYER_CONTROL, true)
@@ -291,11 +297,6 @@ object Preferences : KoinComponent {
             )
         }
 
-    fun getDefaultWidgetInfo(): List<MetadataField> =
-        MetadataField.Content.entries.map { tag ->
-            MetadataField(tag, tag == MetadataField.Content.Album)
-        }
-
     var preferRemainingTime: Boolean
         get() = preferences.getBoolean(PREFER_REMAINING_TIME, false)
         set(value) = preferences.edit { putBoolean(PREFER_REMAINING_TIME, value) }
@@ -321,6 +322,9 @@ object Preferences : KoinComponent {
         } else {
             SongClickBehavior.PlayOnlyThisSong
         }
+
+    val playAllSongsWhenSearching: Boolean
+        get() = preferences.getBoolean(PLAY_ALL_SONGS_WHEN_SEARCHING, false)
 
     val albumShuffleMode: GroupShuffleMode
         get() = getGroupShuffleMode(ALBUM_SHUFFLE_MODE, SelectedShuffleMode.SHUFFLE_ALBUMS)
@@ -411,17 +415,12 @@ object Preferences : KoinComponent {
     val minimumSongCountForAlbum: Int
         get() = preferences.getInt(ALBUM_MINIMUM_SONGS, 1)
 
-    val minimumSongDuration: Int
-        get() = preferences.getInt(MINIMUM_SONG_DURATION, 30)
+    var minimumSongDuration: Int
+        get() = preferences.getInt(MINIMUM_SONG_DURATION, 15)
+        set(value) = preferences.edit { putInt(MINIMUM_SONG_DURATION, value) }
 
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
-
-    val updateSearchMode: String
-        get() = preferences.requireString(UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
-
-    val updateOnlyWifi: Boolean
-        get() = preferences.getBoolean(ONLY_WIFI, false)
 
     val experimentalUpdates: Boolean
         get() = preferences.getBoolean(EXPERIMENTAL_UPDATES, false)
@@ -441,10 +440,6 @@ object Preferences : KoinComponent {
     var startDirectory: File
         get() = File(preferences.requireString(START_DIRECTORY, FileUtil.getDefaultStartDirectory().path))
         set(file) = preferences.edit { putString(START_DIRECTORY, file.getCanonicalPathSafe()) }
-
-    var savedArtworkCopyrightNoticeShown: Boolean
-        get() = preferences.getBoolean(SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN, false)
-        set(value) = preferences.edit { putBoolean(SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN, value) }
 
     var initializedBlacklist: Boolean
         get() = preferences.getBoolean(INITIALIZED_BLACKLIST, false)
@@ -554,6 +549,7 @@ const val LIBRARY_CATEGORIES = "library_categories"
 const val REMEMBER_LAST_PAGE = "remember_last_page"
 const val TAB_TITLES_MODE = "tab_titles_mode"
 const val HOLD_TAB_TO_SEARCH = "hold_tab_to_search"
+const val IGNORE_ARTICLES_WHEN_SORTING = "ignore_articles_when_sorting"
 const val LAST_PAGE = "last_page"
 const val LARGER_HEADER_IMAGE = "larger_header_image"
 const val HORIZONTAL_ARTIST_ALBUMS = "horizontal_artist_albums"
@@ -567,6 +563,7 @@ const val SQUIGGLY_SEEK_BAR = "squiggly_seek_bar"
 const val SWIPE_DOWN_TO_DISMISS = "swipe_down_to_dismiss"
 const val LYRICS_ON_COVER = "lyrics_on_cover"
 const val SWIPE_ON_COVER = "swipe_on_cover"
+const val MINI_PLAYER_SWIPE_TO_SKIP = "mini_player_swipe_to_skip"
 const val NOW_PLAYING_SMALL_IMAGE = "now_playing_small_image"
 const val NOW_PLAYING_IMAGE_CORNER_RADIUS = "now_playing_corner_radius"
 const val PLAYER_BLUR_RADIUS = "player_blur_radius"
@@ -582,10 +579,6 @@ const val ENABLE_SCROLLING_TEXT = "enable_scrolling_text"
 const val DISPLAY_ALBUM_TITLE = "display_album_title"
 const val DISPLAY_EXTRA_INFO = "display_extra_info"
 const val NOW_PLAYING_EXTRA_INFO = "now_playing_extra_info"
-const val WIDGET_DYNAMIC_COLORS = "widget_dynamic_colors"
-const val WIDGET_SMALL_LAYOUT_STYLE = "widget_small_layout_style"
-const val WIDGET_IMAGE_CORNER_RADIUS = "widget_image_corner_radius"
-const val WIDGET_THIRD_LINE_CONTENT = "widget_third_line_content"
 const val PREFER_REMAINING_TIME = "prefer_remaining_time"
 const val PREFER_ALBUM_ARTIST_NAME = "prefer_album_artist_name_on_np"
 const val REWIND_WITH_BACK = "rewind_with_back"
@@ -596,6 +589,7 @@ const val ON_SONG_CLICK_ACTION = "on_song_click_action"
 const val ON_CLEAR_QUEUE_ACTION = "on_clear_queue_action"
 const val PLAY_OPTION_ALWAYS_VISIBLE = "play_option_always_visible"
 const val PLAY_OPTION_PLAYS_WHOLE_LIST = "play_option_whole_list"
+const val PLAY_ALL_SONGS_WHEN_SEARCHING = "play_all_songs_when_searching"
 const val CLEAR_QUEUE_ON_COMPLETION = "clear_queue_on_completion"
 const val REMEMBER_SHUFFLE_MODE = "remember_shuffle_mode"
 const val ALBUM_SHUFFLE_MODE = "album_shuffle_mode"
@@ -626,15 +620,11 @@ const val MINIMUM_SONG_DURATION = "minimum_song_duration"
 const val ENABLE_ROTATION_LOCK = "enable_rotation_lock"
 const val STOP_WHEN_CLOSED_FROM_RECENTS = "stop_when_closed_from_recents"
 const val LANGUAGE_NAME = "language_name"
-const val BACKUP_DATA = "backup_data"
-const val RESTORE_DATA = "restore_data"
-const val UPDATE_SEARCH_MODE = "update_search_mode"
-const val ONLY_WIFI = "update_only_wifi"
+const val AUTO_LANGUAGE = "auto"
 const val LAST_UPDATE_SEARCH = "last_update_search"
 const val LAST_UPDATE_ID = "last_update_id"
 const val EXPERIMENTAL_UPDATES = "experimental_updates"
 const val START_DIRECTORY = "start_directory"
-const val SAVED_ARTWORK_COPYRIGHT_NOTICE_SHOWN = "saved_artwork_copyright_notice_shown"
 const val INITIALIZED_BLACKLIST = "initialized_blacklist"
 const val HIERARCHY_FOLDER_VIEW = "hierarchy_folder_view"
 const val SWIPE_ANYWHERE = "swipe_anywhere"
@@ -642,6 +632,5 @@ const val SWIPE_UP_QUEUE = "swipe_up_queue"
 const val DISPLAY_NEXT_SONG = "display_next_song"
 const val LOCKED_QUEUE = "locked_queue"
 const val LOCKED_PLAYLISTS = "locked_playlists"
-const val QUEUE_HEIGHT = "queue_height"
 const val LASTFM_LOGIN = "lastfm_login"
 const val LISTENBRAINZ_LOGIN = "listenbrainz_login"

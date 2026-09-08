@@ -8,6 +8,12 @@ class ProgressState(val progress: Long, val total: Long) {
 
     val mayUpdateUI = progress > -1 && total > -1
 
+    val fraction = if (total > 0L) {
+        (progress.toFloat() / total.toFloat()).coerceIn(0f, 1f)
+    } else {
+        0f
+    }
+
     val remainingTime: Long = (total - progress).coerceAtLeast(0L)
 
     val remainingTimeAsString: String

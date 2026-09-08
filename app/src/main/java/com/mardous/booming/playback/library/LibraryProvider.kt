@@ -1,8 +1,15 @@
 package com.mardous.booming.playback.library
 
 import android.content.Context
+import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
+import androidx.annotation.OptIn
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
 import com.mardous.booming.R
 import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_ARTIST_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.ALBUM_COVER_PATH
@@ -11,156 +18,147 @@ import com.mardous.booming.coil.CoverProvider.Companion.GENRE_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.PLAYLIST_COVER_PATH
 import com.mardous.booming.coil.CoverProvider.Companion.getImageUri
 import com.mardous.booming.core.model.CategoryInfo
-import com.mardous.booming.data.local.repository.Repository
+import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.toSongs
+import com.mardous.booming.data.model.Album
+import com.mardous.booming.data.model.Artist
+import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.search.SearchQuery
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.media.albumInfo
 import com.mardous.booming.extensions.media.artistInfo
 import com.mardous.booming.extensions.media.asNumberOfSongs
 import com.mardous.booming.extensions.media.songCountStr
-import com.mardous.booming.playback.toMediaItems
+import com.mardous.booming.playback.buildBrowsableMediaItem
+import com.mardous.booming.playback.buildPlayableMediaItem
 import com.mardous.booming.util.Preferences
 
 class LibraryProvider(private val repository: Repository) {
 
-    private val _searchResult = mutableListOf<MediaItem>()
-    val searchResult: List<MediaItem> get() = _searchResult
+    suspend fun resolveMediaItems(mediaItems: List<MediaItem>): List<MediaItem> {
+        try {
+            val resolvedMediaItems = mediaItems
+                .filterTo(arrayListOf()) { item -> item.localConfiguration != null }
 
-    suspend fun getMediaItemsForPlayback(
-        mediaItems: List<MediaItem>,
-        tryToResolveComplexPaths: Boolean = false
-    ): List<MediaItem> {
-        val resolvedMediaItems = mediaItems.filter { item -> item.localConfiguration != null }
-            .toMutableList()
-        if (resolvedMediaItems.size == mediaItems.size) {
-            return resolvedMediaItems
-        }
-        val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems.toSet()).let { invalidItems ->
-            repository.songsByMediaItems(invalidItems)
-        }
-        if (songs.isNotEmpty()) {
-            resolvedMediaItems.addAll(songs.toMediaItems())
-        }
-        if (missingMediaItems.isNotEmpty()) {
-            val complexMediaItems = if (tryToResolveComplexPaths) {
-                missingMediaItems.filter { item -> item.mediaId.contains(":") }
-            } else {
-                emptyList()
-            }
-            if (complexMediaItems.isNotEmpty()) {
-                getMediaItemsForAAOSPlayback(complexMediaItems)?.first?.forEach {
-                    resolvedMediaItems.add(it)
+            // All the MediaItems had their playback settings configured; we can return them as is
+            if (resolvedMediaItems.size == mediaItems.size) return resolvedMediaItems
+
+            fun List<Song>.toPlayableMediaItems() = map { buildPlayableMediaItem(it) }
+
+            // We resolve MediaItems from the repository based on their IDs
+            val (songs, missingMediaItems) = (mediaItems - resolvedMediaItems.toSet())
+                .let { invalidItems ->
+                    repository.songsByMediaItems(invalidItems, ignoreBlacklist = false)
                 }
-            } else {
-                missingMediaItems.forEach {
-                    getPlayableSongs(it.mediaId).let { playableSongs ->
+
+            resolvedMediaItems.addAll(songs.toPlayableMediaItems())
+
+            // We must try to resolve any MediaItems that could not be found in the repository:
+            if (missingMediaItems.isNotEmpty()) {
+                missingMediaItems.forEach { missingMediaItem ->
+                    getPlayableSongs(missingMediaItem.mediaId).let { playableSongs ->
                         if (playableSongs.isNotEmpty()) {
-                            resolvedMediaItems.addAll(playableSongs.toMediaItems())
+                            resolvedMediaItems.addAll(playableSongs.toPlayableMediaItems())
                         }
                     }
                 }
             }
+            return resolvedMediaItems
+        } catch (e: Exception) {
+            Log.e("LibraryProvider", "Could not resolve media items", e)
         }
-        return resolvedMediaItems
+        return emptyList()
     }
 
-    suspend fun getMediaItemsForAAOSPlayback(
-        mediaItems: List<MediaItem>
-    ): Pair<List<MediaItem>, Int>? {
-        val single = mediaItems.singleOrNull()
-        return if (single != null) {
-            val path = MediaIDs.splitPath(single.mediaId)
-            when (path.firstOrNull()) {
-                SEARCH -> {
-                    val id = path.getOrNull(1)
-                    if (id == null || searchResult.isEmpty()) return null
-                    val transformedMediaItems = searchResult.map { it.buildUpon().setMediaId(id).build() }
-                    Pair(
-                        transformedMediaItems,
-                        transformedMediaItems.indexOfFirst { it.mediaId == id }.coerceAtLeast(0)
+    @OptIn(UnstableApi::class)
+    suspend fun tryToResolveComplexMediaItems(
+        mediaItems: List<MediaItem>,
+        startIndex: Int,
+        startPositionMs: Long
+    ): MediaItemsWithStartPosition? {
+        try {
+            val mediaItem = mediaItems.single()
+            if (mediaItem.mediaId == MediaItem.DEFAULT_MEDIA_ID) {
+                val songs = if (mediaItem.requestMetadata.searchQuery?.trim() == "") {
+                    repository.allSongs()
+                } else searchWithRequestMetadata(mediaItem.requestMetadata)
+                if (songs.isNotEmpty()) {
+                    return MediaItemsWithStartPosition(
+                        songs.map { buildPlayableMediaItem(it) },
+                        startIndex,
+                        startPositionMs
                     )
                 }
-
+                return null
+            }
+            val path = MediaIDs.splitPath(mediaItem.mediaId)
+            return when (path.firstOrNull()) {
                 MediaIDs.SONGS -> {
                     val id = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val allSongs = repository.allSongs()
-                    Pair(
-                        allSongs.map { it.toAutoMediaItem() },
-                        allSongs.indexOfFirst { it.id == id }.coerceAtLeast(0)
-                    )
+                    getMediaItemsWithStartPosition(allSongs, id)
                 }
 
                 MediaIDs.ALBUMS -> {
                     val albumId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val album = repository.albumById(albumId)
-                    Pair(
-                        album.songs.map { it.toAutoMediaItem() },
-                        album.songs.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    getMediaItemsWithStartPosition(album.songs, songId)
                 }
 
                 MediaIDs.ARTISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val artistId = path.getOrNull(1)?.toLongOrNull() ?: return null
-                    val artistSongs = repository.artistById(artistId).sortedSongs
-                    Pair(
-                        artistSongs.map { it.toAutoMediaItem() },
-                        artistSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    val artist = repository.artistById(artistId)
+                    getMediaItemsWithStartPosition(artist.sortedSongs, songId)
                 }
 
                 MediaIDs.ALBUM_ARTISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val albumArtistName = path.getOrNull(1) ?: return null
-                    val albumArtistSongs = repository.albumArtistByName(albumArtistName).sortedSongs
-                    Pair(
-                        albumArtistSongs.map { it.toAutoMediaItem() },
-                        albumArtistSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    val albumArtist = repository.albumArtistByName(albumArtistName)
+                    getMediaItemsWithStartPosition(albumArtist.sortedSongs, songId)
                 }
 
                 MediaIDs.PLAYLISTS -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val playlistId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val playlist = repository.playlistWithSongs(playlistId)
-                    Pair(
-                        playlist.songs.toSongs().map { it.toAutoMediaItem() },
-                        playlist.songs.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    getMediaItemsWithStartPosition(playlist.songs.toSongs(), songId)
                 }
 
                 MediaIDs.GENRES -> {
                     val songId = path.getOrNull(2)?.toLongOrNull() ?: return null
                     val genreId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val songsByGenre = repository.songsByGenre(genreId)
-                    Pair(
-                        songsByGenre.map { it.toAutoMediaItem() },
-                        songsByGenre.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    getMediaItemsWithStartPosition(songsByGenre, songId)
                 }
 
                 MediaIDs.TOP_TRACKS -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val playCountSongs = repository.playCountSongs()
-                    Pair(
-                        playCountSongs.map { it.toAutoMediaItem() },
-                        playCountSongs.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    getMediaItemsWithStartPosition(playCountSongs, songId)
                 }
 
                 MediaIDs.RECENT_SONGS -> {
                     val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
                     val historySongs = repository.historySongs()
-                    Pair(
-                        historySongs.map { it.toAutoMediaItem() },
-                        historySongs.indexOfFirst { it.id == songId }.coerceAtLeast(0)
-                    )
+                    getMediaItemsWithStartPosition(historySongs, songId)
+                }
+
+                MediaIDs.FAVORITES -> {
+                    val songId = path.getOrNull(1)?.toLongOrNull() ?: return null
+                    val favoriteSongs = repository.favoriteSongs()
+                    getMediaItemsWithStartPosition(favoriteSongs, songId)
                 }
 
                 else -> null
             }
-        } else null
+        } catch (e: Exception) {
+            Log.e("LibraryProvider", "Could not resolve media items", e)
+        }
+        return null
     }
 
     suspend fun getChildren(
@@ -181,91 +179,67 @@ class LibraryProvider(private val repository: Repository) {
 
             MediaIDs.ALBUMS -> {
                 repository.allAlbums().map { album ->
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.getPathId(parentId, album.id))
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_ALBUM)
-                                .setArtworkUri(getImageUri(ALBUM_COVER_PATH, album.id))
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .setTitle(album.name)
-                                .setSubtitle(album.albumInfo())
-                                .build()
-                        )
-                        .build()
+                    buildBrowsableMediaItem(
+                        type = MediaMetadata.MEDIA_TYPE_ALBUM,
+                        id = MediaIDs.getPathId(parentId, album.id),
+                        title = album.name,
+                        subtitle = album.albumInfo(),
+                        artworkUri = getImageUri(ALBUM_COVER_PATH, album.id)
+                    )
                 }
             }
 
             MediaIDs.ALBUM_ARTISTS -> {
                 repository.allAlbumArtists().map { albumArtist ->
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.getPathId(parentId, albumArtist.name))
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_ARTIST)
-                                .setArtworkUri(getImageUri(ALBUM_ARTIST_COVER_PATH, albumArtist.name))
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .setTitle(albumArtist.name)
-                                .setSubtitle(albumArtist.artistInfo(context))
-                                .build()
-                        )
-                        .build()
+                    buildBrowsableMediaItem(
+                        type = MediaMetadata.MEDIA_TYPE_ARTIST,
+                        id = MediaIDs.getPathId(parentId, albumArtist.name),
+                        title = albumArtist.name,
+                        subtitle = albumArtist.artistInfo(context),
+                        artworkUri = getImageUri(ALBUM_ARTIST_COVER_PATH, albumArtist.name)
+                    )
                 }
             }
 
             MediaIDs.ARTISTS -> {
                 repository.allArtists().map { artist ->
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.getPathId(parentId, artist.id))
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_ARTIST)
-                                .setArtworkUri(getImageUri(ARTIST_COVER_PATH, artist.id))
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .setTitle(artist.name)
-                                .setSubtitle(artist.artistInfo(context))
-                                .build()
-                        )
-                        .build()
+                    buildBrowsableMediaItem(
+                        type = MediaMetadata.MEDIA_TYPE_ARTIST,
+                        id = MediaIDs.getPathId(parentId, artist.id),
+                        title = artist.name,
+                        subtitle = artist.artistInfo(context),
+                        artworkUri = getImageUri(ARTIST_COVER_PATH, artist.id)
+                    )
                 }
             }
 
             MediaIDs.PLAYLISTS -> {
                 repository.playlistsWithSongs(sorted = true).map { playlistWithSongs ->
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.getPathId(parentId, playlistWithSongs.playlistEntity.playListId))
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_PLAYLIST)
-                                .setArtworkUri(getImageUri(PLAYLIST_COVER_PATH, playlistWithSongs.playlistEntity.playListId))
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .setTitle(playlistWithSongs.playlistEntity.playlistName)
-                                .setSubtitle(playlistWithSongs.songCount.asNumberOfSongs(context))
-                                .build()
+                    buildBrowsableMediaItem(
+                        type = MediaMetadata.MEDIA_TYPE_PLAYLIST,
+                        id = MediaIDs.getPathId(
+                            parentId,
+                            playlistWithSongs.playlistEntity.playListId
+                        ),
+                        title = playlistWithSongs.playlistEntity.playlistName,
+                        subtitle = playlistWithSongs.songCount.asNumberOfSongs(context),
+                        artworkUri = getImageUri(
+                            PLAYLIST_COVER_PATH,
+                            playlistWithSongs.playlistEntity.playListId
                         )
-                        .build()
+                    )
                 }
             }
 
             MediaIDs.GENRES -> {
                 repository.allGenres().map { genre ->
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.getPathId(parentId, genre.id))
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_GENRE)
-                                .setArtworkUri(getImageUri(GENRE_COVER_PATH, genre.id))
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .setTitle(genre.name)
-                                .setSubtitle(genre.songCount.asNumberOfSongs(context))
-                                .build()
-                        )
-                        .build()
+                    buildBrowsableMediaItem(
+                        type = MediaMetadata.MEDIA_TYPE_GENRE,
+                        id = MediaIDs.getPathId(parentId, genre.id),
+                        title = genre.name,
+                        subtitle = genre.songCount.asNumberOfSongs(context),
+                        artworkUri = getImageUri(GENRE_COVER_PATH, genre.id)
+                    )
                 }
             }
 
@@ -274,144 +248,164 @@ class LibraryProvider(private val repository: Repository) {
         }
     }
 
-    fun getItem(itemId: String): MediaItem {
+    suspend fun getItem(itemId: String): MediaItem {
         val songId = itemId.toLongOrNull() ?: return MediaItem.EMPTY
-        return repository.songById(songId).toAutoMediaItem()
+        val resolvedSong = repository.songById(songId)
+        return if (resolvedSong != Song.emptySong) {
+            buildPlayableMediaItem(resolvedSong)
+        } else MediaItem.EMPTY
     }
 
-    suspend fun search(query: String): List<MediaItem> {
-        _searchResult.clear()
-        _searchResult.addAll(repository.searchSongs(query).map { it.toAutoMediaItem(SEARCH) })
-        return _searchResult
+    suspend fun getSearchResult(query: String, page: Int, pageSize: Int): List<MediaItem> {
+        val songs = repository.searchSongs(query)
+        val maxPageSize = pageSize.coerceAtMost(200)
+        return if (songs.isEmpty()) emptyList() else
+            songs.asSequence().drop(page * maxPageSize).take(maxPageSize)
+                .mapTo(mutableListOf()) { buildPlayableMediaItem(it) }
     }
 
+    @Suppress("DEPRECATION")
+    private suspend fun searchWithRequestMetadata(
+        requestMetadata: MediaItem.RequestMetadata
+    ): List<Song> {
+        val query = requestMetadata.searchQuery ?: return emptyList()
+        val extras = requestMetadata.extras ?: Bundle.EMPTY
+        return when (extras.getString(MediaStore.EXTRA_MEDIA_FOCUS)) {
+            MediaStore.Audio.Artists.ENTRY_CONTENT_TYPE -> {
+                val artistQuery = extras.getString(MediaStore.EXTRA_MEDIA_ARTIST) ?: query
+                repository.search(SearchQuery(SearchQuery.FilterMode.Artists, artistQuery), null)
+                    .filterIsInstance<Artist>()
+                    .firstOrNull()?.sortedSongs ?: repository.searchSongs(query)
+            }
+
+            MediaStore.Audio.Albums.ENTRY_CONTENT_TYPE -> {
+                val albumQuery = extras.getString(MediaStore.EXTRA_MEDIA_ALBUM) ?: query
+                repository.search(SearchQuery(SearchQuery.FilterMode.Albums, albumQuery), null)
+                    .filterIsInstance<Album>()
+                    .firstOrNull()?.songs ?: repository.searchSongs(query)
+            }
+
+            MediaStore.Audio.Genres.ENTRY_CONTENT_TYPE -> {
+                val genreQuery = extras.getString(MediaStore.EXTRA_MEDIA_GENRE) ?: query
+                repository.search(SearchQuery(SearchQuery.FilterMode.Genres, genreQuery), null)
+                    .filterIsInstance<Genre>()
+                    .firstOrNull()?.let { repository.songsByGenre(it.id) }
+                    ?: repository.searchSongs(query)
+            }
+
+            MediaStore.Audio.Playlists.ENTRY_CONTENT_TYPE -> {
+                val playlistQuery = extras.getString(MediaStore.EXTRA_MEDIA_PLAYLIST) ?: query
+                repository.search(SearchQuery(SearchQuery.FilterMode.Playlists, playlistQuery), null)
+                    .filterIsInstance<PlaylistWithSongs>()
+                    .firstOrNull()?.songs?.toSongs() ?: repository.searchSongs(query)
+            }
+
+            MediaStore.Audio.Media.ENTRY_CONTENT_TYPE -> {
+                val title = extras.getString(MediaStore.EXTRA_MEDIA_TITLE)
+                val artist = extras.getString(MediaStore.EXTRA_MEDIA_ARTIST)
+                if (!title.isNullOrEmpty() && !artist.isNullOrEmpty()) {
+                    repository.searchSongs(title).filter {
+                        it.artistName.contains(artist, ignoreCase = true) ||
+                                it.albumArtistName?.contains(artist, ignoreCase = true) == true
+                    }.ifEmpty { repository.searchSongs("$title $artist") }
+                } else {
+                    repository.searchSongs(query)
+                }
+            }
+
+            else -> repository.searchSongs(query)
+        }
+    }
+
+    @OptIn(UnstableApi::class)
     private suspend fun getRootChildren(context: Context): List<MediaItem> {
         val resources = context.resources
-        val mediaItems: MutableList<MediaItem> = ArrayList()
-        val libraryCategories = Preferences.libraryCategories
-        libraryCategories.forEach { categoryInfo ->
+        val mediaItems = arrayListOf<MediaItem>()
+        Preferences.libraryCategories.forEach { categoryInfo ->
             if (categoryInfo.visible) {
-                when (categoryInfo.category) {
+                val mediaItem = when (categoryInfo.category) {
                     CategoryInfo.Category.Songs -> {
-                        mediaItems.add(
-                            MediaItem.Builder()
-                                .setMediaId(MediaIDs.SONGS)
-                                .setMediaMetadata(
-                                    MediaMetadata.Builder()
-                                        .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                        .setIsBrowsable(true)
-                                        .setIsPlayable(false)
-                                        .setTitle(resources.getString(categoryInfo.category.titleRes))
-                                        .build()
-                                )
-                                .build()
+                        buildBrowsableMediaItem(
+                            type = MediaMetadata.MEDIA_TYPE_FOLDER_MIXED,
+                            id = MediaIDs.SONGS,
+                            title = resources.getString(categoryInfo.category.titleRes)
                         )
                     }
 
                     CategoryInfo.Category.Albums -> {
-                        mediaItems.add(
-                            MediaItem.Builder()
-                                .setMediaId(MediaIDs.ALBUMS)
-                                .setMediaMetadata(
-                                    MediaMetadata.Builder()
-                                        .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_ALBUMS)
-                                        .setIsBrowsable(true)
-                                        .setIsPlayable(false)
-                                        .setTitle(resources.getString(categoryInfo.category.titleRes))
-                                        .build()
-                                )
-                                .build()
+                        buildBrowsableMediaItem(
+                            type = MediaMetadata.MEDIA_TYPE_FOLDER_ALBUMS,
+                            id = MediaIDs.ALBUMS,
+                            title = resources.getString(categoryInfo.category.titleRes),
+                            showAsGrid = true
                         )
                     }
 
                     CategoryInfo.Category.Artists -> {
                         if (Preferences.onlyAlbumArtists) {
-                            mediaItems.add(
-                                MediaItem.Builder()
-                                    .setMediaId(MediaIDs.ALBUM_ARTISTS)
-                                    .setMediaMetadata(
-                                        MediaMetadata.Builder()
-                                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_ARTISTS)
-                                            .setIsBrowsable(true)
-                                            .setIsPlayable(false)
-                                            .setTitle(resources.getString(R.string.album_artists_label))
-                                            .build()
-                                    )
-                                    .build()
+                            buildBrowsableMediaItem(
+                                type = MediaMetadata.MEDIA_TYPE_FOLDER_ARTISTS,
+                                id = MediaIDs.ALBUM_ARTISTS,
+                                title = resources.getString(categoryInfo.category.titleRes),
+                                showAsGrid = true
                             )
                         } else {
-                            mediaItems.add(
-                                MediaItem.Builder()
-                                    .setMediaId(MediaIDs.ARTISTS)
-                                    .setMediaMetadata(
-                                        MediaMetadata.Builder()
-                                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_ARTISTS)
-                                            .setIsBrowsable(true)
-                                            .setIsPlayable(false)
-                                            .setTitle(resources.getString(R.string.artists_label))
-                                            .build()
-                                    )
-                                    .build()
+                            buildBrowsableMediaItem(
+                                type = MediaMetadata.MEDIA_TYPE_FOLDER_ARTISTS,
+                                id = MediaIDs.ARTISTS,
+                                title = resources.getString(categoryInfo.category.titleRes),
+                                showAsGrid = true
                             )
                         }
                     }
 
                     CategoryInfo.Category.Genres -> {
-                        mediaItems.add(
-                            MediaItem.Builder()
-                                .setMediaId(MediaIDs.GENRES)
-                                .setMediaMetadata(
-                                    MediaMetadata.Builder()
-                                        .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_GENRES)
-                                        .setIsBrowsable(true)
-                                        .setIsPlayable(false)
-                                        .setTitle(resources.getString(categoryInfo.category.titleRes))
-                                        .build()
-                                )
-                                .build()
+                        buildBrowsableMediaItem(
+                            type = MediaMetadata.MEDIA_TYPE_FOLDER_GENRES,
+                            id = MediaIDs.GENRES,
+                            title = resources.getString(categoryInfo.category.titleRes),
+                            showAsGrid = true
                         )
                     }
 
                     CategoryInfo.Category.Playlists -> {
-                        mediaItems.add(
-                            MediaItem.Builder()
-                                .setMediaId(MediaIDs.PLAYLISTS)
-                                .setMediaMetadata(
-                                    MediaMetadata.Builder()
-                                        .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_PLAYLISTS)
-                                        .setIsBrowsable(true)
-                                        .setIsPlayable(false)
-                                        .setTitle(resources.getString(categoryInfo.category.titleRes))
-                                        .build()
-                                )
-                                .build()
+                        buildBrowsableMediaItem(
+                            type = MediaMetadata.MEDIA_TYPE_FOLDER_PLAYLISTS,
+                            id = MediaIDs.PLAYLISTS,
+                            title = resources.getString(categoryInfo.category.titleRes),
+                            showAsGrid = true
                         )
                     }
 
-                    else -> { /*no-op*/ }
+                    else -> {
+                        MediaItem.EMPTY
+                    }
                 }
+                if (mediaItem != MediaItem.EMPTY) mediaItems.add(mediaItem)
             }
         }
 
         mediaItems.add(
-            MediaItem.Builder()
-                .setMediaId(MediaIDs.TOP_TRACKS)
-                .setMediaMetadata(
-                    MediaMetadata.Builder()
-                        .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                        .setIsBrowsable(true)
-                        .setIsPlayable(false)
-                        .setTitle(resources.getString(R.string.top_tracks_label))
-                        .setSubtitle(repository.playCountSongs().songCountStr(context))
-                        .build()
-                )
-                .build()
+            buildBrowsableMediaItem(
+                type = MediaMetadata.MEDIA_TYPE_FOLDER_MIXED,
+                id = MediaIDs.TOP_TRACKS,
+                title = resources.getString(R.string.top_tracks_label),
+                subtitle = repository.playCountSongs().songCountStr(context)
+            )
         )
 
         return mediaItems
     }
 
-    private suspend fun getPlayableSongs(
+    // Use id-only DAO queries where possible to avoid loading artwork and metadata for widgets.
+    internal suspend fun getPlayableSongIds(parentId: String, limit: Int): List<Long> =
+        when (parentId) {
+            MediaIDs.RECENT_SONGS -> repository.historySongIds(limit)
+            MediaIDs.TOP_TRACKS -> repository.playCountSongIds(limit)
+            else -> getPlayableSongs(parentId).asSequence().take(limit).map { it.id }.toList()
+        }
+
+    internal suspend fun getPlayableSongs(
         parentId: String,
         childId: String? = null
     ): List<Song> {
@@ -443,19 +437,26 @@ class LibraryProvider(private val repository: Repository) {
     }
 
     private suspend fun getPlayableMediaItems(parentId: String, childId: String? = null) =
-        getPlayableSongs(parentId, childId)
-            .filterNot { it == Song.emptySong }
-            .map { song ->
-                song.toAutoMediaItem(
-                    if (childId.isNullOrEmpty()) parentId else MediaIDs.getPathId(parentId, childId)
-                )
+        getPlayableSongs(parentId, childId).mapNotNull { song ->
+            song.takeIf { it != Song.emptySong }?.let { actualSong ->
+                val parentPath = if (childId.isNullOrEmpty()) parentId else {
+                    MediaIDs.getPathId(parentId, childId)
+                }
+                buildPlayableMediaItem(actualSong, MediaIDs.getPathId(parentPath, actualSong.id))
             }
+        }
 
-    private fun Song.toAutoMediaItem(parent: String? = null): MediaItem =
-        toMediaItem(if (parent.isNullOrEmpty()) id.toString() else MediaIDs.getPathId(parent, id))
-
-    companion object {
-        // Internal ID for search requests
-        private const val SEARCH = "SEARCH"
+    @OptIn(UnstableApi::class)
+    private fun getMediaItemsWithStartPosition(
+        songs: List<Song>,
+        startPositionId: Long
+    ): MediaItemsWithStartPosition? {
+        var startIndex: Int = -1
+        val mediaItems = mutableListOf<MediaItem>()
+        songs.forEachIndexed { index, song ->
+            if (song.id == startPositionId) startIndex = index
+            mediaItems.add(buildPlayableMediaItem(song))
+        }
+        return if (startIndex == -1) null else MediaItemsWithStartPosition(mediaItems, startIndex, C.TIME_UNSET)
     }
 }

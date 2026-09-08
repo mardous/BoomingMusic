@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Kunstner blander</string>
     <string name="action_share">Del</string>
     <string name="action_save">Lagre</string>
-    <string name="what_do_you_want_to_share">Hva ønsker du å dele?</string>
-    <string name="the_audio_file">Lyd filen</string>
-    <string name="i_am_listening">Jeg hører på…</string>
-    <string name="currently_listening_to_x_by_x">Jeg hører på %1$s av %2$s</string>
-    <string name="share_to_stories">Del med historier</string>
-    <string name="could_not_create_the_story">Kan ikke opprette historien.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Legg til</string>
     <string name="delete_action">Slett</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">Legg til i spilleliste</string>
     <string name="rename_playlist_title">Endre spilleliste</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Slett spilleliste</string>
+    <string name="action_delete_playlist">Slett spilleliste</string>
     <string name="action_export_playlist">Eksporter til fil</string>
     <string name="action_clear_history">Tøm logg</string>
     <string name="history_cleared">Historikk tømt</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">Du må gi tilgang til ekstern lagring.</string>
     <string name="permission_bluetooth_title">Nærliggende enheter</string>
     <string name="permission_bluetooth_description">Appen trenger nærliggende enheter tillatelse til å sjekke etter bluetooth-enheter</string>
-    <string name="permission_bluetooth_denied">Tillatelse i nærheten av enheter nektet.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">Planlegg nøyaktig alarmer (valgfritt)</string>
-    <string name="permission_exact_alarms_description">Tillatelse til å planlegge nøyaktige alarmer kreves for at sovetiden skal fungere ordentlig</string>
-    <string name="permission_ringtone_title">Ringetone (valgfritt)</string>
-    <string name="permission_ringtone_description">Appen trenger tilgang til enhetens innstillinger for å kunne angi musikk som Ringtone</string>
-    <string name="permission_request_write_settings"><![CDATA[Du må tillate at Booming Music endrer systeminnstillingene for å velge <b>%s</b> som ringetone]]></string>
     <string name="permissions_denied">Tillatelser avvist</string>
     <string name="permissions_needed">Tillatelser nødvendig</string>
     <string name="grant_access_action">Gi Tilgang</string>
     <string name="action_grant">Tillat</string>
     <string name="granted">Tildelt</string>
-    <string name="hello_there">Hei der!</string>
     <string name="welcome_to_x">Velkommen til %s</string>
     <string name="get_started">Kom i gang</string>
     <string name="select_storage_title">Velg lagring</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">Størrelse på rutenett</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Sorter etter</string>
-    <string name="sort_order_az">A-Å</string>
     <string name="sort_order_artist">Kunstner</string>
     <string name="sort_order_album">album</string>
     <string name="sort_order_year">År</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">Liste over spor</string>
     <string name="sort_order_descending">Synkende</string>
     <string name="sort_order_ignore_articles">Ignorer artikler</string>
-    <string name="action_set_as_ringtone">Bruk som ringetone</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Vil angi <b>%s</b> som ringetone]]></string>
-    <string name="x_has_been_set_as_ringtone">Angi %s som ringetone</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Angi %s som ringetonen og som alarmvarsel</string>
-    <string name="use_also_as_alarm_alert">Bruk også som alarmvarsel</string>
     <string name="action_details">Detaljer</string>
     <string name="action_set_as_start_directory">Angi som startmappe</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -260,15 +241,6 @@
     <string name="download_image">Last ned bilde</string>
     <string name="pick_from_local_storage">Velg fra lokal lagring</string>
     <string name="about_x_title">Om %s</string>
-    <string name="listeners_label">Lyttere</string>
-    <string name="scrobbles_label">Scrobbler</string>
-    <string name="save_cover">Lagre albumomslag</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_error">Kunne ikke lagre forsiden på lokal lagring</string>
-    <string name="save_artwork_success">Albumforsidebilde lagret</string>
-    <string name="save_artwork_view_action">Vis</string>
-    <string name="save_artwork_copyright_info_title">Copyright anmerkning</string>
-    <string name="save_artwork_copyright_info_message">Visse albumomslag (eller alt av dem) kan være beskyttet av opphavsretter. Du kan ikke bruke slike bilder for kommersielle eller reklameformål. \n\nhar du bare det totale ansvaret over din bruk av lagrede albumomslag.</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
     <string name="keyboard">Keyboard</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">Formatér</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Tittel og artist</string>
     <string name="song">Sang</string>
     <string name="title">Tittel</string>
     <string name="album">album</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">Utilgjengelig forbindelse</string>
     <string name="you_have_to_select_at_least_one_category">Du må velge minst en kategori</string>
     <string name="you_cannot_select_more_than_five_categories">Du kan ikke velge mer enn fem kategorier.</string>
-    <string name="backup_settings">Innstillinger</string>
-    <string name="backup_synced_lyrics">Synkroniserte tekster</string>
-    <string name="backup_artist_images">Artistens bilder</string>
-    <string name="backup_playlists">Spillelister</string>
     <string name="backup_successful">Sikkerhetskopiering vellykket!</string>
     <string name="backup_failed">Sikkerhetskopieringen mislyktes.</string>
     <string name="select_content_to_restore">Velg innhold som skal gjenopprette:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux linje</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -375,7 +340,7 @@
     <string name="top_albums">Topp album</string>
     <string name="recent_artists">Siste artister</string>
     <string name="recent_albums">Siste album</string>
-    <string name="no_suggestions">Det er ingen forslag til deg</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>
@@ -478,25 +443,15 @@
     <string name="synced_lyrics">Synkronisert</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Nedlastet</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">Importer synkroniserte tekster</string>
-    <string name="action_share_synchronized_lyrics">Del synkroniserte tekster</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Vil du importere synkroniserte LRC-tekster for <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Importerte sangtekster for %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Kunne ikke importere tekster for %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Velg en LRC-fil som inneholder synkroniserte sangtekster.</string>
     <string name="cannot_download_lyrics">Booming Music kunne ikke finne sangteksten for denne sangen. Vil du søke manuelt?</string>
     <string name="search_lyrics">Søk etter tekster</string>
     <string name="choose_lyrics">Velg type tekst</string>
     <string name="download_lyrics">Last ned tekster</string>
     <string name="write_lyrics_here">Skriv tekster her</string>
-    <string name="write_synced_lyrics_here">Skriv synkroniserte tekster her</string>
     <string name="no_lyrics_found">Ingen tekster funnet</string>
-    <string name="no_synced_lyrics_found">Ingen synkroniserte tekster funnet</string>
     <string name="lyrics_were_updated_successfully">Teksten ble oppdatert.</string>
     <string name="failed_to_update_lyrics">Kunne ikke oppdatere sangtekstene.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
@@ -527,11 +482,8 @@
     <string name="author">Forfatter</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
     <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
     <string name="view_profile_on_github">Vis profil på GitHub</string>
     <string name="write_an_email">Stuur een email</string>
     <string name="support_development">Støtt utviklingen</string>
@@ -544,7 +496,6 @@
     <string name="send_invitation_message">Send invitasjons melding</string>
     <string name="invitation_message_content">Hi. Sjekk ut Booming Music! Den beste appen for å høre lokal musikk på Android. Du kan laste den ned her: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Du videresendes til nettsiden for feilmeldingsspor.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Lagringstilgang kreves</string>
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
@@ -581,7 +532,6 @@
     <string name="audio_focus_header">Lyd fokus</string>
     <string name="shuffle_mode_header">Bland modus</string>
     <string name="display_header">Skjerm</string>
-    <string name="backup_restore_header">Sikkerhetskopiering/gjenoppretting</string>
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Generelt tema</string>
@@ -653,8 +603,6 @@
     <string name="circle_button_title">Sirkulær avspillingsknapp</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Dobbelttrykk på dekselet</string>
     <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
@@ -765,10 +713,6 @@
     <string name="min_song_duration_summary">Hvor mange sekunder (minst) må vare en sang for å vises i biblioteket.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">App språk</string>
-    <string name="backup_data_title">Sikkerhetskopier appdata</string>
-    <string name="backup_app_data_summary">Opprett en fil som inneholder viktige appdata og lagre den til ekstern lagring.</string>
-    <string name="restore_backup_title">Gjenopprett sikkerhetskopi</string>
-    <string name="restore_backup_summary">Gjenopprette appdata (og status) fra en tidligere sikkerhetskopi.</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
@@ -840,8 +784,6 @@
     <string name="every_fifteen_days">Hver femten dag</string>
     <string name="monthly">Månedlig</string>
     <string name="never">Aldri</string>
-    <string name="only_wifi_title">Bare Wi-Fi</string>
-    <string name="only_wifi_summary">Søk etter oppdateringer bare når Wi-Fi er tilkoblet.</string>
     <string name="receive_experimental_updates_title">Motta eksperimentelle oppdateringer</string>
     <string name="receive_experimental_updates_summary">Vær oppmerksom på at disse oppdateringene ofte er svært ustabile og er ment for erfarne brukere.</string>
     <string name="search_for_update_title">Søk etter oppdatering</string>

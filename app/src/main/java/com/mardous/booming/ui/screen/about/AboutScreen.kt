@@ -18,12 +18,15 @@
 package com.mardous.booming.ui.screen.about
 
 import android.content.Intent
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
+import android.content.pm.PackageManager
+import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,275 +36,320 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SegmentedListItem
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil3.compose.AsyncImage
+import com.mardous.booming.App
+import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
-import com.mardous.booming.core.model.about.Contribution
+import com.mardous.booming.core.model.about.AboutItemData
+import com.mardous.booming.core.model.about.loadTranslators
 import com.mardous.booming.extensions.MIME_TYPE_PLAIN_TEXT
+import com.mardous.booming.extensions.languageFlagEmoji
+import com.mardous.booming.extensions.languageNameInEnglish
 import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.toChooser
 import com.mardous.booming.extensions.tryStartActivity
-import com.mardous.booming.ui.component.compose.ActionButton
 import com.mardous.booming.ui.component.compose.CollapsibleAppBarScaffold
 import com.mardous.booming.ui.component.compose.ShapedText
+import com.mardous.booming.util.Constants.APP_GITHUB_URL
+import com.mardous.booming.util.Constants.AUTHOR_GITHUB_URL
+import com.mardous.booming.util.Constants.CHANGELOG_LINK
+import com.mardous.booming.util.Constants.COMMUNITY_LINK
+import com.mardous.booming.util.Constants.DONATION_LINK
+import com.mardous.booming.util.Constants.DOWNLOAD_URL
+import com.mardous.booming.util.Constants.FAQ_LINK
+import com.mardous.booming.util.Constants.ISSUE_TRACKER_LINK
+import com.mardous.booming.util.Constants.PRIVACY_POLICY_LINK
+import com.mardous.booming.util.Constants.SUPPORT_EMAIL
+import com.mardous.booming.util.Constants.TELEGRAM_LINK
+import com.mardous.booming.util.Constants.TERMS_OF_SERVICE_LINK
+import com.mardous.booming.util.Constants.TRANSLATIONS_LINK
+import com.mardous.booming.util.Constants.WEBSITE_LINK
+import com.mardous.booming.util.Preferences
+import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
+import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import dev.jeziellago.compose.markdowntext.MarkdownText
-import org.koin.androidx.compose.koinViewModel
 
-private const val AUTHOR_GITHUB_URL = "https://www.github.com/mardous"
-private const val GITHUB_URL = "$AUTHOR_GITHUB_URL/BoomingMusic"
-private const val RELEASES_LINK = "$GITHUB_URL/releases"
-const val ISSUE_TRACKER_LINK = "$GITHUB_URL/issues"
-private const val COMMUNITY_LINK = "$GITHUB_URL/wiki/Community"
-private const val FAQ_LINK = "$GITHUB_URL/wiki/FAQ"
-private const val APP_TELEGRAM_LINK = "https://t.me/mardousdev"
-private const val TRANSLATIONS_LINK = "https://hosted.weblate.org/engage/booming-music/"
-private const val DONATE_LINK = "https://ko-fi.com/christiaam"
-
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun AboutScreen(
-    viewModel: AboutViewModel = koinViewModel(),
-    onBackClick: () -> Unit,
-    onNavigateToId: (Int) -> Unit
+    onBackClick: () -> Unit
 ) {
     val context = LocalContext.current
 
-    var showReportDialog by remember { mutableStateOf(false) }
-    if (showReportDialog) {
-        ReportBugsDialog(
-            onDismiss = { showReportDialog = false },
-            onContinue = {
-                showReportDialog = false
-                context.openUrl(ISSUE_TRACKER_LINK)
+    val appVersion = try {
+        val packageManager = context.packageManager
+        val packageInfo = packageManager.getPackageInfo(context.packageName, 0)
+        val versionName = packageInfo.versionName
+        if (BuildConfig.FLAVOR == "fdroid") {
+            "$versionName (F-Droid)"
+        } else versionName ?: "Unknown"
+    } catch (_: PackageManager.NameNotFoundException) {
+        "Unknown"
+    }
+
+    var showTranslatorsDialog by remember { mutableStateOf(false) }
+    val translators by produceState(emptyList()) {
+        value = loadTranslators(context).map { (tag, translators) ->
+            val flag = tag.languageFlagEmoji(context)
+            AboutItemData(
+                icon = { AboutItemIcon(flag) },
+                title = tag.languageNameInEnglish(),
+                markdown = translators,
+                onClick = {}
+            )
+        }
+    }
+
+    if (showTranslatorsDialog) {
+        ModalBottomSheet(onDismissRequest = { showTranslatorsDialog = false}) {
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+            ) {
+                itemsIndexed(translators) { index, item ->
+                    AboutListItem(
+                        index = index,
+                        itemCount = translators.size,
+                        data = item,
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = .8f)
+                    )
+                }
             }
-        )
+        }
     }
 
-    val contributors by viewModel.contributors.collectAsState()
-    LaunchedEffect(Unit) {
-        viewModel.loadContributors()
+    var showLicensesDialog by remember { mutableStateOf(false) }
+    val libraries by produceLibraries(R.raw.aboutlibraries)
+    if (showLicensesDialog) {
+        ModalBottomSheet(onDismissRequest = { showLicensesDialog = false}) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                LibrariesContainer(
+                    libraries = libraries,
+                    licenseDialogConfirmText = stringResource(R.string.close_action),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(16.dp))
+                )
+            }
+        }
     }
 
-    val sendInvitationTitle = stringResource(R.string.send_invitation_message)
-    val invitationMessage = stringResource(R.string.invitation_message_content, RELEASES_LINK)
+    val sections = getAboutSections(
+        onTranslatorsClick = { showTranslatorsDialog = true },
+        onLicensesClick = { showLicensesDialog = true }
+    )
 
     CollapsibleAppBarScaffold(
         title = stringResource(R.string.about_title),
+        headerMode = Preferences.appBarMode,
         onBackClick = onBackClick
     ) { contentPadding ->
-        val scrollState = rememberScrollState()
-
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(scrollState)
-                .padding(contentPadding)
-                .padding(horizontal = 16.dp, vertical = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(contentPadding),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
         ) {
-            AboutHeader(
-                version = viewModel.appVersion,
-                onChangelogClick = {
-                    context.openUrl(RELEASES_LINK)
-                },
-                onForkClick = {
-                    context.openUrl(GITHUB_URL)
-                },
-                onLicensesClick = {
-                    onNavigateToId(R.id.nav_licenses)
-                },
-                onFAQClick = {
-                    context.openUrl(FAQ_LINK)
-                }
-            )
+            item { BoomingMusicHeader(version = appVersion) }
 
-            AboutAuthorSection(
-                onGitHubClick = {
-                    context.openUrl(AUTHOR_GITHUB_URL)
-                },
-                onEmailClick = {
-                    context.tryStartActivity(
-                        Intent(Intent.ACTION_SENDTO)
-                            .setData("mailto:".toUri())
-                            .putExtra(Intent.EXTRA_EMAIL, arrayOf("mardous.contact@gmail.com"))
-                            .putExtra(Intent.EXTRA_SUBJECT, "Booming Music - Support & questions")
+            item { AboutSectionTitle(stringResource(R.string.author)) }
+
+            item {
+                AuthorSection(
+                    onGitHubClick = { context.openUrl(AUTHOR_GITHUB_URL) },
+                    onEmailClick = {
+                        context.tryStartActivity(
+                            Intent(Intent.ACTION_SENDTO)
+                                .setData("mailto:".toUri())
+                                .putExtra(Intent.EXTRA_EMAIL, arrayOf(SUPPORT_EMAIL))
+                                .putExtra(
+                                    Intent.EXTRA_SUBJECT,
+                                    "Booming Music - Support & questions"
+                                )
+                        )
+                    },
+                    onDonateClick = { context.openUrl(DONATION_LINK) }
+                )
+            }
+
+            for (section in sections) {
+                item { AboutSectionTitle(section.first) }
+                itemsIndexed(section.second) { index, item ->
+                    AboutListItem(
+                        index = index,
+                        itemCount = section.second.size,
+                        data = item
                     )
-                },
-                onDonateClick = {
-                    context.openUrl(DONATE_LINK)
                 }
-            )
-
-            AboutContributorSection(
-                contributors = contributors,
-                onClick = {
-                    if (it.url != null) {
-                        context.openUrl(it.url)
-                    }
-                }
-            )
-
-            AboutAcknowledgmentSection(
-                onTranslatorsClick = {
-                    onNavigateToId(R.id.nav_translators)
-                },
-                onContributorsClick = {
-                    context.openUrl(COMMUNITY_LINK)
-                }
-            )
-
-            AboutSupportSection(
-                onTranslateClick = {
-                    context.openUrl(TRANSLATIONS_LINK)
-                },
-                onReportBugsClick = {
-                    showReportDialog = true
-                },
-                onShareAppClick = {
-                    context.tryStartActivity(
-                        Intent(Intent.ACTION_SEND)
-                            .putExtra(Intent.EXTRA_TEXT, invitationMessage)
-                            .setType(MIME_TYPE_PLAIN_TEXT)
-                            .toChooser(sendInvitationTitle)
-                    )
-                },
-                onJoinChatClick = {
-                    context.openUrl(APP_TELEGRAM_LINK)
-                }
-            )
+            }
         }
     }
 }
 
 @Composable
-private fun AboutHeader(
-    version: String,
-    onChangelogClick: () -> Unit,
-    onForkClick: () -> Unit,
-    onLicensesClick: () -> Unit,
-    onFAQClick: () -> Unit
-) {
+private fun BoomingMusicHeader(version: String) {
+    val context = LocalContext.current
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 16.dp, bottom = 8.dp, start = 16.dp, end = 16.dp)
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp)
+        Surface(
+            shape = CircleShape,
+            color = LocalContentColor.current.copy(alpha = 0.1f)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.icon_web),
+            Icon(
+                painter = painterResource(R.drawable.boomingmusic_logo_monochrome),
+                tint = LocalContentColor.current,
                 contentDescription = null,
-                modifier = Modifier.size(80.dp),
-                contentScale = ContentScale.Inside
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = stringResource(R.string.app_name_long),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            ShapedText(
-                text = version,
-                style = MaterialTheme.typography.bodySmall.copy(
-                    fontWeight = FontWeight.SemiBold
-                ),
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                modifier = Modifier.size(88.dp)
             )
         }
-
-        Row(modifier = Modifier.fillMaxWidth()) {
-            ActionButton(
+        Spacer(Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.app_title),
+            style = MaterialTheme.typography.headlineMedium,
+            maxLines = 1
+        )
+        Text(
+            text = stringResource(R.string.app_description),
+            fontStyle = FontStyle.Italic,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(16.dp))
+        ShapedText(
+            text = stringResource(R.string.app_version_x, version),
+            style = MaterialTheme.typography.bodySmall,
+            shape = CircleShape
+        )
+        if (BuildConfig.IS_CI_BUILD) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(top = 8.dp)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_construction_24dp),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.size(16.dp)
+                )
+                Text(
+                    text = "CI Build",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
+        }
+        Spacer(Modifier.height(16.dp))
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
+            modifier = Modifier.clip(RoundedCornerShape(16.dp))
+        ) {
+            AboutHeaderButton(
                 icon = R.drawable.ic_history_24dp,
                 label = stringResource(R.string.changelog),
                 modifier = Modifier.weight(1f),
-                onClick = onChangelogClick
+                onClick = { context.openUrl(CHANGELOG_LINK) }
             )
 
-            ActionButton(
-                icon = R.drawable.ic_help_24dp,
-                label = stringResource(R.string.faq),
-                modifier = Modifier.weight(1f),
-                onClick = onFAQClick
-            )
-
-            ActionButton(
+            AboutHeaderButton(
                 icon = R.drawable.ic_github_circle_24dp,
                 label = stringResource(R.string.github),
                 modifier = Modifier.weight(1f),
-                onClick = onForkClick
+                onClick = { context.openUrl(APP_GITHUB_URL) }
             )
 
-            ActionButton(
-                icon = R.drawable.ic_description_24dp,
-                label = stringResource(R.string.licenses),
+            AboutHeaderButton(
+                icon = R.drawable.ic_help_24dp,
+                label = stringResource(R.string.faq),
                 modifier = Modifier.weight(1f),
-                onClick = onLicensesClick
+                onClick = { context.openUrl(FAQ_LINK) }
+            )
+
+            AboutHeaderButton(
+                icon = R.drawable.ic_language_24dp,
+                label = stringResource(R.string.website),
+                modifier = Modifier.weight(1f),
+                onClick = { context.openUrl(WEBSITE_LINK) }
             )
         }
     }
 }
 
-@Preview
 @Composable
-private fun AboutAuthorSection(
+private fun AuthorSection(
     onGitHubClick: () -> Unit = {},
     onEmailClick: () -> Unit = {},
     onDonateClick: () -> Unit = {}
 ) {
-    AboutSection(title = stringResource(R.string.author)) {
-        AboutCard {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        ),
+        shape = MaterialTheme.shapes.large
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp, bottom = 8.dp)
+                modifier = Modifier.fillMaxWidth()
             ) {
-                AsyncImage(
-                    model = "file:///android_asset/images/mardous.png".toUri(),
-                    contentDescription = "Lead Dev's image",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(88.dp)
-                        .clip(CircleShape)
+                AboutContributorImage(
+                    username = "mardous",
+                    modifier = Modifier.size(88.dp)
                 )
 
                 Spacer(Modifier.height(16.dp))
@@ -323,18 +371,19 @@ private fun AboutAuthorSection(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .wrapContentSize()
-                    .padding(8.dp)
             ) {
-                Button(
-                    onClick = onDonateClick,
-                    modifier = Modifier.wrapContentSize()
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
-                        contentDescription = null
-                    )
-                    Spacer(Modifier.width(ButtonDefaults.IconSpacing))
-                    Text(stringResource(R.string.support_my_work))
+                if (!App.isPlayStoreBuild()) {
+                    Button(
+                        onClick = onDonateClick,
+                        modifier = Modifier.wrapContentSize()
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_volunteer_activism_24dp),
+                            contentDescription = null
+                        )
+                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                        Text(stringResource(R.string.support_my_work))
+                    }
                 }
 
                 IconButton(
@@ -362,243 +411,255 @@ private fun AboutAuthorSection(
 }
 
 @Composable
-private fun AboutContributorSection(
-    contributors: List<Contribution>,
-    onClick: (Contribution) -> Unit
+private fun AboutSectionTitle(
+    text: String,
+    modifier: Modifier = Modifier
 ) {
-    AboutSection(title = stringResource(R.string.contributors)) {
-        AboutCard {
-            contributors.forEach {
-                ContributionListItem(contribution = it) {
-                    onClick(it)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun AboutSupportSection(
-    onReportBugsClick: () -> Unit,
-    onTranslateClick: () -> Unit,
-    onJoinChatClick: () -> Unit,
-    onShareAppClick: () -> Unit
-) {
-    AboutSection(title = stringResource(R.string.support_development)) {
-        AboutCard {
-            AboutListItem(
-                iconRes = R.drawable.ic_bug_report_24dp,
-                title = stringResource(R.string.report_bugs),
-                summary = stringResource(R.string.report_bugs_summary),
-                onClick = onReportBugsClick
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_language_24dp,
-                title = stringResource(R.string.help_with_translations),
-                summary = stringResource(R.string.help_with_translations_summary),
-                onClick = onTranslateClick
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_telegram_24dp,
-                title = stringResource(R.string.telegram_community),
-                summary = stringResource(R.string.telegram_community_summary),
-                onClick = onJoinChatClick
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_share_24dp,
-                title = stringResource(R.string.share_app),
-                summary = stringResource(R.string.share_app_summary),
-                onClick = onShareAppClick
-            )
-        }
-    }
-}
-
-@Composable
-private fun AboutAcknowledgmentSection(
-    onTranslatorsClick: () -> Unit,
-    onContributorsClick: () -> Unit
-) {
-    AboutSection(title = stringResource(R.string.acknowledgments_title)) {
-        AboutCard {
-            AboutListItem(
-                iconRes = R.drawable.ic_translate_24dp,
-                title = stringResource(R.string.translators_title),
-                summary = stringResource(R.string.translators_summary),
-                onClick = onTranslatorsClick
-            )
-            AboutListItem(
-                iconRes = R.drawable.ic_groups_24dp,
-                title = stringResource(R.string.contributors_title),
-                summary = stringResource(R.string.contributors_summary),
-                onClick = onContributorsClick
-            )
-        }
-    }
-}
-
-@Composable
-private fun ReportBugsDialog(
-    onDismiss: () -> Unit = {},
-    onContinue: () -> Unit = {}
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        icon = {
-            Icon(
-                painter = painterResource(R.drawable.ic_bug_report_24dp),
-                contentDescription = null
-            )
-        },
-        title = { Text(stringResource(R.string.report_bugs)) },
-        text = {
-            Text(text = stringResource(R.string.you_will_be_forwarded_to_the_issue_tracker_website))
-        },
-        confirmButton = {
-            Button(onClick = onContinue) {
-                Text(text = stringResource(R.string.continue_action))
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(text = stringResource(android.R.string.cancel))
-            }
-        }
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleSmall,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+        modifier = modifier.padding(top = 16.dp, bottom = 4.dp, start = 16.dp)
     )
 }
 
 @Composable
-private fun AboutSection(
-    title: String,
+private fun AboutItemIcon(
+    icon: Painter,
+    modifier: Modifier = Modifier
+) {
+    AboutItemIconSurface(modifier) {
+        Icon(
+            painter = icon,
+            contentDescription = null
+        )
+    }
+}
+
+@Composable
+private fun AboutItemIcon(
+    emoji: String,
+    modifier: Modifier = Modifier
+) {
+    AboutItemIconSurface(modifier) {
+        Text(
+            text = emoji,
+            fontSize = 24.sp,
+            modifier = Modifier.clearAndSetSemantics {}
+        )
+    }
+}
+
+@Composable
+private fun AboutItemIconSurface(
     modifier: Modifier = Modifier,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit
+) {
+    Surface(
+        shape = CircleShape,
+        color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        modifier = modifier.size(48.dp)
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            content = content
+        )
+    }
+}
+
+@Composable
+private fun AboutContributorImage(
+    username: String,
+    modifier: Modifier = Modifier
+) {
+    AsyncImage(
+        model = "file:///android_asset/images/${username}.png".toUri(),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier.clip(CircleShape)
+    )
+}
+
+@Composable
+private fun AboutHeaderButton(
+    icon: Int,
+    label: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.padding(start = 24.dp)
-        )
-
-        content()
-    }
-}
-
-@Composable
-private fun AboutCard(
-    modifier: Modifier = Modifier,
-    content: @Composable ColumnScope.() -> Unit
-) {
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
-        ),
-        shape = MaterialTheme.shapes.large,
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
-    ) {
-        Column(modifier = Modifier.padding(vertical = 8.dp), content = content)
-    }
-}
-
-@Composable
-private fun AboutListItem(
-    @DrawableRes iconRes: Int,
-    title: String,
-    modifier: Modifier = Modifier,
-    summary: String? = null,
-    summaryMaxLines: Int = 4,
-    onClick: (() -> Unit)? = null
-) {
-    Row(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
-            .fillMaxWidth()
-            .clickable(enabled = onClick != null, onClick = { onClick?.invoke() })
-            .padding(horizontal = 24.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(24.dp)
+            .clip(RoundedCornerShape(4.dp))
+            .background(MaterialTheme.colorScheme.surfaceContainer)
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp, horizontal = 4.dp)
     ) {
         Icon(
-            painter = painterResource(id = iconRes),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.wrapContentSize()
+            painter = painterResource(icon),
+            contentDescription = null
         )
-        if (summary.isNullOrEmpty()) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-        } else {
-            Column {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = summary,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = summaryMaxLines,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        }
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodySmall,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
-@Composable
-fun ContributionListItem(
-    contribution: Contribution,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit = {}
+/** Table of all contributors */
+private enum class Contributor(
+    @StringRes val title: Int,
+    @StringRes val description: Int,
+    val avatar: String,
+    val githubUser: String
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(enabled = !contribution.url.isNullOrEmpty()) { onClick() }
-            .padding(horizontal = 16.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (contribution.image != null) {
-            AsyncImage(
-                model = contribution.imageUrl,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape),
-                contentScale = ContentScale.Crop
+    Dawid(R.string.contributor_dawid, R.string.contributor_dawid_description, "dawid", "hackzy01"),
+    Lenard(R.string.contributor_lenard, R.string.contributor_lenard_description, "lenard", "lenardflx"),
+    TTop(R.string.contributor_ttop, R.string.contributor_ttop_description, "ttop", "TheTerminatorOfProgramming"),
+    Ray(R.string.contributor_ray, R.string.contributor_ray_description, "ray", "raycadle"),
+    Alex(R.string.contributor_alex, R.string.contributor_alex_description, "alex", "Paxsenix0")
+}
+
+@Composable
+private fun getAboutSections(
+    onTranslatorsClick: () -> Unit,
+    onLicensesClick: () -> Unit
+): List<Pair<String, List<AboutItemData>>> {
+    val context = LocalContext.current
+
+    val sendInvitationTitle = stringResource(R.string.send_invitation_message)
+    val invitationMessage = stringResource(R.string.invitation_message_content, DOWNLOAD_URL)
+
+    fun openGithubProfile(username: String) {
+        context.openUrl("https://github.com/$username")
+    }
+
+    return listOf(
+        stringResource(R.string.contributors) to Contributor.entries.map { contributor ->
+            AboutItemData(
+                icon = {
+                    AboutContributorImage(
+                        username = contributor.avatar,
+                        modifier = Modifier.size(48.dp)
+                    )
+                },
+                title = stringResource(contributor.title),
+                summary = stringResource(contributor.description),
+                onClick = { openGithubProfile(contributor.githubUser) }
             )
-        }
+        } + listOf(
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_translate_24dp)) },
+                title = stringResource(R.string.translators_title),
+                summary = stringResource(R.string.translators_summary),
+                onClick = onTranslatorsClick
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_groups_24dp)) },
+                title = stringResource(R.string.more_contributors_title),
+                summary = stringResource(R.string.more_contributors_summary),
+                onClick = { context.openUrl(COMMUNITY_LINK) }
+            )
+        ),
+        stringResource(R.string.support_development) to listOf(
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_bug_report_24dp)) },
+                title = stringResource(R.string.report_bugs),
+                summary = stringResource(R.string.report_bugs_summary),
+                onClick = { context.openUrl(ISSUE_TRACKER_LINK) }
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_language_24dp)) },
+                title = stringResource(R.string.help_with_translations),
+                summary = stringResource(R.string.help_with_translations_summary),
+                onClick = { context.openUrl(TRANSLATIONS_LINK) }
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_telegram_24dp)) },
+                title = stringResource(R.string.telegram_community),
+                summary = stringResource(R.string.telegram_community_summary),
+                onClick = { context.openUrl(TELEGRAM_LINK) }
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_share_24dp)) },
+                title = stringResource(R.string.share_app),
+                summary = stringResource(R.string.share_app_summary),
+                onClick = {
+                    context.tryStartActivity(
+                        Intent(Intent.ACTION_SEND)
+                            .putExtra(Intent.EXTRA_TEXT, invitationMessage)
+                            .setType(MIME_TYPE_PLAIN_TEXT)
+                            .toChooser(sendInvitationTitle)
+                    )
+                }
+            )
+        ),
+        stringResource(R.string.legal) to listOf(
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_description_24dp)) },
+                title = stringResource(R.string.licenses),
+                onClick = onLicensesClick
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_description_24dp)) },
+                title = stringResource(R.string.terms_of_service),
+                onClick = { context.openUrl(TERMS_OF_SERVICE_LINK) }
+            ),
+            AboutItemData(
+                icon = { AboutItemIcon(painterResource(R.drawable.ic_description_24dp)) },
+                title = stringResource(R.string.privacy_policy),
+                onClick = { context.openUrl(PRIVACY_POLICY_LINK) }
+            )
+        )
+    )
+}
 
-        Spacer(modifier = Modifier.width(16.dp))
-
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun AboutListItem(
+    index: Int,
+    itemCount: Int,
+    data: AboutItemData,
+    modifier: Modifier = Modifier,
+    containerColor: Color = MaterialTheme.colorScheme.surfaceContainer
+) {
+    SegmentedListItem(
+        onClick = data.onClick,
+        shapes = ListItemDefaults.segmentedShapes(index, itemCount),
+        verticalAlignment = Alignment.CenterVertically,
+        leadingContent = {
+            data.icon()
+        },
+        colors = ListItemDefaults.segmentedColors(containerColor = containerColor),
+        modifier = modifier
+    ) {
         Column(
-            modifier = Modifier
-                .weight(1f),
-            verticalArrangement = Arrangement.Center
+            modifier = Modifier.padding(vertical = 8.dp)
         ) {
             Text(
-                text = contribution.name,
-                style = MaterialTheme.typography.bodyLarge,
-                overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurface
+                text = data.title,
+                style = MaterialTheme.typography.titleMedium,
+                overflow = TextOverflow.Ellipsis
             )
-            if (!contribution.description.isNullOrBlank()) {
+            if (!data.markdown.isNullOrBlank()) {
                 MarkdownText(
-                    markdown = contribution.description,
+                    markdown = data.markdown,
                     style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    ),
+                        color = LocalContentColor.current.copy(alpha = 0.8f),
+                    )
+                )
+            } else if (!data.summary.isNullOrBlank()) {
+                Text(
+                    text = data.summary,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = LocalContentColor.current.copy(alpha = 0.8f),
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.Serializer
+import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.dataStore
 import androidx.glance.state.GlanceStateDefinition
 import kotlinx.serialization.SerializationException
@@ -25,15 +26,19 @@ object PlaybackStateDefinition : GlanceStateDefinition<PlaybackState> {
 
     private val Context.playbackStateDataStore: DataStore<PlaybackState> by dataStore(
         fileName = DATASTORE_FILE_NAME,
-        serializer = PlaybackStateSerializer(json)
+        serializer = PlaybackStateSerializer(json),
+        // Playback rebuilds unreadable widget state
+        corruptionHandler = ReplaceFileCorruptionHandler { PlaybackState() }
     )
+
 
     override suspend fun getDataStore(context: Context, fileKey: String): DataStore<PlaybackState> {
         return context.playbackStateDataStore
     }
 
+    /** Keyed because Glance deletes `getLocation(fileKey)` when a single widget is removed */
     override fun getLocation(context: Context, fileKey: String): File {
-        return File(context.filesDir, "datastore/$DATASTORE_FILE_NAME")
+        return File(context.filesDir, "datastore/$fileKey-$DATASTORE_FILE_NAME")
     }
 
     private class PlaybackStateSerializer(private val json: Json) : Serializer<PlaybackState> {

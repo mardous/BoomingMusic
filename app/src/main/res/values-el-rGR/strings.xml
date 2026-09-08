@@ -3,11 +3,11 @@
     <string name="action_play">Αναπαραγωγή</string>
     <string name="action_play_all">Αναπαραγωγή όλων</string>
     <string name="action_shuffle_play">Τυχαία αναπαραγωγή</string>
-    <string name="action_queue_next">Επόμενη ουρά</string>
+    <string name="action_queue_next">Επόμενο στην ουρά</string>
     <string name="shuffle_all_label">Τυχαία αναπαραγωγή όλων</string>
     <string name="shuffle_mode">Shuffle mode</string>
     <string name="repeat_mode">Repeat mode</string>
-    <string name="shuffle_button_tip">Tap for normal shuffle. Long press for advanced options.</string>
+    <string name="shuffle_button_tip">Tap για τυχαία αναπαραγωγή. παρατεταμένο πάτημα για περισσότερες επιλογές</string>
     <string name="action_play_pause">Αναπαραγωγή/Παύση</string>
     <string name="action_pause">Παύση</string>
     <string name="action_next">Επόμενο</string>
@@ -36,12 +36,6 @@
     <string name="shuffle_mode_artist">Ανακάτεμα καλλιτέχνη</string>
     <string name="action_share">Κοινοποίηση</string>
     <string name="action_save">Αποθήκευση</string>
-    <string name="what_do_you_want_to_share">Τι θέλετε να μοιραστείτε?</string>
-    <string name="the_audio_file">Το αρχείο ήχου</string>
-    <string name="i_am_listening">I\'m listening…</string>
-    <string name="currently_listening_to_x_by_x">Ακούω το %1$s από %2$s</string>
-    <string name="share_to_stories">Μοιραστείτε τις ιστορίες</string>
-    <string name="could_not_create_the_story">Δεν ήταν δυνατή η δημιουργία της ιστορίας.</string>
     <string name="back_action">Back</string>
     <string name="add_action">Προσθήκη</string>
     <string name="delete_action">Διαγραφή</string>
@@ -70,7 +64,7 @@
     <string name="add_playlist_title">Προσθήκη στη λίστα αναπαραγωγής</string>
     <string name="rename_playlist_title">Μετονομασία λίστας αναπαραγωγής</string>
     <string name="action_edit_playlist">Edit playlist</string>
-    <string name="action_delete">Διαγραφή λίστας αναπαραγωγής</string>
+    <string name="action_delete_playlist">Διαγραφή λίστας αναπαραγωγής</string>
     <string name="action_export_playlist">Εξαγωγή σε αρχείο</string>
     <string name="action_clear_history">Εκκαθάριση ιστορικού</string>
     <string name="history_cleared">Το ιστορικό διαγράφηκε</string>
@@ -130,21 +124,14 @@
     <string name="permission_external_storage_denied">Πρέπει να παραχωρήσετε δικαιώματα πρόσβασης στον εξωτερικό χώρο αποθήκευσης.</string>
     <string name="permission_bluetooth_title">Κοντινές Συσκευές</string>
     <string name="permission_bluetooth_description">Η εφαρμογή χρειάζεται άδεια σε κοντινές συσκευές για έλεγχο για συσκευές bluetooth</string>
-    <string name="permission_bluetooth_denied">Η άδεια πρόσβασης σε κοντινές συσκευές δεν επιτρέπεται.</string>
     <string name="permission_read_images_title">Read images (optional)</string>
     <string name="permission_read_images_summary">This permission is required for Booming Music to find album art files in your music folders. If you don\'t plan to use this feature, you can choose not to grant it.</string>
     <string name="permission_read_images_denied">You must grant permission to read images from the device.</string>
-    <string name="permission_exact_alarms_title">Προγραμματισμός ακριβών ειδοποιήσεων (προαιρετικά)</string>
-    <string name="permission_exact_alarms_description">Άδεια για τον προγραμματισμό ακριβών ειδοποιήσεων απαιτείται για το χρονόμετρο ύπνου για να λειτουργήσει σωστά</string>
-    <string name="permission_ringtone_title">Ήχος Κλήσης (Προαιρετικό)</string>
-    <string name="permission_ringtone_description">Η εφαρμογή χρειάζεται άδεια για να αποκτήσει πρόσβαση στις ρυθμίσεις της συσκευής σας για να ορίσει τη μουσική ως ήχος κλήσης</string>
-    <string name="permission_request_write_settings"><![CDATA[Πρέπει να επιτρέψετε στο Booming Music να τροποποιήσει τις ρυθμίσεις συστήματος για να ορίσετε ως ήχο κλήσης σας <b>%s</b>]]></string>
     <string name="permissions_denied">Άρνηση δικαιωμάτων</string>
     <string name="permissions_needed">Απαιτούνται δικαιώματα</string>
     <string name="grant_access_action">Παραχώρηση πρόσβασης</string>
     <string name="action_grant">Παραχώρηση</string>
     <string name="granted">Χορηγήθηκε</string>
-    <string name="hello_there">Γεια σας!</string>
     <string name="welcome_to_x">Καλώς ήλθατε στο %s</string>
     <string name="get_started">Ας Αρχίσουμε</string>
     <string name="select_storage_title">Επιλογή αποθ. χώρου</string>
@@ -222,7 +209,6 @@
     <string name="action_grid_size">Μέγεθος πλέγματος</string>
     <string name="action_grid_size_land">Grid size (land)</string>
     <string name="action_sort_order">Ταξινόμηση κατά</string>
-    <string name="sort_order_az">Α-Ω</string>
     <string name="sort_order_artist">Καλλιτέχνης</string>
     <string name="sort_order_album">Άλμπουμ</string>
     <string name="sort_order_year">Έτος</string>
@@ -236,11 +222,6 @@
     <string name="sort_order_track_list">Λίστα κομματιών</string>
     <string name="sort_order_descending">Φθίνουσα</string>
     <string name="sort_order_ignore_articles">Αγνόηση άρθρων</string>
-    <string name="action_set_as_ringtone">Ορισμός ως ήχος κλήσης</string>
-    <string name="x_will_be_set_as_ringtone"><![CDATA[Θα ορίσει ως ήχο κλήσης σας <b>%s</b>]]></string>
-    <string name="x_has_been_set_as_ringtone">Όρισε το %s ως ήχο κλήσης</string>
-    <string name="x_has_been_set_as_ringtone_and_as_alarm">Όρισε το %s ως ήχο κλήσης και ως ειδοποίηση συναγερμού</string>
-    <string name="use_also_as_alarm_alert">Χρήση και ως ειδοποίηση συναγερμού</string>
     <string name="action_details">Λεπτομέρειες</string>
     <string name="action_set_as_start_directory">Ορισμός ως κατάλογος έναρξης</string>
     <string name="start_directory_set">Start directory set to %s</string>
@@ -260,15 +241,6 @@
     <string name="download_image">Λήψη εικόνας</string>
     <string name="pick_from_local_storage">Επιλογή από τοπική αποθήκευση</string>
     <string name="about_x_title">Περί %s</string>
-    <string name="listeners_label">Ακροατές</string>
-    <string name="scrobbles_label">Scrobbles</string>
-    <string name="save_cover">Αποθήκευση εξωφύλλου άλμπουμ</string>
-    <string name="saving_cover_please_wait">Saving cover, wait…</string>
-    <string name="save_artwork_error">Αποτυχία αποθήκευσης εξωφύλλου στην τοπική αποθήκευση</string>
-    <string name="save_artwork_success">Το εξώφυλλο άλμπουμ αποθηκεύτηκε</string>
-    <string name="save_artwork_view_action">Προβολή</string>
-    <string name="save_artwork_copyright_info_title">Ειδοποίηση πνευματικών δικαιωμάτων</string>
-    <string name="save_artwork_copyright_info_message">Μερικά εξώφυλλα άλμπουμ (ή όλα αυτά) μπορεί να προστατεύονται από τους νόμους περί πνευματικής ιδιοκτησίας. Δεν μπορείτε να χρησιμοποιήσετε τέτοιες εικόνες για εμπορικούς ή διαφημιστικούς σκοπούς. \n\nΜόνο εσείς έχετε πλήρη ευθύνη για τη χρήση των αποθηκευμένων εξωφύλλων άλμπουμ.</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="keyboard">Keyboard</string>
@@ -277,7 +249,6 @@
     <string name="label_file_format">Μορφή</string>
     <string name="file_label">File</string>
     <string name="metadata_label">Metadata</string>
-    <string name="title_and_artist">Τίτλος και Καλλιτέχνης</string>
     <string name="song">Τραγούδι</string>
     <string name="title">Τίτλος</string>
     <string name="album">Άλμπουμ</string>
@@ -312,10 +283,6 @@
     <string name="connection_unavailable">Μη διαθέσιμη σύνδεση.</string>
     <string name="you_have_to_select_at_least_one_category">Πρέπει να επιλέξετε τουλάχιστον μία κατηγορία</string>
     <string name="you_cannot_select_more_than_five_categories">Δεν μπορείτε να επιλέξετε περισσότερες από πέντε κατηγορίες.</string>
-    <string name="backup_settings">Ρυθμίσεις</string>
-    <string name="backup_synced_lyrics">Συγχρονισμένοι στίχοι</string>
-    <string name="backup_artist_images">Εικόνες καλλιτέχνη</string>
-    <string name="backup_playlists">Λίστες</string>
     <string name="backup_successful">Επιτυχής δημιουργία αντιγράφου!</string>
     <string name="backup_failed">Αποτυχία αντιγράφου ασφαλείας.</string>
     <string name="select_content_to_restore">Επιλέξτε περιεχόμενο για επαναφορά:</string>
@@ -325,8 +292,6 @@
     <string name="playlist_locked">Playlist locked</string>
     <string name="playlist_unlocked">Playlist unlocked</string>
     <string name="action_toggle_queue_lock">Lock/unlock queue</string>
-    <string name="queue_locked">Queue locked</string>
-    <string name="queue_unlocked">Queue unlocked</string>
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Γραμμή Aux</string>
     <string name="audio_device_bluetooth_a2dp">Bluetooth A2DP</string>
@@ -375,7 +340,7 @@
     <string name="top_albums">Κορυφαία άλμπουμ</string>
     <string name="recent_artists">Πρόσφατοι καλλιτέχνες</string>
     <string name="recent_albums">Πρόσφατα λευκώματα</string>
-    <string name="no_suggestions">Δεν υπάρχουν προτάσεις για εσάς</string>
+
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Pure random</string>
     <string name="shuffle_mode_most_played">Most played</string>
@@ -408,22 +373,22 @@
     <string name="share_eq_profiles">Share EQ Profiles</string>
     <string name="there_is_nothing_to_export">Δεν υπάρχει τίποτα για εξαγωγή.</string>
     <string name="there_is_nothing_to_import">Δεν υπάρχει τίποτα για εισαγωγή.</string>
-    <string name="an_unexpected_error_occurred">An unexpected error occurred.</string>
-    <string name="share_profiles">Share profiles</string>
-    <string name="select_profiles_to_share">Select profiles to share:</string>
-    <string name="export_profiles">Export profiles</string>
-    <string name="select_profiles_to_export">Select profiles to export:</string>
-    <string name="select_a_file_to_save_the_exported_profiles">Select a file to save the exported profiles.</string>
-    <string name="profiles_exported_successfully">Profiles exported successfully.</string>
-    <string name="import_profiles">Import profiles</string>
-    <string name="select_profiles_to_import">Select profiles to import:</string>
-    <string name="select_a_file_containing_booming_eq_profiles">Select a file containing Booming Music EQ Profiles.</string>
-    <string name="imported_x_profiles">Imported %d profiles.</string>
-    <string name="no_profile_imported">No profile imported.</string>
-    <string name="import_autoeq_profile">Import AutoEq profile</string>
+    <string name="an_unexpected_error_occurred">Ένα απρόσμενο σφάλμα προέκυψε.</string>
+    <string name="share_profiles">Κοινοποίηση προφίλ</string>
+    <string name="select_profiles_to_share">Επιλέξτε προφίλ για κοινοποίηση:</string>
+    <string name="export_profiles">Εξαγωγή προφίλ</string>
+    <string name="select_profiles_to_export">Επιλέξτε προφίλ για εξαγωγή:</string>
+    <string name="select_a_file_to_save_the_exported_profiles">Επιλέξτε ένα αρχείο για να αποθηκεύσετε τα εξαγμένα προφίλ.</string>
+    <string name="profiles_exported_successfully">Τα προφίλ εξήχθησαν με επιτυχία.</string>
+    <string name="import_profiles">Εισαγωγή προφίλ</string>
+    <string name="select_profiles_to_import">Επιλέξτε προφίλ για εισαγωγή:</string>
+    <string name="select_a_file_containing_booming_eq_profiles">Επιλέξτε αρχείο που περιέχει προφίλ Booming Music EQ.</string>
+    <string name="imported_x_profiles">Εισήχθησαν %d προφίλ.</string>
+    <string name="no_profile_imported">Δεν εισήχθη κανένα προφίλ.</string>
+    <string name="import_autoeq_profile">Εισαγωγή προφίλ AutoEq</string>
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
-    <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
-    <string name="reset_equalizer">Reset equalizer</string>
+    <string name="no_autoeq_profiles">Δεν εισήχθη κανένα προφίλ AutoEq.</string>
+    <string name="reset_equalizer">Επαναφορά ισοσταθμιστή</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Δεν υποστηρίζεται</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
@@ -431,7 +396,7 @@
     <string name="eq_engine_basic_description">A 5-band classic configuration designed for maximum device compatibility.</string>
     <string name="eq_engine_precision_title">Precision Engine</string>
     <string name="eq_engine_precision_description">High-fidelity processing with up to 15-band control for ultimate acoustic shaping.</string>
-    <string name="set_eq_engine_reset_warning">Changing the equalization engine will reset the equalizer settings, including custom profiles.</string>
+    <string name="set_eq_engine_reset_warning">Η αλλαγή της μηχανής ισοστάθμισης θα επαναφέρει τις ρυθμίσεις ισοσταθμιστή, συμπεριλαμβανομένων και των προσαρμοσμένων προφίλ.</string>
     <string name="eq_empty_bands">The equalization engine did not return any band configurations.</string>
     <string name="enable_equalizer">Ενεργοποίηση EQ</string>
     <string name="select_profile">Select profile</string>
@@ -478,25 +443,15 @@
     <string name="synced_lyrics">Συγχρονισμένα</string>
     <string name="embedded_lyrics">Embedded</string>
     <string name="downloaded_lyrics">Λήφθηκε</string>
-    <string name="external_file_lyrics">External file</string>
-    <string name="action_import_synchronized_lyrics">Εισαγωγή συγχρονισμένων στίχων</string>
-    <string name="action_share_synchronized_lyrics">Κοινοποίηση συγχρονισμένων στίχων</string>
-    <string name="do_you_want_to_import_lrc_lyrics_for_song_x"><![CDATA[Θέλετε να εισαγάγετε συγχρονισμένους στίχους LRC για <b>%s</b>\?]]></string>
-    <string name="import_lyrics_for_song_x">Εισαγόμενοι στίχοι για %s</string>
-    <string name="could_not_import_lyrics_for_song_x">Αδυναμία εισαγωγής στίχων για %s</string>
-    <string name="select_a_file_containing_synchronized_lyrics">Επιλέξτε ένα αρχείο LRC που περιέχει συγχρονισμένους στίχους.</string>
     <string name="cannot_download_lyrics">Η Μουσική δεν μπόρεσε να βρει τους στίχους για αυτό το τραγούδι. Θέλετε να αναζητήσετε χειροκίνητα?</string>
     <string name="search_lyrics">Αναζήτηση στίχων</string>
     <string name="choose_lyrics">Επιλέξτε τον τύπο των στίχων</string>
     <string name="download_lyrics">Λήψη στίχων</string>
     <string name="write_lyrics_here">Γράψτε στίχους εδώ</string>
-    <string name="write_synced_lyrics_here">Γράψτε συγχρονισμένους στίχους εδώ</string>
     <string name="no_lyrics_found">Δεν βρέθηκαν στίχοι</string>
-    <string name="no_synced_lyrics_found">Δεν βρέθηκαν συγχρονισμένοι στίχοι</string>
     <string name="lyrics_were_updated_successfully">Οι στίχοι ενημερώθηκαν με επιτυχία.</string>
     <string name="failed_to_update_lyrics">Αποτυχία ενημέρωσης στίχων.</string>
     <string name="there_are_no_changes_to_save">There are no changes to save.</string>
-    <string name="lyrics_source_external_file">Lyrics come from an external file. You can\'t edit this file directly from Booming Music.</string>
     <string name="font_imported_successfully">Font imported successfully.</string>
     <string name="could_not_import_font">Could not import font.</string>
     <!-- Sleep timer -->
@@ -527,11 +482,8 @@
     <string name="author">Συγγραφέας</string>
     <string name="mardous_summary">Lead Developer</string>
     <string name="contributors">Contributors</string>
-    <string name="acknowledgments_title">Acknowledgment</string>
     <string name="translators_title">Translators</string>
-    <string name="translators_summary">Thanks to those who make Booming Music available in many languages.</string>
-    <string name="contributors_title">Contributors</string>
-    <string name="contributors_summary">A list of users who have contributed to the project in some way.</string>
+    <string name="translators_summary">Ευχαριστούμε όσους κάνουν την Booming Music διαθέσιμη σε πολλές γλώσσες.</string>
     <string name="view_profile_on_github">Προβολή προφίλ στο GitHub</string>
     <string name="write_an_email">Γράψτε ένα email</string>
     <string name="support_development">Ανάπτυξη υποστήριξης</string>
@@ -544,7 +496,6 @@
     <string name="send_invitation_message">Αποστολή μηνύματος πρόσκλησης</string>
     <string name="invitation_message_content">Γεια σας. Ρίξτε μια ματιά στο Booming Music! Η καλύτερη εφαρμογή για να ακούσετε τοπική μουσική στο Android. Μπορείτε να το κατεβάσετε από εδώ: %s</string>
     <!-- Bug report -->
-    <string name="you_will_be_forwarded_to_the_issue_tracker_website">Θα μεταφερθείτε στην ιστοσελίδα του ανιχνευτή προβλημάτων.</string>
     <!-- SAF -->
     <string name="saf_access_required_title">Απαιτείται Πρόσβαση Χώρου Αποθήκευσης</string>
     <string name="saf_access_required_message">Booming Music requires permission to access these files. Please select the root folder where your music files are stored.</string>
@@ -581,7 +532,6 @@
     <string name="audio_focus_header">Εστίαση ήχου</string>
     <string name="shuffle_mode_header">Λειτουργία ανακατέματος</string>
     <string name="display_header">Εμφάνιση</string>
-    <string name="backup_restore_header">Αντίγραφο/επαναφορά</string>
     <string name="visuals_header">Visuals</string>
     <!-- Interface preferences -->
     <string name="general_theme_title">Γενικό θέμα</string>
@@ -653,8 +603,6 @@
     <string name="circle_button_title">Κυκλικό κουμπί αναπαραγωγής</string>
     <string name="swipe_album_cover_title">Swipe on album cover</string>
     <string name="swipe_album_cover_summary">Swipe left or right on the album cover to skip between songs.</string>
-    <string name="queue_height_title">Half-screen queue height</string>
-    <string name="queue_height_summary">Fix the playback queue height to half of the screen.</string>
     <string name="single_tap_on_album_cover_title">Single tap on cover</string>
     <string name="double_tap_on_album_cover_title">Διπλό χτύπημα στο εξώφυλλο</string>
     <string name="double_tap_on_left_album_cover_title">Left album-cover edge double-tap</string>
@@ -765,10 +713,6 @@
     <string name="min_song_duration_summary">Πόσα δευτερόλεπτα (τουλάχιστον) πρέπει να διαρκέσουν ένα τραγούδι που θα εμφανιστεί στη βιβλιοθήκη σας.</string>
     <!-- Remote preferences -->
     <string name="app_language_title">Γλώσσα εφαρμογής</string>
-    <string name="backup_data_title">Αντίγραφο δεδομένων εφαρμογών</string>
-    <string name="backup_app_data_summary">Δημιουργήστε ένα αρχείο που περιέχει βασικά δεδομένα εφαρμογών και αποθηκεύστε το στον εξωτερικό χώρο αποθήκευσης.</string>
-    <string name="restore_backup_title">Επαναφορά αντιγράφου ασφαλείας</string>
-    <string name="restore_backup_summary">Επαναφορά δεδομένων εφαρμογής (και κατάστασης) από ένα προηγούμενο αντίγραφο ασφαλείας.</string>
     <string name="stop_when_closed_from_recents_title">Stop when closed from recents</string>
     <string name="stop_when_closed_from_recents_summary">Playback stops if the app is closed from the recents list.</string>
     <string name="stop_when_closed_from_recents_note">Note: Some devices with aggressive memory or battery management may ignore this setting and always stop the app when removed from recents.</string>
@@ -840,8 +784,6 @@
     <string name="every_fifteen_days">Κάθε δεκαπέντε ημέρες</string>
     <string name="monthly">Μηνιαία</string>
     <string name="never">Ποτέ</string>
-    <string name="only_wifi_title">Μόνο Wi-Fi</string>
-    <string name="only_wifi_summary">Αναζήτηση ενημερώσεων μόνο όταν το Wi-Fi είναι συνδεδεμένο.</string>
     <string name="receive_experimental_updates_title">Λήψη πειραματικών ενημερώσεων</string>
     <string name="receive_experimental_updates_summary">Παρακαλώ σημειώστε ότι αυτές οι ενημερώσεις είναι συχνά πολύ ασταθείς και προορίζονται για έμπειρους χρήστες.</string>
     <string name="search_for_update_title">Αναζήτηση για ενημέρωση</string>
@@ -852,12 +794,16 @@
     <string name="update_available_title">Διαθέσιμη ενημέρωση</string>
     <string name="more_info_action">Περισσότερες πληροφορίες.</string>
     <string name="download_action">Λήψη</string>
-    <string name="downloading_update">Λήψη ενημέρωσης Booming Music</string>
-    <string name="uncaught_error_title">Oops! That wasn\'t supposed to happen!</string>
-    <string name="uncaught_error_message">It seems something went wrong and caused the app to crash. It would be helpful if you could send us the error report to our Telegram group or via email.</string>
-    <string name="uncaught_error_report">Error report</string>
-    <string name="uncaught_error_report_copied">Copied error report to clipboard.</string>
+    <string name="downloading_update">Λήψη ενημέρωσης Booming Music.</string>
+    <string name="uncaught_error_title">Ούπς! Αυτό δεν έπρεπε να συμβεί!</string>
+    <string name="uncaught_error_message">Φαίνεται πως κάτι πήγε στραβά και έκανε την εφαρμογή να κολλήσει. Θα μας φαινόταν χρήσιμο αν μπορούσατε να μας στείλετε την αναφορά σφάλματος στην ομάδα μας στο Telegram ή μέσω email.</string>
+    <string name="uncaught_error_report">Αναφορά σφάλματος</string>
+    <string name="uncaught_error_report_copied">Η αναφορά σφάλματος αντιγράφηκε στο πρόχειρο.</string>
     <string name="uncaught_error_restart_app">Επανεκκίνηση εφαρμογής</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <string name="app_widget_card_desc">Εξιδανικευμένο και απλοποιημένο στυλ</string>
+    <string name="telegram_community">Κοινότητα στο Telegram</string>
+    <string name="telegram_community_summary">Συνδεθείτε στην κοινότητά μας στο Telegram για να μένετε ενημερωμένοι για νέες εκδόσεις και νέα.</string>
+    <string name="app_widget_card">Κάρτα</string>
 </resources>

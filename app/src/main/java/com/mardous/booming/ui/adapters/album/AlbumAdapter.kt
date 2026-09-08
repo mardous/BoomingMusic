@@ -37,7 +37,7 @@ import com.mardous.booming.extensions.media.asSectionName
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.songCountStr
 import com.mardous.booming.extensions.utilities.buildInfoString
-import com.mardous.booming.playback.shuffle.OpenShuffleMode
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.IAlbumCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.base.MediaEntryViewHolder
@@ -122,7 +122,7 @@ open class AlbumAdapter(
         val album = dataSet.getOrNull(position) ?: return ""
         return when (sortMode?.selectedKey) {
             SortKey.Artist -> album.displayArtistName().asSectionName(sortMode)
-            SortKey.AZ -> album.name.asSectionName(sortMode)
+            SortKey.Name -> album.name.asSectionName(sortMode)
             else -> album.name.asSectionName(sortMode)
         }
     }

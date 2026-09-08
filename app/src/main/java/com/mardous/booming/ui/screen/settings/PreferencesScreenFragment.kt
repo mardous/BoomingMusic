@@ -17,6 +17,7 @@
 
 package com.mardous.booming.ui.screen.settings
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
@@ -40,11 +41,9 @@ import coil3.SingletonImageLoader
 import com.google.android.material.color.DynamicColors
 import com.mardous.booming.BuildConfig
 import com.mardous.booming.R
-import com.mardous.booming.coil.CoverProvider
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.InclExclDao
 import com.mardous.booming.data.model.network.ScrobblingService
-import com.mardous.booming.extensions.files.getFormattedFileName
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.isTablet
@@ -54,6 +53,7 @@ import com.mardous.booming.extensions.requestContext
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.utilities.dateStr
 import com.mardous.booming.extensions.utilities.toEnum
+import com.mardous.booming.ui.component.compose.languageEntries
 import com.mardous.booming.ui.component.preferences.ProgressIndicatorPreference
 import com.mardous.booming.ui.component.preferences.SwitchWithButtonPreference
 import com.mardous.booming.ui.component.preferences.ThemePreference
@@ -61,23 +61,21 @@ import com.mardous.booming.ui.component.preferences.dialog.ActionOnCoverPreferen
 import com.mardous.booming.ui.component.preferences.dialog.CategoriesPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.ClearQueueActionPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.ExtraInfoPreferenceDialog
+import com.mardous.booming.ui.component.preferences.dialog.LanguageSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.NowPlayingScreenPreferenceDialog
 import com.mardous.booming.ui.component.preferences.dialog.SingleSelectionDialog
 import com.mardous.booming.ui.component.preferences.dialog.SongClickActionPreferenceDialog
-import com.mardous.booming.ui.dialogs.MultiCheckDialog
 import com.mardous.booming.ui.dialogs.library.BlacklistWhitelistDialog
+import com.mardous.booming.ui.screen.backup.BackupActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
-import com.mardous.booming.ui.screen.library.ReloadType
-import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.lyrics.LyricsViewModel
+import com.mardous.booming.ui.screen.scrobbling.ScrobblingServiceLoginFragment
 import com.mardous.booming.ui.screen.update.UpdateSearchResult
 import com.mardous.booming.ui.screen.update.UpdateViewModel
 import com.mardous.booming.util.ADD_EXTRA_CONTROLS
-import com.mardous.booming.util.BACKUP_DATA
+import com.mardous.booming.util.AUTO_LANGUAGE
 import com.mardous.booming.util.BLACKLIST_ENABLED
 import com.mardous.booming.util.BLACK_THEME
-import com.mardous.booming.util.BackupContent
-import com.mardous.booming.util.BackupHelper
 import com.mardous.booming.util.COVER_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
@@ -88,7 +86,6 @@ import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
 import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.LASTFM_LOGIN
-import com.mardous.booming.util.LAST_ADDED_CUTOFF
 import com.mardous.booming.util.LIBRARY_CATEGORIES
 import com.mardous.booming.util.LISTENBRAINZ_LOGIN
 import com.mardous.booming.util.MATERIAL_YOU
@@ -98,16 +95,11 @@ import com.mardous.booming.util.ON_CLEAR_QUEUE_ACTION
 import com.mardous.booming.util.ON_SONG_CLICK_ACTION
 import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.Preferences
-import com.mardous.booming.util.RESTORE_DATA
 import com.mardous.booming.util.TRASH_MUSIC_FILES
 import com.mardous.booming.util.USE_CUSTOM_FONT
 import com.mardous.booming.util.USE_FOLDER_ART
 import com.mardous.booming.util.WHITELIST_ENABLED
-import com.mardous.booming.util.WIDGET_IMAGE_CORNER_RADIUS
-import com.mardous.booming.util.WIDGET_THIRD_LINE_CONTENT
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -151,6 +143,11 @@ class NetworkPreferencesFragment : PreferenceScreenFragment() {
 class AdvancedPreferencesFragment : PreferenceScreenFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences_screen_advanced)
+        findPreference<ListPreference>(LANGUAGE_NAME)?.let { preference ->
+            preference.entries = requireContext().languageEntries()
+                .map { it.title }
+                .toTypedArray()
+        }
     }
 }
 
@@ -160,6 +157,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     private val libraryViewModel: LibraryViewModel by activityViewModel()
     private val lyricsViewModel: LyricsViewModel by activityViewModel()
     private val updateViewModel: UpdateViewModel by activityViewModel()
+
+    private val preferences: SharedPreferences by inject()
 
     private val importFontLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
@@ -174,41 +173,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                     }
             }
         }
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private val createBackupLauncher: ActivityResultLauncher<String> =
-        registerForActivityResult(ActivityResultContracts.CreateDocument("application/*")) { uri ->
-            if (uri != null) {
-                GlobalScope.launch {
-                    BackupHelper.createBackup(requireContext(), uri)
-                }
-            }
-        }
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private val selectBackupLauncher: ActivityResultLauncher<Array<String>> =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) { selection ->
-            if (selection != null) {
-                val items = BackupContent.entries.map {
-                    getString(it.titleRes)
-                }
-                val multiCheckDialog = MultiCheckDialog.Builder(requireContext())
-                    .title(R.string.select_content_to_restore)
-                    .items(items)
-                    .createDialog { _, whichPos, _ ->
-                        val content = BackupContent.entries.filterIndexed { i, _ ->
-                            whichPos.contains(i)
-                        }
-                        GlobalScope.launch {
-                            BackupHelper.restoreBackup(requireContext(), selection, content)
-                        }
-                        true
-                    }
-                multiCheckDialog.show(childFragmentManager, "RESTORE_DIALOG")
-            }
-        }
-
-    private val preferences: SharedPreferences by inject()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
@@ -265,7 +229,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             true
         }
 
-        findPreference<Preference>(WIDGET_IMAGE_CORNER_RADIUS)?.isVisible = hasS()
         findPreference<Preference>(ADD_EXTRA_CONTROLS)?.isVisible = !resources.isTablet
 
         findPreference<ListPreference>(LyricsViewSettings.Key.BACKGROUND_EFFECT)?.apply {
@@ -299,12 +262,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
         if (!hasR()) {
             findPreference<Preference>(TRASH_MUSIC_FILES)?.isVisible = false
         }
-
-        findPreference<Preference>(LAST_ADDED_CUTOFF)?.onPreferenceChangeListener =
-            Preference.OnPreferenceChangeListener { _, _ ->
-                libraryViewModel.forceReload(ReloadType.Suggestions)
-                true
-            }
 
         findPreference<SwitchWithButtonPreference>(WHITELIST_ENABLED)?.apply {
             setButtonPressedListener(object : SwitchWithButtonPreference.OnButtonPressedListener {
@@ -341,27 +298,13 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
             }
 
         findPreference<Preference>(LANGUAGE_NAME)?.setOnPreferenceChangeListener { _, newValue ->
-            val languageTag = (newValue as? String)
-            if (languageTag == null || languageTag == "auto") {
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
-            } else {
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
-            }
+            val languageTag = (newValue as? String)?.takeIf { it != AUTO_LANGUAGE }
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
             true
         }
 
-        findPreference<Preference>(BACKUP_DATA)?.setOnPreferenceClickListener {
-            createBackupLauncher.launch(
-                getFormattedFileName(
-                    "Backup",
-                    BackupHelper.BACKUP_EXTENSION
-                )
-            )
-            true
-        }
-
-        findPreference<Preference>(RESTORE_DATA)?.setOnPreferenceClickListener {
-            selectBackupLauncher.launch(arrayOf("application/*"))
+        findPreference<Preference>("backup_and_restore")?.setOnPreferenceClickListener {
+            startActivity(Intent(requireContext(), BackupActivity::class.java))
             true
         }
 
@@ -404,15 +347,16 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     @Suppress("DEPRECATION")
     override fun onDisplayPreferenceDialog(preference: Preference) {
         if (preference is ListPreference) {
-            val dialogFragment = SingleSelectionDialog.newInstance(preference.key)
+            val dialogFragment = if (preference.key == LANGUAGE_NAME) {
+                LanguageSelectionDialog.newInstance(preference.key)
+            } else SingleSelectionDialog.newInstance(preference.key)
             dialogFragment.setTargetFragment(this, 0)
             dialogFragment.show(parentFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {
             val dialogFragment: DialogFragment? = when (preference.key) {
                 LIBRARY_CATEGORIES -> CategoriesPreferenceDialog()
                 NOW_PLAYING_SCREEN -> NowPlayingScreenPreferenceDialog()
-                NOW_PLAYING_EXTRA_INFO -> ExtraInfoPreferenceDialog.nowPlaying(requireContext())
-                WIDGET_THIRD_LINE_CONTENT -> ExtraInfoPreferenceDialog.appWidgets(requireContext())
+                NOW_PLAYING_EXTRA_INFO -> ExtraInfoPreferenceDialog.nowPlaying()
                 ON_SONG_CLICK_ACTION -> SongClickActionPreferenceDialog()
                 ON_CLEAR_QUEUE_ACTION -> ClearQueueActionPreferenceDialog()
                 COVER_DOUBLE_TAP_ACTION,
@@ -504,8 +448,6 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
 
     private fun clearImageLoaderCache() = lifecycleScope.launch(Dispatchers.IO) {
         try {
-            CoverProvider.clearCache(requireContext())
-
             val imageLoader = SingletonImageLoader.get(requireContext())
             imageLoader.memoryCache?.clear()
             imageLoader.diskCache?.clear()

@@ -1,6 +1,6 @@
 package com.mardous.booming.data.local.lyrics.ttml
 
-import com.mardous.booming.data.model.lyrics.LyricsActor
+import com.mardous.booming.extensions.utilities.isWhitespace
 
 /**
  * Represents a single node in a TTML (Timed Text Markup Language) document.
@@ -16,13 +16,13 @@ import com.mardous.booming.data.model.lyrics.LyricsActor
  *
  * @author Christians Martínez A. (mardous)
  */
-internal data class TtmlNode(
+data class TtmlNode(
     val type: Int,
     val begin: Long,
     var end: Long,
     var dur: Long,
     val key: String? = null,
-    val actor: LyricsActor? = null
+    val agent: TtmlAgent? = null
 ) {
 
     private val children = mutableListOf<TtmlNode>()
@@ -65,7 +65,7 @@ internal data class TtmlNode(
                 this.text = text
                 return true
             } else {
-                if (text != null && text.length == 1 && text[0] == ' ') {
+                if (text.isWhitespace()) {
                     children[children.lastIndex].let { it.text = "${it.text} " }
                     return true
                 }
@@ -119,7 +119,7 @@ internal data class TtmlNode(
                 "end=$end, " +
                 "dur=$dur, " +
                 "background=$background, " +
-                "agent=$actor, " +
+                "agent=$agent, " +
                 "text='$text', " +
                 "closed=$closed" +
                 "}"
@@ -136,7 +136,9 @@ internal data class TtmlNode(
         const val TAG_DIV = "div"
         const val TAG_PARAGRAPH = "p"
         const val TAG_SPAN = "span"
+        const val TAG_TRANSLITERATION = "transliteration"
         const val TAG_TRANSLATION = "translation"
+        const val TAG_AGENT = "ttm:agent"
         const val TAG_TEXT = "text"
 
         fun isSupportedTag(name: String?) =
@@ -144,7 +146,9 @@ internal data class TtmlNode(
                     name == TAG_DIV ||
                     name == TAG_PARAGRAPH ||
                     name == TAG_SPAN ||
+                    name == TAG_TRANSLITERATION ||
                     name == TAG_TRANSLATION ||
+                    name == TAG_AGENT ||
                     name == TAG_TEXT
 
         fun buildBody(dur: Long): TtmlNode {
@@ -155,8 +159,8 @@ internal data class TtmlNode(
             return TtmlNode(type = NODE_SECTION, begin = begin, end = end, dur = dur)
         }
 
-        fun buildLine(begin: Long, end: Long, dur: Long, key: String?, actor: LyricsActor?): TtmlNode {
-            return TtmlNode(type = NODE_LINE, begin = begin, end = end, dur = dur, key = key, actor = actor)
+        fun buildLine(begin: Long, end: Long, dur: Long, key: String?, agent: TtmlAgent?): TtmlNode {
+            return TtmlNode(type = NODE_LINE, begin = begin, end = end, dur = dur, key = key, agent = agent)
         }
 
         fun buildWord(begin: Long, end: Long, dur: Long): TtmlNode {

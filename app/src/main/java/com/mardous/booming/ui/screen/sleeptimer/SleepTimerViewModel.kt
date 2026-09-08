@@ -57,15 +57,6 @@ class SleepTimerViewModel(
     private val _sleepTimerEvent = Channel<SleepTimerEvent>(Channel.BUFFERED)
     val sleepTimerEvent = _sleepTimerEvent.receiveAsFlow()
 
-    init {
-        sleepTimer.createTimerUpdater()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        sleepTimer.cancelTimerUpdater()
-    }
-
     fun setTimerState(
         value: Float = uiState.value.timerValue,
         isFinishMusic: Boolean = uiState.value.isFinishMusic,
@@ -81,19 +72,15 @@ class SleepTimerViewModel(
     }
 
     fun startTimer() = viewModelScope.launch(Dispatchers.IO) {
-        if (sleepTimer.canScheduleExactAlarm()) {
-            sleepTimer.set(
-                millisInFuture = uiState.value.timerValue.toLong() * 60 * 1000,
-                allowPendingQuit = uiState.value.isFinishMusic,
-                fadeOut = uiState.value.isFadeOut,
-                fadeDuration = uiState.value.fadeOutDuration.toLong() * 1000
-            )
-            _sleepTimerEvent.send(
-                SleepTimerEvent.Set(uiState.value.timerValue.toLong())
-            )
-        } else {
-            sleepTimer.launchExactAlarmPermissionRequest()
-        }
+        sleepTimer.set(
+            millisInFuture = uiState.value.timerValue.toLong() * 60 * 1000,
+            allowPendingQuit = uiState.value.isFinishMusic,
+            fadeOut = uiState.value.isFadeOut,
+            fadeDuration = uiState.value.fadeOutDuration.toLong() * 1000
+        )
+        _sleepTimerEvent.send(
+            SleepTimerEvent.Set(uiState.value.timerValue.toLong())
+        )
     }
 
     fun cancelTimer() = viewModelScope.launch(Dispatchers.IO) {

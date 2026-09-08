@@ -24,15 +24,12 @@ import com.mardous.booming.extensions.fileProviderAuthority
 import com.mardous.booming.util.StorageUtil
 import org.jaudiotagger.audio.AudioFile
 import org.jaudiotagger.audio.AudioFileIO
-import org.jaudiotagger.audio.AudioHeader
 import java.io.File
 import java.io.InputStream
-import java.io.OutputStream
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.util.zip.ZipOutputStream
 import kotlin.math.log10
 import kotlin.math.pow
 
@@ -72,23 +69,21 @@ fun File.getPrettyAbsolutePath(): String {
     return filePath
 }
 
+fun File.belongsTo(directory: File): Boolean {
+    val canonicalParent = directory.canonicalPath.let {
+        if (it.endsWith(File.separator)) it else "$it${File.separator}"
+    }
+    return this.canonicalPath.startsWith(canonicalParent)
+}
+
 fun File.getCanonicalPathSafe(): String = runCatching { canonicalPath }.getOrDefault(absolutePath)
 
 fun File.getHumanReadableSize() = length().asReadableFileSize()
 
-fun File.getContentUri(context: Context): Uri =
+fun File.getFileProviderUri(context: Context): Uri =
     FileProvider.getUriForFile(context, context.fileProviderAuthority, this)
 
 fun File.toAudioFile(): AudioFile? = runCatching { AudioFileIO.read(this) }.getOrNull()
-
-val AudioHeader.formatFixed: String
-    get() = this.format.let {
-        when (it) {
-            "Opus Vorbis 1.0" -> "Opus"
-            "Apple Lossless" -> "ALAC"
-            else -> it
-        }
-    }
 
 /**
  * Reads this stream completely as a String.
@@ -98,5 +93,3 @@ val AudioHeader.formatFixed: String
  * @return the string with corresponding file content.
  */
 fun InputStream.readString(): String = this.bufferedReader().use { it.readText() }
-
-fun OutputStream.zipOutputStream(): ZipOutputStream = ZipOutputStream(buffered())

@@ -12,8 +12,8 @@ import coil3.request.Options
 import com.kyant.taglib.TagLib
 import com.mardous.booming.coil.model.AudioCover
 import com.mardous.booming.coil.util.AudioCoverUtils
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.extensions.media.asAlbumCoverUri
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.util.ImageSize
@@ -50,7 +50,7 @@ class AudioCoverFetcher(
 
         if (stream == null &&
             !cover.artistName.isArtistNameUnknown() &&
-            NetworkFeature.Images.Albums.isAvailable(options.context)) {
+            NetworkFeature.Images.Albums.isEnabled) {
             val imageUrl = if (cover.isAlbum) {
                 repository.deezerAlbum(cover.artistName, cover.albumName)?.getBestImage(cover.albumName, imageSize)
                     ?: repository.deezerTrack(cover.artistName, cover.title)?.getBestImage(imageSize)

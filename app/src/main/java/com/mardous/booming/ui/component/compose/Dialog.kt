@@ -105,9 +105,9 @@ fun InputDialog(
 fun InputDialog(
     onConfirm: (String) -> Unit,
     onDismiss: () -> Unit,
-    message: String,
     confirmButton: String,
     dismissButton: String = stringResource(android.R.string.cancel),
+    message: String? = null,
     title: String? = null,
     icon: Painter? = null,
     inputHint: String? = null,
@@ -140,12 +140,14 @@ fun InputDialog(
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
             ) {
-                Text(
-                    text = message,
-                    modifier = Modifier.fillMaxWidth()
-                )
+                if (!message.isNullOrEmpty()) {
+                    Text(
+                        text = message,
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
-                Spacer(Modifier.height(8.dp))
+                    Spacer(Modifier.height(8.dp))
+                }
 
                 OutlinedTextField(
                     state = inputState,

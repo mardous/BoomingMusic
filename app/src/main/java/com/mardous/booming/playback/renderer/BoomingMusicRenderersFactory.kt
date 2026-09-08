@@ -18,16 +18,11 @@
 package com.mardous.booming.playback.renderer
 
 import android.content.Context
-import android.os.Handler
 import androidx.annotation.OptIn
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.decoder.ffmpeg.FfmpegAudioRenderer
 import androidx.media3.exoplayer.DefaultRenderersFactory
-import androidx.media3.exoplayer.Renderer
-import androidx.media3.exoplayer.audio.AudioRendererEventListener
 import androidx.media3.exoplayer.audio.AudioSink
 import androidx.media3.exoplayer.audio.DefaultAudioSink
-import androidx.media3.exoplayer.mediacodec.MediaCodecSelector
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
 
@@ -48,30 +43,5 @@ class BoomingMusicRenderersFactory(
             .setEnableFloatOutput(enableFloatOutput)
             .setEnableAudioOutputPlaybackParameters(enableAudioOutputPlaybackParams)
             .build()
-    }
-
-    override fun buildAudioRenderers(
-        context: Context,
-        extensionRendererMode: Int,
-        mediaCodecSelector: MediaCodecSelector,
-        enableDecoderFallback: Boolean,
-        audioSink: AudioSink,
-        eventHandler: Handler,
-        eventListener: AudioRendererEventListener,
-        out: ArrayList<Renderer>
-    ) {
-        if (extensionRendererMode != EXTENSION_RENDERER_MODE_OFF) {
-            out.add(FfmpegAudioRenderer(eventHandler, eventListener, audioSink))
-        }
-        super.buildAudioRenderers(
-            context,
-            extensionRendererMode,
-            mediaCodecSelector,
-            enableDecoderFallback,
-            audioSink,
-            eventHandler,
-            eventListener,
-            out
-        )
     }
 }

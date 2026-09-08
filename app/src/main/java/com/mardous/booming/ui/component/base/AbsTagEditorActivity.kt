@@ -26,6 +26,7 @@ import coil3.request.crossfade
 import coil3.target.Target
 import coil3.toBitmap
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.mardous.booming.core.sort.sortedByName
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.databinding.ActivityTagEditorBinding
 import com.mardous.booming.extensions.*
@@ -215,7 +216,7 @@ abstract class AbsTagEditorActivity : AbsBaseActivity(),
 
     private val defaultGenreSelector: Dialog by lazy {
         val titles = GenreTypes.getInstanceOf()
-            .idToValueMap.values.sorted().toTypedArray()
+            .idToValueMap.values.sortedByName { it }.toTypedArray()
 
         MaterialAlertDialogBuilder(this)
             .setItems(titles) { _: DialogInterface, i: Int -> onDefaultGenreSelection(titles[i]) }

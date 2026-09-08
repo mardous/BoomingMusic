@@ -30,11 +30,11 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
+import android.provider.Settings
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
@@ -96,6 +96,13 @@ fun Context.openUrl(url: String) =
         }
     }
 
+fun Context.openAppDetailsSettings() =
+    tryStartActivity(
+        intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            .setData(Uri.fromParts("package", packageName, null))
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    )
+
 fun Context.tryStartActivity(intent: Intent, onError: (Throwable) -> Unit = {}) = try {
     startActivity(intent)
 } catch (t: Throwable) {
@@ -114,17 +121,6 @@ fun Context.webSearch(vararg keys: String?) {
 }
 
 fun Context.isPowerSaveMode(): Boolean = getSystemService<PowerManager>()?.isPowerSaveMode == true
-
-fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val networkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork)
-    if (networkCapabilities != null) {
-        return if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-            true
-        } else networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) && !requestOnlyWifi
-    }
-    return false
-}
 
 fun Context.onUI(action: () -> Unit) {
     if (this is Activity) {

@@ -9,10 +9,29 @@
 
     <style name="Theme.Booming.FollowSystem" parent="Base.Theme.Booming.Adaptive"/>
 
-    <style name="Theme.Booming.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash</item>
+    <style name="Theme.Booming.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/boomingmusic_logo_splash</item>
+    </style>
+
+    <style name="Theme.Booming.AudioPreview" parent="Theme.Booming.FollowSystem">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.Booming.AppWidget.Preview.Control" parent="">
+        <item name="android:scaleType">center</item>
+        <item name="android:background">@drawable/widget_shape_button</item>
+        <item name="android:backgroundTint">?attr/colorTertiary</item>
+        <item name="android:tint">?attr/colorOnTertiary</item>
+    </style>
+
+
+    <style name="Widget.Booming.AppWidget.Preview.Accent" parent="Widget.Booming.AppWidget.Preview.Control">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:tint">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Widget.Booming.Expressive.Button" parent="Widget.Material3Expressive.Button">
@@ -21,19 +40,6 @@
 
     <style name="Widget.Booming.Expressive.Button.Tonal" parent="Widget.Material3Expressive.Button.TonalButton">
         <item name="iconGravity">textStart</item>
-    </style>
-
-    <style name="HomeActionButton" parent="Widget.Material3Expressive.Button">
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:lines">2</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:textColor">?colorOnSurface</item>
-        <item name="backgroundTint">?colorSurfaceContainerLow</item>
-        <item name="cornerRadius">20dp</item>
-        <item name="iconPadding">16dp</item>
-        <item name="iconTint">?colorOnSurface</item>
     </style>
 
     <style name="PlayerIconButton" parent="Widget.Material3Expressive.Button.IconButton.Standard">

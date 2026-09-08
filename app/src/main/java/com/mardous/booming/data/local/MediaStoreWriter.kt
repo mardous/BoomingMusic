@@ -19,20 +19,18 @@ package com.mardous.booming.data.local
 
 import android.content.ContentResolver
 import android.content.ContentValues
-import android.content.Context
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import com.mardous.booming.extensions.hasQ
 import com.mardous.booming.util.FileUtil.PLAYLISTS_DIRECTORY_NAME
-import java.io.File
 import java.io.IOException
 import java.io.OutputStream
 
 /**
  * @author Christians M. A. (mardous)
  */
-class MediaStoreWriter(private val context: Context, private val contentResolver: ContentResolver) {
+class MediaStoreWriter(private val contentResolver: ContentResolver) {
 
     class Request(
         val displayName: String,
@@ -121,19 +119,5 @@ class MediaStoreWriter(private val context: Context, private val contentResolver
             e.printStackTrace()
         }
         return Result(Result.Code.ERROR)
-    }
-
-    fun toFile(directory: File? = null, fileName: String, streamConsumer: (OutputStream) -> Boolean): File? {
-        val result = runCatching {
-            val file = File(directory ?: context.filesDir, fileName)
-            if (file.createNewFile()) {
-                file.outputStream().use {
-                    if (streamConsumer(it))
-                        return file
-                    else null
-                }
-            } else null
-        }
-        return result.getOrNull()
     }
 }

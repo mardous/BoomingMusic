@@ -1,9 +1,10 @@
 package com.mardous.booming.ui.component.compose
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,10 +22,9 @@ import com.mardous.booming.R
 fun SmallHeader(
     title: String,
     subtitle: String? = null,
-    additionalInfo: String? = null,
+    trailingContent: @Composable (() -> Unit)? = null,
     imageModel: Any? = null,
     imagePlaceholderIconRes: Int = R.drawable.ic_music_note_24dp,
-    showIndeterminateIndicator: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -38,7 +38,7 @@ fun SmallHeader(
                 placeholderIcon = imagePlaceholderIconRes,
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
-                    .size(96.dp)
+                    .size(72.dp)
             )
         }
         Column(modifier = Modifier.weight(1f)) {
@@ -59,24 +59,8 @@ fun SmallHeader(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            if (!additionalInfo.isNullOrEmpty()) {
-                Spacer(Modifier.heightIn(2.dp))
-                ShapedText(
-                    text = additionalInfo,
-                    style = MaterialTheme.typography.bodySmall,
-                    shape = RoundedCornerShape(4.dp)
-                )
-            }
         }
 
-        AnimatedVisibility(
-            visible = showIndeterminateIndicator,
-            modifier = Modifier.padding(start = 8.dp)
-        ) {
-            CircularWavyProgressIndicator(
-                wavelength = 10.dp,
-                modifier = Modifier.size(32.dp)
-            )
-        }
+        trailingContent?.invoke()
     }
 }

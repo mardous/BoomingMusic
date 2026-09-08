@@ -17,57 +17,98 @@
 
 package com.mardous.booming.data.remote.lyrics
 
-import android.content.Context
 import android.util.Log
 import com.mardous.booming.data.model.Song
+import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.api.betterlyrics.BetterLyricsApi
 import com.mardous.booming.data.remote.lyrics.api.lrclib.LrcLibApi
-import com.mardous.booming.data.remote.lyrics.api.simpmusic.SimpMusicLyricsApi
-import com.mardous.booming.data.remote.lyrics.model.DownloadedLyrics
-import com.mardous.booming.data.remote.lyrics.model.toDownloadedLyrics
+import com.mardous.booming.data.remote.lyrics.api.lyrically.LyricallyApi
 import com.mardous.booming.extensions.media.albumArtistName
+import com.mardous.booming.extensions.media.extractMainArtistName
 import io.ktor.client.HttpClient
 import java.io.IOException
 
-class LyricsDownloadService(private val context: Context, client: HttpClient) {
+class LyricsProviderParams(
+    val providers: List<LyricsProvider> = LyricsProvider.AvailableProviders,
+    val ignoreWifiSetting: Boolean = false,
+    val ignoreProviderSetting: Boolean = false
+)
 
-    private val lyricsApi = listOf(
-        LrcLibApi(client),
-        BetterLyricsApi(client),
-        SimpMusicLyricsApi(client)
+class LyricsDownloadService(client: HttpClient) {
+
+    private val apiByProvider = mapOf(
+        LyricsProvider.Lyrically to LyricallyApi(client),
+        LyricsProvider.BetterLyrics to BetterLyricsApi(client),
+        LyricsProvider.LRCLib to LrcLibApi(client)
     )
 
     @Throws(IOException::class)
-    suspend fun getLyrics(
+    suspend fun remoteLyrics(
         song: Song,
         title: String = song.title,
-        artist: String = song.albumArtistName()
-    ): DownloadedLyrics {
-        var downloadedLyrics = song.toDownloadedLyrics()
-        if (song == Song.emptySong) {
-            return downloadedLyrics
-        }
-        for (api in lyricsApi) {
-            if (!api.networkFeature.isAvailable(context))
-                continue
+        artist: String = song.albumArtistName(),
+        providerParams: LyricsProviderParams = LyricsProviderParams()
+    ): RawLyrics.Remote {
+        check(providerParams.providers.isNotEmpty()) { "No providers configured" }
 
-            val apiResult = runCatching { api.songLyrics(song, title, artist) }
-            if (apiResult.isFailure) {
-                Log.e("LyricsService", "Error during lyrics request", apiResult.exceptionOrNull())
+        var result = RawLyrics.Remote()
+        if (song == Song.emptySong || !NetworkFeature.isOnline(ignoreWifiSetting = providerParams.ignoreWifiSetting))
+            return result
+
+        try {
+            val cleanedTitle = cleanTitle(title)
+            val cleanedArtist = artist.extractMainArtistName()
+            for (provider in providerParams.providers) {
+                if (!provider.isAvailableForCurrentPolicy ||
+                    (!provider.isEnabled && !providerParams.ignoreProviderSetting)) continue
+
+                val api = apiByProvider.getValue(provider)
+                val apiResult = runCatching { api.downloadLyrics(song, cleanedTitle, cleanedArtist) }
+                if (apiResult.isFailure) {
+                    Log.e(TAG, "Error during lyrics request", apiResult.exceptionOrNull())
+                }
+
+                val response = apiResult.getOrNull() ?: continue
+
+                result = result.accept(response)
+                if (result.hasBoth) break
             }
-
-            val response = apiResult.getOrNull() ?: continue
-            val plainLyrics = downloadedLyrics.plainLyrics ?: response.plainLyrics
-            val syncedLyrics = downloadedLyrics.syncedLyrics ?: response.syncedLyrics
-
-            downloadedLyrics = downloadedLyrics.copy(
-                plainLyrics = plainLyrics,
-                syncedLyrics = syncedLyrics
-            )
-
-            if (downloadedLyrics.hasMultiOptions)
-                break
+        } catch (e: Exception) {
+            Log.e(TAG, "Lyrics download failed with error:", e)
         }
-        return downloadedLyrics
+
+        return result
+    }
+
+    /**
+     * Taken from [Metrolist](https://github.com/MetrolistGroup/Metrolist).
+     */
+    private fun cleanTitle(title: String): String {
+        var cleaned = title.trim()
+        for (pattern in TITLE_CLEANUP_PATTERNS) {
+            cleaned = cleaned.replace(pattern, "")
+        }
+        return cleaned.trim()
+    }
+
+    companion object {
+        private const val TAG = "LyricsDownloadService"
+
+        private const val KEYWORDS = "official|video|audio|lyrics|lyric|visualizer|hd|hq|4k|remaster|remix|live|acoustic|version|edit|extended|radio|clean|explicit"
+
+        private val TITLE_CLEANUP_PATTERNS = listOf(
+            Regex("""\s*\((?>[^)]*?(?:$KEYWORDS)[^)]*?)\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\[(?>[^\]]*?(?:$KEYWORDS)[^\]]*?)\]""", RegexOption.IGNORE_CASE),
+            Regex("""\s*【(?>[^】]*?)】"""),
+            Regex("""\s*\|.*$"""),
+            Regex("""\s*-\s*(?:official|video|audio|lyrics|lyric|visualizer).*$""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\((?>feat\.[^)]*?)\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\((?>ft\.[^)]*?)\)""", RegexOption.IGNORE_CASE),
+            Regex("""\s*feat\..*$""", RegexOption.IGNORE_CASE),
+            Regex("""\s*ft\..*$""", RegexOption.IGNORE_CASE),
+            Regex("""\s*\((?>[^)]*?\d{4}[^)]*?)\)""", RegexOption.IGNORE_CASE),
+        )
     }
 }

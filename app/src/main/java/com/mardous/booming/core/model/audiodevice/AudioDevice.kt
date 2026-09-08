@@ -23,9 +23,10 @@ import android.os.Build
 /**
  * @author Christians M. A. (mardous)
  */
-class AudioDevice(
+data class AudioDevice(
     val type: AudioDeviceType,
-    private val productName: String?
+    private val productName: String?,
+    val isPending: Boolean = false
 ) {
 
     fun getDeviceName(context: Context, renameDeviceOutput: Boolean = true): String {
@@ -42,6 +43,6 @@ class AudioDevice(
         /**
          * Constant describing an unknown audio device.
          */
-        val UnknownDevice = AudioDevice(AudioDeviceType.Unknown, null)
+        val Unknown = AudioDevice(AudioDeviceType.Unknown, null)
     }
 }

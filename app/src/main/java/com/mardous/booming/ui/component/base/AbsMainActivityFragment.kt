@@ -30,12 +30,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.mardous.booming.MainActivity
 import com.mardous.booming.R
+import com.mardous.booming.core.MediaEventBus
 import com.mardous.booming.core.model.MediaEvent
 import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.isLandscape
-import com.mardous.booming.ui.screen.MainActivity
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.util.OPEN_ON_PLAY
@@ -56,6 +57,7 @@ abstract class AbsMainActivityFragment @JvmOverloads constructor(@LayoutRes layo
     val playerViewModel: PlayerViewModel by activityViewModel()
     val libraryViewModel: LibraryViewModel by activityViewModel()
 
+    protected val mediaEventBus: MediaEventBus by inject()
     protected val preferences: SharedPreferences by inject()
     protected val mainActivity: MainActivity
         get() = requireActivity() as MainActivity
@@ -66,7 +68,7 @@ abstract class AbsMainActivityFragment @JvmOverloads constructor(@LayoutRes layo
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.STARTED)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                playerViewModel.mediaEvent.collect {
+                mediaEventBus.eventFlow.collect {
                     when (it) {
                         MediaEvent.FavoriteContentChanged -> onFavoriteContentChanged()
                         MediaEvent.MediaContentChanged -> onMediaContentChanged()

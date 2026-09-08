@@ -1,14 +1,16 @@
 package com.mardous.booming.core.model.lyrics
 
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.mardous.booming.data.model.lyrics.Lyrics
+import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import kotlin.math.abs
 
-class LyricsViewState(val lyrics: Lyrics?) {
+@Stable
+class LyricsViewState(val lyrics: SyncedLyrics?) {
 
     var position by mutableLongStateOf(0L)
         private set
@@ -44,7 +46,7 @@ class LyricsViewState(val lyrics: Lyrics?) {
         if (position < 0 || lyrics == null) return -1
         val lines = lyrics.lines
         for (i in lines.lastIndex downTo 0) {
-            if (position >= lines[i].startAt) {
+            if (position >= lines[i].start) {
                 return i
             }
         }
@@ -53,9 +55,9 @@ class LyricsViewState(val lyrics: Lyrics?) {
 
     private fun findWordIndexAt(position: Long, lineIndex: Int): Int {
         if (lyrics == null || lineIndex !in lyrics.lines.indices) return -1
-        val words = lyrics.lines[lineIndex].content.mainVocals
+        val words = lyrics.lines[lineIndex].content.mainSyllables
         for (i in words.indices) {
-            if (position < words[i].startMillis) {
+            if (position < words[i].start) {
                 return i - 1
             }
         }
@@ -66,9 +68,9 @@ class LyricsViewState(val lyrics: Lyrics?) {
         if (lyrics == null || lineIndex !in lyrics.lines.indices) return -1
         val line = lyrics.lines[lineIndex]
         if (!line.hasBackgroundVocals) return -1
-        val backgrounds = line.content.backgroundVocals
+        val backgrounds = line.content.backgroundSyllables
         for (i in backgrounds.indices) {
-            if (position < backgrounds[i].startMillis) {
+            if (position < backgrounds[i].start) {
                 return i - 1
             }
         }

@@ -75,8 +75,11 @@
 
 -keep class com.mardous.booming.core.model.** { *; }
 -keep class com.mardous.booming.data.local.room.LyricsEntity { *; }
+-keep class com.mardous.booming.data.local.backup.** { *; }
 -keep class com.mardous.booming.data.remote.deezer.model.** { *; }
 -keep class com.mardous.booming.data.remote.lastfm.model.** { *; }
+-keep class com.mardous.booming.data.remote.listenbrainz.model.** { *; }
+-keep class com.mardous.booming.data.remote.lyrics.model.** { *; }
 -keep class com.mardous.booming.data.local.search.** { *; }
 -keep class com.mardous.booming.data.model.search.** { *; }
 -keep class com.mardous.booming.data.model.replaygain.** { *; }
@@ -84,3 +87,6 @@
 # Hide an annoying compilation warning
 # http://stackoverflow.com/questions/3308010/what-is-the-ignoring-innerclasses-attribute-warning-output-during-compilation
 -keepattributes EnclosingMethod
+
+# Prevent R8 from merging widget classes and mixing their IDs.
+-keepnames class com.mardous.booming.core.appwidgets.widget.**

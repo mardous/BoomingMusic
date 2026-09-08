@@ -12,9 +12,9 @@ import coil3.fetch.SourceFetchResult
 import coil3.request.Options
 import com.mardous.booming.coil.CustomArtistImageManager
 import com.mardous.booming.coil.model.ArtistImage
-import com.mardous.booming.data.local.repository.Repository
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.network.NetworkFeature
+import com.mardous.booming.data.repository.Repository
 import com.mardous.booming.util.ImageSize
 import com.mardous.booming.util.PREFERRED_IMAGE_SIZE
 import com.mardous.booming.util.Preferences.requireString
@@ -53,7 +53,7 @@ class ArtistImageFetcher(
             }
         }
 
-        if (!image.isNameUnknown && NetworkFeature.Images.Artists.isAvailable(options.context)) {
+        if (!image.isNameUnknown && NetworkFeature.Images.Artists.isEnabled) {
             var pageIndex = 0
             var revisedResults = 0
             var deezerArtist = repository.deezerArtist(image.name, MAX_RESULT_PER_PAGE, pageIndex)
@@ -71,7 +71,11 @@ class ArtistImageFetcher(
                 }
                 revisedResults += deezerArtist.result.size
                 if (revisedResults < total) {
-                    deezerArtist = repository.deezerArtist(image.name, min((total - revisedResults), MAX_RESULT_PER_PAGE), pageIndex++)
+                    deezerArtist = repository.deezerArtist(
+                        name = image.name,
+                        limit = min((total - revisedResults), MAX_RESULT_PER_PAGE),
+                        index = pageIndex++
+                    )
                 }
             }
         }
