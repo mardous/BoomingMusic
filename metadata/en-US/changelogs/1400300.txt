@@ -1,0 +1,9 @@
+* Updated app icon and redesigned onboarding and Home screen
+* Added Pro EQ mode with up to 32 bands
+* Added AutoEq database with over 8,000 profiles
+* Added MusicBrainz metadata download and artist image caching
+* Added audio preview for external files
+* Improved Android Auto media controls and search
+* Enhanced Karaoke lyrics, TTML, transliteration and manual lyrics search
+* Reworked backups and encryption
+* Fixed crashes, ReplayGain tags and UI issues
