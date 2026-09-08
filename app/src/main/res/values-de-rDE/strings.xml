@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Speicherzugriff</string>
     <string name="permission_external_storage_description">Die App benötigt die Berechtigung auf den Speicher Deines Gerätes zuzugreifen, um Musik abzuspielen</string>
     <string name="permission_external_storage_denied">Du musst die Berechtigung zum Zugriff auf den externen Speicher erteilen.</string>
-    <string name="permission_bluetooth_title">Geräte in der Nähe</string>
+    <string name="permission_bluetooth_title">Geräte in der Nähe (optional)</string>
     <string name="permission_bluetooth_description">Die App benötigt Zugriff auf Geräte in der Nähe, um Bluetooth-Geräte zu finden</string>
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
     <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
@@ -338,7 +338,6 @@
     <string name="top_albums">Top-Alben</string>
     <string name="recent_artists">Kürzlich gehörte Interpreten</string>
     <string name="recent_albums">Kürzlich gehörte Alben</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Rein zufällig</string>
     <string name="shuffle_mode_most_played">Meistgespielte</string>
@@ -980,4 +979,18 @@
     <string name="initial_configuration_note">Du kannst diese Einstellungen später jederzeit ändern.</string>
     <string name="restore_from_backup">Von Backup wiederherstellen</string>
     <string name="network_features_summary">Aktiviert Scrobbeln sowie das Herunterladen von Albumcovern und Songtexten.</string>
+    <string name="action_play_x">%s abspielen</string>
+    <string name="invalid_search_params">Die Suchparameter konnten nicht verarbeitet werden.</string>
+    <string name="permissions_needed">Berechtigungen benötigt</string>
+    <string name="welcome_to_x">Willkommen bei %s</string>
+    <string name="home_empty_title">Nichts zu empfehlen</string>
+    <string name="home_empty_subtitle">Höre erst mal ein bisschen Musik an</string>
+    <string name="home_shuffle_title">Musik zufällig abspielen</string>
+    <string name="home_for_you_title">Für dich</string>
+    <string name="home_for_you_subtitle">Deine absoluten Favoriten an einem Ort</string>
+    <string name="home_for_you_subtitle_2">Handverlesene Schätze nur für dich</string>
+    <string name="home_for_you_subtitle_3">Deine tägliche Dosis musikalischer Inspiration</string>
+    <string name="home_albums_title">Jetzt anhören</string>
+    <string name="home_albums_subtitle">Top und aktuelle Alben</string>
+    <string name="home_albums_subtitle_2">Entdecke deine neuesten Sammlungen</string>
 </resources>
