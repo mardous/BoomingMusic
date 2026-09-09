@@ -55,7 +55,7 @@ jobs:
         cache: gradle
 
     - name: Create signing key
-      if: github.event_name != 'pull_request'
+      if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
       env:
         SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
       run: |
@@ -65,7 +65,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Create Last.fm config
-      if: github.event_name != 'pull_request'
+      if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
       env:
         LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
         LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
@@ -76,7 +76,7 @@ jobs:
 
     - name: Build with Gradle
       run: |
-        if [ "$EVENT_NAME" = "pull_request" ]; then
+        if [ "$EVENT_NAME" = "pull_request" ] || [ "$REF_NAME" != "$DEFAULT_BRANCH" ]; then
           ./gradlew assembleDebug
         else
           # Extract signing properties and pass to Gradle as env vars
@@ -92,11 +92,13 @@ jobs:
       env:
         RELEASE_TYPE: "CI"
         EVENT_NAME: ${{ github.event_name }}
+        REF_NAME: ${{ github.ref_name }}
+        DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
 
     - name: Create Changelog
       id: changelog
-      if: github.event_name != 'pull_request'
+      if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
       uses: actions/github-script@v9
       env:
         COMMITS: ${{ toJSON(github.event.commits) }}
@@ -110,7 +112,7 @@ jobs:
 
     - name: Find APK (CI build)
       id: set_apk_output
-      if: github.event_name != 'pull_request'
+      if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
       run: |
         APK_PATH=$(find app/build/outputs/apk/github/release -name '*.apk')
         APK_NAME=$(basename "$APK_PATH")
@@ -119,14 +121,14 @@ jobs:
         echo "apk_name=$APK_NAME" >> $GITHUB_OUTPUT
 
     - name: Find APK (PR)
-      if: github.event_name == 'pull_request'
+      if: github.event_name == 'pull_request' || github.ref_name != github.event.repository.default_branch
       run: |
         APK_PATH=$(find app/build/outputs/apk/github/debug -name '*.apk')
         echo "APK_FILE=$APK_PATH" >> $GITHUB_ENV
         echo "APK_FILE_NAME=$(basename "$APK_PATH")" >> $GITHUB_ENV
 
     - name: Upload apk (CI build)
-      if: github.event_name != 'pull_request'
+      if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
       uses: actions/upload-artifact@v7
       with:
         name: ${{ env.APK_FILE_NAME }}
@@ -134,7 +136,7 @@ jobs:
         archive: false
 
     - name: Upload apk (PR)
-      if: github.event_name == 'pull_request'
+      if: github.event_name == 'pull_request' || github.ref_name != github.event.repository.default_branch
       uses: actions/upload-artifact@v7
       with:
         name: ${{ env.APK_FILE_NAME }}
@@ -143,7 +145,7 @@ jobs:
   notify:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
     steps:
     - name: Set Short SHA
       id: vars
