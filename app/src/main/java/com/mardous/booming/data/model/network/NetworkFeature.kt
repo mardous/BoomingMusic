@@ -51,6 +51,8 @@ sealed class NetworkFeature(
             override val isAvailableForCurrentPolicy: Boolean
                 get() = boolResource(R.bool.enable_lyrically_provider)
         }
+        object Unison : Lyrics(UNISON_ENABLED_KEY, true)
+        object LyricsOvh : Lyrics(LYRICS_OVH_ENABLED_KEY, false)
     }
 
     sealed class Lastfm(preferenceKey: String, isOnByDefault: Boolean) :
@@ -97,6 +99,8 @@ sealed class NetworkFeature(
         const val ALLOW_ONLINE_ARTIST_IMAGES_KEY = "allow_online_artist_images"
         const val ALLOW_ONLINE_ALBUM_COVERS_KEY = "allow_online_album_covers"
         const val BETTERLYRICS_ENABLED_KEY = "betterlyrics_enabled"
+        const val UNISON_ENABLED_KEY = "unison_enabled"
+        const val LYRICS_OVH_ENABLED_KEY = "lyrics_ovh_enabled"
         const val LYRICALLY_ENABLED_KEY = "lyrically_enabled"
         const val LRCLIB_ENABLED_KEY = "lrclib_enabled"
         const val LASTFM_SCROBBLING_ENABLED_KEY = "lastfm_scrobbling_enabled"

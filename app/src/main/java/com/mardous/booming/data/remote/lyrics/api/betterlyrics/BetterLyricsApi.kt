@@ -3,7 +3,9 @@ package com.mardous.booming.data.remote.lyrics.api.betterlyrics
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
+import com.mardous.booming.data.remote.lyrics.api.LyricsApiResult
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultQuality
 import com.mardous.booming.data.remote.lyrics.model.BetterLyricsResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -20,7 +22,7 @@ class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
         song: Song,
         title: String,
         artist: String
-    ): RawLyrics.Remote? {
+    ): LyricsApiResult? {
         val response = client.get(BETTERLYRICS_API_URL) {
             parameter("s", title)
             parameter("a", artist)
@@ -35,8 +37,11 @@ class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
         if (response.status == HttpStatusCode.OK) {
             val result = response.body<BetterLyricsResponse>()
             if (result.ttml.isNotEmpty()) {
-                return RawLyrics.Remote(
-                    synced = RawLyrics.Remote.Content(provider.displayName, result.ttml)
+                return LyricsApiResult(
+                    lyrics = RawLyrics.Remote(
+                        synced = RawLyrics.Remote.Content(provider.displayName, result.ttml)
+                    ),
+                    quality = LyricsResultQuality.WordSynced
                 )
             }
         }

@@ -13,7 +13,7 @@ data class LRCLibResponse(
     val album: String,
     val instrumental: Boolean,
     @SerialName("duration")
-    val durationInSeconds: Double,
+    val durationInSeconds: Double?,
     val plainLyrics: String?,
     val syncedLyrics: String?
 )
@@ -21,6 +21,25 @@ data class LRCLibResponse(
 @Serializable
 class BetterLyricsResponse(
     val ttml: String
+)
+
+@Serializable
+data class UnisonLyricsResponse(
+    val success: Boolean,
+    val data: UnisonLyricsData? = null
+)
+
+@Serializable
+data class UnisonLyricsData(
+    val lyrics: String,
+    val format: String,
+    val syncType: String,
+    val confidence: String? = null
+)
+
+@Serializable
+data class LyricsOvhResponse(
+    val lyrics: String? = null
 )
 
 @Serializable
