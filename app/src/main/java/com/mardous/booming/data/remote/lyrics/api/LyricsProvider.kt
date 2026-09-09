@@ -25,7 +25,9 @@ enum class LyricsProvider(
 ) {
     LRCLib("LRCLib", NetworkFeature.Lyrics.LRCLib),
     BetterLyrics("BetterLyrics", NetworkFeature.Lyrics.BetterLyrics),
-    Lyrically("Lyrically", NetworkFeature.Lyrics.Lyrically);
+    Lyrically("Lyrically", NetworkFeature.Lyrics.Lyrically),
+    Unison("Unison", NetworkFeature.Lyrics.Unison),
+    LyricsOvh("lyrics.ovh", NetworkFeature.Lyrics.LyricsOvh);
 
     val isAvailableForCurrentPolicy get() = networkFeature.isAvailableForCurrentPolicy
     val isEnabled get() = networkFeature.isEnabled

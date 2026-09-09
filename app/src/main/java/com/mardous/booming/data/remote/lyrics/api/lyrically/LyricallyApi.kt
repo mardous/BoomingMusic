@@ -21,7 +21,9 @@ import com.mardous.booming.BuildConfig
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
+import com.mardous.booming.data.remote.lyrics.api.LyricsApiResult
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultQuality
 import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
@@ -54,28 +56,24 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
         song: Song,
         title: String,
         artist: String
-    ): RawLyrics.Remote? {
+    ): LyricsApiResult? {
         val searchResponse = searchHelper.getAppleMusicSearchResponse(title, artist)
         if (searchResponse != null && searchResponse.size > 0) {
-            var lyrics: RawLyrics.Remote? = null
+            val bestId = getScoredAppleMusicIds(title, artist, song.duration, searchResponse)
+                .firstOrNull { (_, score) -> score > 0.0 }
+                ?.first ?: return null
+            val response = client.paxsenix(LYRICALLY_API_URL) {
+                parameter("id", bestId)
+            }.body<LyricallyLyricsResponse>()
+            val lyrics = parseLyricallyResponse(response)
+            if (!lyrics.hasPlain && !lyrics.hasSynced) return null
 
-            val scoredIds = getScoredAppleMusicIds(title, artist, song.duration, searchResponse)
-            for ((result, score) in scoredIds.take(5)) {
-                if (score <= 0.0) continue
-
-                val lyricsResponse = client.paxsenix(LYRICALLY_API_URL) {
-                    parameter("id", result)
-                }.body<LyricallyLyricsResponse>()
-
-                val newLyrics = parseLyricallyResponse(lyricsResponse)
-
-                lyrics = lyrics?.accept(newLyrics) ?: newLyrics
-                if (lyrics.hasBoth) {
-                    return lyrics
-                }
+            val quality = when {
+                response.type.equals("Syllable", ignoreCase = true) -> LyricsResultQuality.WordSynced
+                lyrics.hasSynced -> LyricsResultQuality.LineSynced
+                else -> LyricsResultQuality.Plain
             }
-
-            return lyrics
+            return LyricsApiResult(lyrics, quality)
         }
 
         return null

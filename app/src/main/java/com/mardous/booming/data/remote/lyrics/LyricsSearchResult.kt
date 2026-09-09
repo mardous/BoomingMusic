@@ -10,6 +10,8 @@
 package com.mardous.booming.data.remote.lyrics
 
 import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultConfidence
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultQuality
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 
 enum class LyricsProviderSearchStatus {
@@ -24,7 +26,9 @@ enum class LyricsProviderSearchStatus {
 data class LyricsProviderSearchResult(
     val provider: LyricsProvider,
     val status: LyricsProviderSearchStatus,
-    val lyrics: RawLyrics.Remote? = null
+    val lyrics: RawLyrics.Remote? = null,
+    val quality: LyricsResultQuality? = null,
+    val confidence: LyricsResultConfidence? = null
 ) {
     val isTerminal: Boolean
         get() = when (status) {
@@ -38,12 +42,7 @@ data class LyricsProviderSearchResult(
             lyrics?.let { it.hasPlain || it.hasSynced } == true
 
     val qualityScore: Int
-        get() = when {
-            lyrics?.hasBoth == true -> 3
-            lyrics?.hasSynced == true -> 2
-            lyrics?.hasPlain == true -> 1
-            else -> 0
-        }
+        get() = quality?.rank ?: 0
 }
 
 data class LyricsSearchResult(

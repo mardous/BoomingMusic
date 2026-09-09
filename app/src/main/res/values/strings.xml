@@ -584,6 +584,7 @@
     <string name="lyrics_search_use">Use</string>
     <string name="lyrics_search_use_lyrics">Use lyrics</string>
     <string name="lyrics_search_best_available">Best available</string>
+    <string name="lyrics_search_word_synced">Word synced</string>
     <string name="lyrics_search_line_synced">Line synced</string>
     <string name="lyrics_search_plain_and_synced">Plain and line synced</string>
     <string name="lyrics_search_status_searching">Searching</string>
@@ -596,8 +597,14 @@
     <string name="lyrics_search_no_results_message">None of the selected providers returned usable lyrics.</string>
     <string name="lyrics_search_manual_search">Search manually</string>
     <string name="lyrics_search_most_complete_reason">Includes both plain and line-synced lyrics</string>
+    <string name="lyrics_search_word_synced_reason">Word-synced lyrics provide the most precise playback timing</string>
     <string name="lyrics_search_synced_reason">Line-synced lyrics are preferred for playback</string>
     <string name="lyrics_search_plain_reason">Best available text result</string>
+    <string name="lyrics_search_confidence">%1$s confidence</string>
+    <string name="lyrics_search_confidence_low">Low</string>
+    <string name="lyrics_search_confidence_medium">Medium</string>
+    <string name="lyrics_search_confidence_high">High</string>
+    <string name="lyrics_search_unison_attribution">Lyrics from Unison</string>
     <string name="lyrics_search_expand_results">Expand lyrics results</string>
     <string name="lyrics_search_collapse_results">Collapse lyrics results</string>
     <string name="action_expand_lyrics">Expand lyrics</string>
@@ -977,6 +984,10 @@
     <string name="use_lrclib_provider_summary">Community-driven lyrics database.</string>
     <string name="use_betterlyrics_provider_title">Use BetterLyrics provider</string>
     <string name="use_betterlyrics_provider_summary">Word by word synced lyrics.</string>
+    <string name="use_unison_provider_title">Use Unison provider</string>
+    <string name="use_unison_provider_summary">Community-ranked synced lyrics. Lyrics from Unison.</string>
+    <string name="use_lyrics_ovh_provider_title">Use lyrics.ovh provider</string>
+    <string name="use_lyrics_ovh_provider_summary">Plain lyrics fallback from a public service.</string>
     <string name="use_lyrically_provider_title">Use Lyrically provider</string>
     <string name="use_lyrically_provider_summary">Rich lyrics API with karaoke and multi-person support.</string>
     <string name="delete_downloaded_lyrics_title">Delete downloaded lyrics</string>

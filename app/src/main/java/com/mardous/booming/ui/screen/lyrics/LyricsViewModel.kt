@@ -207,14 +207,15 @@ class LyricsViewModel(
                     if (state.songId != song.id) return@update state
 
                     val previousResult = state.activeResult
-                    val updatedState = state.copy(
+                    var updatedState = state.copy(
                         providerResults = state.providerResults.map { current ->
                             if (current.provider == providerResult.provider) providerResult else current
                         }
                     )
                     val nextResult = updatedState.activeResult
-                    if (state.selectedProvider == null &&
-                        nextResult?.provider != previousResult?.provider) {
+                    if (state.selectedProvider == null && nextResult != null &&
+                        (previousResult == null || nextResult.qualityScore > previousResult.qualityScore)) {
+                        updatedState = updatedState.copy(previewProvider = nextResult.provider)
                         resultToPreview = nextResult
                     }
 

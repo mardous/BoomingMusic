@@ -3,7 +3,9 @@ package com.mardous.booming.data.remote.lyrics.api.lrclib
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
+import com.mardous.booming.data.remote.lyrics.api.LyricsApiResult
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultQuality
 import com.mardous.booming.data.remote.lyrics.model.LRCLibResponse
 import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
@@ -17,7 +19,7 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
     override val provider = LyricsProvider.LRCLib
 
-    override suspend fun downloadLyrics(song: Song, title: String, artist: String): RawLyrics.Remote? {
+    override suspend fun downloadLyrics(song: Song, title: String, artist: String): LyricsApiResult? {
         val lyrics = client.get(LRCLIB_API_URL) {
             userAgent(USER_AGENT)
             timeout {
@@ -43,11 +45,17 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
                     !it.plainLyrics.isNullOrEmpty() || !it.syncedLyrics.isNullOrEmpty()
                 } ?: return null
             }
-            return RawLyrics.Remote(
+            val remoteLyrics = RawLyrics.Remote(
                 plain = RawLyrics.Remote.Content(provider.displayName, matchingLyrics.plainLyrics),
                 synced = RawLyrics.Remote.Content(provider.displayName, matchingLyrics.syncedLyrics),
                 instrumental = matchingLyrics.instrumental
             )
+            val quality = if (remoteLyrics.hasSynced) {
+                LyricsResultQuality.LineSynced
+            } else {
+                LyricsResultQuality.Plain
+            }
+            return LyricsApiResult(remoteLyrics, quality)
         }
     }
 

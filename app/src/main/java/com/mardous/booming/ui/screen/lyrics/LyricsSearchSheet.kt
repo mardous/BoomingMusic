@@ -55,6 +55,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
@@ -75,6 +76,8 @@ import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.LyricsProviderSearchResult
 import com.mardous.booming.data.remote.lyrics.LyricsProviderSearchStatus
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultConfidence
+import com.mardous.booming.data.remote.lyrics.api.LyricsResultQuality
 
 @Composable
 fun LyricsSearchOverlay(
@@ -158,7 +161,7 @@ private fun SourceChip(
             )
             Spacer(Modifier.width(8.dp))
             Text(
-                text = "${result.provider.displayName} · ${lyricsTypeLabel(result.lyrics)}",
+                text = "${result.provider.displayName} · ${lyricsTypeLabel(result)}",
                 style = MaterialTheme.typography.labelLarge
             )
         }
@@ -421,7 +424,7 @@ private fun RecommendedResult(
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
-                        text = lyricsTypeLabel(result.lyrics),
+                        text = lyricsTypeLabel(result),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -441,10 +444,11 @@ private fun RecommendedResult(
             )
             Spacer(Modifier.height(12.dp))
             Text(
-                text = recommendationReason(result.lyrics),
+                text = recommendationReason(result),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            ResultMetadata(result)
             Spacer(Modifier.height(14.dp))
             Button(onClick = onUse, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.lyrics_search_use_lyrics))
@@ -473,10 +477,11 @@ private fun ResultRow(
         Column(Modifier.weight(1f)) {
             Text(result.provider.displayName, style = MaterialTheme.typography.titleSmall)
             Text(
-                lyricsTypeLabel(result.lyrics),
+                lyricsTypeLabel(result),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            ResultMetadata(result)
         }
         TextButton(onClick = onUse) {
             Text(stringResource(R.string.lyrics_search_use))
@@ -697,23 +702,51 @@ private fun providerStatusLabel(result: LyricsProviderSearchResult): String {
         LyricsProviderSearchStatus.Failed -> stringResource(R.string.lyrics_search_status_failed)
         LyricsProviderSearchStatus.TimedOut -> stringResource(R.string.lyrics_search_status_timed_out)
         LyricsProviderSearchStatus.Found -> {
-            "${stringResource(R.string.lyrics_search_status_found)} · ${lyricsTypeLabel(result.lyrics)}"
+            "${stringResource(R.string.lyrics_search_status_found)} · ${lyricsTypeLabel(result)}"
         }
     }
 }
 
 @Composable
-private fun lyricsTypeLabel(lyrics: RawLyrics.Remote?): String = when {
-    lyrics?.hasBoth == true -> stringResource(R.string.lyrics_search_plain_and_synced)
-    lyrics?.hasSynced == true -> stringResource(R.string.lyrics_search_line_synced)
-    else -> stringResource(R.string.plain_lyrics)
+private fun lyricsTypeLabel(result: LyricsProviderSearchResult): String = when (result.quality) {
+    LyricsResultQuality.WordSynced -> stringResource(R.string.lyrics_search_word_synced)
+    LyricsResultQuality.LineSynced -> stringResource(R.string.lyrics_search_line_synced)
+    LyricsResultQuality.Plain, null -> stringResource(R.string.plain_lyrics)
 }
 
 @Composable
-private fun recommendationReason(lyrics: RawLyrics.Remote?): String = when {
-    lyrics?.hasBoth == true -> stringResource(R.string.lyrics_search_most_complete_reason)
-    lyrics?.hasSynced == true -> stringResource(R.string.lyrics_search_synced_reason)
-    else -> stringResource(R.string.lyrics_search_plain_reason)
+private fun recommendationReason(result: LyricsProviderSearchResult): String = when (result.quality) {
+    LyricsResultQuality.WordSynced -> stringResource(R.string.lyrics_search_word_synced_reason)
+    LyricsResultQuality.LineSynced -> stringResource(R.string.lyrics_search_synced_reason)
+    LyricsResultQuality.Plain, null -> stringResource(R.string.lyrics_search_plain_reason)
+}
+
+@Composable
+private fun ResultMetadata(result: LyricsProviderSearchResult) {
+    val confidence = result.confidence?.let { confidence ->
+        val label = when (confidence) {
+            LyricsResultConfidence.Low -> stringResource(R.string.lyrics_search_confidence_low)
+            LyricsResultConfidence.Medium -> stringResource(R.string.lyrics_search_confidence_medium)
+            LyricsResultConfidence.High -> stringResource(R.string.lyrics_search_confidence_high)
+        }
+        stringResource(R.string.lyrics_search_confidence, label)
+    }
+    if (confidence != null) {
+        Text(
+            text = confidence,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+    if (result.provider == LyricsProvider.Unison) {
+        val uriHandler = LocalUriHandler.current
+        Text(
+            text = stringResource(R.string.lyrics_search_unison_attribution),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable { uriHandler.openUri(UNISON_ATTRIBUTION_URL) }
+        )
+    }
 }
 
 private fun lyricsPreview(lyrics: RawLyrics.Remote?): String {
@@ -726,3 +759,5 @@ private fun lyricsPreview(lyrics: RawLyrics.Remote?): String {
         .take(2)
         .joinToString("\n")
 }
+
+private const val UNISON_ATTRIBUTION_URL = "https://unison.boidu.dev"

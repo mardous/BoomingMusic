@@ -28,7 +28,8 @@ data class LyricsSearchUiState(
     val providerResults: List<LyricsProviderSearchResult> = emptyList(),
     val sheetStage: LyricsSearchSheetStage = LyricsSearchSheetStage.Hidden,
     val isUserInteracting: Boolean = false,
-    val selectedProvider: LyricsProvider? = null
+    val selectedProvider: LyricsProvider? = null,
+    val previewProvider: LyricsProvider? = null
 ) {
     val completedProviderCount: Int
         get() = providerResults.count { it.isTerminal }
@@ -36,8 +37,17 @@ data class LyricsSearchUiState(
     val usableResults: List<LyricsProviderSearchResult>
         get() = providerResults.filter { it.isUsable }
 
+    val previewResult: LyricsProviderSearchResult?
+        get() = previewProvider?.let { provider ->
+            usableResults.firstOrNull { it.provider == provider }
+        }
+
     val recommendedResult: LyricsProviderSearchResult?
-        get() = usableResults.maxByOrNull { it.qualityScore }
+        get() {
+            val bestQuality = usableResults.maxOfOrNull { it.qualityScore } ?: return null
+            return previewResult?.takeIf { it.qualityScore == bestQuality }
+                ?: usableResults.firstOrNull { it.qualityScore == bestQuality }
+        }
 
     val selectedResult: LyricsProviderSearchResult?
         get() = selectedProvider?.let { provider ->
