@@ -272,6 +272,7 @@ fun LyricsEditorScreen(
             song = song,
             title = stringResource(R.string.download_lyrics),
             showProviders = true,
+            initialProviders = viewModel.getRememberedLyricsProviders(),
             onSearchClick = { title, artist, providers ->
                 viewModel.downloadLyrics(song, title, artist, providers)
                 showLyricsDownloadDialog = false
@@ -509,6 +510,9 @@ private fun LyricsSearchDialog(
     song: Song,
     title: String,
     showProviders: Boolean,
+    initialProviders: List<LyricsProvider> = LyricsProvider.AvailableProviders.filter {
+        it.isEnabled
+    },
     onSearchClick: (title: String, artist: String, providers: List<LyricsProvider>) -> Unit,
     onDismissRequest: () -> Unit
 ) {
@@ -516,9 +520,10 @@ private fun LyricsSearchDialog(
     var searchArtist by remember { mutableStateOf(song.artistName) }
 
     val allProviders = remember { LyricsProvider.AvailableProviders }
-    val selectedProviders = remember {
+    val selectedProviders = remember(initialProviders, allProviders) {
         mutableStateListOf<LyricsProvider>().apply {
-            addAll(allProviders.filter { it.isEnabled })
+            val availableSelection = initialProviders.filter { it in allProviders }
+            addAll(availableSelection.ifEmpty { allProviders.filter { it.isEnabled } })
         }
     }
 

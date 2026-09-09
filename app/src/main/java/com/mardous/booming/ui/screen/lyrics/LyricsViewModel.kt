@@ -149,8 +149,25 @@ class LyricsViewModel(
         }
     }
 
+    fun getRememberedLyricsProviders(): List<LyricsProvider> {
+        val availableProviders = LyricsProvider.AvailableProviders
+        val rememberedProviderNames = preferences.getStringSet(
+            REMEMBERED_LYRICS_PROVIDERS,
+            null
+        )
+        val rememberedProviders = rememberedProviderNames?.let { names ->
+            availableProviders.filter { it.name in names }
+        }
+        return rememberedProviders?.takeIf { it.isNotEmpty() }
+            ?: availableProviders.filter { it.isEnabled }
+    }
+
     fun downloadLyrics(song: Song, title: String, artist: String, providers: List<LyricsProvider>) =
-        startLyricsSearch(song, title, artist, providers)
+        startLyricsSearch(song, title, artist, providers).also {
+            preferences.edit {
+                putStringSet(REMEMBERED_LYRICS_PROVIDERS, providers.mapTo(mutableSetOf()) { it.name })
+            }
+        }
 
     private fun startLyricsSearch(
         song: Song,
@@ -711,6 +728,7 @@ class LyricsViewModel(
         private const val SEARCH_UI_DELAY_MILLIS = 600L
         private const val SEARCH_SHEET_EXIT_MILLIS = 325L
         private const val SOURCE_CHIP_VISIBLE_MILLIS = 4_000L
+        private const val REMEMBERED_LYRICS_PROVIDERS = "remembered_lyrics_providers"
         private const val INSTRUMENTAL_TRACK_IDENTIFIERS = "instrumental_track_identifiers"
         private const val MARK_INSTRUMENTAL_BY_TITLE = "mark_instrumental_tracks_by_title"
     }
