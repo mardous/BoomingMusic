@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Akses Penyimpanan</string>
     <string name="permission_external_storage_description">Aplikasi memerlukan izin untuk mengakses penyimpanan perangkat Anda guna memutar musik</string>
     <string name="permission_external_storage_denied">Anda harus memberikan izin untuk mengakses penyimpanan eksternal.</string>
-    <string name="permission_bluetooth_title">Perangkat Terdekat</string>
+    <string name="permission_bluetooth_title">Perangkat di sekitar (opsional)</string>
     <string name="permission_bluetooth_description">Aplikasi memerlukan izin perangkat terdekat untuk memeriksa perangkat bluetooth</string>
     <string name="permission_read_images_title">Baca gambar (opsional)</string>
     <string name="permission_read_images_summary">Izin ini diperlukan agar Booming Music dapat menemukan file sampul album di folder musik Anda. Jika Anda tidak berencana menggunakan fitur ini, Anda dapat memilih untuk tidak memberikan izin.</string>
@@ -332,7 +332,6 @@
     <string name="top_albums">Album teratas</string>
     <string name="recent_artists">Artis terkini</string>
     <string name="recent_albums">Album terkini</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Acak murni</string>
     <string name="shuffle_mode_most_played">Paling sering diputar</string>
@@ -378,8 +377,8 @@
     <string name="imported_x_profiles">%d profil berhasil diimpor.</string>
     <string name="no_profile_imported">Tidak ada profil yang diimpor.</string>
     <string name="import_autoeq_profile">Impor profil AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Pilih file yang berisi parameter AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">Tidak ada profil AutoEq yang telah diimpor.</string>
+    <string name="select_a_file_containing_autoeq_params">Pilih file dengan parameter AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">Belum ada profil AutoEq yang diimpor</string>
     <string name="reset_equalizer">Reset ekualiser</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Apakah Anda yakin ingin mereset ekualiser?\n\nTindakan ini akan menghapus semua profil Anda.</string>
     <string name="not_supported">Tidak didukung</string>
@@ -997,4 +996,35 @@
     <string name="backup_warning_legacy_format">Format cadangan ini dianggap lawas. Saat ini Anda masih dapat memulihkannya, namun kami mungkin akan menghentikan dukungannya di masa mendatang.</string>
     <string name="backup_warning_ver_newer">Format cadangan lebih baru daripada yang dapat ditangani oleh versi Booming Music ini.</string>
     <string name="backup_warning_app_ver_newer">Cadangan ini dibuat di versi Booming Music yang lebih baru. Memulihkannya di versi ini dapat menyebabkan kesalahan atau pemulihan data yang tidak lengkap.</string>
+    <string name="action_play_x">Putar %s</string>
+    <string name="invalid_search_params">Parameter pencarian tidak dapat diproses.</string>
+    <string name="home_empty_title">Tidak ada yang dapat direkomendasikan</string>
+    <string name="home_empty_subtitle">Dengarkan musik terlebih dahulu</string>
+    <string name="home_shuffle_title">Acak musik Anda</string>
+    <string name="home_for_you_title">Untuk Anda</string>
+    <string name="home_for_you_subtitle">Semua favorit sepanjang masa Anda di satu tempat</string>
+    <string name="home_for_you_subtitle_2">Pilihan terbaik yang dipilih khusus untuk Anda</string>
+    <string name="home_for_you_subtitle_3">Inspirasi musik harian Anda</string>
+    <string name="home_albums_title">Dengarkan sekarang</string>
+    <string name="home_albums_subtitle">Album teratas dan terbaru</string>
+    <string name="home_albums_subtitle_2">Jelajahi koleksi terbaru Anda</string>
+    <string name="home_albums_subtitle_3">Yang sedang tren di perpustakaan Anda</string>
+    <string name="home_artists_title">Artis rekomendasi</string>
+    <string name="home_artists_subtitle">Artis yang paling sering Anda dengarkan</string>
+    <string name="home_artists_subtitle_2">Wajah baru dan favorit lama</string>
+    <string name="home_artists_subtitle_3">Sosok di balik musik yang Anda sukai</string>
+    <string name="home_forgotten_tracks_title">Temukan kembali</string>
+    <string name="home_forgotten_tracks_subtitle">Hadirkan kembali favorit lama menjadi sorotan</string>
+    <string name="home_forgotten_tracks_subtitle_2">Ungkap kembali harta karun yang tersembunyi</string>
+    <string name="home_forgotten_tracks_subtitle_3">Lagu yang sudah lama tidak Anda dengarkan</string>
+    <string name="import_or_sync_autoeq_database">Impor profil atau sinkronkan basis data untuk melihat profil yang tersedia</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Impor profil atau cari nama perangkat Anda di antara %d profil</string>
+    <string name="autoeq_search_device_name">Cari perangkat atau model</string>
+    <string name="autoeq_sync_success">%d profil AutoEq berhasil disinkronkan.</string>
+    <string name="autoeq_sync_failed">Gagal menyinkronkan profil AutoEq.</string>
+    <string name="sync_autoeq_database">Sinkronkan Basis Data AutoEq</string>
+    <string name="search_autoeq_placeholder">Cari model headphone</string>
+    <string name="allow_lyrics_download_from">Izinkan unduhan dari:</string>
+    <string name="backup_warning_database_ver">Sebagian data dari cadangan ini, seperti daftar putar dan lirik, tidak kompatibel dan mungkin tidak dapat dipulihkan.</string>
+    <string name="restoring_data">Memulihkan data Anda…</string>
 </resources>
