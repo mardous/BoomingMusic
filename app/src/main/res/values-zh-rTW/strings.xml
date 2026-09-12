@@ -51,7 +51,7 @@
     <string name="playing_notification_description">播放通知提供播放/暫停等動作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">掃描目錄</string>
-    <string name="no_device_playlists">沒有播放清單</string>
+    <string name="no_device_playlists">無播放清單</string>
     <string name="select_songs_title">選擇歌曲</string>
     <string name="playlist_x_is_empty">播放清單 %s 為空。</string>
     <string name="playlist_name_cannot_be_empty">播放清單名稱不能為空</string>
@@ -171,11 +171,11 @@
     <string name="unknown_artist">未知藝人</string>
     <string name="unknown_genre">未知流派</string>
     <string name="unknown_year">未知年份</string>
-    <string name="no_songs_label">沒有歌曲</string>
-    <string name="no_albums_label">沒有專輯</string>
-    <string name="no_artists_label">沒有藝人</string>
+    <string name="no_songs_label">無歌曲</string>
+    <string name="no_albums_label">無專輯</string>
+    <string name="no_artists_label">無藝人</string>
     <string name="no_genres_label">無流派</string>
-    <string name="empty_label">空的</string>
+    <string name="empty_label">空</string>
     <string name="nothing_to_see">沒有可查看的內容</string>
     <string name="show_album_artists">僅專輯藝人</string>
     <string name="songs_label">歌曲</string>
@@ -833,7 +833,7 @@
     <string name="no_playlists_create_new">點按「新增」按鈕以建立播放清單</string>
     <string name="no_playlists_that_match_x">找不到符合「%s」的播放清單</string>
     <string name="songs_added_to_playlists">歌曲已新增到播放清單。</string>
-    <string name="no_playlists_label">沒有播放清單</string>
+    <string name="no_playlists_label">無播放清單</string>
     <plurals name="x_playlists_selected">
         <item quantity="other">已選擇 %d 個播放清單</item>
     </plurals>
