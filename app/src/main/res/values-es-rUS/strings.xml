@@ -391,7 +391,7 @@
     <string name="select_profiles_to_import">Elija los perfiles a importar:</string>
     <string name="select_a_file_containing_booming_eq_profiles">Selecciona un archivo que contenga perfiles de EQ de Booming Music.</string>
     <string name="imported_x_profiles">Se importaron %d perfiles.</string>
-    <string name="no_profile_imported">No se importar ningún perfil.</string>
+    <string name="no_profile_imported">No se importó ningún perfil.</string>
     <string name="import_autoeq_profile">Importar perfil de AutoEq</string>
     <string name="select_a_file_containing_autoeq_params">Selecciona un archivo con parámetros de AutoEq (GraphicEq)</string>
     <string name="no_autoeq_profiles">No hay perfiles de AutoEq importados</string>

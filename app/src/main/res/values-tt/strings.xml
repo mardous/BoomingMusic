@@ -130,7 +130,7 @@
     <string name="permission_external_storage_title">Саклауханәгә керү мөмкинлеге</string>
     <string name="permission_external_storage_description">Кушымта музыканы яңадан торгызу өчен сезнең җайланманы саклагычка кертүгә рөхсәт таләп ителә</string>
     <string name="permission_external_storage_denied">Сез тышкы саклагычка керү өчен рөхсәт бирергә тиеш.</string>
-    <string name="permission_bluetooth_title">Якын-тирәдәге җайланмалар</string>
+    <string name="permission_bluetooth_title">Якын-тирәдәге җайланмалар (мөмкинлеге)</string>
     <string name="permission_bluetooth_description">Кушымта Bluetooth-җайланмаларны тикшерү өчен якын-тирәдәге җайланмаларга керү өчен рөхсәт таләп ителә</string>
     <string name="permission_read_images_title">Сурәтләр уку (мөмкинлекле)</string>
     <string name="permission_read_images_summary">Бу рөхсәт сезнең музыкаль папкаларыгызда альбомнар тышлыгын эзләү өчен Booming Music кирәк. Әгәр дә сез бу функцияне кулланырга җыенмыйсыз икән, сез аны тәкъдим итә аласыз.</string>
@@ -334,7 +334,6 @@
     <string name="top_albums">Иң яхшы альбомнар</string>
     <string name="recent_artists">Күптән түгел артистлар</string>
     <string name="recent_albums">Күптән түгел альбомнар</string>
-
     <string name="shuffle_mode_pure_random">Тулы очраклылык</string>
     <string name="shuffle_mode_most_played">Еш кына тыңлаучылар</string>
     <string name="shuffle_mode_most_played_artists">Иң тыңлаучылар артистлар</string>
@@ -344,7 +343,7 @@
     <string name="shuffle_mode_recently_added">Күптән түгел өстәлгәннәр</string>
     <string name="shuffle_mode_combined">Акыллы микс</string>
     <string name="shuffle_mode_pure_random_description">Бөтенләй тулы болгату.</string>
-    <string name="autoeq_label">AutoEq</string>
+    <string name="autoeq_label">Авто Эквалайзер</string>
     <string name="graphic_eq_label">Графиклы эквалайзер</string>
     <string name="graphic_eq_band_count">%d-юлган</string>
     <string name="eq_profiles_title">Эквалайзернең профильләр</string>
@@ -401,8 +400,8 @@
     <string name="imported_x_profiles">Профильләр импортланган: %d.</string>
     <string name="no_profile_imported">Импортланган профильләр юк.</string>
     <string name="import_autoeq_profile">AutoEq профильне импортлау</string>
-    <string name="select_a_file_containing_autoeq_params">AutoEq (GraphicEq) параметрлар белән файл сайлагыз.</string>
-    <string name="no_autoeq_profiles">Импортланган AutoEq профильләр юк.</string>
+    <string name="select_a_file_containing_autoeq_params">AutoEq (GraphicEq) параметрлар белән файл сайлагыз</string>
+    <string name="no_autoeq_profiles">Импортланган AutoEq профильләр юк</string>
     <string name="reset_equalizer">Эквалайзер ташларга</string>
     <string name="not_supported">Якланмый</string>
     <string name="eq_pro_mode">Остасы режимы</string>
@@ -512,7 +511,7 @@
     <string name="action_sleep_timer">Йокы таймер</string>
     <string name="sleep_timer_waiting_pending_quit">Агымдагы трекның тәмамлануын көтү</string>
     <string name="sleep_timer_cancel_current_timer">Билгелеп кую</string>
-    <string name="sleep_timer_set_action">Куярга</string>
+    <string name="sleep_timer_set_action">Кую</string>
     <string name="sleep_timer_x_mins">%d мин</string>
     <string name="sleep_timer_x_secs">%d сек</string>
     <string name="sleep_timer_15_mins">15 мин</string>
@@ -621,4 +620,95 @@
     <string name="lyrics_shadow_effect_title">Күләгә эффект</string>
     <string name="lyrics_shadow_effect_summary">Укуны яхшырту өчен агымдагы юлга күләгә өсти.</string>
     <string name="uncaught_error_send">Репорт җибәрү</string>
+    <string name="app_widget_circle">Түгәрәк</string>
+    <string name="app_widget_cookie">Печенье</string>
+    <string name="app_widget_grid">Челтәр</string>
+    <string name="app_widget_library">Саклауханә</string>
+    <string name="app_widget_nothing_playing">Бәрнәрсә уйнамый</string>
+    <string name="app_widget_tap_to_play">Booming Music ачылу өчен басыгыз</string>
+    <string name="action_play_x">Уйнау %s</string>
+    <string name="action_auto_fill_from_musicbrainz">MusicBrainzдан автомат рәвештә тутыру</string>
+    <string name="searching">Эзлибез…</string>
+    <string name="musicbrainz_search_title">MusicBrainz эзләү</string>
+    <string name="musicbrainz_no_results">MusicBrainzда бернәрсә тапмаган.</string>
+    <string name="musicbrainz_select_recording">Нәтиҗәне сайлау</string>
+    <string name="invalid_search_params">Эзләү параметрларын эшкәртеп чыкмады.</string>
+    <plurals name="songs">
+        <item quantity="other">Җыр</item>
+    </plurals>
+    <plurals name="albums">
+        <item quantity="other">Альбом</item>
+    </plurals>
+    <plurals name="x_songs">
+        <item quantity="other">%d җыр</item>
+    </plurals>
+    <plurals name="x_albums">
+        <item quantity="other">%d альбом</item>
+    </plurals>
+    <plurals name="x_artists">
+        <item quantity="other">%d артист</item>
+    </plurals>
+    <plurals name="x_times">
+        <item quantity="other">%d тапкыр</item>
+    </plurals>
+    <plurals name="x_plays">
+        <item quantity="other">%d уйнау</item>
+    </plurals>
+    <plurals name="x_items">
+        <item quantity="other">%d әйбер</item>
+    </plurals>
+    <plurals name="x_playlists_selected">
+        <item quantity="other">%d плейлист сайлаган</item>
+    </plurals>
+    <string name="initial_configuration_title">Башлангыч конфигурациясы</string>
+    <string name="initial_configuration_subtitle">Эш башланыр алдыннан Booming Musicны үзегезнең зәвыгыгыз белән көйләгез.</string>
+    <string name="initial_configuration_note">Сез һәрвакыт бу көйләүләрне соңрак үзгәртә аласыз.</string>
+    <string name="restore_from_backup">Бекапдан торгызырга</string>
+    <string name="sort_order_name">Исем</string>
+    <string name="home_empty_title">Бәрнәрсә тәкъдим итәргә юк</string>
+    <string name="home_empty_subtitle">Баштан кайбер музыканы тыңлагыз</string>
+    <string name="home_shuffle_title">Музыканы болгыт</string>
+    <string name="home_for_you_title">Синең өчен</string>
+    <string name="home_for_you_subtitle">Синең иң яраткан бер урында</string>
+    <string name="home_for_you_subtitle_2">Үз сайлаган \"энҗеләр\" синең өчен генә</string>
+    <string name="home_for_you_subtitle_3">Синең көндәлек илһам үлчәм</string>
+    <string name="home_albums_title">Хәзер тыңлау</string>
+    <string name="home_albums_subtitle">Иң якшы һәм күптән түгел өстәлгән альбомнар</string>
+    <string name="app_widget_circle_desc">Түгәрәк уйнаучы контроль төймәләр тирәсендә</string>
+    <string name="app_widget_cookie_desc">Тышлык печенье формада, төймәләр тирәсендә</string>
+    <string name="musicbrainz_search_message">MusicBrainzда җыр метамәгълүматларын табарга, артист һәм җыр исем кулланып.</string>
+    <string name="home_artists_title">Тәгъдим ителә торган артистлар</string>
+    <string name="home_artists_subtitle">Артистлар кем син күбрәк тыңлыйсын</string>
+    <string name="home_artists_subtitle_2">Яңа йөзләр һәм яраткан иске</string>
+    <string name="home_artists_subtitle_3">Яраткан җырлар артында торган кешеләр</string>
+    <string name="home_forgotten_tracks_title">Яңадан ачыгыз</string>
+    <string name="home_forgotten_tracks_subtitle">Иске яраткан сәхнәгә кайтырыгыз</string>
+    <string name="app_widget_grid_desc">Дүрт шакмакда тышлык, уйнау һәм үткәрү төймәләр</string>
+    <string name="autoeq_search_device_name">Җайланма яки модель эзләү</string>
+    <string name="autoeq_sync_success">%d Авто Эквалайзер профиль уңышлы синхронланган.</string>
+    <string name="autoeq_sync_failed">AutoEq профильләр синхронланырга чыкмады.</string>
+    <string name="privacy_policy">Конфиденциальлек сәясәте</string>
+    <string name="widget_settings_title">Виджет көйләүләр</string>
+    <string name="widget_show_progress_title">Алгарыш күрсәтү</string>
+    <string name="widget_show_progress_summary">Агымдагы трекны алгарыш күрсәтә.</string>
+    <string name="widget_show_controls_title">Идарә күрсәтү</string>
+    <string name="widget_show_controls_summary">Уйнау төймә күрсәтү.</string>
+    <string name="widget_show_artist_title">Артист күрсәтү</string>
+    <string name="widget_show_artist_summary">Җыр исем астында артист исеме күрсәтү.</string>
+    <string name="widget_show_navigation_title">Навигация күрсәтү</string>
+    <string name="widget_show_navigation_summary">Исемлек буенча күчерү өчен панель күрсәтү.</string>
+    <string name="widget_leading_action_title">Сул төймә</string>
+    <string name="widget_trailing_action_title">Уң төймә</string>
+    <string name="widget_side_buttons_title">Янәшә төймәләр</string>
+    <string name="widget_side_buttons_skip">Үткән һәм киләсе</string>
+    <string name="widget_action_favourite">Сайланма</string>
+    <string name="widget_action_repeat">Кабатлу</string>
+    <string name="widget_source_title">Күрсәтү</string>
+    <string name="widget_source_recent">Баягы</string>
+    <string name="widget_page_previous">Алдагы җырлар</string>
+    <string name="widget_page_next">Киләсе җырлар</string>
+    <string name="lyrics_progressive_coloring_title">Прогрессив буявы</string>
+    <string name="lyrics_show_translation_summary">Әгәр мөмкин булса, текстның тәрҗемәсен күрсәтү.</string>
+    <string name="lyrics_show_transliteration_title">Транслитерация күрсәтү</string>
+    <string name="lyrics_show_transliteration_summary">Әгәр мөмкин булса, текстның транслитерация күрсәтү.</string>
 </resources>
