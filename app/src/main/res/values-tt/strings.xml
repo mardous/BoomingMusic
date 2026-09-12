@@ -511,7 +511,7 @@
     <string name="action_sleep_timer">Йокы таймер</string>
     <string name="sleep_timer_waiting_pending_quit">Агымдагы трекның тәмамлануын көтү</string>
     <string name="sleep_timer_cancel_current_timer">Билгелеп кую</string>
-    <string name="sleep_timer_set_action">Куярга</string>
+    <string name="sleep_timer_set_action">Кую</string>
     <string name="sleep_timer_x_mins">%d мин</string>
     <string name="sleep_timer_x_secs">%d сек</string>
     <string name="sleep_timer_15_mins">15 мин</string>
