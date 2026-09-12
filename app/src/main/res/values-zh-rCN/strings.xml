@@ -51,7 +51,7 @@
     <string name="playing_notification_description">在播放通知可以进行播放/暂停等动作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">扫描目录</string>
-    <string name="no_device_playlists">没有播放列表</string>
+    <string name="no_device_playlists">无播放列表</string>
     <string name="select_songs_title">选择歌曲</string>
     <string name="playlist_x_is_empty">播放列表 %s 为空。</string>
     <string name="playlist_name_cannot_be_empty">播放列表名称不能为空</string>
@@ -171,8 +171,8 @@
     <string name="unknown_artist">未知艺人</string>
     <string name="unknown_genre">未知流派</string>
     <string name="unknown_year">未知年份</string>
-    <string name="no_songs_label">没有歌曲</string>
-    <string name="no_albums_label">没有专辑</string>
+    <string name="no_songs_label">无歌曲</string>
+    <string name="no_albums_label">无专辑</string>
     <string name="no_artists_label">无艺人</string>
     <string name="no_genres_label">无流派</string>
     <string name="empty_label">空</string>
