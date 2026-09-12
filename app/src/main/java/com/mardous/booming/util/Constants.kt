@@ -43,4 +43,5 @@ object Constants {
     const val DONATION_LINK = BuildConfig.DONATION_LINK
 
     const val USER_AGENT = "BoomingMusic/${BuildConfig.VERSION_NAME} ($APP_GITHUB_URL)"
+    const val SIMPLE_USER_AGENT = "BoomingMusic/${BuildConfig.VERSION_NAME}"
 }
