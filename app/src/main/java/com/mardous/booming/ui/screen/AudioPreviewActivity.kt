@@ -180,9 +180,6 @@ class AudioPreviewActivity : ComponentActivity(), MediaController.Listener {
         val sliderState = rememberSliderState(
             value = progressState.fraction
         )
-        sliderState.onValueChangeFinished = {
-            playerViewModel.seekTo((duration * sliderState.value).toLong())
-        }
 
         LaunchedEffect(progressState) {
             if (progressState.mayUpdateUI) {
@@ -272,7 +269,10 @@ class AudioPreviewActivity : ComponentActivity(), MediaController.Listener {
                             Column(Modifier.weight(1f)) {
                                 NowPlayingSlider(
                                     sliderState = sliderState,
-                                    isPlaying = isPlaying
+                                    isPlaying = isPlaying,
+                                    onValueChangeFinished = {
+                                        playerViewModel.seekTo((duration * sliderState.value).toLong())
+                                    }
                                 )
                                 Row(
                                     horizontalArrangement = Arrangement.SpaceBetween,
