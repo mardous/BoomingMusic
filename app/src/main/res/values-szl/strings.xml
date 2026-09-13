@@ -349,4 +349,8 @@
     <string name="new_playlist_action">Nowŏ</string>
     <string name="new_playlist_title">Nowŏ playlista</string>
     <string name="playlist_name_empty">Miano playlisty</string>
+    <string name="open_backup">Ôbier</string>
+    <string name="action_lyrics_editor">Edytōr tekstu</string>
+    <string name="metadata_label">Metadane</string>
+    <string name="welcome_to_x">Witōmy w %s</string>
 </resources>
