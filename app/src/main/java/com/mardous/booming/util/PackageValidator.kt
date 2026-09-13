@@ -67,6 +67,17 @@ internal class PackageValidator(context: Context, @XmlRes xmlResId: Int) {
     }
 
     /**
+     * The gate used by the browsing/session callbacks. Behaves like [isKnownCaller], unless
+     * caller enforcement is turned OFF in Developer Settings, in which case every caller is 
+     * allowed to browse the library. This lets unofficial Android-Auto clients (which are not
+     * in [allowed_media_browser_callers]) browse during development without weakening the
+     * check for users who explicitly opt back in.
+     */
+    fun isAllowedCaller(callingPackage: String, callingUid: Int): Boolean =
+        if (!Preferences.enforceKnownCallers) true
+        else isKnownCaller(callingPackage, callingUid)
+
+    /**
      * Checks whether the caller attempting to connect to a [MediaBrowserServiceCompat] is known.
      * See [MusicService.onGetRoot] for where this is utilized.
      *
@@ -94,9 +105,14 @@ internal class PackageValidator(context: Context, @XmlRes xmlResId: Int) {
          * reassigned.)
          */
 
-        // Build the caller info for the rest of the checks here.
+        // Build the caller info for the rest of the checks here. A caller whose package can't be
+        // resolved (e.g. a legacy MediaBrowser connecting under a placeholder package that isn't
+        // installed) is simply treated as unknown rather than crashing the service.
         val callerPackageInfo = buildCallerInfo(callingPackage)
-            ?: throw IllegalStateException("Caller wasn't found in the system?")
+        if (callerPackageInfo == null) {
+            callerChecked[callingPackage] = Pair(callingUid, false)
+            return false
+        }
 
         // Verify that things aren't ... broken. (This test should always pass.)
         if (callerPackageInfo.uid != callingUid) {
@@ -196,10 +212,14 @@ internal class PackageValidator(context: Context, @XmlRes xmlResId: Int) {
     @Suppress("DEPRECATION")
     @SuppressLint("PackageManagerGetSignatures")
     private fun getPackageInfo(callingPackage: String): PackageInfo? =
-        packageManager.getPackageInfo(
-            callingPackage,
-            PackageManager.GET_SIGNATURES or PackageManager.GET_PERMISSIONS
-        )
+        try {
+            packageManager.getPackageInfo(
+                callingPackage,
+                PackageManager.GET_SIGNATURES or PackageManager.GET_PERMISSIONS
+            )
+        } catch (e: PackageManager.NameNotFoundException) {
+            null
+        }
 
     /**
      * Gets the signature of a given package's [PackageInfo].
