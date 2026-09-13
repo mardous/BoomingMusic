@@ -407,7 +407,7 @@ class PlaybackService :
             if (sessionId == myPackageName) {
                 return mediaSession
             }
-        } else if (packageValidator.isKnownCaller(controllerPackageName, controllerInfo.uid)) {
+        } else if (packageValidator.isAllowedCaller(controllerPackageName, controllerInfo.uid)) {
             return mediaSession
         }
         return null
@@ -427,10 +427,19 @@ class PlaybackService :
             availableSessionCommands.add(SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY))
             availableSessionCommands.add(SessionCommand(Playback.SET_STOP_POSITION, Bundle.EMPTY))
         }
+        // Media3 only grants read-only player commands to a controller it does not consider
+        // trusted, so an allowed caller could browse the library but never start playback.
+        // Grant the full set to whoever passes the same gate the library root uses.
+        val playerCommands =
+            if (packageValidator.isAllowedCaller(controller.packageName, controller.uid)) {
+                MediaSession.ConnectionResult.DEFAULT_PLAYER_COMMANDS
+            } else {
+                connectionResult.availablePlayerCommands
+            }
         return Futures.immediateFuture(
             MediaSession.ConnectionResult.accept(
                 availableSessionCommands.build(),
-                connectionResult.availablePlayerCommands
+                playerCommands
             )
         )
     }
@@ -465,15 +474,15 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        val isKnownCaller = packageValidator.isKnownCaller(browser.packageName, browser.uid)
+        val isAllowedCaller = packageValidator.isAllowedCaller(browser.packageName, browser.uid)
         val outExtras = Bundle().apply {
-            putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isKnownCaller)
+            putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isAllowedCaller)
         }
         val libraryParams = LibraryParams.Builder()
             .setOffline(true)
             .setExtras(outExtras)
             .build()
-        val mediaItem = if (isKnownCaller) {
+        val mediaItem = if (isAllowedCaller) {
             when {
                 params?.isRecent == true -> {
                     MediaItem.Builder()
@@ -504,7 +513,10 @@ class PlaybackService :
         } else {
             MediaItem.EMPTY
         }
-        return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
+        return Futures.immediateFuture(
+            if (isAllowedCaller) LibraryResult.ofItem(mediaItem, libraryParams)
+            else LibraryResult.ofError(SessionError.ERROR_PERMISSION_DENIED)
+        )
     }
 
     override fun onGetChildren(
@@ -634,7 +646,10 @@ class PlaybackService :
     private fun <T : Any> MediaSession.denyUntrusted(
         controller: MediaSession.ControllerInfo
     ): ListenableFuture<LibraryResult<T>>? =
-        if (isTrustedController(controller)) null
+        // Same gate the library root uses, so a caller that was allowed to reach the root is not
+        // then refused its children and left looking at an empty library.
+        if (isTrustedController(controller) ||
+            packageValidator.isAllowedCaller(controller.packageName, controller.uid)) null
         else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(
