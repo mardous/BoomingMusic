@@ -83,6 +83,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberSliderState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -728,7 +729,7 @@ private fun MinDurationSlider() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Slider(
-            value = draggedDuration,
+            state = rememberSliderState(value = draggedDuration, trackRange = 0f..120f),
             onValueChange = { draggedDuration = it },
             onValueChangeFinished = {
                 val seconds = draggedDuration.roundToInt()
@@ -736,7 +737,6 @@ private fun MinDurationSlider() {
                     Preferences.minimumSongDuration = seconds
                 }
             },
-            valueRange = 0f..120f,
             modifier = Modifier.weight(1f)
         )
         Text(
