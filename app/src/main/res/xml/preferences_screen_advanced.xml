@@ -12,6 +12,13 @@
         app:layout="@layout/list_item_view"
         app:key="language_name"/>
 
+    <Preference
+        app:title="@string/backup_restore_title"
+        app:summary="@string/backup_restore_summary"
+        app:persistent="false"
+        app:layout="@layout/list_item_view"
+        app:key="backup_and_restore" />
+
     <SwitchPreferenceCompat
         app:title="@string/rotation_lock_title"
         app:summary="@string/rotation_lock_summary"
@@ -20,11 +27,13 @@
         app:widgetLayout="@layout/preference_switch"
         app:key="enable_rotation_lock"/>
 
-    <Preference
-        app:title="@string/backup_restore_title"
-        app:summary="@string/backup_restore_summary"
-        app:persistent="false"
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_security_24dp"
+        app:title="@string/enforce_known_callers_title"
+        app:summary="@string/enforce_known_callers_summary"
+        app:defaultValue="true"
         app:layout="@layout/list_item_view"
-        app:key="backup_and_restore" />
+        app:widgetLayout="@layout/preference_switch"
+        app:key="enforce_known_callers"/>
 
 </PreferenceScreen>

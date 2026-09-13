@@ -637,7 +637,7 @@ class PlaybackService :
         // Same gate the library root uses: when caller enforcement is off (Advanced Settings),
         // any controller may browse - otherwise browsing the children would still be
         // denied even though the root was allowed, giving an empty library.
-        if (!Preferences.enforceKnownCallers || isTrustedController(controller)) null
+        if (!Preferences.isEnforceKnownCallers || isTrustedController(controller)) null
         else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(

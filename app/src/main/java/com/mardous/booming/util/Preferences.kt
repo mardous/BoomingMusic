@@ -74,15 +74,6 @@ object Preferences : KoinComponent {
         get() = preferences.getStringSet("requested_permissions", emptySet()).orEmpty()
         set(value) = preferences.edit { putStringSet("requested_permissions", value) }
 
-    /**
-     * When ON (the default), only callers in `allowed_media_browser_callers` may browse the media library
-     * (Android Auto, Assistant, etc.). When OFF, any caller is allowed - needed
-     * for unofficial Android-Auto clients or other free media client. See [PackageValidator.isAllowedCaller].
-     */
-    var enforceKnownCallers: Boolean
-        get() = preferences.getBoolean(ENFORCE_KNOWN_CALLERS, true)
-        set(value) = preferences.edit { putBoolean(ENFORCE_KNOWN_CALLERS, value) }
-
     fun getGeneralTheme(isBlackMode: Boolean): String {
         return if (isBlackMode) {
             GeneralTheme.BLACK
@@ -430,6 +421,16 @@ object Preferences : KoinComponent {
 
     val rotationLockEnabled: Boolean
         get() = preferences.getBoolean(ENABLE_ROTATION_LOCK, false)
+
+    /**
+     * When ON (the default), only known callers may browse the media library
+     * (Android Auto, Assistant, etc.). When OFF, any caller is allowed - needed
+     * for unofficial Android-Auto clients or other free media client.
+     *
+     * See [PackageValidator.isAllowedCaller].
+     */
+    val isEnforceKnownCallers: Boolean
+        get() = preferences.getBoolean(ENFORCE_KNOWN_CALLERS, true)
 
     val experimentalUpdates: Boolean
         get() = preferences.getBoolean(EXPERIMENTAL_UPDATES, false)

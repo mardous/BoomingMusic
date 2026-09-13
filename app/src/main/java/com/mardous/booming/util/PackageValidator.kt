@@ -74,7 +74,7 @@ internal class PackageValidator(context: Context, @XmlRes xmlResId: Int) {
      * check for users who explicitly opt back in.
      */
     fun isAllowedCaller(callingPackage: String, callingUid: Int): Boolean =
-        if (!Preferences.enforceKnownCallers) true
+        if (!Preferences.isEnforceKnownCallers) true
         else isKnownCaller(callingPackage, callingUid)
 
     /**
