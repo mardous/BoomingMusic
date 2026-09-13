@@ -1046,4 +1046,8 @@
     <string name="sync_autoeq_database">Sincronizar base de datos de AutoEq</string>
     <string name="search_autoeq_placeholder">Buscar modelo de audífono</string>
     <string name="backup_warning_database_ver">Algunos datos de esta copia de seguridad, como playlists y letras, no son compatibles y podrían no ser restaurados.</string>
+    <string name="permission_notifications_title">Notificaciones (opcional)</string>
+    <string name="permission_notifications_summary">Este permiso permite que Booming Music muestre los controles de reproducción en el panel de notificaciones y en la pantalla de bloqueo.</string>
+    <string name="enforce_known_callers_title">Permitir solo exploradores conocidos</string>
+    <string name="enforce_known_callers_summary">Cuando está activado, solo las aplicaciones de confianza (Android Auto, Asistente, etc.) pueden explorar la biblioteca multimedia. Desactívala para permitir que cualquier aplicación la explore, como los clientes de código abierto de Android Auto.</string>
 </resources>
