@@ -22,6 +22,7 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Resources
 import android.os.Process
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
@@ -57,6 +58,7 @@ import com.mardous.booming.coil.store.YearMapper
 import com.mardous.booming.data.local.ReplayGainTagExtractor
 import com.mardous.booming.ui.screen.error.ErrorActivity
 import com.mardous.booming.ui.screen.settings.SettingsScreen
+import com.mardous.booming.util.AUTO_LANGUAGE
 import com.mardous.booming.util.EXPERIMENTAL_UPDATES
 import com.mardous.booming.util.LANGUAGE_NAME
 import com.mardous.booming.util.Preferences.getDayNightMode
@@ -69,7 +71,8 @@ import kotlin.system.exitProcess
 private val legacyLanguageTags = mapOf(
     "es-419" to "es-US",
     "pt" to "pt-PT",
-    "ar" to "ar-SA"
+    "ar" to "ar-SA",
+    "pl-SP" to "szl",
 )
 
 class App : Application(), SingletonImageLoader.Factory {
@@ -111,10 +114,22 @@ class App : Application(), SingletonImageLoader.Factory {
     }
 
     private fun migrateLanguageTag(prefs: SharedPreferences) {
-        val current = prefs.getString(LANGUAGE_NAME, null) ?: return
-        val replacement = legacyLanguageTags[current] ?: return
-        prefs.edit { putString(LANGUAGE_NAME, replacement) }
-        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(replacement))
+        val current = prefs.getString(LANGUAGE_NAME, null)
+        val replacement = legacyLanguageTags[current]
+        if (replacement != null) {
+            prefs.edit { putString(LANGUAGE_NAME, replacement) }
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(replacement))
+        } else if ((current == null) || (current == AUTO_LANGUAGE)) {
+            if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+                val primaryLocale = Resources.getSystem().configuration.locales.let { systemLocales ->
+                    if (systemLocales.isEmpty) null else systemLocales[0]
+                }
+                if (primaryLocale?.toLanguageTag() == "pl-SP") {
+                    prefs.edit { putString(LANGUAGE_NAME, "szl") }
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("szl"))
+                }
+            }
+        }
     }
 
     override fun newImageLoader(context: PlatformContext): ImageLoader {
