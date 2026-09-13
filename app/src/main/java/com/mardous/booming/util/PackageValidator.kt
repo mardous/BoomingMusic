@@ -68,10 +68,10 @@ internal class PackageValidator(context: Context, @XmlRes xmlResId: Int) {
 
     /**
      * The gate used by the browsing/session callbacks. Behaves like [isKnownCaller], unless
-     * caller enforcement is turned OFF in Developer Settings, in which case every caller is 
-     * allowed to browse the library. This lets unofficial Android-Auto clients (which are not
-     * in [allowed_media_browser_callers]) browse during development without weakening the
-     * check for users who explicitly opt back in.
+     * caller enforcement is turned OFF in Advanced settings, in which case every caller is
+     * allowed to browse the library. This lets unofficial Android Auto clients, which are not
+     * listed in `res/xml/allowed_media_browser_callers.xml`, use the library without weakening
+     * the check for everyone who leaves enforcement on.
      */
     fun isAllowedCaller(callingPackage: String, callingUid: Int): Boolean =
         if (!Preferences.isEnforceKnownCallers) true

@@ -151,7 +151,6 @@ class AdvancedPreferencesFragment : PreferenceScreenFragment() {
     }
 }
 
-
 open class PreferenceScreenFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
