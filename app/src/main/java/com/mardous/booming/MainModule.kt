@@ -354,6 +354,7 @@ private val viewModule = module {
     viewModel { (target: EditTarget) ->
         TagEditorViewModel(
             repository = get(),
+            mediaEventBus = get(),
             customArtistImageManager = get(),
             target = target
         )
