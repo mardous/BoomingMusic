@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
     <string name="permission_external_storage_description">La aplicación necesita permiso para acceder al almacenamiento del dispositivo y reproducir música</string>
     <string name="permission_external_storage_denied">Debe conceder permiso para acceder al almacenamiento externo.</string>
-    <string name="permission_bluetooth_title">Dispositivos cercanos</string>
+    <string name="permission_bluetooth_title">Dispositivos cercanos (opcional)</string>
     <string name="permission_bluetooth_description">La aplicación necesita el permiso de dispositivos cercanos para buscar dispositivos Bluetooth</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
@@ -341,7 +341,6 @@
     <string name="top_albums">Mejores álbumes</string>
     <string name="recent_artists">Artistas recientes</string>
     <string name="recent_albums">Álbumes recientes</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Puro aleatorio</string>
     <string name="shuffle_mode_most_played">Más reproducidas</string>
@@ -985,8 +984,18 @@
     <string name="initial_configuration_title">Configuración inicial</string>
     <string name="initial_configuration_subtitle">Personaliza Booming Music a tu gusto antes de empezar.</string>
     <string name="initial_configuration_note">Siempre puedes cambiar estos ajustes más adelante.</string>
-    <string name="restore_from_backup">Restaurar desde copia de seguridad</string>
+    <string name="restore_from_backup">Restaurar desde copia de respaldo</string>
     <string name="widget_show_navigation_title">Visualización</string>
     <string name="widget_action_favourite">Favorito</string>
     <string name="network_features_summary">Permite el scrobbling y la descarga de portadas y letras del álbum.</string>
+    <string name="action_play_x">Reproducir %s</string>
+    <string name="invalid_search_params">No se pudieron procesar los parámetros de búsqueda.</string>
+    <string name="permission_notifications_title">Notificaciones (opcional)</string>
+    <string name="permission_notifications_summary">Este permiso permite a Booming Music mostrar controles de reproducción en el panel de notificaciones y en la pantalla de bloqueo.</string>
+    <string name="permissions_needed">Permisos necesarios</string>
+    <string name="welcome_to_x">Le damos la bienvenida a %s</string>
+    <string name="home_empty_title">No hay nada que recomendar</string>
+    <string name="home_empty_subtitle">Escuche algo de música primero</string>
+    <string name="home_for_you_title">Para usted</string>
+    <string name="home_artists_title">Artistas recomendados</string>
 </resources>
