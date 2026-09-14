@@ -1038,4 +1038,7 @@
     <string name="sync_autoeq_database">Sincronizza database AutoEq</string>
     <string name="search_autoeq_placeholder">Cerca modello delle cuffie</string>
     <string name="backup_warning_database_ver">Alcuni dati di questo backup, come le playlist e i testi, non sono compatibili e potrebbero non essere ripristinati.</string>
+    <string name="permission_notifications_title">Notifiche (opzionale)</string>
+    <string name="permission_notifications_summary">Questa autorizzazione consente a Booming Musica di mostrare i controlli di riproduzione nella sezione notifiche e nella schermata di blocco.</string>
+    <string name="enforce_known_callers_title">Forza caller noti</string>
 </resources>
