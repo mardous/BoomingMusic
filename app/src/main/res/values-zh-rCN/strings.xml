@@ -1028,4 +1028,8 @@
     <string name="sync_autoeq_database">同步 AutoEq 数据库</string>
     <string name="search_autoeq_placeholder">搜索耳机型号</string>
     <string name="backup_warning_database_ver">此备份中的部分数据（例如播放列表和歌词）不兼容，可能无法还原。</string>
+    <string name="permission_notifications_title">通知（可选 ）</string>
+    <string name="permission_notifications_summary">此权限允许 Booming Music 在通知栏和锁屏界面上显示播放控制选项。</string>
+    <string name="enforce_known_callers_summary">开启后，仅受信任的应用（如 Android Auto、Google 助理等）可以浏览媒体库。关闭此项可允许任何应用进行访问——例如开源的 Android Auto 客户端，或部分受限的智能手表与蓝牙控制组件。</string>
+    <string name="enforce_known_callers_title">仅限受信任的应用访问</string>
 </resources>
