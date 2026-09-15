@@ -51,8 +51,8 @@
     <string name="preparing_playback_title">Әзерләү</string>
     <string name="restoring_playback_state">Уйнау халәтен һәм чиратны торгызу…</string>
     <string name="playback_stopped_title">Уйнау туктатырган</string>
-    <string name="playing_notification_description">Уйнауы турында хәбәрнамә яңадан кабатлау/пауза һ. б. өчен хәрәкәтләр бирә.</string>
-    <string name="playing_notification_name">Уйнауы турында хәбәрнамә</string>
+    <string name="playing_notification_description">Уйнауы турында хәбәрләмә яңадан кабатлау/пауза һ. б. өчен хәрәкәтләр бирә.</string>
+    <string name="playing_notification_name">Уйнауы турында хәбәрләмә</string>
     <string name="action_scan_directory">Папканы сканлау</string>
     <string name="no_device_playlists">Плейлистлар юк</string>
     <string name="select_songs_title">Җырлар сайлау</string>
@@ -130,7 +130,7 @@
     <string name="permission_external_storage_title">Саклауханәгә керү мөмкинлеге</string>
     <string name="permission_external_storage_description">Кушымта музыканы яңадан торгызу өчен сезнең җайланманы саклагычка кертүгә рөхсәт таләп ителә</string>
     <string name="permission_external_storage_denied">Сез тышкы саклагычка керү өчен рөхсәт бирергә тиеш.</string>
-    <string name="permission_bluetooth_title">Якын-тирәдәге җайланмалар (мөмкинлеге)</string>
+    <string name="permission_bluetooth_title">Якын-тирәдәге җайланмалар (мөмкинлекле)</string>
     <string name="permission_bluetooth_description">Кушымта Bluetooth-җайланмаларны тикшерү өчен якын-тирәдәге җайланмаларга керү өчен рөхсәт таләп ителә</string>
     <string name="permission_read_images_title">Сурәтләр уку (мөмкинлекле)</string>
     <string name="permission_read_images_summary">Бу рөхсәт сезнең музыкаль папкаларыгызда альбомнар тышлыгын эзләү өчен Booming Music кирәк. Әгәр дә сез бу функцияне кулланырга җыенмыйсыз икән, сез аны тәкъдим итә аласыз.</string>
@@ -145,7 +145,7 @@
     <string name="select_storage_title">Саклауханәне сайлагыз</string>
     <string name="now_playing">Хәзер уйный</string>
     <string name="playing_queue_label">Уйнауы чираты</string>
-    <string name="up_next">Алга</string>
+    <string name="up_next">Алда</string>
     <string name="reorder_action">Тәртипне үзгәртергә</string>
     <string name="go_to_current_track">Агымдагы трекка күчәргә</string>
     <string name="list_start">Исемлекне баш</string>
@@ -156,7 +156,7 @@
     <string name="action_remove_from_favorites">Сайлангандан бетерү</string>
     <string name="added_to_favorites_label">Сайланганга өстәлгән</string>
     <string name="removed_from_favorites_label">Сайлангандан бетергән</string>
-    <string name="toggle_favorite">Сайлангандан өстәү/бетерү</string>
+    <string name="toggle_favorite">Сайланган өстәү/бетерү</string>
     <string name="action_add_to_playlist">Плейлистка өстәү</string>
     <string name="action_remove_from_playlist">Плейлисттан бетерү</string>
     <string name="action_add_to_playing_queue">Уйнау чиратына өстәү</string>
@@ -165,7 +165,7 @@
     <string name="set_artist_image">Артист сурәтен билгеләргә</string>
     <string name="reset_artist_image">Артист сурәтен ташларга</string>
     <string name="there_is_nothing_to_reset">Ташларга бернәрсә юк.</string>
-    <string name="add_to_label">Өстәргә</string>
+    <string name="add_to_label">Өстәлгә</string>
     <string name="go_to_label">Чыгарга</string>
     <string name="action_go_to_album">Альбомга чыгарга</string>
     <string name="action_go_to_artist">Артистка чыгарга</string>
@@ -177,7 +177,7 @@
     <string name="next_song_x_by_artist_x">Киләсе • %1$s - %2$s</string>
     <string name="similar_artists">Охшаш артистлар</string>
     <string name="label_more_from_artist">Артисттан күбрәк</string>
-    <string name="label_more_from_x">%s тан күбрәк</string>
+    <string name="label_more_from_x">%s күбрәк</string>
     <string name="various_artists">Төрле артистлар</string>
     <string name="unknown_artist">Билгесез артист</string>
     <string name="unknown_genre">Билгесез жанр</string>
@@ -202,7 +202,7 @@
     <string name="last_added_label">Ахры өстәлгән</string>
     <string name="top_tracks_label">Иң яхшы җырлар</string>
     <string name="history_label">Тарих</string>
-    <string name="not_recently_played">Күптән түгел тыңлаулар</string>
+    <string name="not_recently_played">Күптән тыңлауган</string>
     <string name="play_info">Уйнау мәгълүмат</string>
     <string name="track_play_counts">Трек уйну саны</string>
     <string name="song_stat_never_label">беркайчан уйнамаган</string>
@@ -711,4 +711,12 @@
     <string name="lyrics_show_translation_summary">Әгәр мөмкин булса, текстның тәрҗемәсен күрсәтү.</string>
     <string name="lyrics_show_transliteration_title">Транслитерация күрсәтү</string>
     <string name="lyrics_show_transliteration_summary">Әгәр мөмкин булса, текстның транслитерация күрсәтү.</string>
+    <string name="app_widget_library_desc">Тышлыклар белән челтәр син сайлаган исемлектән</string>
+    <string name="permission_notifications_title">Хәбәрләмәләр (мөмкинлекле)</string>
+    <string name="backup_file_name">Файл исем (мөмкинлекле)</string>
+    <string name="lyrics_progressive_coloring_summary">Бик тиз буяу урынына актив юллар төсләренең ялкынлы күчеше.</string>
+    <string name="lyrics_karaoke_style_title">Караоке өслүбтә текст</string>
+    <string name="synced_font_size_full_title">Синхронланган текстның күләме (тулы экран)</string>
+    <string name="synced_font_size_full_summary">Синхронланган текстның хәрефнең күләме тулы экранда.</string>
+    <string name="label_nothing">Бернәрсә</string>
 </resources>

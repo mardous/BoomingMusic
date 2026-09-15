@@ -76,7 +76,7 @@
     <string name="saved_playlist_x">已儲存播放清單 %s。</string>
     <string name="playlist_updated">播放清單已更新。</string>
     <string name="failed_to_save_playlist">播放清單儲存失敗。</string>
-    <string name="saved_x_playlists">已儲存 %1$d 播放清單。</string>
+    <string name="saved_x_playlists">已儲存 %1$d 個播放清單。</string>
     <string name="saved_x_playlists_failed_to_save_x">已儲存 %1$d 播放清單，未能儲存 %2$d。</string>
     <string name="delete_playlist_title">刪除播放清單</string>
     <string name="delete_playlists_title">刪除多個播放清單</string>
@@ -1028,4 +1028,8 @@
     <string name="sync_autoeq_database">同步 AutoEq 資料庫</string>
     <string name="search_autoeq_placeholder">搜尋耳機型號</string>
     <string name="backup_warning_database_ver">此備份中的部分資料（例如播放清單和歌詞）不相容，可能無法還原。</string>
+    <string name="permission_notifications_title">通知（選用）</string>
+    <string name="permission_notifications_summary">此權限允許 Booming Music 在通知欄和鎖定螢幕介面上顯示播放控制選項。</string>
+    <string name="enforce_known_callers_summary">開啟後，僅受信任的應用程式（如 Android Auto、Google 助理等）可以瀏覽媒體庫。關閉此項可允許任何應用程式存取——例如開源的 Android Auto 用戶端，或部分受限的智慧手錶與藍牙控制元件。</string>
+    <string name="enforce_known_callers_title">僅限受信任的應用程式存取</string>
 </resources>
