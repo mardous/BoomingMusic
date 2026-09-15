@@ -1041,4 +1041,5 @@
     <string name="permission_notifications_title">Notifiche (opzionale)</string>
     <string name="permission_notifications_summary">Questa autorizzazione consente a Booming Musica di mostrare i controlli di riproduzione nella sezione notifiche e nella schermata di blocco.</string>
     <string name="enforce_known_callers_title">Forza caller noti</string>
+    <string name="enforce_known_callers_summary">Quando è attiva, solo le app affidabili (Android Auto, Assistente, ecc.) possono sfogliare la libreria multimediale. Disattivala per consentire l\'accesso a qualsiasi app, come i client Android Auto open source.</string>
 </resources>
