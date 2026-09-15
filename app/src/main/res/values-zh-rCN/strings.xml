@@ -48,7 +48,7 @@
     <string name="preparing_playback_title">正在准备</string>
     <string name="restoring_playback_state">正在恢复播放状态和队列…</string>
     <string name="playback_stopped_title">已停止播放</string>
-    <string name="playing_notification_description">在播放通知可以进行播放/暂停等动作。</string>
+    <string name="playing_notification_description">播放通知提供播放/暂停等动作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">扫描目录</string>
     <string name="no_device_playlists">无播放列表</string>
@@ -76,7 +76,7 @@
     <string name="saved_playlist_x">已保存播放列表 %s。</string>
     <string name="playlist_updated">播放列表已更新。</string>
     <string name="failed_to_save_playlist">播放列表保存失败。</string>
-    <string name="saved_x_playlists">已保存 %1$d 播放列表。</string>
+    <string name="saved_x_playlists">已保存 %1$d 个播放列表。</string>
     <string name="saved_x_playlists_failed_to_save_x">已保存 %1$d 播放列表，未能保存 %2$d。</string>
     <string name="delete_playlist_title">删除播放列表</string>
     <string name="delete_playlists_title">删除多个播放列表</string>
@@ -632,7 +632,7 @@
     <string name="album_shuffle_mode_title">专辑随机模式</string>
     <string name="artist_shuffle_mode_title">艺人随机模式</string>
     <string name="rewind_with_back_title">使用“上一首”按钮快退</string>
-    <string name="rewind_with_back_summary">设置当前曲目正在播放开头时，“上一首”按钮是快退到曲目开始还是退回上一首。</string>
+    <string name="rewind_with_back_summary">若播放进度接近一曲开头，按下“上一首”会倒回曲目开头还是切换到上一首。</string>
     <string name="rewind_fast_forward_amount_title">快进/快退长度</string>
     <string name="rewind_fast_forward_amount_summary">使用应用界面或外部控制按钮进行快进/快退的时长（秒）。</string>
     <string name="resume_on_connect_title">连接后恢复播放</string>
