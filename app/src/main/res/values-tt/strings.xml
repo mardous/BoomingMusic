@@ -718,4 +718,5 @@
     <string name="lyrics_karaoke_style_title">Караоке өслүбтә текст</string>
     <string name="synced_font_size_full_title">Синхронланган текстның күләме (тулы экран)</string>
     <string name="synced_font_size_full_summary">Синхронланган текстның хәрефнең күләме тулы экранда.</string>
+    <string name="label_nothing">Бернәрсә</string>
 </resources>
