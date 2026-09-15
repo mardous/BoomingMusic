@@ -76,7 +76,7 @@
     <string name="saved_playlist_x">已儲存播放清單 %s。</string>
     <string name="playlist_updated">播放清單已更新。</string>
     <string name="failed_to_save_playlist">播放清單儲存失敗。</string>
-    <string name="saved_x_playlists">已儲存 %1$d 播放清單。</string>
+    <string name="saved_x_playlists">已儲存 %1$d 個播放清單。</string>
     <string name="saved_x_playlists_failed_to_save_x">已儲存 %1$d 播放清單，未能儲存 %2$d。</string>
     <string name="delete_playlist_title">刪除播放清單</string>
     <string name="delete_playlists_title">刪除多個播放清單</string>
