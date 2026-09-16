@@ -50,7 +50,7 @@
     <string name="playback_stopped_title">已停止播放</string>
     <string name="playing_notification_description">播放通知提供播放/暫停等動作。</string>
     <string name="playing_notification_name">播放通知</string>
-    <string name="action_scan_directory">掃描目錄</string>
+    <string name="action_scan_directory">掃描資料夾</string>
     <string name="no_device_playlists">無播放清單</string>
     <string name="select_songs_title">選擇歌曲</string>
     <string name="playlist_x_is_empty">播放清單 %s 為空。</string>
@@ -99,8 +99,8 @@
     <string name="web_search">網頁搜尋</string>
     <string name="where_do_you_want_to_search">你想在哪裡搜尋？</string>
     <string name="configure_action">設定</string>
-    <string name="blacklist_directory">黑名單目錄</string>
-    <string name="add_directory">新增目錄</string>
+    <string name="blacklist_directory">黑名單資料夾</string>
+    <string name="add_directory">新增資料夾</string>
     <string name="remove_from_blacklist">你想要從黑名單中移除此目錄嗎？</string>
     <string name="remove_from_whitelist">你想要從白名單中移除此目錄嗎？</string>
     <string name="do_you_want_to_clear_the_blacklist">你想要清除黑名單嗎？</string>
@@ -155,10 +155,10 @@
     <string name="reset_artist_image">重設藝人圖片</string>
     <string name="there_is_nothing_to_reset">沒有要重設的內容。</string>
     <string name="add_to_label">新增到</string>
-    <string name="go_to_label">轉至</string>
-    <string name="action_go_to_album">轉至專輯</string>
-    <string name="action_go_to_artist">轉至藝人</string>
-    <string name="action_go_to_genre">轉至流派</string>
+    <string name="go_to_label">前往</string>
+    <string name="action_go_to_album">前往專輯</string>
+    <string name="action_go_to_artist">前往藝人</string>
+    <string name="action_go_to_genre">前往曲風</string>
     <string name="added_title_to_playing_queue">已新增 1 首歌到播放佇列。</string>
     <string name="added_x_titles_to_playing_queue">已新增 %1$d 首歌到播放佇列。</string>
     <string name="next_song_label">下一首歌曲</string>
@@ -169,12 +169,12 @@
     <string name="label_more_from_x">更多來自 %s</string>
     <string name="various_artists">群星</string>
     <string name="unknown_artist">未知藝人</string>
-    <string name="unknown_genre">未知流派</string>
+    <string name="unknown_genre">未知曲風</string>
     <string name="unknown_year">未知年份</string>
     <string name="no_songs_label">無歌曲</string>
     <string name="no_albums_label">無專輯</string>
     <string name="no_artists_label">無藝人</string>
-    <string name="no_genres_label">無流派</string>
+    <string name="no_genres_label">無曲風</string>
     <string name="empty_label">空</string>
     <string name="nothing_to_see">沒有可查看的內容</string>
     <string name="show_album_artists">僅專輯藝人</string>
@@ -182,7 +182,7 @@
     <string name="albums_label">專輯</string>
     <string name="artists_label">藝人</string>
     <string name="album_artists_label">專輯藝人</string>
-    <string name="genres_label">流派</string>
+    <string name="genres_label">曲風</string>
     <string name="folders_label">資料夾</string>
     <string name="playlists_label">播放清單</string>
     <string name="playlist_label">播放清單</string>
@@ -225,7 +225,7 @@
     <string name="action_details">詳細資訊</string>
     <string name="action_set_as_start_directory">設定為起始目錄</string>
     <string name="start_directory_set">起始目錄已設定為 %s</string>
-    <string name="action_go_to_start_directory">轉至起始目錄</string>
+    <string name="action_go_to_start_directory">前往起始目錄</string>
     <string name="action_hierarchy_view">階層檢視</string>
     <string name="new_start_directory">新建起始目錄：%s</string>
     <string name="action_scan">掃描</string>
@@ -257,7 +257,7 @@
     <string name="composer">作曲家</string>
     <string name="conductor">指揮</string>
     <string name="publisher">發行者</string>
-    <string name="genre">流派</string>
+    <string name="genre">曲風</string>
     <string name="year">年份</string>
     <string name="release_years_label">年</string>
     <string name="length">時長</string>
@@ -446,7 +446,7 @@
     <string name="font_imported_successfully">字型已成功匯入。</string>
     <string name="could_not_import_font">無法匯入字型。</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">睡眠計時器</string>
+    <string name="action_sleep_timer">睡眠定時器</string>
     <string name="sleep_timer_waiting_pending_quit">等待目前曲目播放完畢</string>
     <string name="sleep_timer_cancel_current_timer">取消</string>
     <string name="sleep_timer_set_action">設定</string>
@@ -533,7 +533,7 @@
     <string name="library_categories_title">音樂庫分類</string>
     <string name="library_categories_summary">設定音樂庫分類的顯示與順序。</string>
     <string name="remember_last_page_title">記住最後一個頁面</string>
-    <string name="remember_last_page_summary">啟動轉至往最後開啟的頁面。</string>
+    <string name="remember_last_page_summary">啟動時前往最後開啟的畫面。</string>
     <string name="start_page_title">開始頁面</string>
     <string name="tab_mode_title">標籤標題模式</string>
     <string name="hold_tab_to_search_title">長按標籤以搜尋</string>
@@ -924,7 +924,7 @@
     <string name="use_lyrically_provider_summary">功能豐富的歌詞 API，支援卡拉 OK 與多人聲部。</string>
     <string name="up_next">接下來播放</string>
     <string name="reorder_action">重新排序</string>
-    <string name="go_to_current_track">轉至當前曲目</string>
+    <string name="go_to_current_track">前往目前曲目</string>
     <string name="action_auto_fill_from_musicbrainz">從 MusicBrainz 自動填充</string>
     <string name="searching">正在搜尋…</string>
     <string name="musicbrainz_search_title">MusicBrainz 搜尋</string>
