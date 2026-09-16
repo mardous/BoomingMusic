@@ -993,4 +993,12 @@
     <string name="invalid_search_params">Не удалось обработать параметры поиска.</string>
     <string name="home_albums_subtitle">Лучшие и недавние альбомы</string>
     <string name="autoeq_sync_failed">Не удалось синхронизировать профили AutoEq.</string>
+    <string name="permissions_subtitle">Предоставьте доступ к музыкальным файлам и устройствам поблизости, чтобы обеспечить наилучший опыт взаимодействия.</string>
+    <string name="initial_configuration_title">Первоначальная настройка</string>
+    <string name="home_empty_title">Рекомендовать нечего</string>
+    <string name="home_empty_subtitle">Сначала послушайте музыку</string>
+    <string name="home_for_you_title">Для Вас</string>
+    <string name="app_widget_circle_desc">Круглый плеер с элементами управления вокруг него.</string>
+    <string name="app_widget_cookie">Печенье</string>
+    <string name="app_widget_cookie_desc">Обложка похожа на одно большое печенье, вокруг которого расположены элементы управления</string>
 </resources>
