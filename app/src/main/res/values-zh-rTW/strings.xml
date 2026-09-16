@@ -165,7 +165,7 @@
     <string name="next_song_x">下一首・%1$s</string>
     <string name="next_song_x_by_artist_x">下一首・%1$s - %2$s</string>
     <string name="similar_artists">類似的藝人</string>
-    <string name="label_more_from_artist">更多來自藝人</string>
+    <string name="label_more_from_artist">此藝人的更多作品</string>
     <string name="label_more_from_x">更多來自 %s</string>
     <string name="various_artists">群星</string>
     <string name="unknown_artist">未知藝人</string>
@@ -424,7 +424,7 @@
     <string name="enable_audio_offload_title">音訊卸載</string>
     <string name="enable_audio_offload_description">使用硬體加速播放以降低 CPU 使用率並節省電量。需要重新啟動應用程式才會生效。</string>
     <string name="enable_audio_float_output_title">高精度音訊輸出</string>
-    <string name="enable_audio_float_output_description">啟用 32 位元浮點音訊輸出以取得最高保真度。需要重新啟動應用程式才會生效。</string>
+    <string name="enable_audio_float_output_description">啟用 32 位元浮點音訊輸出以取得最高傳真度。需要重新啟動應用程式才會生效。</string>
     <string name="skip_silence_title">跳過靜音部分</string>
     <string name="skip_silence_description">播放時自動跳過靜音片段，尤其適用於播客和錄音。</string>
     <!-- Lyrics viewer -->
