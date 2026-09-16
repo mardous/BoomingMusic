@@ -165,7 +165,7 @@
     <string name="next_song_x">下一首・%1$s</string>
     <string name="next_song_x_by_artist_x">下一首・%1$s - %2$s</string>
     <string name="similar_artists">类似的艺人</string>
-    <string name="label_more_from_artist">更多来自艺人</string>
+    <string name="label_more_from_artist">此艺人的更多作品</string>
     <string name="label_more_from_x">更多来自 %s</string>
     <string name="various_artists">群星</string>
     <string name="unknown_artist">未知艺人</string>
