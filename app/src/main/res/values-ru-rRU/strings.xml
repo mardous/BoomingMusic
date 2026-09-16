@@ -1001,4 +1001,14 @@
     <string name="app_widget_circle_desc">Круглый плеер с элементами управления вокруг него.</string>
     <string name="app_widget_cookie">Печенье</string>
     <string name="app_widget_cookie_desc">Обложка похожа на одно большое печенье, вокруг которого расположены элементы управления</string>
+    <string name="home_albums_title">Послушайте сейчас</string>
+    <string name="home_forgotten_tracks_title">Заново</string>
+    <string name="home_forgotten_tracks_subtitle_3">Песни, которые вы давно не слышали</string>
+    <string name="allow_lyrics_download_from">Разрешить скачивание из:</string>
+    <string name="no_backups_found">Резервные копии не найдены в этой папке.</string>
+    <string name="backup_recent_list">Недавние резервные копии</string>
+    <string name="backup_file_name">Имя файла (необязательно)</string>
+    <string name="restoring_data">Восстановление ваших данных…</string>
+    <string name="restart_app_message">Приложение перезапустится для завершения процесса.</string>
+    <string name="home_artists_subtitle">Исполнители, которых вы слушаете чаще всего</string>
 </resources>
