@@ -446,7 +446,7 @@
     <string name="font_imported_successfully">字体已成功导入。</string>
     <string name="could_not_import_font">无法导入字体。</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">睡眠计时器</string>
+    <string name="action_sleep_timer">睡眠定时器</string>
     <string name="sleep_timer_waiting_pending_quit">等待当前播放结束</string>
     <string name="sleep_timer_cancel_current_timer">取消</string>
     <string name="sleep_timer_set_action">设置</string>
