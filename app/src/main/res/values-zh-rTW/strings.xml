@@ -22,7 +22,7 @@
     <string name="import_action">匯入</string>
     <string name="create_action">建立</string>
     <string name="search_label">搜尋</string>
-    <string name="search_hint">搜尋曲庫…</string>
+    <string name="search_hint">搜尋音樂庫…</string>
     <string name="action_voice_search">語音搜尋</string>
     <string name="speech_not_supported">裝置不支援語音輸入</string>
     <string name="search_artist_x_label">搜尋藝人：%s</string>
@@ -66,8 +66,8 @@
     <string name="action_edit_playlist">編輯播放清單</string>
     <string name="action_delete_playlist">刪除播放清單</string>
     <string name="action_export_playlist">將播放清單匯出至檔案</string>
-    <string name="action_clear_history">清除播放紀錄</string>
-    <string name="history_cleared">播放紀錄已清除</string>
+    <string name="action_clear_history">清除聆聽紀錄</string>
+    <string name="history_cleared">聆聽紀錄已清除</string>
     <string name="create_a_playlist">建立一個空播放清單。稍後可新增歌曲。</string>
     <string name="create_a_playlist_with_one_song">建立一個播放清單並新增一首歌曲。</string>
     <string name="create_a_playlist_with_x_songs">建立一個播放清單並自動向其中新增 %d 首歌曲。</string>
@@ -189,7 +189,7 @@
     <string name="favorites_label">我的最愛</string>
     <string name="last_added_label">最近新增</string>
     <string name="top_tracks_label">熱門曲目</string>
-    <string name="history_label">播放紀錄</string>
+    <string name="history_label">聆聽紀錄</string>
     <string name="not_recently_played">無最近播放</string>
     <string name="play_info">播放資訊</string>
     <string name="track_play_counts">曲目播放次數</string>
@@ -230,7 +230,7 @@
     <string name="new_start_directory">新建起始目錄：%s</string>
     <string name="action_scan">掃描</string>
     <string name="scan_media">掃描媒體</string>
-    <string name="scan_media_message">Android 系統通常會自動檢測並索引裝置上的媒體檔案，所以一般情況下不需要手動掃描媒體。</string>
+    <string name="scan_media_message">Android 系統通常會自動偵測並索引裝置上的媒體檔案，所以一般情況下不需要手動掃描媒體。</string>
     <string name="scan_media_positive">仍進行掃描</string>
     <string name="scan_finished">掃描已完成。</string>
     <string name="album_or_artist_empty">標題或藝人是空的。</string>
@@ -347,7 +347,7 @@
     <string name="shuffle_mode_most_played_albums_description">優先播放常聽專輯中的歌曲。</string>
     <string name="shuffle_mode_favorite_songs_description">優先播放我的最愛歌曲。</string>
     <string name="shuffle_mode_forgotten_songs_description">優先播放有一段時間未播的歌曲。</string>
-    <string name="shuffle_mode_recently_added_description">優先播放最近新增到曲庫的歌曲。</string>
+    <string name="shuffle_mode_recently_added_description">優先播放最近新增到音樂庫的歌曲。</string>
     <string name="shuffle_mode_combined_description">根據我的最愛、播放次數和新增時間混合播放。</string>
     <!-- Equalizer -->
     <string name="equalizer_label">等化器</string>
@@ -504,7 +504,7 @@
     <string name="playback_title">播放</string>
     <string name="playback_summary">變更聲音設定、藍牙耳機等項目。</string>
     <string name="metadata_title">中繼資料</string>
-    <string name="library_title">曲庫</string>
+    <string name="library_title">音樂庫</string>
     <string name="library_summary">播放清單與排除/包含篩選器的設定。</string>
     <string name="advanced_title">進階設定</string>
     <string name="advanced_summary">進階使用者的應用程式內語言和其他設定。</string>
@@ -513,7 +513,7 @@
     <string name="about_summary">Booming Music %s，點按以取得更多資訊。</string>
     <!-- Preference headers -->
     <string name="general_header">一般</string>
-    <string name="library_header">曲庫</string>
+    <string name="library_header">音樂庫</string>
     <string name="album_cover_header">封面</string>
     <string name="exclusion_header">排除媒體</string>
     <string name="controls_header">控制項</string>
@@ -530,8 +530,8 @@
     <string name="material_you_title">Material You 動態色彩</string>
     <string name="use_custom_font_title">使用自訂字型</string>
     <string name="appbar_mode_title">標題樣式</string>
-    <string name="library_categories_title">曲庫分類</string>
-    <string name="library_categories_summary">設定曲庫分類的顯示與順序。</string>
+    <string name="library_categories_title">音樂庫分類</string>
+    <string name="library_categories_summary">設定音樂庫分類的顯示與順序。</string>
     <string name="remember_last_page_title">記住最後一個頁面</string>
     <string name="remember_last_page_summary">啟動轉至往最後開啟的頁面。</string>
     <string name="start_page_title">開始頁面</string>
@@ -688,20 +688,20 @@
     <string name="trash_music_summary">將已刪除的檔案移到垃圾桶。</string>
     <string name="recursive_folder_actions_title">影響子資料夾的操作</string>
     <string name="recursive_folder_actions_summary">當對資料夾執行操作時，選擇哪些操作也應作用於子資料夾。</string>
-    <string name="enable_history_title">啟用播放紀錄</string>
-    <string name="enable_history_summary">儲存你的播放紀錄、常聽歌曲，並更新至播放紀錄同步服務。關閉此功能將停止所有的紀錄同步與追蹤。</string>
+    <string name="enable_history_title">啟用聆聽紀錄</string>
+    <string name="enable_history_summary">追蹤你的聆聽紀錄、常聽歌曲，並更新至聽歌紀錄同步服務。停用此功能將停止所有紀錄同步與追蹤。</string>
     <string name="history_interval_title">紀錄時間範圍</string>
     <string name="last_added_interval_title">最新新增時間間隔</string>
     <string name="whitelist_title">白名單</string>
-    <string name="whitelist_summary">只有白名單資料夾的內容會顯示在曲庫中。</string>
+    <string name="whitelist_summary">只有白名單資料夾的內容會顯示在音樂庫中。</string>
     <string name="blacklist_title">黑名單</string>
-    <string name="blacklist_summary">黑名單資料夾中的內容不會顯示在曲庫中。</string>
+    <string name="blacklist_summary">黑名單資料夾中的內容不會顯示在音樂庫中。</string>
     <string name="artist_min_songs_title">藝人最少歌曲數</string>
-    <string name="artist_min_songs_summary">藝人至少要有幾首歌才會顯示在曲庫中。</string>
+    <string name="artist_min_songs_summary">藝人至少要有幾首歌才會顯示在音樂庫中。</string>
     <string name="album_min_songs_title">專輯最少歌曲數</string>
-    <string name="album_min_songs_summary">專輯至少要有幾首歌才會顯示在曲庫中。</string>
+    <string name="album_min_songs_summary">專輯至少要有幾首歌才會顯示在音樂庫中。</string>
     <string name="min_song_duration_title">歌曲最短長度</string>
-    <string name="min_song_duration_summary">只有長度至少達到指定秒數的歌曲才會顯示在曲庫中。</string>
+    <string name="min_song_duration_summary">只有長度至少達到指定秒數的歌曲才會顯示在音樂庫中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">語言</string>
     <string name="stop_when_closed_from_recents_title">在「最近」關閉應用程式後停止播放</string>
@@ -865,7 +865,7 @@
     <string name="error_lastfm_credentials">登入資訊無效。請確認後再試一次。</string>
     <string name="error_lastfm_params">參數無效。這可能是本應用程式端發生錯誤。</string>
     <string name="error_lastfm_service">Last.fm 目前暫停服務或正在維護。請稍後再試。</string>
-    <string name="error_lastfm_rate_limit">請求次數過多。請稍候再同步播放紀錄。</string>
+    <string name="error_lastfm_rate_limit">請求次數過多。請稍候再同步聆聽紀錄。</string>
     <string name="error_lastfm_generic">Last.fm 發生未預期的錯誤。請再試一次。</string>
     <string name="error_network_timeout">連線逾時。請檢查網路連線後再試一次。</string>
     <string name="error_listenbrainz_generic">ListenBrainz 發生錯誤。</string>
@@ -899,20 +899,20 @@
     <string name="mini_player_swipe_to_skip_title">滑動迷你播放器切歌</string>
     <string name="mini_player_swipe_to_skip_summary">在迷你播放器上向左或向右滑動以切換歌曲。</string>
     <string name="play_all_songs_when_searching_title">搜尋時播放全部歌曲</string>
-    <string name="play_all_songs_when_searching_summary">啟用後，選取搜尋結果中的歌曲會將整個曲庫加入播放佇列。受「選取歌曲時」設定影響。</string>
+    <string name="play_all_songs_when_searching_summary">啟用後，選取搜尋結果中的歌曲會將整個音樂庫加入播放佇列。受「選取歌曲時」設定影響。</string>
     <string name="wifi_only_network_features_title">僅在 Wi-Fi 下使用網路功能</string>
     <string name="wifi_only_network_features_summary">只有連上 Wi-Fi 時才允許使用網路功能。</string>
     <string name="lastfm_login_title">登入 Last.fm</string>
-    <string name="lastfm_login_summary">使用 Last.fm 帳號授權，以啟用播放紀錄同步與「正在播放」狀態更新。</string>
-    <string name="lastfm_scrobbling_title">啟用 Last.fm 播放紀錄同步</string>
+    <string name="lastfm_login_summary">使用 Last.fm 帳號授權，以啟用聽歌紀錄同步與「正在播放」狀態更新。</string>
+    <string name="lastfm_scrobbling_title">啟用 Last.fm 聽歌紀錄同步</string>
     <string name="lastfm_scrobbling_summary">自動將已播放曲目送出至 Last.fm 聆聽紀錄。</string>
     <string name="lastfm_now_playing_title">更新 Last.fm 「正在播放」狀態</string>
     <string name="lastfm_now_playing_summary">在你的 Last.fm 個人檔案中即時顯示目前播放的曲目。</string>
     <string name="lastfm_biography_title">下載藝人與專輯介紹</string>
     <string name="lastfm_biography_summary">從 Last.fm 擷取藝人與專輯介紹。</string>
     <string name="listenbrainz_login_title">登入 ListenBrainz</string>
-    <string name="listenbrainz_login_summary">透過使用者 Token 進行驗證，以啟用播放紀錄同步與「正在播放」狀態更新。你可以在 ListenBrainz 的個人檔案設定中找到你的 Token。</string>
-    <string name="listenbrainz_scrobbling_title">啟用 ListenBrainz 播放紀錄同步</string>
+    <string name="listenbrainz_login_summary">透過使用者 Token 進行驗證，以啟用聽歌紀錄同步與「正在播放」狀態更新。你可以在 ListenBrainz 的個人檔案設定中找到你的 Token。</string>
+    <string name="listenbrainz_scrobbling_title">啟用 ListenBrainz 聽歌紀錄同步</string>
     <string name="listenbrainz_scrobbling_summary">自動將已播放曲目送出至 ListenBrainz 聆聽紀錄。</string>
     <string name="listenbrainz_now_playing_title">更新 ListenBrainz 「正在播放」狀態</string>
     <string name="listenbrainz_now_playing_summary">在你的 ListenBrainz 個人檔案中即時顯示目前播放的曲目。</string>
@@ -937,12 +937,12 @@
     <string name="terms_of_service">服務條款</string>
     <string name="privacy_policy">隱私權政策</string>
     <string name="app_widget_circle">圓形</string>
-    <string name="app_widget_circle_desc">周围有控制项的圆形播放器</string>
+    <string name="app_widget_circle_desc">環繞控制項的圓形播放器</string>
     <string name="app_widget_cookie">餅乾形</string>
-    <string name="app_widget_cookie_desc">以餅乾形封面為主體，周圍有控制項</string>
+    <string name="app_widget_cookie_desc">以餅乾形封面為主體，控制項環繞周圍</string>
     <string name="app_widget_grid">網格</string>
     <string name="app_widget_grid_desc">封面圖像和播放控制控制在四個方格中</string>
-    <string name="app_widget_library">曲庫</string>
+    <string name="app_widget_library">音樂庫</string>
     <string name="app_widget_library_desc">排列著指定清單中的封面</string>
     <string name="app_widget_nothing_playing">未在播放</string>
     <string name="app_widget_tap_to_play">點按開啟 Booming Music</string>
@@ -966,12 +966,12 @@
     <string name="widget_page_previous">上一頁</string>
     <string name="widget_page_next">下一頁</string>
     <string name="restart_app_message">應用程式將重新啟動以完成此作業。</string>
-    <string name="permissions_subtitle">請授予音樂檔案和附近設備的存取權限，以獲得最佳播放體驗。</string>
+    <string name="permissions_subtitle">請授予音樂檔案和附近裝置的存取權限，以獲得最佳播放體驗。</string>
     <string name="initial_configuration_title">初始設定</string>
     <string name="initial_configuration_subtitle">在開始之前，請根據你的喜好自訂 Booming Music。</string>
     <string name="initial_configuration_note">你隨時可以變更這些設定。</string>
     <string name="restore_from_backup">從備份還原</string>
-    <string name="network_features_summary">啟用播放紀錄同步與專輯封面和歌詞下載。</string>
+    <string name="network_features_summary">啟用聽歌紀錄同步與專輯封面和歌詞下載。</string>
     <string name="listenbrainz_toggle_token_visibility">顯示/隱藏 Token</string>
     <string name="invalid_search_params">無法處理搜尋參數。</string>
     <string name="allow_lyrics_download_from">啟用的下載源：</string>
@@ -1011,7 +1011,7 @@
     <string name="home_albums_title">即刻聆聽</string>
     <string name="home_albums_subtitle">最常播放與最新專輯</string>
     <string name="home_albums_subtitle_2">暢聽最近新增的專輯</string>
-    <string name="home_albums_subtitle_3">曲庫中的流行專輯</string>
+    <string name="home_albums_subtitle_3">音樂庫中的流行專輯</string>
     <string name="home_artists_title">推薦藝人</string>
     <string name="home_artists_subtitle">那些你最常聽的聲音</string>
     <string name="home_artists_subtitle_2">新面孔與老朋友</string>
@@ -1022,7 +1022,7 @@
     <string name="home_forgotten_tracks_subtitle_3">許久未聞的旋律</string>
     <string name="import_or_sync_autoeq_database">匯入設定檔或同步資料庫以查看可用設定檔</string>
     <string name="import_or_type_to_search_autoeq_profiles">匯入設定檔或在 %d 個設定檔中搜尋你的裝置名稱</string>
-    <string name="autoeq_search_device_name">搜尋設備或型號</string>
+    <string name="autoeq_search_device_name">搜尋裝置或型號</string>
     <string name="autoeq_sync_success">已成功同步 %d 個 AutoEq 設定檔。</string>
     <string name="autoeq_sync_failed">AutoEq 設定檔同步失敗。</string>
     <string name="sync_autoeq_database">同步 AutoEq 資料庫</string>
@@ -1030,6 +1030,6 @@
     <string name="backup_warning_database_ver">此備份中的部分資料（例如播放清單和歌詞）不相容，可能無法還原。</string>
     <string name="permission_notifications_title">通知（選用）</string>
     <string name="permission_notifications_summary">此權限允許 Booming Music 在通知欄和鎖定螢幕介面上顯示播放控制選項。</string>
-    <string name="enforce_known_callers_summary">開啟後，僅受信任的應用程式（如 Android Auto、Google 助理等）可以瀏覽媒體庫。關閉此項可允許任何應用程式存取——例如開源的 Android Auto 用戶端，或部分受限的智慧手錶與藍牙控制元件。</string>
+    <string name="enforce_known_callers_summary">啟用後，僅受信任的應用程式（如 Android Auto、Google 助理等）可以瀏覽媒體庫。停用此項可允許任何應用程式存取——例如開源的 Android Auto 用戶端，或部分受限的智慧手錶與藍牙控制元件。</string>
     <string name="enforce_known_callers_title">僅限受信任的應用程式存取</string>
 </resources>
