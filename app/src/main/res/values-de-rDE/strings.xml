@@ -1037,4 +1037,8 @@
     <string name="backup_warning_ver_newer">Das Backup-Format ist neuer als das, was diese Version von Booming Music verarbeiten kann.</string>
     <string name="backup_warning_app_ver_newer">Dieses Backup wurde in einer neueren Version von Booming Music erstellt. Die Wiederherstellung in dieser Version kann zu Fehlern oder unvollständigen Datenwiederherstellung führen.</string>
     <string name="restoring_data">Deine Daten werden wiederhergestellt…</string>
+    <string name="permission_notifications_title">Benachrichtigungen (optional)</string>
+    <string name="permission_notifications_summary">Mit dieser Berechtigung kann Booming Music die Wiedergabesteuerung in deinem Benachrichtigungsfeld und auf dem Sperrbildschirm anzeigen.</string>
+    <string name="enforce_known_callers_title">Bekannte Anrufer zulassen</string>
+    <string name="enforce_known_callers_summary">Wenn diese Option aktiviert ist, können nur vertrauenswürdige Apps (Android Auto, Assistant usw.) auf die Medienbibliothek zugreifen. Deaktiviere diese Option, damit alle Apps darauf zugreifen können – beispielsweise Open-Source-Android-Auto-Clients.</string>
 </resources>
