@@ -998,7 +998,7 @@
     <string name="home_empty_title">Рекомендовать нечего</string>
     <string name="home_empty_subtitle">Сначала послушайте музыку</string>
     <string name="home_for_you_title">Для Вас</string>
-    <string name="app_widget_circle_desc">Круглый плеер с элементами управления вокруг него.</string>
+    <string name="app_widget_circle_desc">Круглый плеер с элементами управления вокруг него</string>
     <string name="app_widget_cookie">Печенье</string>
     <string name="app_widget_cookie_desc">Обложка похожа на одно большое печенье, вокруг которого расположены элементы управления</string>
     <string name="home_albums_title">Послушайте сейчас</string>
@@ -1011,4 +1011,7 @@
     <string name="restoring_data">Восстановление ваших данных…</string>
     <string name="restart_app_message">Приложение перезапустится для завершения процесса.</string>
     <string name="home_artists_subtitle">Исполнители, которых вы слушаете чаще всего</string>
+    <string name="app_widget_grid_desc">Обложка, воспроизведение и кнопки переключения в четырёх ячейках</string>
+    <string name="app_widget_library_desc">Сетка обложек из выбранного вами списка</string>
+    <string name="permission_notifications_title">Уведомления (по желанию)</string>
 </resources>
