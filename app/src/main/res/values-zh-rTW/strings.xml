@@ -6,7 +6,7 @@
     <string name="action_queue_next">新增到下一曲</string>
     <string name="shuffle_all_label">全部隨機</string>
     <string name="shuffle_mode">隨機播放模式</string>
-    <string name="repeat_mode">循環模式</string>
+    <string name="repeat_mode">重複模式</string>
     <string name="shuffle_button_tip">點按啟用預設隨機模式，長按圖示以使用偏好的隨機模式。</string>
     <string name="action_play_pause">播放/暫停</string>
     <string name="action_pause">暫停</string>
@@ -15,7 +15,7 @@
     <string name="action_cancel">取消</string>
     <string name="action_seek_backward">向後跳轉</string>
     <string name="action_seek_forward">向前跳轉</string>
-    <string name="action_cycle_repeat">循環播放模式</string>
+    <string name="action_cycle_repeat">重複模式切換</string>
     <string name="action_toggle_shuffle">切換隨機播放模式</string>
     <string name="reset_action">重設</string>
     <string name="action_more">更多</string>
@@ -206,8 +206,8 @@
     <string name="view_type_colored_card">彩色卡片</string>
     <string name="view_type_circle">圓形</string>
     <string name="view_type_image">圖片</string>
-    <string name="action_grid_size">網格大小</string>
-    <string name="action_grid_size_land">網格大小（橫向）</string>
+    <string name="action_grid_size">格線大小</string>
+    <string name="action_grid_size_land">格線大小（橫向）</string>
     <string name="action_sort_order">排序方式</string>
     <string name="sort_order_artist">藝人</string>
     <string name="sort_order_album">專輯</string>
@@ -446,7 +446,7 @@
     <string name="font_imported_successfully">字型已成功匯入。</string>
     <string name="could_not_import_font">無法匯入字型。</string>
     <!-- Sleep timer -->
-    <string name="action_sleep_timer">睡眠定時器</string>
+    <string name="action_sleep_timer">睡眠計時器</string>
     <string name="sleep_timer_waiting_pending_quit">等待目前曲目播放完畢</string>
     <string name="sleep_timer_cancel_current_timer">取消</string>
     <string name="sleep_timer_set_action">設定</string>
@@ -925,7 +925,7 @@
     <string name="up_next">接下來播放</string>
     <string name="reorder_action">重新排序</string>
     <string name="go_to_current_track">前往目前曲目</string>
-    <string name="action_auto_fill_from_musicbrainz">從 MusicBrainz 自動填充</string>
+    <string name="action_auto_fill_from_musicbrainz">從 MusicBrainz 自動填入</string>
     <string name="searching">正在搜尋…</string>
     <string name="musicbrainz_search_title">MusicBrainz 搜尋</string>
     <string name="musicbrainz_search_message">使用標題和藝人在 MusicBrainz 上搜尋歌曲中繼資料。</string>
@@ -940,7 +940,7 @@
     <string name="app_widget_circle_desc">環繞控制項的圓形播放器</string>
     <string name="app_widget_cookie">餅乾形</string>
     <string name="app_widget_cookie_desc">以餅乾形封面為主體，控制項環繞周圍</string>
-    <string name="app_widget_grid">網格</string>
+    <string name="app_widget_grid">格線</string>
     <string name="app_widget_grid_desc">封面圖像和播放控制控制在四個方格中</string>
     <string name="app_widget_library">音樂庫</string>
     <string name="app_widget_library_desc">排列著指定清單中的封面</string>
@@ -960,7 +960,7 @@
     <string name="widget_side_buttons_title">側邊按鈕</string>
     <string name="widget_side_buttons_skip">上一首/下一首</string>
     <string name="widget_action_favourite">我的最愛</string>
-    <string name="widget_action_repeat">循環</string>
+    <string name="widget_action_repeat">重複</string>
     <string name="widget_source_title">展示</string>
     <string name="widget_source_recent">最近播放</string>
     <string name="widget_page_previous">上一頁</string>
@@ -974,7 +974,7 @@
     <string name="network_features_summary">啟用聽歌紀錄同步與專輯封面和歌詞下載。</string>
     <string name="listenbrainz_toggle_token_visibility">顯示/隱藏 Token</string>
     <string name="invalid_search_params">無法處理搜尋參數。</string>
-    <string name="allow_lyrics_download_from">啟用的下載源：</string>
+    <string name="allow_lyrics_download_from">啟用的下載來源：</string>
     <string name="backup_restore_title">備份與還原</string>
     <string name="backup_restore_summary">管理應用程式資料的備份與還原。</string>
     <string name="no_backup_folder_selected">未選擇備份資料夾</string>
