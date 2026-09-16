@@ -295,7 +295,7 @@
     <!-- Audio output devices-->
     <string name="audio_device_aux_line">Aux 線路</string>
     <string name="audio_device_bluetooth_a2dp">藍牙 A2DP</string>
-    <string name="audio_device_builtin_speaker">內置揚聲器</string>
+    <string name="audio_device_builtin_speaker">內建喇叭</string>
     <string name="audio_device_hdmi">HDMI</string>
     <string name="audio_device_headset">有線耳機</string>
     <string name="audio_device_usb_device">USB 裝置</string>
@@ -420,8 +420,8 @@
     <string name="balance_right">右</string>
     <string name="action_external_eq">外部等化器</string>
     <string name="custom">自訂</string>
-    <string name="audio_offload_is_enabled">音訊硬體加速已啟用</string>
-    <string name="enable_audio_offload_title">音訊硬體加速</string>
+    <string name="audio_offload_is_enabled">音訊卸載已啟用</string>
+    <string name="enable_audio_offload_title">音訊卸載</string>
     <string name="enable_audio_offload_description">使用硬體加速播放以降低 CPU 使用率並節省電量。需要重新啟動應用程式才會生效。</string>
     <string name="enable_audio_float_output_title">高精度音訊輸出</string>
     <string name="enable_audio_float_output_description">啟用 32 位元浮點音訊輸出以取得最高保真度。需要重新啟動應用程式才會生效。</string>
@@ -478,9 +478,9 @@
     <string name="view_profile_on_github">在 GitHub 上查看個人檔案</string>
     <string name="write_an_email">撰寫電子郵件</string>
     <string name="support_development">支持開發</string>
-    <string name="help_with_translations">幫助翻譯</string>
+    <string name="help_with_translations">協助翻譯</string>
     <string name="help_with_translations_summary">你可以協助將 Booming Music 翻譯成其他語言，為此專案做出貢獻。</string>
-    <string name="report_bugs">報告錯誤</string>
+    <string name="report_bugs">回報錯誤</string>
     <string name="report_bugs_summary">報告錯誤或請求新功能。</string>
     <string name="share_app">分享此應用程式</string>
     <string name="share_app_summary">如果你與朋友分享，可以幫助這個應用程式的發展。</string>
@@ -583,7 +583,7 @@
     <string name="open_on_play_summary">開始播放歌曲後自動展開播放面板。</string>
     <string name="squiggly_seek_bar_title">波浪形進度條</string>
     <string name="squiggly_seek_bar_summary">使用波浪進度條而非直線型滑塊。</string>
-    <string name="scrolling_text_title">滾動顯示歌名</string>
+    <string name="scrolling_text_title">捲動顯示歌名</string>
     <string name="scrolling_text_summary">在歌曲名稱過長時滾動顯示，可能會更加耗電。</string>
     <string name="extra_controls_title">額外控制項</string>
     <string name="extra_controls_summary">為迷你播放器新增額外控制項</string>
@@ -871,7 +871,7 @@
     <string name="error_listenbrainz_generic">ListenBrainz 發生錯誤。</string>
     <string name="error_listenbrainz_invalid_token">ListenBrainz Token 無效。</string>
     <string name="app_version_x">版本 %s</string>
-    <string name="app_description">現代設計 · 純淨聽感 · 由你定義</string>
+    <string name="app_description">現代設計 · 純淨聽感 · 由你做主</string>
     <string name="more_contributors_title">更多貢獻者</string>
     <string name="more_contributors_summary">你可以在 GitHub 上查看完整的貢獻者名單。</string>
     <string name="telegram_community_summary">加入我們的 Telegram 社群，接收版本更新與最新消息。</string>
@@ -905,7 +905,7 @@
     <string name="lastfm_login_title">登入 Last.fm</string>
     <string name="lastfm_login_summary">使用 Last.fm 帳號授權，以啟用播放紀錄同步與「正在播放」狀態更新。</string>
     <string name="lastfm_scrobbling_title">啟用 Last.fm 播放紀錄同步</string>
-    <string name="lastfm_scrobbling_summary">自動將已播放曲目提交到你的 Last.fm 聆聽紀錄。</string>
+    <string name="lastfm_scrobbling_summary">自動將已播放曲目送出至 Last.fm 聆聽紀錄。</string>
     <string name="lastfm_now_playing_title">更新 Last.fm 「正在播放」狀態</string>
     <string name="lastfm_now_playing_summary">在你的 Last.fm 個人檔案中即時顯示目前播放的曲目。</string>
     <string name="lastfm_biography_title">下載藝人與專輯介紹</string>
@@ -913,7 +913,7 @@
     <string name="listenbrainz_login_title">登入 ListenBrainz</string>
     <string name="listenbrainz_login_summary">透過使用者 Token 進行驗證，以啟用播放紀錄同步與「正在播放」狀態更新。你可以在 ListenBrainz 的個人檔案設定中找到你的 Token。</string>
     <string name="listenbrainz_scrobbling_title">啟用 ListenBrainz 播放紀錄同步</string>
-    <string name="listenbrainz_scrobbling_summary">自動將已播放曲目提交到你的 ListenBrainz 聆聽紀錄。</string>
+    <string name="listenbrainz_scrobbling_summary">自動將已播放曲目送出至 ListenBrainz 聆聽紀錄。</string>
     <string name="listenbrainz_now_playing_title">更新 ListenBrainz 「正在播放」狀態</string>
     <string name="listenbrainz_now_playing_summary">在你的 ListenBrainz 個人檔案中即時顯示目前播放的曲目。</string>
     <string name="use_lrclib_provider_title">使用 LRCLib 歌詞來源</string>
@@ -1005,8 +1005,8 @@
     <string name="home_empty_subtitle">先聽點音樂吧</string>
     <string name="home_shuffle_title">隨機播放音樂</string>
     <string name="home_for_you_title">專屬推薦</string>
-    <string name="home_for_you_subtitle">匯聚你的最愛</string>
-    <string name="home_for_you_subtitle_2">精選寶藏單曲</string>
+    <string name="home_for_you_subtitle">一站收錄你的最愛</string>
+    <string name="home_for_you_subtitle_2">專屬於你的精選好歌</string>
     <string name="home_for_you_subtitle_3">每日音樂補給</string>
     <string name="home_albums_title">即刻聆聽</string>
     <string name="home_albums_subtitle">最常播放與最新專輯</string>
