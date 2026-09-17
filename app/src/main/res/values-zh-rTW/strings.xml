@@ -13,8 +13,8 @@
     <string name="action_next">下一首</string>
     <string name="action_previous">上一首</string>
     <string name="action_cancel">取消</string>
-    <string name="action_seek_backward">向後跳轉</string>
-    <string name="action_seek_forward">向前跳轉</string>
+    <string name="action_seek_backward">快退</string>
+    <string name="action_seek_forward">快轉</string>
     <string name="action_cycle_repeat">重複模式切換</string>
     <string name="action_toggle_shuffle">切換隨機播放模式</string>
     <string name="reset_action">重設</string>
@@ -48,7 +48,7 @@
     <string name="preparing_playback_title">正在準備</string>
     <string name="restoring_playback_state">正在還原播放狀態與佇列…</string>
     <string name="playback_stopped_title">已停止播放</string>
-    <string name="playing_notification_description">播放通知提供播放/暫停等動作。</string>
+    <string name="playing_notification_description">播放通知提供播放/暫停等操作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">掃描資料夾</string>
     <string name="no_device_playlists">無播放清單</string>
@@ -106,7 +106,7 @@
     <string name="do_you_want_to_clear_the_blacklist">你想要清除黑名單嗎？</string>
     <string name="do_you_want_to_clear_the_whitelist">你想要清除白名單嗎？</string>
     <string name="action_delete_from_device">從裝置中刪除</string>
-    <string name="deleted_one_song">刪除一首歌曲</string>
+    <string name="deleted_one_song">已刪除一首歌曲</string>
     <string name="deleted_x_songs">已刪除 %1$d 首歌曲</string>
     <string name="delete_song_title">刪除歌曲</string>
     <string name="delete_songs_title">刪除多首歌曲</string>
@@ -124,7 +124,7 @@
     <string name="permission_external_storage_denied">必須授予外部儲存空間存取權。</string>
     <string name="permission_bluetooth_title">附近裝置（選用）</string>
     <string name="permission_bluetooth_description">此應用程式需要附近裝置權限才能檢查藍牙裝置</string>
-    <string name="permission_read_images_title">查看圖片（選用）</string>
+    <string name="permission_read_images_title">讀取圖片（選用）</string>
     <string name="permission_read_images_summary">為了自動尋找並顯示歌曲的專輯封面，Booming Music 需要取得存取音樂資料夾的權限。你可以依需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">需要授予所有檔案存取權才能讓應用程式讀取封面圖片。</string>
     <string name="permissions_denied">權限被拒絕</string>
@@ -190,7 +190,7 @@
     <string name="last_added_label">最近新增</string>
     <string name="top_tracks_label">熱門曲目</string>
     <string name="history_label">聆聽紀錄</string>
-    <string name="not_recently_played">無最近播放</string>
+    <string name="not_recently_played">近期未播放</string>
     <string name="play_info">播放資訊</string>
     <string name="track_play_counts">曲目播放次數</string>
     <string name="song_stat_never_label">從未播放</string>
@@ -268,14 +268,14 @@
     <string name="label_bit_rate">位元率</string>
     <string name="label_sampling_rate">取樣率</string>
     <string name="replay_gain">重放增益</string>
-    <string name="comment">評論</string>
+    <string name="comment">註解</string>
     <string name="last_played">上次播放</string>
     <string name="played">已播放</string>
     <string name="skipped">跳過</string>
     <string name="track">曲目</string>
     <string name="track_total">曲目總數</string>
-    <string name="disc">盤片</string>
-    <string name="disc_total">總盤片</string>
+    <string name="disc">碟片</string>
+    <string name="disc_total">總碟片</string>
     <string name="lyrics">歌詞</string>
     <string name="lyricist">作詞人</string>
     <string name="could_not_load_the_song_information">無法載入歌曲資訊。</string>
@@ -520,7 +520,7 @@
     <string name="gestures_header">手勢</string>
     <string name="headphones_header">耳機</string>
     <string name="bluetooth_header">藍牙</string>
-    <string name="audio_focus_header">音訊聚焦</string>
+    <string name="audio_focus_header">音訊焦點</string>
     <string name="shuffle_mode_header">隨機模式</string>
     <string name="display_header">顯示</string>
     <string name="visuals_header">視覺效果</string>
@@ -529,14 +529,14 @@
     <string name="pure_black_theme_title">純黑色</string>
     <string name="material_you_title">Material You 動態色彩</string>
     <string name="use_custom_font_title">使用自訂字型</string>
-    <string name="appbar_mode_title">標題樣式</string>
+    <string name="appbar_mode_title">頂欄樣式</string>
     <string name="library_categories_title">音樂庫分類</string>
     <string name="library_categories_summary">設定音樂庫分類的顯示與順序。</string>
     <string name="remember_last_page_title">記住上次開啟的頁面</string>
     <string name="remember_last_page_summary">啟動時前往最後開啟的畫面。</string>
     <string name="start_page_title">開始頁面</string>
-    <string name="tab_mode_title">標籤標題模式</string>
-    <string name="hold_tab_to_search_title">按住標籤以搜尋</string>
+    <string name="tab_mode_title">底部導覽列分頁標題</string>
+    <string name="hold_tab_to_search_title">按住分頁以搜尋</string>
     <string name="hold_tab_to_search_summary">按住任何導覽列分頁以開啟搜尋畫面。</string>
     <string name="larger_header_image_title">較大的封面圖片</string>
     <string name="larger_header_image_summary">在專輯、藝人和播放清單詳細資訊中顯示較大的封面圖片。</string>
@@ -584,7 +584,7 @@
     <string name="squiggly_seek_bar_title">波浪形進度條</string>
     <string name="squiggly_seek_bar_summary">使用波浪進度條而非直線型滑塊。</string>
     <string name="scrolling_text_title">捲動顯示歌名</string>
-    <string name="scrolling_text_summary">在歌曲名稱過長時滾動顯示，可能會更加耗電。</string>
+    <string name="scrolling_text_summary">在歌曲名稱過長時捲動顯示，可能會更加耗電。</string>
     <string name="extra_controls_title">額外控制項</string>
     <string name="extra_controls_summary">為迷你播放器新增額外控制項</string>
     <string name="adaptive_controls_title">自適應控制項</string>
@@ -606,7 +606,7 @@
     <string name="carousel_effect_title">輪播效果</string>
     <string name="album_cover_effect_title">專輯封面效果</string>
     <string name="animate_controls_title">控制項動畫</string>
-    <string name="animate_controls_summary">開啟播放器面板時显示控制項動畫。</string>
+    <string name="animate_controls_summary">開啟播放器面板時顯示控制項動畫。</string>
     <string name="swipe_anywhere_title">在任意處滑動以切換歌曲</string>
     <string name="swipe_anywhere_summary">在播放畫面的空白處向左或向右滑動以切換歌曲。</string>
     <string name="swipe_up_queue_title">向上滑動以開啟播放佇列</string>
@@ -712,11 +712,11 @@
     <!-- Preference values -->
     <string name="light_theme_name">亮色</string>
     <string name="dark_theme_name">深色</string>
-    <string name="labeled">已標記</string>
-    <string name="unlabeled">取消標籤</string>
-    <string name="selected">已選擇</string>
+    <string name="labeled">顯示所有</string>
+    <string name="unlabeled">隱藏</string>
+    <string name="selected">僅顯示選取項</string>
     <string name="compact">緊湊</string>
-    <string name="expanded">展開</string>
+    <string name="expanded">可展開</string>
     <string name="full_cover_style">全版面</string>
     <string name="gradient_style">漸層</string>
     <string name="peek_style">靈動</string>
@@ -734,7 +734,7 @@
     <string name="stack">堆疊</string>
     <string name="parallax">平行切換</string>
     <string name="add_after_playing_track">目前播放曲目之後</string>
-    <string name="add_tracks_sequentially">目前播放曲目加所有以此法插入的曲目之后</string>
+    <string name="add_tracks_sequentially">目前播放曲目加所有以此法插入的曲目之後</string>
     <string name="albums_shuffle">專輯隨機播放</string>
     <string name="artists_shuffle">藝人隨機播放</string>
     <string name="shuffle_albums_ordered_songs">專輯隨機播放，歌曲順序不變</string>
