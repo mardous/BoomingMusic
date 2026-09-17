@@ -1,0 +1,22 @@
+Booming Music – Android üçün nəzərdə tutulmuş, hamar, fərdiləşdirilə bilən və vizual cəhətdən cəlbedici təcrübə təqdim edən müasir və güclü yerli musiqi pleyeridir. "Material You" dizaynı və "Media3" texnologiyası əsasında yaradılmış bu proqram sadəliyi qabaqcıl səsləndirmə funksiyaları ilə birləşdirir.
+
+Sözbəsöz sinxronlaşdırılan mahnı sözləri, tərcümə dəstəyi (TTML/LRC) və təkmil vizual effektlər, hamar keçidlər və geniş fərdiləşdirmə imkanları ilə zənginləşdirilmiş "İndi səslənir" (Now Playing) interfeysi sayəsində sevimli mahnılarınızdan həzz alın.
+
+Daxili ekvalayzer, "ReplayGain", "Audio Offload" və fasiləsiz keçidlər üçün "gapless" (boşluqsuz) səsləndirmə funksiyaları ilə dinləmə təcrübənizi mükəmməlləşdirin. Ağıllı pleylistlər, fərdiləşdirilə bilən çeşidləmə və iyerarxik qovluq görünüşü ilə musiqi kolleksiyanızı öz istəyinizə uyğun təşkil edin.
+
+Əsas xüsusiyyətlər:
+
+*   Mahnı sözlərinin avtomatik yüklənməsi və tətbiqdaxili redaktoru
+*   Sözbəsöz və tərcüməli mahnı sözləri (TTML, LRC)
+*   "Audio offload" dəstəyi ilə "Media3" əsaslı səsləndirmə mühərriki
+*   Treklər arasında sabit səs səviyyəsi üçün "ReplayGain"
+*   Yerli (native) ALAC dekodlaşdırma
+*   "ListenBrainz" skrobblinqi
+*   Adaptiv mini-pleyer və jestlə idarəetmə
+*   Pleylistlər üçün xüsusi üz qabıqları və təsvirlər
+*   Kitabxananı dərhal yeniləyən etiket (tag) redaktoru
+*   Ağıllı avtomatik pleylistlər (Son dinlənilənlər, Ən çox dinlənilənlər, Tarixçə)
+*   Yuxu taymeri, vidjetlər və "Android Auto" dəstəyi
+*   Tünd və qara rejimlərlə "Material You" tərtibatı
+*   Çoxdilli dəstək
+*   Yüngül, açıq mənbəli və reklamsız
