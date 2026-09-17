@@ -386,8 +386,8 @@
     <string name="imported_x_profiles">Se importaron %d perfiles.</string>
     <string name="no_profile_imported">No se importó ningún perfil.</string>
     <string name="import_autoeq_profile">Importar perfil de AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Seleccione un archivo con parámetros de AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">No se ha importado ningún perfil de AutoEq.</string>
+    <string name="select_a_file_containing_autoeq_params">Seleccione un archivo con parámetros de AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">No se importó ningún perfil de AutoEq</string>
     <string name="reset_equalizer">Restablecer ecualizador</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">¿Confirma que quiere restablecer el ecualizador? \n\nEsto vaciará todos sus perfiles.</string>
     <string name="not_supported">No admitido</string>
@@ -951,11 +951,11 @@
     <string name="app_widget_library_desc">Una cuadrícula con las portadas de una lista que elija</string>
     <string name="app_widget_nothing_playing">Nada en reproducción</string>
     <string name="app_widget_tap_to_play">Toca para abrir Booming Music</string>
-    <string name="action_auto_fill_from_musicbrainz">Autocompletar desde MusicBrainz</string>
+    <string name="action_auto_fill_from_musicbrainz">Relleno automático de MusicBrainz</string>
     <string name="searching">Buscando…</string>
     <string name="musicbrainz_search_title">Búsqueda de MusicBrainz</string>
     <string name="musicbrainz_search_message">Busca metadatos de canciones en MusicBrainz usando el título y el artista.</string>
-    <string name="musicbrainz_no_results">Ningún resultado encontrado en MusicBrainz.</string>
+    <string name="musicbrainz_no_results">No se encontró ningún resultado en MusicBrainz.</string>
     <string name="musicbrainz_select_recording">Seleccione un resultado</string>
     <string name="sort_order_name">Nombre</string>
     <string name="restart_app_message">La aplicación se reiniciará para completar el proceso.</string>
@@ -1028,4 +1028,21 @@
     <string name="home_artists_subtitle_2">Caras nuevas y viejos favoritos</string>
     <string name="home_artists_subtitle_3">Los rostros detrás de la música que le encanta</string>
     <string name="home_forgotten_tracks_title">Redescubrir</string>
+    <string name="home_forgotten_tracks_subtitle_3">Canciones que no ha escuchado en algún tiempo</string>
+    <string name="home_for_you_subtitle_3">Su dosis diaria de inspiración musical</string>
+    <string name="home_albums_subtitle_2">Adéntrese en sus colecciones más recientes</string>
+    <string name="home_forgotten_tracks_subtitle_2">Desempolve los tesoros ocultos</string>
+    <string name="no_backup_folder_selected">No se seleccionó ninguna carpeta de respaldos</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importe un perfil o busque el nombre de su dispositivo entre %d perfiles</string>
+    <string name="home_for_you_subtitle">Sus favoritos de siempre en un solo lugar</string>
+    <string name="autoeq_sync_failed">No se pudieron sincronizar los perfiles de AutoEq.</string>
+    <string name="autoeq_sync_success">Se sincronizaron %d perfiles de AutoEq correctamente.</string>
+    <string name="home_shuffle_title">Reproducir música al azar</string>
+    <string name="home_for_you_subtitle_2">Joyas seleccionadas para usted</string>
+    <string name="home_albums_title">Escuchar ahora</string>
+    <string name="home_albums_subtitle">Álbumes populares y recientes</string>
+    <string name="home_forgotten_tracks_subtitle">Vuelva a poner en primer plano sus clásicos</string>
+    <string name="sync_autoeq_database">Sincronizar base de datos de AutoEq</string>
+    <string name="search_autoeq_placeholder">Buscar modelo de auriculares</string>
+    <string name="allow_lyrics_download_from">Permitir descarga desde:</string>
 </resources>
