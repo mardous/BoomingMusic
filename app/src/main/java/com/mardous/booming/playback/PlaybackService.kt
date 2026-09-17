@@ -20,7 +20,6 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
-import android.service.media.MediaBrowserService
 import android.view.KeyEvent
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -28,7 +27,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.postDelayed
-import androidx.media.utils.MediaConstants
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -52,9 +50,7 @@ import androidx.media3.session.LibraryResult
 import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession
-import androidx.media3.session.MediaSession.ConnectionResult.AcceptedResultBuilder
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
-import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
@@ -94,7 +90,6 @@ import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
 import com.mardous.booming.util.MP3_INDEX_SEEKING
 import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
 import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
-import com.mardous.booming.util.PackageValidator
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.Preferences.requireString
@@ -170,7 +165,6 @@ class PlaybackService :
     private val balanceProcessor: BalanceAudioProcessor by inject()
     private val replayGainProcessor: ReplayGainAudioProcessor by inject()
 
-    private lateinit var packageValidator: PackageValidator
     private lateinit var nm: NotificationManager
     private lateinit var persistentStorage: PersistentStorage
     private lateinit var customCommands: List<CommandButton>
@@ -242,8 +236,6 @@ class PlaybackService :
         super.onCreate()
         nm = requireNotNull(getSystemService<NotificationManager>())
         createNotificationChannel()
-
-        packageValidator = PackageValidator(this, R.xml.allowed_media_browser_callers)
 
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
@@ -393,32 +385,15 @@ class PlaybackService :
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
-        val myPackageName = this.packageName
-        val controllerPackageName = controllerInfo.packageName
-        if (controllerPackageName == myPackageName ||
-            controllerPackageName == MediaBrowserService.SERVICE_INTERFACE ||
-            controllerPackageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
-            return mediaSession
-        }
-        val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
-        if (controllerType == Intent.ACTION_MEDIA_BUTTON &&
-            controllerPackageName == MediaSessionService.SERVICE_INTERFACE) {
-            val sessionId = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_SESSION_ID)
-            if (sessionId == myPackageName) {
-                return mediaSession
-            }
-        } else if (packageValidator.isAllowedCaller(controllerPackageName, controllerInfo.uid)) {
-            return mediaSession
-        }
-        return null
+        return mediaSession
     }
 
     override fun onConnectAsync(
         session: MediaSession,
         controller: MediaSession.ControllerInfo
     ): ListenableFuture<MediaSession.ConnectionResult> {
-        val connectionResult = AcceptedResultBuilder(session, controller).build()
-        val availableSessionCommands = connectionResult.availableSessionCommands.buildUpon()
+        val availableSessionCommands = MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS
+            .buildUpon()
         if (controller.uid == Process.myUid()) {
             availableSessionCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
             availableSessionCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
@@ -427,19 +402,10 @@ class PlaybackService :
             availableSessionCommands.add(SessionCommand(Playback.SET_UNSHUFFLED_ORDER, Bundle.EMPTY))
             availableSessionCommands.add(SessionCommand(Playback.SET_STOP_POSITION, Bundle.EMPTY))
         }
-        // Media3 only grants read-only player commands to a controller it does not consider
-        // trusted, so an allowed caller could browse the library but never start playback.
-        // Grant the full set to whoever passes the same gate the library root uses.
-        val playerCommands =
-            if (packageValidator.isAllowedCaller(controller.packageName, controller.uid)) {
-                MediaSession.ConnectionResult.DEFAULT_PLAYER_COMMANDS
-            } else {
-                connectionResult.availablePlayerCommands
-            }
         return Futures.immediateFuture(
             MediaSession.ConnectionResult.accept(
                 availableSessionCommands.build(),
-                playerCommands
+                MediaSession.ConnectionResult.DEFAULT_PLAYER_COMMANDS
             )
         )
     }
@@ -474,49 +440,37 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        val isAllowedCaller = packageValidator.isAllowedCaller(browser.packageName, browser.uid)
-        val outExtras = Bundle().apply {
-            putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isAllowedCaller)
-        }
         val libraryParams = LibraryParams.Builder()
             .setOffline(true)
-            .setExtras(outExtras)
             .build()
-        val mediaItem = if (isAllowedCaller) {
-            when {
-                params?.isRecent == true -> {
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.RECENT_SONGS)
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .build()
-                        )
-                        .build()
-                }
-
-                else -> {
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.ROOT)
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .build()
-                        )
-                        .build()
-                }
+        val mediaItem = when {
+            params?.isRecent == true -> {
+                MediaItem.Builder()
+                    .setMediaId(MediaIDs.RECENT_SONGS)
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                            .setIsBrowsable(true)
+                            .setIsPlayable(false)
+                            .build()
+                    )
+                    .build()
             }
-        } else {
-            MediaItem.EMPTY
+
+            else -> {
+                MediaItem.Builder()
+                    .setMediaId(MediaIDs.ROOT)
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                            .setIsBrowsable(true)
+                            .setIsPlayable(false)
+                            .build()
+                    )
+                    .build()
+            }
         }
-        return Futures.immediateFuture(
-            if (isAllowedCaller) LibraryResult.ofItem(mediaItem, libraryParams)
-            else LibraryResult.ofError(SessionError.ERROR_PERMISSION_DENIED)
-        )
+        return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
     }
 
     override fun onGetChildren(
@@ -527,9 +481,6 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
-        // getChildren resolves any id it is handed, so FAVORITES and HISTORY are reachable without ever
-        // appearing in a root listing.
-        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching {
                 libraryProvider.getChildren(this@PlaybackService, parentId)
@@ -547,7 +498,6 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         mediaId: String
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        session.denyUntrusted<MediaItem>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
                 .getOrDefault(MediaItem.EMPTY)
@@ -565,7 +515,6 @@ class PlaybackService :
         query: String,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
-        session.denyUntrusted<Void>(browser)?.let { return it }
         session.notifySearchResultChanged(browser, query, 0, params)
         return Futures.immediateFuture(LibraryResult.ofVoid())
     }
@@ -578,7 +527,6 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
-        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching { libraryProvider.getSearchResult(query, page, pageSize) }
             if (result.isSuccess) {
@@ -642,15 +590,6 @@ class PlaybackService :
             }, ContextCompat.getMainExecutor(this))
         }
     }
-
-    private fun <T : Any> MediaSession.denyUntrusted(
-        controller: MediaSession.ControllerInfo
-    ): ListenableFuture<LibraryResult<T>>? =
-        // Same gate the library root uses, so a caller that was allowed to reach the root is not
-        // then refused its children and left looking at an empty library.
-        if (isTrustedController(controller) ||
-            packageValidator.isAllowedCaller(controller.packageName, controller.uid)) null
-        else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(
         session: MediaSession,

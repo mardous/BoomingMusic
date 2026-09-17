@@ -27,13 +27,4 @@
         app:widgetLayout="@layout/preference_switch"
         app:key="enable_rotation_lock"/>
 
-    <SwitchPreferenceCompat
-        app:icon="@drawable/ic_security_24dp"
-        app:title="@string/enforce_known_callers_title"
-        app:summary="@string/enforce_known_callers_summary"
-        app:defaultValue="true"
-        app:layout="@layout/list_item_view"
-        app:widgetLayout="@layout/preference_switch"
-        app:key="enforce_known_callers"/>
-
 </PreferenceScreen>
