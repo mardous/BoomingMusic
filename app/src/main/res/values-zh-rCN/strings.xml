@@ -82,12 +82,12 @@
     <string name="delete_playlists_title">删除多个播放列表</string>
     <string name="delete_playlist_x"><![CDATA[删除播放列表<b>“%s”</b>？]]></string>
     <string name="delete_x_playlists"><![CDATA[删除 <b>%d</b> 个播放列表？]]></string>
-    <string name="created_playlist_x">已创建播放列表 \'%1$s\'。</string>
+    <string name="created_playlist_x">已创建播放列表“%1$s”。</string>
     <string name="could_not_create_playlist">无法创建播放列表。</string>
     <string name="playlist_exists">播放列表“%s”已经存在。</string>
     <string name="playlist_created">已成功创建播放列表“%s”。</string>
     <string name="remove_song_from_playlist_title">从播放列表中移除歌曲</string>
-    <string name="remove_songs_from_playlist_title">从播放列表中删除多首歌曲</string>
+    <string name="remove_songs_from_playlist_title">从播放列表中移除多首歌曲</string>
     <string name="remove_song_x_from_playlist"><![CDATA[将<b>“%1$s”</b>从播放列表中移除？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[从播放列表中移除 <b>%1$d</b> 首歌曲？]]></string>
     <string name="playlist_empty_text">空播放列表</string>
@@ -97,7 +97,7 @@
     <string name="changes_saved_successfully">已成功保存更改。</string>
     <string name="could_not_save_some_changes">无法保存某些修改。</string>
     <string name="web_search">网页搜索</string>
-    <string name="where_do_you_want_to_search">你想在哪里搜索？</string>
+    <string name="where_do_you_want_to_search">想在哪里搜索？</string>
     <string name="configure_action">管理</string>
     <string name="blacklist_directory">黑名单目录</string>
     <string name="add_directory">添加目录</string>
@@ -125,7 +125,7 @@
     <string name="permission_bluetooth_title">附近设备（可选）</string>
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
     <string name="permission_read_images_title">访问图像（可选）</string>
-    <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。你可以根据需要决定是否授予此权限。</string>
+    <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。可根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">需要授予访问设备中图像的权限。</string>
     <string name="permissions_denied">权限被拒绝</string>
     <string name="permissions_needed">需要权限</string>
@@ -227,7 +227,7 @@
     <string name="start_directory_set">起始目录已设为 %s</string>
     <string name="action_go_to_start_directory">转至起始目录</string>
     <string name="action_hierarchy_view">层级视图</string>
-    <string name="new_start_directory">新建起始目录：%s</string>
+    <string name="new_start_directory">新的起始目录：%s</string>
     <string name="action_scan">扫描</string>
     <string name="scan_media">扫描媒体</string>
     <string name="scan_media_message">Android 系统通常会自动检测并索引设备上的媒体文件，所以一般情况下不需要手动扫描媒体。</string>
@@ -330,7 +330,7 @@
     <string name="shuffle_action">随机播放</string>
     <string name="top_artists">常听艺人</string>
     <string name="top_albums">常听专辑</string>
-    <string name="recent_artists">最近新增的藝人</string>
+    <string name="recent_artists">最近添加的艺人</string>
     <string name="recent_albums">最近添加的专辑</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全随机</string>
@@ -479,7 +479,7 @@
     <string name="write_an_email">写电子邮件</string>
     <string name="support_development">支持开发</string>
     <string name="help_with_translations">帮助翻译</string>
-    <string name="help_with_translations_summary">你可以通过帮助将 Booming Music 翻译成其他语言来为该项目做出贡献。</string>
+    <string name="help_with_translations_summary">通过帮助将 Booming Music 翻译成其他语言来为项目做出贡献。</string>
     <string name="report_bugs">反馈问题</string>
     <string name="report_bugs_summary">报告错误或请求新功能。</string>
     <string name="share_app">分享此应用</string>
@@ -615,7 +615,7 @@
     <string name="display_extra_info_title">显示额外信息</string>
     <string name="display_extra_info_summary">显示歌曲的码率、格式、采样率等额外信息。</string>
     <string name="display_next_song_title">显示下一首</string>
-    <string name="display_next_song_summary">在默认和全屏封面播放界面样式中显示下一曲。若禁用该选项，播放队列需要在播放器的三点菜单中打开。</string>
+    <string name="display_next_song_summary">在“普通”和“全屏封面”播放界面样式中显示下一曲。若禁用该选项，播放队列需要在播放器的三点菜单中打开。</string>
     <string name="select_extra_info_title">额外信息</string>
     <string name="select_extra_info_summary">选择要在播放器面板中显示的额外信息。</string>
     <string name="prefer_remaining_time_title">显示剩余时间</string>
@@ -631,7 +631,7 @@
     <string name="remember_shuffle_mode_summary">选择新的歌曲列表时保持随机播放模式。</string>
     <string name="album_shuffle_mode_title">专辑随机模式</string>
     <string name="artist_shuffle_mode_title">艺人随机模式</string>
-    <string name="rewind_with_back_title">使用“上一首”按钮快退</string>
+    <string name="rewind_with_back_title">使用“上一首”按钮回到开头</string>
     <string name="rewind_with_back_summary">若当前歌曲播放进度仍接近开头，按“上一首”会切换至上一首，否则只是倒回本曲开头。</string>
     <string name="rewind_fast_forward_amount_title">快进/快退长度</string>
     <string name="rewind_fast_forward_amount_summary">使用应用界面或外部控制按钮进行快进/快退的时长（秒）。</string>
@@ -685,7 +685,7 @@
     <string name="ignore_articles_when_sorting_title">在排序时忽略冠词</string>
     <string name="ignore_articles_when_sorting_summary">排序时忽略冠词（“the”，“a”，“an”等）。</string>
     <string name="trash_music_title">移至回收站</string>
-    <string name="trash_music_summary">将被删除的文件送往回收站。</string>
+    <string name="trash_music_summary">将被删除的文件移至回收站。</string>
     <string name="recursive_folder_actions_title">影响子文件夹的操作</string>
     <string name="recursive_folder_actions_summary">当对文件夹执行操作时，选择哪些操作也应作用于子文件夹。</string>
     <string name="enable_history_title">启用播放记录</string>
@@ -704,7 +704,7 @@
     <string name="min_song_duration_summary">歌曲时长需要至少有多少秒才会显示在曲库中。</string>
     <!-- Remote preferences -->
     <string name="app_language_title">应用语言</string>
-    <string name="stop_when_closed_from_recents_title">从“最近应用”关闭后停止播放</string>
+    <string name="stop_when_closed_from_recents_title">从后台清除时停止</string>
     <string name="stop_when_closed_from_recents_summary">从“最近应用”视图关闭此应用后停止播放歌曲。</string>
     <string name="stop_when_closed_from_recents_note">注意：某些内存或电池管理较为严格的设备可能会忽略此设置，并在从最近使用的应用列表中移除时始终停止播放。</string>
     <string name="rotation_lock_title">旋转锁定</string>
@@ -777,7 +777,7 @@
     <string name="never">永不</string>
     <string name="receive_experimental_updates_title">接收实验更新</string>
     <string name="receive_experimental_updates_summary">请注意，这些更新通常很不稳定，仅供有经验的用户试用。</string>
-    <string name="search_for_update_title">搜索更新</string>
+    <string name="search_for_update_title">检查更新</string>
     <string name="last_update_search_x">上次检查：%s</string>
     <string name="checking_please_wait">正在检查，请稍候…</string>
     <string name="could_not_check_for_updates">无法检查更新。</string>
@@ -839,7 +839,7 @@
     <string name="channel_surround_13_1">13.1 声道环绕声</string>
     <string name="lyrics_center_horizontally_title">歌词横向居中</string>
     <string name="lyrics_center_horizontally_summary">将每行歌词水平居中。</string>
-    <string name="bit_perfect_info">Bit-Perfect 信息：%1$s|%2$s</string>
+    <string name="bit_perfect_info">Bit-Perfect 信息：%1$s | %2$s</string>
     <string name="bit_perfect_title">Bit-perfect 音频</string>
     <string name="app_widget_card">卡片</string>
     <string name="app_widget_card_desc">极简风格</string>
@@ -914,7 +914,7 @@
     <string name="app_version_x">版本 %s</string>
     <string name="app_description">现代设计 · 纯净听感 · 由你定义</string>
     <string name="more_contributors_title">更多贡献者</string>
-    <string name="more_contributors_summary">你可以在 GitHub 上查看完整的贡献者名单。</string>
+    <string name="more_contributors_summary">在 GitHub 上查看完整的贡献者名单。</string>
     <string name="contributor_dawid_description">多项关键应用功能的核心贡献者与设计者。</string>
     <string name="contributor_ray_description">贡献了多项亮眼的关键功能。</string>
     <string name="contributor_ttop_description">项目最初的贡献者兼测试员。</string>
@@ -931,7 +931,7 @@
     <string name="musicbrainz_search_message">使用标题和艺人在 MusicBrainz 上搜索歌曲元数据。</string>
     <string name="musicbrainz_no_results">在 MusicBrainz 上找不到结果。</string>
     <string name="musicbrainz_select_recording">选择结果</string>
-    <string name="sort_order_name">标题</string>
+    <string name="sort_order_name">名称</string>
     <string name="website">网站</string>
     <string name="legal">法律信息</string>
     <string name="terms_of_service">服务条款</string>
@@ -996,7 +996,7 @@
     <string name="backup_content_playlists">播放列表</string>
     <string name="backup_content_artist_images">艺人图像</string>
     <string name="backup_app_version">创建于</string>
-    <string name="backup_warning_legacy_format">此备份为旧版格式。目前仍可用其还原设置，但未来可能会不再支持。</string>
+    <string name="backup_warning_legacy_format">此备份为旧版格式。目前仍可还原，但日后可能不再支持。</string>
     <string name="backup_warning_ver_newer">此备份格式过新，当前版本的 Booming Music 无法处理。</string>
     <string name="backup_warning_app_ver_newer">此备份是在较新版本的 Booming Music 中创建的。在此版本中还原可能会导致错误或数据还原不完整。</string>
     <string name="restoring_data">正在还原数据…</string>
