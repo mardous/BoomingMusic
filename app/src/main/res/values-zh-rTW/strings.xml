@@ -15,7 +15,7 @@
     <string name="action_cancel">取消</string>
     <string name="action_seek_backward">快退</string>
     <string name="action_seek_forward">快轉</string>
-    <string name="action_cycle_repeat">重複模式切換</string>
+    <string name="action_cycle_repeat">切換重複模式</string>
     <string name="action_toggle_shuffle">切換隨機播放模式</string>
     <string name="reset_action">重設</string>
     <string name="action_more">更多</string>
@@ -82,12 +82,12 @@
     <string name="delete_playlists_title">刪除多個播放清單</string>
     <string name="delete_playlist_x"><![CDATA[刪除播放清單<b>「%s」</b>？]]></string>
     <string name="delete_x_playlists"><![CDATA[刪除 <b>%d</b> 個播放清單？]]></string>
-    <string name="created_playlist_x">已建立播放清單 \'%1$s\'。</string>
+    <string name="created_playlist_x">已建立播放清單「 %1$s」。</string>
     <string name="could_not_create_playlist">無法建立播放清單。</string>
     <string name="playlist_exists">播放清單「%s」已經存在。</string>
     <string name="playlist_created">已成功建立播放清單「%s」。</string>
     <string name="remove_song_from_playlist_title">從播放清單中移除歌曲</string>
-    <string name="remove_songs_from_playlist_title">從播放清單中刪除多首歌曲</string>
+    <string name="remove_songs_from_playlist_title">從播放清單中移除多首歌曲</string>
     <string name="remove_song_x_from_playlist"><![CDATA[將<b>「%1$s」</b>從播放清單中移除？]]></string>
     <string name="remove_x_songs_from_playlist"><![CDATA[從播放清單中移除 <b>%1$d</b> 首歌曲？]]></string>
     <string name="playlist_empty_text">空播放清單</string>
@@ -97,7 +97,7 @@
     <string name="changes_saved_successfully">已成功儲存變更。</string>
     <string name="could_not_save_some_changes">無法儲存某些修改。</string>
     <string name="web_search">網頁搜尋</string>
-    <string name="where_do_you_want_to_search">你想在哪裡搜尋？</string>
+    <string name="where_do_you_want_to_search">想在哪裡搜尋？</string>
     <string name="configure_action">管理</string>
     <string name="blacklist_directory">黑名單資料夾</string>
     <string name="add_directory">新增資料夾</string>
@@ -112,7 +112,7 @@
     <string name="delete_songs_title">刪除多首歌曲</string>
     <string name="delete_x_songs">刪除 %d 首歌曲？</string>
     <string name="delete_the_song_x">刪除歌曲「%s」？</string>
-    <string name="deleting_songs">正在刪除歌曲，稍等…</string>
+    <string name="deleting_songs">正在刪除歌曲，請稍候…</string>
     <string name="song_x_of_x">%1$d / %2$d • %3$s</string>
     <string name="no_equalizer">找不到等化器。</string>
     <string name="audio_focus_denied">音訊焦點被拒絕。</string>
@@ -125,7 +125,7 @@
     <string name="permission_bluetooth_title">附近裝置（選用）</string>
     <string name="permission_bluetooth_description">此應用程式需要附近裝置權限才能檢查藍牙裝置</string>
     <string name="permission_read_images_title">讀取圖片（選用）</string>
-    <string name="permission_read_images_summary">為了自動尋找並顯示歌曲的專輯封面，Booming Music 需要取得存取音樂資料夾的權限。你可以依需要決定是否授予此權限。</string>
+    <string name="permission_read_images_summary">為了自動尋找並顯示歌曲的專輯封面，Booming Music 需要取得存取音樂資料夾的權限。可以依需要決定是否授予此權限。</string>
     <string name="permission_read_images_denied">必須授予讀取裝置中圖片的權限。</string>
     <string name="permissions_denied">權限被拒絕</string>
     <string name="permissions_needed">需要權限</string>
@@ -199,7 +199,7 @@
     <string name="horizontal_albums">橫向顯示專輯</string>
     <string name="ignore_singles">排除單曲</string>
     <string name="compact_song_view">精簡歌曲檢視</string>
-    <string name="show_total_duration">顯示總長度</string>
+    <string name="show_total_duration">顯示總時長</string>
     <string name="action_view_type">檢視類型</string>
     <string name="view_type_normal">普通</string>
     <string name="view_type_card">卡片</string>
@@ -212,7 +212,7 @@
     <string name="sort_order_artist">藝人</string>
     <string name="sort_order_album">專輯</string>
     <string name="sort_order_year">年份</string>
-    <string name="sort_order_duration">長度</string>
+    <string name="sort_order_duration">時長</string>
     <string name="sort_order_date_added">新增日期</string>
     <string name="sort_order_date_modified">修改日期</string>
     <string name="sort_order_file_name">檔案名稱</string>
@@ -227,7 +227,7 @@
     <string name="start_directory_set">起始目錄已設定為 %s</string>
     <string name="action_go_to_start_directory">前往起始目錄</string>
     <string name="action_hierarchy_view">階層檢視</string>
-    <string name="new_start_directory">新增起始目錄：%s</string>
+    <string name="new_start_directory">新的起始目錄：%s</string>
     <string name="action_scan">掃描</string>
     <string name="scan_media">掃描媒體</string>
     <string name="scan_media_message">Android 系統通常會自動偵測並索引裝置上的媒體檔案，所以一般情況下不需要手動掃描媒體。</string>
@@ -330,7 +330,7 @@
     <string name="shuffle_action">隨機播放</string>
     <string name="top_artists">常聽藝人</string>
     <string name="top_albums">常聽專輯</string>
-    <string name="recent_artists">最近添加的艺人</string>
+    <string name="recent_artists">最近新增的藝人</string>
     <string name="recent_albums">最近新增的專輯</string>
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">完全隨機</string>
@@ -479,7 +479,7 @@
     <string name="write_an_email">撰寫電子郵件</string>
     <string name="support_development">支持開發</string>
     <string name="help_with_translations">協助翻譯</string>
-    <string name="help_with_translations_summary">你可以協助將 Booming Music 翻譯成其他語言，為此專案做出貢獻。</string>
+    <string name="help_with_translations_summary">協助將 Booming Music 翻譯成其他語言，為專案做出貢獻。</string>
     <string name="report_bugs">回報問題</string>
     <string name="report_bugs_summary">回報問題或提出新功能建議。</string>
     <string name="share_app">分享此應用程式</string>
@@ -615,7 +615,7 @@
     <string name="display_extra_info_title">顯示額外資訊</string>
     <string name="display_extra_info_summary">顯示歌曲的額外資訊，例如位元率、格式、取樣率等。</string>
     <string name="display_next_song_title">顯示下一首</string>
-    <string name="display_next_song_summary">在一般與全版面封面樣式中顯示下一首歌曲。停用後，播放佇列只能從播放器的三點選單開啟。</string>
+    <string name="display_next_song_summary">在「普通」與「全版面封面」樣式中顯示下一首歌曲。停用後，播放佇列只能從播放器的三點選單開啟。</string>
     <string name="select_extra_info_title">額外資訊</string>
     <string name="select_extra_info_summary">選擇要在播放器面板中顯示的額外資訊。</string>
     <string name="prefer_remaining_time_title">優先顯示剩餘時間</string>
@@ -676,7 +676,7 @@
     <string name="use_folder_album_cover_summary">當音訊檔案不包含內嵌封面時使用。圖片載入可能需要一些時間。</string>
     <string name="online_artist_images_title">下載藝人圖片</string>
     <string name="preferred_image_size_title">圖片大小偏好</string>
-    <string name="online_album_covers_title">下載未取得的專輯封面</string>
+    <string name="online_album_covers_title">下載缺少的專輯封面</string>
     <string name="online_album_covers_summary">下載的圖片不會嵌入到音訊檔案中；只會在應用程式內顯示。</string>
     <string name="delete_downloaded_lyrics_title">刪除下載的歌詞</string>
     <string name="delete_downloaded_lyrics_summary">只刪除由 Booming Music 下載的歌詞。不影響內嵌於 ID3v2 標籤或 LRC 檔案中的歌詞。</string>
@@ -703,9 +703,9 @@
     <string name="min_song_duration_title">歌曲最短長度</string>
     <string name="min_song_duration_summary">只有長度至少達到指定秒數的歌曲才會顯示在音樂庫中。</string>
     <!-- Remote preferences -->
-    <string name="app_language_title">語言</string>
-    <string name="stop_when_closed_from_recents_title">從「最近使用的應用程式」關閉後停止播放</string>
-    <string name="stop_when_closed_from_recents_summary">在「最近」總覽關閉此應用程式後停止播放歌曲。</string>
+    <string name="app_language_title">應用程式語言</string>
+    <string name="stop_when_closed_from_recents_title">自「最近使用」清除時停止</string>
+    <string name="stop_when_closed_from_recents_summary">從「最近使用的應用程式」關閉後停止播放歌曲。</string>
     <string name="stop_when_closed_from_recents_note">注意：某些記憶體或電池管理較嚴格的裝置可能會忽略此設定，並在應用程式從最近使用清單移除時一律停止播放。</string>
     <string name="rotation_lock_title">旋轉鎖定</string>
     <string name="rotation_lock_summary">鎖定裝置顯示方向，避免在某些系統政策下因旋轉裝置而中斷音樂播放。</string>
@@ -717,7 +717,7 @@
     <string name="selected">僅顯示選取項</string>
     <string name="compact">緊湊</string>
     <string name="expanded">可展開</string>
-    <string name="full_cover_style">全版面</string>
+    <string name="full_cover_style">全版面封面</string>
     <string name="gradient_style">漸層</string>
     <string name="peek_style">靈動</string>
     <string name="plain_style">簡潔</string>
@@ -752,7 +752,7 @@
     <string name="image_size_medium">中等（預設，推薦）</string>
     <string name="image_size_small">小（快速，低品質）</string>
     <string name="play_on_startup_mode_never">啟動時不播放</string>
-    <string name="play_on_startup_mode_minimized">是，最小化播放面板</string>
+    <string name="play_on_startup_mode_minimized">播放並最小化播放面板</string>
     <string name="play_on_startup_mode_expanded">是，同時展開播放器面板</string>
     <string name="system_default">系統預設</string>
     <string name="label_never">從未</string>
@@ -777,7 +777,7 @@
     <string name="never">永不</string>
     <string name="receive_experimental_updates_title">接收實驗性更新</string>
     <string name="receive_experimental_updates_summary">請注意，這些更新通常不穩定，僅建議有經驗的使用者使用。</string>
-    <string name="search_for_update_title">搜尋更新</string>
+    <string name="search_for_update_title">檢查更新</string>
     <string name="last_update_search_x">上次檢查：%s</string>
     <string name="checking_please_wait">正在檢查，請稍候…</string>
     <string name="could_not_check_for_updates">無法檢查更新。</string>
@@ -823,7 +823,7 @@
     <string name="channel_surround_9_1">9.1 環繞聲</string>
     <string name="channel_surround_11_1">11.1 環繞聲</string>
     <string name="channel_surround_13_1">13.1 環繞聲</string>
-    <string name="bit_perfect_title">位元完美音訊</string>
+    <string name="bit_perfect_title">Bit-perfect 音訊</string>
     <string name="widget_dynamic_colors_title">動態色彩</string>
     <string name="advanced_settings">進階設定</string>
     <string name="sleep_timer_x_secs">%d 秒</string>
@@ -873,7 +873,7 @@
     <string name="app_version_x">版本 %s</string>
     <string name="app_description">現代設計 · 純粹聲音 · 由你掌握</string>
     <string name="more_contributors_title">更多貢獻者</string>
-    <string name="more_contributors_summary">你可以在 GitHub 上查看完整的貢獻者名單。</string>
+    <string name="more_contributors_summary">在 GitHub 上查看完整的貢獻者名單。</string>
     <string name="telegram_community_summary">加入我們的 Telegram 社群，接收版本更新與最新消息。</string>
     <string name="support_my_work">支持我的開發工作</string>
     <string name="contributor_dawid_description">多項關鍵功能的核心貢獻者與設計者。</string>
@@ -931,7 +931,7 @@
     <string name="musicbrainz_search_message">使用標題和藝人在 MusicBrainz 上搜尋歌曲中繼資料。</string>
     <string name="musicbrainz_no_results">在 MusicBrainz 上找不到結果。</string>
     <string name="musicbrainz_select_recording">選擇結果</string>
-    <string name="sort_order_name">標題</string>
+    <string name="sort_order_name">名稱</string>
     <string name="website">網站</string>
     <string name="legal">法律資訊</string>
     <string name="terms_of_service">服務條款</string>
@@ -996,7 +996,7 @@
     <string name="backup_content_playlists">播放清單</string>
     <string name="backup_content_artist_images">藝人圖片</string>
     <string name="backup_app_version">建立於</string>
-    <string name="backup_warning_legacy_format">此備份為舊版格式。目前仍可用其還原設定，但未來可能不再支援。</string>
+    <string name="backup_warning_legacy_format">此備份為舊版格式。目前仍可還原，但未來可能不再支援。</string>
     <string name="backup_warning_ver_newer">此備份格式過新，目前版本的 Booming Music 無法處理。</string>
     <string name="backup_warning_app_ver_newer">此備份是在較新版本的 Booming Music 中建立的。在此版本中還原可能會導致錯誤或資料還原不完整。</string>
     <string name="restoring_data">正在還原資料…</string>
