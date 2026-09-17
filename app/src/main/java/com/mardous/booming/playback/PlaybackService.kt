@@ -7,8 +7,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.bluetooth.BluetoothA2dp
-import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothProfile
+import android.bluetooth.BluetoothHeadset
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -20,6 +19,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
+import android.util.Log
 import android.view.KeyEvent
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -74,8 +74,6 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.data.repository.Repository
-import com.mardous.booming.extensions.isBluetoothA2dpConnected
-import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.library.LibraryProvider
@@ -1206,30 +1204,40 @@ class PlaybackService :
     private var bluetoothConnectedRegistered = false
     private val bluetoothConnectedIntentFilter = IntentFilter().apply {
         addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)
-        addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
-        addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
+        addAction(BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED)
     }
     private val bluetoothReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
+            Log.d("PlaybackService", "received bluetooth action: intent=$intent")
             when (intent?.action) {
                 BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED -> {
-                    when (intent.getIntExtra(BluetoothProfile.EXTRA_STATE, -1)) {
-                        BluetoothA2dp.STATE_CONNECTED -> if (Preferences.isResumeOnConnect(true)) {
+                    val state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, -1)
+                    val previousState = intent.getIntExtra(BluetoothA2dp.EXTRA_PREVIOUS_STATE, -1)
+                    if (state == BluetoothA2dp.STATE_CONNECTED) {
+                        if (Preferences.isResumeOnConnect(bluetooth = true)) {
                             player.play()
                         }
-                        BluetoothA2dp.STATE_DISCONNECTED -> if (Preferences.isPauseOnDisconnect(true)) {
+                    } else if (state == BluetoothA2dp.STATE_DISCONNECTED &&
+                        previousState == BluetoothA2dp.STATE_CONNECTED) {
+                        if (Preferences.isPauseOnDisconnect(bluetooth = true)) {
                             player.pause()
                         }
                     }
                 }
-                BluetoothDevice.ACTION_ACL_CONNECTED ->
-                    if (context.isBluetoothA2dpConnected() && Preferences.isResumeOnConnect(true)) {
-                        player.play()
+                BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED -> {
+                    val state = intent.getIntExtra(BluetoothHeadset.EXTRA_STATE, -1)
+                    val previousState = intent.getIntExtra(BluetoothHeadset.EXTRA_PREVIOUS_STATE, -1)
+                    if (state == BluetoothHeadset.STATE_CONNECTED) {
+                        if (Preferences.isResumeOnConnect(bluetooth = true)) {
+                            player.play()
+                        }
+                    } else if (state == BluetoothHeadset.STATE_DISCONNECTED &&
+                        previousState == BluetoothHeadset.STATE_CONNECTED) {
+                        if (Preferences.isPauseOnDisconnect(bluetooth = true)) {
+                            player.pause()
+                        }
                     }
-                BluetoothDevice.ACTION_ACL_DISCONNECTED ->
-                    if (context.isBluetoothA2dpDisconnected() && Preferences.isPauseOnDisconnect(true)) {
-                        player.pause()
-                    }
+                }
             }
         }
     }
