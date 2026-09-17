@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Доступ к хранилищу</string>
     <string name="permission_external_storage_description">Приложению требуется разрешение на доступ к хранилищу вашего устройства для воспроизведения музыки</string>
     <string name="permission_external_storage_denied">Вы должны предоставить разрешение на доступ к внешнему хранилищу.</string>
-    <string name="permission_bluetooth_title">Устройства поблизости</string>
+    <string name="permission_bluetooth_title">Устройства поблизости (необязательно)</string>
     <string name="permission_bluetooth_description">Приложению требуется разрешение на доступ к устройствам поблизости для проверки Bluetooth-устройств</string>
     <string name="permission_read_images_title">Чтение изображений (необязательно)</string>
     <string name="permission_read_images_summary">Это разрешение необходимо Booming Music для поиска обложек альбомов в ваших музыкальных папках. Если вы не планируете использовать эту функцию, вы можете не предоставлять его.</string>
@@ -1013,5 +1013,9 @@
     <string name="home_artists_subtitle">Исполнители, которых вы слушаете чаще всего</string>
     <string name="app_widget_grid_desc">Обложка, воспроизведение и кнопки переключения в четырёх ячейках</string>
     <string name="app_widget_library_desc">Сетка обложек из выбранного вами списка</string>
-    <string name="permission_notifications_title">Уведомления (по желанию)</string>
+    <string name="permission_notifications_title">Уведомления (необязательно)</string>
+    <string name="backup_content_play_info">Статистика воспроизведения</string>
+    <string name="home_albums_subtitle_2">Погрузитесь в мир ваших последних коллекций</string>
+    <string name="backup_restore_title">Резервное копирование и восстановление</string>
+    <string name="backup_restore_summary">Управление резервным копированием и восстановлением данных приложения.</string>
 </resources>
