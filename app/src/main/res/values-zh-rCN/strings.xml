@@ -48,7 +48,7 @@
     <string name="preparing_playback_title">正在准备</string>
     <string name="restoring_playback_state">正在恢复播放状态和队列…</string>
     <string name="playback_stopped_title">已停止播放</string>
-    <string name="playing_notification_description">播放通知提供播放/暂停等动作。</string>
+    <string name="playing_notification_description">播放通知提供播放/暂停等操作。</string>
     <string name="playing_notification_name">播放通知</string>
     <string name="action_scan_directory">扫描目录</string>
     <string name="no_device_playlists">无播放列表</string>
@@ -106,7 +106,7 @@
     <string name="do_you_want_to_clear_the_blacklist">你想要清除黑名单吗？</string>
     <string name="do_you_want_to_clear_the_whitelist">你想要清除白名单吗？</string>
     <string name="action_delete_from_device">从设备中删除</string>
-    <string name="deleted_one_song">删除一首歌曲</string>
+    <string name="deleted_one_song">已删除一首歌曲</string>
     <string name="deleted_x_songs">已删除 %1$d 首歌曲</string>
     <string name="delete_song_title">删除歌曲</string>
     <string name="delete_songs_title">删除多首歌曲</string>
@@ -124,7 +124,7 @@
     <string name="permission_external_storage_denied">必须授予访问外部存储的权限。</string>
     <string name="permission_bluetooth_title">附近设备（可选）</string>
     <string name="permission_bluetooth_description">此应用需要附近的设备权限来检查蓝牙设备</string>
-    <string name="permission_read_images_title">查看图像（可选）</string>
+    <string name="permission_read_images_title">访问图像（可选）</string>
     <string name="permission_read_images_summary">为了自动查找并显示歌曲的专辑封面，Booming Music 需要获取访问音乐文件夹的权限。你可以根据需要决定是否授予此权限。</string>
     <string name="permission_read_images_denied">需要授予访问所有文件的权限以允许应用读取封面图像。</string>
     <string name="permissions_denied">权限被拒绝</string>
@@ -268,7 +268,7 @@
     <string name="label_bit_rate">码率</string>
     <string name="label_sampling_rate">采样率</string>
     <string name="replay_gain">回放增益</string>
-    <string name="comment">评论</string>
+    <string name="comment">备注</string>
     <string name="last_played">上次播放</string>
     <string name="played">已播放</string>
     <string name="skipped">跳过</string>
@@ -529,14 +529,14 @@
     <string name="pure_black_theme_title">纯黑色</string>
     <string name="material_you_title">Material You 动态色彩</string>
     <string name="use_custom_font_title">使用自定义字体</string>
-    <string name="appbar_mode_title">标题样式</string>
+    <string name="appbar_mode_title">顶栏样式</string>
     <string name="library_categories_title">曲库分类</string>
     <string name="library_categories_summary">配置曲库分类的可见性和顺序。</string>
     <string name="remember_last_page_title">记住上次打开的页面</string>
     <string name="remember_last_page_summary">启动时转至最后打开的页面。</string>
     <string name="start_page_title">开始页面</string>
-    <string name="tab_mode_title">标签标题模式</string>
-    <string name="hold_tab_to_search_title">长按标签以搜索</string>
+    <string name="tab_mode_title">底部导航栏选项卡标题</string>
+    <string name="hold_tab_to_search_title">长按选项卡以搜索</string>
     <string name="hold_tab_to_search_summary">长按任意导航栏选项卡打开搜索界面。</string>
     <string name="larger_header_image_title">更大的封面图像</string>
     <string name="larger_header_image_summary">在专辑、艺人和播放列表的详细信息中显示更大的封面图像。</string>
@@ -691,7 +691,7 @@
     <string name="enable_history_title">启用播放记录</string>
     <string name="enable_history_summary">保存你的播放记录、常听歌曲，并更新至播放记录同步服务。关闭此功能将停止所有的记录同步与追踪。</string>
     <string name="history_interval_title">记录时间范围</string>
-    <string name="last_added_interval_title">「最近添加 」涵盖的时间范围</string>
+    <string name="last_added_interval_title">“最近添加”涵盖的时间范围</string>
     <string name="whitelist_title">白名单</string>
     <string name="whitelist_summary">只有白名单文件夹的内容会显示在曲库中。</string>
     <string name="blacklist_title">黑名单</string>
@@ -712,11 +712,11 @@
     <!-- Preference values -->
     <string name="light_theme_name">浅色</string>
     <string name="dark_theme_name">深色</string>
-    <string name="labeled">已标记</string>
-    <string name="unlabeled">取消标签</string>
-    <string name="selected">已选择</string>
+    <string name="labeled">显示所有</string>
+    <string name="unlabeled">隐藏</string>
+    <string name="selected">仅显示选中项</string>
     <string name="compact">紧凑</string>
-    <string name="expanded">扩展</string>
+    <string name="expanded">可展开</string>
     <string name="full_cover_style">全屏封面</string>
     <string name="gradient_style">渐变</string>
     <string name="peek_style">灵动</string>
@@ -847,7 +847,7 @@
     <string name="bit_perfect_is_active">Bit-perfect 已启用</string>
     <string name="bit_perfect_description">绕过系统重采样，将音频直接输出到 USB DAC。</string>
     <string name="widget_dynamic_colors_title">动态色彩</string>
-    <string name="widget_dynamic_colors_summary">将小部件颜色与当前曲目封面匹配。</string>
+    <string name="widget_dynamic_colors_summary">将小组件颜色与当前曲目封面匹配。</string>
     <string name="search_playlists">搜索播放列表</string>
     <string name="select_playlists_title">选择播放列表</string>
     <string name="new_playlist_action">新建</string>
