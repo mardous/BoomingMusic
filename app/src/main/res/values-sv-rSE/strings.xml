@@ -1039,6 +1039,6 @@
     <string name="backup_warning_database_ver">Vissa data från denna säkerhetskopia, till exempel spellistor och sångtexter, är inte kompatibla och kan eventuellt inte återställas.</string>
     <string name="permission_notifications_title">Meddelanden (valfritt)</string>
     <string name="permission_notifications_summary">Denna behörighet gör det möjligt för Booming Music att visa uppspelningskontroller i meddelandefältet och på låsskärmen.</string>
-    <string name="enforce_known_callers_title">Tillämpa kända uppringare</string>
-    <string name="enforce_known_callers_summary">När denna funktion är aktiverad får endast betrodda appar (Android Auto, Assistant m.fl.) bläddra i mediebiblioteket. Stäng av funktionen för att tillåta alla appar att bläddra i det – till exempel Android Auto-klienter med öppen källkod.</string>
+
+
 </resources>

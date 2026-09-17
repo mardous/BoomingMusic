@@ -1030,6 +1030,6 @@
     <string name="backup_warning_database_ver">此備份中的部分資料（例如播放清單和歌詞）不相容，可能無法還原。</string>
     <string name="permission_notifications_title">通知（選用）</string>
     <string name="permission_notifications_summary">此權限允許 Booming Music 在通知欄和鎖定螢幕介面上顯示播放控制選項。</string>
-    <string name="enforce_known_callers_summary">啟用後，僅受信任的應用程式（如 Android Auto、Google 助理等）可以瀏覽媒體庫。停用此項可允許任何應用程式存取——例如開源的 Android Auto 用戶端，或部分受限的智慧手錶與藍牙控制元件。</string>
-    <string name="enforce_known_callers_title">僅限受信任的應用程式存取</string>
+
+
 </resources>

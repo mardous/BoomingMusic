@@ -1039,6 +1039,6 @@
     <string name="restoring_data">Deine Daten werden wiederhergestellt…</string>
     <string name="permission_notifications_title">Benachrichtigungen (optional)</string>
     <string name="permission_notifications_summary">Mit dieser Berechtigung kann Booming Music die Wiedergabesteuerung in deinem Benachrichtigungsfeld und auf dem Sperrbildschirm anzeigen.</string>
-    <string name="enforce_known_callers_title">Bekannte Anrufer zulassen</string>
-    <string name="enforce_known_callers_summary">Wenn diese Option aktiviert ist, können nur vertrauenswürdige Apps (Android Auto, Assistant usw.) auf die Medienbibliothek zugreifen. Deaktiviere diese Option, damit alle Apps darauf zugreifen können – beispielsweise Open-Source-Android-Auto-Clients.</string>
+
+
 </resources>

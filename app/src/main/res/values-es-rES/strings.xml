@@ -999,7 +999,7 @@
     <string name="home_for_you_title">Para usted</string>
     <string name="home_artists_title">Artistas recomendados</string>
     <string name="home_albums_subtitle_3">Lo que está en tendencia en su fonoteca</string>
-    <string name="enforce_known_callers_summary">Cuando se activa, solo las aplicaciones de confianza (Android Auto, el Asistente, etc.) pueden acceder a la colección multimedia. Desactívelo para que cualquier aplicación la pueda navegar, como los clientes de código abierto de Android Auto.</string>
+
     <string name="create_new_backup">Crear respaldo</string>
     <string name="open_backup">Abrir respaldo</string>
     <string name="share_backup">Compartir respaldo</string>

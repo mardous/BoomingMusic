@@ -1057,6 +1057,6 @@
     <string name="backup_warning_database_ver">Деякі дані з цієї резервної копії, як-от списки відтворення та тексти пісень, несумісні й можуть бути не відновлені.</string>
     <string name="permission_notifications_title">Сповіщення (необов’язково)</string>
     <string name="permission_notifications_summary">Цей дозвіл дозволяє Booming Music показувати елементи керування відтворенням у шторці сповіщень та на екрані блокування.</string>
-    <string name="enforce_known_callers_title">Доступ лише для довірених застосунків</string>
-    <string name="enforce_known_callers_summary">Якщо цей параметр увімкнено, лише довірені застосунки (Android Auto, Асистент тощо) можуть переглядати медіатеку. Вимкніть його, щоби дозволити перегляд будь-яким застосунком — наприклад, клієнтам Android Auto з відкритим вихідним кодом.</string>
+
+
 </resources>

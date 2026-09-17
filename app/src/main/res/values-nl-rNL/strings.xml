@@ -1039,6 +1039,6 @@
     <string name="backup_warning_database_ver">Sommige data uit deze backup, zoals afspeellijsten en songteksten, is not compatibel en wordt mogelijk niet hersteld.</string>
     <string name="permission_notifications_title">Meldingen (optioneel)</string>
     <string name="permission_notifications_summary">Deze toestemming laat Booming Music terugspeelbesturing tonen in uw meldingspaneel en op het vergrendelscherm.</string>
-    <string name="enforce_known_callers_title">Verplicht bekende oproepers</string>
-    <string name="enforce_known_callers_summary">Wanneer dit is ingeschakeld kunnen alleen vertrouwde apps (Android Auto, Assistant, etc.) bladeren door de mediabibliothee. Schakel het ui om elke app toestemming te geven om te bladeren — zoals open-source Android Auto clients.</string>
+
+
 </resources>

@@ -1048,6 +1048,6 @@
     <string name="backup_warning_database_ver">Certaines données issues de cette sauvegarde, telles que les playlists et les paroles, ne sont pas compatibles et risquent de ne pas pouvoir être restaurées.</string>
     <string name="permission_notifications_title">Notifications (facultatif)</string>
     <string name="permission_notifications_summary">Cette autorisation permet à Booming Music d\'afficher les commandes de lecture dans votre volet de notifications et sur l\'écran de verrouillage.</string>
-    <string name="enforce_known_callers_title">Appliquer la règle aux appelants connus</string>
-    <string name="enforce_known_callers_summary">Lorsque cette option est activée, seules les applications de confiance (Android Auto, Assistant, etc.) peuvent accéder à la bibliothèque multimédia. Désactivez-la pour autoriser n\'importe quelle application à y accéder, comme les clients Android Auto open source.</string>
+
+
 </resources>

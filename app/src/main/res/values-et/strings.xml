@@ -1019,6 +1019,6 @@
     <string name="backup_warning_database_ver">Mõned selle varukoopia andmed, näiteks esitusloendid ja laulusõnad, ei ole ühilduvad ning neid ei pruugi olla võimalik taastada.</string>
     <string name="permission_notifications_title">Teavitused (kui soovid kasutada)</string>
     <string name="permission_notifications_summary">Selle õiguse lubamisel saab Booming Music kuvada taasesituse juhtnuppe teavituste alas ja lukustusvaates.</string>
-    <string name="enforce_known_callers_title">Luba päringuid teha vaid tuntud komponentidel</string>
-    <string name="enforce_known_callers_summary">Eelistuse sisselülitamisel võivad vaid usaldusväärsed rakendused (Android Auto, Assistant, jne.) sirvida muusikakogu. Väljalülitamisel saab seda teha ükspuha, mis rakendus, sealhulgas on see vajalik avatud lähtekoodiga Android Auto klientide kasutamisel.</string>
+
+
 </resources>
