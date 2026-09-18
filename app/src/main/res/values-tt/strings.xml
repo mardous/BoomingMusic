@@ -439,10 +439,10 @@
     <string name="eq_ratio">Чагыштырма</string>
     <string name="eq_expander_ratio">Экспандер чагыштырма</string>
     <string name="eq_knee_width">Тизлекнең киңлек кыры</string>
-    <string name="eq_noise_gate">Тавыш чыгу</string>
+    <string name="eq_noise_gate">Шау чыгу</string>
     <string name="eq_pre_gain">Керү көчәйтү</string>
     <string name="eq_post_gain">Чыгу көчәйтү</string>
-    <string name="sound_settings">Тавышның көйләү</string>
+    <string name="sound_settings">Тавышың көйләү</string>
     <string name="advanced_settings">Киңейтелгән көйләү</string>
     <string name="listening_on">Танышырга</string>
     <string name="casting_to">Транслировать итәргә</string>
@@ -464,7 +464,7 @@
     <string name="bit_perfect_description">USB DAC дагы тавышны дискретизация ешлыгын үзгәртмичә турыдан туры чыгару.</string>
     <string name="enable_audio_offload_title">Аудионы аппаратта бушату</string>
     <string name="enable_audio_offload_description">Энергияне саклау һәм процессорга йөкләнешне киметү өчен ашыгыч рәвештә тизләтелгән яңарту. Кушымтаны яңадан эшләтеп җибәрүне таләп итә.</string>
-    <string name="enable_audio_float_output_title">Тавышның югары нәтиҗәләре</string>
+    <string name="enable_audio_float_output_title">Тавышың югары нәтиҗәләре</string>
     <string name="enable_audio_float_output_description">Түбәндәге максималь төгәллек өчен йөзә торган өтер белән 32-битлы аваз кушыла. Кушымтаны яңадан эшләтеп җибәрүне таләп итә.</string>
     <string name="skip_silence_title">Тынлыкны бетерү</string>
     <string name="write_lyrics_here">Текстларны монда языгыз</string>
