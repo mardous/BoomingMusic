@@ -1,5 +1,5 @@
 [versions]
-agp = "9.4.0"
+agp = "9.4.1"
 ksp = "2.3.6"
 kotlin = "2.3.21"
 
@@ -31,8 +31,8 @@ composeM3 = "1.5.0-alpha28"
 glance = "1.2.0"
 
 koin = "4.2.2"
-coil = "3.6.2"
-ktor = "3.5.2"
+coil = "3.6.3"
+ktor = "3.6.0"
 
 markwon = "4.6.2"
 m3color = "2026.1"
