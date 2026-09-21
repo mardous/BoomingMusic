@@ -1027,4 +1027,7 @@
     <string name="allow_lyrics_download_from">Izinkan unduhan dari:</string>
     <string name="backup_warning_database_ver">Sebagian data dari cadangan ini, seperti daftar putar dan lirik, tidak kompatibel dan mungkin tidak dapat dipulihkan.</string>
     <string name="restoring_data">Memulihkan data Anda…</string>
+    <string name="app_widget_circle">Lingkaran</string>
+    <string name="permission_notifications_title">Pemberitahuan (opsional)</string>
+    <string name="permission_notifications_summary">Izin ini memungkinkan Booming Music menampilkan tombol kontrol pemutaran di panel notifikasi dan di layar kunci.</string>
 </resources>
