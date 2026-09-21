@@ -1,0 +1,9 @@
+* Added genre preview images to search results
+* Re-added notification permission to fix issues on certain devices
+* Fixed Bluetooth headphone detection
+* Fixed lyrics search and parsing issues
+* Fixed previous-track behavior when "Rewind with Previous" is disabled
+* Relaxed media connection restrictions for better app and device compatibility
+* Search results now respect library exclusion filters
+* Fixed excluded songs appearing in genre views
+* Fixed opening short external audio files
