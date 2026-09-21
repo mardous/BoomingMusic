@@ -17,16 +17,22 @@
 
 package com.mardous.booming.ui.adapters
 
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import coil3.load
 import com.mardous.booming.R
+import com.mardous.booming.coil.DEFAULT_GENRE_IMAGE
 import com.mardous.booming.coil.albumImage
 import com.mardous.booming.coil.artistImage
+import com.mardous.booming.coil.placeholderDrawableRes
 import com.mardous.booming.coil.playlistImage
 import com.mardous.booming.coil.songImage
 import com.mardous.booming.data.local.room.PlaylistWithSongs
@@ -34,7 +40,12 @@ import com.mardous.booming.data.model.Album
 import com.mardous.booming.data.model.Artist
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.extensions.media.*
+import com.mardous.booming.extensions.media.albumInfo
+import com.mardous.booming.extensions.media.artistInfo
+import com.mardous.booming.extensions.media.asNumberOfSongs
+import com.mardous.booming.extensions.media.displayArtistName
+import com.mardous.booming.extensions.media.displayName
+import com.mardous.booming.extensions.media.songInfo
 import com.mardous.booming.ui.ISearchCallback
 import com.mardous.booming.ui.component.base.AbsMultiSelectAdapter
 import com.mardous.booming.ui.component.menu.OnClickMenu
@@ -124,6 +135,9 @@ class SearchAdapter(
                 val genre = dataSet[position] as Genre
                 holder.title?.text = genre.name
                 holder.text?.text = genre.songCount.asNumberOfSongs(holder.itemView.context)
+                holder.image?.load(genre) {
+                    placeholderDrawableRes(holder.image.context, DEFAULT_GENRE_IMAGE)
+                }
             }
 
             else -> holder.title?.text = dataSet[position].toString()
@@ -219,10 +233,6 @@ class SearchAdapter(
                 } else {
                     View.GONE
                 }
-            }
-
-            if (itemViewType == GENRE) {
-                image?.isVisible = false
             }
         }
     }
