@@ -17,6 +17,7 @@
 package com.mardous.booming.data.model
 
 import android.net.Uri
+import com.mardous.booming.core.sort.SongSortMode
 import com.mardous.booming.data.SongProvider
 import com.mardous.booming.extensions.media.asAlbumCoverUri
 import java.util.Objects
@@ -42,6 +43,9 @@ data class Album(
     val duration: Long by lazy { songs.sumOf { it.duration } }
 
     val dateAdded: Long by lazy { songs.minOf { it.dateAdded } }
+
+    val sortedSongs: List<Song>
+        get() = with(SongSortMode.AlbumSongs) { songs.sorted() }
 
     val isSingle: Boolean
         get() = songCount == 1

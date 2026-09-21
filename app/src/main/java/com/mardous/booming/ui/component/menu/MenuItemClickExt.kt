@@ -22,6 +22,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mardous.booming.R
+import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.data.local.EditTarget
 import com.mardous.booming.data.local.room.PlaylistWithSongs
 import com.mardous.booming.data.mapper.toSongs
@@ -37,7 +38,6 @@ import com.mardous.booming.extensions.navigation.genreDetailArgs
 import com.mardous.booming.extensions.navigation.songDetailArgs
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.toChooser
-import com.mardous.booming.core.model.shuffle.OpenShuffleMode
 import com.mardous.booming.ui.component.base.AbsTagEditorActivity
 import com.mardous.booming.ui.dialogs.playlists.AddToPlaylistDialog
 import com.mardous.booming.ui.dialogs.playlists.DeletePlaylistDialog
@@ -214,13 +214,13 @@ fun Album.onAlbumMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
             true
         }
 
-        else -> songs.onSongsMenu(fragment, menuItem)
+        else -> sortedSongs.onSongsMenu(fragment, menuItem)
     }
 }
 
 fun List<Album>.onAlbumsMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
     fragment.lifecycleScope.launch(Dispatchers.IO) {
-        val songs = flatMap { it.songs }
+        val songs = flatMap { it.sortedSongs }
         withContext(Dispatchers.Main) {
             songs.onSongsMenu(fragment, menuItem)
         }
@@ -237,13 +237,13 @@ fun Artist.onArtistMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
             true
         }
 
-        else -> songs.onSongsMenu(fragment, menuItem)
+        else -> sortedSongs.onSongsMenu(fragment, menuItem)
     }
 }
 
 fun List<Artist>.onArtistsMenu(fragment: Fragment, menuItem: MenuItem): Boolean {
     fragment.lifecycleScope.launch(Dispatchers.IO) {
-        val songs = flatMap { it.songs }
+        val songs = flatMap { it.sortedSongs }
         withContext(Dispatchers.Main) {
             songs.onSongsMenu(fragment, menuItem)
         }
