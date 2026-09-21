@@ -1017,4 +1017,8 @@
     <string name="sync_autoeq_database">Sünkrooni AutoEq andmebaas</string>
     <string name="search_autoeq_placeholder">Otsi kõrvaklappide mudelit</string>
     <string name="backup_warning_database_ver">Mõned selle varukoopia andmed, näiteks esitusloendid ja laulusõnad, ei ole ühilduvad ning neid ei pruugi olla võimalik taastada.</string>
+    <string name="permission_notifications_title">Teavitused (kui soovid kasutada)</string>
+    <string name="permission_notifications_summary">Selle õiguse lubamisel saab Booming Music kuvada taasesituse juhtnuppe teavituste alas ja lukustusvaates.</string>
+
+
 </resources>

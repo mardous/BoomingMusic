@@ -5,13 +5,15 @@ import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.model.LRCLibResponse
-import com.mardous.booming.util.Constants.USER_AGENT
+import com.mardous.booming.util.Constants.SIMPLE_USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.timeout
 import io.ktor.client.request.get
 import io.ktor.http.encodeURLParameter
 import io.ktor.http.userAgent
+import org.apache.commons.text.similarity.JaroWinklerSimilarity
+import kotlin.math.abs
 
 class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
@@ -19,7 +21,7 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
     override suspend fun downloadLyrics(song: Song, title: String, artist: String): RawLyrics.Remote? {
         val lyrics = client.get(LRCLIB_API_URL) {
-            userAgent(USER_AGENT)
+            userAgent(SIMPLE_USER_AGENT)
             timeout {
                 connectTimeoutMillis = 5000
                 socketTimeoutMillis = 10000
@@ -32,16 +34,25 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
             return null
         } else {
             val songDurationInSeconds = (song.duration / 1000).toDouble()
-            var matchingLyrics = lyrics.firstOrNull {
-                val resultDuration = it.durationInSeconds ?: return@firstOrNull false
-                val maxValue = maxOf(songDurationInSeconds, resultDuration)
-                val minValue = minOf(songDurationInSeconds, resultDuration)
-                ((maxValue - minValue) < 2)
+            var matchingLyrics = lyrics.maxByOrNull {
+                val titleScore = JW_SIMILARITY.apply(title, it.title)
+                val artistScore = JW_SIMILARITY.apply(artist, it.artist)
+
+                val durationScore = it.durationInSeconds
+                    ?.let { resultDurationInSeconds ->
+                        val durationDiff = abs(resultDurationInSeconds - songDurationInSeconds)
+                        when {
+                            durationDiff <= 2000 -> 1.0 // Excellent match
+                            durationDiff <= 5000 -> 0.6 // Good match
+                            durationDiff <= 10000 -> 0.2 // Acceptable match
+                            else -> -1.0 // Likely wrong version
+                        }
+                    } ?: 0.0
+
+                (artistScore + titleScore + durationScore)
             }
             if (matchingLyrics == null) {
-                matchingLyrics = lyrics.firstOrNull {
-                    !it.plainLyrics.isNullOrEmpty() || !it.syncedLyrics.isNullOrEmpty()
-                } ?: return null
+                matchingLyrics = lyrics.first { !it.plainLyrics.isNullOrEmpty() }
             }
             return RawLyrics.Remote(
                 plain = RawLyrics.Remote.Content(provider.displayName, matchingLyrics.plainLyrics),
@@ -53,5 +64,6 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
     companion object {
         private const val LRCLIB_API_URL = "https://lrclib.net/api/search"
+        private val JW_SIMILARITY = JaroWinklerSimilarity()
     }
 }

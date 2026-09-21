@@ -33,7 +33,7 @@
     <string name="search_in_folder_x">Suche im Ordner: %s</string>
     <string name="search_last_added">Neueste Musik durchsuchen</string>
     <string name="shuffle_mode_album">Album-Zufallswiedergabe</string>
-    <string name="shuffle_mode_artist">Künstler-Zufallswiedergabe</string>
+    <string name="shuffle_mode_artist">Interpret-Zufallswiedergabe</string>
     <string name="action_share">Teilen</string>
     <string name="action_save">Speichern</string>
     <string name="back_action">Zurück</string>
@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Speicherzugriff</string>
     <string name="permission_external_storage_description">Die App benötigt die Berechtigung auf den Speicher Deines Gerätes zuzugreifen, um Musik abzuspielen</string>
     <string name="permission_external_storage_denied">Du musst die Berechtigung zum Zugriff auf den externen Speicher erteilen.</string>
-    <string name="permission_bluetooth_title">Geräte in der Nähe</string>
+    <string name="permission_bluetooth_title">Geräte in der Nähe (optional)</string>
     <string name="permission_bluetooth_description">Die App benötigt Zugriff auf Geräte in der Nähe, um Bluetooth-Geräte zu finden</string>
     <string name="permission_read_images_title">Bilder lesen (optional)</string>
     <string name="permission_read_images_summary">Diese Berechtigung ist erforderlich, damit Booming Music Albumcover-Dateien in deinen Musikordnern finden kann. Wenn du diese Funktion nicht nutzen möchten, kannst du die Berechtigung verweigern.</string>
@@ -338,7 +338,6 @@
     <string name="top_albums">Top-Alben</string>
     <string name="recent_artists">Kürzlich gehörte Interpreten</string>
     <string name="recent_albums">Kürzlich gehörte Alben</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Rein zufällig</string>
     <string name="shuffle_mode_most_played">Meistgespielte</string>
@@ -384,8 +383,8 @@
     <string name="imported_x_profiles">%d Profile wurden importiert.</string>
     <string name="no_profile_imported">Keine Profile wurden importiert.</string>
     <string name="import_autoeq_profile">AutoEq-Profil importieren</string>
-    <string name="select_a_file_containing_autoeq_params">Wähle eine Datei aus, die AutoEq- (GraphicEq-)Parameter enthält.</string>
-    <string name="no_autoeq_profiles">Es wurden keine AutoEq-Profile importiert.</string>
+    <string name="select_a_file_containing_autoeq_params">Wähle eine Datei aus, die AutoEq- (GraphicEq-)Parameter enthält</string>
+    <string name="no_autoeq_profiles">Es wurden keine AutoEq-Profile importiert</string>
     <string name="reset_equalizer">Equalizer zurücksetzen</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Bist du dir sicher, den Equalizer zurückzusetzen zu wollen?\n\nDies wird alle Profile löschen.</string>
     <string name="not_supported">Nicht unterstützt</string>
@@ -546,7 +545,7 @@
     <string name="hold_tab_to_search_title">Schaltfläche zum Suchen halten</string>
     <string name="hold_tab_to_search_summary">Eine beliebige Schaltfläche der Navigationsleiste lange drücken, um den Suchbildschirm aufzurufen.</string>
     <string name="larger_header_image_title">Größeres Titelbild</string>
-    <string name="larger_header_image_summary">Zeige ein größeres Coverbild in der Detailansicht von Alben, Künstlern und Playlists.</string>
+    <string name="larger_header_image_summary">Zeige ein größeres Coverbild in der Detailansicht von Alben, Interpreten und Wiedergabelisten.</string>
     <string name="lyrics_center_current_line_title">Zentriere aktuelle Zeile</string>
     <string name="lyrics_center_current_line_summary">Die aktuelle Liedzeile zentriert anstatt oben anzeigen.</string>
     <string name="lyrics_custom_font_title">Eigene Schriftart</string>
@@ -743,7 +742,7 @@
     <string name="add_after_playing_track">Nach dem wiedergegebenen Titel einfügen</string>
     <string name="add_tracks_sequentially">Titel nacheinander hinzufügen</string>
     <string name="albums_shuffle">Album-Zufallswiedergabe</string>
-    <string name="artists_shuffle">Künstler-Zufallswiedergabe</string>
+    <string name="artists_shuffle">Interpreten-Zufallswiedergabe</string>
     <string name="shuffle_albums_ordered_songs">Alben-Zufallswiedergabe in Titelreihenfolge</string>
     <string name="ordered_albums_shuffle_songs">Titel-Zufallswiedergabe in Albenreihenfolge</string>
     <string name="shuffle_artists_ordered_songs">Interpreten-Zufallswiedergabe in Titelreihenfolge</string>
@@ -849,8 +848,8 @@
     <string name="lastfm_scrobbling_summary">Sende automatisch gespielte Tracks an deinen Last.fm Hörverlauf.</string>
     <string name="lastfm_now_playing_title">Aktualisiere \"Now playing\" auf Last.fm</string>
     <string name="lastfm_now_playing_summary">Zeigt in Echtzeit den aktuellen Titel auf deinem Last.fm-Profil.</string>
-    <string name="lastfm_biography_title">Künstler und Albumbiographien herunterladen</string>
-    <string name="lastfm_biography_summary">Rufe Künstler und Album Biographien von Last.fm ab.</string>
+    <string name="lastfm_biography_title">Interpret und Albumbiographien herunterladen</string>
+    <string name="lastfm_biography_summary">Rufe Interpret und Album Biographien von Last.fm ab.</string>
     <string name="use_lrclib_provider_title">LRCLib Anbieter nutzen</string>
     <string name="use_lrclib_provider_summary">Eine von der Community betriebene Liedtexte-Datenbank.</string>
     <string name="use_betterlyrics_provider_title">BetterLyrics-Anbieter nutzen</string>
@@ -936,7 +935,7 @@
     <string name="action_auto_fill_from_musicbrainz">Automatisch über MusicBrainz ausfüllen</string>
     <string name="searching">Suchen…</string>
     <string name="musicbrainz_search_title">MusicBrainz Suche</string>
-    <string name="musicbrainz_search_message">Lied-Metadaten auf MusicBrainz mit Titel und Künstler suchen.</string>
+    <string name="musicbrainz_search_message">Lied-Metadaten auf MusicBrainz mit Titel und Interpret suchen.</string>
     <string name="musicbrainz_no_results">Keine Ergebnisse auf MusicBrainz gefunden.</string>
     <string name="musicbrainz_select_recording">Wähle ein Ergebnis</string>
     <string name="sort_order_name">Name</string>
@@ -958,9 +957,9 @@
     <string name="widget_show_progress_summary">Fortschritt des aktuellen Lieds anzeigen.</string>
     <string name="widget_show_controls_title">Steuerelemente anzeigen</string>
     <string name="widget_show_controls_summary">Wiedergabetasten anzeigen.</string>
-    <string name="widget_show_artist_title">Künstler anzeigen</string>
+    <string name="widget_show_artist_title">Interpret anzeigen</string>
     <string name="app_widget_circle_desc">Ein runder Player, um den sich die Steuerelemente drehen</string>
-    <string name="widget_show_artist_summary">Zeigt den Künstler unterhalb des Titels an.</string>
+    <string name="widget_show_artist_summary">Zeigt den Interpreten unterhalb des Titels an.</string>
     <string name="widget_show_navigation_title">Navigation anzeigen</string>
     <string name="widget_show_navigation_summary">Eine Leiste anzeigen, um durch die Liste zu navigieren.</string>
     <string name="widget_leading_action_title">Linke Taste</string>
@@ -980,4 +979,66 @@
     <string name="initial_configuration_note">Du kannst diese Einstellungen später jederzeit ändern.</string>
     <string name="restore_from_backup">Von Backup wiederherstellen</string>
     <string name="network_features_summary">Aktiviert Scrobbeln sowie das Herunterladen von Albumcovern und Songtexten.</string>
+    <string name="action_play_x">%s abspielen</string>
+    <string name="invalid_search_params">Die Suchparameter konnten nicht verarbeitet werden.</string>
+    <string name="permissions_needed">Berechtigungen benötigt</string>
+    <string name="welcome_to_x">Willkommen bei %s</string>
+    <string name="home_empty_title">Nichts zu empfehlen</string>
+    <string name="home_empty_subtitle">Höre erst mal ein bisschen Musik an</string>
+    <string name="home_shuffle_title">Musik zufällig abspielen</string>
+    <string name="home_for_you_title">Für dich</string>
+    <string name="home_for_you_subtitle">Deine absoluten Favoriten an einem Ort</string>
+    <string name="home_for_you_subtitle_2">Handverlesene Schätze nur für dich</string>
+    <string name="home_for_you_subtitle_3">Deine tägliche Dosis musikalischer Inspiration</string>
+    <string name="home_albums_title">Jetzt anhören</string>
+    <string name="home_albums_subtitle">Top und aktuelle Alben</string>
+    <string name="home_albums_subtitle_2">Entdecke deine neuesten Sammlungen</string>
+    <string name="home_albums_subtitle_3">Was gerade angesagt in deiner Bibliothek ist</string>
+    <string name="home_artists_title">Empfohlene Interpreten</string>
+    <string name="home_artists_subtitle">Interpreten, die du am häufigsten hörst</string>
+    <string name="home_artists_subtitle_2">Neue Gesichter und alte Favoriten</string>
+    <string name="home_artists_subtitle_3">Gesichter hinter der Musik, die du liebst</string>
+    <string name="home_forgotten_tracks_title">Wiederentdecken</string>
+    <string name="home_forgotten_tracks_subtitle">Bringe alte Favoriten zurück ins Rampenlicht</string>
+    <string name="home_forgotten_tracks_subtitle_2">Hole diese verborgenen Schätze wieder ans Licht</string>
+    <string name="home_forgotten_tracks_subtitle_3">Lieder, die du schon lange nicht mehr gehört hast</string>
+    <string name="import_or_sync_autoeq_database">Importiere ein Profil oder synchronisiere die Datenbank, um verfügbare Profile anzuzeigen</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importiere ein Profil oder suche den Gerätenamen in %d Profilen</string>
+    <string name="autoeq_search_device_name">Gerät oder Modell suchen</string>
+    <string name="autoeq_sync_success">%d AutoEq-Profile wurden erfolgreich synchronisiert.</string>
+    <string name="autoeq_sync_failed">Die Synchronisierung der AutoEq-Profile ist fehlgeschlagen.</string>
+    <string name="sync_autoeq_database">Synchronisiere AutoEq Datenbank</string>
+    <string name="search_autoeq_placeholder">Suche Kopfhörer Modell</string>
+    <string name="allow_lyrics_download_from">Download zulassen von:</string>
+    <string name="listenbrainz_toggle_token_visibility">Sichtbarkeit des Tokens umschalten</string>
+    <string name="backup_restore_title">Backup und Wiederherstellung</string>
+    <string name="backup_restore_summary">Verwalte App-Daten Backup und Wiederherstellung.</string>
+    <string name="no_backup_folder_selected">Kein Backup-Ordner ausgewählt</string>
+    <string name="select_backup_folder">Wähle ein Backup-Ordner</string>
+    <string name="no_backups_found">Keine Backups in diesem Ordner gefunden.</string>
+    <string name="backup_recent_list">Neueste Backups</string>
+    <string name="backup_file_name">Dateiname (optional)</string>
+    <string name="create_new_backup">Backup erstellen</string>
+    <string name="open_backup">Backup öffnen</string>
+    <string name="share_backup">Backup teilen</string>
+    <string name="cannot_share_this_backup">Könnte dieses Backup nicht teilen.</string>
+    <string name="confirm_delete_backup">Dieses Backup löschen?</string>
+    <string name="backup_deleted_successfully">Backup erfolgreich gelöscht.</string>
+    <string name="could_not_delete_backup">Konnte Backup nicht löschen.</string>
+    <string name="select_content_to_backup">Wähle Inhalt für das Backup:</string>
+    <string name="backup_content_settings">App-Einstellungen</string>
+    <string name="backup_content_lyrics">Synchronisierte Liedtexte</string>
+    <string name="backup_content_play_info">Wiedergabestatistiken.</string>
+    <string name="backup_content_playlists">Wiedergabelisten</string>
+    <string name="backup_content_artist_images">Interpretenbilder</string>
+    <string name="backup_app_version">Erstellt in</string>
+    <string name="backup_warning_database_ver">Einige Daten aus diesem Backup, wie Wiedergabelisten und Liedtexte, sind nicht kompatibel und können nicht wiederhergestellt werden.</string>
+    <string name="backup_warning_legacy_format">Dieses Backup-Format gilt als veraltet. Noch kann es wiederhergestellt werden, aber in Zukunft kann es sein, dass es nicht mehr unterstützt wird.</string>
+    <string name="backup_warning_ver_newer">Das Backup-Format ist neuer als das, was diese Version von Booming Music verarbeiten kann.</string>
+    <string name="backup_warning_app_ver_newer">Dieses Backup wurde in einer neueren Version von Booming Music erstellt. Die Wiederherstellung in dieser Version kann zu Fehlern oder unvollständigen Datenwiederherstellung führen.</string>
+    <string name="restoring_data">Deine Daten werden wiederhergestellt…</string>
+    <string name="permission_notifications_title">Benachrichtigungen (optional)</string>
+    <string name="permission_notifications_summary">Mit dieser Berechtigung kann Booming Music die Wiedergabesteuerung in deinem Benachrichtigungsfeld und auf dem Sperrbildschirm anzeigen.</string>
+
+
 </resources>

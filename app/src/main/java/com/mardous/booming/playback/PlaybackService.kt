@@ -7,8 +7,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.bluetooth.BluetoothA2dp
-import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothProfile
+import android.bluetooth.BluetoothHeadset
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -20,7 +19,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
-import android.service.media.MediaBrowserService
+import android.util.Log
 import android.view.KeyEvent
 import androidx.annotation.OptIn
 import androidx.concurrent.futures.CallbackToFutureAdapter
@@ -28,7 +27,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.postDelayed
-import androidx.media.utils.MediaConstants
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -52,9 +50,7 @@ import androidx.media3.session.LibraryResult
 import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import androidx.media3.session.MediaSession
-import androidx.media3.session.MediaSession.ConnectionResult.AcceptedResultBuilder
 import androidx.media3.session.MediaSession.MediaItemsWithStartPosition
-import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
@@ -78,8 +74,6 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.network.NetworkFeature
 import com.mardous.booming.data.model.network.ScrobblingService
 import com.mardous.booming.data.repository.Repository
-import com.mardous.booming.extensions.isBluetoothA2dpConnected
-import com.mardous.booming.extensions.isBluetoothA2dpDisconnected
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.library.LibraryProvider
@@ -94,7 +88,6 @@ import com.mardous.booming.util.IGNORE_AUDIO_FOCUS
 import com.mardous.booming.util.MP3_INDEX_SEEKING
 import com.mardous.booming.util.PAUSE_ON_ZERO_VOLUME
 import com.mardous.booming.util.PLAY_ON_STARTUP_MODE
-import com.mardous.booming.util.PackageValidator
 import com.mardous.booming.util.PlayOnStartupMode
 import com.mardous.booming.util.Preferences
 import com.mardous.booming.util.Preferences.requireString
@@ -170,7 +163,6 @@ class PlaybackService :
     private val balanceProcessor: BalanceAudioProcessor by inject()
     private val replayGainProcessor: ReplayGainAudioProcessor by inject()
 
-    private lateinit var packageValidator: PackageValidator
     private lateinit var nm: NotificationManager
     private lateinit var persistentStorage: PersistentStorage
     private lateinit var customCommands: List<CommandButton>
@@ -234,7 +226,7 @@ class PlaybackService :
     private val handleAudioFocus: Boolean
         get() = preferences.getBoolean(IGNORE_AUDIO_FOCUS, false).not()
     private val maxSeekToPreviousMs: Long
-        get() = if (preferences.getBoolean(REWIND_WITH_BACK, true)) REWIND_INSTEAD_PREVIOUS_MILLIS else 0
+        get() = if (preferences.getBoolean(REWIND_WITH_BACK, true)) REWIND_INSTEAD_PREVIOUS_MILLIS else Long.MAX_VALUE
     private val seekInterval: Long
         get() = preferences.getInt(SEEK_INTERVAL, 10) * 1000L
 
@@ -242,8 +234,6 @@ class PlaybackService :
         super.onCreate()
         nm = requireNotNull(getSystemService<NotificationManager>())
         createNotificationChannel()
-
-        packageValidator = PackageValidator(this, R.xml.allowed_media_browser_callers)
 
         customCommands = listOf(
             CommandButton.Builder(CommandButton.ICON_SHUFFLE_OFF)
@@ -393,32 +383,15 @@ class PlaybackService :
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
-        val myPackageName = this.packageName
-        val controllerPackageName = controllerInfo.packageName
-        if (controllerPackageName == myPackageName ||
-            controllerPackageName == MediaBrowserService.SERVICE_INTERFACE ||
-            controllerPackageName == MediaSession.ControllerInfo.LEGACY_CONTROLLER_PACKAGE_NAME) {
-            return mediaSession
-        }
-        val controllerType = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_CONTROLLER_INFO_TYPE)
-        if (controllerType == Intent.ACTION_MEDIA_BUTTON &&
-            controllerPackageName == MediaSessionService.SERVICE_INTERFACE) {
-            val sessionId = controllerInfo.connectionHints.getString(CONNECTION_HINT_KEY_SESSION_ID)
-            if (sessionId == myPackageName) {
-                return mediaSession
-            }
-        } else if (packageValidator.isKnownCaller(controllerPackageName, controllerInfo.uid)) {
-            return mediaSession
-        }
-        return null
+        return mediaSession
     }
 
     override fun onConnectAsync(
         session: MediaSession,
         controller: MediaSession.ControllerInfo
     ): ListenableFuture<MediaSession.ConnectionResult> {
-        val connectionResult = AcceptedResultBuilder(session, controller).build()
-        val availableSessionCommands = connectionResult.availableSessionCommands.buildUpon()
+        val availableSessionCommands = MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS
+            .buildUpon()
         if (controller.uid == Process.myUid()) {
             availableSessionCommands.add(SessionCommand(Playback.CYCLE_REPEAT, Bundle.EMPTY))
             availableSessionCommands.add(SessionCommand(Playback.TOGGLE_SHUFFLE, Bundle.EMPTY))
@@ -430,7 +403,7 @@ class PlaybackService :
         return Futures.immediateFuture(
             MediaSession.ConnectionResult.accept(
                 availableSessionCommands.build(),
-                connectionResult.availablePlayerCommands
+                MediaSession.ConnectionResult.DEFAULT_PLAYER_COMMANDS
             )
         )
     }
@@ -465,44 +438,35 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        val isKnownCaller = packageValidator.isKnownCaller(browser.packageName, browser.uid)
-        val outExtras = Bundle().apply {
-            putBoolean(MediaConstants.BROWSER_SERVICE_EXTRAS_KEY_SEARCH_SUPPORTED, isKnownCaller)
-        }
         val libraryParams = LibraryParams.Builder()
             .setOffline(true)
-            .setExtras(outExtras)
             .build()
-        val mediaItem = if (isKnownCaller) {
-            when {
-                params?.isRecent == true -> {
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.RECENT_SONGS)
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .build()
-                        )
-                        .build()
-                }
-
-                else -> {
-                    MediaItem.Builder()
-                        .setMediaId(MediaIDs.ROOT)
-                        .setMediaMetadata(
-                            MediaMetadata.Builder()
-                                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
-                                .setIsBrowsable(true)
-                                .setIsPlayable(false)
-                                .build()
-                        )
-                        .build()
-                }
+        val mediaItem = when {
+            params?.isRecent == true -> {
+                MediaItem.Builder()
+                    .setMediaId(MediaIDs.RECENT_SONGS)
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                            .setIsBrowsable(true)
+                            .setIsPlayable(false)
+                            .build()
+                    )
+                    .build()
             }
-        } else {
-            MediaItem.EMPTY
+
+            else -> {
+                MediaItem.Builder()
+                    .setMediaId(MediaIDs.ROOT)
+                    .setMediaMetadata(
+                        MediaMetadata.Builder()
+                            .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                            .setIsBrowsable(true)
+                            .setIsPlayable(false)
+                            .build()
+                    )
+                    .build()
+            }
         }
         return Futures.immediateFuture(LibraryResult.ofItem(mediaItem, libraryParams))
     }
@@ -515,9 +479,6 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
-        // getChildren resolves any id it is handed, so FAVORITES and HISTORY are reachable without ever
-        // appearing in a root listing.
-        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching {
                 libraryProvider.getChildren(this@PlaybackService, parentId)
@@ -535,7 +496,6 @@ class PlaybackService :
         browser: MediaSession.ControllerInfo,
         mediaId: String
     ): ListenableFuture<LibraryResult<MediaItem>> {
-        session.denyUntrusted<MediaItem>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val mediaItem = runCatching { libraryProvider.getItem(mediaId) }
                 .getOrDefault(MediaItem.EMPTY)
@@ -553,7 +513,6 @@ class PlaybackService :
         query: String,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<Void>> {
-        session.denyUntrusted<Void>(browser)?.let { return it }
         session.notifySearchResultChanged(browser, query, 0, params)
         return Futures.immediateFuture(LibraryResult.ofVoid())
     }
@@ -566,7 +525,6 @@ class PlaybackService :
         pageSize: Int,
         params: LibraryParams?
     ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
-        session.denyUntrusted<ImmutableList<MediaItem>>(browser)?.let { return it }
         return serviceScope.future(IO) {
             val result = runCatching { libraryProvider.getSearchResult(query, page, pageSize) }
             if (result.isSuccess) {
@@ -630,12 +588,6 @@ class PlaybackService :
             }, ContextCompat.getMainExecutor(this))
         }
     }
-
-    private fun <T : Any> MediaSession.denyUntrusted(
-        controller: MediaSession.ControllerInfo
-    ): ListenableFuture<LibraryResult<T>>? =
-        if (isTrustedController(controller)) null
-        else Futures.immediateFuture(LibraryResult.ofError<T>(SessionError.ERROR_PERMISSION_DENIED))
 
     override fun onCustomCommand(
         session: MediaSession,
@@ -1252,30 +1204,40 @@ class PlaybackService :
     private var bluetoothConnectedRegistered = false
     private val bluetoothConnectedIntentFilter = IntentFilter().apply {
         addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)
-        addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
-        addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
+        addAction(BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED)
     }
     private val bluetoothReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
+            Log.d("PlaybackService", "received bluetooth action: intent=$intent")
             when (intent?.action) {
                 BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED -> {
-                    when (intent.getIntExtra(BluetoothProfile.EXTRA_STATE, -1)) {
-                        BluetoothA2dp.STATE_CONNECTED -> if (Preferences.isResumeOnConnect(true)) {
+                    val state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, -1)
+                    val previousState = intent.getIntExtra(BluetoothA2dp.EXTRA_PREVIOUS_STATE, -1)
+                    if (state == BluetoothA2dp.STATE_CONNECTED) {
+                        if (Preferences.isResumeOnConnect(bluetooth = true)) {
                             player.play()
                         }
-                        BluetoothA2dp.STATE_DISCONNECTED -> if (Preferences.isPauseOnDisconnect(true)) {
+                    } else if (state == BluetoothA2dp.STATE_DISCONNECTED &&
+                        previousState == BluetoothA2dp.STATE_CONNECTED) {
+                        if (Preferences.isPauseOnDisconnect(bluetooth = true)) {
                             player.pause()
                         }
                     }
                 }
-                BluetoothDevice.ACTION_ACL_CONNECTED ->
-                    if (context.isBluetoothA2dpConnected() && Preferences.isResumeOnConnect(true)) {
-                        player.play()
+                BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED -> {
+                    val state = intent.getIntExtra(BluetoothHeadset.EXTRA_STATE, -1)
+                    val previousState = intent.getIntExtra(BluetoothHeadset.EXTRA_PREVIOUS_STATE, -1)
+                    if (state == BluetoothHeadset.STATE_CONNECTED) {
+                        if (Preferences.isResumeOnConnect(bluetooth = true)) {
+                            player.play()
+                        }
+                    } else if (state == BluetoothHeadset.STATE_DISCONNECTED &&
+                        previousState == BluetoothHeadset.STATE_CONNECTED) {
+                        if (Preferences.isPauseOnDisconnect(bluetooth = true)) {
+                            player.pause()
+                        }
                     }
-                BluetoothDevice.ACTION_ACL_DISCONNECTED ->
-                    if (context.isBluetoothA2dpDisconnected() && Preferences.isPauseOnDisconnect(true)) {
-                        player.pause()
-                    }
+                }
             }
         }
     }

@@ -41,7 +41,7 @@ open class BackupComponent : KoinComponent {
 
         const val FIRST_BACKUP_VERSION = 1
         const val CURRENT_BACKUP_VERSION = 2
-        const val LEGACY_DB_VERSION = 6
+        const val LEGACY_DB_VERSION = 5
         const val CURRENT_DB_VERSION = BoomingDatabase.VERSION
     }
 

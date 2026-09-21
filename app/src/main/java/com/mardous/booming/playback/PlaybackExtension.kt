@@ -38,12 +38,6 @@ internal fun MediaSession.isRemoteController(controller: MediaSession.Controller
             isAutomotiveController(controller)
 }
 
-/** Whether a controller may browse the library and issue commands that change stored data */
-@OptIn(UnstableApi::class)
-internal fun MediaSession.isTrustedController(controller: MediaSession.ControllerInfo): Boolean {
-    return controller.isTrusted || isRemoteController(controller)
-}
-
 /** The order the repeat button cycles through */
 internal fun nextRepeatMode(current: Int): Int = when (current) {
     Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL

@@ -20,6 +20,7 @@ package com.mardous.booming.data.local.backup
 import android.annotation.SuppressLint
 import android.content.ContentResolver
 import android.content.Context
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.DocumentsContract
@@ -158,7 +159,7 @@ class BackupManager(
                 }
 
                 // Metadata (only the contents actually written to the backup)
-                val metadata = createMetadata(context, backedUpContents.sortedBy { it.ordinal })
+                val metadata = createMetadata(backedUpContents.sortedBy { it.ordinal })
                     ?: throw IllegalStateException("Cannot create necessary metadata")
                 zipItems.add(0, metadata)
 
@@ -182,7 +183,7 @@ class BackupManager(
             onZipFile = { zipFile ->
                 val metadataEntry = zipFile.getEntry("metadata.json")
                 if (metadataEntry == null) {
-                    restoreLegacyBackup(contents, zipFile, FIRST_BACKUP_VERSION)
+                    restoreLegacyBackup(contents, zipFile, FIRST_BACKUP_VERSION, LEGACY_DB_VERSION)
                 } else {
                     val metadata = zipFile.getInputStream(metadataEntry).use { metadataInput ->
                         json.decodeFromString<BackupMetadata>(
@@ -192,7 +193,7 @@ class BackupManager(
                     if (metadata.backupVersion == CURRENT_BACKUP_VERSION) {
                         restoreBackupWithMetadata(metadata, contents, zipFile)
                     } else if (metadata.backupVersion < CURRENT_BACKUP_VERSION) {
-                        restoreLegacyBackup(contents, zipFile, metadata.backupVersion)
+                        restoreLegacyBackup(contents, zipFile, metadata.backupVersion, metadata.databaseVersion)
                     } else {
                         throw IllegalStateException("Unsupported backup version")
                     }
@@ -333,12 +334,8 @@ class BackupManager(
         }
     }
 
-    private fun createMetadata(context: Context, contents: List<BackupContent>): ZipItem? {
-        val packageInfo = try {
-            context.packageManager.getPackageInfo(context.packageName, 0)
-        } catch (_: PackageManager.NameNotFoundException) {
-            null
-        }
+    private fun createMetadata(contents: List<BackupContent>): ZipItem? {
+        val packageInfo = getPackageInfo()
         if (packageInfo != null) {
             val metadata = BackupMetadata(
                 backupVersion = CURRENT_BACKUP_VERSION,
@@ -480,13 +477,13 @@ class BackupManager(
                 when {
                     entry.isSettingsEntry(MAIN_SETTINGS_NAME) -> {
                         if (contents.contains(BackupContent.Settings)) {
-                            if (!restoreSettings(zipFile, entry)) errors++
+                            if (!restoreSettings(zipFile, entry, metadata, getPackageInfo())) errors++
                         } else Log.d(TAG, "Skipping settings entry")
                     }
 
                     entry.isSettingsEntry(ARTIST_IMAGES_SETTINGS_NAME) -> {
                         if (contents.contains(BackupContent.ArtistImages)) {
-                            if (!restoreSettings(zipFile, entry)) errors++
+                            if (!restoreSettings(zipFile, entry, metadata)) errors++
                         } else Log.d(TAG, "Skipping artist images entry")
                     }
 
@@ -523,14 +520,28 @@ class BackupManager(
     }
 
     @SuppressLint("ApplySharedPref")
-    private suspend fun restoreSettings(zipFile: ZipFile, entry: ZipEntry) = withContext(IO) {
+    private suspend fun restoreSettings(
+        zipFile: ZipFile,
+        entry: ZipEntry,
+        metadata: BackupMetadata,
+        packageInfo: PackageInfo? = null
+    ) = withContext(IO) {
         try {
             val preferenceBackup = zipFile.getInputStream(entry).use { stream ->
                 json.decodeFromString<PreferenceBackup>(stream.bufferedReader().use { it.readText() })
             }
             if (!preferenceBackup.prefs.isEmpty()) {
                 for (entry in preferenceBackup.prefs) {
-                    val sharedPrefs = context.getSharedPreferences(entry.key, Context.MODE_PRIVATE)
+                    val appPackageName = packageInfo?.packageName
+                    val preferenceName =
+                        if (appPackageName != null && metadata.appName != null &&
+                            appPackageName != metadata.appName) {
+                            if (entry.key == "${metadata.appName}_preferences") null else entry.key
+                        } else entry.key
+
+                    if (preferenceName == null) continue
+
+                    val sharedPrefs = context.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
                     val modifiedKeys = mutableSetOf<String>()
                     val currentKeys = sharedPrefs.all.keys
                     sharedPrefs.edit(commit = true) {
@@ -596,7 +607,7 @@ class BackupManager(
         databaseVersion: Int
     ): Boolean {
         try {
-            checkDatabaseVersion(databaseVersion)
+            checkDatabaseVersion(databaseVersion, minDatabaseVersion = LEGACY_DB_VERSION)
 
             val playlistName = zipEntry.getFileName().substringBeforeLast(".")
             val songs = mutableListOf<Song>()
@@ -639,7 +650,7 @@ class BackupManager(
         databaseVersion: Int
     ) = withContext(IO) {
         try {
-            checkDatabaseVersion(databaseVersion)
+            checkDatabaseVersion(databaseVersion, minDatabaseVersion = LEGACY_DB_VERSION)
 
             val playInfoBackup = zipFile.getInputStream(entry).use { stream ->
                 json.decodeFromString<PlayInfoBackup>(stream.bufferedReader().use { it.readText() })
@@ -695,7 +706,7 @@ class BackupManager(
                 }
             }
         } catch (e: Exception) {
-            Log.e("BackupManager", "Error restoring custom artist images", e)
+            Log.e(TAG, "Error restoring custom artist images", e)
         }
         return false
     }
@@ -703,15 +714,16 @@ class BackupManager(
     private suspend fun restoreLegacyBackup(
         contents: List<BackupContent>,
         zipFile: ZipFile,
-        backupVersion: Int
+        backupVersion: Int,
+        databaseVersion: Int
     ): Boolean {
         return if (backupVersion == FIRST_BACKUP_VERSION) {
             LegacyBackupHelper.restoreLegacyBackupV1(
                 context = context,
                 zipFile = zipFile,
                 contents = contents,
-                onRestorePlaylist = { entry -> restorePlaylist(zipFile, entry, LEGACY_DB_VERSION) },
-                onRestoreLyrics = { entry -> restoreLyrics(zipFile, entry, LEGACY_DB_VERSION) },
+                onRestorePlaylist = { entry -> restorePlaylist(zipFile, entry, databaseVersion) },
+                onRestoreLyrics = { entry -> restoreLyrics(zipFile, entry, databaseVersion) },
                 onRestoreCustomArtistImages = { entry -> restoreCustomArtistImages(zipFile, entry) }
             )
         } else throw IllegalStateException("Unsupported legacy backup version")
@@ -755,9 +767,12 @@ class BackupManager(
         }
     }
 
-    private fun checkDatabaseVersion(databaseVersion: Int) {
-        if (databaseVersion != CURRENT_DB_VERSION) {
-            throw IllegalStateException("Database version mismatch: required=${CURRENT_DB_VERSION}, actual=$databaseVersion")
+    private fun checkDatabaseVersion(
+        databaseVersion: Int,
+        minDatabaseVersion: Int = CURRENT_DB_VERSION
+    ) {
+        if (databaseVersion !in minDatabaseVersion..CURRENT_DB_VERSION) {
+            throw IllegalStateException("Database version mismatch: required=$CURRENT_DB_VERSION, actual=$databaseVersion")
         }
     }
 
@@ -770,6 +785,14 @@ class BackupManager(
             }
         }
         return false
+    }
+
+    private fun getPackageInfo(): PackageInfo? {
+        return try {
+            context.packageManager.getPackageInfo(context.packageName, 0)
+        } catch (_: PackageManager.NameNotFoundException) {
+            null
+        }
     }
 
     private fun MutableList<ZipItem>.addNotNull(zipItem: ZipItem?): Boolean {

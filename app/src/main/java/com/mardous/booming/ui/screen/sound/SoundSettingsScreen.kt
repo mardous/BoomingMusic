@@ -31,6 +31,7 @@ import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberSliderState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -144,8 +145,10 @@ fun SoundSettingsSheet(
                         modifier = Modifier.padding(cardContentPadding)
                     ) {
                         Slider(
-                            value = volume.currentVolume,
-                            valueRange = volume.volumeRange,
+                            state = rememberSliderState(
+                                value = volume.currentVolume,
+                                trackRange = volume.volumeRange
+                            ),
                             onValueChange = {
                                 viewModel.setVolume(it)
                             },
@@ -178,8 +181,10 @@ fun SoundSettingsSheet(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Slider(
-                                        value = centerBalance,
-                                        valueRange = balance.range,
+                                        state = rememberSliderState(
+                                            value = centerBalance,
+                                            trackRange = balance.range
+                                        ),
                                         onValueChange = { centerBalance = it },
                                         onValueChangeFinished = {
                                             hapticFeedback.performHapticFeedback(
@@ -286,8 +291,10 @@ fun SoundSettingsSheet(
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Slider(
-                                    value = tempoSpeed,
-                                    valueRange = tempo.speedRange,
+                                    state = rememberSliderState(
+                                        value = tempoSpeed,
+                                        trackRange = tempo.speedRange
+                                    ),
                                     onValueChange = { tempoSpeed = it },
                                     onValueChangeFinished = {
                                         hapticFeedback.performHapticFeedback(
@@ -318,9 +325,10 @@ fun SoundSettingsSheet(
                             ) {
                                 val sliderValue = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
                                 Slider(
-                                    enabled = tempo.isFixedPitch.not(),
-                                    value = sliderValue,
-                                    valueRange = tempo.pitchRange,
+                                    state = rememberSliderState(
+                                        value = sliderValue,
+                                        trackRange = tempo.pitchRange
+                                    ),
                                     onValueChange = { tempoPitch = it },
                                     onValueChangeFinished = {
                                         hapticFeedback.performHapticFeedback(
@@ -335,6 +343,7 @@ fun SoundSettingsSheet(
                                             modifier = Modifier.height(SliderTokens.LargeTrackHeight)
                                         )
                                     },
+                                    enabled = tempo.isFixedPitch.not(),
                                     modifier = Modifier.weight(1f)
                                 )
 

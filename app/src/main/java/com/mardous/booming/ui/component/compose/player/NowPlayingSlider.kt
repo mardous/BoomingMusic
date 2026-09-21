@@ -43,6 +43,7 @@ enum class ThumbStyle { Straight, Ball }
 fun NowPlayingSlider(
     sliderState: SliderState,
     modifier: Modifier = Modifier,
+    onValueChangeFinished: (() -> Unit) ?= null,
     isPlaying: Boolean = false,
     trackStyle: TrackStyle = TrackStyle.Wavy,
     thumbStyle: ThumbStyle = ThumbStyle.Straight,
@@ -51,6 +52,7 @@ fun NowPlayingSlider(
 ) {
     Slider(
         state = sliderState,
+        onValueChangeFinished = onValueChangeFinished,
         colors = colors,
         thumb = { sliderState ->
             when (thumbStyle) {
@@ -118,9 +120,9 @@ fun WavyTrack(
     LinearWavyProgressIndicator(
         modifier = Modifier.fillMaxWidth(),
         progress = {
-            val rangeLength = sliderState.valueRange.endInclusive - sliderState.valueRange.start
+            val rangeLength = sliderState.trackRange.endInclusive - sliderState.trackRange.start
             if (rangeLength > 0f) {
-                (sliderState.value - sliderState.valueRange.start) / rangeLength
+                (sliderState.value - sliderState.trackRange.start) / rangeLength
             } else 0f
         },
         stopSize = 0.dp,

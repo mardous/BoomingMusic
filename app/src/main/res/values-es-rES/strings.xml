@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Acceso al almacenamiento</string>
     <string name="permission_external_storage_description">La aplicación necesita permiso para acceder al almacenamiento del dispositivo y reproducir música</string>
     <string name="permission_external_storage_denied">Debe conceder permiso para acceder al almacenamiento externo.</string>
-    <string name="permission_bluetooth_title">Dispositivos cercanos</string>
+    <string name="permission_bluetooth_title">Dispositivos cercanos (opcional)</string>
     <string name="permission_bluetooth_description">La aplicación necesita el permiso de dispositivos cercanos para buscar dispositivos Bluetooth</string>
     <string name="permission_read_images_title">Leer imágenes (opcional)</string>
     <string name="permission_read_images_denied">Debe conceder permiso para leer imágenes del dispositivo.</string>
@@ -276,10 +276,10 @@
     <string name="connection_unavailable">Conexión no disponible.</string>
     <string name="you_have_to_select_at_least_one_category">Debe seleccionar al menos una categoría</string>
     <string name="you_cannot_select_more_than_five_categories">No puede seleccionar más de cinco categorías.</string>
-    <string name="backup_successful">¡Copia de seguridad exitosa!</string>
-    <string name="backup_failed">Copia de seguridad fallida.</string>
-    <string name="select_content_to_restore">Seleccionar contenido para restaurar:</string>
-    <string name="could_not_restore_data">No se pudo restaurar los datos. Verifique el archivo de copia de seguridad y vuelva a intentarlo.</string>
+    <string name="backup_successful">Se respaldó correctamente.</string>
+    <string name="backup_failed">Falló el respaldo.</string>
+    <string name="select_content_to_restore">Seleccione contenido para restaurar:</string>
+    <string name="could_not_restore_data">No se pudieron restaurar los datos. Verifique el archivo de respaldo y vuelva a intentarlo.</string>
     <string name="data_restored_successfully">Datos restaurados con éxito.</string>
     <string name="action_toggle_playlist_lock">Bloquear/desbloquear lista</string>
     <string name="playlist_locked">Lista de reproducción bloqueada</string>
@@ -341,7 +341,6 @@
     <string name="top_albums">Mejores álbumes</string>
     <string name="recent_artists">Artistas recientes</string>
     <string name="recent_albums">Álbumes recientes</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Puro aleatorio</string>
     <string name="shuffle_mode_most_played">Más reproducidas</string>
@@ -357,7 +356,7 @@
     <string name="shuffle_mode_most_played_albums_description">Favoriza canciones de tus álbumes más reproducidos.</string>
     <string name="shuffle_mode_favorite_songs_description">Da prioridad a tus canciones favoritas.</string>
     <string name="shuffle_mode_forgotten_songs_description">Prioritiza canciones que no has tocado en un tiempo.</string>
-    <string name="shuffle_mode_recently_added_description">Favores canciones recientemente añadidas a su colección.</string>
+    <string name="shuffle_mode_recently_added_description">Da prioridad a las canciones añadidas recientemente a su fonoteca.</string>
     <string name="shuffle_mode_combined_description">Mezcla basada en favoritos, reproducciones y recencia.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">Ecualizador</string>
@@ -387,8 +386,8 @@
     <string name="imported_x_profiles">Se importaron %d perfiles.</string>
     <string name="no_profile_imported">No se importó ningún perfil.</string>
     <string name="import_autoeq_profile">Importar perfil de AutoEq</string>
-    <string name="select_a_file_containing_autoeq_params">Seleccione un archivo con parámetros de AutoEq (GraphicEq).</string>
-    <string name="no_autoeq_profiles">No se ha importado ningún perfil de AutoEq.</string>
+    <string name="select_a_file_containing_autoeq_params">Seleccione un archivo con parámetros de AutoEq (GraphicEq)</string>
+    <string name="no_autoeq_profiles">No se importó ningún perfil de AutoEq</string>
     <string name="reset_equalizer">Restablecer ecualizador</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">¿Confirma que quiere restablecer el ecualizador? \n\nEsto vaciará todos sus perfiles.</string>
     <string name="not_supported">No admitido</string>
@@ -717,7 +716,7 @@
     <string name="stop_when_closed_from_recents_title">Detener cuando se cierra desde recientes</string>
     <string name="stop_when_closed_from_recents_summary">La reproducción se detiene si la aplicación está cerrada de la lista de recientes.</string>
     <string name="stop_when_closed_from_recents_note">Nota: Algunos dispositivos con memoria agresiva o administración de batería pueden ignorar esta configuración y siempre detener la aplicación cuando se quita de los recientes.</string>
-    <string name="rotation_lock_title">Bloqueo de rotación</string>
+    <string name="rotation_lock_title">Bloqueo de giro</string>
     <string name="rotation_lock_summary">Bloquea la orientación del dispositivo. Útil en casos en los que la música se detiene al girar el dispositivo debido a ciertas políticas del fabricante.</string>
     <!-- Preference values -->
     <string name="light_theme_name">Claro</string>
@@ -883,8 +882,8 @@
     <string name="listenbrainz_scrobbling_summary">Las canciones que hayas reproducido se añadirán automáticamente a tu historial de escucha de ListenBrainz.</string>
     <string name="listenbrainz_now_playing_title">Actualización que ya se está reproduciendo en ListenBrainz</string>
     <string name="listenbrainz_now_playing_summary">Muestra la canción que se está reproduciendo actualmente en tu perfil de ListenBrainz en tiempo real.</string>
-    <string name="use_lyrically_provider_title">Utilice el proveedor Lyrically</string>
-    <string name="use_lyrically_provider_summary">API de letras enriquecidas con mantenimiento para karaoke y varias personas.</string>
+    <string name="use_lyrically_provider_title">Usar proveedor Lyrically</string>
+    <string name="use_lyrically_provider_summary">Una API de letras de canciones completa, con funciones de karaoke y compatibilidad para varias personas.</string>
     <string name="auto_theme_name">Automático</string>
     <string name="listenbrainz_title">ListenBrainz</string>
     <string name="ttml_file_lyrics">TTML</string>
@@ -938,7 +937,7 @@
     <string name="contributor_ttop_description">El primerísimo colaborador y tester del proyecto.</string>
     <string name="contributor_lenard_description">Desarrollador del sitio web de la aplicación y colaborador.</string>
     <string name="contributor_alex_description">Amigo del proyecto desde hace mucho tiempo que facilitó el acceso a APIs esenciales.</string>
-    <string name="play_all_songs_when_searching_summary">Cuando está activado, al seleccionar una canción buscada se añade toda la biblioteca a la cola. Sujeto a la configuración \"Al seleccionar una canción\".</string>
+    <string name="play_all_songs_when_searching_summary">Cuando se activa la opción, al seleccionar una canción buscada se añade toda la fonoteca a la cola. Sujeto a la configuración de «Al seleccionar una canción».</string>
     <string name="up_next">A continuación</string>
     <string name="reorder_action">Reordenar</string>
     <string name="go_to_current_track">Ir a la pista actual</string>
@@ -948,15 +947,15 @@
     <string name="app_widget_cookie_desc">La carátula es una gran galleta, con controles alrededor</string>
     <string name="app_widget_grid">Cuadrícula</string>
     <string name="app_widget_grid_desc">La carátula y los botones de reproducir y saltar en cuatro celdas</string>
-    <string name="app_widget_library">Biblioteca</string>
-    <string name="app_widget_library_desc">Una cuadrícula de carátulas de una lista que tú elijas</string>
+    <string name="app_widget_library">Fonoteca</string>
+    <string name="app_widget_library_desc">Una cuadrícula con las portadas de una lista que elija</string>
     <string name="app_widget_nothing_playing">Nada en reproducción</string>
     <string name="app_widget_tap_to_play">Toca para abrir Booming Music</string>
-    <string name="action_auto_fill_from_musicbrainz">Autocompletar desde MusicBrainz</string>
+    <string name="action_auto_fill_from_musicbrainz">Relleno automático de MusicBrainz</string>
     <string name="searching">Buscando…</string>
     <string name="musicbrainz_search_title">Búsqueda de MusicBrainz</string>
     <string name="musicbrainz_search_message">Busca metadatos de canciones en MusicBrainz usando el título y el artista.</string>
-    <string name="musicbrainz_no_results">Ningún resultado encontrado en MusicBrainz.</string>
+    <string name="musicbrainz_no_results">No se encontró ningún resultado en MusicBrainz.</string>
     <string name="musicbrainz_select_recording">Seleccione un resultado</string>
     <string name="sort_order_name">Nombre</string>
     <string name="restart_app_message">La aplicación se reiniciará para completar el proceso.</string>
@@ -985,8 +984,65 @@
     <string name="initial_configuration_title">Configuración inicial</string>
     <string name="initial_configuration_subtitle">Personaliza Booming Music a tu gusto antes de empezar.</string>
     <string name="initial_configuration_note">Siempre puedes cambiar estos ajustes más adelante.</string>
-    <string name="restore_from_backup">Restaurar desde copia de seguridad</string>
+    <string name="restore_from_backup">Restaurar desde copia de respaldo</string>
     <string name="widget_show_navigation_title">Visualización</string>
     <string name="widget_action_favourite">Favorito</string>
     <string name="network_features_summary">Permite el scrobbling y la descarga de portadas y letras del álbum.</string>
+    <string name="action_play_x">Reproducir %s</string>
+    <string name="invalid_search_params">No se pudieron procesar los parámetros de búsqueda.</string>
+    <string name="permission_notifications_title">Notificaciones (opcional)</string>
+    <string name="permission_notifications_summary">Este permiso permite a Booming Music mostrar controles de reproducción en el panel de notificaciones y en la pantalla de bloqueo.</string>
+    <string name="permissions_needed">Permisos necesarios</string>
+    <string name="welcome_to_x">Le damos la bienvenida a %s</string>
+    <string name="home_empty_title">No hay nada que recomendar</string>
+    <string name="home_empty_subtitle">Escuche algo de música primero</string>
+    <string name="home_for_you_title">Para usted</string>
+    <string name="home_artists_title">Artistas recomendados</string>
+    <string name="home_albums_subtitle_3">Lo que está en tendencia en su fonoteca</string>
+
+    <string name="create_new_backup">Crear respaldo</string>
+    <string name="open_backup">Abrir respaldo</string>
+    <string name="share_backup">Compartir respaldo</string>
+    <string name="cannot_share_this_backup">No se puede compartir este respaldo.</string>
+    <string name="confirm_delete_backup">¿Quiere eliminar este respaldo?</string>
+    <string name="backup_deleted_successfully">Se eliminó el respaldo correctamente.</string>
+    <string name="could_not_delete_backup">No se pudo eliminar el respaldo.</string>
+    <string name="select_content_to_backup">Seleccione el contenido para respaldar:</string>
+    <string name="backup_recent_list">Respaldos recientes</string>
+    <string name="backup_file_name">Nombre de archivo (opcional)</string>
+    <string name="backup_content_playlists">Listas de reproducción</string>
+    <string name="backup_content_artist_images">Imágenes de artistas</string>
+    <string name="autoeq_search_device_name">Buscar dispositivo o modelo</string>
+    <string name="backup_content_settings">Configuración de la aplicación</string>
+    <string name="backup_content_lyrics">Letras sincronizadas</string>
+    <string name="backup_content_play_info">Estadísticas de reproducción.</string>
+    <string name="backup_warning_database_ver">Algunos datos de este respaldo, como las listas de reproducción y las letras, no son compatibles y puede que no puedan restaurarse.</string>
+    <string name="backup_warning_legacy_format">Este formato de respaldo se considera obsoleto. Puede restaurarlo por ahora, pero es posible que dejemos de admitirlo en el futuro.</string>
+    <string name="backup_warning_ver_newer">El formato del respaldo es más reciente que el que admite esta versión de Booming Music.</string>
+    <string name="backup_warning_app_ver_newer">Este respaldo se creó en una versión más reciente de Booming Music. Restaurarla en esta versión podría provocar errores o hacer que la restauración de los datos no sea íntegra.</string>
+    <string name="restoring_data">Restaurando sus datos…</string>
+    <string name="backup_restore_title">Respaldar y restaurar</string>
+    <string name="no_backups_found">No se encontró ningún respaldo en esta carpeta.</string>
+    <string name="import_or_sync_autoeq_database">Importe un perfil o sincronice la base de datos para ver los perfiles disponibles</string>
+    <string name="home_artists_subtitle">Artistas que más escucha</string>
+    <string name="home_artists_subtitle_2">Caras nuevas y viejos favoritos</string>
+    <string name="home_artists_subtitle_3">Los rostros detrás de la música que le encanta</string>
+    <string name="home_forgotten_tracks_title">Redescubrir</string>
+    <string name="home_forgotten_tracks_subtitle_3">Canciones que no ha escuchado en algún tiempo</string>
+    <string name="home_for_you_subtitle_3">Su dosis diaria de inspiración musical</string>
+    <string name="home_albums_subtitle_2">Adéntrese en sus colecciones más recientes</string>
+    <string name="home_forgotten_tracks_subtitle_2">Desempolve los tesoros ocultos</string>
+    <string name="no_backup_folder_selected">No se seleccionó ninguna carpeta de respaldos</string>
+    <string name="import_or_type_to_search_autoeq_profiles">Importe un perfil o busque el nombre de su dispositivo entre %d perfiles</string>
+    <string name="home_for_you_subtitle">Sus favoritos de siempre en un solo lugar</string>
+    <string name="autoeq_sync_failed">No se pudieron sincronizar los perfiles de AutoEq.</string>
+    <string name="autoeq_sync_success">Se sincronizaron %d perfiles de AutoEq correctamente.</string>
+    <string name="home_shuffle_title">Reproducir música al azar</string>
+    <string name="home_for_you_subtitle_2">Joyas seleccionadas para usted</string>
+    <string name="home_albums_title">Escuchar ahora</string>
+    <string name="home_albums_subtitle">Álbumes populares y recientes</string>
+    <string name="home_forgotten_tracks_subtitle">Vuelva a poner en primer plano sus clásicos</string>
+    <string name="sync_autoeq_database">Sincronizar base de datos de AutoEq</string>
+    <string name="search_autoeq_placeholder">Buscar modelo de auriculares</string>
+    <string name="allow_lyrics_download_from">Permitir descarga desde:</string>
 </resources>

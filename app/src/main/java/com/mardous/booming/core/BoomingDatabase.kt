@@ -44,6 +44,12 @@ abstract class BoomingDatabase : RoomDatabase() {
     abstract fun autoEqDao(): AutoEqDao
 
     companion object {
+        /**
+         * Indicates the current version of the database.
+         *
+         * When increasing this value, we must ensure we also make any necessary
+         * changes in [com.mardous.booming.data.local.backup.BackupManager].
+         */
         const val VERSION = 7
 
         val MIGRATION_1_2 = object : Migration(1, 2) {

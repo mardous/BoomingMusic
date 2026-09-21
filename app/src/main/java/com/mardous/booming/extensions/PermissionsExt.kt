@@ -18,6 +18,7 @@
 package com.mardous.booming.extensions
 
 import android.Manifest.permission.BLUETOOTH_CONNECT
+import android.Manifest.permission.POST_NOTIFICATIONS
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.Manifest.permission.READ_MEDIA_AUDIO
 import android.Manifest.permission.READ_MEDIA_IMAGES
@@ -35,6 +36,8 @@ fun getStoragePermissions() = buildSet {
         add(WRITE_EXTERNAL_STORAGE)
     }
 }
+
+fun getNotificationsPermission() = if (hasT()) setOf(POST_NOTIFICATIONS) else emptySet()
 
 fun getImagesPermission() = if (hasT()) setOf(READ_MEDIA_IMAGES) else emptySet()
 

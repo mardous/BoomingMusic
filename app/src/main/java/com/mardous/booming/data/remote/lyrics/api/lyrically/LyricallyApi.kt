@@ -25,7 +25,7 @@ import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.model.ITunesSearchResponse
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricText
 import com.mardous.booming.data.remote.lyrics.model.LyricallyLyricsResponse
-import com.mardous.booming.util.Constants.USER_AGENT
+import com.mardous.booming.util.Constants.SIMPLE_USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.timeout
@@ -182,7 +182,7 @@ class LyricallyApi(private val client: HttpClient) : LyricsApi {
     ) = get(url) {
         header(HttpHeaders.Accept, "application/json")
         header(HttpHeaders.ContentType, "application/json")
-        userAgent(USER_AGENT)
+        userAgent(SIMPLE_USER_AGENT)
         timeout {
             connectTimeoutMillis = 5000
             socketTimeoutMillis = 10000

@@ -33,6 +33,7 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberSliderState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -154,7 +155,7 @@ fun SleepTimerBottomSheet(
                 )
 
                 Slider(
-                    value = sliderPosition,
+                    state = rememberSliderState(value = sliderPosition, trackRange = 5f..180f),
                     onValueChange = { sliderPosition = round(it) },
                     onValueChangeFinished = {
                         hapticFeedback.performHapticFeedback(
@@ -162,7 +163,6 @@ fun SleepTimerBottomSheet(
                         )
                         viewModel.setTimerState(value = sliderPosition)
                     },
-                    valueRange = 5f..180f,
                     track = { sliderState ->
                         SliderDefaults.Track(
                             sliderState = sliderState,
@@ -307,7 +307,11 @@ fun SleepTimerBottomSheet(
                                 .padding(top = 8.dp, bottom = 16.dp)
                         ) {
                             Slider(
-                                value = fadeOutDuration,
+                                state = rememberSliderState(
+                                    value = fadeOutDuration,
+                                    steps = 8,
+                                    trackRange = 1f..10f
+                                ),
                                 onValueChange = { fadeOutDuration = it },
                                 onValueChangeFinished = {
                                     hapticFeedback.performHapticFeedback(
@@ -315,14 +319,12 @@ fun SleepTimerBottomSheet(
                                     )
                                     viewModel.setTimerState(fadeOutDuration = fadeOutDuration)
                                 },
-                                valueRange = 1f..10f,
                                 track = { sliderState ->
                                     SliderDefaults.Track(
                                         sliderState = sliderState,
                                         modifier = Modifier.height(SliderTokens.MediumTrackHeight)
                                     )
                                 },
-                                steps = 8,
                                 enabled = uiState.isRunning.not(),
                                 modifier = Modifier.fillMaxWidth()
                             )

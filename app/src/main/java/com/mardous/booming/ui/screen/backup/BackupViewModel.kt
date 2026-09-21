@@ -38,7 +38,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 
 sealed interface BackupsState {
@@ -138,64 +137,40 @@ class BackupViewModel(
     }
 
     fun createBackup(name: String, backupContents: List<BackupContent>) = viewModelScope.launch {
-        val newState = _state.updateAndGet {
-            if (it is BackupsState.Success) {
-                it.copy(isInBackupOperation = true)
-            } else it
-        }
-        if (newState is BackupsState.Success) {
-            val success = backupManager.createBackup(backupDirectory.value, name, backupContents)
-            if (success) loadBackupsFromDirectory()
-            _createBackupEvent.trySend(success)
-            _state.update {
-                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
-            }
-        }
+        setOperationState(true)
+        val success = backupManager.createBackup(backupDirectory.value, name, backupContents)
+        if (success) loadBackupsFromDirectory()
+        _createBackupEvent.trySend(success)
+        setOperationState(false)
     }
 
     fun shareBackup(backupFile: BackupFile) = viewModelScope.launch {
-        val newState = _state.updateAndGet {
-            if (it is BackupsState.Success) {
-                it.copy(isInBackupOperation = true)
-            } else it
-        }
-        if (newState is BackupsState.Success) {
-            val uri = backupManager.createShareUriForBackup(backupFile.uri)
-            _shareBackupEvent.trySend(uri)
-            _state.update {
-                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
-            }
-        }
+        setOperationState(true)
+        val uri = backupManager.createShareUriForBackup(backupFile.uri)
+        _shareBackupEvent.trySend(uri)
+        setOperationState(false)
     }
 
     fun deleteBackup(backupFile: BackupFile) = viewModelScope.launch {
-        val newState = _state.updateAndGet {
-            if (it is BackupsState.Success) {
-                it.copy(isInBackupOperation = true)
-            } else it
-        }
-        if (newState is BackupsState.Success) {
-            val success = backupManager.deleteBackup(backupFile.uri)
-            if (success) loadBackupsFromDirectory()
-            _deleteBackupEvent.trySend(success)
-            _state.update {
-                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
-            }
-        }
+        setOperationState(true)
+        val success = backupManager.deleteBackup(backupFile.uri)
+        if (success) loadBackupsFromDirectory()
+        _deleteBackupEvent.trySend(success)
+        setOperationState(false)
     }
 
     fun restoreBackup(uri: Uri, contents: List<BackupContent>) = viewModelScope.launch {
-        val newState = _state.updateAndGet {
+        setOperationState(true)
+        val success = backupManager.restoreBackup(uri, contents)
+        _restoreBackupEvent.trySend(success)
+        setOperationState(false)
+    }
+
+    private fun setOperationState(isInBackupOperation: Boolean) {
+        _state.update {
             if (it is BackupsState.Success) {
-                it.copy(isInBackupOperation = true)
+                it.copy(isInBackupOperation = isInBackupOperation)
             } else it
-        }
-        if (newState is BackupsState.Success) {
-            val success = backupManager.restoreBackup(uri, contents)
-            _restoreBackupEvent.trySend(success)
-            _state.update {
-                if (it is BackupsState.Success) it.copy(isInBackupOperation = false) else it
-            }
         }
     }
 }
