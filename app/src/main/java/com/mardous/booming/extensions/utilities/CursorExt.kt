@@ -43,8 +43,8 @@ fun <T> Cursor?.mapIfValid(consumer: Cursor.() -> T?): List<T> {
     return list
 }
 
-fun <T> Cursor?.takeOrDefault(default: T, consumer: Cursor.() -> T): T {
-    return if (this != null && this.moveToFirst()) consumer(this) else default
+fun <T> Cursor?.takeOrDefault(default: T, consumer: Cursor.() -> T?): T {
+    return if (this != null && this.moveToFirst()) consumer(this) ?: default else default
 }
 
 fun Cursor.getBoolean(columnIndex: Int): Boolean {

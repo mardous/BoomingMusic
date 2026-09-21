@@ -70,6 +70,18 @@ class MediaQueryDispatcher(val uri: Uri = getAudioContentUri()) : KoinComponent 
             }
         }
 
+    fun addSelectionWithArguments(
+        selection: String?,
+        vararg newArguments: String,
+        mode: String = "AND"
+    ): MediaQueryDispatcher =
+        apply {
+            if (!selection.isNullOrBlank() && newArguments.isNotEmpty()) {
+                addSelection(selection, mode)
+                addArguments(*newArguments)
+            }
+        }
+
     @WorkerThread
     fun dispatch(): Cursor? {
         try {

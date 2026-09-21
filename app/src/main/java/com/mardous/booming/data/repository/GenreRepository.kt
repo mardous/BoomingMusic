@@ -24,8 +24,10 @@ import android.net.Uri
 import android.provider.BaseColumns
 import android.provider.MediaStore
 import android.provider.MediaStore.Audio.Genres
+import android.util.Log
 import com.mardous.booming.core.sort.GenreSortMode
 import com.mardous.booming.core.sort.SongSortMode
+import com.mardous.booming.data.local.MediaQueryDispatcher
 import com.mardous.booming.data.model.Genre
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.extensions.utilities.getLongSafe
@@ -100,23 +102,13 @@ class RealGenreRepository(
         return songRepository.song(makeGenreSongCursor(genreId))
     }
 
-    private fun getSongCount(genreId: Long): Int {
-        contentResolver.query(
-            Genres.Members.getContentUri(MediaStore.VOLUME_EXTERNAL, genreId),
-            null,
-            null,
-            null,
-            null
-        ).use {
-            return it?.count ?: 0
-        }
-    }
+    private fun getSongCount(genreId: Long) = makeGenreSongCursor(genreId).use { it?.count ?: 0 }
 
-    private fun getGenreFromCursor(cursor: Cursor): Genre {
+    private fun getGenreFromCursor(cursor: Cursor): Genre? {
         val id = cursor.getLongSafe(Genres._ID)
         val name = cursor.getStringSafe(Genres.NAME)
         val songCount = getSongCount(id)
-        return Genre(id, name ?: "", songCount)
+        return if (songCount > 0) Genre(id, name ?: "", songCount) else null
     }
 
     private fun getSongsWithNoGenre(): List<Song> {
@@ -153,18 +145,20 @@ class RealGenreRepository(
 
     private fun makeGenreSongCursor(
         genreId: Long,
+        projection: Array<String>? = RealSongRepository.getBaseProjection(),
         selection: String = RealSongRepository.BASE_SELECTION,
         selectionValues: Array<String>? = null
     ): Cursor? {
         return try {
-            contentResolver.query(
-                Genres.Members.getContentUri(MediaStore.VOLUME_EXTERNAL, genreId),
-                RealSongRepository.getBaseProjection(),
-                selection,
-                selectionValues,
-                Genres.Members.DEFAULT_SORT_ORDER
-            )
+            val genreSongsUi = Genres.Members.getContentUri(MediaStore.VOLUME_EXTERNAL, genreId)
+            val queryDispatcher = MediaQueryDispatcher(genreSongsUi)
+                .setProjection(projection)
+                .setSelection(selection)
+                .setSelectionArguments(selectionValues)
+                .setSortOrder(Genres.Members.DEFAULT_SORT_ORDER)
+            songRepository.makeSongCursor(queryDispatcher)
         } catch (e: SecurityException) {
+            Log.e("GenreRepository", "Cannot fetch genre songs", e)
             return null
         }
     }

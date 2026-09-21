@@ -91,12 +91,8 @@ class RealSongRepository(
     }
 
     override fun songs(query: String): List<Song> {
-        return songs(
-            makeSongCursor(
-                selection = "${AudioColumns.TITLE} LIKE ? OR ${AudioColumns.ARTIST} LIKE ? OR ${AudioColumns.ALBUM} LIKE ?",
-                selectionValues = arrayOf("%$query%", "%$query%", "%$query%")
-            )
-        )
+        val (selection, arguments) = generateSearchPattern(query)
+        return songs(makeSongCursor(selection, arguments))
     }
 
     override fun songs(cursor: Cursor?): List<Song> {
@@ -284,25 +280,25 @@ class RealSongRepository(
     ): Cursor? {
         val minimumSongDuration = Preferences.minimumSongDuration
         if (minimumSongDuration > 0) {
-            queryDispatcher.addSelection("${AudioColumns.DURATION} >= ${minimumSongDuration * 1000}")
+            queryDispatcher.addSelection("(${AudioColumns.DURATION} >= ${minimumSongDuration * 1000})")
         }
 
         if (!ignoreBlacklist) {
             // Whitelist
             if (Preferences.whitelistEnabled) {
                 val whitelisted = whitelistedPaths ?: inclExclDao.whitelistPaths().map { it.path }
+                val (selection, arguments) = generateLibraryFilterPattern(whitelisted, operator = "OR", mode = "LIKE")
                 if (whitelisted.isNotEmpty()) {
-                    queryDispatcher.addSelection(generateWhitelistSelection(whitelisted.size))
-                    queryDispatcher.addArguments(*addLibrarySelectionValues(whitelisted))
+                    queryDispatcher.addSelectionWithArguments(selection, *arguments)
                 }
             }
 
             // Blacklist
             if (Preferences.blacklistEnabled) {
                 val blacklisted = blacklistedPaths ?: inclExclDao.blackListPaths().map { it.path }
+                val (selection, arguments) = generateLibraryFilterPattern(blacklisted, operator = "AND", mode = "NOT LIKE")
                 if (blacklisted.isNotEmpty()) {
-                    queryDispatcher.addSelection(generateBlacklistSelection(blacklisted.size))
-                    queryDispatcher.addArguments(*addLibrarySelectionValues(blacklisted))
+                    queryDispatcher.addSelectionWithArguments(selection, *arguments)
                 }
             }
         }
@@ -332,19 +328,16 @@ class RealSongRepository(
         return makeSongCursor(queryDispatcher, ignoreBlacklist, whitelistedPaths, blacklistedPaths)
     }
 
-    private fun generateWhitelistSelection(pathCount: Int): String =
-        buildString {
-            append("(")
-            append((1..pathCount).joinToString(" OR ") { "${AudioColumns.DATA} LIKE ?" })
-            append(")")
+    private fun generateLibraryFilterPattern(
+        paths: List<String>,
+        operator: String,
+        mode: String
+    ): Pair<String, Array<String>> {
+        val selection = (1..paths.size).joinToString(" $operator ", prefix = "(", postfix = ")") {
+            "${AudioColumns.DATA} $mode ?"
         }
-
-    private fun generateBlacklistSelection(pathCount: Int): String =
-        (1..pathCount).joinToString(" AND ") { "${AudioColumns.DATA} NOT LIKE ?" }
-
-
-    private fun addLibrarySelectionValues(paths: List<String>): Array<String> {
-        return Array(paths.size) { index -> "${paths[index]}%" }
+        val selectionValues = paths.map { "$it%" }.toTypedArray()
+        return selection to selectionValues
     }
 
     private fun getSongIdFromMediaProvider(uri: Uri): Long {
@@ -450,7 +443,7 @@ class RealSongRepository(
         private val TAG = RealSongRepository::class.java.simpleName
 
         const val BASE_SELECTION = "${AudioColumns.TITLE} != '' AND ${AudioColumns.IS_MUSIC} = 1"
-        const val SEARCH_SELECTION = "${AudioColumns.TITLE} LIKE ? OR ${AudioColumns.ARTIST} LIKE ? OR ${AudioColumns.ALBUM} LIKE ?"
+        const val SEARCH_SELECTION = "(${AudioColumns.TITLE} LIKE ? OR ${AudioColumns.ARTIST} LIKE ? OR ${AudioColumns.ALBUM} LIKE ?)"
 
         @SuppressLint("InlinedApi")
         private val BASE_PROJECTION = arrayOf(
