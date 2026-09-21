@@ -10,8 +10,8 @@ data class LrcNode(
     var rawLine: String?,
     var actor: LyricsActor? = null
 ) {
-    private val children = mutableListOf<LrcNode>()
 
+    private val children = mutableListOf<LrcNode>()
     var end: Long = INVALID_DURATION
 
     fun addChild(start: Long, end: Long = INVALID_DURATION, text: String?, actor: LyricsActor?): Boolean {
@@ -30,8 +30,8 @@ data class LrcNode(
     }
 
     private fun toWord(startIndex: Int, trimEnd: Boolean = false): SyncedLyrics.Word {
-        checkNotNull(text)
-        val wordText = if (trimEnd) text.trimEnd() else text
+        val currentText = checkNotNull(text) { "Word text cannot be null" }
+        val wordText = if (trimEnd) currentText.trimEnd() else currentText
         return SyncedLyrics.Word(
             content = wordText,
             start = start,
@@ -44,52 +44,61 @@ data class LrcNode(
     }
 
     fun getTextContent(): SyncedLyrics.TextContent {
-        return if (children.isNotEmpty()) {
-            children.sortBy { it.start }
-            for (i in 0 until children.lastIndex) {
-                if (children[i].end == INVALID_DURATION) {
-                    children[i].end = children[i + 1].start
-                }
-            }
-            if (children[children.lastIndex].end == INVALID_DURATION) {
-                children[children.lastIndex].end = end
-            }
-
-            var nextWordStartIndex = 0
-            val lastWordIndex = children.lastIndex
-
-            val words = mutableListOf<SyncedLyrics.Word>()
-            for ((index, child) in children.withIndex()) {
-                if (index == lastWordIndex && child.text.isNullOrBlank())
-                    continue
-
-                val trimEnd = if (index == (lastWordIndex - 1)) {
-                    children[lastWordIndex].text.isNullOrBlank()
-                } else index == children.lastIndex
-
-                val word = child.toWord(nextWordStartIndex, trimEnd = trimEnd)
-                if (words.add(word)) {
-                    nextWordStartIndex += word.content.length
-                }
-            }
-
-            SyncedLyrics.TextContent(
-                content = words.filterNot { it.isBackground }
-                    .joinToString(separator = "") { it.content }.trim(),
-                backgroundContent = words.filter { it.isBackground }
-                    .joinToString(separator = "") { it.content }.trim(),
-                rawContent = rawLine.orEmpty(),
-                syllables = words
-            )
-        } else {
-            SyncedLyrics.TextContent(
-                content = text.orEmpty(),
-                backgroundContent = null,
-                rawContent = rawLine.orEmpty(),
-                syllables = emptyList()
-            )
+        if (children.isEmpty()) {
+            return getLineSyncedTextContent()
         }
+
+        val validChildren = children
+            .filterNot { it.text.isNullOrEmpty() }
+            .sortedBy { it.start }
+
+        if (validChildren.isEmpty()) {
+            return getLineSyncedTextContent()
+        }
+
+        val lastWordIndex = validChildren.lastIndex
+        for (i in 0 until lastWordIndex) {
+            if (validChildren[i].end == INVALID_DURATION) {
+                validChildren[i].end = validChildren[i + 1].start
+            }
+        }
+        if (validChildren[lastWordIndex].end == INVALID_DURATION) {
+            validChildren[lastWordIndex].end = end
+        }
+
+        var nextWordStartIndex = 0
+        val words = mutableListOf<SyncedLyrics.Word>()
+        for ((index, child) in validChildren.withIndex()) {
+            if (index == lastWordIndex && child.text.isNullOrBlank())
+                continue
+
+            val trimEnd = if (index == lastWordIndex) true else {
+                val nextText = validChildren[index + 1].text
+                nextText.isNullOrBlank() || nextText.startsWith(" ")
+            }
+
+            val word = child.toWord(nextWordStartIndex, trimEnd = trimEnd)
+            if (words.add(word)) {
+                nextWordStartIndex += word.content.length
+            }
+        }
+
+        return SyncedLyrics.TextContent(
+            content = words.filterNot { it.isBackground }
+                .joinToString(separator = "") { it.content }.trim(),
+            backgroundContent = words.filter { it.isBackground }
+                .joinToString(separator = "") { it.content }.trim(),
+            rawContent = rawLine.orEmpty(),
+            syllables = words
+        )
     }
+
+    private fun getLineSyncedTextContent() = SyncedLyrics.TextContent(
+        content = text.orEmpty(),
+        backgroundContent = null,
+        rawContent = rawLine.orEmpty(),
+        syllables = emptyList()
+    )
 
     fun toLine(): SyncedLyrics.Line? {
         if (start <= INVALID_DURATION && end <= INVALID_DURATION) {
