@@ -60,6 +60,8 @@ class GitHubRelease(
 ) : Parcelable, KoinComponent {
 
     companion object {
+        private const val CI_BUILD_VERSION_PARTS = 4 // Major, Minor, Patch, Hash
+        private const val CI_BUILD_HASH_LENGTH = 7
         private const val IGNORED_RELEASE = "ignored_release"
     }
 
@@ -77,6 +79,17 @@ class GitHubRelease(
         return false
     }
 
+    private fun String.stripHashFromVersionName(): String {
+        val parts = this.split(".")
+        if (parts.size == CI_BUILD_VERSION_PARTS) {
+            val ciBuildHash = parts.last()
+            if (ciBuildHash.length == CI_BUILD_HASH_LENGTH) {
+                return parts.subList(0, CI_BUILD_VERSION_PARTS - 1).joinToString(".")
+            }
+        }
+        return this
+    }
+
     private fun isIgnored(): Boolean {
         return get<SharedPreferences>().getString(IGNORED_RELEASE, null) == tag
     }
@@ -88,13 +101,15 @@ class GitHubRelease(
     fun isNewer(context: Context): Boolean {
         try {
             val packageInfo = context.packageManager.packageInfo(context)
-            val installedVersionName = packageInfo?.versionName ?: return true
+            val installedVersionName = packageInfo?.versionName?.stripHashFromVersionName()
+                ?: return true
+
             var updateVersionName = this.tag
             if (updateVersionName.startsWith("v", ignoreCase = true)) {
                 updateVersionName = updateVersionName.substring(1)
             }
             return Version(updateVersionName) > Version(installedVersionName)
-        } catch (ignored: PackageManager.NameNotFoundException) {
+        } catch (_: PackageManager.NameNotFoundException) {
         }
         return true // assume true
     }
