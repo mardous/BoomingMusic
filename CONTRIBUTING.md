@@ -36,13 +36,12 @@ For significant refactors or large features, please open an issue first. This av
 Each Pull Request should address a single feature or bug fix. Avoid "mega-PRs" that touch unrelated parts of the app.
 
 ### 3. AI Usage Disclosure
-Our project greatly values the work done by human developers; however, we are not opposed to the use of AI agents by those who
-wish to contribute to the project through pull requests, as long as the resulting code complies with our style guides and general rules.
-To that end, the project includes [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md) files to help AI agents better understand the project,
-its structure, and the rules to follow when contributing.
+We greatly value the work done by human developers. While we are not entirely opposed to the use of AI by some contributors, we do have stricter policies regarding the resulting code:
 
-> [!IMPORTANT]
-> If you used an AI agent (Gemini, Claude, ChatGPT, etc.) to assist in your contribution, you **must** disclose it in the Pull Request using our [PR template](.github/pull_request_template.md).
+- Contributors submitting code generated or assisted by AI must ensure that the output fully conforms to the project's architecture and style guides.
+- We reserve the right to reject pull requests containing a large amount of AI-generated code if it compromises the project architecture, user experience, and/or app functionality.
+- If you used an AI agent (Gemini, Claude, ChatGPT, etc.) to assist in your contribution, you **must** disclose it in the Pull Request using our [PR template](.github/pull_request_template.md).
+- Disclosure is mandatory and helps reviewers understand where and how AI assistance was utilized. Undisclosed AI-generated contributions will likely be detected during review and are subject to immediate rejection.
 
 ### 4. UI Contribution Freeze
 > [!WARNING]
