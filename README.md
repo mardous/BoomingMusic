@@ -80,20 +80,6 @@
 </table>
 </div>
 
-## 💻 Tech Stack
-
-| Layer                   | Technology                                                      |
-|:------------------------|:----------------------------------------------------------------|
-| 🎧 Audio Engine         | [Media3 ExoPlayer](https://developer.android.com/media/media3)  |
-| 🧱 Architecture         | MVVM + Repository Pattern                                       |
-| 💾 Persistence          | Room Database + DataStore + SharedPreferences                   |
-| ⚙️ Dependency Injection | [Koin](https://insert-koin.io/)                                 |
-| 🧵 Async                | Kotlin Coroutines & Flow                                        |
-| 🧩 UI                   | Android Views + Jetpack Compose (hybrid)                        |
-| 🖼️ Image Loading       | [Coil 3](https://coil-kt.github.io/coil/)                       |
-| 🎨 Design               | Material 3 / Material You                                       |
-| 🗣️ Language            | Kotlin                                                          |
-
 ## 🧩 Roadmap
 
 - [ ] 📦 Independent library scanner (no MediaStore dependency)
@@ -102,26 +88,6 @@
 - [ ] 🔁 Last.fm integration (import/export playback data)
 - [ ] 💿 Enhanced artist pages (separate albums and singles visually)
 - [ ] 🌐 Jellyfin & Navidrome integration
-
-## 🔗 Useful Links
-
-- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
-  What the app needs and why
-
-- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
-  How to enable and troubleshoot
-
-- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
-  Compatible audio formats
-
-- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
-  Users and contributors
-
-- 🌐 **[Translations](https://hosted.weblate.org/projects/booming-music/)**  
-  Help us translate Booming Music into your language
-
-- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
-  Common questions
 
 ## 🤝 Contributing
 
@@ -176,16 +142,36 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 
 </div>
 
+## 🔗 Useful Links
+
+- 🔐 **[Requested Permissions](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-permissions)**  
+  What the app needs and why
+
+- 🚘 **[Android Auto Setup](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-android-auto-setup)**  
+  How to enable and troubleshoot
+
+- 🎧 **[Supported Formats](https://github.com/mardous/BoomingMusic/wiki/Advanced-Info#-supported-formats)**  
+  Compatible audio formats
+
+- 💬 **[Community](https://github.com/mardous/BoomingMusic/wiki/Community)**  
+  Users and contributors
+
+- 🌐 **[Translations](https://hosted.weblate.org/projects/booming-music/)**  
+  Help us translate Booming Music into your language
+
+- ❓ **[FAQ](https://github.com/mardous/BoomingMusic/wiki/FAQ)**  
+  Common questions
+
 ## 🙌 Credits
 
-Inspired by [Retro Music Player](https://github.com/RetroMusicPlayer/RetroMusicPlayer).
-Also thanks to:
+Build upon the work of: [Retro Music Player](https://github.com/RetroMusicPlayer/RetroMusicPlayer). Also thanks to:
 
+- [Gramophone](https://github.com/FoedusProgramme/Gramophone)
+- [AutoEq](https://github.com/jaakkopasanen/AutoEq)
 - [AMLV](https://github.com/dokar3/amlv)
 - [LRCLib](https://lrclib.net/)
 - [Better Lyrics](https://better-lyrics.boidu.dev/)
 - [Lyrically API](https://lyrics.paxsenix.org/) (by [Alex](https://github.com/Paxsenix0))
-- [Gramophone](https://github.com/FoedusProgramme/Gramophone)
 
 ## ⚖️ License
 
