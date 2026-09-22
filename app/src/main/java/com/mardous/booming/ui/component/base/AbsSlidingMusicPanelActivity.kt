@@ -70,6 +70,7 @@ import com.mardous.booming.extensions.applyWindowInsets
 import com.mardous.booming.extensions.currentFragment
 import com.mardous.booming.extensions.dip
 import com.mardous.booming.extensions.getBottomInsets
+import com.mardous.booming.extensions.hideSoftKeyboard
 import com.mardous.booming.extensions.hasT
 import com.mardous.booming.extensions.isLandscape
 import com.mardous.booming.extensions.launchAndRepeatWithViewLifecycle
@@ -433,12 +434,31 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
         setLightStatusBar()
         setLightNavigationBar()
         playerFragment?.onHide()
+        releaseExpandedPanelFocus()
     }
 
     protected open fun onPanelExpanded() {
         setMiniPlayerAlphaProgress(1f)
         onPaletteColorChanged()
         playerFragment?.onShow()
+        hideSoftKeyboard()
+        takeFocusToExpandedPanel()
+    }
+
+    private fun takeFocusToExpandedPanel() {
+        val player = binding.playerContainer
+        player.isFocusable = true
+        player.isFocusableInTouchMode = true
+        player.requestFocus()
+    }
+
+    private fun releaseExpandedPanelFocus() {
+        val player = binding.playerContainer
+        if (player.hasFocus()) {
+            currentFocus?.clearFocus()
+        }
+        player.isFocusable = false
+        player.isFocusableInTouchMode = false
     }
 
     protected fun updateTabs() {
@@ -638,7 +658,10 @@ abstract class AbsSlidingMusicPanelActivity : AbsBaseActivity(),
             when (newState) {
                 STATE_EXPANDED -> onPanelExpanded()
                 STATE_COLLAPSED -> onPanelCollapsed()
-                STATE_HIDDEN -> playerViewModel.clearQueue(QueueClearingBehavior.RemoveAllSongs)
+                STATE_HIDDEN -> {
+                    releaseExpandedPanelFocus()
+                    playerViewModel.clearQueue(QueueClearingBehavior.RemoveAllSongs)
+                }
             }
         }
 
