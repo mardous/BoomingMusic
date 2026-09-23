@@ -191,7 +191,7 @@
     <string name="top_tracks_label">熱門曲目</string>
     <string name="history_label">聆聽紀錄</string>
     <string name="not_recently_played">近期未播放</string>
-    <string name="play_info">播放資訊</string>
+    <string name="play_info">播放統計</string>
     <string name="track_play_counts">曲目播放次數</string>
     <string name="song_stat_never_label">從未播放</string>
     <string name="song_stat_one_time_label">於 %s 播放過一次</string>
@@ -270,8 +270,8 @@
     <string name="replay_gain">重放增益</string>
     <string name="comment">備註</string>
     <string name="last_played">上次播放</string>
-    <string name="played">已播放</string>
-    <string name="skipped">已跳過</string>
+    <string name="played">播放次數</string>
+    <string name="skipped">跳過次數</string>
     <string name="track">曲目</string>
     <string name="track_total">曲目總數</string>
     <string name="disc">碟片</string>
@@ -1030,6 +1030,4 @@
     <string name="backup_warning_database_ver">此備份中的部分資料（例如播放清單和歌詞）不相容，可能無法還原。</string>
     <string name="permission_notifications_title">通知（選用）</string>
     <string name="permission_notifications_summary">此權限允許 Booming Music 在通知欄和鎖定螢幕介面上顯示播放控制選項。</string>
-
-
 </resources>
