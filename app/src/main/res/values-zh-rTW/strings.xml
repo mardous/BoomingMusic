@@ -188,7 +188,7 @@
     <string name="playlist_label">播放清單</string>
     <string name="favorites_label">我的最愛</string>
     <string name="last_added_label">最近新增</string>
-    <string name="top_tracks_label">熱門曲目</string>
+    <string name="top_tracks_label">最常播放</string>
     <string name="history_label">聆聽紀錄</string>
     <string name="not_recently_played">近期未播放</string>
     <string name="play_info">播放統計</string>
@@ -462,7 +462,7 @@
     <string name="sleep_timer_stop_after_x_canceled">已取消在「%s」後停止</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">隨機播放</string>
-    <string name="app_shortcut_top_tracks_short">熱門曲目</string>
+    <string name="app_shortcut_top_tracks_short">最常播放</string>
     <string name="app_shortcut_last_added_short">最近新增</string>
     <string name="app_shortcut_favorites_short">我的最愛</string>
     <!-- About page -->
@@ -1003,7 +1003,7 @@
     <string name="action_play_x">播放「%s」</string>
     <string name="home_empty_title">暫無推薦</string>
     <string name="home_empty_subtitle">先聽點音樂吧</string>
-    <string name="home_shuffle_title">隨機播放音樂</string>
+    <string name="home_shuffle_title">隨機播放</string>
     <string name="home_for_you_title">專屬推薦</string>
     <string name="home_for_you_subtitle">一站收錄你的最愛</string>
     <string name="home_for_you_subtitle_2">專屬於你的精選好歌</string>
