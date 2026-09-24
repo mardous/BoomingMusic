@@ -188,7 +188,7 @@
     <string name="playlist_label">播放列表</string>
     <string name="favorites_label">收藏夹</string>
     <string name="last_added_label">最近添加</string>
-    <string name="top_tracks_label">热门曲目</string>
+    <string name="top_tracks_label">最常播放</string>
     <string name="history_label">播放记录</string>
     <string name="not_recently_played">近期未播放</string>
     <string name="play_info">播放统计</string>
@@ -462,7 +462,7 @@
     <string name="sleep_timer_stop_after_x_canceled">已取消在“%s”后停止</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">随机播放</string>
-    <string name="app_shortcut_top_tracks_short">热门曲目</string>
+    <string name="app_shortcut_top_tracks_short">最常播放</string>
     <string name="app_shortcut_last_added_short">最近添加</string>
     <string name="app_shortcut_favorites_short">收藏夹</string>
     <!-- About page -->
@@ -1003,7 +1003,7 @@
     <string name="action_play_x">播放“%s”</string>
     <string name="home_empty_title">暂无推荐</string>
     <string name="home_empty_subtitle">先听点音乐吧</string>
-    <string name="home_shuffle_title">随机播放音乐</string>
+    <string name="home_shuffle_title">随机播放</string>
     <string name="home_for_you_title">专属推荐</string>
     <string name="home_for_you_subtitle">汇聚你的最爱</string>
     <string name="home_for_you_subtitle_2">精选宝藏单曲</string>
