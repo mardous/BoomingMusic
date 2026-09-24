@@ -101,7 +101,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mardous.booming.R
 import com.mardous.booming.data.model.Song
-import com.mardous.booming.data.model.lyrics.LyricsMode
 import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.network.NetworkFeature
@@ -109,12 +108,10 @@ import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.media.displayArtistName
 import com.mardous.booming.extensions.media.isArtistNameUnknown
-import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.showToast
 import com.mardous.booming.extensions.webSearch
 import com.mardous.booming.ui.component.compose.ButtonGroup
 import com.mardous.booming.ui.component.compose.DialogListItemWithCheckBox
-import com.mardous.booming.ui.component.compose.DialogListItemWithRadio
 import com.mardous.booming.ui.component.compose.MediaImage
 import com.mardous.booming.ui.component.compose.ObserveAsEvent
 import com.mardous.booming.ui.component.compose.menu.MenuItem
@@ -215,10 +212,8 @@ fun LyricsEditorScreen(
     }
 
     var showNoConnectionDialog by remember { mutableStateOf(false) }
-    var showManualSearchDialog by remember { mutableStateOf(false) }
     var showLyricsDownloadDialog by remember { mutableStateOf(false) }
     var showLyricsSearchDialog by remember { mutableStateOf(false) }
-    var downloadedLyricsForSelector by rememberSaveable { mutableStateOf<RawLyrics.Remote?>(null) }
 
     ObserveAsEvent(viewModel.saveEvent) { saveResult ->
         val toastMessage = when (saveResult) {
@@ -227,18 +222,6 @@ fun LyricsEditorScreen(
             LyricsEditorResult.Success -> context.getString(R.string.changes_saved_successfully)
         }
         context.showToast(toastMessage)
-    }
-
-    ObserveAsEvent(viewModel.downloadEvent) { downloadedLyrics ->
-        if (downloadedLyrics.hasBoth) {
-            downloadedLyricsForSelector = downloadedLyrics
-        } else if (downloadedLyrics.hasPlain) {
-            textFieldState.setContent(downloadedLyrics.plain?.lyrics)
-        } else if (downloadedLyrics.hasSynced) {
-            textFieldState.setContent(downloadedLyrics.synced?.lyrics)
-        } else {
-            showManualSearchDialog = true
-        }
     }
 
     ObserveAsEvent(viewModel.permissionRequestEvent) { uris ->
@@ -272,47 +255,6 @@ fun LyricsEditorScreen(
         }
     }
 
-    if (downloadedLyricsForSelector != null) {
-        LyricsSelectorDialog(
-            onDismissRequest = {
-                downloadedLyricsForSelector = null
-            },
-            onModeSelected = {
-                when (it) {
-                    LyricsMode.Plain -> {
-                        textFieldState.setContent(downloadedLyricsForSelector?.plain?.lyrics)
-                    }
-                    LyricsMode.Synced -> {
-                        textFieldState.setContent(downloadedLyricsForSelector?.synced?.lyrics)
-                    }
-                }
-                downloadedLyricsForSelector = null
-            }
-        )
-    }
-
-    if (showManualSearchDialog) {
-        AlertDialog(
-            onDismissRequest = { showManualSearchDialog = false },
-            text = { Text(stringResource(R.string.cannot_download_lyrics)) },
-            confirmButton = {
-                Button(
-                    onClick = {
-                        context.openUrl(viewModel.getSearchUrl(song))
-                        showManualSearchDialog = false
-                    }
-                ) {
-                    Text(stringResource(R.string.yes))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showManualSearchDialog = false }) {
-                    Text(stringResource(R.string.close_action))
-                }
-            }
-        )
-    }
-
     if (showNoConnectionDialog) {
         AlertDialog(
             onDismissRequest = { showNoConnectionDialog = false },
@@ -333,6 +275,7 @@ fun LyricsEditorScreen(
             onSearchClick = { title, artist, providers ->
                 viewModel.downloadLyrics(song, title, artist, providers)
                 showLyricsDownloadDialog = false
+                onBackClick()
             },
             onDismissRequest = { showLyricsDownloadDialog = false }
         )
@@ -558,56 +501,6 @@ fun LyricsEditorScreen(
             }
         }
     }
-}
-
-@Composable
-fun LyricsSelectorDialog(
-    onDismissRequest: () -> Unit,
-    onModeSelected: (LyricsMode) -> Unit
-) {
-    var selectedMode by remember { mutableStateOf(LyricsMode.Plain) }
-
-    AlertDialog(
-        onDismissRequest = onDismissRequest,
-        title = { Text(stringResource(R.string.choose_lyrics)) },
-        text = {
-            Column(Modifier.fillMaxWidth()) {
-                DialogListItemWithRadio(
-                    title = stringResource(R.string.plain_lyrics),
-                    onClick = {
-                        selectedMode = LyricsMode.Plain
-                    },
-                    isSelected = selectedMode == LyricsMode.Plain,
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                DialogListItemWithRadio(
-                    title = stringResource(R.string.synced_lyrics),
-                    onClick = {
-                        selectedMode = LyricsMode.Synced
-                    },
-                    isSelected = selectedMode == LyricsMode.Synced,
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
-        },
-        confirmButton = {
-            Button(
-                onClick = {
-                    onModeSelected(selectedMode)
-                }
-            ) {
-                Text(stringResource(android.R.string.ok))
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismissRequest) {
-                Text(stringResource(android.R.string.cancel))
-            }
-        }
-    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

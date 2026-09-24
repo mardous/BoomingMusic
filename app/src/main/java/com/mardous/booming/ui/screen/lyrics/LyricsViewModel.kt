@@ -24,6 +24,8 @@ import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsSource
 import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.remote.lyrics.LyricsProviderParams
+import com.mardous.booming.data.remote.lyrics.LyricsProviderSearchResult
+import com.mardous.booming.data.remote.lyrics.LyricsProviderSearchStatus
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.repository.LyricsRepository
 import com.mardous.booming.extensions.files.belongsTo
@@ -34,6 +36,7 @@ import com.mardous.booming.util.FileUtil
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -65,8 +68,8 @@ class LyricsViewModel(
     private val _saveEvent = Channel<LyricsEditorResult>(Channel.BUFFERED)
     val saveEvent = _saveEvent.receiveAsFlow()
 
-    private val _downloadEvent = Channel<RawLyrics.Remote>(Channel.BUFFERED)
-    val downloadEvent = _downloadEvent.receiveAsFlow()
+    private val _lyricsSearchUiState = MutableStateFlow(LyricsSearchUiState.Idle)
+    val lyricsSearchUiState = _lyricsSearchUiState.asStateFlow()
 
     private val _permissionRequestEvent = Channel<List<Uri>>(Channel.BUFFERED)
     val permissionRequestEvent = _permissionRequestEvent.receiveAsFlow()
@@ -78,6 +81,9 @@ class LyricsViewModel(
     val fullLyricsViewSettings = _fullLyricsViewSettings.asStateFlow()
 
     private var lyricsJob: Job? = null
+    private var lyricsSearchJob: Job? = null
+    private var searchSheetExitJob: Job? = null
+    private var sourceChipAutoHideJob: Job? = null
 
     init {
         instrumentalDetector = createInstrumentalDetector()
@@ -86,6 +92,9 @@ class LyricsViewModel(
 
     override fun onCleared() {
         lyricsJob?.cancel()
+        lyricsSearchJob?.cancel()
+        searchSheetExitJob?.cancel()
+        sourceChipAutoHideJob?.cancel()
         preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
@@ -141,27 +150,275 @@ class LyricsViewModel(
     }
 
     fun downloadLyrics(song: Song, title: String, artist: String, providers: List<LyricsProvider>) =
-        viewModelScope.launch(IO) {
-            val uiState = _lyricsEditorUiState.updateAndGet {
-                if (it is LyricsEditorUiState.Visible) {
-                    it.copy(isLoading = true)
-                } else it
-            }
-            if (uiState is LyricsEditorUiState.Visible) {
-                val providerParams = LyricsProviderParams(
-                    providers = providers,
-                    ignoreWifiSetting = true,
-                    ignoreProviderSetting = true
-                )
-                val onlineLyrics = repository.downloadLyrics(song, title, artist, providerParams)
-                if (onlineLyrics != null) {
-                    _downloadEvent.send(onlineLyrics)
-                } else {
-                    _downloadEvent.send(RawLyrics.Remote())
+        startLyricsSearch(song, title, artist, providers)
+
+    private fun startLyricsSearch(
+        song: Song,
+        title: String,
+        artist: String,
+        providers: List<LyricsProvider>
+    ): Job {
+        lyricsSearchJob?.cancel()
+        searchSheetExitJob?.cancel()
+        sourceChipAutoHideJob?.cancel()
+        val searchJob = viewModelScope.launch(IO) {
+            _lyricsSearchUiState.value = LyricsSearchUiState(
+                songId = song.id,
+                isRunning = true,
+                providerResults = providers.map { provider ->
+                    LyricsProviderSearchResult(
+                        provider = provider,
+                        status = LyricsProviderSearchStatus.Waiting
+                    )
                 }
-                _lyricsEditorUiState.value = uiState.copy(isLoading = false)
+            )
+
+            val visibilityJob = launch {
+                delay(SEARCH_UI_DELAY_MILLIS)
+                _lyricsSearchUiState.update { state ->
+                    if (state.songId != song.id || !state.isRunning ||
+                        state.sheetStage != LyricsSearchSheetStage.Hidden) {
+                        state
+                    } else {
+                        state.copy(
+                            sheetStage = if (state.hasUsableResult) {
+                                LyricsSearchSheetStage.Docked
+                            } else {
+                                LyricsSearchSheetStage.Providers
+                            }
+                        )
+                    }
+                }
+            }
+
+            val providerParams = LyricsProviderParams(
+                providers = providers,
+                ignoreWifiSetting = true,
+                ignoreProviderSetting = true
+            )
+            val searchResult = repository.searchLyrics(
+                song = song,
+                searchTitle = title,
+                searchArtist = artist,
+                providerParams = providerParams
+            ) { providerResult ->
+                var resultToPreview: LyricsProviderSearchResult? = null
+                _lyricsSearchUiState.update { state ->
+                    if (state.songId != song.id) return@update state
+
+                    val previousResult = state.activeResult
+                    val updatedState = state.copy(
+                        providerResults = state.providerResults.map { current ->
+                            if (current.provider == providerResult.provider) providerResult else current
+                        }
+                    )
+                    val nextResult = updatedState.activeResult
+                    if (state.selectedProvider == null &&
+                        nextResult?.provider != previousResult?.provider) {
+                        resultToPreview = nextResult
+                    }
+
+                    if (!updatedState.isUserInteracting &&
+                        updatedState.sheetStage == LyricsSearchSheetStage.Providers &&
+                        updatedState.hasUsableResult) {
+                        updatedState.copy(sheetStage = LyricsSearchSheetStage.Docked)
+                    } else {
+                        updatedState
+                    }
+                }
+                resultToPreview?.lyrics?.let { lyrics ->
+                    showRemoteLyrics(song, lyrics)
+                }
+            }
+            if (searchResult == null) {
+                _lyricsSearchUiState.update { state ->
+                    if (state.songId != song.id) state else state.copy(
+                        providerResults = state.providerResults.map { result ->
+                            if (result.isTerminal) result else result.copy(
+                                status = LyricsProviderSearchStatus.Failed
+                            )
+                        }
+                    )
+                }
+            } else {
+                _lyricsSearchUiState.update { state ->
+                    if (state.songId != song.id) state else state.copy(
+                        providerResults = searchResult.providerResults
+                    )
+                }
+            }
+
+            visibilityJob.cancel()
+            val completedState = _lyricsSearchUiState.value
+            val activeResult = completedState.activeResult
+            if (activeResult?.lyrics != null) {
+                repository.storeDownloadedLyrics(song, activeResult.lyrics)
+                showRemoteLyrics(song, activeResult.lyrics)
+            }
+
+            val shouldAnimateSheetOut = completedState.hasUsableResult &&
+                    !completedState.isUserInteracting &&
+                    completedState.sheetStage != LyricsSearchSheetStage.Hidden &&
+                    completedState.sheetStage != LyricsSearchSheetStage.SourceChip
+
+            _lyricsSearchUiState.update { state ->
+                if (state.songId != song.id) return@update state
+                state.copy(
+                    isRunning = false,
+                    sheetStage = when {
+                        !state.hasUsableResult -> LyricsSearchSheetStage.Providers
+                        state.isUserInteracting || shouldAnimateSheetOut -> state.sheetStage
+                        else ->
+                            LyricsSearchSheetStage.SourceChip
+                    }
+                )
+            }
+            if (shouldAnimateSheetOut) {
+                animateSearchSheetOut(song.id)
+            } else if (_lyricsSearchUiState.value.sheetStage == LyricsSearchSheetStage.SourceChip) {
+                scheduleSourceChipAutoHide(song.id)
             }
         }
+        lyricsSearchJob = searchJob
+        return searchJob
+    }
+
+    fun showLyricsSearchDetails(expanded: Boolean = false) {
+        sourceChipAutoHideJob?.cancel()
+        _lyricsSearchUiState.update { state ->
+            if (state == LyricsSearchUiState.Idle) state else state.copy(
+                sheetStage = if (expanded && state.hasUsableResult) {
+                    LyricsSearchSheetStage.Results
+                } else {
+                    LyricsSearchSheetStage.Providers
+                },
+                isUserInteracting = true
+            )
+        }
+    }
+
+    fun collapseLyricsSearch() {
+        val currentState = _lyricsSearchUiState.value
+        val shouldAnimateSheetOut = !currentState.isRunning &&
+                currentState.hasUsableResult &&
+                currentState.sheetStage != LyricsSearchSheetStage.Hidden &&
+                currentState.sheetStage != LyricsSearchSheetStage.SourceChip
+        _lyricsSearchUiState.update { state ->
+            state.copy(
+                sheetStage = when {
+                    state.isRunning && state.hasUsableResult -> LyricsSearchSheetStage.Docked
+                    state.isRunning -> LyricsSearchSheetStage.Providers
+                    shouldAnimateSheetOut -> state.sheetStage
+                    state.hasUsableResult -> LyricsSearchSheetStage.SourceChip
+                    else -> LyricsSearchSheetStage.Hidden
+                },
+                isUserInteracting = false
+            )
+        }
+        val state = _lyricsSearchUiState.value
+        if (shouldAnimateSheetOut) {
+            animateSearchSheetOut(state.songId)
+        } else if (state.sheetStage == LyricsSearchSheetStage.SourceChip) {
+            scheduleSourceChipAutoHide(state.songId)
+        }
+    }
+
+    fun useLyricsResult(song: Song, provider: LyricsProvider) = viewModelScope.launch(IO) {
+        val result = _lyricsSearchUiState.value.providerResults.firstOrNull {
+            it.provider == provider && it.isUsable
+        } ?: return@launch
+        val lyrics = result.lyrics ?: return@launch
+
+        repository.storeDownloadedLyrics(song, lyrics)
+        showRemoteLyrics(song, lyrics)
+        val currentState = _lyricsSearchUiState.value
+        val shouldAnimateSheetOut = !currentState.isRunning &&
+                currentState.sheetStage != LyricsSearchSheetStage.Hidden &&
+                currentState.sheetStage != LyricsSearchSheetStage.SourceChip
+        _lyricsSearchUiState.update { state ->
+            state.copy(
+                selectedProvider = provider,
+                sheetStage = when {
+                    state.isRunning -> LyricsSearchSheetStage.Docked
+                    shouldAnimateSheetOut -> state.sheetStage
+                    else -> LyricsSearchSheetStage.SourceChip
+                },
+                isUserInteracting = false
+            )
+        }
+        if (shouldAnimateSheetOut) {
+            animateSearchSheetOut(song.id)
+        } else if (_lyricsSearchUiState.value.sheetStage == LyricsSearchSheetStage.SourceChip) {
+            scheduleSourceChipAutoHide(song.id)
+        }
+    }
+
+    fun dismissLyricsSearch() {
+        sourceChipAutoHideJob?.cancel()
+        _lyricsSearchUiState.update { state ->
+            if (state.isRunning) state else LyricsSearchUiState.Idle
+        }
+    }
+
+    private fun scheduleSourceChipAutoHide(songId: Long) {
+        sourceChipAutoHideJob?.cancel()
+        sourceChipAutoHideJob = viewModelScope.launch {
+            delay(SOURCE_CHIP_VISIBLE_MILLIS)
+            _lyricsSearchUiState.update { state ->
+                if (state.songId == songId &&
+                    !state.isRunning &&
+                    !state.isUserInteracting &&
+                    state.sheetStage == LyricsSearchSheetStage.SourceChip) {
+                    state.copy(sheetStage = LyricsSearchSheetStage.Hidden)
+                } else {
+                    state
+                }
+            }
+        }
+    }
+
+    private fun animateSearchSheetOut(songId: Long) {
+        searchSheetExitJob?.cancel()
+        sourceChipAutoHideJob?.cancel()
+        searchSheetExitJob = viewModelScope.launch {
+            _lyricsSearchUiState.update { state ->
+                if (state.songId == songId && !state.isRunning && state.hasUsableResult) {
+                    state.copy(sheetStage = LyricsSearchSheetStage.Hidden)
+                } else {
+                    state
+                }
+            }
+            delay(SEARCH_SHEET_EXIT_MILLIS)
+            _lyricsSearchUiState.update { state ->
+                if (state.songId == songId && !state.isRunning &&
+                    !state.isUserInteracting && state.hasUsableResult &&
+                    state.sheetStage == LyricsSearchSheetStage.Hidden) {
+                    state.copy(sheetStage = LyricsSearchSheetStage.SourceChip)
+                } else {
+                    state
+                }
+            }
+            if (_lyricsSearchUiState.value.sheetStage == LyricsSearchSheetStage.SourceChip) {
+                scheduleSourceChipAutoHide(songId)
+            }
+        }
+    }
+
+    private suspend fun showRemoteLyrics(song: Song, lyrics: RawLyrics.Remote) {
+        if (_lyricsSearchUiState.value.songId != song.id) return
+        val storedLyrics = lyrics.prepareToStore() ?: return
+        if (storedLyrics.instrumental) {
+            _lyricsUiState.value = LyricsUiState.Instrumental(song.id)
+            return
+        }
+
+        val syncedLyrics = repository.parseRawLyrics(song, storedLyrics)
+        _lyricsUiState.value = if (syncedLyrics?.hasContent == true) {
+            LyricsUiState.Synced(song.id, syncedLyrics)
+        } else {
+            LyricsUiState.Plain(song.id, storedLyrics.lyrics.orEmpty())
+        }
+    }
 
     fun preparePermissionRequest(song: Song) = viewModelScope.launch(IO) {
         _permissionRequestEvent.send(repository.writableUris(song))
@@ -229,6 +486,12 @@ class LyricsViewModel(
     }
 
     fun updateSong(song: Song) {
+        if (_lyricsSearchUiState.value.songId != -1L &&
+            _lyricsSearchUiState.value.songId != song.id) {
+            lyricsSearchJob?.cancel()
+            sourceChipAutoHideJob?.cancel()
+            _lyricsSearchUiState.value = LyricsSearchUiState.Idle
+        }
         lyricsJob?.cancel()
         lyricsJob = viewModelScope.launch {
             if (song == Song.emptySong) {
@@ -444,6 +707,9 @@ class LyricsViewModel(
 
     companion object {
         private const val INSTRUMENTAL_IDENTIFIER_MAX_LENGTH = 50
+        private const val SEARCH_UI_DELAY_MILLIS = 600L
+        private const val SEARCH_SHEET_EXIT_MILLIS = 325L
+        private const val SOURCE_CHIP_VISIBLE_MILLIS = 4_000L
         private const val INSTRUMENTAL_TRACK_IDENTIFIERS = "instrumental_track_identifiers"
         private const val MARK_INSTRUMENTAL_BY_TITLE = "mark_instrumental_tracks_by_title"
     }

@@ -67,6 +67,7 @@ import com.mardous.booming.core.model.player.PlayerColorScheme
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.extensions.isPowerSaveMode
+import com.mardous.booming.extensions.openUrl
 import com.mardous.booming.extensions.resolveColor
 import com.mardous.booming.ui.component.compose.AnimatedEqBars
 import com.mardous.booming.ui.component.compose.color.extractGradientColors
@@ -136,6 +137,7 @@ fun LyricsScreen(
 
     val lyricsViewSettings by lyricsViewModel.fullLyricsViewSettings.collectAsState()
     val uiState by lyricsViewModel.lyricsUiState.collectAsState()
+    val lyricsSearchState by lyricsViewModel.lyricsSearchUiState.collectAsState()
 
     val song by playerViewModel.currentSongFlow.collectAsStateWithLifecycle()
     val isPlaying by playerViewModel.isPlayingFlow.collectAsStateWithLifecycle()
@@ -170,15 +172,19 @@ fun LyricsScreen(
             .navigationBars
             .add(WindowInsets(bottom = miniPlayerMargin.totalMargin)),
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = { onEditClick(song) },
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.onSurface
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_edit_note_24dp),
-                    contentDescription = stringResource(R.string.action_lyrics_editor)
-                )
+            if (lyricsSearchState.songId != song.id ||
+                lyricsSearchState.sheetStage == LyricsSearchSheetStage.Hidden ||
+                lyricsSearchState.sheetStage == LyricsSearchSheetStage.SourceChip) {
+                FloatingActionButton(
+                    onClick = { onEditClick(song) },
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    contentColor = MaterialTheme.colorScheme.onSurface
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_edit_note_24dp),
+                        contentDescription = stringResource(R.string.action_lyrics_editor)
+                    )
+                }
             }
         },
         modifier = Modifier.keepScreenOn()
@@ -256,6 +262,25 @@ fun LyricsScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
             )
+
+            LyricsSearchOverlay(
+                song = song,
+                state = lyricsSearchState,
+                onShowProviders = { lyricsViewModel.showLyricsSearchDetails() },
+                onShowResults = { lyricsViewModel.showLyricsSearchDetails(expanded = true) },
+                onCollapse = lyricsViewModel::collapseLyricsSearch,
+                onUseResult = { provider ->
+                    lyricsViewModel.useLyricsResult(song, provider)
+                },
+                onManualSearch = {
+                    context.openUrl(lyricsViewModel.getSearchUrl(song))
+                    lyricsViewModel.dismissLyricsSearch()
+                },
+                onDismiss = lyricsViewModel::dismissLyricsSearch,
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(innerPadding)
+            )
         }
     }
 }
@@ -274,6 +299,7 @@ fun CoverLyricsScreen(
 
     val lyricsViewSettings by lyricsViewModel.playerLyricsViewSettings.collectAsState()
     val uiState by lyricsViewModel.lyricsUiState.collectAsState()
+    val lyricsSearchState by lyricsViewModel.lyricsSearchUiState.collectAsState()
 
     val playerColorScheme by playerViewModel.colorSchemeFlow.collectAsState(
         initial = PlayerColorScheme.themeColorScheme(context)
@@ -300,22 +326,44 @@ fun CoverLyricsScreen(
                 modifier = Modifier.fillMaxSize(),
             )
 
-            FilledIconButton(
-                modifier = Modifier
-                    .wrapContentSize()
-                    .align(Alignment.BottomEnd)
-                    .padding(16.dp),
-                colors = IconButtonDefaults.filledIconButtonColors(
-                    containerColor = MaterialTheme.colorScheme.onSurface,
-                    contentColor = MaterialTheme.colorScheme.surface
-                ),
-                onClick = onExpandClick
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_open_in_full_24dp),
-                    contentDescription = stringResource(R.string.action_lyrics_editor)
-                )
+            if (lyricsSearchState.songId != uiState.id ||
+                lyricsSearchState.sheetStage == LyricsSearchSheetStage.Hidden ||
+                lyricsSearchState.sheetStage == LyricsSearchSheetStage.SourceChip) {
+                FilledIconButton(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp),
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.onSurface,
+                        contentColor = MaterialTheme.colorScheme.surface
+                    ),
+                    onClick = onExpandClick
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_open_in_full_24dp),
+                        contentDescription = stringResource(R.string.action_expand_lyrics)
+                    )
+                }
             }
+
+            val song by playerViewModel.currentSongFlow.collectAsStateWithLifecycle()
+            LyricsSearchOverlay(
+                song = song,
+                state = lyricsSearchState,
+                onShowProviders = { lyricsViewModel.showLyricsSearchDetails() },
+                onShowResults = { lyricsViewModel.showLyricsSearchDetails(expanded = true) },
+                onCollapse = lyricsViewModel::collapseLyricsSearch,
+                onUseResult = { provider ->
+                    lyricsViewModel.useLyricsResult(song, provider)
+                },
+                onManualSearch = {
+                    context.openUrl(lyricsViewModel.getSearchUrl(song))
+                    lyricsViewModel.dismissLyricsSearch()
+                },
+                onDismiss = lyricsViewModel::dismissLyricsSearch,
+                modifier = Modifier.align(Alignment.BottomStart)
+            )
         }
     }
 }

@@ -19,9 +19,12 @@ import com.mardous.booming.data.model.lyrics.RawLyrics
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import com.mardous.booming.data.remote.lyrics.LyricsDownloadService
 import com.mardous.booming.data.remote.lyrics.LyricsProviderParams
+import com.mardous.booming.data.remote.lyrics.LyricsProviderSearchResult
+import com.mardous.booming.data.remote.lyrics.LyricsSearchResult
 import com.mardous.booming.extensions.hasR
 import com.mardous.booming.extensions.media.isArtistNameUnknown
 import com.mardous.booming.util.Preferences.requireString
+import kotlinx.coroutines.CancellationException
 import org.mozilla.universalchardet.UniversalDetector
 import java.io.BufferedInputStream
 import java.io.File
@@ -36,6 +39,14 @@ interface LyricsRepository {
     suspend fun embeddedLyrics(song: Song): RawLyrics.Embedded?
     suspend fun storedLyrics(song: Song, allowDownload: Boolean): RawLyrics.Stored?
     suspend fun downloadLyrics(song: Song, searchTitle: String, searchArtist: String, providerParams: LyricsProviderParams): RawLyrics.Remote?
+    suspend fun searchLyrics(
+        song: Song,
+        searchTitle: String,
+        searchArtist: String,
+        providerParams: LyricsProviderParams,
+        onProviderResult: suspend (LyricsProviderSearchResult) -> Unit
+    ): LyricsSearchResult?
+    suspend fun storeDownloadedLyrics(song: Song, lyrics: RawLyrics.Remote): Boolean
 
     suspend fun saveLyrics(
         song: Song,
@@ -198,6 +209,51 @@ class RealLyricsRepository(
             lyricsDownloadService.remoteLyrics(song, searchTitle, searchArtist, providerParams)
         } catch (_: Exception) {
             null
+        }
+    }
+
+    override suspend fun searchLyrics(
+        song: Song,
+        searchTitle: String,
+        searchArtist: String,
+        providerParams: LyricsProviderParams,
+        onProviderResult: suspend (LyricsProviderSearchResult) -> Unit
+    ): LyricsSearchResult? {
+        if (song.id == Song.emptySong.id || searchArtist.isArtistNameUnknown()) {
+            return null
+        }
+        return try {
+            lyricsDownloadService.searchLyrics(
+                song = song,
+                title = searchTitle,
+                artist = searchArtist,
+                providerParams = providerParams,
+                onProviderResult = onProviderResult
+            )
+        } catch (error: CancellationException) {
+            throw error
+        } catch (error: Exception) {
+            Log.e(TAG, "Couldn't search lyrics for song ${song.data}", error)
+            null
+        }
+    }
+
+    override suspend fun storeDownloadedLyrics(song: Song, lyrics: RawLyrics.Remote): Boolean {
+        val storedLyrics = lyrics.prepareToStore() ?: return false
+        return try {
+            lyricsDao.insertLyrics(
+                LyricsEntity(
+                    id = song.id,
+                    lyrics = storedLyrics.lyrics,
+                    provider = storedLyrics.provider,
+                    instrumental = storedLyrics.instrumental
+                )
+            )
+            cacheLyrics(song.id, storedLyrics)
+            true
+        } catch (error: Exception) {
+            Log.e(TAG, "Couldn't store downloaded lyrics for song ${song.data}", error)
+            false
         }
     }
 

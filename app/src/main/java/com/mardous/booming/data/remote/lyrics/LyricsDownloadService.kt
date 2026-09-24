@@ -28,7 +28,10 @@ import com.mardous.booming.data.remote.lyrics.api.lyrically.LyricallyApi
 import com.mardous.booming.extensions.media.albumArtistName
 import com.mardous.booming.extensions.media.extractMainArtistName
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.HttpRequestTimeoutException
 import java.io.IOException
+import java.net.SocketTimeoutException
+import kotlinx.coroutines.CancellationException
 
 class LyricsProviderParams(
     val providers: List<LyricsProvider> = LyricsProvider.AvailableProviders,
@@ -50,36 +53,106 @@ class LyricsDownloadService(client: HttpClient) {
         title: String = song.title,
         artist: String = song.albumArtistName(),
         providerParams: LyricsProviderParams = LyricsProviderParams()
-    ): RawLyrics.Remote {
+    ): RawLyrics.Remote = searchLyrics(
+        song = song,
+        title = title,
+        artist = artist,
+        providerParams = providerParams,
+        continueAfterComplete = false
+    ).lyrics
+
+    suspend fun searchLyrics(
+        song: Song,
+        title: String = song.title,
+        artist: String = song.albumArtistName(),
+        providerParams: LyricsProviderParams = LyricsProviderParams(),
+        continueAfterComplete: Boolean = true,
+        onProviderResult: suspend (LyricsProviderSearchResult) -> Unit = {}
+    ): LyricsSearchResult {
         check(providerParams.providers.isNotEmpty()) { "No providers configured" }
 
         var result = RawLyrics.Remote()
-        if (song == Song.emptySong || !NetworkFeature.isOnline(ignoreWifiSetting = providerParams.ignoreWifiSetting))
-            return result
+        val providers = providerParams.providers.filter { provider ->
+            provider.isAvailableForCurrentPolicy &&
+                (provider.isEnabled || providerParams.ignoreProviderSetting)
+        }
+        val providerResults = providers.associateWith { provider ->
+            LyricsProviderSearchResult(provider, LyricsProviderSearchStatus.Waiting)
+        }.toMutableMap()
+
+        if (song == Song.emptySong ||
+            !NetworkFeature.isOnline(ignoreWifiSetting = providerParams.ignoreWifiSetting)) {
+            providers.forEach { provider ->
+                val failedResult = LyricsProviderSearchResult(
+                    provider = provider,
+                    status = LyricsProviderSearchStatus.Failed
+                )
+                providerResults[provider] = failedResult
+                onProviderResult(failedResult)
+            }
+            return LyricsSearchResult(result, providerResults.values.toList())
+        }
 
         try {
             val cleanedTitle = cleanTitle(title)
             val cleanedArtist = artist.extractMainArtistName()
-            for (provider in providerParams.providers) {
-                if (!provider.isAvailableForCurrentPolicy ||
-                    (!provider.isEnabled && !providerParams.ignoreProviderSetting)) continue
-
+            for (provider in providers) {
                 val api = apiByProvider.getValue(provider)
-                val apiResult = runCatching { api.downloadLyrics(song, cleanedTitle, cleanedArtist) }
-                if (apiResult.isFailure) {
-                    Log.e(TAG, "Error during lyrics request", apiResult.exceptionOrNull())
+                val searchingResult = LyricsProviderSearchResult(
+                    provider = provider,
+                    status = LyricsProviderSearchStatus.Searching
+                )
+                providerResults[provider] = searchingResult
+                onProviderResult(searchingResult)
+
+                val providerResult = try {
+                    val response = api.downloadLyrics(song, cleanedTitle, cleanedArtist)
+                    if (response?.let { it.hasPlain || it.hasSynced } == true) {
+                        result = result.accept(response)
+                        LyricsProviderSearchResult(
+                            provider = provider,
+                            status = LyricsProviderSearchStatus.Found,
+                            lyrics = response
+                        )
+                    } else {
+                        LyricsProviderSearchResult(
+                            provider = provider,
+                            status = LyricsProviderSearchStatus.NoMatch
+                        )
+                    }
+                } catch (error: CancellationException) {
+                    throw error
+                } catch (error: HttpRequestTimeoutException) {
+                    Log.w(TAG, "Lyrics request timed out for ${provider.displayName}", error)
+                    LyricsProviderSearchResult(
+                        provider = provider,
+                        status = LyricsProviderSearchStatus.TimedOut
+                    )
+                } catch (error: SocketTimeoutException) {
+                    Log.w(TAG, "Lyrics request timed out for ${provider.displayName}", error)
+                    LyricsProviderSearchResult(
+                        provider = provider,
+                        status = LyricsProviderSearchStatus.TimedOut
+                    )
+                } catch (error: Exception) {
+                    Log.e(TAG, "Error during lyrics request for ${provider.displayName}", error)
+                    LyricsProviderSearchResult(
+                        provider = provider,
+                        status = LyricsProviderSearchStatus.Failed
+                    )
                 }
 
-                val response = apiResult.getOrNull() ?: continue
-
-                result = result.accept(response)
-                if (result.hasBoth) break
+                providerResults[provider] = providerResult
+                onProviderResult(providerResult)
+                if (!continueAfterComplete && result.hasBoth) break
             }
+        } catch (error: CancellationException) {
+            throw error
         } catch (e: Exception) {
             Log.e(TAG, "Lyrics download failed with error:", e)
         }
 
-        return result
+        return LyricsSearchResult(result, providerResults.values.toList())
     }
 
     /**
