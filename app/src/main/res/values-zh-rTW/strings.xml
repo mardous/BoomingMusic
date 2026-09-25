@@ -530,7 +530,7 @@
     <string name="material_you_title">Material You 動態色彩</string>
     <string name="use_custom_font_title">使用自訂字型</string>
     <string name="appbar_mode_title">頂欄樣式</string>
-    <string name="library_categories_title">音樂庫分類</string>
+    <string name="library_categories_title">底部導覽列分頁</string>
     <string name="library_categories_summary">設定音樂庫分類的顯示與順序。</string>
     <string name="remember_last_page_title">記住上次開啟的頁面</string>
     <string name="remember_last_page_summary">啟動時前往最後開啟的畫面。</string>
@@ -659,7 +659,7 @@
     <string name="on_song_click_play_whole_list_title">播放整份清單</string>
     <string name="on_song_click_play_whole_list_summary">目前佇列會被清單、專輯或資料夾中的所有歌曲取代。</string>
     <string name="on_song_click_queue_next_title">新增到下一曲</string>
-    <string name="on_song_click_queue_next_summary">選取的歌曲會加入佇列中的下一個位置。</string>
+    <string name="on_song_click_queue_next_summary">選取的歌曲會被插入到播放佇列中正在播放的歌曲之後。</string>
     <string name="on_song_click_enqueue_at_end_title">加入佇列尾端</string>
     <string name="on_song_click_enqueue_at_end_summary">選取的歌曲會加入目前佇列尾端。</string>
     <string name="on_clear_queue_title">清除佇列時</string>
