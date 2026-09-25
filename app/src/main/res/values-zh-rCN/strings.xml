@@ -530,7 +530,7 @@
     <string name="material_you_title">Material You 动态色彩</string>
     <string name="use_custom_font_title">使用自定义字体</string>
     <string name="appbar_mode_title">顶栏样式</string>
-    <string name="library_categories_title">曲库分类</string>
+    <string name="library_categories_title">底部导航栏选项卡</string>
     <string name="library_categories_summary">配置曲库分类的可见性和顺序。</string>
     <string name="remember_last_page_title">记住上次打开的页面</string>
     <string name="remember_last_page_summary">启动时转至最后打开的页面。</string>
@@ -657,9 +657,9 @@
     <string name="on_song_click_play_only_this_song_title">仅播放这首歌</string>
     <string name="on_song_click_play_only_this_song_summary">播放队列将被清空，替换为选择的歌曲。</string>
     <string name="on_song_click_play_whole_list_title">播放整个列表</string>
-    <string name="on_song_click_play_whole_list_summary">当前播放队列将替换为播放选择的播放列表/专辑/文件夹中的所有歌曲。</string>
+    <string name="on_song_click_play_whole_list_summary">当前播放队列将被替换为选择的歌曲所在的播放列表/专辑/文件夹中的所有歌曲。</string>
     <string name="on_song_click_queue_next_title">下一首播放</string>
-    <string name="on_song_click_queue_next_summary">选择的歌曲将被添加到播放队列的下一位。</string>
+    <string name="on_song_click_queue_next_summary">选择的歌曲将被插入到播放队列中正在播放的歌曲之后。</string>
     <string name="on_song_click_enqueue_at_end_title">在末尾加入队列</string>
     <string name="on_song_click_enqueue_at_end_summary">选择的歌曲将被添加到播放队列末尾。</string>
     <string name="on_clear_queue_title">当清空队列时</string>
