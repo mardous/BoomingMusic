@@ -188,10 +188,10 @@
     <string name="playlist_label">播放清單</string>
     <string name="favorites_label">我的最愛</string>
     <string name="last_added_label">最近新增</string>
-    <string name="top_tracks_label">熱門曲目</string>
+    <string name="top_tracks_label">最常播放</string>
     <string name="history_label">聆聽紀錄</string>
     <string name="not_recently_played">近期未播放</string>
-    <string name="play_info">播放資訊</string>
+    <string name="play_info">播放統計</string>
     <string name="track_play_counts">曲目播放次數</string>
     <string name="song_stat_never_label">從未播放</string>
     <string name="song_stat_one_time_label">於 %s 播放過一次</string>
@@ -270,8 +270,8 @@
     <string name="replay_gain">重放增益</string>
     <string name="comment">備註</string>
     <string name="last_played">上次播放</string>
-    <string name="played">已播放</string>
-    <string name="skipped">已跳過</string>
+    <string name="played">播放次數</string>
+    <string name="skipped">跳過次數</string>
     <string name="track">曲目</string>
     <string name="track_total">曲目總數</string>
     <string name="disc">碟片</string>
@@ -462,7 +462,7 @@
     <string name="sleep_timer_stop_after_x_canceled">已取消在「%s」後停止</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">隨機播放</string>
-    <string name="app_shortcut_top_tracks_short">熱門曲目</string>
+    <string name="app_shortcut_top_tracks_short">最常播放</string>
     <string name="app_shortcut_last_added_short">最近新增</string>
     <string name="app_shortcut_favorites_short">我的最愛</string>
     <!-- About page -->
@@ -530,7 +530,7 @@
     <string name="material_you_title">Material You 動態色彩</string>
     <string name="use_custom_font_title">使用自訂字型</string>
     <string name="appbar_mode_title">頂欄樣式</string>
-    <string name="library_categories_title">音樂庫分類</string>
+    <string name="library_categories_title">底部導覽列分頁</string>
     <string name="library_categories_summary">設定音樂庫分類的顯示與順序。</string>
     <string name="remember_last_page_title">記住上次開啟的頁面</string>
     <string name="remember_last_page_summary">啟動時前往最後開啟的畫面。</string>
@@ -659,7 +659,7 @@
     <string name="on_song_click_play_whole_list_title">播放整份清單</string>
     <string name="on_song_click_play_whole_list_summary">目前佇列會被清單、專輯或資料夾中的所有歌曲取代。</string>
     <string name="on_song_click_queue_next_title">新增到下一曲</string>
-    <string name="on_song_click_queue_next_summary">選取的歌曲會加入佇列中的下一個位置。</string>
+    <string name="on_song_click_queue_next_summary">選取的歌曲會被插入到播放佇列中正在播放的歌曲之後。</string>
     <string name="on_song_click_enqueue_at_end_title">加入佇列尾端</string>
     <string name="on_song_click_enqueue_at_end_summary">選取的歌曲會加入目前佇列尾端。</string>
     <string name="on_clear_queue_title">清除佇列時</string>
@@ -1003,7 +1003,7 @@
     <string name="action_play_x">播放「%s」</string>
     <string name="home_empty_title">暫無推薦</string>
     <string name="home_empty_subtitle">先聽點音樂吧</string>
-    <string name="home_shuffle_title">隨機播放音樂</string>
+    <string name="home_shuffle_title">隨機播放</string>
     <string name="home_for_you_title">專屬推薦</string>
     <string name="home_for_you_subtitle">一站收錄你的最愛</string>
     <string name="home_for_you_subtitle_2">專屬於你的精選好歌</string>
@@ -1030,6 +1030,4 @@
     <string name="backup_warning_database_ver">此備份中的部分資料（例如播放清單和歌詞）不相容，可能無法還原。</string>
     <string name="permission_notifications_title">通知（選用）</string>
     <string name="permission_notifications_summary">此權限允許 Booming Music 在通知欄和鎖定螢幕介面上顯示播放控制選項。</string>
-
-
 </resources>
