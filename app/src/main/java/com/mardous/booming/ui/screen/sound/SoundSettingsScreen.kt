@@ -98,12 +98,13 @@ fun SoundSettingsSheet(
         derivedStateOf { audioOffload.not() && isBitPerfectActuallyActive.not() && audioFloatOutput.not() }
     }
 
+    var currentVolume by remember(volume.currentVolume) { mutableFloatStateOf(volume.currentVolume) }
     var centerBalance by remember(balance.center) { mutableFloatStateOf(balance.center) }
     var tempoSpeed by remember(tempo.speed) { mutableFloatStateOf(tempo.speed) }
     var tempoPitch by remember(tempo.actualPitch) { mutableFloatStateOf(tempo.actualPitch) }
 
-    val volumeSliderState = rememberSliderState(volume.currentVolume, trackRange = volume.volumeRange)
-    LaunchedEffect(volume) { volumeSliderState.value = volume.currentVolume }
+    val volumeSliderState = rememberSliderState(currentVolume, trackRange = volume.volumeRange)
+    LaunchedEffect(currentVolume) { volumeSliderState.value = currentVolume }
 
     val balanceSliderState = rememberSliderState(centerBalance, trackRange = balance.range)
     LaunchedEffect(centerBalance) { balanceSliderState.value = centerBalance }
@@ -163,19 +164,21 @@ fun SoundSettingsSheet(
                         Slider(
                             state = volumeSliderState,
                             onValueChange = {
-                                viewModel.setVolume(it)
+                                currentVolume = it
+                                viewModel.setVolume(it, apply = false)
                             },
                             onValueChangeFinished = {
                                 hapticFeedback.performHapticFeedback(
                                     HapticFeedbackType.SegmentFrequentTick
                                 )
+                                viewModel.setVolume(currentVolume)
                             },
                             track = { sliderState ->
                                 IconifiedSliderTrack(
                                     state = sliderState,
                                     icon = when {
-                                        volume.volumePercent > 50 -> painterResource(R.drawable.ic_volume_up_24dp)
-                                        volume.volumePercent > 10 -> painterResource(R.drawable.ic_volume_down_24dp)
+                                        currentVolume > 0.50f -> painterResource(R.drawable.ic_volume_up_24dp)
+                                        currentVolume > 0.10f -> painterResource(R.drawable.ic_volume_down_24dp)
                                         else -> painterResource(R.drawable.ic_volume_mute_24dp)
                                     },
                                     disabledIcon = painterResource(R.drawable.ic_volume_off_24dp),
@@ -195,12 +198,15 @@ fun SoundSettingsSheet(
                                 ) {
                                     Slider(
                                         state = balanceSliderState,
-                                        onValueChange = { centerBalance = it },
+                                        onValueChange = {
+                                            centerBalance = it
+                                            viewModel.setBalance(it, apply = false)
+                                        },
                                         onValueChangeFinished = {
                                             hapticFeedback.performHapticFeedback(
                                                 HapticFeedbackType.SegmentFrequentTick
                                             )
-                                            viewModel.setBalance(center = centerBalance)
+                                            viewModel.setBalance(centerBalance)
                                         },
                                         track = {
                                             SliderDefaults.CenteredTrack(
@@ -302,7 +308,10 @@ fun SoundSettingsSheet(
                             ) {
                                 Slider(
                                     state = tempoSpeedSliderState,
-                                    onValueChange = { tempoSpeed = it },
+                                    onValueChange = {
+                                        tempoSpeed = it
+                                        viewModel.setTempo(speed = it, apply = false)
+                                    },
                                     onValueChangeFinished = {
                                         hapticFeedback.performHapticFeedback(
                                             HapticFeedbackType.SegmentFrequentTick
@@ -333,7 +342,10 @@ fun SoundSettingsSheet(
                                 val sliderValue = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
                                 Slider(
                                     state = tempoPitchSliderState,
-                                    onValueChange = { tempoPitch = it },
+                                    onValueChange = {
+                                        tempoPitch = it
+                                        viewModel.setTempo(pitch = it, apply = false)
+                                    },
                                     onValueChangeFinished = {
                                         hapticFeedback.performHapticFeedback(
                                             HapticFeedbackType.SegmentFrequentTick

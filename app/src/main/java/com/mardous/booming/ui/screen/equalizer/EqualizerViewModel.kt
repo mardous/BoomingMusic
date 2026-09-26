@@ -178,21 +178,30 @@ class EqualizerViewModel(
         equalizerManager.setEnableSkipSilence(enabled)
     }
 
-    fun setVolume(volume: Float) = viewModelScope.launch {
-        equalizerManager.setVolume(volume)
+    fun setVolume(volume: Float, apply: Boolean = true) = viewModelScope.launch {
+        equalizerManager.setVolume(volume, apply)
     }
 
-    fun setBalance(center: Float) = viewModelScope.launch {
-        equalizerManager.setBalance(soundSettings.value.balance.copy(center = center))
+    fun setBalance(center: Float, apply: Boolean = true) = viewModelScope.launch {
+        equalizerManager.setBalance(
+            balance = soundSettings.value.balance.copy(center = center),
+            apply = apply
+        )
     }
 
     fun setTempo(
         speed: Float = soundSettings.value.tempo.speed,
         pitch: Float = soundSettings.value.tempo.pitch,
-        isFixedPitch: Boolean = soundSettings.value.tempo.isFixedPitch
+        isFixedPitch: Boolean = soundSettings.value.tempo.isFixedPitch,
+        apply: Boolean = true
     ) = viewModelScope.launch {
         equalizerManager.setTempo(
-            soundSettings.value.tempo.copy(speed = speed, pitch = pitch, isFixedPitch = isFixedPitch)
+            tempo = soundSettings.value.tempo.copy(
+                speed = speed,
+                pitch = pitch,
+                isFixedPitch = isFixedPitch
+            ),
+            apply = apply
         )
     }
 

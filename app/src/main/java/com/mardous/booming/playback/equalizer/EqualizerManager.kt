@@ -121,6 +121,15 @@ class EqualizerManager(
         .map { prefs -> buildSoundSettings(prefs) }
         .stateIn(eqScope, SharingStarted.Eagerly, SoundSettings.Unspecified)
 
+    /**
+     * Sound settings the player must apply right now. While the user is dragging a slider,
+     * this returns the in-memory preview; otherwise it mirrors the persisted [soundSettings].
+     */
+    private val _liveSoundPreview = MutableStateFlow<SoundSettings?>(null)
+    val liveSoundSettings: StateFlow<SoundSettings> =
+        combine(soundSettings, _liveSoundPreview) { persisted, live -> live ?: persisted }
+            .stateIn(eqScope, SharingStarted.Eagerly, SoundSettings.Unspecified)
+
     var eqSession = EqSession(SessionType.Internal, NO_SESSION_ID, false)
         private set
 
@@ -152,8 +161,7 @@ class EqualizerManager(
             }
             .launchIn(eqScope)
 
-        soundSettings.map { it.balance }
-            .debounce(50.milliseconds)
+        liveSoundSettings.map { it.balance }
             .onEach { balanceState ->
                 balanceProcessor.setBalance(balanceState.left, balanceState.right)
             }
@@ -162,7 +170,6 @@ class EqualizerManager(
 
         soundSettings.map { it.replayGain }
             .filterNot { it == ReplayGainState.Unspecified }
-            .debounce(50.milliseconds)
             .onEach { state ->
                 if (state.mode.isOn) {
                     replayGainProcessor.mode = state.mode
@@ -647,23 +654,48 @@ class EqualizerManager(
         }
     }
 
-    suspend fun setVolume(volume: Float) {
-        context.eqDataStore.edit { prefs ->
-            prefs[Keys.VOLUME] = volume
+    suspend fun setVolume(volume: Float, apply: Boolean) {
+        if (apply) {
+            context.eqDataStore.edit { prefs ->
+                prefs[Keys.VOLUME] = volume
+            }
+            clearLiveSoundPreview()
+        } else {
+            _liveSoundPreview.value = soundSettings.value.copy(
+                volume = soundSettings.value.volume.copy(currentVolume = volume)
+            )
         }
     }
 
-    suspend fun setBalance(balance: BalanceState) {
-        context.eqDataStore.edit { prefs ->
-            prefs[Keys.CENTER_BALANCE] = balance.center
+    suspend fun setBalance(balance: BalanceState, apply: Boolean) {
+        if (apply) {
+            context.eqDataStore.edit { prefs ->
+                prefs[Keys.CENTER_BALANCE] = balance.center
+            }
+            clearLiveSoundPreview()
+        } else {
+            _liveSoundPreview.value = soundSettings.value.copy(
+                balance = soundSettings.value.balance.copy(center = balance.center)
+            )
         }
     }
 
-    suspend fun setTempo(tempo: TempoState) {
-        context.eqDataStore.edit { prefs ->
-            prefs[Keys.SPEED] = tempo.speed
-            prefs[Keys.PITCH] = tempo.pitch
-            prefs[Keys.IS_FIXED_PITCH] = tempo.isFixedPitch
+    suspend fun setTempo(tempo: TempoState, apply: Boolean) {
+        if (apply) {
+            context.eqDataStore.edit { prefs ->
+                prefs[Keys.SPEED] = tempo.speed
+                prefs[Keys.PITCH] = tempo.pitch
+                prefs[Keys.IS_FIXED_PITCH] = tempo.isFixedPitch
+            }
+            clearLiveSoundPreview()
+        } else {
+            _liveSoundPreview.value = soundSettings.value.copy(
+                tempo = soundSettings.value.tempo.copy(
+                    speed = tempo.speed,
+                    pitch = tempo.pitch,
+                    isFixedPitch = tempo.isFixedPitch
+                )
+            )
         }
     }
 
@@ -673,6 +705,10 @@ class EqualizerManager(
             prefs[Keys.REPLAYGAIN_PREAMP_WITHOUT_GAIN] = replayGain.preampWithoutGain
             prefs[Keys.REPLAYGAIN_MODE] = replayGain.mode.name
         }
+    }
+
+    fun clearLiveSoundPreview() {
+        _liveSoundPreview.value = null
     }
 
     suspend fun setCompressor(state: CompressorState) {

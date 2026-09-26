@@ -1122,7 +1122,7 @@ class PlaybackService :
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
-            equalizerManager.soundSettings.map { it.volume }.collect { volume ->
+            equalizerManager.liveSoundSettings.map { it.volume }.collect { volume ->
                 cancelSleepTimerFadeOut()
                 player.volume = volume.currentVolume
             }
@@ -1143,6 +1143,7 @@ class PlaybackService :
                                     AudioOffloadPreferences.AUDIO_OFFLOAD_MODE_ENABLED
                                 else AudioOffloadPreferences.AUDIO_OFFLOAD_MODE_DISABLED
                             )
+                            .setIsGaplessSupportRequired(true)
                             .setIsSpeedChangeSupportRequired(true)
                             .build()
                     )
@@ -1155,7 +1156,7 @@ class PlaybackService :
             }
         }
         serviceScope.launch {
-            equalizerManager.soundSettings.map { it.tempo }.collect {
+            equalizerManager.liveSoundSettings.map { it.tempo }.collect {
                 player.playbackParameters = PlaybackParameters(it.speed, it.actualPitch)
             }
         }

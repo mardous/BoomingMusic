@@ -55,11 +55,6 @@ data class VolumeState(
     val volumeRange: ClosedFloatingPointRange<Float>,
     val isFixed: Boolean = false
 ) {
-    val volumePercent: Float
-        get() = if (volumeRange.endInclusive > volumeRange.start) {
-            ((currentVolume - volumeRange.start) / (volumeRange.endInclusive - volumeRange.start)) * 100f
-        } else 0f
-
     companion object {
         val Unspecified = VolumeState(0f, 0f..1f)
     }
