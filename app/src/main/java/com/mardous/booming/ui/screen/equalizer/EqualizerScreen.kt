@@ -187,19 +187,22 @@ fun EqualizerScreen(
 
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val eqState by eqViewModel.eqState.collectAsState()
-    val eqCurrentProfile by eqViewModel.currentProfile.collectAsState()
-    val eqProfiles by eqViewModel.eqProfiles.collectAsState(emptyList())
-    val eqBandCapabilities by eqViewModel.eqBandCapabilities.collectAsState()
-    val eqBands by eqViewModel.eqBands.collectAsState(emptyList())
-    val autoEqProfiles by eqViewModel.autoEqProfiles.collectAsState()
+    val equalizerSettings by eqViewModel.equalizerSettings.collectAsState()
+    val soundSettings by eqViewModel.soundSettings.collectAsState()
 
-    val virtualizer by eqViewModel.virtualizerState.collectAsState()
-    val bassBoost by eqViewModel.bassBoostState.collectAsState()
-    val loudnessGain by eqViewModel.loudnessGainState.collectAsState()
-    val compressor by eqViewModel.compressorState.collectAsState()
-    val limiter by eqViewModel.limiterState.collectAsState()
-    val replayGain by eqViewModel.replayGainState.collectAsState()
+    val eqState = equalizerSettings.eqState
+    val eqCurrentProfile = equalizerSettings.currentProfile
+    val eqProfiles by eqViewModel.eqProfiles.collectAsState(emptyList())
+    val eqBandCapabilities = equalizerSettings.bandCapabilities
+    val eqBands by eqViewModel.eqBands.collectAsState(emptyList())
+    val autoEqProfiles = equalizerSettings.autoEqProfiles
+
+    val virtualizer = equalizerSettings.virtualizer
+    val bassBoost = equalizerSettings.bassBoost
+    val loudnessGain = equalizerSettings.loudnessGain
+    val compressor = equalizerSettings.compressor
+    val limiter = equalizerSettings.limiter
+    val replayGain = soundSettings.replayGain
 
     val autoEqSyncState by eqViewModel.autoEqSyncState.collectAsState()
 

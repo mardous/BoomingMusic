@@ -79,13 +79,17 @@ fun SoundSettingsSheet(
     val hapticFeedback = LocalHapticFeedback.current
 
     val outputDevice by viewModel.audioDevice.collectAsState()
-    val volume by viewModel.volumeState.collectAsState()
     val bitPerfectState by viewModel.bitPerfectState.collectAsState()
 
-    val bitPerfect by viewModel.bitPerfectAudio.collectAsState()
-    val audioOffload by viewModel.audioOffload.collectAsState()
-    val audioFloatOutput by viewModel.audioFloatOutput.collectAsState()
-    val skipSilence by viewModel.skipSilence.collectAsState()
+    val soundSettings by viewModel.soundSettings.collectAsState()
+
+    val volume = soundSettings.volume
+    val bitPerfect = soundSettings.bitPerfect
+    val audioOffload = soundSettings.audioOffload
+    val audioFloatOutput = soundSettings.audioFloatOutput
+    val skipSilence = soundSettings.skipSilence
+    val balance = soundSettings.balance
+    val tempo = soundSettings.tempo
 
     val isBitPerfectActuallyActive by remember {
         derivedStateOf { bitPerfect && bitPerfectState.isActive }
@@ -93,9 +97,6 @@ fun SoundSettingsSheet(
     val enableAudioEffects by remember {
         derivedStateOf { audioOffload.not() && isBitPerfectActuallyActive.not() && audioFloatOutput.not() }
     }
-
-    val balance by viewModel.balanceState.collectAsState()
-    val tempo by viewModel.tempoState.collectAsState()
 
     var centerBalance by remember(balance.center) { mutableFloatStateOf(balance.center) }
     var tempoSpeed by remember(tempo.speed) { mutableFloatStateOf(tempo.speed) }

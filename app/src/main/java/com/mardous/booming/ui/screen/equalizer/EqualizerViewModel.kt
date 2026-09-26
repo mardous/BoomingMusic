@@ -52,10 +52,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -71,34 +71,16 @@ class EqualizerViewModel(
     private val mediaStoreWriter: MediaStoreWriter
 ) : ViewModel() {
 
-    val eqState = equalizerManager.eqState
-    val eqBandCapabilities = equalizerManager.bandCapabilities
-    val currentProfile = equalizerManager.eqCurrentProfile
-    val bassBoostState = equalizerManager.bassBoostState
-    val virtualizerState = equalizerManager.virtualizerState
-    val loudnessGainState = equalizerManager.loudnessGainState
-    val compressorState = equalizerManager.compressorState
-    val limiterState = equalizerManager.limiterState
-    val balanceState = equalizerManager.balanceState
-    val tempoState = equalizerManager.tempoState
-    val replayGainState = equalizerManager.replayGainState
-    val bitPerfectAudio = equalizerManager.bitPerfectAudio
-    val audioOffload = equalizerManager.audioOffload
-    val audioFloatOutput = equalizerManager.audioFloatOutput
-    val skipSilence = equalizerManager.skipSilence
-    val volumeState = equalizerManager.volumeState
+    val equalizerSettings = equalizerManager.equalizerSettings
+    val soundSettings = equalizerManager.soundSettings
+
     val audioDevice = audioOutputObserver.audioDevice
     val bitPerfectState = audioOutputObserver.bitPerfectState
 
-    val autoEqProfiles = equalizerManager.autoEqProfiles
+    val eqProfiles = equalizerSettings.map { it.profiles + it.customProfile }
 
-    val eqProfiles = combine(
-        equalizerManager.eqProfiles,
-        equalizerManager.eqCustomProfile
-    ) { profiles, custom -> profiles + custom }
-
-    val eqBands = combine(eqState, eqBandCapabilities, currentProfile) { state, bandCapabilities, profile ->
-        bandCapabilities.getBands(profile, state.preferredBandCount)
+    val eqBands = equalizerSettings.map {
+        it.bandCapabilities.getBands(it.currentProfile, it.eqState.preferredBandCount)
     }
 
     private val _autoEqSyncState = MutableStateFlow<AutoEqSyncState>(AutoEqSyncState.Idle)
@@ -124,7 +106,7 @@ class EqualizerViewModel(
 
     fun setEqualizerState(isEnabled: Boolean) {
         viewModelScope.launch {
-            equalizerManager.setEqualizerState(eqState.value.copy(enabled = isEnabled))
+            equalizerManager.setEqualizerState(equalizerSettings.value.eqState.copy(enabled = isEnabled))
         }
     }
 
@@ -133,29 +115,29 @@ class EqualizerViewModel(
     }
 
     fun setLoudnessGain(
-        enabled: Boolean = loudnessGainState.value.enabled,
-        gain: Float = loudnessGainState.value.gainInDb
+        enabled: Boolean = equalizerSettings.value.loudnessGain.enabled,
+        gain: Float = equalizerSettings.value.loudnessGain.gainInDb
     ) = viewModelScope.launch {
         equalizerManager.setLoudnessGain(
-            loudnessGainState.value.copy(enabled = enabled, gainInDb = gain)
+            equalizerSettings.value.loudnessGain.copy(enabled = enabled, gainInDb = gain)
         )
     }
 
     fun setBassBoost(
-        enabled: Boolean = bassBoostState.value.enabled,
-        strength: Float = bassBoostState.value.strength
+        enabled: Boolean = equalizerSettings.value.bassBoost.enabled,
+        strength: Float = equalizerSettings.value.bassBoost.strength
     ) = viewModelScope.launch {
         equalizerManager.setBassBoost(
-            bassBoostState.value.copy(enabled = enabled, strength = strength)
+            equalizerSettings.value.bassBoost.copy(enabled = enabled, strength = strength)
         )
     }
 
     fun setVirtualizer(
-        enabled: Boolean = virtualizerState.value.enabled,
-        strength: Float = virtualizerState.value.strength
+        enabled: Boolean = equalizerSettings.value.virtualizer.enabled,
+        strength: Float = equalizerSettings.value.virtualizer.strength
     ) = viewModelScope.launch {
         equalizerManager.setVirtualizer(
-            virtualizerState.value.copy(enabled = enabled, strength = strength)
+            equalizerSettings.value.virtualizer.copy(enabled = enabled, strength = strength)
         )
     }
 
@@ -201,27 +183,27 @@ class EqualizerViewModel(
     }
 
     fun setBalance(center: Float) = viewModelScope.launch {
-        equalizerManager.setBalance(balanceState.value.copy(center = center))
+        equalizerManager.setBalance(soundSettings.value.balance.copy(center = center))
     }
 
     fun setTempo(
-        speed: Float = tempoState.value.speed,
-        pitch: Float = tempoState.value.pitch,
-        isFixedPitch: Boolean = tempoState.value.isFixedPitch
+        speed: Float = soundSettings.value.tempo.speed,
+        pitch: Float = soundSettings.value.tempo.pitch,
+        isFixedPitch: Boolean = soundSettings.value.tempo.isFixedPitch
     ) = viewModelScope.launch {
         equalizerManager.setTempo(
-            tempoState.value.copy(speed = speed, pitch = pitch, isFixedPitch = isFixedPitch)
+            soundSettings.value.tempo.copy(speed = speed, pitch = pitch, isFixedPitch = isFixedPitch)
         )
     }
 
     fun setReplayGain(
-        mode: ReplayGainMode = replayGainState.value.mode,
-        preamp: Float = replayGainState.value.preamp,
-        preampWithoutGain: Float = replayGainState.value.preampWithoutGain
+        mode: ReplayGainMode = soundSettings.value.replayGain.mode,
+        preamp: Float = soundSettings.value.replayGain.preamp,
+        preampWithoutGain: Float = soundSettings.value.replayGain.preampWithoutGain
     ) =
         viewModelScope.launch {
             equalizerManager.setReplayGain(
-                replayGainState.value.copy(
+                soundSettings.value.replayGain.copy(
                     mode = mode,
                     preamp = preamp,
                     preampWithoutGain = preampWithoutGain
@@ -230,19 +212,19 @@ class EqualizerViewModel(
         }
 
     fun setCompressor(
-        enabled: Boolean = compressorState.value.enabled,
-        attackTimeMs: Float = compressorState.value.attackTimeMs,
-        releaseTimeMs: Float = compressorState.value.releaseTimeMs,
-        kneeWidth: Float = compressorState.value.kneeWidth,
-        noiseGateThreshold: Float = compressorState.value.noiseGateThreshold,
-        preGain: Float = compressorState.value.preGain,
-        postGain: Float = compressorState.value.postGain,
-        ratio: Float = compressorState.value.ratio,
-        expanderRatio: Float = compressorState.value.expanderRatio,
-        threshold: Float = compressorState.value.threshold
+        enabled: Boolean = equalizerSettings.value.compressor.enabled,
+        attackTimeMs: Float = equalizerSettings.value.compressor.attackTimeMs,
+        releaseTimeMs: Float = equalizerSettings.value.compressor.releaseTimeMs,
+        kneeWidth: Float = equalizerSettings.value.compressor.kneeWidth,
+        noiseGateThreshold: Float = equalizerSettings.value.compressor.noiseGateThreshold,
+        preGain: Float = equalizerSettings.value.compressor.preGain,
+        postGain: Float = equalizerSettings.value.compressor.postGain,
+        ratio: Float = equalizerSettings.value.compressor.ratio,
+        expanderRatio: Float = equalizerSettings.value.compressor.expanderRatio,
+        threshold: Float = equalizerSettings.value.compressor.threshold
     ) = viewModelScope.launch {
         equalizerManager.setCompressor(
-            compressorState.value.copy(
+            equalizerSettings.value.compressor.copy(
                 enabled = enabled,
                 attackTimeMs = attackTimeMs,
                 releaseTimeMs = releaseTimeMs,
@@ -262,15 +244,15 @@ class EqualizerViewModel(
     }
 
     fun setLimiter(
-        enabled: Boolean = limiterState.value.enabled,
-        attackTimeMs: Float = limiterState.value.attackTimeMs,
-        releaseTimeMs: Float = limiterState.value.releaseTimeMs,
-        postGain: Float = limiterState.value.postGain,
-        ratio: Float = limiterState.value.ratio,
-        threshold: Float = limiterState.value.threshold
+        enabled: Boolean = equalizerSettings.value.limiter.enabled,
+        attackTimeMs: Float = equalizerSettings.value.limiter.attackTimeMs,
+        releaseTimeMs: Float = equalizerSettings.value.limiter.releaseTimeMs,
+        postGain: Float = equalizerSettings.value.limiter.postGain,
+        ratio: Float = equalizerSettings.value.limiter.ratio,
+        threshold: Float = equalizerSettings.value.limiter.threshold
     ) = viewModelScope.launch {
         equalizerManager.setLimiter(
-            limiterState.value.copy(
+            equalizerSettings.value.limiter.copy(
                 enabled = enabled,
                 attackTimeMs = attackTimeMs,
                 releaseTimeMs = releaseTimeMs,

@@ -25,6 +25,7 @@ import android.net.Uri
 import android.util.JsonReader
 import android.util.JsonToken
 import android.util.Log
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
@@ -36,6 +37,7 @@ import com.mardous.booming.core.audio.AudioOutputObserver
 import com.mardous.booming.core.audio.AutoEqParser
 import com.mardous.booming.core.model.audiodevice.AudioDevice
 import com.mardous.booming.core.model.audiodevice.AudioDeviceType
+import com.mardous.booming.core.model.audiodevice.BitPerfectState
 import com.mardous.booming.core.model.equalizer.BalanceState
 import com.mardous.booming.core.model.equalizer.BassBoostState
 import com.mardous.booming.core.model.equalizer.CompressorState
@@ -45,9 +47,11 @@ import com.mardous.booming.core.model.equalizer.EqProfile
 import com.mardous.booming.core.model.equalizer.EqSession
 import com.mardous.booming.core.model.equalizer.EqSession.SessionType
 import com.mardous.booming.core.model.equalizer.EqState
+import com.mardous.booming.core.model.equalizer.EqualizerSettings
 import com.mardous.booming.core.model.equalizer.LimiterState
 import com.mardous.booming.core.model.equalizer.LoudnessGainState
 import com.mardous.booming.core.model.equalizer.ReplayGainState
+import com.mardous.booming.core.model.equalizer.SoundSettings
 import com.mardous.booming.core.model.equalizer.TempoState
 import com.mardous.booming.core.model.equalizer.VirtualizerState
 import com.mardous.booming.core.model.equalizer.VolumeState
@@ -101,230 +105,34 @@ class EqualizerManager(
     private var eqEngine: EQEngine? = null
     private var pendingDevice: AudioDevice? = null
 
-    val eqState =
+    private val _bandCapabilities = MutableStateFlow(EqBandCapabilities.Empty)
+
+    val equalizerSettings: StateFlow<EqualizerSettings> =
         combine(
             audioOutputObserver.bitPerfectState,
-            context.eqDataStore.data
-        ) { bitPerfectState, prefs ->
-            val engineMode = prefs[Keys.EQ_ENGINE_MODE]
-                ?.toEnum<EqEngineMode>()
-                ?: EqEngineMode.Auto
-
-            val disableReason = when {
-                bitPerfectState.isActive -> EqState.DisableReason.BitPerfect
-                prefs[Keys.AUDIO_OFFLOAD] == true -> EqState.DisableReason.AudioOffload
-                else -> null
-            }
-
-            EqState(
-                supported = prefs[Keys.EQ_SUPPORTED] ?: false,
-                enabled = prefs[Keys.EQ_ENABLED] ?: false,
-                disableReason = disableReason,
-                preferredBandCount = prefs[Keys.EQ_BAND_COUNT] ?: engineMode.defaultBandCount,
-                engineMode = engineMode,
-                proMode = prefs[Keys.EQ_PRO_MODE_ENABLED] ?: false
-            )
+            context.eqDataStore.data,
+            _bandCapabilities
+        ) { bitPerfectState, prefs, bandCapabilities ->
+            buildEqualizerSettings(bitPerfectState, prefs, bandCapabilities)
         }
-        .stateIn(eqScope, SharingStarted.Eagerly, EqState.Unspecified)
+        .stateIn(eqScope, SharingStarted.Eagerly, EqualizerSettings.Unspecified)
 
-    val eqCustomProfile =
-        combine(
-            eqState.filterNot { it == EqState.Unspecified },
-            context.eqDataStore.data
-        ) { eqState, prefs ->
-            val json = prefs[Keys.CUSTOM_PROFILE].orEmpty().trim()
-            runCatching {
-                Json.decodeFromString<EqProfile>(json)
-            }.getOrElse { null }
-                ?.takeIf { it.isValid }
-                ?: getEmptyCustomProfile(eqState.preferredBandCount)
-        }.stateIn(eqScope, SharingStarted.Eagerly, getEmptyCustomProfile(0))
-
-    val eqProfiles = context.eqDataStore.data
-        .map { prefs ->
-            val json = prefs[Keys.PROFILES].orEmpty().trim()
-            runCatching {
-                Json.decodeFromString<List<EqProfile>>(json)
-            }.getOrElse {
-                emptyList()
-            }
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, emptyList())
-
-    val eqCurrentProfile =
-        combine(
-            eqState.filterNot { it == EqState.Unspecified },
-            eqProfiles,
-            context.eqDataStore.data
-        ) { state, profiles, prefs ->
-            val json = prefs[Keys.PROFILE].orEmpty().trim()
-            runCatching {
-                Json.decodeFromString<EqProfile>(json)
-            }.getOrElse {
-                profiles.firstOrNull()
-                    ?: getEmptyCustomProfile(state.preferredBandCount)
-            }
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, getEmptyCustomProfile(0))
-
-    val autoEqProfiles = context.eqDataStore.data
-        .map { prefs ->
-            val json = prefs[Keys.AUTO_EQ_PROFILES].orEmpty().trim()
-            runCatching {
-                Json.decodeFromString<List<AutoEqProfile>>(json)
-            }.getOrElse {
-                emptyList()
-            }
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, emptyList())
-
-    val loudnessGainState = context.eqDataStore.data
-        .map { prefs ->
-            LoudnessGainState(
-                supported = prefs[Keys.LOUDNESS_SUPPORTED] ?: false,
-                enabled = prefs[Keys.LOUDNESS_ENABLED] ?: false,
-                gainInDb = prefs[Keys.LOUDNESS_GAIN] ?: MINIMUM_LOUDNESS_GAIN,
-                gainRange = MINIMUM_LOUDNESS_GAIN..MAXIMUM_LOUDNESS_GAIN,
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, LoudnessGainState.Unspecified)
-
-    val bassBoostState = context.eqDataStore.data
-        .map { prefs ->
-            BassBoostState(
-                supported = prefs[Keys.BASS_BOOST_SUPPORTED] ?: false,
-                enabled = prefs[Keys.BASS_BOOST_ENABLED] ?: false,
-                strength = prefs[Keys.BASS_BOOST_STRENGTH] ?: 0f,
-                strengthRange = BASSBOOST_MIN_STRENGTH..BASSBOOST_MAX_STRENGTH
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, BassBoostState.Unspecified)
-
-    val virtualizerState = context.eqDataStore.data
-        .map { prefs ->
-            VirtualizerState(
-                supported = prefs[Keys.VIRTUALIZER_SUPPORTED] ?: false,
-                enabled = prefs[Keys.VIRTUALIZER_ENABLED] ?: false,
-                strength = prefs[Keys.VIRTUALIZER_STRENGTH] ?: 0f,
-                strengthRange = VIRTUALIZER_MIN_STRENGTH..VIRTUALIZER_MAX_STRENGTH
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, VirtualizerState.Unspecified)
-
-    val tempoState = context.eqDataStore.data
-        .map { prefs ->
-            TempoState(
-                speed = prefs[Keys.SPEED] ?: 1f,
-                speedRange = MIN_SPEED..MAX_SPEED,
-                pitch = prefs[Keys.PITCH] ?: 1f,
-                pitchRange = MIN_PITCH..MAX_PITCH,
-                isFixedPitch = prefs[Keys.IS_FIXED_PITCH] ?: true
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, TempoState.Unspecified)
-
-    val volumeState = context.eqDataStore.data
-        .map { prefs ->
-            VolumeState(
-                currentVolume = prefs[Keys.VOLUME] ?: 1f,
-                volumeRange = MIN_VOLUME..MAX_VOLUME
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, VolumeState.Unspecified)
-
-    val balanceState = context.eqDataStore.data
-        .map { prefs ->
-            BalanceState(
-                center = prefs[Keys.CENTER_BALANCE] ?: 0f,
-                range = -MAX_VOLUME..MAX_VOLUME
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, BalanceState.Unspecified)
-
-    val replayGainState = context.eqDataStore.data
-        .map { prefs ->
-            ReplayGainState(
-                mode = prefs[Keys.REPLAYGAIN_MODE]?.toEnum<ReplayGainMode>() ?: ReplayGainMode.Off,
-                preamp = prefs[Keys.REPLAYGAIN_PREAMP] ?: 0f,
-                preampWithoutGain = prefs[Keys.REPLAYGAIN_PREAMP_WITHOUT_GAIN] ?: 0f
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, ReplayGainState.Unspecified)
-
-    val compressorState = context.eqDataStore.data
-        .map { prefs ->
-            CompressorState(
-                enabled = prefs[Keys.COMPRESSOR_ENABLED] ?: false,
-                attackTimeMs = prefs[Keys.COMPRESSOR_ATTACK] ?: CompressorState.Unspecified.attackTimeMs,
-                attackTimeRange = CompressorState.Unspecified.attackTimeRange,
-                releaseTimeMs = prefs[Keys.COMPRESSOR_RELEASE] ?: CompressorState.Unspecified.releaseTimeMs,
-                releaseTimeRange = CompressorState.Unspecified.releaseTimeRange,
-                kneeWidth = prefs[Keys.COMPRESSOR_KNEE] ?: CompressorState.Unspecified.kneeWidth,
-                kneeWidthRange = CompressorState.Unspecified.kneeWidthRange,
-                noiseGateThreshold = prefs[Keys.COMPRESSOR_NOISE_GATE] ?: CompressorState.Unspecified.noiseGateThreshold,
-                noiseGateThresholdRange = CompressorState.Unspecified.noiseGateThresholdRange,
-                preGain = prefs[Keys.COMPRESSOR_PRE_GAIN] ?: CompressorState.Unspecified.preGain,
-                preGainRange = CompressorState.Unspecified.preGainRange,
-                postGain = prefs[Keys.COMPRESSOR_POST_GAIN] ?: CompressorState.Unspecified.postGain,
-                postGainRange = CompressorState.Unspecified.postGainRange,
-                ratio = prefs[Keys.COMPRESSOR_RATIO] ?: CompressorState.Unspecified.ratio,
-                ratioRange = CompressorState.Unspecified.ratioRange,
-                expanderRatio = prefs[Keys.COMPRESSOR_EXPANDER_RATIO] ?: CompressorState.Unspecified.expanderRatio,
-                expanderRatioRange = CompressorState.Unspecified.expanderRatioRange,
-                threshold = prefs[Keys.COMPRESSOR_THRESHOLD] ?: CompressorState.Unspecified.threshold,
-                thresholdRange = CompressorState.Unspecified.thresholdRange
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, CompressorState.Unspecified)
-
-    val limiterState = context.eqDataStore.data
-        .map { prefs ->
-            LimiterState(
-                enabled = prefs[Keys.LIMITER_ENABLED] ?: false,
-                attackTimeMs = prefs[Keys.LIMITER_ATTACK] ?: LimiterState.Unspecified.attackTimeMs,
-                attackTimeRange = LimiterState.Unspecified.attackTimeRange,
-                releaseTimeMs = prefs[Keys.LIMITER_RELEASE] ?: LimiterState.Unspecified.releaseTimeMs,
-                releaseTimeRange = LimiterState.Unspecified.releaseTimeRange,
-                postGain = prefs[Keys.LIMITER_POST_GAIN] ?: LimiterState.Unspecified.postGain,
-                postGainRange = LimiterState.Unspecified.postGainRange,
-                ratio = prefs[Keys.LIMITER_RATIO] ?: LimiterState.Unspecified.ratio,
-                ratioRange = LimiterState.Unspecified.ratioRange,
-                threshold = prefs[Keys.LIMITER_THRESHOLD] ?: LimiterState.Unspecified.threshold,
-                thresholdRange = LimiterState.Unspecified.thresholdRange
-            )
-        }
-        .stateIn(eqScope, SharingStarted.Eagerly, LimiterState.Unspecified)
-
-    val bitPerfectAudio = context.eqDataStore.data
-        .map { prefs -> prefs[Keys.BIT_PERFECT] ?: false }
-        .stateIn(eqScope, SharingStarted.Eagerly, false)
-
-    val audioOffload = context.eqDataStore.data
-        .map { prefs -> prefs[Keys.BIT_PERFECT] != true && prefs[Keys.AUDIO_OFFLOAD] == true }
-        .stateIn(eqScope, SharingStarted.Eagerly, false)
-
-    val audioFloatOutput = context.eqDataStore.data
-        .map { prefs -> prefs[Keys.AUDIO_FLOAT_OUTPUT] ?: false }
-        .stateIn(eqScope, SharingStarted.Eagerly, false)
-
-    val skipSilence = context.eqDataStore.data
-        .map { prefs -> prefs[Keys.SKIP_SILENCE] ?: false }
-        .stateIn(eqScope, SharingStarted.Eagerly, false)
-
-    private val _bandCapabilities = MutableStateFlow(EqBandCapabilities.Empty)
-    val bandCapabilities: StateFlow<EqBandCapabilities> get() = _bandCapabilities
+    val soundSettings: StateFlow<SoundSettings> = context.eqDataStore.data
+        .map { prefs -> buildSoundSettings(prefs) }
+        .stateIn(eqScope, SharingStarted.Eagerly, SoundSettings.Unspecified)
 
     var eqSession = EqSession(SessionType.Internal, NO_SESSION_ID, false)
         private set
 
     init {
-        eqState.filterNot { it == EqState.Unspecified }
+        equalizerSettings.map { it.eqState }
+            .filterNot { it == EqState.Unspecified }
             .debounce(100.milliseconds)
             .onEach { newState ->
                 val isDisabled = newState.isDisabledByReason
                 if (eqEngine == null && eqSession.id != NO_SESSION_ID && !isDisabled) {
                     eqEngine = createEngine(
-                        mode = eqState.value.engineMode,
+                        mode = newState.engineMode,
                         sessionId = eqSession.id,
                         bandCount = newState.preferredBandCount
                     )
@@ -344,14 +152,16 @@ class EqualizerManager(
             }
             .launchIn(eqScope)
 
-        balanceState.debounce(50.milliseconds)
+        soundSettings.map { it.balance }
+            .debounce(50.milliseconds)
             .onEach { balanceState ->
                 balanceProcessor.setBalance(balanceState.left, balanceState.right)
             }
             .flowOn(Dispatchers.Main)
             .launchIn(eqScope)
 
-        replayGainState.filterNot { it == ReplayGainState.Unspecified }
+        soundSettings.map { it.replayGain }
+            .filterNot { it == ReplayGainState.Unspecified }
             .debounce(50.milliseconds)
             .onEach { state ->
                 if (state.mode.isOn) {
@@ -384,7 +194,7 @@ class EqualizerManager(
 
     @SuppressLint("NewApi")
     suspend fun initializeEqualizer(
-        engineMode: EqEngineMode = this.eqState.value.engineMode
+        engineMode: EqEngineMode = this.equalizerSettings.value.eqState.engineMode
     ) = withContext(IO) {
         try {
             val effects = AudioEffect.queryEffects().orEmpty()
@@ -422,11 +232,11 @@ class EqualizerManager(
     }
 
     fun isProfileNameAvailable(profileName: String): Boolean {
-        return eqProfiles.value.none { it.name.equals(profileName, ignoreCase = true) }
+        return equalizerSettings.value.profiles.none { it.name.equals(profileName, ignoreCase = true) }
     }
 
     fun isAutoEqProfileNameAvailable(profileName: String): Boolean {
-        return autoEqProfiles.value.none { it.name.equals(profileName, ignoreCase = true) }
+        return equalizerSettings.value.autoEqProfiles.none { it.name.equals(profileName, ignoreCase = true) }
     }
 
     fun getNewExportName(): String = getFormattedFileName("BoomingEQ", "json")
@@ -439,7 +249,7 @@ class EqualizerManager(
         profileName: String,
         associatedDevices: Set<AudioDeviceType>
     ): EqProfile {
-        return eqCustomProfile.value.copy(
+        return equalizerSettings.value.customProfile.copy(
             name = profileName,
             associations = associatedDevices,
             isCustom = false,
@@ -455,7 +265,7 @@ class EqualizerManager(
         val trimmedName = newName.trim()
         if (trimmedName.isEmpty()) return false
 
-        val currentProfiles = eqProfiles.value
+        val currentProfiles = equalizerSettings.value.profiles
         if (profile.name != trimmedName &&
             currentProfiles.any { it.name.equals(trimmedName, ignoreCase = true) }) {
             return false
@@ -481,7 +291,7 @@ class EqualizerManager(
         }
 
         setEqualizerProfiles(newProfiles)
-        if (profile == eqCurrentProfile.value) {
+        if (profile == equalizerSettings.value.currentProfile) {
             setCurrentProfile(newProfiles[targetIndex])
         }
         return true
@@ -490,7 +300,7 @@ class EqualizerManager(
     suspend fun addProfile(profile: EqProfile, allowReplace: Boolean, useProfile: Boolean): Boolean {
         if (!profile.isValid) return false
 
-        val currentProfiles = eqProfiles.value.toMutableList()
+        val currentProfiles = equalizerSettings.value.profiles.toMutableList()
         val index = currentProfiles.indexOfFirst { it.name.equals(profile.name, ignoreCase = true) }
         if (index != -1) {
             if (allowReplace) {
@@ -513,19 +323,19 @@ class EqualizerManager(
     }
 
     suspend fun removeProfile(profile: EqProfile): Boolean {
-        val currentProfiles = eqProfiles.value.toMutableList()
+        val currentProfiles = equalizerSettings.value.profiles.toMutableList()
         val removed = currentProfiles.removeIf { it.name == profile.name }
         if (!removed) return false
 
         setEqualizerProfiles(currentProfiles)
-        if (profile == eqCurrentProfile.value) {
-            setCurrentProfile(eqCustomProfile.value)
+        if (profile == equalizerSettings.value.currentProfile) {
+            setCurrentProfile(equalizerSettings.value.customProfile)
         }
         return true
     }
 
     suspend fun deleteAutoEqProfile(profile: AutoEqProfile): Boolean {
-        val currentAutoEqProfiles = autoEqProfiles.value.toMutableList()
+        val currentAutoEqProfiles = equalizerSettings.value.autoEqProfiles.toMutableList()
         val removed = currentAutoEqProfiles.removeIf { it.name == profile.name }
         if (!removed) return false
 
@@ -536,8 +346,8 @@ class EqualizerManager(
     suspend fun importProfiles(toImport: List<EqProfile>): Int {
         if (toImport.isEmpty()) return 0
 
-        val currentProfiles = eqProfiles.value.toMutableList()
-        val bandCapabilities = bandCapabilities.value
+        val currentProfiles = equalizerSettings.value.profiles.toMutableList()
+        val bandCapabilities = equalizerSettings.value.bandCapabilities
 
         var imported = 0
         for (profile in toImport) {
@@ -572,7 +382,7 @@ class EqualizerManager(
             profile.copy(name = suggestedName)
         }
         if (actualProfile.name.isNotEmpty() && actualProfile.points.isNotEmpty()) {
-            val autoEqProfiles = this.autoEqProfiles.value.toMutableList()
+            val autoEqProfiles = this.equalizerSettings.value.autoEqProfiles.toMutableList()
 
             val existingIndex = autoEqProfiles.indexOfFirst { it.name == actualProfile.name }
             if (existingIndex != -1) {
@@ -606,8 +416,8 @@ class EqualizerManager(
     }
 
     suspend fun setCurrentProfile(eqProfile: EqProfile) {
-        if (bandCapabilities.value.isBandCountSupported(eqProfile.numberOfBands)) {
-            if (eqProfile.numberOfBands != eqState.value.preferredBandCount) {
+        if (equalizerSettings.value.bandCapabilities.isBandCountSupported(eqProfile.numberOfBands)) {
+            if (eqProfile.numberOfBands != equalizerSettings.value.eqState.preferredBandCount) {
                 setBandCount(
                     bandCount = eqProfile.numberOfBands,
                     profileAfterChange = eqProfile
@@ -622,7 +432,7 @@ class EqualizerManager(
     }
 
     suspend fun setCustomProfileBandGain(band: Int, gainInDb: Float) {
-        val currentProfile = eqCurrentProfile.value
+        val currentProfile = equalizerSettings.value.currentProfile
         val newBandLevels = currentProfile.levels.copyOf()
         if (band in newBandLevels.indices) {
             newBandLevels[band] = gainInDb
@@ -651,7 +461,7 @@ class EqualizerManager(
         }
     }
 
-    fun setSessionId(audioSessionId: Int, eqState: EqState = this.eqState.value) {
+    fun setSessionId(audioSessionId: Int, eqState: EqState = this.equalizerSettings.value.eqState) {
         setSession(
             eqSession.copy(
                 id = audioSessionId,
@@ -664,7 +474,7 @@ class EqualizerManager(
         )
     }
 
-    fun setSessionIsActive(isActive: Boolean, eqState: EqState = this.eqState.value) {
+    fun setSessionIsActive(isActive: Boolean, eqState: EqState = this.equalizerSettings.value.eqState) {
         setSession(
             newSession = eqSession.copy(
                 active = isActive,
@@ -678,7 +488,7 @@ class EqualizerManager(
         )
     }
 
-    private fun setSession(newSession: EqSession, eqState: EqState = this.eqState.value) {
+    private fun setSession(newSession: EqSession, eqState: EqState = this.equalizerSettings.value.eqState) {
         val oldSession = this.eqSession
         if (newSession == oldSession)
             return
@@ -754,13 +564,13 @@ class EqualizerManager(
     suspend fun setProMode(proModeEnabled: Boolean) {
         if (!proModeEnabled) {
             val newBandCount = minOf(
-                eqState.value.preferredBandCount,
-                bandCapabilities.value.maxBandCountInNormalMode
+                equalizerSettings.value.eqState.preferredBandCount,
+                equalizerSettings.value.bandCapabilities.maxBandCountInNormalMode
             )
             setBandCount(newBandCount)
         }
         setEqualizerState(
-            state = eqState.value.copy(
+            state = equalizerSettings.value.eqState.copy(
                 proMode = proModeEnabled
             )
         )
@@ -794,16 +604,16 @@ class EqualizerManager(
         bandCount: Int,
         profileAfterChange: EqProfile = getEmptyCustomProfile(bandCount = bandCount)
     ): Boolean {
-        if (eqState.value.preferredBandCount == bandCount)
+        if (equalizerSettings.value.eqState.preferredBandCount == bandCount)
             return false
 
-        val bandCapabilities = this.bandCapabilities.value
+        val bandCapabilities = equalizerSettings.value.bandCapabilities
         if (bandCapabilities.hasMultipleBandConfigurations &&
             bandCapabilities.isBandCountSupported(bandCount)) {
             eqEngine?.let { engine ->
                 if (engine.setBandCount(bandCount)) {
                     setEqualizerState(
-                        state = eqState.value.copy(preferredBandCount = bandCount),
+                        state = equalizerSettings.value.eqState.copy(preferredBandCount = bandCount),
                         newProfile = profileAfterChange
                     )
                     return true
@@ -902,7 +712,7 @@ class EqualizerManager(
     }
 
     private suspend fun setCurrentDevice(device: AudioDevice) {
-        val eqState = eqState.value
+        val eqState = equalizerSettings.value.eqState
         if (eqState == EqState.Unspecified || !eqState.supported || device == AudioDevice.Unknown) {
             if (device != AudioDevice.Unknown && !device.isPending) {
                 pendingDevice = device.copy(isPending = true)
@@ -910,7 +720,7 @@ class EqualizerManager(
             return
         }
         this.pendingDevice = null
-        val profileByDevice = eqProfiles.value.firstOrNull { profile ->
+        val profileByDevice = equalizerSettings.value.profiles.firstOrNull { profile ->
             profile.associations.contains(device.type)
         }
         if (profileByDevice != null) {
@@ -919,8 +729,8 @@ class EqualizerManager(
     }
 
     suspend fun setAutoEqProfile(profile: AutoEqProfile) {
-        val currentBandCount = eqState.value.preferredBandCount
-        val bandCapabilities = bandCapabilities.value
+        val currentBandCount = equalizerSettings.value.eqState.preferredBandCount
+        val bandCapabilities = equalizerSettings.value.bandCapabilities
         if (bandCapabilities.isBandCountSupported(currentBandCount)) {
             val frequencies = bandCapabilities.getFrequencies(currentBandCount)
             val profile = EqProfile(
@@ -1038,13 +848,13 @@ class EqualizerManager(
 
     private fun applyChangesToEngine(
         engine: EQEngine? = this.eqEngine,
-        state: EqState = this.eqState.value,
-        profile: EqProfile = this.eqCurrentProfile.value,
-        bassBoostState: BassBoostState = this.bassBoostState.value,
-        virtualizerState: VirtualizerState = this.virtualizerState.value,
-        loudnessGainState: LoudnessGainState = this.loudnessGainState.value,
-        compressorState: CompressorState = this.compressorState.value,
-        limiterState: LimiterState = this.limiterState.value
+        state: EqState = this.equalizerSettings.value.eqState,
+        profile: EqProfile = this.equalizerSettings.value.currentProfile,
+        bassBoostState: BassBoostState = this.equalizerSettings.value.bassBoost,
+        virtualizerState: VirtualizerState = this.equalizerSettings.value.virtualizer,
+        loudnessGainState: LoudnessGainState = this.equalizerSettings.value.loudnessGain,
+        compressorState: CompressorState = this.equalizerSettings.value.compressor,
+        limiterState: LimiterState = this.equalizerSettings.value.limiter
     ) {
         engine?.let {
             applyEngine(
@@ -1133,8 +943,146 @@ class EqualizerManager(
         }
     }
 
+    private fun buildEqualizerSettings(
+        bitPerfectState: BitPerfectState,
+        prefs: Preferences,
+        bandCapabilities: EqBandCapabilities
+    ): EqualizerSettings {
+        val engineMode = prefs[Keys.EQ_ENGINE_MODE]
+            ?.toEnum<EqEngineMode>()
+            ?: EqEngineMode.Auto
+
+        val eqState = EqState(
+            supported = prefs[Keys.EQ_SUPPORTED] ?: false,
+            enabled = prefs[Keys.EQ_ENABLED] ?: false,
+            disableReason = when {
+                bitPerfectState.isActive -> EqState.DisableReason.BitPerfect
+                prefs[Keys.AUDIO_OFFLOAD] == true -> EqState.DisableReason.AudioOffload
+                else -> null
+            },
+            preferredBandCount = prefs[Keys.EQ_BAND_COUNT] ?: engineMode.defaultBandCount,
+            engineMode = engineMode,
+            proMode = prefs[Keys.EQ_PRO_MODE_ENABLED] ?: false
+        )
+
+        val customProfile = runCatching {
+            Json.decodeFromString<EqProfile>(prefs[Keys.CUSTOM_PROFILE].orEmpty().trim())
+        }.getOrNull()
+            ?.takeIf { it.isValid }
+            ?: getEmptyCustomProfile(eqState.preferredBandCount)
+
+        val profiles = runCatching {
+            Json.decodeFromString<List<EqProfile>>(prefs[Keys.PROFILES].orEmpty().trim())
+        }.getOrElse {
+            emptyList()
+        }
+
+        val currentProfile = runCatching {
+            Json.decodeFromString<EqProfile>(prefs[Keys.PROFILE].orEmpty().trim())
+        }.getOrElse {
+            profiles.firstOrNull()
+                ?: getEmptyCustomProfile(eqState.preferredBandCount)
+        }
+
+        val autoEqProfiles = runCatching {
+            Json.decodeFromString<List<AutoEqProfile>>(prefs[Keys.AUTO_EQ_PROFILES].orEmpty().trim())
+        }.getOrElse {
+            emptyList()
+        }
+
+        return EqualizerSettings(
+            eqState = eqState,
+            currentProfile = currentProfile,
+            customProfile = customProfile,
+            profiles = profiles,
+            autoEqProfiles = autoEqProfiles,
+            bandCapabilities = bandCapabilities,
+            bassBoost = BassBoostState(
+                supported = prefs[Keys.BASS_BOOST_SUPPORTED] ?: false,
+                enabled = prefs[Keys.BASS_BOOST_ENABLED] ?: false,
+                strength = prefs[Keys.BASS_BOOST_STRENGTH] ?: 0f,
+                strengthRange = BASSBOOST_MIN_STRENGTH..BASSBOOST_MAX_STRENGTH
+            ),
+            virtualizer = VirtualizerState(
+                supported = prefs[Keys.VIRTUALIZER_SUPPORTED] ?: false,
+                enabled = prefs[Keys.VIRTUALIZER_ENABLED] ?: false,
+                strength = prefs[Keys.VIRTUALIZER_STRENGTH] ?: 0f,
+                strengthRange = VIRTUALIZER_MIN_STRENGTH..VIRTUALIZER_MAX_STRENGTH
+            ),
+            loudnessGain = LoudnessGainState(
+                supported = prefs[Keys.LOUDNESS_SUPPORTED] ?: false,
+                enabled = prefs[Keys.LOUDNESS_ENABLED] ?: false,
+                gainInDb = prefs[Keys.LOUDNESS_GAIN] ?: MINIMUM_LOUDNESS_GAIN,
+                gainRange = MINIMUM_LOUDNESS_GAIN..MAXIMUM_LOUDNESS_GAIN
+            ),
+            compressor = CompressorState(
+                enabled = prefs[Keys.COMPRESSOR_ENABLED] ?: false,
+                attackTimeMs = prefs[Keys.COMPRESSOR_ATTACK] ?: CompressorState.Unspecified.attackTimeMs,
+                attackTimeRange = CompressorState.Unspecified.attackTimeRange,
+                releaseTimeMs = prefs[Keys.COMPRESSOR_RELEASE] ?: CompressorState.Unspecified.releaseTimeMs,
+                releaseTimeRange = CompressorState.Unspecified.releaseTimeRange,
+                kneeWidth = prefs[Keys.COMPRESSOR_KNEE] ?: CompressorState.Unspecified.kneeWidth,
+                kneeWidthRange = CompressorState.Unspecified.kneeWidthRange,
+                noiseGateThreshold = prefs[Keys.COMPRESSOR_NOISE_GATE] ?: CompressorState.Unspecified.noiseGateThreshold,
+                noiseGateThresholdRange = CompressorState.Unspecified.noiseGateThresholdRange,
+                preGain = prefs[Keys.COMPRESSOR_PRE_GAIN] ?: CompressorState.Unspecified.preGain,
+                preGainRange = CompressorState.Unspecified.preGainRange,
+                postGain = prefs[Keys.COMPRESSOR_POST_GAIN] ?: CompressorState.Unspecified.postGain,
+                postGainRange = CompressorState.Unspecified.postGainRange,
+                ratio = prefs[Keys.COMPRESSOR_RATIO] ?: CompressorState.Unspecified.ratio,
+                ratioRange = CompressorState.Unspecified.ratioRange,
+                expanderRatio = prefs[Keys.COMPRESSOR_EXPANDER_RATIO] ?: CompressorState.Unspecified.expanderRatio,
+                expanderRatioRange = CompressorState.Unspecified.expanderRatioRange,
+                threshold = prefs[Keys.COMPRESSOR_THRESHOLD] ?: CompressorState.Unspecified.threshold,
+                thresholdRange = CompressorState.Unspecified.thresholdRange
+            ),
+            limiter = LimiterState(
+                enabled = prefs[Keys.LIMITER_ENABLED] ?: false,
+                attackTimeMs = prefs[Keys.LIMITER_ATTACK] ?: LimiterState.Unspecified.attackTimeMs,
+                attackTimeRange = LimiterState.Unspecified.attackTimeRange,
+                releaseTimeMs = prefs[Keys.LIMITER_RELEASE] ?: LimiterState.Unspecified.releaseTimeMs,
+                releaseTimeRange = LimiterState.Unspecified.releaseTimeRange,
+                postGain = prefs[Keys.LIMITER_POST_GAIN] ?: LimiterState.Unspecified.postGain,
+                postGainRange = LimiterState.Unspecified.postGainRange,
+                ratio = prefs[Keys.LIMITER_RATIO] ?: LimiterState.Unspecified.ratio,
+                ratioRange = LimiterState.Unspecified.ratioRange,
+                threshold = prefs[Keys.LIMITER_THRESHOLD] ?: LimiterState.Unspecified.threshold,
+                thresholdRange = LimiterState.Unspecified.thresholdRange
+            )
+        )
+    }
+
+    private fun buildSoundSettings(prefs: Preferences): SoundSettings {
+        return SoundSettings(
+            volume = VolumeState(
+                currentVolume = prefs[Keys.VOLUME] ?: 1f,
+                volumeRange = MIN_VOLUME..MAX_VOLUME
+            ),
+            balance = BalanceState(
+                center = prefs[Keys.CENTER_BALANCE] ?: 0f,
+                range = -MAX_VOLUME..MAX_VOLUME
+            ),
+            tempo = TempoState(
+                speed = prefs[Keys.SPEED] ?: 1f,
+                speedRange = MIN_SPEED..MAX_SPEED,
+                pitch = prefs[Keys.PITCH] ?: 1f,
+                pitchRange = MIN_PITCH..MAX_PITCH,
+                isFixedPitch = prefs[Keys.IS_FIXED_PITCH] ?: true
+            ),
+            replayGain = ReplayGainState(
+                mode = prefs[Keys.REPLAYGAIN_MODE]?.toEnum<ReplayGainMode>() ?: ReplayGainMode.Off,
+                preamp = prefs[Keys.REPLAYGAIN_PREAMP] ?: 0f,
+                preampWithoutGain = prefs[Keys.REPLAYGAIN_PREAMP_WITHOUT_GAIN] ?: 0f
+            ),
+            bitPerfect = prefs[Keys.BIT_PERFECT] ?: false,
+            audioOffload = prefs[Keys.BIT_PERFECT] != true && prefs[Keys.AUDIO_OFFLOAD] == true,
+            audioFloatOutput = prefs[Keys.AUDIO_FLOAT_OUTPUT] ?: false,
+            skipSilence = prefs[Keys.SKIP_SILENCE] ?: false
+        )
+    }
+
     suspend fun resetConfiguration() {
-        resetConfigurationWithNewEngineMode(eqState.value.engineMode)
+        resetConfigurationWithNewEngineMode(equalizerSettings.value.eqState.engineMode)
     }
 
     private suspend fun resetConfigurationWithNewEngineMode(newEngineMode: EqEngineMode) {

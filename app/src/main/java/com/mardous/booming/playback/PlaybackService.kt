@@ -270,7 +270,7 @@ class PlaybackService :
                 )
                 .setRenderersFactory(
                     BoomingMusicRenderersFactory(this, balanceProcessor, replayGainProcessor)
-                        .setEnableAudioFloatOutput(equalizerManager.audioFloatOutput.value)
+                        .setEnableAudioFloatOutput(equalizerManager.soundSettings.value.audioFloatOutput)
                         .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_ON)
                         .setMediaCodecSelector(AlacWorkaroundCodecSelector())
                         .setEnableDecoderFallback(true)
@@ -286,7 +286,7 @@ class PlaybackService :
                             }
                     )
                 )
-                .setSkipSilenceEnabled(equalizerManager.skipSilence.value)
+                .setSkipSilenceEnabled(equalizerManager.soundSettings.value.skipSilence)
                 .setHandleAudioBecomingNoisy(true)
                 .setMaxSeekToPreviousPositionMs(maxSeekToPreviousMs)
                 .setSeekBackIncrementMs(seekInterval)
@@ -1114,7 +1114,7 @@ class PlaybackService :
     }
 
     private fun restorePlayerVolume() {
-        player.volume = equalizerManager.volumeState.value.currentVolume
+        player.volume = equalizerManager.soundSettings.value.volume.currentVolume
     }
 
     private fun prepareEqualizerAndSoundSettings() {
@@ -1122,18 +1122,18 @@ class PlaybackService :
             equalizerManager.initializeEqualizer()
         }
         serviceScope.launch {
-            equalizerManager.volumeState.collect { volume ->
+            equalizerManager.soundSettings.map { it.volume }.collect { volume ->
                 cancelSleepTimerFadeOut()
                 player.volume = volume.currentVolume
             }
         }
         serviceScope.launch {
             // Turning ReplayGain on must also affect the track already playing.
-            equalizerManager.replayGainState.map { it.mode }.distinctUntilChanged()
+            equalizerManager.soundSettings.map { it.replayGain.mode }.distinctUntilChanged()
                 .collect { mode -> if (mode.isOn) submitReplayGain() }
         }
         serviceScope.launch {
-            equalizerManager.audioOffload.collect { audioOffloadingEnabled ->
+            equalizerManager.soundSettings.map { it.audioOffload }.collect { audioOffloadingEnabled ->
                 player.trackSelectionParameters = player.trackSelectionParameters
                     .buildUpon()
                     .setAudioOffloadPreferences(
@@ -1150,12 +1150,12 @@ class PlaybackService :
             }
         }
         serviceScope.launch {
-            equalizerManager.skipSilence.collect {
+            equalizerManager.soundSettings.map { it.skipSilence }.collect {
                 player.exoPlayer.skipSilenceEnabled = it
             }
         }
         serviceScope.launch {
-            equalizerManager.tempoState.collect {
+            equalizerManager.soundSettings.map { it.tempo }.collect {
                 player.playbackParameters = PlaybackParameters(it.speed, it.actualPitch)
             }
         }
