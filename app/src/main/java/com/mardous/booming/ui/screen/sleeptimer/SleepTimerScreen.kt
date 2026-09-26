@@ -122,6 +122,9 @@ fun SleepTimerBottomSheet(
     var sliderPosition by remember(uiState.timerValue) { mutableFloatStateOf(uiState.timerValue) }
     var fadeOutDuration by remember(uiState.fadeOutDuration) { mutableFloatStateOf(uiState.fadeOutDuration) }
 
+    val timerSliderState = rememberSliderState(sliderPosition, trackRange = 5f..180f)
+    LaunchedEffect(sliderPosition) { timerSliderState.value = sliderPosition }
+
     BottomSheetDialogSurface(
         title = { Text(stringResource(R.string.action_sleep_timer)) },
         headingContentPadding = PaddingValues(start = 24.dp, end = 24.dp, bottom = 4.dp)
@@ -155,7 +158,7 @@ fun SleepTimerBottomSheet(
                 )
 
                 Slider(
-                    state = rememberSliderState(value = sliderPosition, trackRange = 5f..180f),
+                    state = timerSliderState,
                     onValueChange = { sliderPosition = round(it) },
                     onValueChangeFinished = {
                         hapticFeedback.performHapticFeedback(
@@ -306,12 +309,11 @@ fun SleepTimerBottomSheet(
                                 .padding(horizontal = 16.dp)
                                 .padding(top = 8.dp, bottom = 16.dp)
                         ) {
+                            val sliderState = rememberSliderState(fadeOutDuration, steps = 8, trackRange = 1f..10f)
+                            LaunchedEffect(fadeOutDuration) { sliderState.value = fadeOutDuration }
+
                             Slider(
-                                state = rememberSliderState(
-                                    value = fadeOutDuration,
-                                    steps = 8,
-                                    trackRange = 1f..10f
-                                ),
+                                state = sliderState,
                                 onValueChange = { fadeOutDuration = it },
                                 onValueChangeFinished = {
                                     hapticFeedback.performHapticFeedback(

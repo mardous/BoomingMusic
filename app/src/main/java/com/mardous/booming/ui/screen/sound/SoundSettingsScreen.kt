@@ -34,6 +34,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberSliderState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -100,6 +101,18 @@ fun SoundSettingsSheet(
     var tempoSpeed by remember(tempo.speed) { mutableFloatStateOf(tempo.speed) }
     var tempoPitch by remember(tempo.actualPitch) { mutableFloatStateOf(tempo.actualPitch) }
 
+    val volumeSliderState = rememberSliderState(volume.currentVolume, trackRange = volume.volumeRange)
+    LaunchedEffect(volume) { volumeSliderState.value = volume.currentVolume }
+
+    val balanceSliderState = rememberSliderState(centerBalance, trackRange = balance.range)
+    LaunchedEffect(centerBalance) { balanceSliderState.value = centerBalance }
+
+    val tempoSpeedSliderState = rememberSliderState(tempoSpeed, trackRange = tempo.speedRange)
+    LaunchedEffect(tempoSpeed) { tempoSpeedSliderState.value = tempoSpeed }
+
+    val tempoPitchSliderState = rememberSliderState(tempoPitch, trackRange = tempo.pitchRange)
+    LaunchedEffect(tempoPitch) { tempoPitchSliderState.value = tempoPitch }
+
     BottomSheetDialogSurface(
         title = { Text(text = stringResource(R.string.sound_settings)) }
     ) {
@@ -145,10 +158,7 @@ fun SoundSettingsSheet(
                         modifier = Modifier.padding(cardContentPadding)
                     ) {
                         Slider(
-                            state = rememberSliderState(
-                                value = volume.currentVolume,
-                                trackRange = volume.volumeRange
-                            ),
+                            state = volumeSliderState,
                             onValueChange = {
                                 viewModel.setVolume(it)
                             },
@@ -181,10 +191,7 @@ fun SoundSettingsSheet(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Slider(
-                                        state = rememberSliderState(
-                                            value = centerBalance,
-                                            trackRange = balance.range
-                                        ),
+                                        state = balanceSliderState,
                                         onValueChange = { centerBalance = it },
                                         onValueChangeFinished = {
                                             hapticFeedback.performHapticFeedback(
@@ -291,10 +298,7 @@ fun SoundSettingsSheet(
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Slider(
-                                    state = rememberSliderState(
-                                        value = tempoSpeed,
-                                        trackRange = tempo.speedRange
-                                    ),
+                                    state = tempoSpeedSliderState,
                                     onValueChange = { tempoSpeed = it },
                                     onValueChangeFinished = {
                                         hapticFeedback.performHapticFeedback(
@@ -325,10 +329,7 @@ fun SoundSettingsSheet(
                             ) {
                                 val sliderValue = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
                                 Slider(
-                                    state = rememberSliderState(
-                                        value = sliderValue,
-                                        trackRange = tempo.pitchRange
-                                    ),
+                                    state = tempoPitchSliderState,
                                     onValueChange = { tempoPitch = it },
                                     onValueChangeFinished = {
                                         hapticFeedback.performHapticFeedback(
@@ -649,8 +650,8 @@ private fun LabeledSwitch(
 @Composable
 private fun SoundSettingsValueText(
     text: String,
-    color: Color = MaterialTheme.colorScheme.secondary,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.secondary
 ) {
     Text(
         text = text,
