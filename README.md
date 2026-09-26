@@ -13,7 +13,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=contributorcovenant)](CODE_OF_CONDUCT.md)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://play.google.com/apps/testing/com.mardous.booming"><img src="assets/badge-playstore.png" height="60" alt="Play Store - Closed Beta"></a>
+<a href="https://play.google.com/store/apps/details?id=com.mardous.booming"><img src="assets/badge-playstore.png" height="60" alt="Play Store"></a>
 <a href="https://f-droid.org/packages/com.mardous.booming/"><img src="assets/badge-fdroid.png" height="60" alt="F-Droid"></a>
 <a href="https://apt.izzysoft.de/packages/com.mardous.booming/"><img src="assets/badge-izzyondroid.png" height="60" alt="IzzyOnDroid"></a>
 <a href="https://github.com/mardous/BoomingMusic/releases"><img src="assets/badge-github.png" height="60" alt="GitHub Release"></a>
