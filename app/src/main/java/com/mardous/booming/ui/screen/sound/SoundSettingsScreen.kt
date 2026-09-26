@@ -111,7 +111,9 @@ fun SoundSettingsSheet(
     LaunchedEffect(tempoSpeed) { tempoSpeedSliderState.value = tempoSpeed }
 
     val tempoPitchSliderState = rememberSliderState(tempoPitch, trackRange = tempo.pitchRange)
-    LaunchedEffect(tempoPitch) { tempoPitchSliderState.value = tempoPitch }
+    LaunchedEffect(tempoSpeed, tempoPitch) {
+        tempoPitchSliderState.value = if (tempo.isFixedPitch) tempoSpeed else tempoPitch
+    }
 
     BottomSheetDialogSurface(
         title = { Text(text = stringResource(R.string.sound_settings)) }
