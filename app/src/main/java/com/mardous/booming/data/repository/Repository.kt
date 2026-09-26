@@ -19,6 +19,7 @@ package com.mardous.booming.data.repository
 
 import android.content.Context
 import android.net.Uri
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.media3.common.MediaItem
 import com.mardous.booming.R
@@ -343,67 +344,120 @@ class RealRepository(
         songRepository.songByFilePath(path, ignoreBlacklist)
 
     override suspend fun homeSuggestions(): List<Suggestion> {
-        val favorites = (favoriteSongs() + playCountSongs())
-            .distinctBy { it.id }
-            .shuffled()
-            .take(Suggestion.FOR_YOU_MAX_ITEMS)
-        val albums = (topAlbums() + recentAlbums())
-            .distinctBy { it.id }
-            .take(Suggestion.TOP_CONTENT_MAX_ITEMS)
-        val artists = (topArtists() + recentArtists())
-            .distinctBy { it.id }
-            .take(Suggestion.TOP_CONTENT_MAX_ITEMS)
-        val forgotten = notRecentlyPlayedSongs()
-            .take(Suggestion.REDISCOVER_MAX_ITEMS)
+        val suggestions = mutableListOf<Suggestion?>()
 
-        return listOf(
-            Suggestion(
-                type = ContentType.Favorites,
-                items = favorites,
-                titleRes = R.string.home_for_you_title,
-                subtitleRes = listOf(
-                    R.string.home_for_you_subtitle,
-                    R.string.home_for_you_subtitle_2,
-                    R.string.home_for_you_subtitle_3
-                ).random()
-            ),
-            Suggestion(
-                type = ContentType.TopAlbums,
-                items = albums,
-                titleRes = R.string.home_albums_title,
-                subtitleRes = listOf(
-                    R.string.home_albums_subtitle,
-                    R.string.home_albums_subtitle_2,
-                    R.string.home_albums_subtitle_3
-                ).random()
-            ),
-            Suggestion(
-                type = ContentType.TopArtists,
-                items = artists,
-                titleRes = R.string.home_artists_title,
-                subtitleRes = listOf(
-                    R.string.home_artists_subtitle,
-                    R.string.home_artists_subtitle_2,
-                    R.string.home_artists_subtitle_3
-                ).random()
-            ),
-            Suggestion(
-                type = ContentType.NotRecentlyPlayed,
-                items = forgotten,
-                titleRes = R.string.home_forgotten_tracks_title,
-                subtitleRes = listOf(
-                    R.string.home_forgotten_tracks_subtitle,
-                    R.string.home_forgotten_tracks_subtitle_2,
-                    R.string.home_forgotten_tracks_subtitle_3
-                ).random()
-            )
-        ).filter {
-            if (it.type == ContentType.Favorites) {
-                it.items.size >= Suggestion.FOR_YOU_MIN_ITEMS
-            } else {
-                it.items.isNotEmpty()
+        chooseSuggestionContent(
+            content1 = ContentType.Favorites to favoriteSongs(),
+            content2 = ContentType.TopTracks to playCountSongs(),
+            distinctKey = { it.id },
+            limit = Suggestion.FOR_YOU_MAX_ITEMS
+        )?.let { (chosenType, items) ->
+            if (items.size >= Suggestion.FOR_YOU_MIN_ITEMS) {
+                suggestions.add(
+                    createSuggestion(
+                        type = chosenType,
+                        items = items,
+                        titleRes = R.string.home_for_you_title,
+                        subtitles = listOf(
+                            R.string.home_for_you_subtitle,
+                            R.string.home_for_you_subtitle_2,
+                            R.string.home_for_you_subtitle_3
+                        )
+                    )
+                )
             }
         }
+
+        chooseSuggestionContent(
+            content1 = ContentType.TopAlbums to topAlbums(),
+            content2 = ContentType.RecentAlbums to recentAlbums(),
+            distinctKey = { it.id },
+            limit = Suggestion.TOP_CONTENT_MAX_ITEMS
+        )?.let { (chosenType, items) ->
+            suggestions.add(
+                createSuggestion(
+                    type = chosenType,
+                    items = items,
+                    titleRes = R.string.home_albums_title,
+                    subtitles = listOf(
+                        R.string.home_albums_subtitle,
+                        R.string.home_albums_subtitle_2,
+                        R.string.home_albums_subtitle_3
+                    )
+                )
+            )
+        }
+
+        chooseSuggestionContent(
+            content1 = ContentType.TopArtists to topArtists(),
+            content2 = ContentType.RecentArtists to recentArtists(),
+            distinctKey = { it.id },
+            limit = Suggestion.TOP_CONTENT_MAX_ITEMS
+        )?.let { (chosenType, items) ->
+            suggestions.add(
+                createSuggestion(
+                    type = chosenType,
+                    items = items,
+                    titleRes = R.string.home_artists_title,
+                    subtitles = listOf(
+                        R.string.home_artists_subtitle,
+                        R.string.home_artists_subtitle_2,
+                        R.string.home_artists_subtitle_3
+                    )
+                )
+            )
+        }
+
+        val forgotten = notRecentlyPlayedSongs().take(Suggestion.REDISCOVER_MAX_ITEMS)
+        if (forgotten.isNotEmpty()) {
+            suggestions.add(
+                createSuggestion(
+                    type = ContentType.NotRecentlyPlayed,
+                    items = forgotten,
+                    titleRes = R.string.home_forgotten_tracks_title,
+                    subtitles = listOf(
+                        R.string.home_forgotten_tracks_subtitle,
+                        R.string.home_forgotten_tracks_subtitle_2,
+                        R.string.home_forgotten_tracks_subtitle_3
+                    )
+                )
+            )
+        }
+
+        return suggestions.filterNotNull()
+    }
+
+    private fun <T> chooseSuggestionContent(
+        content1: Pair<ContentType, List<T>>,
+        content2: Pair<ContentType, List<T>>,
+        distinctKey: (T) -> Long,
+        limit: Int
+    ): Pair<ContentType, List<T>>? {
+        val list1 = content1.second
+        val list2 = content2.second
+
+        if (list1.isEmpty() && list2.isEmpty()) return null
+        if (list1.isEmpty()) return content2.first to list2.take(limit)
+        if (list2.isEmpty()) return content1.first to list1.take(limit)
+
+        val chosenType = if (list2.size > list1.size) content2.first else content1.first
+        val mergedList = (list1 + list2).distinctBy(distinctKey).take(limit)
+
+        return chosenType to mergedList
+    }
+
+    private fun <T : Any> createSuggestion(
+        type: ContentType,
+        items: List<T>,
+        @StringRes titleRes: Int,
+        subtitles: List<Int>
+    ): Suggestion {
+        return Suggestion(
+            type = type,
+            items = items,
+            titleRes = titleRes,
+            subtitleRes = subtitles.random()
+        )
     }
 
     override suspend fun recentSongs(): List<Song> = smartRepository.recentSongs()

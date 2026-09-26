@@ -203,10 +203,6 @@ fun SuggestionSection(
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-    val showOpenButton = suggestion.type == ContentType.TopAlbums ||
-            suggestion.type == ContentType.TopArtists ||
-            suggestion.type == ContentType.NotRecentlyPlayed
-
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.padding(vertical = 8.dp)
@@ -231,7 +227,8 @@ fun SuggestionSection(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            if (showOpenButton) {
+            if (suggestion.type != ContentType.Favorites &&
+                suggestion.type != ContentType.TopTracks) {
                 FilledIconButton(
                     onClick = onOpenClick,
                     colors = IconButtonDefaults.filledIconButtonColors(
@@ -249,12 +246,14 @@ fun SuggestionSection(
         }
 
         when (suggestion.type) {
+            ContentType.RecentAlbums,
             ContentType.TopAlbums -> AlbumCarousel(
                 albums = suggestion.items.filterIsInstance<Album>(),
                 onAlbumClick = { onItemClick(it) },
                 onPlayClick = { onPlayAlbumClick(it) }
             )
 
+            ContentType.RecentArtists,
             ContentType.TopArtists -> LazyRow(
                 contentPadding = PaddingValues(horizontal = 8.dp)
             ) {
@@ -263,6 +262,7 @@ fun SuggestionSection(
                 }
             }
 
+            ContentType.TopTracks,
             ContentType.Favorites -> {
                 if (isLandscape) {
                     ForYouHorizontalGrid(
