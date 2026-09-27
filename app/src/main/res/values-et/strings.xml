@@ -816,10 +816,10 @@
     <string name="listening_on">Kuulamisel on</string>
     <string name="casting_to">Kuvaedastus seadmesse</string>
     <string name="enable_audio_float_output_description">Tagamaks suurima võimaliku täpsuse, lülitab sisse 32-bitise ujukomaväljundi. Eeldab rakenduse uuesti käivitamist.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumentaallugude tunnused</string>
-    <string name="instrumental_tracks_identifiers_summary">Kui loo sõnad koosnevad ainult ühest või mitmest nimetatud tunnusest, märgitakse see instrumentaalpalaks (eraldatuna komadega).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Arvesta pealkirja</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Tunnuste otsimiseks kasuta ka loo pealkirja.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Eira tühje ridu</string>
     <string name="ignore_blank_lines_summary">Animeeritud jutumullide asemel eira LRC-failides leiduvaid tühje ridu.</string>
     <string name="enable_audio_float_output_title">Kõrge täpsusega heliväljund</string>

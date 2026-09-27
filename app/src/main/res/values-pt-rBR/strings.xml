@@ -586,10 +586,10 @@
     <string name="synced_font_size_full_summary">Ajusta o tamanho da fonte das letras sincronizadas em tela cheia.</string>
     <string name="unsynced_font_size_full_title">Tamanho da fonte das letras não sincronizadas (tela cheia)</string>
     <string name="unsynced_font_size_full_summary">Ajusta o tamanho da fonte das letras não sincronizadas na tela cheia.</string>
-    <string name="instrumental_tracks_identifiers_title">Identificadores de faixas instrumentais</string>
-    <string name="instrumental_tracks_identifiers_summary">Se a letra de uma música contiver apenas um ou mais desses indicadores, ela será marcada como faixa instrumental (separados por vírgula).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Marcar pelo título</string>
-    <string name="instrumental_tracks_mark_by_title_summary">O título da faixa também será levado em conta na busca por identificadores.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Ignore linhas em branco</string>
     <string name="ignore_blank_lines_summary">Ignore linhas vazias em arquivos LRC em vez de mostrar bolhas animadas.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos os arquivos de letras como UTF-8</string>

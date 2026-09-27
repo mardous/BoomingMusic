@@ -593,10 +593,10 @@
     <string name="synced_font_size_full_summary">Налаштувати розмір шрифту для синхронізованого тексту пісні в повноекранному режимі тексту пісні.</string>
     <string name="unsynced_font_size_full_title">Розмір шрифту несинхронізованого тексту пісні (повний екран)</string>
     <string name="unsynced_font_size_full_summary">Налаштувати розмір шрифту для несинхронізованого тексту пісень у повноекранному режимі тексту пісні.</string>
-    <string name="instrumental_tracks_identifiers_title">Ідентифікатори інструментальних треків</string>
-    <string name="instrumental_tracks_identifiers_summary">Якщо текст пісні складається лише з одного або кількох таких індикаторів, вона буде позначена як інструментальний трек (через кому).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Позначити за назвою</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Назва треку також буде враховуватися під час пошуку ідентифікаторів.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Ігнорувати порожні рядки</string>
     <string name="ignore_blank_lines_summary">Ігнорувати порожні рядки у файлах LRC замість того, щоби показувати анімовані бульбашки.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Обробляти всі файли текстів пісень у UTF-8</string>

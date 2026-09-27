@@ -610,10 +610,10 @@
     <string name="synced_font_size_full_summary">اضبط حجم خط الكلمات المتزامنة في شاشة الكلمات الكاملة.</string>
     <string name="unsynced_font_size_full_title">حجم خط الكلمات غير المتزامنة (العرض الكامل)</string>
     <string name="unsynced_font_size_full_summary">اضبط حجم خط الكلمات غير المتزامنة في شاشة الكلمات الكاملة.</string>
-    <string name="instrumental_tracks_identifiers_title">معرِّفات المقاطع الموسيقية البحتة</string>
-    <string name="instrumental_tracks_identifiers_summary">إذا كانت كلمات الأغنية تتكون فقط من واحد أو أكثر من هذه المعرِّفات، فستُصنَّف كمقطع موسيقي بحت (مفصولة بفواصل).</string>
-    <string name="instrumental_tracks_mark_by_title_title">التصنيف حسب العنوان</string>
-    <string name="instrumental_tracks_mark_by_title_summary">سيؤخذ عنوان المقطع أيضًا بعين الاعتبار عند البحث عن المعرِّفات.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">تجاهل الأسطر الفارغة</string>
     <string name="ignore_blank_lines_summary">تجاهل الأسطر الفارغة في ملفات LRC بدلًا من إظهار فقاعات متحركة.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">معاملة كل ملفات الكلمات كترميز UTF-8</string>

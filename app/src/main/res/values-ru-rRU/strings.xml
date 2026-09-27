@@ -593,10 +593,10 @@
     <string name="synced_font_size_full_summary">Размер шрифта синхронизированного текста на отдельном экране текста.</string>
     <string name="unsynced_font_size_full_title">Размер обычного текста (полный экран)</string>
     <string name="unsynced_font_size_full_summary">Размер шрифта несинхронизированного текста на отдельном экране текста.</string>
-    <string name="instrumental_tracks_identifiers_title">Маркеры инструментальных треков</string>
-    <string name="instrumental_tracks_identifiers_summary">Если текст песни состоит только из одного или нескольких таких индикаторов, трек будет помечен как инструментальный (перечисляются через запятую).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Определять по названию</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Название трека также будет учитываться при поиске маркеров.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Игнорировать пустые строки</string>
     <string name="ignore_blank_lines_summary">Игнорировать пустые строки в LRC файлах вместо отображения анимированных пузырьков.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Считать все файлы текстов в UTF-8</string>

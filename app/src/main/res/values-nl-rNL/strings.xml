@@ -577,10 +577,10 @@
     <string name="synced_font_size_full_summary">Pas de lettergrootte voor gesynchroniseerde songteksten aan in het volledige songtekstscherm.</string>
     <string name="unsynced_font_size_full_title">Ongesynchroniseerde songtekst lettergrootte (volledige weergave)</string>
     <string name="unsynced_font_size_full_summary">Pas de lettergrootte aan voor niet-gesynchroniseerde songteksten in het volledige songteksten scherm.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumentaal track-id\'s</string>
-    <string name="instrumental_tracks_identifiers_summary">Als de songtekst van een nummer slechts één of meer van deze indicatoren bevat, zal het worden gemarkeerd als een instrumentaal nummer (gescheiden door komma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Markeren op titel</string>
-    <string name="instrumental_tracks_mark_by_title_summary">De titel van het spoor zal ook in aanmerking worden genomen bij het zoeken naar identificatie.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Negeer witregels</string>
     <string name="ignore_blank_lines_summary">Negeer witregels in LRC bestanden in plaats van het tonen van geanimeerde bubbels.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Behandel alle bestanden met songtekst als UTF-8</string>

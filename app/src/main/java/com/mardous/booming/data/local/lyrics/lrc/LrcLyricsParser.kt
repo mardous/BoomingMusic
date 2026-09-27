@@ -1,9 +1,9 @@
 package com.mardous.booming.data.local.lyrics.lrc
 
 import android.util.Log
-import com.mardous.booming.data.LyricsParser
+import com.mardous.booming.data.local.lyrics.LyricsInfo
+import com.mardous.booming.data.local.lyrics.LyricsParser
 import com.mardous.booming.data.model.lyrics.LyricsActor
-import com.mardous.booming.data.model.lyrics.LyricsFile
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import java.io.Reader
 import java.util.Locale
@@ -21,34 +21,68 @@ import java.util.Locale
  */
 class LrcLyricsParser : LyricsParser {
 
-    override fun handles(file: LyricsFile): Boolean {
-        return file.format == LyricsFile.Format.LRC
-    }
+    override fun getInfo(lyrics: String): LyricsInfo {
+        var hasContentLines = false
+        var hasTimestampedContent = false
 
-    /**
-     * Quickly checks if the reader content looks like LRC.
-     * It scans for lines that have both a timestamp and actual text content,
-     * while ignoring metadata attribute lines.
-     */
-    override fun handles(reader: Reader): Boolean {
-        val content = reader.buffered().use { it.readText() }
-        return content
-            .lineSequence()
-            .map { it.trim() }
-            .filter { it.isNotEmpty() }
-            .any { line ->
-                if (ATTRIBUTE_PATTERN.matches(line)) {
-                    false
-                } else {
-                    val hasTime = LINE_TIME_PATTERN.containsMatchIn(line)
-                    val hasContent = LINE_PATTERN.matchEntire(line)?.groupValues
-                        ?.getOrNull(2)
-                        ?.isNotBlank() == true
+        for (line in lyrics.lineSequence()) {
+            val trimmed = line.trim()
+            if (trimmed.isEmpty()) continue
 
-                    hasTime && hasContent
+            val attrResult = ATTRIBUTE_PATTERN.find(trimmed)
+            if (attrResult != null) {
+                val name = attrResult.groupValues[1].lowercase().trim()
+                val value = attrResult.groupValues[2].lowercase().trim()
+
+                if ((name == "instrumental" && value == "true") ||
+                    (name == "type" && value == "instrumental")) {
+                    return LyricsInfo.Instrumental
+                }
+                continue
+            }
+
+            val match = LINE_PATTERN.matchEntire(trimmed)
+            if (match != null) {
+                val hasContent = match.groupValues.getOrNull(2)?.isNotBlank() == true
+                if (hasContent) {
+                    hasContentLines = true
+                    if (LINE_TIME_PATTERN.containsMatchIn(trimmed)) {
+                        hasTimestampedContent = true
+                        break
+                    }
                 }
             }
+        }
+        return if (hasContentLines) {
+            LyricsInfo.Valid(actuallySynced = hasTimestampedContent)
+        } else {
+            LyricsInfo.Invalid
+        }
     }
+
+    override fun parseAsPlain(input: String): String? {
+        val builder = StringBuilder()
+        for (line in input.lineSequence()) {
+            val trimmed = line.trim()
+            if (trimmed.isEmpty()) continue
+
+            if (ATTRIBUTE_PATTERN.containsMatchIn(trimmed)) continue
+
+            val lineMatch = LINE_PATTERN.matchEntire(trimmed)
+            if (lineMatch != null) {
+                val textContent = lineMatch.groupValues.getOrNull(2)?.trim().orEmpty()
+                if (textContent.isNotEmpty()) {
+                    builder.appendLine(textContent)
+                }
+            } else {
+                builder.appendLine(trimmed)
+            }
+        }
+        val result = builder.toString().trim()
+        return result.ifEmpty { null }
+    }
+
+    override fun parseAsPlain(reader: Reader): String? = null
 
     /**
      * Main entry point for parsing LRC content.
@@ -337,7 +371,7 @@ class LrcLyricsParser : LyricsParser {
         private val LINE_ACTOR_PATTERN = Regex("^([vV]\\d+|D|M|F)\\s*:\\s*(.*)")
         private val LINE_WORD_PATTERN = Regex("<${TIME_PATTERN.pattern}>([^<]*)")
         private val BACKGROUND_ONLY_PATTERN = Regex("^\\[bg:(.*?)]\\s*$")
-        private val ATTRIBUTE_PATTERN = Regex("\\[(offset|ti|ar|al|length|by):(.+)]", RegexOption.IGNORE_CASE)
+        private val ATTRIBUTE_PATTERN = Regex("\\[(offset|ti|ar|al|length|by|instrumental|type):(.+)]", RegexOption.IGNORE_CASE)
         private val KARAOKE_LINE_PATTERN = Regex("^<(.*)>$")
         private val KARAOKE_WORD_PATTERN = Regex("([^:|]+):(\\d+(?:\\.\\d+)?):(\\d+(?:\\.\\d+)?)")
     }

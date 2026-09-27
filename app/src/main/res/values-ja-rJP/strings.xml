@@ -570,10 +570,10 @@
     <string name="synced_font_size_full_summary">全画面の歌詞表示で同期された歌詞のフォントサイズを調整します。</string>
     <string name="unsynced_font_size_full_title">同期されていない歌詞のフォントサイズ（全画面）</string>
     <string name="unsynced_font_size_full_summary">全画面の歌詞表示で同期されていない歌詞のフォントサイズを調整します。</string>
-    <string name="instrumental_tracks_identifiers_title">インストゥルメンタルトラックの識別子</string>
-    <string name="instrumental_tracks_identifiers_summary">楽曲の歌詞がこれらのインジケーターの 1つかそれ以上のみで構成されている場合、インストゥルメンタルトラックとしてマークされます（カンマ区切り）</string>
-    <string name="instrumental_tracks_mark_by_title_title">タイトルでマークする</string>
-    <string name="instrumental_tracks_mark_by_title_summary">識別子を検索する際にはトラックタイトルも考慮されます。</string>
+
+
+
+
     <string name="ignore_blank_lines_title">空行を無視する</string>
     <string name="ignore_blank_lines_summary">アニメーションバブルを表示する代わりにLRCファイルの空行を無視します。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">すべての歌詞ファイルをUTF-8として処理する</string>

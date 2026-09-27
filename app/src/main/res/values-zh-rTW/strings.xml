@@ -569,10 +569,10 @@
     <string name="synced_font_size_full_summary">調整完整歌詞畫面中的同步歌詞字型大小。</string>
     <string name="unsynced_font_size_full_title">非同步歌詞字型大小（完整檢視）</string>
     <string name="unsynced_font_size_full_summary">調整完整歌詞畫面中的非同步歌詞字型大小。</string>
-    <string name="instrumental_tracks_identifiers_title">純音樂識別字詞</string>
-    <string name="instrumental_tracks_identifiers_summary">若歌曲歌詞去除首尾空白後完全等於某個判斷詞，則會標記為純音樂曲目。多個判斷詞請以英文逗號分隔。</string>
-    <string name="instrumental_tracks_mark_by_title_title">依標題判斷</string>
-    <string name="instrumental_tracks_mark_by_title_summary">搜尋判斷詞時，也會將曲目標題納入考量。</string>
+
+
+
+
     <string name="ignore_blank_lines_title">忽略空白行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 檔案中的空白行，而不是顯示動畫泡泡。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">將所有歌詞檔案視為 UTF-8</string>

@@ -575,10 +575,10 @@
     <string name="synced_font_size_full_summary">Justera teckenstorleken för synkroniserade låttexter i hela låttextskärmen.</string>
     <string name="unsynced_font_size_full_title">Osynkroniserad teckenstorlek för låttexter (full vy)</string>
     <string name="unsynced_font_size_full_summary">Justera teckenstorleken för osynkade låttexter i hela låttextskärmen.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumentala spåridentifierare</string>
-    <string name="instrumental_tracks_identifiers_summary">Om en låt endast består av en eller flera av dessa indikatorer kommer den att markeras som ett instrumentalt spår (separerat med kommatecken).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Markera efter titel</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Spårets titel kommer också att beaktas när du söker efter identifierare.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Ignorera tomma rader</string>
     <string name="ignore_blank_lines_summary">Ignorera tomma rader i LRC-filer istället för att visa animerade pratbubblor.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Behandla alla låttextfiler som UTF-8</string>

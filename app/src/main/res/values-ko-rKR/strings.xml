@@ -570,10 +570,10 @@
     <string name="synced_font_size_full_summary">전체 가사 화면의 동기 가사 크기를 조정합니다.</string>
     <string name="unsynced_font_size_full_title">일반 가사 크기 (전체 화면)</string>
     <string name="unsynced_font_size_full_summary">전체 가사 화면의 일반 가사 크기를 조정합니다.</string>
-    <string name="instrumental_tracks_identifiers_title">연주곡 식별자</string>
-    <string name="instrumental_tracks_identifiers_summary">가사가 이 단어들로만 구성된 경우 연주곡으로 표시합니다(쉼표로 구분).</string>
-    <string name="instrumental_tracks_mark_by_title_title">제목으로 표시</string>
-    <string name="instrumental_tracks_mark_by_title_summary">제목에서도 식별자를 검색합니다.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">빈 줄 무시</string>
     <string name="ignore_blank_lines_summary">LRC 파일의 빈 줄을 애니메이션 말풍선 대신 무시합니다.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">모든 가사 파일을 UTF-8로 처리</string>

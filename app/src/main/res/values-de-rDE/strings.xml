@@ -575,10 +575,10 @@
     <string name="synced_font_size_full_summary">Passen Sie die Schriftgröße für synchronisierte Liedtexte im Vollbildmodus an.</string>
     <string name="unsynced_font_size_full_title">Schriftgröße von nicht synchronisierten Liedtexten (Vollbild)</string>
     <string name="unsynced_font_size_full_summary">Passe die Schriftgröße für nicht synchronisierte Liedtexte im Vollbildmodus an.</string>
-    <string name="instrumental_tracks_identifiers_title">Erkennung für Instrumentalstücke</string>
-    <string name="instrumental_tracks_identifiers_summary">Wenn ein Liedtext nur aus einem oder mehreren dieser Indikatoren besteht, wird er als Instrumentalspur markiert (getrennt mit Komma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Nach Titel sortieren</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Der Titel wird auch bei der Suche berücksichtigt.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Leere Zeilen ignorieren</string>
     <string name="ignore_blank_lines_summary">Leere Zeilen in LRC-Dateien ignorieren, anstatt animierte Blasen anzuzeigen.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Alle Liedtextdatein als UTF-8 behandeln</string>

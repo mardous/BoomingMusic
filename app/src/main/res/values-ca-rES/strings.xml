@@ -586,10 +586,10 @@
     <string name="synced_font_size_full_summary">Ajusta la mida de la lletra sincronitzada en pantalla completa.</string>
     <string name="unsynced_font_size_full_title">Mida de la lletra sense sincronitzar (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta la mida de la lletra sense sincronitzar en pantalla completa.</string>
-    <string name="instrumental_tracks_identifiers_title">Identificadors de pistes instrumentals</string>
-    <string name="instrumental_tracks_identifiers_summary">Si la lletra d\'una cançó consisteix només en un o més indicadors d\'aquests, es marcarà com a pista instrumental (separat per comes).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Marca per títol</string>
-    <string name="instrumental_tracks_mark_by_title_summary">El títol de la pista també es tindrà en compte per cercar identificadors.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Ignora les línies buides</string>
     <string name="ignore_blank_lines_summary">Ignora les línies buides en els fitxers LRC en lloc de mostrar bombolles animades.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tracta tots els fitxers de lletra com a UTF-8</string>

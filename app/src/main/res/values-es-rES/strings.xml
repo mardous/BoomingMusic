@@ -578,10 +578,10 @@
     <string name="synced_font_size_full_summary">Ajuste el tamaño de fuente para las letras sincronizadas en la pantalla completa de letras.</string>
     <string name="unsynced_font_size_full_title">Tamaño de letra no sincronizado (vista completa)</string>
     <string name="unsynced_font_size_full_summary">Ajuste el tamaño de fuente para letras no sincronizadas en la pantalla completa de letras.</string>
-    <string name="instrumental_tracks_identifiers_title">Identificadores de pistas intrumentales</string>
-    <string name="instrumental_tracks_identifiers_summary">Si la letra de una canción consiste en solo uno o más de estos indicadores, se marcará como una canción instrumental (separada por coma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Marcar por título</string>
-    <string name="instrumental_tracks_mark_by_title_summary">El título de la pista también se tendrá en cuenta al buscar identificadores.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Ignorar renglones vacíos</string>
     <string name="ignore_blank_lines_summary">Ignora los renglones vacíos en los archivos LRC en lugar de mostrar burbujas animadas.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letra como UTF-8</string>

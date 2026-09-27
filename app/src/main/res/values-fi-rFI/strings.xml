@@ -576,10 +576,10 @@
     <string name="synced_font_size_full_summary">Säädä kirjasinkokoa synkronoitaville sanoituksille koko sanoitusten näytöllä.</string>
     <string name="unsynced_font_size_full_title">Synkronoimattomat sanoitukset kirjasimen koko (koko näkymä)</string>
     <string name="unsynced_font_size_full_summary">Säädä kirjasimen kokoa synkronoimattomille sanoituksille koko sanoitusten näytössä.</string>
-    <string name="instrumental_tracks_identifiers_title">Instrumentaaliset raidan tunnisteet</string>
-    <string name="instrumental_tracks_identifiers_summary">Jos kappaleen sanoitukset koostuvat vain yhdestä tai useammasta näistä osoittimista, ne merkitään instrumentaaliseksi kappaleeksi (pilkulla erotettuna).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Merkitse otsikon mukaan</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Reitin otsikko otetaan huomioon myös etsittäessä tunnisteita.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
     <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>

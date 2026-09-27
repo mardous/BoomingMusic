@@ -649,10 +649,10 @@
     <string name="synced_font_size_full_summary">முழு பாடல் வரிகள் திரையில் ஒத்திசைக்கப்பட்ட பாடல் வரிகளுக்கான எழுத்துரு அளவை சரிசெய்யவும்.</string>
     <string name="unsynced_font_size_full_title">ஒத்திசைக்கப்படாத பாடல் வரிகளின் எழுத்துரு அளவு (முழு பார்வை)</string>
     <string name="unsynced_font_size_full_summary">முழு பாடல் வரிகள் திரையில் ஒத்திசைக்கப்படாத பாடல் வரிகளுக்கான எழுத்துரு அளவை சரிசெய்யவும்.</string>
-    <string name="instrumental_tracks_identifiers_title">கருவி தட அடையாளங்காட்டிகள்</string>
-    <string name="instrumental_tracks_identifiers_summary">ஒரு பாடலின் வரிகள் இந்த குறிகாட்டிகளில் ஒன்று அல்லது அதற்கு மேற்பட்டவற்றை மட்டுமே கொண்டிருந்தால், அது ஒரு கருவி டிராக்காக (கமாவால் பிரிக்கப்பட்ட) குறிக்கப்படும்.</string>
-    <string name="instrumental_tracks_mark_by_title_title">தலைப்பு மூலம் குறிக்கவும்</string>
-    <string name="instrumental_tracks_mark_by_title_summary">அடையாளங்காட்டிகளைத் தேடும்போது ட்ராக் தலைப்பும் கணக்கில் எடுத்துக்கொள்ளப்படும்.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">வெற்று வரிகளை புறக்கணிக்கவும்</string>
     <string name="ignore_blank_lines_summary">அனிமேசன் செய்யப்பட்ட குமிழ்களைக் காட்டுவதற்குப் பதிலாக LRC கோப்புகளில் உள்ள வெற்று வரிகளைப் புறக்கணிக்கவும்.</string>
     <string name="preferred_lyrics_file_format_title">விருப்பமான கோப்பு வடிவம்</string>

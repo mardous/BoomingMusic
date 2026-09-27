@@ -569,10 +569,10 @@
     <string name="synced_font_size_full_summary">Sesuaikan ukuran font untuk lirik tersinkronisasi pada layar lirik penuh.</string>
     <string name="unsynced_font_size_full_title">Ukuran font lirik tidak tersinkronisasi (tampilan penuh)</string>
     <string name="unsynced_font_size_full_summary">Sesuaikan ukuran font untuk lirik tidak tersinkronisasi pada layar lirik penuh.</string>
-    <string name="instrumental_tracks_identifiers_title">Penanda lagu instrumental</string>
-    <string name="instrumental_tracks_identifiers_summary">Jika lirik lagu hanya terdiri dari satu atau lebih indikator ini, lagu tersebut akan ditandai sebagai lagu instrumental (dipisahkan dengan koma).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Tandai berdasarkan judul</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Judul lagu juga akan diperhitungkan saat mencari penanda.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Abaikan baris kosong</string>
     <string name="ignore_blank_lines_summary">Abaikan baris kosong dalam file LRC alih-alih menampilkan gelembung animasi.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Perlakukan semua file lirik sebagai UTF-8</string>

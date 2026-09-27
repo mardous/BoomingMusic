@@ -1,8 +1,8 @@
 package com.mardous.booming.data.local.lyrics.ttml
 
 import android.util.Log
-import com.mardous.booming.data.LyricsParser
-import com.mardous.booming.data.model.lyrics.LyricsFile
+import com.mardous.booming.data.local.lyrics.LyricsInfo
+import com.mardous.booming.data.local.lyrics.LyricsParser
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
@@ -23,47 +23,131 @@ import java.util.regex.Pattern
  */
 class TtmlLyricsParser : LyricsParser {
 
-    override fun handles(file: LyricsFile): Boolean =
-        file.format == LyricsFile.Format.TTML
-
-    /**
-     * Quickly checks if the reader content is a valid TTML lyrics file.
-     * It verifies the presence of the `<tt>` root tag and at least one `<div>` inside `<body>`.
-     */
-    override fun handles(reader: Reader): Boolean {
+    override fun getInfo(reader: Reader): LyricsInfo {
         return try {
-            val parser = XmlPullParserFactory.newInstance().newPullParser().apply {
+            val parser = XmlPullParserFactory.newInstance().apply {
+                isNamespaceAware = false
+            }.newPullParser().apply {
                 setInput(reader)
             }
 
             var foundTt = false
-            var foundDivInBody = false
             var insideBody = false
+            var hasTime = false
+            var hasParagraphs = false
 
             var event = parser.eventType
             while (event != XmlPullParser.END_DOCUMENT) {
                 when (event) {
                     XmlPullParser.START_TAG -> {
-                        when (parser.name) {
+                        when (parser.name.lowercase().substringAfterLast(":")) {
                             "tt" -> foundTt = true
-                            "body" -> insideBody = true
-                            "div" -> if (insideBody) {
-                                foundDivInBody = true
-                                break
+                            TtmlNode.TAG_BODY -> insideBody = true
+                            TtmlNode.TAG_PARAGRAPH -> {
+                                if (insideBody) {
+                                    hasParagraphs = true
+                                    if (hasTimeAttribute(parser)) {
+                                        hasTime = true
+                                    }
+                                }
+                            }
+                            TtmlNode.TAG_SPAN,
+                            TtmlNode.TAG_DIV -> {
+                                if (insideBody && !hasTime) {
+                                    if (hasTimeAttribute(parser)) {
+                                        hasTime = true
+                                    }
+                                }
                             }
                         }
                     }
                     XmlPullParser.END_TAG -> {
-                        if (parser.name == "body") {
+                        val tagName = parser.name.lowercase().substringAfterLast(":")
+                        if (tagName == TtmlNode.TAG_BODY) {
                             insideBody = false
                         }
                     }
                 }
                 event = parser.next()
             }
-            foundTt && foundDivInBody
+
+            if (foundTt && hasParagraphs) {
+                LyricsInfo.Valid(actuallySynced = hasTime)
+            } else {
+                LyricsInfo.Invalid
+            }
         } catch (_: Exception) {
-            false
+            LyricsInfo.Invalid
+        }
+    }
+
+    /**
+     * Performs a simple parsing of the TTML file to obtain lyrics in plain text format.
+     *
+     * This parsing method is faster because it doesn't require instantiating a [TtmlNodeTree];
+     * however, it can also be lenient and produce unpredictable results under certain circumstances.
+     * For this reason, it should only be used if [getInfo] reports that the TTML lyrics do not contain timestamps.
+     */
+    override fun parseAsPlain(reader: Reader): String? {
+        return try {
+            val parser = XmlPullParserFactory.newInstance().apply {
+                isNamespaceAware = false
+            }.newPullParser().apply {
+                setInput(reader)
+            }
+
+            val builder = StringBuilder()
+            var insideBody = false
+            var insideParagraph = false
+
+            var event = parser.eventType
+            while (event != XmlPullParser.END_DOCUMENT) {
+                when (event) {
+                    XmlPullParser.START_TAG -> {
+                        val tagName = parser.name.lowercase().substringAfterLast(":")
+                        when (tagName) {
+                            TtmlNode.TAG_BODY -> insideBody = true
+                            TtmlNode.TAG_PARAGRAPH -> {
+                                if (insideBody) {
+                                    insideParagraph = true
+                                }
+                            }
+                        }
+                    }
+
+                    XmlPullParser.TEXT -> {
+                        if (insideBody && insideParagraph) {
+                            val text = parser.text.trim()
+                            if (text.isNotEmpty()) {
+                                builder.append(text)
+                            }
+                        }
+                    }
+
+                    XmlPullParser.END_TAG -> {
+                        val tagName = parser.name.lowercase().substringAfterLast(":")
+                        when (tagName) {
+                            TtmlNode.TAG_PARAGRAPH -> {
+                                if (insideBody) {
+                                    insideParagraph = false
+                                    builder.appendLine()
+                                }
+                            }
+
+                            TtmlNode.TAG_DIV -> builder.appendLine()
+                            TtmlNode.TAG_BODY -> insideBody = false
+                        }
+                    }
+                }
+                event = parser.next()
+            }
+
+            parser.setInput(null)
+
+            val result = builder.toString().trim()
+            result.ifEmpty { null }
+        } catch (_: Exception) {
+            null
         }
     }
 
@@ -74,8 +158,11 @@ class TtmlLyricsParser : LyricsParser {
      */
     override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
         try {
-            val parser = XmlPullParserFactory.newInstance().newPullParser()
-            parser.setInput(reader)
+            val parser = XmlPullParserFactory.newInstance().apply {
+                isNamespaceAware = false
+            }.newPullParser().apply {
+                setInput(reader)
+            }
 
             val nodeTree = TtmlNodeTree()
             var eventType = parser.eventType
@@ -213,6 +300,7 @@ class TtmlLyricsParser : LyricsParser {
                 eventType = parser.next()
             }
             nodeTree.close()
+            parser.setInput(null)
             return nodeTree.toLyrics(trackLength)
         } catch (e: Exception) {
             Log.e("TtmlLyricsParser", "Couldn't parse TTML lyrics", e)
@@ -221,6 +309,16 @@ class TtmlLyricsParser : LyricsParser {
     }
 
     private fun isSupportedTag(name: String?) = TtmlNode.isSupportedTag(name)
+
+    private fun hasTimeAttribute(parser: XmlPullParser): Boolean {
+        for (i in 0 until parser.attributeCount) {
+            val attrName = parser.getAttributeName(i).lowercase().substringAfterLast(":")
+            if (attrName in setOf("begin", "dur", "end")) {
+                return true
+            }
+        }
+        return false
+    }
 
     private fun XmlPullParser.getTimeAttribute(name: String): Long {
         try {

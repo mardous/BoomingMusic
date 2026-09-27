@@ -569,10 +569,10 @@
     <string name="synced_font_size_full_summary">调整全屏歌词模式下同步歌词的字体大小。</string>
     <string name="unsynced_font_size_full_title">非同步歌词字体大小（全屏）</string>
     <string name="unsynced_font_size_full_summary">调整全屏歌词模式下非同步歌词的字体大小。</string>
-    <string name="instrumental_tracks_identifiers_title">纯音乐曲目判断词</string>
-    <string name="instrumental_tracks_identifiers_summary">若歌曲歌词去除首尾空白后完全等于某个判断词，则将其视为纯音乐曲目。多个判断词请以英文逗号分隔。</string>
-    <string name="instrumental_tracks_mark_by_title_title">使用歌曲标题判断纯音乐</string>
-    <string name="instrumental_tracks_mark_by_title_summary">识别纯音乐时一并在曲目标题中查找纯音乐判断词。</string>
+
+
+
+
     <string name="ignore_blank_lines_title">忽略空行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 文件中的空行，而不将其显示为气泡动画。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为 UTF-8</string>

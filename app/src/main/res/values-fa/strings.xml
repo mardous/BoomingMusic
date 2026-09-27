@@ -594,10 +594,10 @@
     <string name="synced_font_size_full_summary">اندازه فونت را برای اشعار همگام‌سازی شده در صفحه متن کامل تنظیم کنید.</string>
     <string name="unsynced_font_size_full_title">اندازه فونت اشعار همگام نشده (نمایش کامل)</string>
     <string name="unsynced_font_size_full_summary">اندازه فونت را برای اشعار همگام‌نشده در صفحه کامل متن آهنگ تنظیم کنید.</string>
-    <string name="instrumental_tracks_identifiers_title">شناسه های آهنگ ابزاری</string>
-    <string name="instrumental_tracks_identifiers_summary">اگر متن آهنگ فقط از یک یا چند مورد از این نشانگرها تشکیل شده باشد، به عنوان آهنگ ساز (با کاما از هم جدا شده) علامت گذاری می شود.</string>
-    <string name="instrumental_tracks_mark_by_title_title">علامت گذاری بر اساس عنوان</string>
-    <string name="instrumental_tracks_mark_by_title_summary">عنوان آهنگ نیز هنگام جستجوی شناسه ها در نظر گرفته می شود.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">خطوط خالی را نادیده بگیرید</string>
     <string name="ignore_blank_lines_summary">به جای نمایش حباب های متحرک، خطوط خالی را در فایل های LRC نادیده بگیرید.</string>
     <string name="preferred_lyrics_file_format_title">فرمت فایل ترجیحی</string>

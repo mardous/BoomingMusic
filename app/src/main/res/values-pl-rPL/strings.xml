@@ -593,10 +593,10 @@
     <string name="synced_font_size_full_summary">Dostosuj rozmiar czcionki dla zsynchronizowanych tekstów w pełnym widoku tekstu.</string>
     <string name="unsynced_font_size_full_title">Rozmiar czcionki niezsynch. tekstów (pełny ekran)</string>
     <string name="unsynced_font_size_full_summary">Dostosuj rozmiar czcionki dla niezsynchronizowanych tekstów w pełnym widoku tekstu.</string>
-    <string name="instrumental_tracks_identifiers_title">Oznaczenia utworów instrumentalnych</string>
-    <string name="instrumental_tracks_identifiers_summary">Jeśli tekst utworu składa się wyłącznie z tych oznaczeń, utwór zostanie oznaczony jako instrumentalny (rozdzielaj przecinkami).</string>
-    <string name="instrumental_tracks_mark_by_title_title">Oznaczaj na podstawie tytułu</string>
-    <string name="instrumental_tracks_mark_by_title_summary">Tytuł utworu również zostanie wzięty pod uwagę podczas wyszukiwania oznaczeń.</string>
+
+
+
+
     <string name="ignore_blank_lines_title">Pomiń puste linie</string>
     <string name="ignore_blank_lines_summary">Pomija puste linie w plikach LRC zamiast wyświetlać trzy animowane bąbelki.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traktuj wszystkie pliki z tekstem jako UTF-8</string>

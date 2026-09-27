@@ -7,8 +7,6 @@
 
 	<string name="mardous" translatable="false">Christians Martínez A.</string>
 
-    <string name="instrumental_identifiers" translatable="false">(Instrumental)</string>
-
     <string name="speed_0_5x" translatable="false">0.5x</string>
     <string name="speed_0_8x" translatable="false">0.8x</string>
     <string name="speed_1_0x" translatable="false">1.0x</string>
