@@ -229,13 +229,24 @@ fun LyricsEditorScreen(
         context.showToast(toastMessage)
     }
 
+    val uiState by viewModel.lyricsEditorUiState.collectAsStateWithLifecycle()
+    val editedContent = rememberSaveable(saver = SnapshotMapSaver) { mutableStateMapOf() }
+    var selectedSource by rememberSaveable { mutableStateOf(LyricsSource.Embedded) }
+    val isFileSource by remember { derivedStateOf { selectedSource == LyricsSource.File } }
+
+    fun setLyricsContent(content: String?) {
+        val text = content.orEmpty()
+        editedContent[selectedSource] = text
+        textFieldState.setContent(text)
+    }
+
     ObserveAsEvent(viewModel.downloadEvent) { downloadedLyrics ->
         if (downloadedLyrics.hasBoth) {
             downloadedLyricsForSelector = downloadedLyrics
         } else if (downloadedLyrics.hasPlain) {
-            textFieldState.setContent(downloadedLyrics.plain?.lyrics)
+            setLyricsContent(downloadedLyrics.plain?.lyrics)
         } else if (downloadedLyrics.hasSynced) {
-            textFieldState.setContent(downloadedLyrics.synced?.lyrics)
+            setLyricsContent(downloadedLyrics.synced?.lyrics)
         } else {
             showManualSearchDialog = true
         }
@@ -249,20 +260,13 @@ fun LyricsEditorScreen(
         viewModel.loadEditorContent(song)
     }
 
-    val uiState by viewModel.lyricsEditorUiState.collectAsStateWithLifecycle()
-    val editedContent = rememberSaveable(saver = SnapshotMapSaver) { mutableStateMapOf() }
-    var selectedSource by rememberSaveable { mutableStateOf(LyricsSource.Embedded) }
-    val isFileSource by remember { derivedStateOf { selectedSource == LyricsSource.File } }
-
-    LaunchedEffect(uiState, selectedSource) {
-        uiState.let {
-            if (it is LyricsEditorUiState.Visible && it.lyrics.isNotEmpty()) {
-                textFieldState.setContent(
-                    editedContent.getOrPut(selectedSource) {
-                        it.getLyricsContent(selectedSource)
-                    }
-                )
+    val visibleLyrics = (uiState as? LyricsEditorUiState.Visible)
+    LaunchedEffect(visibleLyrics?.lyrics, selectedSource) {
+        if (!visibleLyrics?.lyrics.isNullOrEmpty()) {
+            val content = editedContent.getOrPut(selectedSource) {
+                visibleLyrics.getLyricsContent(selectedSource)
             }
+            textFieldState.setContent(content)
         }
     }
 
@@ -277,15 +281,12 @@ fun LyricsEditorScreen(
             onDismissRequest = {
                 downloadedLyricsForSelector = null
             },
-            onModeSelected = {
-                when (it) {
-                    LyricsMode.Plain -> {
-                        textFieldState.setContent(downloadedLyricsForSelector?.plain?.lyrics)
-                    }
-                    LyricsMode.Synced -> {
-                        textFieldState.setContent(downloadedLyricsForSelector?.synced?.lyrics)
-                    }
+            onModeSelected = { mode ->
+                val content = when (mode) {
+                    LyricsMode.Plain -> downloadedLyricsForSelector?.plain?.lyrics
+                    LyricsMode.Synced -> downloadedLyricsForSelector?.synced?.lyrics
                 }
+                setLyricsContent(content)
                 downloadedLyricsForSelector = null
             }
         )
@@ -369,10 +370,8 @@ fun LyricsEditorScreen(
     }
 
     fun undoChanges() {
-        uiState.let {
-            if (it is LyricsEditorUiState.Visible) {
-                textFieldState.setContent(it.getLyricsContent(selectedSource))
-            }
+        (uiState as? LyricsEditorUiState.Visible)?.let { visibleState ->
+            setLyricsContent(visibleState.getLyricsContent(selectedSource))
         }
     }
 

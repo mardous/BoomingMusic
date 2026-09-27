@@ -37,7 +37,6 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -96,10 +95,7 @@ class LyricsViewModel(
     }
 
     fun loadEditorContent(song: Song) = viewModelScope.launch(IO) {
-        _lyricsEditorUiState.update {
-            LyricsEditorUiState.Visible(isLoading = true)
-        }
-
+        _lyricsEditorUiState.value = LyricsEditorUiState.Visible(isLoading = true)
         val lyrics = getEditorLyricsBySources(song, LyricsSource.entries)
         _lyricsEditorUiState.value = LyricsEditorUiState.Visible(
             isLoading = false,
