@@ -1,0 +1,7 @@
+* Improved live volume, speed, and balance adjustments
+* Improved LRC/TTML parsing without timestamps
+* Simplified instrumental detection
+* Fixed player panel focus when opening search
+* Fixed screens that didn't respect the system's default font
+* Fixed an issue preventing Home suggestions from opening their detail view
+* Fixed downloaded lyrics not appearing in the editor
