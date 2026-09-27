@@ -188,10 +188,10 @@
     <string name="playlist_label">播放列表</string>
     <string name="favorites_label">收藏夹</string>
     <string name="last_added_label">最近添加</string>
-    <string name="top_tracks_label">热门曲目</string>
+    <string name="top_tracks_label">最常播放</string>
     <string name="history_label">播放记录</string>
     <string name="not_recently_played">近期未播放</string>
-    <string name="play_info">播放信息</string>
+    <string name="play_info">播放统计</string>
     <string name="track_play_counts">曲目播放次数</string>
     <string name="song_stat_never_label">从未播放</string>
     <string name="song_stat_one_time_label">于 %s 播放过一次</string>
@@ -270,8 +270,8 @@
     <string name="replay_gain">回放增益</string>
     <string name="comment">备注</string>
     <string name="last_played">上次播放</string>
-    <string name="played">已播放</string>
-    <string name="skipped">已跳过</string>
+    <string name="played">播放次数</string>
+    <string name="skipped">跳过次数</string>
     <string name="track">曲目</string>
     <string name="track_total">曲目总数</string>
     <string name="disc">碟片</string>
@@ -462,7 +462,7 @@
     <string name="sleep_timer_stop_after_x_canceled">已取消在“%s”后停止</string>
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">随机播放</string>
-    <string name="app_shortcut_top_tracks_short">热门曲目</string>
+    <string name="app_shortcut_top_tracks_short">最常播放</string>
     <string name="app_shortcut_last_added_short">最近添加</string>
     <string name="app_shortcut_favorites_short">收藏夹</string>
     <!-- About page -->
@@ -530,7 +530,7 @@
     <string name="material_you_title">Material You 动态色彩</string>
     <string name="use_custom_font_title">使用自定义字体</string>
     <string name="appbar_mode_title">顶栏样式</string>
-    <string name="library_categories_title">曲库分类</string>
+    <string name="library_categories_title">底部导航栏选项卡</string>
     <string name="library_categories_summary">配置曲库分类的可见性和顺序。</string>
     <string name="remember_last_page_title">记住上次打开的页面</string>
     <string name="remember_last_page_summary">启动时转至最后打开的页面。</string>
@@ -657,9 +657,9 @@
     <string name="on_song_click_play_only_this_song_title">仅播放这首歌</string>
     <string name="on_song_click_play_only_this_song_summary">播放队列将被清空，替换为选择的歌曲。</string>
     <string name="on_song_click_play_whole_list_title">播放整个列表</string>
-    <string name="on_song_click_play_whole_list_summary">当前播放队列将替换为播放选择的播放列表/专辑/文件夹中的所有歌曲。</string>
+    <string name="on_song_click_play_whole_list_summary">当前播放队列将被替换为选择的歌曲所在的播放列表/专辑/文件夹中的所有歌曲。</string>
     <string name="on_song_click_queue_next_title">下一首播放</string>
-    <string name="on_song_click_queue_next_summary">选择的歌曲将被添加到播放队列的下一位。</string>
+    <string name="on_song_click_queue_next_summary">选择的歌曲将被插入到播放队列中正在播放的歌曲之后。</string>
     <string name="on_song_click_enqueue_at_end_title">在末尾加入队列</string>
     <string name="on_song_click_enqueue_at_end_summary">选择的歌曲将被添加到播放队列末尾。</string>
     <string name="on_clear_queue_title">当清空队列时</string>
@@ -1003,7 +1003,7 @@
     <string name="action_play_x">播放“%s”</string>
     <string name="home_empty_title">暂无推荐</string>
     <string name="home_empty_subtitle">先听点音乐吧</string>
-    <string name="home_shuffle_title">随机播放音乐</string>
+    <string name="home_shuffle_title">随机播放</string>
     <string name="home_for_you_title">专属推荐</string>
     <string name="home_for_you_subtitle">汇聚你的最爱</string>
     <string name="home_for_you_subtitle_2">精选宝藏单曲</string>
@@ -1030,6 +1030,4 @@
     <string name="backup_warning_database_ver">此备份中的部分数据（例如播放列表和歌词）不兼容，可能无法还原。</string>
     <string name="permission_notifications_title">通知（可选）</string>
     <string name="permission_notifications_summary">此权限允许 Booming Music 在通知栏和锁屏界面上显示播放控制选项。</string>
-
-
 </resources>
