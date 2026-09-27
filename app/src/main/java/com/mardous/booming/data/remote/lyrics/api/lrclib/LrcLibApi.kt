@@ -2,10 +2,11 @@ package com.mardous.booming.data.remote.lyrics.api.lrclib
 
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.remote.RateLimiter
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.model.LRCLibResponse
-import com.mardous.booming.util.Constants.SIMPLE_USER_AGENT
+import com.mardous.booming.util.Constants.USER_AGENT
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.timeout
@@ -19,9 +20,13 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
 
     override val provider = LyricsProvider.LRCLib
 
+    private val rateLimiter = RateLimiter("LrcLibApi")
+
     override suspend fun downloadLyrics(song: Song, title: String, artist: String): RawLyrics.Remote? {
-        val lyrics = client.get(LRCLIB_API_URL) {
-            userAgent(SIMPLE_USER_AGENT)
+        if (rateLimiter.isRateLimited) return null
+
+        val response = client.get(LRCLIB_API_URL) {
+            userAgent(USER_AGENT)
             timeout {
                 connectTimeoutMillis = 5000
                 socketTimeoutMillis = 10000
@@ -29,7 +34,11 @@ class LrcLibApi(private val client: HttpClient) : LyricsApi {
             }
             url.encodedParameters.append("q", "$artist $title".encodeURLParameter())
             url.encodedParameters.append("album_name", song.albumName.encodeURLParameter())
-        }.body<List<LRCLibResponse>>()
+        }
+
+        if (rateLimiter.handleResponse(response)) return null
+
+        val lyrics = response.body<List<LRCLibResponse>>()
         if (lyrics.isEmpty()) {
             return null
         } else {

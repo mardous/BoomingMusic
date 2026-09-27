@@ -2,6 +2,7 @@ package com.mardous.booming.data.remote.lyrics.api.betterlyrics
 
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.RawLyrics
+import com.mardous.booming.data.remote.RateLimiter
 import com.mardous.booming.data.remote.lyrics.api.LyricsApi
 import com.mardous.booming.data.remote.lyrics.api.LyricsProvider
 import com.mardous.booming.data.remote.lyrics.model.BetterLyricsResponse
@@ -16,11 +17,15 @@ class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
 
     override val provider = LyricsProvider.BetterLyrics
 
+    private val rateLimiter = RateLimiter("BetterLyricsApi")
+
     override suspend fun downloadLyrics(
         song: Song,
         title: String,
         artist: String
     ): RawLyrics.Remote? {
+        if (rateLimiter.isRateLimited) return null
+
         val response = client.get(BETTERLYRICS_API_URL) {
             parameter("s", title)
             parameter("a", artist)
@@ -32,6 +37,9 @@ class BetterLyricsApi(private val client: HttpClient) : LyricsApi {
                 requestTimeoutMillis = 15000
             }
         }
+
+        if (rateLimiter.handleResponse(response)) return null
+
         if (response.status == HttpStatusCode.OK) {
             val result = response.body<BetterLyricsResponse>()
             if (result.ttml.isNotEmpty()) {
