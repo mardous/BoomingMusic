@@ -816,10 +816,6 @@
     <string name="listening_on">Kuulamisel on</string>
     <string name="casting_to">Kuvaedastus seadmesse</string>
     <string name="enable_audio_float_output_description">Tagamaks suurima võimaliku täpsuse, lülitab sisse 32-bitise ujukomaväljundi. Eeldab rakenduse uuesti käivitamist.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Eira tühje ridu</string>
     <string name="ignore_blank_lines_summary">Animeeritud jutumullide asemel eira LRC-failides leiduvaid tühje ridu.</string>
     <string name="enable_audio_float_output_title">Kõrge täpsusega heliväljund</string>
@@ -1019,6 +1015,6 @@
     <string name="backup_warning_database_ver">Mõned selle varukoopia andmed, näiteks esitusloendid ja laulusõnad, ei ole ühilduvad ning neid ei pruugi olla võimalik taastada.</string>
     <string name="permission_notifications_title">Teavitused (kui soovid kasutada)</string>
     <string name="permission_notifications_summary">Selle õiguse lubamisel saab Booming Music kuvada taasesituse juhtnuppe teavituste alas ja lukustusvaates.</string>
-
-
+    <string name="detect_instrumental_tracks_title">Tuvasta instrumentaallood pealkirja alusel</string>
+    <string name="detect_instrumental_tracks_summary">Tuvasta instrumentaallood automaatselt pealkirja alusel.</string>
 </resources>
