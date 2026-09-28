@@ -654,8 +654,6 @@
     <plurals name="x_plays">
         <item quantity="other">%d уйнау</item>
     </plurals>
-    <plurals name="x_items">
-    </plurals>
     <plurals name="x_playlists_selected">
         <item quantity="other">%d плейлист сайлаган</item>
     </plurals>
