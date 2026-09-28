@@ -575,10 +575,6 @@
     <string name="synced_font_size_full_summary">Justera teckenstorleken för synkroniserade låttexter i hela låttextskärmen.</string>
     <string name="unsynced_font_size_full_title">Osynkroniserad teckenstorlek för låttexter (full vy)</string>
     <string name="unsynced_font_size_full_summary">Justera teckenstorleken för osynkade låttexter i hela låttextskärmen.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignorera tomma rader</string>
     <string name="ignore_blank_lines_summary">Ignorera tomma rader i LRC-filer istället för att visa animerade pratbubblor.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Behandla alla låttextfiler som UTF-8</string>
@@ -1039,6 +1035,6 @@
     <string name="backup_warning_database_ver">Vissa data från denna säkerhetskopia, till exempel spellistor och sångtexter, är inte kompatibla och kan eventuellt inte återställas.</string>
     <string name="permission_notifications_title">Meddelanden (valfritt)</string>
     <string name="permission_notifications_summary">Denna behörighet gör det möjligt för Booming Music att visa uppspelningskontroller i meddelandefältet och på låsskärmen.</string>
-
-
+    <string name="detect_instrumental_tracks_title">Identifiera instrumentalspår utifrån titeln</string>
+    <string name="detect_instrumental_tracks_summary">Identifiera instrumentala spår automatiskt baserat på deras titel.</string>
 </resources>

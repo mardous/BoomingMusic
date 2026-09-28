@@ -585,10 +585,6 @@
     <string name="synced_font_size_full_summary">Ajusta el tamaño de fuente de la letra sincronizada mostrada a pantalla completa.</string>
     <string name="unsynced_font_size_full_title">Tamaño de la letra no sincronizada (pantalla completa)</string>
     <string name="unsynced_font_size_full_summary">Ajusta el tamaño de fuente de la letra no sincronizada mostrada a pantalla completa.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignorar líneas vacías</string>
     <string name="ignore_blank_lines_summary">Ignora las líneas vacías en los archivos LRC en lugar de mostrarlas como burbujas animadas.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letras como UTF-8</string>
@@ -1048,6 +1044,6 @@
     <string name="backup_warning_database_ver">Algunos datos de esta copia de seguridad, como playlists y letras, no son compatibles y podrían no ser restaurados.</string>
     <string name="permission_notifications_title">Notificaciones (opcional)</string>
     <string name="permission_notifications_summary">Este permiso permite que Booming Music muestre los controles de reproducción en el panel de notificaciones y en la pantalla de bloqueo.</string>
-
-
+    <string name="detect_instrumental_tracks_title">Detectar pistas instrumentales por título</string>
+    <string name="detect_instrumental_tracks_summary">Identificar automáticamente las pistas instrumentales basándose en su título.</string>
 </resources>

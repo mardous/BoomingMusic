@@ -569,10 +569,6 @@
     <string name="synced_font_size_full_summary">调整全屏歌词模式下同步歌词的字体大小。</string>
     <string name="unsynced_font_size_full_title">非同步歌词字体大小（全屏）</string>
     <string name="unsynced_font_size_full_summary">调整全屏歌词模式下非同步歌词的字体大小。</string>
-
-
-
-
     <string name="ignore_blank_lines_title">忽略空行</string>
     <string name="ignore_blank_lines_summary">忽略 LRC 文件中的空行，而不将其显示为气泡动画。</string>
     <string name="treat_all_lyrics_files_as_utf8_title">将所有歌词文件视为 UTF-8</string>
@@ -1030,4 +1026,5 @@
     <string name="backup_warning_database_ver">此备份中的部分数据（例如播放列表和歌词）不兼容，可能无法还原。</string>
     <string name="permission_notifications_title">通知（可选）</string>
     <string name="permission_notifications_summary">此权限允许 Booming Music 在通知栏和锁屏界面上显示播放控制选项。</string>
+    <string name="detect_instrumental_tracks_summary">根据曲名自动识别器乐曲目。</string>
 </resources>
