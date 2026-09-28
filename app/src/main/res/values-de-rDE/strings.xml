@@ -575,10 +575,6 @@
     <string name="synced_font_size_full_summary">Passen Sie die Schriftgröße für synchronisierte Liedtexte im Vollbildmodus an.</string>
     <string name="unsynced_font_size_full_title">Schriftgröße von nicht synchronisierten Liedtexten (Vollbild)</string>
     <string name="unsynced_font_size_full_summary">Passe die Schriftgröße für nicht synchronisierte Liedtexte im Vollbildmodus an.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Leere Zeilen ignorieren</string>
     <string name="ignore_blank_lines_summary">Leere Zeilen in LRC-Dateien ignorieren, anstatt animierte Blasen anzuzeigen.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Alle Liedtextdatein als UTF-8 behandeln</string>
@@ -1039,6 +1035,6 @@
     <string name="restoring_data">Deine Daten werden wiederhergestellt…</string>
     <string name="permission_notifications_title">Benachrichtigungen (optional)</string>
     <string name="permission_notifications_summary">Mit dieser Berechtigung kann Booming Music die Wiedergabesteuerung in deinem Benachrichtigungsfeld und auf dem Sperrbildschirm anzeigen.</string>
-
-
+    <string name="detect_instrumental_tracks_title">Instrumentale Stücke anhand des Titels erkennen</string>
+    <string name="detect_instrumental_tracks_summary">Instrumentalstücke anhand ihres Titels automatisch identifizieren.</string>
 </resources>
