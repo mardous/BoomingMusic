@@ -585,10 +585,6 @@
     <string name="synced_font_size_full_summary">Ajuster la taille de la police pour les paroles synchronisées dans l\'écran des paroles complètes.</string>
     <string name="unsynced_font_size_full_title">Taille de police des paroles non synchronisées (vue complète)</string>
     <string name="unsynced_font_size_full_summary">Ajuster la taille de la police pour les paroles non synchronisées dans l\'écran des paroles complètes.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignorer les lignes vides</string>
     <string name="ignore_blank_lines_summary">Ignorez les lignes vides dans les fichiers LRC au lieu d\'afficher des bulles animées.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Traiter tous les fichiers de paroles comme UTF-8</string>
@@ -1048,6 +1044,6 @@
     <string name="backup_warning_database_ver">Certaines données issues de cette sauvegarde, telles que les playlists et les paroles, ne sont pas compatibles et risquent de ne pas pouvoir être restaurées.</string>
     <string name="permission_notifications_title">Notifications (facultatif)</string>
     <string name="permission_notifications_summary">Cette autorisation permet à Booming Music d\'afficher les commandes de lecture dans votre volet de notifications et sur l\'écran de verrouillage.</string>
-
-
+    <string name="detect_instrumental_tracks_title">Détecter les morceaux instrumentaux à partir du titre</string>
+    <string name="detect_instrumental_tracks_summary">Identifier automatiquement les morceaux instrumentaux en fonction de leur titre.</string>
 </resources>
