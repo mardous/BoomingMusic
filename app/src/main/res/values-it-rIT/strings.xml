@@ -577,10 +577,6 @@
     <string name="synced_font_size_full_summary">Regola la dimensione del carattere del testo sincronizzato nella schermata del testo completo.</string>
     <string name="unsynced_font_size_full_title">Dimensione carattere testo non sincronizzato (vista completa)</string>
     <string name="unsynced_font_size_full_summary">Regola la dimensione del carattere per il testo non sincronizzato nella schermata del testo completo</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignora righe vuote</string>
     <string name="ignore_blank_lines_summary">Ignora le righe vuote nei file LRC invece di mostrare i pallini animati.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Gestisci tutti i file dei testi come UTF-8</string>
@@ -1040,4 +1036,6 @@
     <string name="backup_warning_database_ver">Alcuni dati di questo backup, come le playlist e i testi, non sono compatibili e potrebbero non essere ripristinati.</string>
     <string name="permission_notifications_title">Notifiche (opzionale)</string>
     <string name="permission_notifications_summary">Questa autorizzazione consente a Booming Musica di mostrare i controlli di riproduzione nella sezione notifiche e nella schermata di blocco.</string>
+    <string name="detect_instrumental_tracks_title">Individua tracce strumentali dal titolo</string>
+    <string name="detect_instrumental_tracks_summary">Identifica automaticamente tracce strumentali basate dala loro titolo.</string>
 </resources>
