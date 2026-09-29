@@ -140,7 +140,7 @@
     <string name="list_start">Lijst start</string>
     <string name="list_end">Einde lijst</string>
     <string name="clear_queue">Wachtrij wissen</string>
-    <string name="action_move_to_current_track">Toon huidige track</string>
+    <string name="action_move_to_current_track">Toon huidig nummer</string>
     <string name="action_add_to_favorites">Voeg aan favorieten toe</string>
     <string name="action_remove_from_favorites">Verwijderen uit favorieten</string>
     <string name="added_to_favorites_label">Toegevoegd aan favorieten</string>
@@ -219,7 +219,7 @@
     <string name="sort_order_number_of_songs">Nummers aantal</string>
     <string name="sort_order_number_of_albums">Aantal albums</string>
     <string name="sort_order_last_played_date">Laatst afgespeelde datum</string>
-    <string name="sort_order_track_list">Track lijst</string>
+    <string name="sort_order_track_list">Lijst met nummers</string>
     <string name="sort_order_descending">Aflopend</string>
     <string name="sort_order_ignore_articles">Negeer artikelen</string>
     <string name="action_details">Beschrijving</string>
@@ -249,7 +249,7 @@
     <string name="label_file_format">Formatteren</string>
     <string name="file_label">Bestand</string>
     <string name="metadata_label">Metagegevens</string>
-    <string name="song">Nummer</string>
+    <string name="song">Liedje</string>
     <string name="title">Aanspreektitel</string>
     <string name="album">Album</string>
     <string name="artist">Kunstenaar</string>
@@ -272,8 +272,8 @@
     <string name="last_played">Laatst gespeeld</string>
     <string name="played">Gespeeld</string>
     <string name="skipped">Overgeslagen</string>
-    <string name="track">Bijhouden</string>
-    <string name="track_total">Totaal aantal tracks</string>
+    <string name="track">Nummer</string>
+    <string name="track_total">Totaal aantal nummers</string>
     <string name="disc">Schijf</string>
     <string name="disc_total">Totale schijven</string>
     <string name="lyrics">Songteksten</string>
@@ -577,10 +577,6 @@
     <string name="synced_font_size_full_summary">Pas de lettergrootte voor gesynchroniseerde songteksten aan in het volledige songtekstscherm.</string>
     <string name="unsynced_font_size_full_title">Ongesynchroniseerde songtekst lettergrootte (volledige weergave)</string>
     <string name="unsynced_font_size_full_summary">Pas de lettergrootte aan voor niet-gesynchroniseerde songteksten in het volledige songteksten scherm.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Negeer witregels</string>
     <string name="ignore_blank_lines_summary">Negeer witregels in LRC bestanden in plaats van het tonen van geanimeerde bubbels.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Behandel alle bestanden met songtekst als UTF-8</string>
@@ -742,7 +738,7 @@
     <string name="stack">Stapelen</string>
     <string name="parallax">Parallax</string>
     <string name="add_after_playing_track">Toevoegen na het afspelen van nummer</string>
-    <string name="add_tracks_sequentially">Tracks automatisch toevoegen</string>
+    <string name="add_tracks_sequentially">Nummers op volgorde toevoegen</string>
     <string name="albums_shuffle">Albums shuffelen</string>
     <string name="artists_shuffle">Artiesten shuffelen</string>
     <string name="shuffle_albums_ordered_songs">Shuffle albums, bestelde nummers</string>
@@ -838,7 +834,7 @@
     <string name="images_title">Afbeeldingen</string>
     <string name="lastfm_title">Last.fm</string>
     <string name="widget_dynamic_colors_title">Dynamische kleuren</string>
-    <string name="widget_dynamic_colors_summary">De kleuren van de widgets aanpassen aan de huidige trackafbeelding.</string>
+    <string name="widget_dynamic_colors_summary">De kleuren van de widgets aanpassen aan de afbeelding van het huidige nummer.</string>
     <string name="lyrics_center_horizontally_title">Centreer de songtekst horizontaal</string>
     <string name="lyrics_center_horizontally_summary">Lijn elke regel van de songtekst uit in het horizontale midden van het scherm.</string>
     <string name="network_features_title">Schakel netwerkfuncties in</string>
@@ -904,7 +900,7 @@
     <string name="musicbrainz_no_results">Geen resultaten gevonden op MusicBrainz.</string>
     <string name="musicbrainz_select_recording">Selecteer een resultaat</string>
     <string name="reorder_action">Reorganizeer</string>
-    <string name="go_to_current_track">Naar de huidige track</string>
+    <string name="go_to_current_track">Naar het huidige nummer</string>
     <string name="sort_order_name">Naam</string>
     <string name="eq_pro_mode">Expert Modus</string>
     <string name="compressor_label">Compressor</string>
@@ -1039,6 +1035,6 @@
     <string name="backup_warning_database_ver">Sommige data uit deze backup, zoals afspeellijsten en songteksten, is not compatibel en wordt mogelijk niet hersteld.</string>
     <string name="permission_notifications_title">Meldingen (optioneel)</string>
     <string name="permission_notifications_summary">Deze toestemming laat Booming Music terugspeelbesturing tonen in uw meldingspaneel en op het vergrendelscherm.</string>
-
-
+    <string name="detect_instrumental_tracks_title">Detecteer instrumentale nummers aan de hand van de titel</string>
+    <string name="detect_instrumental_tracks_summary">Identificeer automatisch instrumentale nummers aan de hand van hun titel.</string>
 </resources>
