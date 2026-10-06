@@ -578,10 +578,6 @@
     <string name="synced_font_size_full_summary">Ajuste el tamaño de fuente para las letras sincronizadas en la pantalla completa de letras.</string>
     <string name="unsynced_font_size_full_title">Tamaño de letra no sincronizado (vista completa)</string>
     <string name="unsynced_font_size_full_summary">Ajuste el tamaño de fuente para letras no sincronizadas en la pantalla completa de letras.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignorar renglones vacíos</string>
     <string name="ignore_blank_lines_summary">Ignora los renglones vacíos en los archivos LRC en lugar de mostrar burbujas animadas.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos los archivos de letra como UTF-8</string>
@@ -951,7 +947,7 @@
     <string name="app_widget_library_desc">Una cuadrícula con las portadas de una lista que elija</string>
     <string name="app_widget_nothing_playing">Nada en reproducción</string>
     <string name="app_widget_tap_to_play">Toca para abrir Booming Music</string>
-    <string name="action_auto_fill_from_musicbrainz">Relleno automático de MusicBrainz</string>
+    <string name="action_auto_fill_from_musicbrainz">Auto-llenar desde MusicBrainz</string>
     <string name="searching">Buscando…</string>
     <string name="musicbrainz_search_title">Búsqueda de MusicBrainz</string>
     <string name="musicbrainz_search_message">Busca metadatos de canciones en MusicBrainz usando el título y el artista.</string>
@@ -999,7 +995,6 @@
     <string name="home_for_you_title">Para usted</string>
     <string name="home_artists_title">Artistas recomendados</string>
     <string name="home_albums_subtitle_3">Lo que está en tendencia en su fonoteca</string>
-
     <string name="create_new_backup">Crear respaldo</string>
     <string name="open_backup">Abrir respaldo</string>
     <string name="share_backup">Compartir respaldo</string>
@@ -1034,7 +1029,7 @@
     <string name="home_forgotten_tracks_subtitle_2">Desempolve los tesoros ocultos</string>
     <string name="no_backup_folder_selected">No se seleccionó ninguna carpeta de respaldos</string>
     <string name="import_or_type_to_search_autoeq_profiles">Importe un perfil o busque el nombre de su dispositivo entre %d perfiles</string>
-    <string name="home_for_you_subtitle">Sus favoritos de siempre en un solo lugar</string>
+    <string name="home_for_you_subtitle">Tus favoritos de siempre en un solo lugar</string>
     <string name="autoeq_sync_failed">No se pudieron sincronizar los perfiles de AutoEq.</string>
     <string name="autoeq_sync_success">Se sincronizaron %d perfiles de AutoEq correctamente.</string>
     <string name="home_shuffle_title">Reproducir música al azar</string>
@@ -1045,4 +1040,10 @@
     <string name="sync_autoeq_database">Sincronizar base de datos de AutoEq</string>
     <string name="search_autoeq_placeholder">Buscar modelo de auriculares</string>
     <string name="allow_lyrics_download_from">Permitir descarga desde:</string>
+    <string name="listenbrainz_toggle_token_visibility">Mostrar/ocultar token</string>
+    <string name="detect_instrumental_tracks_title">Detectar pistas instrumentales con el título</string>
+    <string name="detect_instrumental_tracks_summary">Identificar pistas instrumentales automáticamente usando el título.</string>
+    <string name="backup_restore_summary">Gestionar copia de seguridad y restablecer.</string>
+    <string name="select_backup_folder">Seleccionar carpeta de copia de seguridad</string>
+    <string name="backup_app_version">Creado en</string>
 </resources>
