@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
     <string name="app_widget_circle">Circle</string>
     <string name="app_widget_circle_desc">A round player with the controls orbiting it</string>
     <string name="app_widget_cookie">Cookie</string>
@@ -1083,4 +1083,14 @@
     <string name="uncaught_error_restart_app">Restart app</string>
     <string name="uncaught_error_github">Open issue on GitHub</string>
     <string name="uncaught_error_send">Send report</string>
+    <!-- ViPER DSP -->
+    <string name="viper_dsp_title" translatable="false">ViPER DSP</string>
+    <string name="viper_dyn_bass_title" tools:ignore="MissingTranslation">Dynamic System</string>
+    <string name="viper_dyn_bass_gain" tools:ignore="MissingTranslation">Bass Gain</string>
+    <string name="viper_dyn_bass_preset" tools:ignore="MissingTranslation">Device Preset</string>
+    <string name="viper_bass_title" translatable="false">ViPER Bass</string>
+    <string name="viper_bass_mode" tools:ignore="MissingTranslation">Bass Mode</string>
+    <string name="viper_bass_cutoff" tools:ignore="MissingTranslation">Cutoff Frequency</string>
+    <string name="viper_bass_gain" tools:ignore="MissingTranslation">Boost Gain</string>
+
 </resources>

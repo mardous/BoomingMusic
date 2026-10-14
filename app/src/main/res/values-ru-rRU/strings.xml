@@ -1018,4 +1018,14 @@
     <string name="home_albums_subtitle_2">Погрузитесь в мир ваших последних коллекций</string>
     <string name="backup_restore_title">Резервное копирование и восстановление</string>
     <string name="backup_restore_summary">Управление резервным копированием и восстановлением данных приложения.</string>
+    <!-- ViPER DSP -->
+    <string name="viper_dsp_title">ViPER DSP</string>
+    <string name="viper_dyn_bass_title">Динамический бас</string>
+    <string name="viper_dyn_bass_gain">Усиление баса</string>
+    <string name="viper_dyn_bass_preset">Пресет устройства</string>
+    <string name="viper_bass_title">ViPER Bass</string>
+    <string name="viper_bass_mode">Режим баса</string>
+    <string name="viper_bass_cutoff">Частота среза</string>
+    <string name="viper_bass_gain">Усиление (Boost)</string>
+
 </resources>

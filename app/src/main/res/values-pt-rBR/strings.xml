@@ -955,4 +955,12 @@
     <string name="terms_of_service">Termos de Serviço</string>
     <string name="privacy_policy">Política de Privacidade</string>
     <string name="legal">Legal</string>
+    <!-- ViPER DSP -->
+    <string name="viper_dyn_bass_title">Sistema Dinâmico</string>
+    <string name="viper_dyn_bass_gain">Ganho de Graves</string>
+    <string name="viper_dyn_bass_preset">Predefinição do Dispositivo</string>
+    <string name="viper_bass_mode">Modo de Graves</string>
+    <string name="viper_bass_cutoff">Frequência de Corte</string>
+    <string name="viper_bass_gain">Ganho de Reforço</string>
+
 </resources>

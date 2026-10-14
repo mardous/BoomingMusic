@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "C:\\Users\\Admin\\AndroidStudioProjects\\BoomingMusic-master\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\Admin\\AndroidStudioProjects\\BoomingMusic-master\\app\\.cxx\\Debug\\4s2m245k\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\Admin\\AndroidStudioProjects\\BoomingMusic-master\\app\\.cxx\\Debug\\4s2m245k\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "viper_dsp::@6890427a1f51a3e7e1df": {
+      "artifactName": "viper_dsp",
+      "abi": "x86",
+      "output": "C:\\Users\\Admin\\AndroidStudioProjects\\BoomingMusic-master\\app\\build\\intermediates\\cxx\\Debug\\4s2m245k\\obj\\x86\\libviper_dsp.so",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -16,6 +16,7 @@ data class EqualizerSettings(
     val loudnessGain: LoudnessGainState,
     val compressor: CompressorState,
     val limiter: LimiterState,
+    val viperBass: ViperBassState,
 ) {
     companion object {
         val Unspecified = EqualizerSettings(
@@ -30,6 +31,7 @@ data class EqualizerSettings(
             loudnessGain = LoudnessGainState.Unspecified,
             compressor = CompressorState.Unspecified,
             limiter = LimiterState.Unspecified,
+            viperBass = ViperBassState.Unspecified,
         )
     }
 }

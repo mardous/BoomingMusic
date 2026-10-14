@@ -1,0 +1,1 @@
+C:\Users\Admin\AndroidStudioProjects\BoomingMusic-master\app\src\main\cpp\CMakeLists.txt

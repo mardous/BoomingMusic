@@ -65,6 +65,7 @@ import com.mardous.booming.playback.SleepTimer
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
+import com.mardous.booming.playback.processor.ViperBassAudioProcessor
 import com.mardous.booming.ui.screen.backup.BackupViewModel
 import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.screen.info.InfoViewModel
@@ -118,10 +119,14 @@ private val mainModule = module {
         ReplayGainAudioProcessor()
     }
     single {
+        ViperBassAudioProcessor()
+    }
+    single {
         EqualizerManager(
             context = androidContext(),
             balanceProcessor = get(),
             replayGainProcessor = get(),
+            viperBassProcessor = get(),
             eqRepository = get(),
             audioOutputObserver = get()
         )

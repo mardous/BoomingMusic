@@ -1059,4 +1059,12 @@
     <string name="permission_notifications_summary">Цей дозвіл дозволяє Booming Music показувати елементи керування відтворенням у шторці сповіщень та на екрані блокування.</string>
 
 
+    <!-- ViPER DSP -->
+    <string name="viper_dyn_bass_title">Динамічна система</string>
+    <string name="viper_dyn_bass_gain">Підсилення басів</string>
+    <string name="viper_dyn_bass_preset">Пресет пристрою</string>
+    <string name="viper_bass_mode">Режим басів</string>
+    <string name="viper_bass_cutoff">Частота зрізу</string>
+    <string name="viper_bass_gain">Підсилення (Boost)</string>
+
 </resources>

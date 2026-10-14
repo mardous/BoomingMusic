@@ -1,0 +1,3 @@
+C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/.cxx/Debug/4s2m245k/x86/CMakeFiles/viper_dsp.dir
+C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/.cxx/Debug/4s2m245k/x86/CMakeFiles/edit_cache.dir
+C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/.cxx/Debug/4s2m245k/x86/CMakeFiles/rebuild_cache.dir

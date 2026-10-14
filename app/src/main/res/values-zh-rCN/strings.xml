@@ -1027,4 +1027,12 @@
     <string name="permission_notifications_title">通知（可选）</string>
     <string name="permission_notifications_summary">此权限允许 Booming Music 在通知栏和锁屏界面上显示播放控制选项。</string>
     <string name="detect_instrumental_tracks_summary">根据曲名自动识别器乐曲目。</string>
+    <!-- ViPER DSP -->
+    <string name="viper_dyn_bass_title">动态系统</string>
+    <string name="viper_dyn_bass_gain">低音增益</string>
+    <string name="viper_dyn_bass_preset">设备预设</string>
+    <string name="viper_bass_mode">低音模式</string>
+    <string name="viper_bass_cutoff">截止频率</string>
+    <string name="viper_bass_gain">增强增益</string>
+
 </resources>

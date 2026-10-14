@@ -141,6 +141,48 @@ class EqualizerViewModel(
         )
     }
 
+    fun setViperDynBassEnabled(enabled: Boolean) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(dynBassEnabled = enabled)
+        )
+    }
+
+    fun setViperDynBassPreset(preset: Int) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(dynBassPreset = preset)
+        )
+    }
+
+    fun setViperDynBassGain(gain: Float) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(dynBassGainPct = gain)
+        )
+    }
+
+    fun setViperBassEnabled(enabled: Boolean) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(viperBassEnabled = enabled)
+        )
+    }
+
+    fun setViperBassMode(mode: Int) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(viperBassMode = mode)
+        )
+    }
+
+    fun setViperBassCutoff(cutoffHz: Float) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(viperBassCutoffHz = cutoffHz)
+        )
+    }
+
+    fun setViperBassGain(gainDb: Float) = viewModelScope.launch {
+        equalizerManager.setViperBass(
+            equalizerSettings.value.viperBass.copy(viperBassGainDb = gainDb)
+        )
+    }
+
     fun setBandCount(bandCount: Int) = viewModelScope.launch {
         _uiEvent.send(
             EqualizerUiEvent.BandCountChange(

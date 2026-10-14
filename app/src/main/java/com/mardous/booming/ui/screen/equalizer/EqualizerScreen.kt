@@ -41,15 +41,20 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.ListItemShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SegmentedListItem
@@ -58,6 +63,7 @@ import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.contentColorFor
@@ -77,6 +83,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -124,6 +131,7 @@ import com.mardous.booming.util.Preferences
 import org.koin.compose.viewmodel.koinActivityViewModel
 import org.koin.compose.viewmodel.koinViewModel
 import java.util.Locale
+import kotlin.math.round
 
 private const val PRESET_NAME_MAX_LENGTH = 48
 
@@ -1135,6 +1143,139 @@ fun EqualizerScreen(
                         }
                     }
                 }
+
+                item {
+                    val viperBass = equalizerSettings.viperBass
+                    val dynBassPresets = listOf("Common Headphone v2", "High-end Headphone v2", "Extreme Headphone v2", "Common Earphone v2", "Car Audio / JBL System")
+                    val viperBassModes = listOf("Natural Bass", "Pure Bass+", "Subwoofer")
+
+                    TitledCard(
+                        title = stringResource(R.string.viper_dsp_title),
+                        icon = painterResource(R.drawable.ic_equalizer_24dp),
+                        color = MaterialTheme.colorScheme.surfaceContainerLow,
+                        modifier = Modifier.fillMaxWidth()
+                    ) { cardContentPadding ->
+                        Column(
+                            modifier = Modifier.padding(cardContentPadding)
+                        ) {
+                            // Dynamic System (Dynamic Bass)
+                            ListItem(
+                                colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                headlineContent = { Text(stringResource(R.string.viper_dyn_bass_title)) },
+                                trailingContent = {
+                                    Switch(
+                                        checked = viperBass.dynBassEnabled,
+                                        onCheckedChange = { eqViewModel.setViperDynBassEnabled(it) }
+                                    )
+                                }
+                            )
+
+                            AnimatedVisibility(
+                                visible = viperBass.dynBassEnabled,
+                                modifier = Modifier.padding(bottom = 8.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    // Device Preset Dropdown
+                                    var presetMenuExpanded by remember { mutableStateOf(false) }
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                                    ) {
+                                        OutlinedButton(
+                                            onClick = { presetMenuExpanded = true },
+                                            modifier = Modifier.fillMaxWidth()
+                                        ) {
+                                            Text(dynBassPresets.getOrElse(viperBass.dynBassPreset) { "Unknown" })
+                                        }
+                                        DropdownMenu(
+                                            expanded = presetMenuExpanded,
+                                            onDismissRequest = { presetMenuExpanded = false },
+                                            modifier = Modifier.fillMaxWidth(0.9f)
+                                        ) {
+                                            dynBassPresets.forEachIndexed { index, name ->
+                                                DropdownMenuItem(
+                                                    text = { Text(name) },
+                                                    onClick = {
+                                                        eqViewModel.setViperDynBassPreset(index)
+                                                        presetMenuExpanded = false
+                                                    }
+                                                )
+                                            }
+                                        }
+                                    }
+
+                                    ParameterSlider(
+                                        label = stringResource(R.string.viper_dyn_bass_gain),
+                                        value = viperBass.dynBassGainPct,
+                                        range = 0f..100f,
+                                        onValueChangeFinished = { eqViewModel.setViperDynBassGain(
+                                            round(it / 5f) * 5f) },
+                                        format = "%.0f",
+                                        unit = " %"
+                                    )
+                                }
+                            }
+
+                            // ViPER Bass
+                            ListItem(
+                                colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                headlineContent = { Text(stringResource(R.string.viper_bass_title)) },
+                                trailingContent = {
+                                    Switch(
+                                        checked = viperBass.viperBassEnabled,
+                                        onCheckedChange = { eqViewModel.setViperBassEnabled(it) }
+                                    )
+                                }
+                            )
+
+                            AnimatedVisibility(
+                                visible = viperBass.viperBassEnabled,
+                                modifier = Modifier.padding(bottom = 8.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    // Bass Mode Row
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                                        horizontalArrangement = Arrangement.SpaceEvenly
+                                    ) {
+                                        viperBassModes.forEachIndexed { index, name ->
+                                            FilterChip(
+                                                selected = viperBass.viperBassMode == index,
+                                                onClick = { eqViewModel.setViperBassMode(index) },
+                                                label = { Text(name, style = MaterialTheme.typography.labelSmall) }
+                                            )
+                                        }
+                                    }
+
+                                    ParameterSlider(
+                                        label = stringResource(R.string.viper_bass_cutoff),
+                                        value = viperBass.viperBassCutoffHz,
+                                        range = 40f..120f,
+                                        onValueChangeFinished = { eqViewModel.setViperBassCutoff(
+                                            round(it / 5f) * 5f) },
+                                        format = "%.0f",
+                                        unit = " Hz"
+                                    )
+                                    ParameterSlider(
+                                        label = stringResource(R.string.viper_bass_gain),
+                                        value = viperBass.viperBassGainDb,
+                                        range = 0f..15f,
+                                        onValueChangeFinished = { eqViewModel.setViperBassGain(round(it * 2f) / 2f) },
+                                        format = "%.1f",
+                                        unit = " dB"
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -1840,7 +1981,7 @@ private fun ParameterSlider(
             )
 
             EQValueText(
-                text = (format + unit).format(Locale.ROOT, paramLevel)
+                text = String.format(Locale.ROOT, format, paramLevel) + unit
             )
         }
     }

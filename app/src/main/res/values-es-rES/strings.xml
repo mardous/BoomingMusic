@@ -1045,4 +1045,12 @@
     <string name="sync_autoeq_database">Sincronizar base de datos de AutoEq</string>
     <string name="search_autoeq_placeholder">Buscar modelo de auriculares</string>
     <string name="allow_lyrics_download_from">Permitir descarga desde:</string>
+    <!-- ViPER DSP -->
+    <string name="viper_dyn_bass_title">Sistema Dinámico</string>
+    <string name="viper_dyn_bass_gain">Ganancia de Graves</string>
+    <string name="viper_dyn_bass_preset">Ajuste del Dispositivo</string>
+    <string name="viper_bass_mode">Modo de Graves</string>
+    <string name="viper_bass_cutoff">Frecuencia de Corte</string>
+    <string name="viper_bass_gain">Ganancia de Realce</string>
+
 </resources>

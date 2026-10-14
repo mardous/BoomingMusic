@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/.cxx/Debug/4s2m245k/x86_64",
+  "command": "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=x86_64-none-linux-android26 --sysroot=C:/Users/Admin/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dviper_dsp_EXPORTS -IC:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/src/main/cpp -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -std=c++17 -o CMakeFiles\\viper_dsp.dir\\native-bridge.cpp.o -c C:\\Users\\Admin\\AndroidStudioProjects\\BoomingMusic-master\\app\\src\\main\\cpp\\native-bridge.cpp",
+  "file": "C:\\Users\\Admin\\AndroidStudioProjects\\BoomingMusic-master\\app\\src\\main\\cpp\\native-bridge.cpp"
+}
+]

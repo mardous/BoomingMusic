@@ -89,6 +89,23 @@ android {
         versionCode = 1420300
         versionName = currentVersion.name
         check(versionCode == currentVersionCode)
+
+        ndk {
+            abiFilters.addAll(listOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86"))
+        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags += "-std=c++17"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
     }
 
     flavorDimensions += "version"
@@ -363,6 +380,7 @@ fun runGitCommand(command: String): String {
     return try {
         providers.exec {
             commandLine(command.split(" "))
+            isIgnoreExitValue = true
         }.standardOutput.asText.get().trim()
     } catch (e: Exception) {
         ""

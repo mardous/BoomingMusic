@@ -53,6 +53,7 @@ import com.mardous.booming.core.model.equalizer.LoudnessGainState
 import com.mardous.booming.core.model.equalizer.ReplayGainState
 import com.mardous.booming.core.model.equalizer.SoundSettings
 import com.mardous.booming.core.model.equalizer.TempoState
+import com.mardous.booming.core.model.equalizer.ViperBassState
 import com.mardous.booming.core.model.equalizer.VirtualizerState
 import com.mardous.booming.core.model.equalizer.VolumeState
 import com.mardous.booming.core.model.equalizer.autoeq.AutoEqProfile
@@ -67,6 +68,7 @@ import com.mardous.booming.playback.equalizer.engine.DynamicsProcessingEngine
 import com.mardous.booming.playback.equalizer.engine.EQEngine
 import com.mardous.booming.playback.processor.BalanceAudioProcessor
 import com.mardous.booming.playback.processor.ReplayGainAudioProcessor
+import com.mardous.booming.playback.processor.ViperBassAudioProcessor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
@@ -97,6 +99,7 @@ class EqualizerManager(
     private val context: Context,
     private val balanceProcessor: BalanceAudioProcessor,
     private val replayGainProcessor: ReplayGainAudioProcessor,
+    private val viperBassProcessor: ViperBassAudioProcessor,
     private val eqRepository: RealAutoEqRepository,
     audioOutputObserver: AudioOutputObserver,
 ) {
@@ -164,6 +167,14 @@ class EqualizerManager(
         liveSoundSettings.map { it.balance }
             .onEach { balanceState ->
                 balanceProcessor.setBalance(balanceState.left, balanceState.right)
+            }
+            .flowOn(Dispatchers.Main)
+            .launchIn(eqScope)
+
+        equalizerSettings.map { it.viperBass }
+            .onEach { viperBassState ->
+                viperBassProcessor.setDynamicBass(viperBassState.dynBassEnabled, viperBassState.dynBassPreset, viperBassState.dynBassGainPct)
+                viperBassProcessor.setExciter(viperBassState.viperBassEnabled, viperBassState.viperBassMode, viperBassState.viperBassCutoffHz, viperBassState.viperBassGainDb)
             }
             .flowOn(Dispatchers.Main)
             .launchIn(eqScope)
@@ -597,6 +608,18 @@ class EqualizerManager(
             prefs[Keys.BASS_BOOST_STRENGTH] = state.strength
         }
         applyChangesToEngine(bassBoostState = state)
+    }
+
+    suspend fun setViperBass(state: ViperBassState) {
+        context.eqDataStore.edit { prefs ->
+            prefs[Keys.VIPER_DYN_BASS_ENABLED] = state.dynBassEnabled
+            prefs[Keys.VIPER_DYN_BASS_PRESET] = state.dynBassPreset
+            prefs[Keys.VIPER_DYN_BASS_GAIN] = state.dynBassGainPct
+            prefs[Keys.VIPER_BASS_ENABLED] = state.viperBassEnabled
+            prefs[Keys.VIPER_BASS_MODE] = state.viperBassMode
+            prefs[Keys.VIPER_BASS_CUTOFF] = state.viperBassCutoffHz
+            prefs[Keys.VIPER_BASS_GAIN_DB] = state.viperBassGainDb
+        }
     }
 
     suspend fun setVirtualizer(state: VirtualizerState) {
@@ -1084,6 +1107,15 @@ class EqualizerManager(
                 ratioRange = LimiterState.Unspecified.ratioRange,
                 threshold = prefs[Keys.LIMITER_THRESHOLD] ?: LimiterState.Unspecified.threshold,
                 thresholdRange = LimiterState.Unspecified.thresholdRange
+            ),
+            viperBass = ViperBassState(
+                dynBassEnabled = prefs[Keys.VIPER_DYN_BASS_ENABLED] ?: false,
+                dynBassPreset = prefs[Keys.VIPER_DYN_BASS_PRESET] ?: 0,
+                dynBassGainPct = prefs[Keys.VIPER_DYN_BASS_GAIN] ?: 33f,
+                viperBassEnabled = prefs[Keys.VIPER_BASS_ENABLED] ?: false,
+                viperBassMode = prefs[Keys.VIPER_BASS_MODE] ?: 0,
+                viperBassCutoffHz = prefs[Keys.VIPER_BASS_CUTOFF] ?: 60f,
+                viperBassGainDb = prefs[Keys.VIPER_BASS_GAIN_DB] ?: 0.0f
             )
         )
     }
@@ -1182,6 +1214,14 @@ class EqualizerManager(
             val LIMITER_POST_GAIN = floatPreferencesKey("eq.limiter.postgain")
             val LIMITER_RATIO = floatPreferencesKey("eq.limiter.ratio")
             val LIMITER_THRESHOLD = floatPreferencesKey("eq.limiter.threshold")
+
+            val VIPER_DYN_BASS_ENABLED = booleanPreferencesKey("viper_dyn_bass_enabled")
+            val VIPER_DYN_BASS_PRESET = intPreferencesKey("viper_dyn_bass_preset")
+            val VIPER_DYN_BASS_GAIN = floatPreferencesKey("viper_dyn_bass_gain")
+            val VIPER_BASS_ENABLED = booleanPreferencesKey("viper_bass_enabled")
+            val VIPER_BASS_MODE = intPreferencesKey("viper_bass_mode")
+            val VIPER_BASS_CUTOFF = floatPreferencesKey("viper_bass_cutoff")
+            val VIPER_BASS_GAIN_DB = floatPreferencesKey("viper_bass_gain_db")
         }
     }
 

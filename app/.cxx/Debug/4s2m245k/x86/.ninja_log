@@ -1,0 +1,14 @@
+# ninja log v5
+0	4901	8136714822909181	CMakeFiles/viper_dsp.dir/native-bridge.cpp.o	f366cfb2c33a2529
+4906	5065	8136714824505568	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
+5	672	8136752682923004	CMakeFiles/viper_dsp.dir/native-bridge.cpp.o	f366cfb2c33a2529
+673	854	8136752684697688	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
+5	706	8136757868203439	CMakeFiles/viper_dsp.dir/native-bridge.cpp.o	f366cfb2c33a2529
+706	861	8136757869718360	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
+4	968	8136771862266057	CMakeFiles/viper_dsp.dir/native-bridge.cpp.o	f366cfb2c33a2529
+968	1155	8136771864222478	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
+6	707	8136777093311319	CMakeFiles/viper_dsp.dir/native-bridge.cpp.o	f366cfb2c33a2529
+708	889	8136777095144659	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
+4	315	8136818154235596	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
+11	1124	8136827261138119	CMakeFiles/viper_dsp.dir/native-bridge.cpp.o	f366cfb2c33a2529
+1124	1300	8136827262859895	C:/Users/Admin/AndroidStudioProjects/BoomingMusic-master/app/build/intermediates/cxx/Debug/4s2m245k/obj/x86/libviper_dsp.so	10b01cd48888906a
