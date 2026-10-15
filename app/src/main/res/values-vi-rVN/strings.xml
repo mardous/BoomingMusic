@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">Truy cập bộ nhớ</string>
     <string name="permission_external_storage_description">Ứng dụng cần quyền truy cập vào bộ nhớ thiết bị của bạn để phát nhạc</string>
     <string name="permission_external_storage_denied">Bạn phải cấp quyền truy cập vào bộ nhớ ngoài.</string>
-    <string name="permission_bluetooth_title">Các thiết bị lân cận</string>
+    <string name="permission_bluetooth_title">Các thiết bị lân cận (tuỳ chọn)</string>
     <string name="permission_bluetooth_description">Ứng dụng cần quyền truy cập các thiết bị lân cận để kiểm tra các thiết bị Bluetooth</string>
     <string name="permission_read_images_title">Truy cập hình ảnh (tùy chọn)</string>
     <string name="permission_read_images_summary">Quyền này là bắt buộc để Booming Music tìm các tệp ảnh bìa album trong thư mục nhạc của mày. Nếu bạn không định dùng tính năng này, bạn có thể chọn không cấp quyền.</string>
@@ -332,7 +332,6 @@
     <string name="top_albums">Album hàng đầu</string>
     <string name="recent_artists">Nghệ sĩ gần đây</string>
     <string name="recent_albums">Album gần đây</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Ngẫu nhiên</string>
     <string name="shuffle_mode_most_played">Được phát nhiều nhất</string>
@@ -375,12 +374,12 @@
     <string name="import_profiles">Nhập cấu hình</string>
     <string name="select_profiles_to_import">Chọn cấu hình để nhập:</string>
     <string name="select_a_file_containing_booming_eq_profiles">Chọn một tệp chứa các cấu hình EQ của Booming Music.</string>
-    <string name="imported_x_profiles">Imported %d profiles.</string>
+    <string name="imported_x_profiles">Đã nhập %d hồ sơ.</string>
     <string name="no_profile_imported">No profile imported.</string>
     <string name="import_autoeq_profile">Import AutoEq profile</string>
     <string name="select_a_file_containing_autoeq_params">Select a file containing AutoEq (GraphicEq) params.</string>
     <string name="no_autoeq_profiles">No AutoEq profiles have been imported.</string>
-    <string name="reset_equalizer">Reset equalizer</string>
+    <string name="reset_equalizer">Đặt lại EQ</string>
     <string name="are_you_sure_you_want_to_reset_the_equalizer">Are you sure you want to reset the equalizer? \n\nThis will clear all your profiles.</string>
     <string name="not_supported">Không hỗ trợ</string>
     <string name="set_eq_engine_title">Set EQ engine</string>
@@ -570,10 +569,6 @@
     <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
     <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignore blank lines</string>
     <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
@@ -863,4 +858,8 @@
     <string name="listenbrainz_token_label">Token người dùng</string>
     <string name="auto_theme_name">Tự động</string>
     <string name="eq_pro_mode">Chế độ chuyên gia</string>
+    <string name="app_widget_nothing_playing">Không có gì đang phát</string>
+    <string name="app_widget_tap_to_play">Nhấn để mở Booming Music</string>
+    <string name="action_play_x">Phát %s</string>
+    <string name="app_widget_grid">Lưới</string>
 </resources>
