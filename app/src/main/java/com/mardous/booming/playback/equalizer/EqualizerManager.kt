@@ -83,6 +83,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -134,6 +135,10 @@ class EqualizerManager(
         private set
 
     init {
+        eqScope.launch(IO) {
+            initializeEqualizer()
+        }
+
         equalizerSettings.map { it.eqState }
             .filterNot { it == EqState.Unspecified }
             .debounce(100.milliseconds)
@@ -207,7 +212,8 @@ class EqualizerManager(
             val effects = AudioEffect.queryEffects().orEmpty()
             context.eqDataStore.edit { prefs ->
                 val eqInitialized = prefs[Keys.EQ_INITIALIZED]
-                if (eqInitialized != true) {
+                val existingProfiles = prefs[Keys.PROFILES]
+                if (eqInitialized != true || existingProfiles.isNullOrBlank()) {
                     prefs[Keys.EQ_ENGINE_MODE] = engineMode.ordinal
                     prefs[Keys.PROFILES] = Json.encodeToString(
                         getProfilesByBandCount(engineMode.defaultBandCount)
@@ -989,7 +995,7 @@ class EqualizerManager(
             ?: EqEngineMode.Auto
 
         val eqState = EqState(
-            supported = prefs[Keys.EQ_SUPPORTED] ?: false,
+            supported = prefs[Keys.EQ_SUPPORTED] ?: true,
             enabled = prefs[Keys.EQ_ENABLED] ?: false,
             disableReason = when {
                 bitPerfectState.isActive -> EqState.DisableReason.BitPerfect
@@ -1011,14 +1017,15 @@ class EqualizerManager(
             Json.decodeFromString<List<EqProfile>>(prefs[Keys.PROFILES].orEmpty().trim())
         }.getOrElse {
             emptyList()
+        }.ifEmpty {
+            getProfilesByBandCount(eqState.preferredBandCount)
         }
 
         val currentProfile = runCatching {
             Json.decodeFromString<EqProfile>(prefs[Keys.PROFILE].orEmpty().trim())
-        }.getOrElse {
-            profiles.firstOrNull()
-                ?: getEmptyCustomProfile(eqState.preferredBandCount)
-        }
+        }.getOrNull()
+            ?: profiles.firstOrNull()
+            ?: getEmptyCustomProfile(eqState.preferredBandCount)
 
         val autoEqProfiles = runCatching {
             Json.decodeFromString<List<AutoEqProfile>>(prefs[Keys.AUTO_EQ_PROFILES].orEmpty().trim())
