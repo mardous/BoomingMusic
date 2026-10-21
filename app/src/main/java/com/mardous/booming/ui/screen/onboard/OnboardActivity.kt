@@ -70,9 +70,12 @@ class OnboardActivity : AbsBaseActivity() {
             ) {
                 OnboardScreen(
                     onFinish = {
+                        val isFirstOnboard = !Preferences.onboardShown
                         Preferences.onboardShown = true
-                        lifecycleScope.launch(IO) {
-                            equalizerManager.resetConfiguration()
+                        if (isFirstOnboard) {
+                            lifecycleScope.launch(IO) {
+                                equalizerManager.resetConfiguration()
+                            }
                         }
                         startActivity(
                             Intent(this, MainActivity::class.java)

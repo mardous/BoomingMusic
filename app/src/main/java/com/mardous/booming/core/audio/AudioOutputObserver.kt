@@ -59,7 +59,12 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     private val _availableBitPerfectDevices = MutableStateFlow<List<AudioDeviceInfo>>(emptyList())
     val availableBitPerfectDevices = _availableBitPerfectDevices.asStateFlow()
 
-    private var mediaRouter = MediaRouter.getInstance(context)
+    private var mediaRouter: MediaRouter? = try {
+        MediaRouter.getInstance(context)
+    } catch (e: Exception) {
+        Log.e(TAG, "Error getting MediaRouter instance", e)
+        null
+    }
     var audioManager = context.getSystemService<AudioManager>()
         private set
 
@@ -325,36 +330,45 @@ class AudioOutputObserver(private val context: Context) : BroadcastReceiver() {
     }
 
     private fun getCurrentAudioDevice(): AudioDevice {
-        var audioDevice: AudioDevice? = null
-        val route = mediaRouter.selectedRoute
-        val isConnected = route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED
-        if (isConnected && route.isEnabled && route.supportsControlCategory(MediaControlIntent.CATEGORY_LIVE_AUDIO)) {
-            audioDevice = AudioDevice(
-                type = route.getMediaRouteType(),
-                productName = route.name
-            )
-        }
-        return audioDevice ?: audioManager?.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
-            ?.minByOrNull { info ->
-                AudioDeviceType.entries.indexOf(info.getDeviceType())
-            }
-            ?.let { chosen ->
-                AudioDevice(
-                    type = chosen.getDeviceType(),
-                    productName = chosen.productName.toString()
+        return try {
+            var audioDevice: AudioDevice? = null
+            val route = mediaRouter?.selectedRoute
+            val isConnected = route?.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED
+            if (isConnected && route?.isEnabled == true && route.supportsControlCategory(MediaControlIntent.CATEGORY_LIVE_AUDIO)) {
+                audioDevice = AudioDevice(
+                    type = route.getMediaRouteType(),
+                    productName = route.name
                 )
-            } ?: AudioDevice.Unknown
+            }
+            audioDevice ?: audioManager?.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+                ?.minByOrNull { info ->
+                    AudioDeviceType.entries.indexOf(info.getDeviceType())
+                }
+                ?.let { chosen ->
+                    AudioDevice(
+                        type = chosen.getDeviceType(),
+                        productName = chosen.productName.toString()
+                    )
+                } ?: AudioDevice.Unknown
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting current audio device", e)
+            AudioDevice.Unknown
+        }
     }
 
     private fun requestVolume() {
-        audioManager?.let {
-            val maxVolume = getStreamMaxVolume(it, AudioManager.STREAM_MUSIC).toFloat()
-            val minVolume = getStreamMinVolume(it, AudioManager.STREAM_MUSIC).toFloat()
-            _systemVolumeState.value = VolumeState(
-                currentVolume = it.getStreamVolume(AudioManager.STREAM_MUSIC).toFloat(),
-                volumeRange = minVolume..maxVolume,
-                isFixed = it.isVolumeFixed
-            )
+        try {
+            audioManager?.let {
+                val maxVolume = getStreamMaxVolume(it, AudioManager.STREAM_MUSIC).toFloat()
+                val minVolume = getStreamMinVolume(it, AudioManager.STREAM_MUSIC).toFloat()
+                _systemVolumeState.value = VolumeState(
+                    currentVolume = it.getStreamVolume(AudioManager.STREAM_MUSIC).toFloat(),
+                    volumeRange = minVolume..maxVolume,
+                    isFixed = it.isVolumeFixed
+                )
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error requesting volume", e)
         }
     }
 
