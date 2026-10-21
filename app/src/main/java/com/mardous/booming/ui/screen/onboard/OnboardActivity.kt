@@ -23,23 +23,31 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import com.mardous.booming.App
 import com.mardous.booming.MainActivity
 import com.mardous.booming.extensions.EXTRA_IS_PERMISSION_REQUEST
 import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.observeKeyAsState
+import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.ui.component.base.AbsBaseActivity
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
 import com.mardous.booming.util.MATERIAL_YOU
 import com.mardous.booming.util.Preferences
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
 /**
  * @author Christians M. A. (mardous)
  */
 class OnboardActivity : AbsBaseActivity() {
+
+    private val equalizerManager: EqualizerManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +71,9 @@ class OnboardActivity : AbsBaseActivity() {
                 OnboardScreen(
                     onFinish = {
                         Preferences.onboardShown = true
+                        lifecycleScope.launch(IO) {
+                            equalizerManager.resetConfiguration()
+                        }
                         startActivity(
                             Intent(this, MainActivity::class.java)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
