@@ -32,6 +32,7 @@ import com.mardous.booming.extensions.hasS
 import com.mardous.booming.extensions.observeKeyAsState
 import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.ui.component.base.AbsBaseActivity
+import com.mardous.booming.ui.screen.equalizer.EqualizerViewModel
 import com.mardous.booming.ui.theme.BoomingMusicTheme
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.GeneralTheme
@@ -48,11 +49,18 @@ import kotlin.getValue
 class OnboardActivity : AbsBaseActivity() {
 
     private val equalizerManager: EqualizerManager by inject()
+    private val equalizerViewModel: EqualizerViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val isPermissionRequest = intent.getBooleanExtra(EXTRA_IS_PERMISSION_REQUEST, false)
+
+        if (!Preferences.onboardShown) {
+            lifecycleScope.launch(IO) {
+                equalizerManager.resetConfiguration()
+            }
+        }
 
         setContent {
             val prefs = remember { PreferenceManager.getDefaultSharedPreferences(this) }
@@ -70,13 +78,7 @@ class OnboardActivity : AbsBaseActivity() {
             ) {
                 OnboardScreen(
                     onFinish = {
-                        val isFirstOnboard = !Preferences.onboardShown
                         Preferences.onboardShown = true
-                        if (isFirstOnboard) {
-                            lifecycleScope.launch(IO) {
-                                equalizerManager.resetConfiguration()
-                            }
-                        }
                         startActivity(
                             Intent(this, MainActivity::class.java)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
