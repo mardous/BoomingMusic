@@ -49,7 +49,6 @@ import kotlin.getValue
 class OnboardActivity : AbsBaseActivity() {
 
     private val equalizerManager: EqualizerManager by inject()
-    private val equalizerViewModel: EqualizerViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
