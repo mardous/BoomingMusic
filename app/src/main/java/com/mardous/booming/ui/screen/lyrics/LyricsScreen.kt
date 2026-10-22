@@ -6,9 +6,16 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import kotlinx.coroutines.delay
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,8 +24,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularWavyProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FloatingActionButton
@@ -50,6 +60,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -78,6 +89,7 @@ import com.mardous.booming.ui.component.views.PlaceholderDrawable
 import com.mardous.booming.ui.screen.library.LibraryViewModel
 import com.mardous.booming.ui.screen.player.PlayerViewModel
 import com.mardous.booming.ui.theme.PlayerTheme
+import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
@@ -256,6 +268,98 @@ fun LyricsScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
             )
+
+            if (uiState is LyricsUiState.Synced) {
+                var delayMs by remember(uiState) { mutableLongStateOf(Preferences.syncedLyricsDelay) }
+                var dropdownExpanded by remember { mutableStateOf(false) }
+                val delayOptions = remember { (-500L..500L step 50L).toList() }
+
+                Row(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .align(Alignment.TopCenter)
+                        .padding(innerPadding)
+                        .padding(top = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    HoldableIconButton(
+                        enabled = delayMs > -500L,
+                        containerColor = MaterialTheme.colorScheme.onSurface,
+                        contentColor = MaterialTheme.colorScheme.surface,
+                        onClick = {
+                            delayMs = (delayMs - 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        },
+                        onHold = {
+                            delayMs = (delayMs - 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        }
+                    ) {
+                        Text("-", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .wrapContentSize()
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .background(MaterialTheme.colorScheme.onSurface, RoundedCornerShape(12.dp))
+                                .clickable { dropdownExpanded = true }
+                                .padding(horizontal = 14.dp, vertical = 10.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = if (delayMs > 0) "+$delayMs ms" else "$delayMs ms",
+                                color = MaterialTheme.colorScheme.surface,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+
+                        DropdownMenu(
+                            expanded = dropdownExpanded,
+                            onDismissRequest = { dropdownExpanded = false },
+                            shape = RoundedCornerShape(16.dp),
+                            containerColor = MaterialTheme.colorScheme.onSurface
+                        ) {
+                            delayOptions.forEach { option ->
+                                DropdownMenuItem(
+                                    text = {
+                                        Text(
+                                            text = if (option > 0) "+$option ms" else "$option ms",
+                                            color = MaterialTheme.colorScheme.surface,
+                                            fontWeight = if (option == delayMs) FontWeight.Bold else FontWeight.Normal
+                                        )
+                                    },
+                                    onClick = {
+                                        delayMs = option
+                                        Preferences.syncedLyricsDelay = delayMs
+                                        dropdownExpanded = false
+                                    }
+                                )
+                            }
+                        }
+                    }
+
+                    HoldableIconButton(
+                        enabled = delayMs < 500L,
+                        containerColor = MaterialTheme.colorScheme.onSurface,
+                        contentColor = MaterialTheme.colorScheme.surface,
+                        onClick = {
+                            delayMs = (delayMs + 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        },
+                        onHold = {
+                            delayMs = (delayMs + 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        }
+                    ) {
+                        Text("+", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
         }
     }
 }
@@ -316,7 +420,134 @@ fun CoverLyricsScreen(
                     contentDescription = stringResource(R.string.action_lyrics_editor)
                 )
             }
+
+            if (uiState is LyricsUiState.Synced) {
+                var delayMs by remember(uiState) { mutableLongStateOf(Preferences.syncedLyricsDelay) }
+                var dropdownExpanded by remember { mutableStateOf(false) }
+                val delayOptions = remember { (-500L..500L step 50L).toList() }
+
+                Row(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .align(Alignment.TopCenter)
+                        .padding(top = 24.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    HoldableIconButton(
+                        enabled = delayMs > -500L,
+                        containerColor = MaterialTheme.colorScheme.onSurface,
+                        contentColor = MaterialTheme.colorScheme.surface,
+                        onClick = {
+                            delayMs = (delayMs - 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        },
+                        onHold = {
+                            delayMs = (delayMs - 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        }
+                    ) {
+                        Text("-", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .wrapContentSize()
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .background(MaterialTheme.colorScheme.onSurface, RoundedCornerShape(12.dp))
+                                .clickable { dropdownExpanded = true }
+                                .padding(horizontal = 14.dp, vertical = 10.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = if (delayMs > 0) "+$delayMs ms" else "$delayMs ms",
+                                color = MaterialTheme.colorScheme.surface,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+
+                        DropdownMenu(
+                            expanded = dropdownExpanded,
+                            onDismissRequest = { dropdownExpanded = false },
+                            shape = RoundedCornerShape(16.dp),
+                            containerColor = MaterialTheme.colorScheme.onSurface
+                        ) {
+                            delayOptions.forEach { option ->
+                                DropdownMenuItem(
+                                    text = {
+                                        Text(
+                                            text = if (option > 0) "+$option ms" else "$option ms",
+                                            color = MaterialTheme.colorScheme.surface,
+                                            fontWeight = if (option == delayMs) FontWeight.Bold else FontWeight.Normal
+                                        )
+                                    },
+                                    onClick = {
+                                        delayMs = option
+                                        Preferences.syncedLyricsDelay = delayMs
+                                        dropdownExpanded = false
+                                    }
+                                )
+                            }
+                        }
+                    }
+
+                    HoldableIconButton(
+                        enabled = delayMs < 500L,
+                        containerColor = MaterialTheme.colorScheme.onSurface,
+                        contentColor = MaterialTheme.colorScheme.surface,
+                        onClick = {
+                            delayMs = (delayMs + 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        },
+                        onHold = {
+                            delayMs = (delayMs + 50L).coerceIn(-500L, 500L)
+                            Preferences.syncedLyricsDelay = delayMs
+                        }
+                    ) {
+                        Text("+", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
         }
+    }
+}
+
+@Composable
+private fun HoldableIconButton(
+    onClick: () -> Unit,
+    onHold: () -> Unit,
+    enabled: Boolean = true,
+    containerColor: Color,
+    contentColor: Color,
+    content: @Composable () -> Unit
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
+    LaunchedEffect(isPressed, enabled) {
+        if (isPressed && enabled) {
+            delay(400L)
+            while (isPressed && enabled) {
+                onHold()
+                delay(100L)
+            }
+        }
+    }
+    FilledIconButton(
+        enabled = enabled,
+        interactionSource = interactionSource,
+        colors = IconButtonDefaults.filledIconButtonColors(
+            containerColor = MaterialTheme.colorScheme.onSurface,
+            contentColor = MaterialTheme.colorScheme.surface,
+            disabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+            disabledContentColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)
+        ),
+        onClick = onClick
+    ) {
+        content()
     }
 }
 
