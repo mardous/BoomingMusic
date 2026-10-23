@@ -332,7 +332,6 @@
     <string name="top_albums">인기 앨범</string>
     <string name="recent_artists">최근 아티스트</string>
     <string name="recent_albums">최근 앨범</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">완전 랜덤</string>
     <string name="shuffle_mode_most_played">가장 많이 재생됨</string>
@@ -555,7 +554,7 @@
     <string name="lyrics_blur_effect_title">블러 효과</string>
     <string name="lyrics_blur_effect_summary">현재 줄 주변 가사를 흐리게 처리합니다.</string>
     <string name="lyrics_shadow_effect_title">그림자 효과</string>
-    <string name="lyrics_shadow_effect_summary">가독성을 위해 현재 줄에 그림자를 추가합니다.</string>
+    <string name="lyrics_shadow_effect_summary">가독성 향상을 위해 가사 아래에 그림자를 추가합니다.</string>
     <string name="lyrics_progressive_coloring_title">진행형 가사 채우기</string>
     <string name="lyrics_progressive_coloring_summary">가사가 진행됨에 따라 점진적으로 색상을 입힙니다.</string>
     <string name="lyrics_bold_unsynced_title">일반 가사 굵게 표시</string>
@@ -570,10 +569,6 @@
     <string name="synced_font_size_full_summary">전체 가사 화면의 동기 가사 크기를 조정합니다.</string>
     <string name="unsynced_font_size_full_title">일반 가사 크기 (전체 화면)</string>
     <string name="unsynced_font_size_full_summary">전체 가사 화면의 일반 가사 크기를 조정합니다.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">빈 줄 무시</string>
     <string name="ignore_blank_lines_summary">LRC 파일의 빈 줄을 애니메이션 말풍선 대신 무시합니다.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">모든 가사 파일을 UTF-8로 처리</string>
@@ -843,4 +838,31 @@
     <string name="app_widget_card_desc">미니멀하고 간결한 스타일</string>
     <string name="new_playlist_action">새로운</string>
     <string name="no_playlists_create_new">\"새로 만들기\" 버튼을 눌러 재생 목록을 만드세요</string>
+    <string name="app_widget_cookie">쿠키</string>
+    <string name="app_widget_circle_desc">원형 재생 아이콘과 이를 중심으로 회전하는 재생바</string>
+    <string name="app_widget_circle">원형</string>
+    <string name="searching">찾는중…</string>
+    <string name="permission_notifications_title">알림 (선택)</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="app_widget_library">저장소</string>
+    <string name="widget_action_favourite">즐겨찾기</string>
+    <string name="compressor_label">작곡가</string>
+    <string name="website">웹사이트</string>
+    <string name="backup_content_playlists">플레이리스트</string>
+    <string name="widget_action_repeat">반복</string>
+    <string name="auto_theme_name">시스템 테마 (다크/라이트)</string>
+    <string name="home_forgotten_tracks_title">재탐색</string>
+    <string name="images_title">이미지</string>
+    <string name="open_backup">백업본 열기</string>
+    <string name="eq_pro_mode">전문가 모드</string>
+    <string name="widget_page_previous">이전 곡</string>
+    <string name="widget_settings_title">위젯 설정</string>
+    <string name="sort_order_name">이름</string>
+    <string name="lyrics_show_transliteration_title">발음 활성화</string>
+    <string name="bit_perfect_title">Bit-perfect 음원</string>
+    <string name="lyrics_karaoke_style_title">노래방 스타일 가사</string>
+    <string name="lyrics_show_translation_title">번역 활성화</string>
+    <string name="app_widget_tap_to_play">탭으로 Booming Music 열기</string>
+    <string name="musicbrainz_no_results">MusicBrainz 일치 결과 없음</string>
+    <string name="musicbrainz_select_recording">결과물 선택</string>
 </resources>
