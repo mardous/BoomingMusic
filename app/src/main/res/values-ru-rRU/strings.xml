@@ -593,10 +593,6 @@
     <string name="synced_font_size_full_summary">Размер шрифта синхронизированного текста на отдельном экране текста.</string>
     <string name="unsynced_font_size_full_title">Размер обычного текста (полный экран)</string>
     <string name="unsynced_font_size_full_summary">Размер шрифта несинхронизированного текста на отдельном экране текста.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Игнорировать пустые строки</string>
     <string name="ignore_blank_lines_summary">Игнорировать пустые строки в LRC файлах вместо отображения анимированных пузырьков.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Считать все файлы текстов в UTF-8</string>
@@ -1018,4 +1014,5 @@
     <string name="home_albums_subtitle_2">Погрузитесь в мир ваших последних коллекций</string>
     <string name="backup_restore_title">Резервное копирование и восстановление</string>
     <string name="backup_restore_summary">Управление резервным копированием и восстановлением данных приложения.</string>
+    <string name="widget_side_buttons_skip">Предыдущий и следующий</string>
 </resources>
