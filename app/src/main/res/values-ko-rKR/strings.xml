@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">저장공간 액세스</string>
     <string name="permission_external_storage_description">음악 재생을 위해 기기 저장공간 액세스 권한이 필요합니다</string>
     <string name="permission_external_storage_denied">외부 저장공간 액세스 권한을 허용해야 합니다.</string>
-    <string name="permission_bluetooth_title">근처 기기</string>
+    <string name="permission_bluetooth_title">근처 기기 (선택)</string>
     <string name="permission_bluetooth_description">블루투스 기기 확인을 위해 근처 기기 권한이 필요합니다</string>
     <string name="permission_read_images_title">이미지 읽기 (선택 사항)</string>
     <string name="permission_read_images_summary">음악 폴더에서 앨범 아트 파일을 찾기 위해 이 권한이 필요합니다. 이 기능을 사용하지 않으려면 허용하지 않아도 됩니다.</string>
@@ -351,7 +351,7 @@
     <string name="shuffle_mode_combined_description">즐겨찾기, 재생 횟수, 최근 항목을 믹스합니다.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">이퀄라이저</string>
-    <string name="autoeq_label">AutoEq</string>
+    <string name="autoeq_label">자동 Eq</string>
     <string name="graphic_eq_label">그래픽 EQ</string>
     <string name="graphic_eq_band_count">%d밴드</string>
     <string name="eq_profiles_title">EQ 프로필</string>
@@ -863,6 +863,8 @@
     <string name="lyrics_karaoke_style_title">노래방 스타일 가사</string>
     <string name="lyrics_show_translation_title">번역 활성화</string>
     <string name="app_widget_tap_to_play">탭으로 Booming Music 열기</string>
-    <string name="musicbrainz_no_results">MusicBrainz 일치 결과 없음</string>
+    <string name="musicbrainz_no_results">MusicBrainz 일치 결과 없음.</string>
     <string name="musicbrainz_select_recording">결과물 선택</string>
+    <string name="bit_perfect_is_active">Bit-perfect 활성화 중</string>
+    <string name="musicbrainz_search_message">제목과 아티스트를 사용해 MusicBrainz에서 음원 찾기.</string>
 </resources>
