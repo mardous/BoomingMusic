@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_widget_circle_desc">Player kurukuruwa a ne kɔntrols etwa ho ehyia</string>
+    <string name="app_widget_circle">circle</string>
+    <string name="app_widget_cookie_desc">Cover no yɛ cookie kɛse a ne cotrols etwa ho ehyia</string>
 </resources>
