@@ -998,7 +998,7 @@
     <string name="app_widget_cookie">Печенье</string>
     <string name="app_widget_cookie_desc">Обложка похожа на одно большое печенье, вокруг которого расположены элементы управления</string>
     <string name="home_albums_title">Послушайте сейчас</string>
-    <string name="home_forgotten_tracks_title">Заново</string>
+    <string name="home_forgotten_tracks_title">Послушать снова</string>
     <string name="home_forgotten_tracks_subtitle_3">Песни, которые вы давно не слышали</string>
     <string name="allow_lyrics_download_from">Разрешить скачивание из:</string>
     <string name="no_backups_found">Резервные копии не найдены в этой папке.</string>
@@ -1014,5 +1014,6 @@
     <string name="home_albums_subtitle_2">Погрузитесь в мир ваших последних коллекций</string>
     <string name="backup_restore_title">Резервное копирование и восстановление</string>
     <string name="backup_restore_summary">Управление резервным копированием и восстановлением данных приложения.</string>
-    <string name="widget_side_buttons_skip">Предыдущий и следующий</string>
+    <string name="widget_side_buttons_skip">Предыдущее и следующее</string>
+    <string name="home_artists_subtitle_2">Новые лица и старые любимчики</string>
 </resources>
