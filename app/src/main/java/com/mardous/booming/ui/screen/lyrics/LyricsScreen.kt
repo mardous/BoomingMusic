@@ -29,12 +29,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
@@ -96,25 +98,53 @@ private fun rememberLyricsViewState(lyrics: SyncedLyrics): LyricsViewState {
     return remember(lyrics) { LyricsViewState(lyrics) }
 }
 
+private const val FORWARD_SEEK_THRESHOLD_MS = 300L
+private const val BACKWARD_SEEK_THRESHOLD_MS = 100L
+
 @Composable
 fun rememberSmoothPlaybackPosition(
     id: Long,
     playerProgress: Long,
     playbackSpeed: Float,
     isPlaying: Boolean
-): Long {
-    var position by remember(id) { mutableLongStateOf(playerProgress) }
-    LaunchedEffect(id, playerProgress, isPlaying) {
-        val baseRealtime = SystemClock.elapsedRealtime()
+): State<Long> {
+    val position = remember(id) { mutableLongStateOf(playerProgress) }
+
+    val latestProgress by rememberUpdatedState(playerProgress)
+    val latestSpeed by rememberUpdatedState(playbackSpeed)
+
+    LaunchedEffect(id, isPlaying, playbackSpeed) {
         if (!isPlaying) {
-            position = playerProgress
+            position.longValue = latestProgress
             return@LaunchedEffect
         }
 
+        var anchorProgress = latestProgress
+        var anchorRealtime = SystemClock.elapsedRealtime()
+        var lastReportedProgress = latestProgress
+        position.longValue = anchorProgress
+
         while (isActive) {
             withFrameNanos {
-                val elapsed = SystemClock.elapsedRealtime() - baseRealtime
-                position = playerProgress + (elapsed * playbackSpeed).toLong()
+                val now = SystemClock.elapsedRealtime()
+                val extrapolated = anchorProgress + ((now - anchorRealtime) * latestSpeed).toLong()
+
+                // The reported progress is quantized and can also stall between updates, so
+                // following it directly would step the brush backward. Re-anchor only on genuine
+                // discontinuities instead: the report jumping back (seek back) or running well
+                // ahead of the extrapolation (seek forward / clock drift correction).
+                val seekBackward = latestProgress < lastReportedProgress - BACKWARD_SEEK_THRESHOLD_MS
+                val seekForward = latestProgress - extrapolated > FORWARD_SEEK_THRESHOLD_MS
+
+                if (seekBackward || seekForward) {
+                    anchorProgress = latestProgress
+                    anchorRealtime = now
+                    position.longValue = latestProgress
+                } else {
+                    position.longValue = extrapolated
+                }
+
+                lastReportedProgress = latestProgress
             }
         }
     }
@@ -414,8 +444,12 @@ private fun LyricsSurface(
                     isPlaying = isPlaying
                 )
 
-                LaunchedEffect(playerProgress) {
-                    lyricsViewState.updatePosition(smoothProgress)
+                LaunchedEffect(song.id) {
+                    while (isActive) {
+                        withFrameNanos {
+                            lyricsViewState.updatePosition(smoothProgress.value)
+                        }
+                    }
                 }
 
                 LyricsView(
