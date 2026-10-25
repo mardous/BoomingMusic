@@ -558,18 +558,18 @@
     <string name="lyrics_progressive_coloring_title">Progressive lyrics coloring</string>
     <string name="lyrics_progressive_coloring_summary">Animate active lines with a gradual color transition instead of coloring them instantly.</string>
     <string name="lyrics_bold_unsynced_title">Chữ in đậm cho lời bài hát</string>
-    <string name="lyrics_bold_unsynced_summary">Display unsynced lyrics in bold font.</string>
+    <string name="lyrics_bold_unsynced_summary">Hiển thị chữ in đậm cho lời bài hát chưa đồng bộ.</string>
     <string name="lyrics_line_spacing_title">Khoảng cách giữa các dòng</string>
     <string name="lyrics_line_spacing_summary">Điều chỉnh khoảng cách dòng của lời bài hát.</string>
-    <string name="synced_font_size_player_title">Synced lyrics font size (player)</string>
+    <string name="synced_font_size_player_title">Cỡ chữ lời bài hát đã đồng bộ (dạng xem trình phát)</string>
     <string name="synced_font_size_player_summary">Adjust the font size for synced lyrics shown over the album cover in the player screen.</string>
     <string name="unsynced_font_size_player_title">Unsynced lyrics font size (player)</string>
     <string name="unsynced_font_size_player_summary">Adjust the font size for unsynced lyrics shown over the album cover in the player screen.</string>
-    <string name="synced_font_size_full_title">Synced lyrics font size (full view)</string>
+    <string name="synced_font_size_full_title">Cỡ chữ lời bài hát đồng bộ (toàn màn hình)</string>
     <string name="synced_font_size_full_summary">Adjust the font size for synced lyrics in the full lyrics screen.</string>
-    <string name="unsynced_font_size_full_title">Unsynced lyrics font size (full view)</string>
+    <string name="unsynced_font_size_full_title">Cỡ chữ lời bài hát chưa đồng bộ (toàn màn hình)</string>
     <string name="unsynced_font_size_full_summary">Adjust the font size for unsynced lyrics in the full lyrics screen.</string>
-    <string name="ignore_blank_lines_title">Ignore blank lines</string>
+    <string name="ignore_blank_lines_title">Bỏ qua các khoảng trống</string>
     <string name="ignore_blank_lines_summary">Ignore empty lines in LRC files instead of showing animated bubbles.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Treat all lyrics files as UTF-8</string>
     <string name="treat_all_lyrics_files_as_utf8_summary">Assume that all files use UTF-8 encoding. This optimizes the file parsing process but in some cases could result in unusual characters in song lyrics. It might require an app restart</string>
@@ -596,7 +596,7 @@
     <string name="double_tap_on_right_album_cover_title">Nhấp đúp cạnh phải bìa album</string>
     <string name="long_press_on_album_cover_title">Long press on cover</string>
     <string name="small_image_title">Small image</string>
-    <string name="small_image_summary">Reduces the cover size in supported styles.</string>
+    <string name="small_image_summary">Giảm kích thước ảnh bìa với các kiểu được hỗ trợ</string>
     <string name="now_playing_corner_radius_title">Bán kính bo góc của hình ảnh</string>
     <string name="now_playing_corner_radius_summary">Defines how rounded the corners of the album art should appear.</string>
     <string name="carousel_effect_title">Carousel effect</string>
@@ -846,10 +846,10 @@
     <string name="lastfm_login_title">Đăng nhập vào Last.fm</string>
     <string name="mini_player_swipe_to_skip_summary">Vuốt trái hoặc phải trên trình phát thu nhỏ để chuyển bài.</string>
     <string name="lyrics_karaoke_style_title">Lời bài hát kiểu karaoke</string>
-    <string name="lyrics_bold_synced_title">Font in đậm cho lời bài hát đã đồng bộ</string>
+    <string name="lyrics_bold_synced_title">Chữ in đậm cho lời bài hát đã đồng bộ</string>
     <string name="lyrics_by_x">Lời bài hát bởi %s</string>
     <string name="lyrics_karaoke_style_summary">Kích hoạt hiệu ứng kiểu Karaoke cho lời bài hát đồng bộ từng từ. Lưu ý rằng đây là một tính năng thử nghiệm.</string>
-    <string name="lyrics_bold_synced_summary">Hiển thị lời bài hát đồng bộ vơi font in đậm</string>
+    <string name="lyrics_bold_synced_summary">Hiển thị lời bài hát đồng bộ với font chữ in đậm</string>
     <string name="listenbrainz_login_title">Đăng nhập vào ListenBrainz</string>
     <string name="sleep_timer_x_secs">%d giây</string>
     <string name="sign_in_to_x_title">Đăng nhập vào %s</string>
@@ -862,4 +862,11 @@
     <string name="app_widget_tap_to_play">Nhấn để mở Booming Music</string>
     <string name="action_play_x">Phát %s</string>
     <string name="app_widget_grid">Lưới</string>
+    <string name="app_widget_cookie">Bánh quy</string>
+    <string name="widget_show_artist_title">Hiển thị nghệ sĩ</string>
+    <string name="widget_page_next">Bài hát tiếp theo</string>
+    <string name="lyrics_show_translation_title">Hiện bản dịch</string>
+    <string name="lyrics_show_translation_summary">Hiển thị bản dịch lời nếu có sẵn.</string>
+    <string name="searching">Đang tìm kiếm…</string>
+    <string name="musicbrainz_search_title">Tìm trên MusicBrainz</string>
 </resources>
