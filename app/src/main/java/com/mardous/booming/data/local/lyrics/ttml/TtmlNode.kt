@@ -132,6 +132,7 @@ data class TtmlNode(
         const val NODE_LINE = 2
         const val NODE_WORD = 3
 
+        const val TAG_ITUNES_METADATA = "iTunesMetadata"
         const val TAG_BODY = "body"
         const val TAG_DIV = "div"
         const val TAG_PARAGRAPH = "p"

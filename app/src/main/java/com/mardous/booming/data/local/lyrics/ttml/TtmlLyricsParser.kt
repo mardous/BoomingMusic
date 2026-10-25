@@ -156,7 +156,12 @@ class TtmlLyricsParser : LyricsParser {
      * It builds a [TtmlNodeTree] by processing start and end tags.
      * The tree is then converted into [SyncedLyrics].
      */
-    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
+    override fun parse(
+        reader: Reader,
+        trackLength: Long,
+        userOffset: Long,
+        ignoreBlankLines: Boolean
+    ): SyncedLyrics? {
         try {
             val parser = XmlPullParserFactory.newInstance().apply {
                 isNamespaceAware = false
@@ -181,6 +186,10 @@ class TtmlLyricsParser : LyricsParser {
                                     id = parser.getAttributeValue(null, "xml:id"),
                                     type = parser.getAttributeValue(null, "type")
                                 )
+                            }
+
+                            TtmlNode.TAG_ITUNES_METADATA -> {
+                                nodeTree.addLeadingSilence(parser.getTimeAttribute("leadingSilence"))
                             }
 
                             TtmlNode.TAG_TRANSLITERATION -> {
@@ -301,7 +310,7 @@ class TtmlLyricsParser : LyricsParser {
             }
             nodeTree.close()
             parser.setInput(null)
-            return nodeTree.toLyrics(trackLength)
+            return nodeTree.toLyrics(trackLength, userOffset)
         } catch (e: Exception) {
             Log.e("TtmlLyricsParser", "Couldn't parse TTML lyrics", e)
         }

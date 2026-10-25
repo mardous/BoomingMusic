@@ -33,8 +33,8 @@ interface LyricsParser {
 
     fun parseAsPlain(reader: Reader): String?
 
-    fun parse(input: String, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? =
-        if (input.isNotBlank()) input.reader().use { parse(it, trackLength, ignoreBlankLines) } else null
+    fun parse(input: String, trackLength: Long, userOffset: Long, ignoreBlankLines: Boolean): SyncedLyrics? =
+        if (input.isNotBlank()) input.reader().use { parse(it, trackLength, userOffset, ignoreBlankLines) } else null
 
-    fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics?
+    fun parse(reader: Reader, trackLength: Long, userOffset: Long, ignoreBlankLines: Boolean): SyncedLyrics?
 }

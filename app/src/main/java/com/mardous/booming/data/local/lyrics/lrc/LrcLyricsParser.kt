@@ -89,7 +89,12 @@ class LrcLyricsParser : LyricsParser {
      * First pass: Extracts all raw lines and attributes, handling multiple timestamps per line.
      * Second pass: Sorts and converts raw nodes into [SyncedLyrics], resolving overlaps and durations.
      */
-    override fun parse(reader: Reader, trackLength: Long, ignoreBlankLines: Boolean): SyncedLyrics? {
+    override fun parse(
+        reader: Reader,
+        trackLength: Long,
+        userOffset: Long,
+        ignoreBlankLines: Boolean
+    ): SyncedLyrics? {
         val attributes = hashMapOf<String, String>()
         val rawLines = mutableListOf<LrcNode>()
         try {
@@ -165,7 +170,7 @@ class LrcLyricsParser : LyricsParser {
         }
         // LRC nodes can appear out of order in the file, especially with multi-timestamp lines
         rawLines.sortBy { it.start }
-        return parse(attributes, rawLines, trackLength, ignoreBlankLines)
+        return parse(attributes, rawLines, trackLength, userOffset, ignoreBlankLines)
     }
 
     /**
@@ -177,6 +182,7 @@ class LrcLyricsParser : LyricsParser {
         attributes: Map<String, String>,
         rawLines: List<LrcNode>,
         trackLength: Long,
+        userOffset: Long,
         ignoreBlankLines: Boolean
     ): SyncedLyrics? {
         val lines = mutableMapOf<Long, SyncedLyrics.Line?>()
@@ -296,9 +302,10 @@ class LrcLyricsParser : LyricsParser {
                 }
             }
 
+            val lyricsOffset = attributes["offset"]?.toLongOrNull() ?: 0
             return SyncedLyrics(
                 lines = linesWithOffset,
-                offset = attributes["offset"]?.toLongOrNull() ?: 0
+                offset = (lyricsOffset + userOffset)
             )
         } catch (e: Exception) {
             e.printStackTrace()

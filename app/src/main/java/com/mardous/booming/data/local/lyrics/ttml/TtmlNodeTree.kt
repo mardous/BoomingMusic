@@ -24,6 +24,7 @@ internal class TtmlNodeTree {
     private val accompaniments = linkedMapOf<TtmlAccompaniment.Type, TtmlAccompaniment>()
     private val agents = mutableSetOf<TtmlAgent>()
     private var openNodes = mutableMapOf<Int, TtmlNode?>()
+    private val iTunesAttributes = mutableMapOf<String, Any>()
 
     private var lastTransliterationType: TtmlAccompaniment.Type.Transliteration? = null
     private val openTransliteration: TtmlTransliteration?
@@ -103,6 +104,14 @@ internal class TtmlNodeTree {
 
     fun getAgent(id: String): TtmlAgent? {
         return agents.firstOrNull { it.id == id }
+    }
+
+    fun addLeadingSilence(leadingSilence: Long): Boolean {
+        if (!hasRoot) {
+            iTunesAttributes["leadingSilence"] = leadingSilence
+            return true
+        }
+        return false
     }
 
     fun openSection(node: TtmlNode): Boolean {
@@ -295,7 +304,7 @@ internal class TtmlNodeTree {
      * 4. Merging translations and transliterations based on the line's key.
      * 5. Adding a blank line at the start if the first lyric is delayed.
      */
-    fun toLyrics(trackLength: Long): SyncedLyrics? {
+    fun toLyrics(trackLength: Long, userOffset: Long): SyncedLyrics? {
         checkNotNull(rootNode) { "The node tree does not have a root" }
         check(closed) { "The node tree must be closed to obtain nested data" }
 
@@ -306,6 +315,8 @@ internal class TtmlNodeTree {
         val lineNodes = sectionNodes.flatMap { it.getChildren(TtmlNode.NODE_LINE) }.sortedBy { it.begin }
         val translation = getClosedTranslation()
         val transliteration = getClosedTransliteration()
+
+        val leadingSilence = iTunesAttributes["leadingSilence"] as? Long ?: 0L
 
         if (lineNodes.isNotEmpty()) {
             val lines = mutableListOf<SyncedLyrics.Line>()
@@ -415,7 +426,7 @@ internal class TtmlNodeTree {
                 }
             }
 
-            return SyncedLyrics(linesWithOffset)
+            return SyncedLyrics(lines = linesWithOffset, offset = (leadingSilence + userOffset))
         }
         return null
     }

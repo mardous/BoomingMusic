@@ -32,7 +32,6 @@ import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.documentfile.provider.DocumentFile
 import com.mardous.booming.coil.CustomArtistImageManager
-import com.mardous.booming.core.BoomingDatabase
 import com.mardous.booming.core.appwidgets.config.WidgetConfigStore
 import com.mardous.booming.core.model.lyrics.LyricsViewSettings
 import com.mardous.booming.data.local.room.LyricsDao
@@ -308,21 +307,21 @@ class BackupManager(
     ) = withContext(IO) {
         try {
             ZipOutputStream(output.buffered()).use { out ->
-                for (zipItem in items) {
-                    if (zipItem.filePath != null) {
-                        val itemFile = File(zipItem.filePath)
+                for ((zipPath, filePath, fileContent) in items) {
+                    if (filePath != null) {
+                        val itemFile = File(filePath)
                         if (itemFile.isFile) {
-                            val entry = ZipEntry(zipItem.zipPath)
+                            val entry = ZipEntry(zipPath)
                             out.putNextEntry(entry)
                             itemFile.inputStream().buffered().use { origin ->
                                 origin.copyTo(out)
                             }
                             out.closeEntry()
                         }
-                    } else if (!zipItem.fileContent.isNullOrEmpty()) {
-                        val entry = ZipEntry(zipItem.zipPath)
+                    } else if (!fileContent.isNullOrEmpty()) {
+                        val entry = ZipEntry(zipPath)
                         out.putNextEntry(entry)
-                        out.write(zipItem.fileContent.toByteArray(Charsets.UTF_8))
+                        out.write(fileContent.toByteArray(Charsets.UTF_8))
                         out.closeEntry()
                     }
                 }
@@ -339,7 +338,7 @@ class BackupManager(
         if (packageInfo != null) {
             val metadata = BackupMetadata(
                 backupVersion = CURRENT_BACKUP_VERSION,
-                databaseVersion = BoomingDatabase.VERSION,
+                databaseVersion = CURRENT_DB_VERSION,
                 appName = packageInfo.packageName,
                 appVersionName = packageInfo.versionName,
                 appVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
@@ -530,14 +529,14 @@ class BackupManager(
             val preferenceBackup = zipFile.getInputStream(entry).use { stream ->
                 json.decodeFromString<PreferenceBackup>(stream.bufferedReader().use { it.readText() })
             }
-            if (!preferenceBackup.prefs.isEmpty()) {
-                for (entry in preferenceBackup.prefs) {
+            if (preferenceBackup.prefs.isNotEmpty()) {
+                for ((preferenceName, contents) in preferenceBackup.prefs) {
                     val appPackageName = packageInfo?.packageName
                     val preferenceName =
                         if (appPackageName != null && metadata.appName != null &&
                             appPackageName != metadata.appName) {
-                            if (entry.key == "${metadata.appName}_preferences") null else entry.key
-                        } else entry.key
+                            if (preferenceName == "${metadata.appName}_preferences") null else preferenceName
+                        } else preferenceName
 
                     if (preferenceName == null) continue
 
@@ -545,20 +544,20 @@ class BackupManager(
                     val modifiedKeys = mutableSetOf<String>()
                     val currentKeys = sharedPrefs.all.keys
                     sharedPrefs.edit(commit = true) {
-                        for (content in entry.value) {
-                            if (content.key.isEmpty()) continue
-                            if (content.key == LyricsViewSettings.Key.SELECTED_CUSTOM_FONT) {
-                                if (!isValidFontPath(content.value)) continue
+                        for ((prefKey, prefValue, prefType) in contents) {
+                            if (prefKey.isEmpty()) continue
+                            if (prefKey == LyricsViewSettings.Key.SELECTED_CUSTOM_FONT) {
+                                if (!isValidFontPath(prefValue)) continue
                             }
-                            when (content.type) {
-                                PreferenceContent.Type.String -> putString(content.key, content.value)
-                                PreferenceContent.Type.Integer -> putInt(content.key, content.value.toInt())
-                                PreferenceContent.Type.Long -> putLong(content.key, content.value.toLong())
-                                PreferenceContent.Type.Float -> putFloat(content.key, content.value.toFloat())
-                                PreferenceContent.Type.Boolean -> putBoolean(content.key, content.value.toBoolean())
-                                PreferenceContent.Type.Set -> putStringSet(content.key, content.value.split(",").toSet())
+                            when (prefType) {
+                                PreferenceContent.Type.String -> putString(prefKey, prefValue)
+                                PreferenceContent.Type.Integer -> putInt(prefKey, prefValue.toInt())
+                                PreferenceContent.Type.Long -> putLong(prefKey, prefValue.toLong())
+                                PreferenceContent.Type.Float -> putFloat(prefKey, prefValue.toFloat())
+                                PreferenceContent.Type.Boolean -> putBoolean(prefKey, prefValue.toBoolean())
+                                PreferenceContent.Type.Set -> putStringSet(prefKey, prefValue.split(",").toSet())
                             }
-                            modifiedKeys.add(content.key)
+                            modifiedKeys.add(prefKey)
                         }
                         if (currentKeys.isNotEmpty() && modifiedKeys.isNotEmpty()) {
                             for (currentKey in currentKeys) {
@@ -583,7 +582,7 @@ class BackupManager(
         databaseVersion: Int
     ) = withContext(IO) {
         try {
-            checkDatabaseVersion(databaseVersion)
+            checkDatabaseVersion(databaseVersion, minDatabaseVersion = LYRICS_MIN_DB_VERSION)
 
             val serializedLyrics = zipFile.getInputStream(entry).use { zis ->
                 zis.bufferedReader().use { it.readText() }
@@ -772,7 +771,7 @@ class BackupManager(
         minDatabaseVersion: Int = CURRENT_DB_VERSION
     ) {
         if (databaseVersion !in minDatabaseVersion..CURRENT_DB_VERSION) {
-            throw IllegalStateException("Database version mismatch: required=$CURRENT_DB_VERSION, actual=$databaseVersion")
+            throw IllegalStateException("Database version mismatch: required=$minDatabaseVersion, actual=$databaseVersion")
         }
     }
 
@@ -796,8 +795,7 @@ class BackupManager(
     }
 
     private fun MutableList<ZipItem>.addNotNull(zipItem: ZipItem?): Boolean {
-        if (zipItem == null) return false
-        return this.add(zipItem)
+        return zipItem != null && this.add(zipItem)
     }
 
     private fun String.child(child: String) = this + File.separator + child
