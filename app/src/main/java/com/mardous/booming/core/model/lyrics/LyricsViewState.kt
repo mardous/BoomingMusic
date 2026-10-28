@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.mardous.booming.data.model.lyrics.SyncedLyrics
+import com.mardous.booming.util.Preferences
 import kotlin.math.abs
 
 @Stable
@@ -29,7 +30,7 @@ class LyricsViewState(val lyrics: SyncedLyrics?) {
     private var shouldCrossfade by mutableStateOf(false)
 
     fun updatePosition(newPosition: Long) {
-        position = (newPosition + (lyrics?.offset ?: 0))
+        position = (newPosition + (lyrics?.offset ?: 0) + Preferences.syncedLyricsDelay)
 
         val newLineIndex = findLineIndexAt(position)
         val lineJump = abs(newLineIndex - currentLineIndex)
