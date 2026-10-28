@@ -26,11 +26,15 @@ interface LyricsDao {
     @Upsert
     suspend fun insertLyrics(lyrics: List<LyricsEntity>)
 
-    @Upsert
-    suspend fun insertLyrics(lyrics: LyricsEntity)
-
-    @Query("DELETE FROM LyricsEntity WHERE id = :songId")
-    suspend fun removeLyrics(songId: Long)
+    @Query("""
+    INSERT INTO LyricsEntity (id, lyrics, provider, is_instrumental) 
+    VALUES (:songId, :lyrics, :provider, :instrumental)
+    ON CONFLICT(id) DO UPDATE SET 
+        lyrics = excluded.lyrics, 
+        provider = excluded.provider, 
+        is_instrumental = excluded.is_instrumental
+    """)
+    suspend fun upsertDownloadedLyrics(songId: Long, lyrics: String?, provider: String?, instrumental: Boolean)
 
     @Query("DELETE FROM LyricsEntity")
     suspend fun removeLyrics()
@@ -40,4 +44,14 @@ interface LyricsDao {
 
     @Query("SELECT * FROM LyricsEntity WHERE id = :songId")
     suspend fun getLyrics(songId: Long): LyricsEntity?
+
+    @Query("SELECT `offset` FROM LyricsEntity WHERE id = :songId")
+    suspend fun getOffset(songId: Long): Long?
+
+    @Query("""
+    INSERT INTO LyricsEntity (id, `offset`) 
+    VALUES (:songId, :offset)
+    ON CONFLICT(id) DO UPDATE SET `offset` = excluded.offset
+    """)
+    suspend fun upsertOffset(songId: Long, offset: Long)
 }

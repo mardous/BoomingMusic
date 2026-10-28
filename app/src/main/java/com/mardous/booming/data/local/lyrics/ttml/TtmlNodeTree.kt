@@ -33,6 +33,7 @@ internal class TtmlNodeTree {
     private val openTranslation: TtmlTranslation?
         get() = getOpenAccompaniment(lastTranslationType)
 
+    private var lyricsOffset: Long = 0
     private var background = false
     private var closed = false
 
@@ -103,6 +104,14 @@ internal class TtmlNodeTree {
 
     fun getAgent(id: String): TtmlAgent? {
         return agents.firstOrNull { it.id == id }
+    }
+
+    fun setOffset(offset: Long): Boolean {
+        if (!hasRoot && offset != -1L) {
+            lyricsOffset = offset
+            return true
+        }
+        return false
     }
 
     fun openSection(node: TtmlNode): Boolean {
@@ -295,7 +304,7 @@ internal class TtmlNodeTree {
      * 4. Merging translations and transliterations based on the line's key.
      * 5. Adding a blank line at the start if the first lyric is delayed.
      */
-    fun toLyrics(trackLength: Long): SyncedLyrics? {
+    fun toLyrics(trackLength: Long, userOffset: Long): SyncedLyrics? {
         checkNotNull(rootNode) { "The node tree does not have a root" }
         check(closed) { "The node tree must be closed to obtain nested data" }
 
@@ -415,7 +424,7 @@ internal class TtmlNodeTree {
                 }
             }
 
-            return SyncedLyrics(linesWithOffset)
+            return SyncedLyrics(lines = linesWithOffset, offset = (lyricsOffset + userOffset))
         }
         return null
     }

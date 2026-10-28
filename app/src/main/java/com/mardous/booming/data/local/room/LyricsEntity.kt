@@ -24,11 +24,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @Entity
-class LyricsEntity(
+data class LyricsEntity(
     @PrimaryKey
     val id: Long,
     val lyrics: String? = null,
     val provider: String? = null,
     @ColumnInfo(name = "is_instrumental")
-    val instrumental: Boolean = false
+    val instrumental: Boolean = false,
+    val offset: Long = 0
 )

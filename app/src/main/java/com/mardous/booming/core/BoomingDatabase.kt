@@ -50,7 +50,7 @@ abstract class BoomingDatabase : RoomDatabase() {
          * When increasing this value, we must ensure we also make any necessary
          * changes in [com.mardous.booming.data.local.backup.BackupManager].
          */
-        const val VERSION = 7
+        const val VERSION = 8
 
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
@@ -109,6 +109,14 @@ abstract class BoomingDatabase : RoomDatabase() {
                 db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_label` ON `AutoEqEntity` (`label`)")
                 db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_source` ON `AutoEqEntity` (`source`)")
                 db.execSQL("CREATE INDEX IF NOT EXISTS `index_AutoEqEntity_model_name` ON `AutoEqEntity` (`model_name`)")
+            }
+        }
+
+        val MIGRATION_7_8 = object : Migration(7, 8) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE LyricsEntity ADD COLUMN `offset` INTEGER NOT NULL DEFAULT 0"
+                )
             }
         }
     }

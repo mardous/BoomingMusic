@@ -26,11 +26,10 @@
 
 - [✨ Key Features](#-key-features)
 - [📸 Screenshots](#-screenshots)
-- [💻 Tech Stack](#-tech-stack)
 - [🧩 Roadmap](#-roadmap)
-- [🔗 Useful Links](#-useful-links)
 - [🤝 Contributing](#-contributing)
 - [💖 Support Development](#-support-development)
+- [🔗 Useful Links](#-useful-links)
 - [🙌 Credits](#-credits)
 - [⚖️ License](#-license)
 
@@ -117,28 +116,6 @@ Your support is greatly appreciated and keeps me motivated to continue improving
 <a href="https://ko-fi.com/christiaam" target="_blank">
 <img src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_red.png" alt="Support me on Ko-fi" style="border: 0px; height: 40px;" />
 </a>
-
-### ❤️ Supporters
-
-<table>
-  <tr>
-    <td>
-      <b>mbeezy</b><br/>
-      <b><a href="https://github.com/Qoojoe">KKTweex</a></b><br/>
-      <b><a href="https://github.com/FabiRich">FabiRich</a></b><br/>
-      <b><a href="https://github.com/Bloodaxe95">Bloodaxe</a></b><br/>
-      <b>Bernhard</b><br/>
-      <b>Andreas Hirth</b>
-    </td>
-    <td>
-      <b>Revolver327</b><br/>
-      <b>Peter Smith</b><br/>
-      <b>Michele Simoncelli</b><br/>
-      <b>Kristof Lengyel</b><br/>
-      <b>Tarvos</b>
-    </td>
-  </tr>
-</table>
 
 </div>
 

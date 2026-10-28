@@ -114,7 +114,8 @@ sealed interface RawLyrics : Parcelable {
     data class Stored(
         override val lyrics: String? = null,
         val provider: String? = null,
-        val instrumental: Boolean = false
+        val instrumental: Boolean = false,
+        val userOffset: Long = 0
     ) : RawLyrics {
         override fun accept(other: RawLyrics?): RawLyrics = this
 

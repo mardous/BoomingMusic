@@ -13,7 +13,6 @@ import com.mardous.booming.data.local.lyrics.LyricsParser
 import com.mardous.booming.data.local.lyrics.lrc.LrcLyricsParser
 import com.mardous.booming.data.local.lyrics.ttml.TtmlLyricsParser
 import com.mardous.booming.data.local.room.LyricsDao
-import com.mardous.booming.data.local.room.LyricsEntity
 import com.mardous.booming.data.model.Song
 import com.mardous.booming.data.model.lyrics.LyricsFile
 import com.mardous.booming.data.model.lyrics.LyricsSource
@@ -40,6 +39,7 @@ interface LyricsRepository {
     suspend fun storedLyrics(song: Song, allowDownload: Boolean): RawLyrics.Stored?
     suspend fun downloadLyrics(song: Song, searchTitle: String, searchArtist: String, providerParams: LyricsProviderParams): RawLyrics.Remote?
 
+    suspend fun setUserOffset(song: Song, offset: Long)
     suspend fun saveLyrics(
         song: Song,
         originalLyricsBySource: Map<LyricsSource, RawLyrics?>,
@@ -57,7 +57,8 @@ class RealLyricsRepository(
     private val lyricsDao: LyricsDao
 ) : LyricsRepository {
 
-    private val memoryCache = LruCache<Long, Map<LyricsSource, RawLyrics>>(20)
+    private val cachedRawLyrics = LruCache<Long, Map<LyricsSource, RawLyrics>>(20)
+    private val cachedUserOffsets = LruCache<Long, Long>(1000)
 
     private val charsetDetector = UniversalDetector()
 
@@ -104,7 +105,8 @@ class RealLyricsRepository(
                             lyrics = rawLyrics.lyrics,
                             ignoreBlankLines = ignoreBlankLines,
                             markInstrumentalByTitle = markInstrumentalByTitle,
-                            provider = rawLyrics.provider
+                            provider = rawLyrics.provider,
+                            userOffset = rawLyrics.userOffset
                         )
                     }
                 }
@@ -138,13 +140,27 @@ class RealLyricsRepository(
         return ParsedLyrics.Empty
     }
 
-    private fun parseTextLyrics(
+    private suspend fun getUserOffset(songId: Long): Long? {
+        val cachedOffset = cachedUserOffsets[songId]
+        if (cachedOffset == null) {
+            val offset = lyricsDao.getOffset(songId) ?: 0
+            synchronized(cachedUserOffsets) {
+                cachedUserOffsets.put(songId, offset)
+            }
+            return offset
+        } else {
+            return cachedOffset
+        }
+    }
+
+    private suspend fun parseTextLyrics(
         song: Song,
         lyrics: String?,
         ignoreBlankLines: Boolean,
         markInstrumentalByTitle: Boolean,
         lyricsParsers: List<LyricsParser> = this.lyricsParsers,
-        provider: String? = null
+        provider: String? = null,
+        userOffset: Long? = null
     ): ParsedLyrics {
         if (lyrics.isNullOrBlank()) return ParsedLyrics.Empty
 
@@ -153,7 +169,8 @@ class RealLyricsRepository(
                 is LyricsInfo.Instrumental -> ParsedLyrics.Instrumental
                 is LyricsInfo.Valid -> {
                     if (info.actuallySynced) {
-                        val synced = parser.parse(lyrics, song.duration, ignoreBlankLines)
+                        val customOffset = userOffset ?: getUserOffset(song.id) ?: 0
+                        val synced = parser.parse(lyrics, song.duration, customOffset, ignoreBlankLines)
                             ?.let { if (provider != null) it.copy(provider = provider) else it }
                         if (synced != null) ParsedLyrics.Synced(synced) else ParsedLyrics.Empty
                     } else {
@@ -231,26 +248,20 @@ class RealLyricsRepository(
             if (storedLyrics == null && allowDownload) {
                 val storableLyrics = lyricsDownloadService.remoteLyrics(song).prepareToStore()
                 if (storableLyrics != null) {
-                    if (storableLyrics.instrumental) {
-                        lyricsDao.insertLyrics(
-                            LyricsEntity(song.id, instrumental = true)
-                        )
-                    } else {
-                        lyricsDao.insertLyrics(
-                            LyricsEntity(
-                                id = song.id,
-                                lyrics = storableLyrics.lyrics,
-                                provider = storableLyrics.provider
-                            )
-                        )
-                    }
+                    lyricsDao.upsertDownloadedLyrics(
+                        songId = song.id,
+                        lyrics = storableLyrics.lyrics,
+                        provider = storableLyrics.provider,
+                        instrumental = storableLyrics.instrumental
+                    )
                     return cacheLyrics(song.id, storableLyrics)
                 }
             } else if (storedLyrics != null) {
                 return cacheLyrics(song.id, RawLyrics.Stored(
                     lyrics = storedLyrics.lyrics,
                     provider = storedLyrics.provider,
-                    instrumental = storedLyrics.instrumental
+                    instrumental = storedLyrics.instrumental,
+                    userOffset = storedLyrics.offset
                 ))
             }
         } catch (e: Exception) {
@@ -272,6 +283,14 @@ class RealLyricsRepository(
             lyricsDownloadService.remoteLyrics(song, searchTitle, searchArtist, providerParams)
         } catch (_: Exception) {
             null
+        }
+    }
+
+    override suspend fun setUserOffset(song: Song, offset: Long) {
+        if (song.id == Song.emptySong.id) return
+        lyricsDao.upsertOffset(song.id, offset)
+        synchronized(cachedUserOffsets) {
+            cachedUserOffsets.put(song.id, offset)
         }
     }
 
@@ -314,13 +333,11 @@ class RealLyricsRepository(
 
                     is RawLyrics.Stored -> {
                         runCatching {
-                            lyricsDao.insertLyrics(
-                                LyricsEntity(
-                                    id = song.id,
-                                    lyrics = it.newContent,
-                                    provider = it.newContentProvider,
-                                    instrumental = it.instrumental
-                                )
+                            lyricsDao.upsertDownloadedLyrics(
+                                songId = song.id,
+                                lyrics = it.newContent,
+                                provider = it.newContentProvider,
+                                instrumental = it.instrumental
                             )
                             true
                         }.getOrDefault(false).also { success ->
@@ -346,14 +363,14 @@ class RealLyricsRepository(
 
     override suspend fun deleteAllLyrics() {
         lyricsDao.removeLyrics()
-        memoryCache.evictAll()
+        cachedRawLyrics.evictAll()
     }
 
     private inline fun <reified T : RawLyrics> getCachedLyrics(
         source: LyricsSource,
         songId: Long
     ): T? {
-        val cachedLyrics = memoryCache[songId]
+        val cachedLyrics = cachedRawLyrics[songId]
         if (cachedLyrics != null && cachedLyrics.containsKey(source)) {
             return cachedLyrics[source] as? T
         }
@@ -368,18 +385,18 @@ class RealLyricsRepository(
             else -> null
         }
         if (source != null) {
-            val cachedLyrics = memoryCache[songId]?.toMutableMap() ?: mutableMapOf()
+            val cachedLyrics = cachedRawLyrics[songId]?.toMutableMap() ?: mutableMapOf()
             cachedLyrics[source] = lyrics
-            memoryCache.put(songId, cachedLyrics)
+            cachedRawLyrics.put(songId, cachedLyrics)
         }
         return lyrics
     }
 
     private fun removeCachedLyrics(source: LyricsSource, songId: Long) {
-        val cachedLyrics = memoryCache[songId]?.toMutableMap()
+        val cachedLyrics = cachedRawLyrics[songId]?.toMutableMap()
         if (cachedLyrics != null) {
             cachedLyrics.remove(source)
-            memoryCache.put(songId, cachedLyrics)
+            cachedRawLyrics.put(songId, cachedLyrics)
         }
     }
 
