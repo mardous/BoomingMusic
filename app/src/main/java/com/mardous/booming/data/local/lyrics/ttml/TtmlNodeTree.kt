@@ -24,7 +24,6 @@ internal class TtmlNodeTree {
     private val accompaniments = linkedMapOf<TtmlAccompaniment.Type, TtmlAccompaniment>()
     private val agents = mutableSetOf<TtmlAgent>()
     private var openNodes = mutableMapOf<Int, TtmlNode?>()
-    private val iTunesAttributes = mutableMapOf<String, Any>()
 
     private var lastTransliterationType: TtmlAccompaniment.Type.Transliteration? = null
     private val openTransliteration: TtmlTransliteration?
@@ -34,6 +33,7 @@ internal class TtmlNodeTree {
     private val openTranslation: TtmlTranslation?
         get() = getOpenAccompaniment(lastTranslationType)
 
+    private var lyricsOffset: Long = 0
     private var background = false
     private var closed = false
 
@@ -106,9 +106,9 @@ internal class TtmlNodeTree {
         return agents.firstOrNull { it.id == id }
     }
 
-    fun addLeadingSilence(leadingSilence: Long): Boolean {
-        if (!hasRoot) {
-            iTunesAttributes["leadingSilence"] = leadingSilence
+    fun setOffset(offset: Long): Boolean {
+        if (!hasRoot && offset != -1L) {
+            lyricsOffset = offset
             return true
         }
         return false
@@ -316,8 +316,6 @@ internal class TtmlNodeTree {
         val translation = getClosedTranslation()
         val transliteration = getClosedTransliteration()
 
-        val leadingSilence = iTunesAttributes["leadingSilence"] as? Long ?: 0L
-
         if (lineNodes.isNotEmpty()) {
             val lines = mutableListOf<SyncedLyrics.Line>()
             val lastLineIndex = lineNodes.lastIndex
@@ -426,7 +424,7 @@ internal class TtmlNodeTree {
                 }
             }
 
-            return SyncedLyrics(lines = linesWithOffset, offset = (leadingSilence + userOffset))
+            return SyncedLyrics(lines = linesWithOffset, offset = (lyricsOffset + userOffset))
         }
         return null
     }
