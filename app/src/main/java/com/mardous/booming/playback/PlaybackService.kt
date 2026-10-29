@@ -303,6 +303,11 @@ class PlaybackService :
             .setId(packageName)
             .setSessionActivity(createSessionActivityIntent())
             .setBitmapLoader(CacheBitmapLoader(CoilBitmapLoader(this@PlaybackService)))
+            // When the user opens the play queue in Android Auto, the scroll
+            // position might be lost because the queue is constantly being
+            // rebuilt. Disabling this seems to fix the issue without causing
+            // any other apparent unexpected behavior (androidx/media#2192)
+            .setPeriodicPositionUpdateEnabled(false)
             .build()
 
         setForegroundServiceTimeoutMs(FOREGROUND_SERVICE_TIMEOUT)
