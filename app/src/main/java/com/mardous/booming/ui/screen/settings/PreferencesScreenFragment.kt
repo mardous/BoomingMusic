@@ -37,6 +37,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import coil3.SingletonImageLoader
 import com.google.android.material.color.DynamicColors
 import com.mardous.booming.BuildConfig
@@ -81,6 +82,8 @@ import com.mardous.booming.util.COVER_LEFT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_LONG_PRESS_ACTION
 import com.mardous.booming.util.COVER_RIGHT_DOUBLE_TAP_ACTION
 import com.mardous.booming.util.COVER_SINGLE_TAP_ACTION
+import com.mardous.booming.util.CROSSFADE_DURATION
+import com.mardous.booming.util.ENABLE_CROSSFADE
 import com.mardous.booming.util.ENABLE_ROTATION_LOCK
 import com.mardous.booming.util.GENERAL_THEME
 import com.mardous.booming.util.IGNORE_MEDIA_STORE
@@ -176,6 +179,8 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
+
+        findPreference<Preference>(CROSSFADE_DURATION)?.isVisible = Preferences.enableCrossfade
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -336,6 +341,13 @@ open class PreferenceScreenFragment : PreferenceFragmentCompat(),
                     }
                 }
             }
+        }
+
+        findPreference<SwitchPreferenceCompat>(ENABLE_CROSSFADE)?.setOnPreferenceChangeListener { _, newValue ->
+
+            findPreference<Preference>(CROSSFADE_DURATION)?.isVisible = newValue as Boolean
+
+            true
         }
 
         onUpdateNowPlayingScreen()

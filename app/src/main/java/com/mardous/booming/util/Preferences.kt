@@ -457,6 +457,20 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
         set(value) = preferences.edit { putBoolean(DISPLAY_NEXT_SONG, value) }
 
+    var enableCrossfade: Boolean
+        get() = preferences.getBoolean(ENABLE_CROSSFADE, false)
+        set(value) = preferences.edit { putBoolean(ENABLE_CROSSFADE, value) }
+
+    var crossfadeDuration: Long
+        get() {
+            val intVal = preferences.getInt(CROSSFADE_DURATION, -1)
+            if (intVal != -1) return intVal * 1000L
+            val strVal = preferences.getString(CROSSFADE_DURATION, "5")
+            val num = strVal?.toLongOrNull() ?: 5L
+            return if (num > 10) num else num * 1000L
+        }
+        set(value) = preferences.edit { putInt(CROSSFADE_DURATION, (value / 1000L).toInt()) }
+
     fun SharedPreferences.nullString(key: String): String? = getString(key, null)
 
     fun SharedPreferences.requireString(key: String, defaultValue: String): String =
@@ -635,3 +649,5 @@ const val LOCKED_PLAYLISTS = "locked_playlists"
 const val LASTFM_LOGIN = "lastfm_login"
 const val LISTENBRAINZ_LOGIN = "listenbrainz_login"
 const val MARK_INSTRUMENTAL_TRACKS_BY_TITLE = "mark_instrumental_tracks_by_title"
+const val ENABLE_CROSSFADE = "enable_crossfade"
+const val CROSSFADE_DURATION = "crossfade_duration"

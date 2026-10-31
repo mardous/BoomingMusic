@@ -176,6 +176,7 @@ class PlaybackService :
     private var hasSetUnshuffledOrder = false
     private var stopIndex = -1
     private var prefetchGainJob: Job? = null
+    private var crossfadeManager: CrossfadeManager? = null
 
     private var headsetClickCount = 0
     private val headsetClickRunnable = Runnable {
@@ -298,6 +299,7 @@ class PlaybackService :
         player.exoPlayer.applyShuffleOrder(ImprovedShuffleOrder(0, 0, Random.nextLong()))
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(this)
+        crossfadeManager = CrossfadeManager(this, player, equalizerManager, serviceScope)
 
         mediaSession = MediaLibrarySession.Builder(this, player, this)
             .setId(packageName)
@@ -380,6 +382,7 @@ class PlaybackService :
         playerThread.quitSafely()
         equalizerManager.release()
         sleepTimer.release()
+        crossfadeManager?.release()
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? {
@@ -756,6 +759,9 @@ class PlaybackService :
     }
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
+        if (!Preferences.enableCrossfade) {
+            player.volume = equalizerManager.soundSettings.value.volume.currentVolume
+        }
         val isPlaying = player.isPlaying
         if (replayGainProcessor.mode.isOn) submitReplayGain(mediaItem)
 
@@ -792,7 +798,7 @@ class PlaybackService :
                     if (NetworkFeature.ListenBrainz.Scrobbling.isAvailable) {
                         launch { repository.scrobble(ScrobblingService.ListenBrainz, previousSong, timestampSeconds) }
                     }
-                } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
+                } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK && crossfadeManager?.isCrossfading != true) {
                     repository.insertOrIncrementSkipCount(previousSong)
                 }
             }

@@ -3,6 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="true"
+        app:key="enable_crossfade"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:summary="@string/crossfade_summary"
+        app:title="@string/crossfade_title" />
+
+    <com.mardous.booming.ui.component.preferences.CrossfadeSeekBarPreference
+        android:max="10"
+        app:defaultValue="5"
+        app:iconSpaceReserved="true"
+        app:key="crossfade_duration"
+        app:layout="@layout/list_item_view_bottom_widget"
+        app:widgetLayout="@layout/preference_seekbar"
+        app:min="1"
+        app:showSeekBarValue="true"
+        app:summary="@string/crossfade_duration_summary"
+        app:title="@string/crossfade_duration_title" />
+
     <ListPreference
         app:iconSpaceReserved="true"
         app:title="@string/play_on_startup_title"
