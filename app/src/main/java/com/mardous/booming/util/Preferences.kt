@@ -457,6 +457,10 @@ object Preferences : KoinComponent {
         get() = preferences.getBoolean(DISPLAY_NEXT_SONG, true)
         set(value) = preferences.edit { putBoolean(DISPLAY_NEXT_SONG, value) }
 
+    var enableVolumeNormalization: Boolean
+        get() = preferences.getBoolean(ENABLE_VOLUME_NORMALIZATION, false)
+        set(value) = preferences.edit { putBoolean(ENABLE_VOLUME_NORMALIZATION, value) }
+
     fun SharedPreferences.nullString(key: String): String? = getString(key, null)
 
     fun SharedPreferences.requireString(key: String, defaultValue: String): String =
@@ -635,3 +639,4 @@ const val LOCKED_PLAYLISTS = "locked_playlists"
 const val LASTFM_LOGIN = "lastfm_login"
 const val LISTENBRAINZ_LOGIN = "listenbrainz_login"
 const val MARK_INSTRUMENTAL_TRACKS_BY_TITLE = "mark_instrumental_tracks_by_title"
+const val ENABLE_VOLUME_NORMALIZATION = "enable_volume_normalization"
