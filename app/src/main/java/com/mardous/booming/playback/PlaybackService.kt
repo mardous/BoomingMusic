@@ -299,7 +299,7 @@ class PlaybackService :
         player.exoPlayer.applyShuffleOrder(ImprovedShuffleOrder(0, 0, Random.nextLong()))
         player.setSequentialTimelineEnabled(sequentialTimeline)
         player.addListener(this)
-        crossfadeManager = CrossfadeManager(this, player, serviceScope)
+        crossfadeManager = CrossfadeManager(this, player, equalizerManager, serviceScope)
 
         mediaSession = MediaLibrarySession.Builder(this, player, this)
             .setId(packageName)
@@ -760,7 +760,7 @@ class PlaybackService :
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         if (!Preferences.enableCrossfade) {
-            player.volume = 1f
+            player.volume = equalizerManager.soundSettings.value.volume.currentVolume
         }
         val isPlaying = player.isPlaying
         if (replayGainProcessor.mode.isOn) submitReplayGain(mediaItem)
@@ -798,7 +798,7 @@ class PlaybackService :
                     if (NetworkFeature.ListenBrainz.Scrobbling.isAvailable) {
                         launch { repository.scrobble(ScrobblingService.ListenBrainz, previousSong, timestampSeconds) }
                     }
-                } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
+                } else if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK && crossfadeManager?.isCrossfading != true) {
                     repository.insertOrIncrementSkipCount(previousSong)
                 }
             }
@@ -1120,9 +1120,7 @@ class PlaybackService :
     }
 
     private fun restorePlayerVolume() {
-        if (!Preferences.enableCrossfade) {
-            player.volume = equalizerManager.soundSettings.value.volume.currentVolume
-        }
+        player.volume = equalizerManager.soundSettings.value.volume.currentVolume
     }
 
     private fun prepareEqualizerAndSoundSettings() {
@@ -1132,9 +1130,7 @@ class PlaybackService :
         serviceScope.launch {
             equalizerManager.liveSoundSettings.map { it.volume }.collect { volume ->
                 cancelSleepTimerFadeOut()
-                if (!Preferences.enableCrossfade) {
-                    player.volume = volume.currentVolume
-                }
+                player.volume = volume.currentVolume
             }
         }
         serviceScope.launch {

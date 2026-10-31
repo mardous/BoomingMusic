@@ -25,6 +25,7 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import com.mardous.booming.playback.equalizer.EqualizerManager
 import com.mardous.booming.util.Preferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -37,10 +38,12 @@ import kotlin.time.Duration.Companion.milliseconds
 class CrossfadeManager(
     private val context: Context,
     private val primaryPlayer: AdvancedForwardingPlayer,
+    private val equalizerManager: EqualizerManager,
     private val scope: CoroutineScope
 ) {
     private var secondaryExoPlayer: ExoPlayer? = null
-    private var isCrossfading = false
+    var isCrossfading = false
+        private set
     private var lastCrossfadedFromIndex = -1
 
     private val playerListener = object : Player.Listener {
@@ -101,6 +104,8 @@ class CrossfadeManager(
         val currentItem = primaryPlayer.getMediaItemAt(primaryPlayer.currentMediaItemIndex)
 
         scope.launch {
+            val targetVolume = equalizerManager.soundSettings.value.volume.currentVolume
+
             // Secondary player (Player 2) takes over playing Track 1 without requesting AudioFocus,
             // preventing AudioFocus ducking or audio drop when Player 1 advances.
             val audioAttributes = AudioAttributes.Builder()
@@ -115,11 +120,11 @@ class CrossfadeManager(
                     it.setMediaItem(currentItem)
                     it.prepare()
                     it.seekTo(primaryPlayer.currentPosition)
-                    it.volume = 1f
+                    it.volume = targetVolume
                     it.playWhenReady = primaryPlayer.isPlaying
                 }
 
-            // Wait until Secondary player is fully READY and outputting Track 1 audio at 1f
+            // Wait until Secondary player is fully READY and outputting Track 1 audio at targetVolume
             var waited = 0
             while ((secondary.playbackState != Player.STATE_READY || !secondary.isPlaying) && waited < 1000 && isCrossfading) {
                 delay(10.milliseconds)
@@ -138,14 +143,14 @@ class CrossfadeManager(
             var progress = 0f
 
             // Equal-power crossfade:
-            // Secondary (Track 1) fades cos(progress * PI/2) -> 1f to 0f
-            // Primary (Track 2) fades sin(progress * PI/2) -> 0f to 1f
+            // Secondary (Track 1) fades cos(progress * PI/2) -> targetVolume to 0f
+            // Primary (Track 2) fades sin(progress * PI/2) -> 0f to targetVolume
             while (progress < 1f && isCrossfading) {
                 if (primaryPlayer.isPlaying) {
                     progress = (progress + delta).coerceAtMost(1f)
                     val angle = progress * (Math.PI / 2.0)
-                    val secVol = cos(angle).toFloat().coerceIn(0f, 1f)
-                    val primVol = sin(angle).toFloat().coerceIn(0f, 1f)
+                    val secVol = (cos(angle).toFloat() * targetVolume).coerceIn(0f, targetVolume)
+                    val primVol = (sin(angle).toFloat() * targetVolume).coerceIn(0f, targetVolume)
 
                     if (secondary.playbackState != Player.STATE_ENDED) {
                         secondary.volume = secVol
@@ -155,9 +160,9 @@ class CrossfadeManager(
                 delay(interval.milliseconds)
             }
 
-            // Cleanup: Primary player is ALREADY playing Track 2 smoothly at ~3s with volume 1f.
+            // Cleanup: Primary player is ALREADY playing Track 2 smoothly at ~3s with volume targetVolume.
             // NO RESTART OR SECONDARY SEEK OCCURS!
-            primaryPlayer.volume = 1f
+            primaryPlayer.volume = targetVolume
             secondary.stop()
             secondary.release()
             secondaryExoPlayer = null
