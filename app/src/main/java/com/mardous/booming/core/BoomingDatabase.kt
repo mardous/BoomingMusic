@@ -114,9 +114,23 @@ abstract class BoomingDatabase : RoomDatabase() {
 
         val MIGRATION_7_8 = object : Migration(7, 8) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL(
-                    "ALTER TABLE LyricsEntity ADD COLUMN `offset` INTEGER NOT NULL DEFAULT 0"
-                )
+                db.execSQL("""
+                    CREATE TABLE _new_LyricsEntity (
+                        id INTEGER PRIMARY KEY NOT NULL,
+                        lyrics TEXT,
+                        provider TEXT,
+                        is_instrumental INTEGER NOT NULL DEFAULT 0,
+                        offset INTEGER NOT NULL DEFAULT 0
+                    )
+                """)
+
+                db.execSQL("""
+                    INSERT INTO _new_LyricsEntity (id, lyrics, provider, is_instrumental, offset)
+                    SELECT id, lyrics, provider, COALESCE(is_instrumental, 0), 0 FROM LyricsEntity
+                """)
+
+                db.execSQL("DROP TABLE LyricsEntity")
+                db.execSQL("ALTER TABLE _new_LyricsEntity RENAME TO LyricsEntity")
             }
         }
     }

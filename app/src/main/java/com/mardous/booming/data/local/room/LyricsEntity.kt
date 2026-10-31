@@ -29,7 +29,8 @@ data class LyricsEntity(
     val id: Long,
     val lyrics: String? = null,
     val provider: String? = null,
-    @ColumnInfo(name = "is_instrumental")
+    @ColumnInfo(name = "is_instrumental", defaultValue = "0")
     val instrumental: Boolean = false,
+    @ColumnInfo(defaultValue = "0")
     val offset: Long = 0
 )
