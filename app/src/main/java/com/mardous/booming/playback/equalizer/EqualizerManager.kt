@@ -171,10 +171,12 @@ class EqualizerManager(
         soundSettings.map { it.replayGain }
             .filterNot { it == ReplayGainState.Unspecified }
             .onEach { state ->
-                if (state.mode.isOn) {
-                    replayGainProcessor.mode = state.mode
+                val normEnabled = com.mardous.booming.util.Preferences.enableVolumeNormalization
+                val activeMode = if (normEnabled && !state.mode.isOn) ReplayGainMode.Track else state.mode
+                if (activeMode.isOn) {
+                    replayGainProcessor.mode = activeMode
                     replayGainProcessor.preAmpGain = state.preamp
-                    replayGainProcessor.preAmpGainWithoutTag = state.preampWithoutGain
+                    replayGainProcessor.preAmpGainWithoutTag = if (normEnabled && state.preampWithoutGain == 0f) -3f else state.preampWithoutGain
                 } else {
                     replayGainProcessor.mode = ReplayGainMode.Off
                     replayGainProcessor.preAmpGain = 0f

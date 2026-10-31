@@ -993,7 +993,8 @@
         or battery management may ignore this setting and always stop the app when removed from recents.</string>
     <string name="rotation_lock_title">Rotation lock</string>
     <string name="rotation_lock_summary">Lock the device\'s orientation. Useful in cases where music stops when rotating the device due to certain manufacturer policies.</string>
-
+    <string name="volume_normalization_title">Volume Normalization</string>
+    <string name="volume_normalization_summary">Play all tracks at a uniform volume level without altering music files</string>
     <!-- Preference values -->
     <string name="auto_theme_name">Auto</string>
     <string name="light_theme_name">Light</string>

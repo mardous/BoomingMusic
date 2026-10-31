@@ -757,7 +757,7 @@ class PlaybackService :
 
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         val isPlaying = player.isPlaying
-        if (replayGainProcessor.mode.isOn) submitReplayGain(mediaItem)
+        if (replayGainProcessor.mode.isOn || Preferences.enableVolumeNormalization) submitReplayGain(mediaItem)
 
         serviceScope.launch(IO) {
             val newSong = repository.songByMediaItem(mediaItem, ignoreBlacklist = true)
@@ -815,7 +815,7 @@ class PlaybackService :
 
     /** Warms the next item's tags so the audio processor can peek instead of reading files. */
     private fun prefetchNextReplayGain() {
-        if (!replayGainProcessor.mode.isOn) return
+        if (!replayGainProcessor.mode.isOn && !Preferences.enableVolumeNormalization) return
         val nextIndex = player.nextMediaItemIndex
         if (nextIndex == C.INDEX_UNSET) return
         val uri = player.getMediaItemAt(nextIndex).contentUri ?: return

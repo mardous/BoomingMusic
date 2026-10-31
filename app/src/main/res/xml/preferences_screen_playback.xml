@@ -13,6 +13,15 @@
         app:layout="@layout/list_item_view"
         app:key="play_on_startup_mode"/>
 
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="true"
+        app:key="enable_volume_normalization"
+        app:layout="@layout/list_item_view"
+        app:widgetLayout="@layout/preference_switch"
+        app:summary="@string/volume_normalization_summary"
+        app:title="@string/volume_normalization_title" />
+
     <PreferenceCategory
         app:title="@string/playing_queue_label"
         app:layout="@layout/preference_category_title">
