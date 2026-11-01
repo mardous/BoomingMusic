@@ -96,4 +96,10 @@
     <string name="saved_x_playlists_failed_to_save_x">%1$d pleylist yadda saxlanıldı, %2$d-si yadda saxlanıla bilmədi.</string>
     <string name="delete_playlist_title">Çalğı siyahısını sil</string>
     <string name="delete_playlists_title">Çalma siyahılarını sil</string>
+    <string name="delete_playlist_x"><![CDATA[<b>%s</b> Pleylist siyahısını sil?]]></string>
+    <string name="delete_x_playlists"><![CDATA[<b>%d</b> Pleylist siyahısını sil?]]></string>
+    <string name="created_playlist_x">\'%1$s\' pleylist yaradıldı.</string>
+    <string name="could_not_create_playlist">Pleylist siyahısı yaradıla bilmədi.</string>
+    <string name="no_playlists_create_new">Pleylist siyahısı yaratmaq üçün \"Yeni\" düyməsini basın</string>
+    <string name="no_playlists_that_match_x">\"%s\" ilə uyğun gələn Pleylist siyahısı yoxdur</string>
 </resources>
