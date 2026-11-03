@@ -122,7 +122,7 @@
     <string name="permission_external_storage_title">저장공간 액세스</string>
     <string name="permission_external_storage_description">음악 재생을 위해 기기 저장공간 액세스 권한이 필요합니다</string>
     <string name="permission_external_storage_denied">외부 저장공간 액세스 권한을 허용해야 합니다.</string>
-    <string name="permission_bluetooth_title">근처 기기</string>
+    <string name="permission_bluetooth_title">근처 기기 (선택)</string>
     <string name="permission_bluetooth_description">블루투스 기기 확인을 위해 근처 기기 권한이 필요합니다</string>
     <string name="permission_read_images_title">이미지 읽기 (선택 사항)</string>
     <string name="permission_read_images_summary">음악 폴더에서 앨범 아트 파일을 찾기 위해 이 권한이 필요합니다. 이 기능을 사용하지 않으려면 허용하지 않아도 됩니다.</string>
@@ -332,7 +332,6 @@
     <string name="top_albums">인기 앨범</string>
     <string name="recent_artists">최근 아티스트</string>
     <string name="recent_albums">최근 앨범</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">완전 랜덤</string>
     <string name="shuffle_mode_most_played">가장 많이 재생됨</string>
@@ -352,7 +351,7 @@
     <string name="shuffle_mode_combined_description">즐겨찾기, 재생 횟수, 최근 항목을 믹스합니다.</string>
     <!-- Equalizer -->
     <string name="equalizer_label">이퀄라이저</string>
-    <string name="autoeq_label">AutoEq</string>
+    <string name="autoeq_label">자동 Eq</string>
     <string name="graphic_eq_label">그래픽 EQ</string>
     <string name="graphic_eq_band_count">%d밴드</string>
     <string name="eq_profiles_title">EQ 프로필</string>
@@ -555,7 +554,7 @@
     <string name="lyrics_blur_effect_title">블러 효과</string>
     <string name="lyrics_blur_effect_summary">현재 줄 주변 가사를 흐리게 처리합니다.</string>
     <string name="lyrics_shadow_effect_title">그림자 효과</string>
-    <string name="lyrics_shadow_effect_summary">가독성을 위해 현재 줄에 그림자를 추가합니다.</string>
+    <string name="lyrics_shadow_effect_summary">가독성 향상을 위해 가사 아래에 그림자를 추가합니다.</string>
     <string name="lyrics_progressive_coloring_title">진행형 가사 채우기</string>
     <string name="lyrics_progressive_coloring_summary">가사가 진행됨에 따라 점진적으로 색상을 입힙니다.</string>
     <string name="lyrics_bold_unsynced_title">일반 가사 굵게 표시</string>
@@ -570,10 +569,6 @@
     <string name="synced_font_size_full_summary">전체 가사 화면의 동기 가사 크기를 조정합니다.</string>
     <string name="unsynced_font_size_full_title">일반 가사 크기 (전체 화면)</string>
     <string name="unsynced_font_size_full_summary">전체 가사 화면의 일반 가사 크기를 조정합니다.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">빈 줄 무시</string>
     <string name="ignore_blank_lines_summary">LRC 파일의 빈 줄을 애니메이션 말풍선 대신 무시합니다.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">모든 가사 파일을 UTF-8로 처리</string>
@@ -678,7 +673,7 @@
     <string name="online_artist_images_title">아티스트 이미지 다운로드</string>
     <string name="preferred_image_size_title">선호 이미지 크기</string>
     <string name="online_album_covers_title">누락된 앨범 커버 다운로드</string>
-    <string name="online_album_covers_summary">다운로드된 이미지는 파일에 삽입되지 않으며 앱에서만 표시됩니다.</string>
+    <string name="online_album_covers_summary">다운로드된 이미지는 파일에 삽입되지 않습니다; 오직 이 앱에서만 표시됩니다.</string>
     <string name="delete_downloaded_lyrics_title">다운로드된 가사 삭제</string>
     <string name="delete_downloaded_lyrics_summary">Booming Music이 다운로드한 가사만 삭제합니다.</string>
     <string name="lyrics_cleared">가사가 삭제되었습니다.</string>
@@ -689,7 +684,7 @@
     <string name="trash_music_summary">삭제된 파일을 휴지통으로 보냅니다.</string>
     <string name="recursive_folder_actions_title">하위 폴더 포함 액션</string>
     <string name="recursive_folder_actions_summary">폴더 동작 시 하위 폴더에도 적용할 작업을 선택합니다.</string>
-    <string name="enable_history_title">기록 활성화</string>
+    <string name="enable_history_title">재생 기록 활성화</string>
     <string name="enable_history_summary">재생 기록을 기록합니다. 비활성화 시 기존 기록도 모두 삭제됩니다.</string>
     <string name="history_interval_title">기록 간격</string>
     <string name="last_added_interval_title">최근 추가 간격</string>
@@ -841,6 +836,66 @@
     <string name="telegram_community">텔레그램 커뮤니티</string>
     <string name="app_widget_card">카드</string>
     <string name="app_widget_card_desc">미니멀하고 간결한 스타일</string>
-    <string name="new_playlist_action">새로운</string>
+    <string name="new_playlist_action">추가</string>
     <string name="no_playlists_create_new">\"새로 만들기\" 버튼을 눌러 재생 목록을 만드세요</string>
+    <string name="app_widget_cookie">쿠키</string>
+    <string name="app_widget_circle_desc">원형 재생 아이콘과 이를 중심으로 회전하는 재생바</string>
+    <string name="app_widget_circle">원형</string>
+    <string name="searching">찾는중…</string>
+    <string name="permission_notifications_title">알림 (선택)</string>
+    <string name="ttml_file_lyrics">TTML</string>
+    <string name="app_widget_library">저장소</string>
+    <string name="widget_action_favourite">즐겨찾기</string>
+    <string name="compressor_label">작곡가</string>
+    <string name="website">웹사이트</string>
+    <string name="backup_content_playlists">플레이리스트</string>
+    <string name="widget_action_repeat">반복</string>
+    <string name="auto_theme_name">시스템 테마 (다크/라이트)</string>
+    <string name="home_forgotten_tracks_title">재탐색</string>
+    <string name="images_title">이미지</string>
+    <string name="open_backup">백업본 열기</string>
+    <string name="eq_pro_mode">전문가 모드</string>
+    <string name="widget_page_previous">이전 곡</string>
+    <string name="widget_settings_title">위젯 설정</string>
+    <string name="sort_order_name">이름</string>
+    <string name="lyrics_show_transliteration_title">발음 활성화</string>
+    <string name="bit_perfect_title">완전한 비트 오디오</string>
+    <string name="lyrics_karaoke_style_title">노래방 스타일 가사</string>
+    <string name="lyrics_show_translation_title">번역 활성화</string>
+    <string name="app_widget_tap_to_play">탭으로 Booming Music 열기</string>
+    <string name="musicbrainz_no_results">MusicBrainz 일치 결과 없음.</string>
+    <string name="musicbrainz_select_recording">결과물 선택</string>
+    <string name="bit_perfect_is_active">Bit-perfect 활성화 중</string>
+    <string name="musicbrainz_search_message">제목과 아티스트를 사용해 MusicBrainz에서 음원 찾기.</string>
+    <string name="bit_perfect_info">Bit-Perfect: %1$s | %2$s</string>
+    <string name="create_new_backup">백업 생성</string>
+    <string name="backup_content_lyrics">동기화된 가사</string>
+    <string name="action_auto_fill_from_musicbrainz">MusicBrainz로 자동-채우기</string>
+    <string name="musicbrainz_search_title">MusicBrainz 검색</string>
+    <string name="initial_configuration_subtitle">시작하기 전, Booming Music을 원하는 대로 구성하세요.</string>
+    <string name="initial_configuration_note">이 설정들은 이후에도 변경 가능합니다.</string>
+    <string name="restore_from_backup">백업으로 복구</string>
+    <string name="home_empty_title">추천 없음</string>
+    <string name="home_for_you_title">당신을 위해</string>
+    <string name="home_albums_title">지금 듣기</string>
+    <string name="home_albums_subtitle_2">당신의 마지막 컬렉션에 빠져들기</string>
+    <string name="home_artists_title">추천 아티스트</string>
+    <string name="home_artists_subtitle">최애 아티스트</string>
+    <string name="home_artists_subtitle_3">숨어 듣는 나만의 명곡</string>
+    <string name="home_forgotten_tracks_subtitle_3">잠시 듣지 않았던 곡들</string>
+    <string name="autoeq_sync_success">%d AutoEq 프로필 동기화 성공.</string>
+    <string name="autoeq_sync_failed">AutoEq 프로필 동기화 실패.</string>
+    <string name="sync_autoeq_database">AutoEq 데이터베이스 동기화</string>
+    <string name="search_autoeq_placeholder">헤드폰 모델 검색</string>
+    <string name="allow_lyrics_download_from">다운로드 허용 :</string>
+    <string name="app_version_x">버전 %s</string>
+    <string name="app_description">오직 당신만을 위한 현대적인 디자인. 깨끗한 음질.</string>
+    <string name="terms_of_service">서비스 정책</string>
+    <string name="privacy_policy">개인정보</string>
+    <string name="more_contributors_title">그 외 도와준 분들</string>
+    <string name="more_contributors_summary">도와준 분들의 전체 목록은 GitHub에서 볼 수 있습니다.</string>
+    <string name="telegram_community_summary">최신 출시 및 소식은 저희 Telegram 커뮤니티에서 가입하시면 볼 수 있습니다.</string>
+    <string name="autoeq_search_device_name">기기 혹은 모델 찾기</string>
+    <string name="support_my_work">개발자 후원하기</string>
+    <string name="widget_dynamic_colors_summary">위젯에 현재 재생 중인 앨범 색상 적용.</string>
 </resources>
