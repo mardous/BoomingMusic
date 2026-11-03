@@ -469,7 +469,7 @@
     <!-- App Shortcuts -->
     <string name="app_shortcut_shuffle_all_short">Zufallswiedergabe</string>
     <string name="app_shortcut_top_tracks_short">Top-Titel</string>
-    <string name="app_shortcut_last_added_short">Zuletzt hinzugefügt</string>
+    <string name="app_shortcut_last_added_short">Zuletzt Hinzugefügt</string>
     <string name="app_shortcut_favorites_short">Favoriten</string>
     <!-- About page -->
     <string name="action_about">Über</string>
@@ -737,7 +737,7 @@
     <string name="parallax">Parallaxe</string>
     <string name="add_after_playing_track">Nach dem wiedergegebenen Titel einfügen</string>
     <string name="add_tracks_sequentially">Titel nacheinander hinzufügen</string>
-    <string name="albums_shuffle">Album-Zufallswiedergabe</string>
+    <string name="albums_shuffle">Alben-Zufallswiedergabe</string>
     <string name="artists_shuffle">Interpreten-Zufallswiedergabe</string>
     <string name="shuffle_albums_ordered_songs">Alben-Zufallswiedergabe in Titelreihenfolge</string>
     <string name="ordered_albums_shuffle_songs">Titel-Zufallswiedergabe in Albenreihenfolge</string>
