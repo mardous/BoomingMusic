@@ -348,7 +348,6 @@
     <string name="top_albums">Álbuns Populares</string>
     <string name="recent_artists">Artistas Recentes</string>
     <string name="recent_albums">Álbuns Recentes</string>
-
     <!-- Shuffle modes -->
     <string name="shuffle_mode_pure_random">Totalmente aleatório</string>
     <string name="shuffle_mode_most_played">Mais reproduzidas</string>
@@ -586,10 +585,6 @@
     <string name="synced_font_size_full_summary">Ajusta o tamanho da fonte das letras sincronizadas em tela cheia.</string>
     <string name="unsynced_font_size_full_title">Tamanho da fonte das letras não sincronizadas (tela cheia)</string>
     <string name="unsynced_font_size_full_summary">Ajusta o tamanho da fonte das letras não sincronizadas na tela cheia.</string>
-
-
-
-
     <string name="ignore_blank_lines_title">Ignore linhas em branco</string>
     <string name="ignore_blank_lines_summary">Ignore linhas vazias em arquivos LRC em vez de mostrar bolhas animadas.</string>
     <string name="treat_all_lyrics_files_as_utf8_title">Tratar todos os arquivos de letras como UTF-8</string>
@@ -955,4 +950,5 @@
     <string name="terms_of_service">Termos de Serviço</string>
     <string name="privacy_policy">Política de Privacidade</string>
     <string name="legal">Legal</string>
+    <string name="app_widget_circle">Redondo</string>
 </resources>
