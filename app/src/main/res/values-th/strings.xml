@@ -100,7 +100,7 @@
     <string name="added_to_favorites_label">เพิ่มไปยังรายการโปรดแล้ว</string>
     <string name="removed_from_favorites_label">ลบออกจากรายการโปรดแล้ว</string>
     <string name="clear_queue">เคลียร์คิว</string>
-    <string name="action_move_to_current_track">แสดงเพลงปัจจุบัน</string>
+    <string name="action_move_to_current_track">แสดงแทร็กปัจจุบัน</string>
     <string name="add_to_label">เพิ่มไปที่</string>
     <string name="go_to_label">ไปที่</string>
     <string name="action_go_to_album">ไปที่อัลบั้ม</string>
@@ -166,7 +166,7 @@
     <string name="album_or_artist_shuffle_all">สุ่มทั้งหมด</string>
     <string name="app_language_title">ภาษาของแอป</string>
     <string name="backup_restore_title">สำรองและกู้คืน</string>
-    <string name="top_tracks_label">เพลงยอดนิยม</string>
+    <string name="top_tracks_label">แทร็กยอดนิยม</string>
     <string name="view_type_normal">ปกติ</string>
     <string name="view_type_card">การ์ด</string>
     <string name="import_action">นำเข้า</string>
@@ -182,7 +182,7 @@
     <string name="various_artists">ศิลปินต่างๆ</string>
     <string name="unknown_artist">ศิลปินที่ไม่รู้จัก</string>
     <string name="unknown_genre">ประเภทที่ไม่รู้จัก</string>
-    <string name="put_after_current_track">วางหลังเพลงปัจจุบัน</string>
+    <string name="put_after_current_track">วางหลังแทร็กปัจจุบัน</string>
     <string name="similar_artists">ศิลปินที่คล้ายกัน</string>
     <string name="show_album_artists">เฉพาะศิลปินอัลบั้ม</string>
     <string name="audio_device_hdmi">HDMI</string>
@@ -276,7 +276,7 @@
     <string name="sort_order_date_modified">วันที่แก้ไข</string>
     <string name="sort_order_date_added">วันที่เพิ่ม</string>
     <string name="sort_order_last_played_date">วันที่เล่นล่าสุด</string>
-    <string name="sort_order_track_list">รายการเพลง</string>
+    <string name="sort_order_track_list">รายการแทร็ก</string>
     <string name="action_set_as_start_directory">ตั้งเป็นโฟลเดอร์เริ่มต้น</string>
     <string name="start_directory_set">โฟลเดอร์เริ่มต้นถูกตั้งค่าเป็น%s</string>
     <string name="new_start_directory">โฟลเดอร์เริ่มต้นใหม่: %s</string>
@@ -298,7 +298,7 @@
     <string name="musicbrainz_search_title">ค้นหา MusicBrainz</string>
     <string name="action_lyrics_editor">แก้ไขเนื้อเพลง</string>
     <string name="musicbrainz_select_recording">เลือกผลลัพธ์</string>
-    <string name="deleted_x_songs">ลบเพลงแล้ว%1$dเพลง</string>
+    <string name="deleted_x_songs">ลบเพลงแล้ว %1$d เพลง</string>
     <string name="remove_song_from_playlist_title">ลบเพลงออกจากเพลย์ลิสต์</string>
     <string name="lyrics">เนื้อเพลง</string>
     <string name="lyricist">ผู้แต่งคำร้อง</string>
@@ -421,11 +421,11 @@
     <string name="sleep_timer_1_hour">1 ชั่วโมง</string>
     <string name="sleep_timer_2_hour">2 ชั่วโมง</string>
     <string name="sleep_timer_finish_current_music">จบเพลงสุดท้าย</string>
-    <string name="sleep_timer_stop_after_this_track">หยุดเมื่อจบเพลงนี้</string>
+    <string name="sleep_timer_stop_after_this_track">หยุดเมื่อจบแทร็กนี้</string>
     <string name="ttml_file_lyrics">TTML</string>
     <string name="lrc_file_lyrics">LRC</string>
     <string name="app_shortcut_shuffle_all_short">สุ่ม</string>
-    <string name="app_shortcut_top_tracks_short">เพลงยอดนิยม</string>
+    <string name="app_shortcut_top_tracks_short">แทร็กยอดนิยม</string>
     <string name="app_shortcut_last_added_short">เพิ่มล่าสุด</string>
     <string name="app_shortcut_favorites_short">รายการโปรด</string>
     <string name="action_about">เกี่ยวกับ</string>
@@ -509,7 +509,7 @@
     <string name="next_song_x_by_artist_x">ถัดไป • %1$s โดย %2$s</string>
     <string name="unknown_year">ไม่ทราบปี</string>
     <string name="musicbrainz_no_results">ไม่พบผลลัพธ์ใดๆ บนMusicBrainz</string>
-    <string name="go_to_current_track">ไปที่เพลงปัจจุบัน</string>
+    <string name="go_to_current_track">ไปที่แทร็กปัจจุบัน</string>
     <string name="added_title_to_playing_queue">เพิ่ม 1 รายการลงในคิวการเล่น</string>
     <string name="playlist_created">สร้างเพลย์ลิสต์ %s สำเร็จแล้ว</string>
     <string name="remove_from_whitelist">คุณต้องการลบโฟลเดอร์นี้ออกจากรายการที่อนุญาตหรือไม่?</string>
@@ -518,7 +518,7 @@
     <string name="no_audio_ID">Bad audio ID.</string>
     <string name="permission_external_storage_description">แอปจำเป็นต้องได้รับอนุญาตในการเข้าถึงพื้นที่จัดเก็บข้อมูลของอุปกรณ์เพื่อเล่นเพลง</string>
     <string name="not_recently_played">ไม่ได้เล่นล่าสุด</string>
-    <string name="track_play_counts">จำนวนครั้งที่เล่นเพลง</string>
+    <string name="track_play_counts">จำนวนครั้งที่เล่นแต่ละเพลง</string>
     <string name="song_stat_one_time_label">เล่นครั้งเดียวบน %s</string>
     <string name="show_total_duration">แสดงระยะเวลา</string>
     <string name="ignore_singles">ข้ามซิงเกิล</string>
@@ -661,5 +661,7 @@
     <string name="restoring_playback_state">กำลังกู้คืนสถานะการเล่นและคิว…</string>
     <string name="playback_stopped_title">การเล่นหยุดลง</string>
     <string name="action_hierarchy_view">มุมมองลำดับชั้น</string>
-    <string name="add_tracks_sequentially">เพิ่มเพลงตามลำดับ</string>
+    <string name="add_tracks_sequentially">เพิ่มแทร็กตามลำดับ</string>
+    <string name="widget_page_next">เพลงถัดไป</string>
+    <string name="add_after_playing_track">เพิ่มหลังจากเล่นแทร็ก</string>
 </resources>
