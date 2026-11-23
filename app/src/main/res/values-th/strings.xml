@@ -664,4 +664,6 @@
     <string name="add_tracks_sequentially">เพิ่มแทร็กตามลำดับ</string>
     <string name="widget_page_next">เพลงถัดไป</string>
     <string name="add_after_playing_track">เพิ่มหลังจากเล่นแทร็ก</string>
+    <string name="search_year_x_label">ค้นหาปี: %s</string>
+    <string name="x_selected">เลือกแล้ว %d รายการ</string>
 </resources>
